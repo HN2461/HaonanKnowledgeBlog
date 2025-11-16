@@ -136,6 +136,7 @@ onMounted(() => {
   gap: 20px;
   flex: 1 1 auto;
   min-width: 0;
+  overflow: hidden;
 }
 
 .menu-btn {
@@ -198,14 +199,36 @@ onMounted(() => {
   justify-content: flex-end;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-center {
-    display: none;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 16px;
+  }
+  
+  .header-center {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 8px;
+  }
+  
+  .header-left {
+    gap: 8px;
   }
   
   .header-left,
   .header-right {
-    flex: initial;
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-center {
+    display: none;
   }
 }
 

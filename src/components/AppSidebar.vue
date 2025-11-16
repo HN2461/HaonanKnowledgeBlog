@@ -51,7 +51,7 @@ onMounted(async () => {
   
   // 加载笔记索引
   try {
-    const response = await fetch('/src/assets/notes-index.json')
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
     const data = await response.json()
     notesTree.value = data.tree || []
   } catch (error) {

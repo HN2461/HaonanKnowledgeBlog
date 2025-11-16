@@ -156,7 +156,7 @@ onMounted(async () => {
 
   // 初始化搜索引擎
   try {
-    const response = await fetch('/src/assets/notes-index.json')
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
     const data = await response.json()
     initSearch(data.allNotes || [])
     
@@ -355,7 +355,8 @@ watch(() => route.query.q, (newQuery) => {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 

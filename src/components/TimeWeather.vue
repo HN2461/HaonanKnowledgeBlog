@@ -227,6 +227,7 @@ onUnmounted(() => {
   display: flex;
   align-items: baseline;
   gap: 8px;
+  white-space: nowrap;
 }
 
 .time {
@@ -289,10 +290,22 @@ onUnmounted(() => {
   color: var(--text-tertiary);
 }
 
+@media (max-width: 1024px) {
+  .time-weather {
+    gap: 16px;
+  }
+  
+  .time-display {
+    gap: 6px;
+  }
+}
+
 @media (max-width: 768px) {
   .time-weather {
     gap: 12px;
     font-size: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .time {
@@ -300,7 +313,8 @@ onUnmounted(() => {
   }
   
   .date {
-    display: none;
+    font-size: 11px;
+    color: var(--text-tertiary);
   }
   
   .weather-display {
@@ -313,6 +327,37 @@ onUnmounted(() => {
   
   .temperature {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-weather {
+    gap: 8px;
+  }
+  
+  .time-display {
+    gap: 4px;
+  }
+  
+  .date {
+    display: none;
+  }
+  
+  .weather-display {
+    padding-left: 8px;
+    border-left: none;
+  }
+  
+  .weather-icon {
+    font-size: 16px;
+  }
+  
+  .temperature {
+    font-size: 13px;
+  }
+  
+  .weather-desc {
+    display: none;
   }
 }
 </style>

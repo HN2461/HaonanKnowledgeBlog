@@ -131,7 +131,7 @@ const loadNote = async () => {
   try {
     // 加载笔记索引
     if (!notesData.value) {
-      const indexResponse = await fetch('/src/assets/notes-index.json')
+      const indexResponse = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
       notesData.value = await indexResponse.json()
     }
 
@@ -142,7 +142,7 @@ const loadNote = async () => {
     }
 
     // 加载 Markdown 内容
-    const response = await fetch(`/notes/${notePath.value}.md`)
+    const response = await fetch(`${import.meta.env.BASE_URL}notes/${notePath.value}.md`)
     if (response.ok) {
       const content = await response.text()
       

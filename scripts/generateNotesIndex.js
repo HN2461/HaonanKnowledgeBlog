@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const NOTES_DIR = path.join(__dirname, '../public/notes')
-const OUTPUT_FILE = path.join(__dirname, '../src/assets/notes-index.json')
+const OUTPUT_FILE = path.join(__dirname, '../public/notes-index.json')
 
 // 确保输出目录存在
 const outputDir = path.dirname(OUTPUT_FILE)

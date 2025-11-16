@@ -88,7 +88,7 @@ const handleSort = () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch('/src/assets/notes-index.json')
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
     notesData.value = await response.json()
   } catch (error) {
     console.error('加载笔记索引失败:', error)

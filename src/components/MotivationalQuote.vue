@@ -126,6 +126,22 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .motivational-quote {
+    max-width: 250px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  
+  .quote-icon {
+    font-size: 14px;
+  }
+  
+  .quote-text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .motivational-quote {
     display: none;
   }
 }
