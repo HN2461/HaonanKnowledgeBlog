@@ -223,9 +223,62 @@
       "children": []
     },
     {
-      "name": "JavaScript",
-      "path": "JavaScript",
-      "notes": [],
+      "name": "JavaScriptES6+",
+      "path": "JavaScriptES6+",
+      "notes": [
+        {
+          "type": "file",
+          "title": "ess",
+          "filename": "ess.md",
+          "path": "JavaScriptES6+/ess.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "<font style=\"color:000000;\">let 关键字用来声明变量，使用let 声明的变量有几个特点：</font>\n\n<font style=\"color:000000;\">1) 不允许重复声明</font>\n\n<font style=\"color:000000;\">2) 块儿级作用域</font>\n\n<font style=\"color:000000;\">3) 不存在变量提升<",
+          "size": "148KB",
+          "lastModified": "2025-11-19T14:15:44.626Z",
+          "wordCount": 128406
+        },
+        {
+          "type": "file",
+          "title": "html+css笔记",
+          "filename": "html+css笔记.md",
+          "path": "JavaScriptES6+/html+css笔记.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "网页架构\n\n了解h5规范 \n\n<font style=\"color:FF0000;\">1.HTML中不区分大小写,但是我们一般都使用小写</font>\n\n<font style=\"color:FF0000;\">2.HTML中的注释不能嵌套</font>\n\n<font style=\"color:FF0000;\">3.HTML标签必须结构完整，要么成对出现，要么自结束标签</font>\n\n<font ",
+          "size": "207KB",
+          "lastModified": "2025-11-19T14:14:31.372Z",
+          "wordCount": 149809
+        },
+        {
+          "type": "file",
+          "title": "js",
+          "filename": "js.md",
+          "path": "JavaScriptES6+/js.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "编程就是计算机为了解决某个问题，而使用某种程序设计语言编写程序设计语言编写程序代码，并最终得到结果的过程\n\n计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的。\n\n注意：任何能够执行代码的设备都是计算机，可能是智能手机、ATM机、黑莓PI、服务器等\n\n计算机语言指用于人与计算机之间通讯的语言，它是人与计算机之间传递信息的媒介\n\n计算机语言的种类非常多，总体来说",
+          "size": "451KB",
+          "lastModified": "2025-11-19T14:15:13.155Z",
+          "wordCount": 371256
+        },
+        {
+          "type": "file",
+          "title": "js高级",
+          "filename": "js高级.md",
+          "path": "JavaScriptES6+/js高级.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "《（一）js高级01-基础深入》\n\n1、基础深入js数据类型有哪些数据类型分为两种：基本数据类型与引用数据类型。\n\n基本数据类型有：number、string、boolean、null、undefined。\n\n引用数据类型有：array、function等（除了基本数据类型都是引用数据类型）\n\n基本数据类型的主要特点是赋值方式是传值，并且值存在栈中。\n\n引用数据类型的主要特点是赋值方式是传址，并且",
+          "size": "213KB",
+          "lastModified": "2025-11-19T14:15:28.409Z",
+          "wordCount": 182473
+        }
+      ],
       "children": []
     },
     {
@@ -446,6 +499,58 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "ess",
+      "filename": "ess.md",
+      "path": "JavaScriptES6+/ess.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "JavaScriptES6+",
+      "description": "<font style=\"color:000000;\">let 关键字用来声明变量，使用let 声明的变量有几个特点：</font>\n\n<font style=\"color:000000;\">1) 不允许重复声明</font>\n\n<font style=\"color:000000;\">2) 块儿级作用域</font>\n\n<font style=\"color:000000;\">3) 不存在变量提升<",
+      "size": "148KB",
+      "lastModified": "2025-11-19T14:15:44.626Z",
+      "wordCount": 128406
+    },
+    {
+      "type": "file",
+      "title": "html+css笔记",
+      "filename": "html+css笔记.md",
+      "path": "JavaScriptES6+/html+css笔记.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "JavaScriptES6+",
+      "description": "网页架构\n\n了解h5规范 \n\n<font style=\"color:FF0000;\">1.HTML中不区分大小写,但是我们一般都使用小写</font>\n\n<font style=\"color:FF0000;\">2.HTML中的注释不能嵌套</font>\n\n<font style=\"color:FF0000;\">3.HTML标签必须结构完整，要么成对出现，要么自结束标签</font>\n\n<font ",
+      "size": "207KB",
+      "lastModified": "2025-11-19T14:14:31.372Z",
+      "wordCount": 149809
+    },
+    {
+      "type": "file",
+      "title": "js",
+      "filename": "js.md",
+      "path": "JavaScriptES6+/js.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "JavaScriptES6+",
+      "description": "编程就是计算机为了解决某个问题，而使用某种程序设计语言编写程序设计语言编写程序代码，并最终得到结果的过程\n\n计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的。\n\n注意：任何能够执行代码的设备都是计算机，可能是智能手机、ATM机、黑莓PI、服务器等\n\n计算机语言指用于人与计算机之间通讯的语言，它是人与计算机之间传递信息的媒介\n\n计算机语言的种类非常多，总体来说",
+      "size": "451KB",
+      "lastModified": "2025-11-19T14:15:13.155Z",
+      "wordCount": 371256
+    },
+    {
+      "type": "file",
+      "title": "js高级",
+      "filename": "js高级.md",
+      "path": "JavaScriptES6+/js高级.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "JavaScriptES6+",
+      "description": "《（一）js高级01-基础深入》\n\n1、基础深入js数据类型有哪些数据类型分为两种：基本数据类型与引用数据类型。\n\n基本数据类型有：number、string、boolean、null、undefined。\n\n引用数据类型有：array、function等（除了基本数据类型都是引用数据类型）\n\n基本数据类型的主要特点是赋值方式是传值，并且值存在栈中。\n\n引用数据类型的主要特点是赋值方式是传址，并且",
+      "size": "213KB",
+      "lastModified": "2025-11-19T14:15:28.409Z",
+      "wordCount": 182473
+    },
     {
       "type": "file",
       "title": "DNS域名解析详解",
@@ -1049,9 +1154,62 @@
     },
     {
       "type": "directory",
-      "name": "JavaScript",
-      "path": "JavaScript",
-      "children": []
+      "name": "JavaScriptES6+",
+      "path": "JavaScriptES6+",
+      "children": [
+        {
+          "type": "file",
+          "title": "ess",
+          "filename": "ess.md",
+          "path": "JavaScriptES6+/ess.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "<font style=\"color:000000;\">let 关键字用来声明变量，使用let 声明的变量有几个特点：</font>\n\n<font style=\"color:000000;\">1) 不允许重复声明</font>\n\n<font style=\"color:000000;\">2) 块儿级作用域</font>\n\n<font style=\"color:000000;\">3) 不存在变量提升<",
+          "size": "148KB",
+          "lastModified": "2025-11-19T14:15:44.626Z",
+          "wordCount": 128406
+        },
+        {
+          "type": "file",
+          "title": "html+css笔记",
+          "filename": "html+css笔记.md",
+          "path": "JavaScriptES6+/html+css笔记.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "网页架构\n\n了解h5规范 \n\n<font style=\"color:FF0000;\">1.HTML中不区分大小写,但是我们一般都使用小写</font>\n\n<font style=\"color:FF0000;\">2.HTML中的注释不能嵌套</font>\n\n<font style=\"color:FF0000;\">3.HTML标签必须结构完整，要么成对出现，要么自结束标签</font>\n\n<font ",
+          "size": "207KB",
+          "lastModified": "2025-11-19T14:14:31.372Z",
+          "wordCount": 149809
+        },
+        {
+          "type": "file",
+          "title": "js",
+          "filename": "js.md",
+          "path": "JavaScriptES6+/js.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "编程就是计算机为了解决某个问题，而使用某种程序设计语言编写程序设计语言编写程序代码，并最终得到结果的过程\n\n计算机程序：就是计算机所执行的一系列的指令集合，而程序全部都是用我们所掌握的语言来编写的。\n\n注意：任何能够执行代码的设备都是计算机，可能是智能手机、ATM机、黑莓PI、服务器等\n\n计算机语言指用于人与计算机之间通讯的语言，它是人与计算机之间传递信息的媒介\n\n计算机语言的种类非常多，总体来说",
+          "size": "451KB",
+          "lastModified": "2025-11-19T14:15:13.155Z",
+          "wordCount": 371256
+        },
+        {
+          "type": "file",
+          "title": "js高级",
+          "filename": "js高级.md",
+          "path": "JavaScriptES6+/js高级.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "JavaScriptES6+",
+          "description": "《（一）js高级01-基础深入》\n\n1、基础深入js数据类型有哪些数据类型分为两种：基本数据类型与引用数据类型。\n\n基本数据类型有：number、string、boolean、null、undefined。\n\n引用数据类型有：array、function等（除了基本数据类型都是引用数据类型）\n\n基本数据类型的主要特点是赋值方式是传值，并且值存在栈中。\n\n引用数据类型的主要特点是赋值方式是传址，并且",
+          "size": "213KB",
+          "lastModified": "2025-11-19T14:15:28.409Z",
+          "wordCount": 182473
+        }
+      ]
     },
     {
       "type": "directory",
@@ -1272,7 +1430,7 @@
       ]
     }
   ],
-  "totalNotes": 29,
+  "totalNotes": 33,
   "totalCategories": 10,
-  "lastUpdated": "2025-11-19T14:08:48.422Z"
+  "lastUpdated": "2025-11-19T14:18:11.147Z"
 }
