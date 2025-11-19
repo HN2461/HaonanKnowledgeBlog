@@ -269,13 +269,13 @@
           "title": "DNS域名解析详解",
           "filename": "DNS域名解析详解.md",
           "path": "常用缺易忘/常识/URL到页面显示/DNS域名解析详解.md",
-          "date": "2025-11-16",
+          "date": "2025-11-19",
           "tags": [],
           "category": "常用缺易忘",
-          "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP变更",
-          "size": "6KB",
-          "lastModified": "2025-11-16T11:31:24.781Z",
-          "wordCount": 2869
+          "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP",
+          "size": "7KB",
+          "lastModified": "2025-11-19T13:36:06.542Z",
+          "wordCount": 3351
         },
         {
           "type": "file",
@@ -346,9 +346,68 @@
       "children": []
     },
     {
+      "name": "网络",
+      "path": "常用缺易忘/常识/网络",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Fetch、Axios、XHR",
+          "filename": "Fetch、Axios、XHR.md",
+          "path": "常用缺易忘/常识/网络/Fetch、Axios、XHR.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "常用缺易忘",
+          "description": "在前端开发中，“获取后端数据”是贯穿项目始终的核心需求——就像我们在餐厅点餐时需要服务员传递需求，前端也需要“网络请求工具”作为桥梁，连接前端页面与后端服务器。今天，我们就来系统梳理前端网络请求的三大核心工具：XMLHttpRequest（XHR）、Fetch API 和 Axios，带你掌握它们的用法、特性与适用场景，轻松应对不同项目需求。\r\n\r\n\r\n\r\n用“餐厅点餐”的场景类比，网络请求的流程",
+          "size": "15KB",
+          "lastModified": "2025-11-19T13:51:25.450Z",
+          "wordCount": 9795
+        },
+        {
+          "type": "file",
+          "title": "前端开发者必掌握的 HTTP 请求全攻略",
+          "filename": "前端开发者必掌握的 HTTP 请求全攻略.md",
+          "path": "常用缺易忘/常识/网络/前端开发者必掌握的 HTTP 请求全攻略.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "常用缺易忘",
+          "description": "在前端开发中，HTTP 请求是连接客户端与服务器的核心桥梁 —— 从页面数据获取、用户登录提交，到文件上传，几乎所有与后端交互的场景都依赖 HTTP 请求。本文结合前端开发实际需求，系统梳理 HTTP 请求的核心知识、工具使用、问题解决及最佳实践，帮助开发者高效处理接口交互。\n\n\nHTTP 请求是客户端向服务器发起数据交互的 “指令”，其结构遵循严格的协议规范，是前端正确发起请求的基础。\n\n\n一个",
+          "size": "17KB",
+          "lastModified": "2025-11-19T14:02:46.080Z",
+          "wordCount": 9735
+        },
+        {
+          "type": "file",
+          "title": "文件上传与 HTTP 请求全解析",
+          "filename": "文件上传与 HTTP 请求全解析.md",
+          "path": "常用缺易忘/常识/网络/文件上传与 HTTP 请求全解析.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "常用缺易忘",
+          "description": "作为前端初学者，面对 “文件上传” 时，是不是常困惑 “请求头、请求体是什么”“FormData 怎么用”“数据该放哪”？这篇文章用 “寄快递” 类比，带你从基础概念到实战代码，彻底搞懂这些知识点。\n\n\n你给后端发请求，就像给快递公司寄包裹 —— 要明确 “寄到哪、怎么处理、寄的是什么”，对应 HTTP 请求的 4 个核心部分：\n\n| 请求组成 | 类比快递场景 | 核心作用 |\n| --- | ",
+          "size": "8KB",
+          "lastModified": "2025-11-19T14:02:56.726Z",
+          "wordCount": 4507
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "技术",
       "path": "常用缺易忘/技术",
       "notes": [
+        {
+          "type": "file",
+          "title": "Canvas标签",
+          "filename": "Canvas标签.md",
+          "path": "常用缺易忘/技术/Canvas标签.md",
+          "date": "2025-11-19",
+          "tags": [],
+          "category": "常用缺易忘",
+          "description": "你可以把 <span class=\"ne-text\"><canvas></span> 标签理解成一块电子画板：  \r\n\r\n 它本身只是一块“空白画布”（在HTML里是个矩形区域），不能直接画画；  \r\n 必须用 JavaScript“画笔” 才能在上面绘图；\r\n 能画的东西很多：直线、方块、圆圈、文字、图片，甚至能做动画和交互（比如用鼠标在上面“涂鸦”）。\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n <spa",
+          "size": "21KB",
+          "lastModified": "2025-11-19T14:00:34.392Z",
+          "wordCount": 14656
+        },
         {
           "type": "file",
           "title": "时间戳完全指南",
@@ -387,6 +446,71 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "DNS域名解析详解",
+      "filename": "DNS域名解析详解.md",
+      "path": "常用缺易忘/常识/URL到页面显示/DNS域名解析详解.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "常用缺易忘",
+      "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP",
+      "size": "7KB",
+      "lastModified": "2025-11-19T13:36:06.542Z",
+      "wordCount": 3351
+    },
+    {
+      "type": "file",
+      "title": "Fetch、Axios、XHR",
+      "filename": "Fetch、Axios、XHR.md",
+      "path": "常用缺易忘/常识/网络/Fetch、Axios、XHR.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "常用缺易忘",
+      "description": "在前端开发中，“获取后端数据”是贯穿项目始终的核心需求——就像我们在餐厅点餐时需要服务员传递需求，前端也需要“网络请求工具”作为桥梁，连接前端页面与后端服务器。今天，我们就来系统梳理前端网络请求的三大核心工具：XMLHttpRequest（XHR）、Fetch API 和 Axios，带你掌握它们的用法、特性与适用场景，轻松应对不同项目需求。\r\n\r\n\r\n\r\n用“餐厅点餐”的场景类比，网络请求的流程",
+      "size": "15KB",
+      "lastModified": "2025-11-19T13:51:25.450Z",
+      "wordCount": 9795
+    },
+    {
+      "type": "file",
+      "title": "前端开发者必掌握的 HTTP 请求全攻略",
+      "filename": "前端开发者必掌握的 HTTP 请求全攻略.md",
+      "path": "常用缺易忘/常识/网络/前端开发者必掌握的 HTTP 请求全攻略.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "常用缺易忘",
+      "description": "在前端开发中，HTTP 请求是连接客户端与服务器的核心桥梁 —— 从页面数据获取、用户登录提交，到文件上传，几乎所有与后端交互的场景都依赖 HTTP 请求。本文结合前端开发实际需求，系统梳理 HTTP 请求的核心知识、工具使用、问题解决及最佳实践，帮助开发者高效处理接口交互。\n\n\nHTTP 请求是客户端向服务器发起数据交互的 “指令”，其结构遵循严格的协议规范，是前端正确发起请求的基础。\n\n\n一个",
+      "size": "17KB",
+      "lastModified": "2025-11-19T14:02:46.080Z",
+      "wordCount": 9735
+    },
+    {
+      "type": "file",
+      "title": "文件上传与 HTTP 请求全解析",
+      "filename": "文件上传与 HTTP 请求全解析.md",
+      "path": "常用缺易忘/常识/网络/文件上传与 HTTP 请求全解析.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "常用缺易忘",
+      "description": "作为前端初学者，面对 “文件上传” 时，是不是常困惑 “请求头、请求体是什么”“FormData 怎么用”“数据该放哪”？这篇文章用 “寄快递” 类比，带你从基础概念到实战代码，彻底搞懂这些知识点。\n\n\n你给后端发请求，就像给快递公司寄包裹 —— 要明确 “寄到哪、怎么处理、寄的是什么”，对应 HTTP 请求的 4 个核心部分：\n\n| 请求组成 | 类比快递场景 | 核心作用 |\n| --- | ",
+      "size": "8KB",
+      "lastModified": "2025-11-19T14:02:56.726Z",
+      "wordCount": 4507
+    },
+    {
+      "type": "file",
+      "title": "Canvas标签",
+      "filename": "Canvas标签.md",
+      "path": "常用缺易忘/技术/Canvas标签.md",
+      "date": "2025-11-19",
+      "tags": [],
+      "category": "常用缺易忘",
+      "description": "你可以把 <span class=\"ne-text\"><canvas></span> 标签理解成一块电子画板：  \r\n\r\n 它本身只是一块“空白画布”（在HTML里是个矩形区域），不能直接画画；  \r\n 必须用 JavaScript“画笔” 才能在上面绘图；\r\n 能画的东西很多：直线、方块、圆圈、文字、图片，甚至能做动画和交互（比如用鼠标在上面“涂鸦”）。\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n <spa",
+      "size": "21KB",
+      "lastModified": "2025-11-19T14:00:34.392Z",
+      "wordCount": 14656
+    },
     {
       "type": "file",
       "title": "目录",
@@ -477,19 +601,6 @@
       "size": "12KB",
       "lastModified": "2025-11-16T10:08:44.726Z",
       "wordCount": 10672
-    },
-    {
-      "type": "file",
-      "title": "DNS域名解析详解",
-      "filename": "DNS域名解析详解.md",
-      "path": "常用缺易忘/常识/URL到页面显示/DNS域名解析详解.md",
-      "date": "2025-11-16",
-      "tags": [],
-      "category": "常用缺易忘",
-      "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP变更",
-      "size": "6KB",
-      "lastModified": "2025-11-16T11:31:24.781Z",
-      "wordCount": 2869
     },
     {
       "type": "file",
@@ -982,13 +1093,13 @@
                   "title": "DNS域名解析详解",
                   "filename": "DNS域名解析详解.md",
                   "path": "常用缺易忘/常识/URL到页面显示/DNS域名解析详解.md",
-                  "date": "2025-11-16",
+                  "date": "2025-11-19",
                   "tags": [],
                   "category": "常用缺易忘",
-                  "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP变更",
-                  "size": "6KB",
-                  "lastModified": "2025-11-16T11:31:24.781Z",
-                  "wordCount": 2869
+                  "description": "互联网的通信依赖IP地址（IPv4如xxx.xxx.xxx.xxx，IPv6如8组十六进制数），所有设备（电脑、手机、服务器）必须通过IP地址才能互相定位和传输数据。但存在两个关键问题：\r\n\r\n1. 人类记忆成本高：记住“www.taobao.com”远比记住“140.205.140.241”容易；\r\n2. IP地址可能变化：网站服务器的IP可能因迁移、扩容等原因更换，若直接使用IP访问，一旦IP",
+                  "size": "7KB",
+                  "lastModified": "2025-11-19T13:36:06.542Z",
+                  "wordCount": 3351
                 },
                 {
                   "type": "file",
@@ -1056,6 +1167,52 @@
                   "wordCount": 10741
                 }
               ]
+            },
+            {
+              "type": "directory",
+              "name": "网络",
+              "path": "常用缺易忘/常识/网络",
+              "children": [
+                {
+                  "type": "file",
+                  "title": "Fetch、Axios、XHR",
+                  "filename": "Fetch、Axios、XHR.md",
+                  "path": "常用缺易忘/常识/网络/Fetch、Axios、XHR.md",
+                  "date": "2025-11-19",
+                  "tags": [],
+                  "category": "常用缺易忘",
+                  "description": "在前端开发中，“获取后端数据”是贯穿项目始终的核心需求——就像我们在餐厅点餐时需要服务员传递需求，前端也需要“网络请求工具”作为桥梁，连接前端页面与后端服务器。今天，我们就来系统梳理前端网络请求的三大核心工具：XMLHttpRequest（XHR）、Fetch API 和 Axios，带你掌握它们的用法、特性与适用场景，轻松应对不同项目需求。\r\n\r\n\r\n\r\n用“餐厅点餐”的场景类比，网络请求的流程",
+                  "size": "15KB",
+                  "lastModified": "2025-11-19T13:51:25.450Z",
+                  "wordCount": 9795
+                },
+                {
+                  "type": "file",
+                  "title": "前端开发者必掌握的 HTTP 请求全攻略",
+                  "filename": "前端开发者必掌握的 HTTP 请求全攻略.md",
+                  "path": "常用缺易忘/常识/网络/前端开发者必掌握的 HTTP 请求全攻略.md",
+                  "date": "2025-11-19",
+                  "tags": [],
+                  "category": "常用缺易忘",
+                  "description": "在前端开发中，HTTP 请求是连接客户端与服务器的核心桥梁 —— 从页面数据获取、用户登录提交，到文件上传，几乎所有与后端交互的场景都依赖 HTTP 请求。本文结合前端开发实际需求，系统梳理 HTTP 请求的核心知识、工具使用、问题解决及最佳实践，帮助开发者高效处理接口交互。\n\n\nHTTP 请求是客户端向服务器发起数据交互的 “指令”，其结构遵循严格的协议规范，是前端正确发起请求的基础。\n\n\n一个",
+                  "size": "17KB",
+                  "lastModified": "2025-11-19T14:02:46.080Z",
+                  "wordCount": 9735
+                },
+                {
+                  "type": "file",
+                  "title": "文件上传与 HTTP 请求全解析",
+                  "filename": "文件上传与 HTTP 请求全解析.md",
+                  "path": "常用缺易忘/常识/网络/文件上传与 HTTP 请求全解析.md",
+                  "date": "2025-11-19",
+                  "tags": [],
+                  "category": "常用缺易忘",
+                  "description": "作为前端初学者，面对 “文件上传” 时，是不是常困惑 “请求头、请求体是什么”“FormData 怎么用”“数据该放哪”？这篇文章用 “寄快递” 类比，带你从基础概念到实战代码，彻底搞懂这些知识点。\n\n\n你给后端发请求，就像给快递公司寄包裹 —— 要明确 “寄到哪、怎么处理、寄的是什么”，对应 HTTP 请求的 4 个核心部分：\n\n| 请求组成 | 类比快递场景 | 核心作用 |\n| --- | ",
+                  "size": "8KB",
+                  "lastModified": "2025-11-19T14:02:56.726Z",
+                  "wordCount": 4507
+                }
+              ]
             }
           ]
         },
@@ -1064,6 +1221,19 @@
           "name": "技术",
           "path": "常用缺易忘/技术",
           "children": [
+            {
+              "type": "file",
+              "title": "Canvas标签",
+              "filename": "Canvas标签.md",
+              "path": "常用缺易忘/技术/Canvas标签.md",
+              "date": "2025-11-19",
+              "tags": [],
+              "category": "常用缺易忘",
+              "description": "你可以把 <span class=\"ne-text\"><canvas></span> 标签理解成一块电子画板：  \r\n\r\n 它本身只是一块“空白画布”（在HTML里是个矩形区域），不能直接画画；  \r\n 必须用 JavaScript“画笔” 才能在上面绘图；\r\n 能画的东西很多：直线、方块、圆圈、文字、图片，甚至能做动画和交互（比如用鼠标在上面“涂鸦”）。\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n <spa",
+              "size": "21KB",
+              "lastModified": "2025-11-19T14:00:34.392Z",
+              "wordCount": 14656
+            },
             {
               "type": "file",
               "title": "时间戳完全指南",
@@ -1102,7 +1272,7 @@
       ]
     }
   ],
-  "totalNotes": 25,
-  "totalCategories": 9,
-  "lastUpdated": "2025-11-16T11:47:09.621Z"
+  "totalNotes": 29,
+  "totalCategories": 10,
+  "lastUpdated": "2025-11-19T14:08:48.422Z"
 }
