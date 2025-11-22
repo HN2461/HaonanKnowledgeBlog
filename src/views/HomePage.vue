@@ -7,9 +7,9 @@
           <div class="hero-pattern"></div>
         </div>
         <div class="hero-content">
-          <div class="hero-badge">✨ Welcome</div>
-          <h1 class="hero-title">前端学习笔记</h1>
-          <p class="hero-subtitle">记录成长 · 分享知识 · 持续学习</p>
+          <div class="hero-badge">{{ siteConfig.hero.badge }}</div>
+          <h1 class="hero-title">{{ siteConfig.hero.title }}</h1>
+          <p class="hero-subtitle">{{ siteConfig.hero.subtitle }}</p>
           
           <div class="search-box">
             <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -87,6 +87,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { siteConfig } from '../config/site'
 import AppLayout from '../components/AppLayout.vue'
 import NoteCard from '../components/NoteCard.vue'
 import BackToTop from '../components/BackToTop.vue'

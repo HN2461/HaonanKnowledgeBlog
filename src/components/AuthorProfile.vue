@@ -41,13 +41,10 @@
 
           <div class="profile-content">
             <h3 class="profile-name">{{ authorName }}</h3>
-            <p class="profile-title">前端开发工程师</p>
+            <p class="profile-title">{{ siteConfig.author.title }}</p>
             
             <div class="profile-bio">
-              <p>💪 作为一名前端开发人员，我始终保持着对技术的热爱与追求</p>
-              <p>🎯 目标：通过不断学习和实践，提升技术能力，实现月入上万的目标</p>
-              <p>📚 专注于现代前端技术栈的深入学习与应用</p>
-              <p>🚀 相信持续的努力和专业的积累，终将迎来收获的季节</p>
+              <p v-for="(line, index) in siteConfig.author.bio" :key="index">{{ line }}</p>
             </div>
 
             <div class="profile-stats">
@@ -63,7 +60,7 @@
                 <path d="M5 21V7l8-4v18"></path>
                 <path d="M19 21V11l-6-4"></path>
               </svg>
-              <p>"每一行代码，都是向梦想迈进的一步"</p>
+              <p>"{{ siteConfig.author.motto }}"</p>
             </div>
           </div>
         </div>
@@ -101,14 +98,15 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { siteConfig } from '../config/site'
 
 const showProfile = ref(false)
 const showAvatarPreview = ref(false)
 const fileInput = ref(null)
 
 // 作者信息
-const authorName = ref('前端开发者')
-const avatarUrl = ref('https://api.dicebear.com/7.x/avataaars/svg?seed=Felix')
+const authorName = ref(siteConfig.author.name)
+const avatarUrl = ref(siteConfig.author.avatar)
 
 // 统计数据
 const stats = ref({

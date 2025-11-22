@@ -3,7 +3,7 @@
     <div class="search-page">
       <div class="search-header">
         <h1 class="page-title">搜索笔记</h1>
-        
+
         <div class="search-box">
           <input
             ref="searchInput"
@@ -14,7 +14,14 @@
             @keyup.enter="handleSearch"
           />
           <button v-if="searchQuery" @click="clearSearch" class="clear-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -22,7 +29,10 @@
         </div>
       </div>
 
-      <div class="search-history" v-if="searchHistory.length > 0 && !searchQuery">
+      <div
+        class="search-history"
+        v-if="searchHistory.length > 0 && !searchQuery"
+      >
         <div class="history-header">
           <h3>搜索历史</h3>
           <button @click="clearHistory" class="clear-history-btn">清除</button>
@@ -32,7 +42,10 @@
             v-for="item in searchHistory"
             :key="item"
             class="history-tag"
-            @click="searchQuery = item; handleSearch()"
+            @click="
+              searchQuery = item;
+              handleSearch();
+            "
           >
             {{ item }}
           </span>
@@ -42,7 +55,9 @@
       <div class="search-results" v-if="searchQuery">
         <div class="results-header">
           <h3>搜索结果</h3>
-          <span class="results-count">找到 {{ searchResults.length }} 篇笔记</span>
+          <span class="results-count"
+            >找到 {{ searchResults.length }} 篇笔记</span
+          >
         </div>
 
         <div class="results-list" v-if="searchResults.length > 0">
@@ -53,12 +68,19 @@
             @click="goToNote(result)"
           >
             <h4 class="result-title" v-html="highlightText(result.title)"></h4>
-            <p class="result-description" v-html="highlightText(result.description)"></p>
+            <p
+              class="result-description"
+              v-html="highlightText(result.description)"
+            ></p>
             <div class="result-meta">
               <span class="meta-category">{{ result.category }}</span>
               <span class="meta-date">{{ formatDate(result.date) }}</span>
               <div class="meta-tags">
-                <span v-for="tag in result.tags.slice(0, 3)" :key="tag" class="tag">
+                <span
+                  v-for="tag in result.tags.slice(0, 3)"
+                  :key="tag"
+                  class="tag"
+                >
                   {{ tag }}
                 </span>
               </div>
@@ -67,7 +89,14 @@
         </div>
 
         <div v-else class="empty-results">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <svg
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
           </svg>
@@ -89,92 +118,101 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import dayjs from 'dayjs'
-import AppLayout from '../components/AppLayout.vue'
-import { initSearch, searchNotes, saveSearchHistory, getSearchHistory, clearSearchHistory } from '../utils/search'
+import { ref, onMounted, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import dayjs from "dayjs";
+import AppLayout from "../components/AppLayout.vue";
+import {
+  initSearch,
+  searchNotes,
+  saveSearchHistory,
+  getSearchHistory,
+  clearSearchHistory,
+} from "../utils/search";
 
-const router = useRouter()
-const route = useRoute()
-const searchInput = ref(null)
-const searchQuery = ref('')
-const searchResults = ref([])
-const searchHistory = ref([])
+const router = useRouter();
+const route = useRoute();
+const searchInput = ref(null);
+const searchQuery = ref("");
+const searchResults = ref([]);
+const searchHistory = ref([]);
 
 const handleSearch = () => {
   if (!searchQuery.value.trim()) {
-    searchResults.value = []
-    return
+    searchResults.value = [];
+    return;
   }
 
-  const results = searchNotes(searchQuery.value)
-  searchResults.value = results
+  const results = searchNotes(searchQuery.value);
+  searchResults.value = results;
 
   // 保存搜索历史
-  saveSearchHistory(searchQuery.value)
-  searchHistory.value = getSearchHistory()
-}
+  saveSearchHistory(searchQuery.value);
+  searchHistory.value = getSearchHistory();
+};
 
 const clearSearch = () => {
-  searchQuery.value = ''
-  searchResults.value = []
-}
+  searchQuery.value = "";
+  searchResults.value = [];
+};
 
 const clearHistory = () => {
-  clearSearchHistory()
-  searchHistory.value = []
-}
+  clearSearchHistory();
+  searchHistory.value = [];
+};
 
 const highlightText = (text) => {
-  if (!searchQuery.value || !text) return text
-  
-  const regex = new RegExp(`(${searchQuery.value})`, 'gi')
-  return text.replace(regex, '<mark>$1</mark>')
-}
+  if (!searchQuery.value || !text) return text;
+
+  const regex = new RegExp(`(${searchQuery.value})`, "gi");
+  return text.replace(regex, "<mark>$1</mark>");
+};
 
 const formatDate = (date) => {
-  return dayjs(date).format('YYYY-MM-DD')
-}
+  return dayjs(date).format("YYYY-MM-DD");
+};
 
 const goToNote = (note) => {
-  router.push(`/note/${note.path.replace('.md', '')}`)
-}
+  router.push(`/note/${note.path.replace(".md", "")}`);
+};
 
 onMounted(async () => {
   // 聚焦搜索框
-  searchInput.value?.focus()
+  searchInput.value?.focus();
 
   // 加载搜索历史
-  searchHistory.value = getSearchHistory()
+  searchHistory.value = getSearchHistory();
 
   // 从 URL 参数获取搜索词
-  const queryParam = route.query.q
+  const queryParam = route.query.q;
   if (queryParam) {
-    searchQuery.value = queryParam
+    searchQuery.value = queryParam;
   }
 
   // 初始化搜索引擎
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    const data = await response.json()
-    initSearch(data.allNotes || [])
-    
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`);
+    const data = await response.json();
+    initSearch(data.allNotes || []);
+
     // 如果有搜索词，执行搜索
     if (searchQuery.value) {
-      handleSearch()
+      handleSearch();
     }
   } catch (error) {
-    console.error('初始化搜索失败:', error)
+    console.error("初始化搜索失败:", error);
   }
-})
+});
 
-watch(() => route.query.q, (newQuery) => {
-  if (newQuery) {
-    searchQuery.value = newQuery
-    handleSearch()
+watch(
+  () => route.query.q,
+  (newQuery) => {
+    if (newQuery) {
+      searchQuery.value = newQuery;
+      handleSearch();
+    }
   }
-})
+);
 </script>
 
 <style scoped>
@@ -448,7 +486,7 @@ watch(() => route.query.q, (newQuery) => {
   .page-title {
     font-size: 24px;
   }
-  
+
   .result-title {
     font-size: 16px;
   }
