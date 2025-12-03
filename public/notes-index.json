@@ -359,9 +359,22 @@
           "tags": [],
           "category": "JS",
           "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
-          "size": "67KB",
-          "lastModified": "2025-12-03T12:46:32.809Z",
-          "wordCount": 60147
+          "size": "112KB",
+          "lastModified": "2025-12-03T12:51:20.798Z",
+          "wordCount": 101430
+        },
+        {
+          "type": "file",
+          "title": "第6章 运算符、表达式与逻辑",
+          "filename": "第6章 运算符、表达式与逻辑.md",
+          "path": "JS/第6章 运算符、表达式与逻辑.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
+          "size": "22KB",
+          "lastModified": "2025-12-03T12:53:52.141Z",
+          "wordCount": 19926
         }
       ],
       "children": []
@@ -658,9 +671,22 @@
       "tags": [],
       "category": "JS",
       "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
-      "size": "67KB",
-      "lastModified": "2025-12-03T12:46:32.809Z",
-      "wordCount": 60147
+      "size": "112KB",
+      "lastModified": "2025-12-03T12:51:20.798Z",
+      "wordCount": 101430
+    },
+    {
+      "type": "file",
+      "title": "第6章 运算符、表达式与逻辑",
+      "filename": "第6章 运算符、表达式与逻辑.md",
+      "path": "JS/第6章 运算符、表达式与逻辑.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
+      "size": "22KB",
+      "lastModified": "2025-12-03T12:53:52.141Z",
+      "wordCount": 19926
     },
     {
       "type": "file",
@@ -1453,9 +1479,22 @@
           "tags": [],
           "category": "JS",
           "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
-          "size": "67KB",
-          "lastModified": "2025-12-03T12:46:32.809Z",
-          "wordCount": 60147
+          "size": "112KB",
+          "lastModified": "2025-12-03T12:51:20.798Z",
+          "wordCount": 101430
+        },
+        {
+          "type": "file",
+          "title": "第6章 运算符、表达式与逻辑",
+          "filename": "第6章 运算符、表达式与逻辑.md",
+          "path": "JS/第6章 运算符、表达式与逻辑.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
+          "size": "22KB",
+          "lastModified": "2025-12-03T12:53:52.141Z",
+          "wordCount": 19926
         }
       ]
     },
@@ -1678,7 +1717,7 @@
       ]
     }
   ],
-  "totalNotes": 39,
+  "totalNotes": 40,
   "totalCategories": 11,
-  "lastUpdated": "2025-12-03T12:46:44.693Z"
+  "lastUpdated": "2025-12-03T12:54:49.410Z"
 }
