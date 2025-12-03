@@ -25,6 +25,7 @@ export default defineConfig({
           'markdown': ['markdown-it', 'highlight.js']
         }
       }
-    }
+    },
+    copyPublicDir: true
   }
 })
