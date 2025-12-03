@@ -282,6 +282,91 @@
       "children": []
     },
     {
+      "name": "JS",
+      "path": "JS",
+      "notes": [
+        {
+          "type": "file",
+          "title": "JavaScript 目录",
+          "filename": "JavaScript 目录.md",
+          "path": "JS/JavaScript 目录.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "+ 1.1 JavaScript 的诞生与历史背景  \n+ 1.2 浏览器与 JS 的关系  \n+ 1.3 ECMAScript、DOM、BOM 的关系  \n+ 1.4 JavaScript 在现代开发中的地位  \n+ 1.5 JavaScript 的发展趋势\n\n\n+ 2.1 浏览器如何执行 JavaScript  \n+ 2.2 V8 引擎解析与执行流程  \n+ 2.3 JavaScript 是单",
+          "size": "6KB",
+          "lastModified": "2025-12-03T12:08:01.892Z",
+          "wordCount": 3778
+        },
+        {
+          "type": "file",
+          "title": "第1章 JavaScript 是什么",
+          "filename": "第1章 JavaScript 是什么.md",
+          "path": "JS/第1章 JavaScript 是什么.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "在1995年5月，当时的Netscape公司面临一个重要的商业挑战。Web浏览器虽然能够显示静态的HTML页面，但缺乏动态交互能力。为了在激烈的浏览器大战中获得优势，Netscape决定为他们的浏览器添加一门脚本语言。\r\n\r\nBrendan Eich，一位年轻的程序员，接到了一个看似不可能的任务：在10天内设计并实现一门全新的编程语言。这门语言需要：\r\n- 语法简单，易于学习\r\n- 能够操作网页内",
+          "size": "12KB",
+          "lastModified": "2025-12-03T12:13:24.922Z",
+          "wordCount": 8589
+        },
+        {
+          "type": "file",
+          "title": "第2章 JavaScript 的运行机制",
+          "filename": "第2章 JavaScript 的运行机制.md",
+          "path": "JS/第2章 JavaScript 的运行机制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "当我们在网页中运行JavaScript时，浏览器为我们提供了一个复杂而精密的执行环境。理解这个环境的工作原理，对于写出高效的JavaScript代码至关重要。\r\n\r\n\r\n\r\n现代浏览器采用多进程架构来提高稳定性和安全性：\r\n\r\n\r\n\r\n\r\n\r\nJavaScript主要在渲染进程中执行，与页面渲染共享同一个线程：\r\n\r\n\r\n\r\n\r\n\r\n浏览器处理JavaScript的执行时机有多种情况：\r\n\r\n\r\n",
+          "size": "16KB",
+          "lastModified": "2025-12-03T12:18:41.779Z",
+          "wordCount": 12152
+        },
+        {
+          "type": "file",
+          "title": "第3章 编写 JavaScript 的方式与加载机制",
+          "filename": "第3章 编写 JavaScript 的方式与加载机制.md",
+          "path": "JS/第3章 编写 JavaScript 的方式与加载机制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "在网页中编写JavaScript代码有三种主要方式，每种方式都有其适用场景和特点：\r\n\r\n| 方式 | 定义位置 | 适用场景 | 优缺点 |\r\n|------|---------|----------|--------|\r\n| 内联脚本 | HTML元素的事件属性中 | 简单的事件响应 | 简单但不易维护 |\r\n| 内部脚本 | HTML文档的<script>标签内 | 页面特定的逻辑 | 便于",
+          "size": "49KB",
+          "lastModified": "2025-12-03T12:26:15.188Z",
+          "wordCount": 42294
+        },
+        {
+          "type": "file",
+          "title": "第4章 变量与常量",
+          "filename": "第4章 变量与常量.md",
+          "path": "JS/第4章 变量与常量.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "变量是编程语言的基础概念，JavaScript提供了三种声明变量的方式：var、let和const。理解它们的差异和适用场景，是掌握JavaScript的重要一步。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript提供了三种变量声明关键字，每种都有其特定的行为和适用场景：\r\n\r\n| 关键字 | 引入版本 | 作用域 | 可重复声明 | 可重新赋值 | 变量提升 | 暂时性死区 |\r\n|--------|",
+          "size": "38KB",
+          "lastModified": "2025-12-03T12:31:52.981Z",
+          "wordCount": 32154
+        },
+        {
+          "type": "file",
+          "title": "第5章 数据类型与类型系统",
+          "filename": "第5章 数据类型与类型系统.md",
+          "path": "JS/第5章 数据类型与类型系统.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
+          "size": "67KB",
+          "lastModified": "2025-12-03T12:46:32.809Z",
+          "wordCount": 60147
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "uvui",
       "path": "uvui",
       "notes": [
@@ -499,6 +584,84 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "JavaScript 目录",
+      "filename": "JavaScript 目录.md",
+      "path": "JS/JavaScript 目录.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "+ 1.1 JavaScript 的诞生与历史背景  \n+ 1.2 浏览器与 JS 的关系  \n+ 1.3 ECMAScript、DOM、BOM 的关系  \n+ 1.4 JavaScript 在现代开发中的地位  \n+ 1.5 JavaScript 的发展趋势\n\n\n+ 2.1 浏览器如何执行 JavaScript  \n+ 2.2 V8 引擎解析与执行流程  \n+ 2.3 JavaScript 是单",
+      "size": "6KB",
+      "lastModified": "2025-12-03T12:08:01.892Z",
+      "wordCount": 3778
+    },
+    {
+      "type": "file",
+      "title": "第1章 JavaScript 是什么",
+      "filename": "第1章 JavaScript 是什么.md",
+      "path": "JS/第1章 JavaScript 是什么.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "在1995年5月，当时的Netscape公司面临一个重要的商业挑战。Web浏览器虽然能够显示静态的HTML页面，但缺乏动态交互能力。为了在激烈的浏览器大战中获得优势，Netscape决定为他们的浏览器添加一门脚本语言。\r\n\r\nBrendan Eich，一位年轻的程序员，接到了一个看似不可能的任务：在10天内设计并实现一门全新的编程语言。这门语言需要：\r\n- 语法简单，易于学习\r\n- 能够操作网页内",
+      "size": "12KB",
+      "lastModified": "2025-12-03T12:13:24.922Z",
+      "wordCount": 8589
+    },
+    {
+      "type": "file",
+      "title": "第2章 JavaScript 的运行机制",
+      "filename": "第2章 JavaScript 的运行机制.md",
+      "path": "JS/第2章 JavaScript 的运行机制.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "当我们在网页中运行JavaScript时，浏览器为我们提供了一个复杂而精密的执行环境。理解这个环境的工作原理，对于写出高效的JavaScript代码至关重要。\r\n\r\n\r\n\r\n现代浏览器采用多进程架构来提高稳定性和安全性：\r\n\r\n\r\n\r\n\r\n\r\nJavaScript主要在渲染进程中执行，与页面渲染共享同一个线程：\r\n\r\n\r\n\r\n\r\n\r\n浏览器处理JavaScript的执行时机有多种情况：\r\n\r\n\r\n",
+      "size": "16KB",
+      "lastModified": "2025-12-03T12:18:41.779Z",
+      "wordCount": 12152
+    },
+    {
+      "type": "file",
+      "title": "第3章 编写 JavaScript 的方式与加载机制",
+      "filename": "第3章 编写 JavaScript 的方式与加载机制.md",
+      "path": "JS/第3章 编写 JavaScript 的方式与加载机制.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "在网页中编写JavaScript代码有三种主要方式，每种方式都有其适用场景和特点：\r\n\r\n| 方式 | 定义位置 | 适用场景 | 优缺点 |\r\n|------|---------|----------|--------|\r\n| 内联脚本 | HTML元素的事件属性中 | 简单的事件响应 | 简单但不易维护 |\r\n| 内部脚本 | HTML文档的<script>标签内 | 页面特定的逻辑 | 便于",
+      "size": "49KB",
+      "lastModified": "2025-12-03T12:26:15.188Z",
+      "wordCount": 42294
+    },
+    {
+      "type": "file",
+      "title": "第4章 变量与常量",
+      "filename": "第4章 变量与常量.md",
+      "path": "JS/第4章 变量与常量.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "变量是编程语言的基础概念，JavaScript提供了三种声明变量的方式：var、let和const。理解它们的差异和适用场景，是掌握JavaScript的重要一步。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript提供了三种变量声明关键字，每种都有其特定的行为和适用场景：\r\n\r\n| 关键字 | 引入版本 | 作用域 | 可重复声明 | 可重新赋值 | 变量提升 | 暂时性死区 |\r\n|--------|",
+      "size": "38KB",
+      "lastModified": "2025-12-03T12:31:52.981Z",
+      "wordCount": 32154
+    },
+    {
+      "type": "file",
+      "title": "第5章 数据类型与类型系统",
+      "filename": "第5章 数据类型与类型系统.md",
+      "path": "JS/第5章 数据类型与类型系统.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
+      "size": "67KB",
+      "lastModified": "2025-12-03T12:46:32.809Z",
+      "wordCount": 60147
+    },
     {
       "type": "file",
       "title": "ess",
@@ -1213,6 +1376,91 @@
     },
     {
       "type": "directory",
+      "name": "JS",
+      "path": "JS",
+      "children": [
+        {
+          "type": "file",
+          "title": "JavaScript 目录",
+          "filename": "JavaScript 目录.md",
+          "path": "JS/JavaScript 目录.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "+ 1.1 JavaScript 的诞生与历史背景  \n+ 1.2 浏览器与 JS 的关系  \n+ 1.3 ECMAScript、DOM、BOM 的关系  \n+ 1.4 JavaScript 在现代开发中的地位  \n+ 1.5 JavaScript 的发展趋势\n\n\n+ 2.1 浏览器如何执行 JavaScript  \n+ 2.2 V8 引擎解析与执行流程  \n+ 2.3 JavaScript 是单",
+          "size": "6KB",
+          "lastModified": "2025-12-03T12:08:01.892Z",
+          "wordCount": 3778
+        },
+        {
+          "type": "file",
+          "title": "第1章 JavaScript 是什么",
+          "filename": "第1章 JavaScript 是什么.md",
+          "path": "JS/第1章 JavaScript 是什么.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "在1995年5月，当时的Netscape公司面临一个重要的商业挑战。Web浏览器虽然能够显示静态的HTML页面，但缺乏动态交互能力。为了在激烈的浏览器大战中获得优势，Netscape决定为他们的浏览器添加一门脚本语言。\r\n\r\nBrendan Eich，一位年轻的程序员，接到了一个看似不可能的任务：在10天内设计并实现一门全新的编程语言。这门语言需要：\r\n- 语法简单，易于学习\r\n- 能够操作网页内",
+          "size": "12KB",
+          "lastModified": "2025-12-03T12:13:24.922Z",
+          "wordCount": 8589
+        },
+        {
+          "type": "file",
+          "title": "第2章 JavaScript 的运行机制",
+          "filename": "第2章 JavaScript 的运行机制.md",
+          "path": "JS/第2章 JavaScript 的运行机制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "当我们在网页中运行JavaScript时，浏览器为我们提供了一个复杂而精密的执行环境。理解这个环境的工作原理，对于写出高效的JavaScript代码至关重要。\r\n\r\n\r\n\r\n现代浏览器采用多进程架构来提高稳定性和安全性：\r\n\r\n\r\n\r\n\r\n\r\nJavaScript主要在渲染进程中执行，与页面渲染共享同一个线程：\r\n\r\n\r\n\r\n\r\n\r\n浏览器处理JavaScript的执行时机有多种情况：\r\n\r\n\r\n",
+          "size": "16KB",
+          "lastModified": "2025-12-03T12:18:41.779Z",
+          "wordCount": 12152
+        },
+        {
+          "type": "file",
+          "title": "第3章 编写 JavaScript 的方式与加载机制",
+          "filename": "第3章 编写 JavaScript 的方式与加载机制.md",
+          "path": "JS/第3章 编写 JavaScript 的方式与加载机制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "在网页中编写JavaScript代码有三种主要方式，每种方式都有其适用场景和特点：\r\n\r\n| 方式 | 定义位置 | 适用场景 | 优缺点 |\r\n|------|---------|----------|--------|\r\n| 内联脚本 | HTML元素的事件属性中 | 简单的事件响应 | 简单但不易维护 |\r\n| 内部脚本 | HTML文档的<script>标签内 | 页面特定的逻辑 | 便于",
+          "size": "49KB",
+          "lastModified": "2025-12-03T12:26:15.188Z",
+          "wordCount": 42294
+        },
+        {
+          "type": "file",
+          "title": "第4章 变量与常量",
+          "filename": "第4章 变量与常量.md",
+          "path": "JS/第4章 变量与常量.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "变量是编程语言的基础概念，JavaScript提供了三种声明变量的方式：var、let和const。理解它们的差异和适用场景，是掌握JavaScript的重要一步。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript提供了三种变量声明关键字，每种都有其特定的行为和适用场景：\r\n\r\n| 关键字 | 引入版本 | 作用域 | 可重复声明 | 可重新赋值 | 变量提升 | 暂时性死区 |\r\n|--------|",
+          "size": "38KB",
+          "lastModified": "2025-12-03T12:31:52.981Z",
+          "wordCount": 32154
+        },
+        {
+          "type": "file",
+          "title": "第5章 数据类型与类型系统",
+          "filename": "第5章 数据类型与类型系统.md",
+          "path": "JS/第5章 数据类型与类型系统.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "数据类型是编程语言的基础概念，JavaScript作为动态类型语言，具有灵活而复杂的类型系统。理解数据类型及其转换机制，是掌握JavaScript的关键。\r\n\r\n\r\n\r\n\r\n\r\nJavaScript有7种基本数据类型（原始类型），它们都是不可变的，存储在栈内存中：\r\n\r\n| 类型 | 引入版本 | 描述 | 默认值 | 特殊值 |\r\n|------|----------|------|------",
+          "size": "67KB",
+          "lastModified": "2025-12-03T12:46:32.809Z",
+          "wordCount": 60147
+        }
+      ]
+    },
+    {
+      "type": "directory",
       "name": "uvui",
       "path": "uvui",
       "children": [
@@ -1430,7 +1678,7 @@
       ]
     }
   ],
-  "totalNotes": 33,
-  "totalCategories": 10,
-  "lastUpdated": "2025-11-19T14:18:40.406Z"
+  "totalNotes": 39,
+  "totalCategories": 11,
+  "lastUpdated": "2025-12-03T12:46:44.693Z"
 }
