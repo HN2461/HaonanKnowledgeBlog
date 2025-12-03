@@ -300,6 +300,19 @@
         },
         {
           "type": "file",
+          "title": "第10章 原型与原型链",
+          "filename": "第10章 原型与原型链.md",
+          "path": "JS/第10章 原型与原型链.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "原型与原型链是JavaScript面向对象编程的核心机制。理解原型链不仅有助于掌握JavaScript的继承体系，更是深入理解JavaScript运行机制的关键。\r\n\r\n\r\n\r\nJavaScript中的每个函数都有一个prototype属性，这是原型继承的基础。\r\n\r\n\r\n\r\n每个函数都有一个prototype属性，它指向一个对象：\r\n\r\n\r\n\r\n\r\n\r\n理解原型对象的内部结构：\r\n\r\n\r\n\r\n-",
+          "size": "79KB",
+          "lastModified": "2025-12-03T13:51:39.560Z",
+          "wordCount": 73141
+        },
+        {
+          "type": "file",
           "title": "第1章 JavaScript 是什么",
           "filename": "第1章 JavaScript 是什么.md",
           "path": "JS/第1章 JavaScript 是什么.md",
@@ -372,9 +385,48 @@
           "tags": [],
           "category": "JS",
           "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
-          "size": "22KB",
-          "lastModified": "2025-12-03T12:53:52.141Z",
-          "wordCount": 19926
+          "size": "102KB",
+          "lastModified": "2025-12-03T13:02:51.555Z",
+          "wordCount": 90661
+        },
+        {
+          "type": "file",
+          "title": "第7章 流程控制",
+          "filename": "第7章 流程控制.md",
+          "path": "JS/第7章 流程控制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "流程控制是编程的核心概念，决定了代码的执行路径和逻辑结构。JavaScript提供了丰富的流程控制语句，包括条件判断、循环执行、分支选择等，掌握这些语句是编写复杂逻辑的基础。\r\n\r\n\r\n\r\n条件语句是程序中最基本的控制结构，允许根据不同的条件执行不同的代码分支。\r\n\r\n\r\n\r\n最简单的条件语句只包含一个if分支，当条件为真时执行相应代码：\r\n\r\n\r\n\r\n\r\n\r\nif/else提供了二元选择，当条件",
+          "size": "107KB",
+          "lastModified": "2025-12-03T13:19:26.803Z",
+          "wordCount": 98464
+        },
+        {
+          "type": "file",
+          "title": "第8章 函数基础",
+          "filename": "第8章 函数基础.md",
+          "path": "JS/第8章 函数基础.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "函数是JavaScript的核心概念，是第一类对象（First-class Object），可以作为值传递、存储在变量中、作为参数传递给其他函数，或作为返回值。理解函数是掌握JavaScript高级特性的关键。\r\n\r\n\r\n\r\nJavaScript提供了多种声明函数的方式，每种方式都有其特点和适用场景。理解这些差异对于编写高质量的代码至关重要。\r\n\r\n\r\n\r\n函数声明是最传统的定义函数的方式，具有提",
+          "size": "104KB",
+          "lastModified": "2025-12-03T13:28:03.209Z",
+          "wordCount": 95411
+        },
+        {
+          "type": "file",
+          "title": "第9章 对象与引用",
+          "filename": "第9章 对象与引用.md",
+          "path": "JS/第9章 对象与引用.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "对象是JavaScript的核心数据结构，几乎所有的JavaScript程序都涉及对象的创建、操作和管理。理解对象的引用模型对于编写正确和高效的代码至关重要。\r\n\r\n\r\n\r\nJavaScript提供了多种创建对象的方式，每种方式都有其特点和适用场景。\r\n\r\n\r\n\r\n对象字面量是创建对象最简单直观的方式：\r\n\r\n\r\n\r\n\r\n\r\n使用Object构造函数创建对象：\r\n\r\n\r\n\r\n\r\n\r\n自定义构造函数",
+          "size": "102KB",
+          "lastModified": "2025-12-03T13:46:15.432Z",
+          "wordCount": 94918
         }
       ],
       "children": []
@@ -612,6 +664,19 @@
     },
     {
       "type": "file",
+      "title": "第10章 原型与原型链",
+      "filename": "第10章 原型与原型链.md",
+      "path": "JS/第10章 原型与原型链.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "原型与原型链是JavaScript面向对象编程的核心机制。理解原型链不仅有助于掌握JavaScript的继承体系，更是深入理解JavaScript运行机制的关键。\r\n\r\n\r\n\r\nJavaScript中的每个函数都有一个prototype属性，这是原型继承的基础。\r\n\r\n\r\n\r\n每个函数都有一个prototype属性，它指向一个对象：\r\n\r\n\r\n\r\n\r\n\r\n理解原型对象的内部结构：\r\n\r\n\r\n\r\n-",
+      "size": "79KB",
+      "lastModified": "2025-12-03T13:51:39.560Z",
+      "wordCount": 73141
+    },
+    {
+      "type": "file",
       "title": "第1章 JavaScript 是什么",
       "filename": "第1章 JavaScript 是什么.md",
       "path": "JS/第1章 JavaScript 是什么.md",
@@ -684,9 +749,48 @@
       "tags": [],
       "category": "JS",
       "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
-      "size": "22KB",
-      "lastModified": "2025-12-03T12:53:52.141Z",
-      "wordCount": 19926
+      "size": "102KB",
+      "lastModified": "2025-12-03T13:02:51.555Z",
+      "wordCount": 90661
+    },
+    {
+      "type": "file",
+      "title": "第7章 流程控制",
+      "filename": "第7章 流程控制.md",
+      "path": "JS/第7章 流程控制.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "流程控制是编程的核心概念，决定了代码的执行路径和逻辑结构。JavaScript提供了丰富的流程控制语句，包括条件判断、循环执行、分支选择等，掌握这些语句是编写复杂逻辑的基础。\r\n\r\n\r\n\r\n条件语句是程序中最基本的控制结构，允许根据不同的条件执行不同的代码分支。\r\n\r\n\r\n\r\n最简单的条件语句只包含一个if分支，当条件为真时执行相应代码：\r\n\r\n\r\n\r\n\r\n\r\nif/else提供了二元选择，当条件",
+      "size": "107KB",
+      "lastModified": "2025-12-03T13:19:26.803Z",
+      "wordCount": 98464
+    },
+    {
+      "type": "file",
+      "title": "第8章 函数基础",
+      "filename": "第8章 函数基础.md",
+      "path": "JS/第8章 函数基础.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "函数是JavaScript的核心概念，是第一类对象（First-class Object），可以作为值传递、存储在变量中、作为参数传递给其他函数，或作为返回值。理解函数是掌握JavaScript高级特性的关键。\r\n\r\n\r\n\r\nJavaScript提供了多种声明函数的方式，每种方式都有其特点和适用场景。理解这些差异对于编写高质量的代码至关重要。\r\n\r\n\r\n\r\n函数声明是最传统的定义函数的方式，具有提",
+      "size": "104KB",
+      "lastModified": "2025-12-03T13:28:03.209Z",
+      "wordCount": 95411
+    },
+    {
+      "type": "file",
+      "title": "第9章 对象与引用",
+      "filename": "第9章 对象与引用.md",
+      "path": "JS/第9章 对象与引用.md",
+      "date": "2025-12-03",
+      "tags": [],
+      "category": "JS",
+      "description": "对象是JavaScript的核心数据结构，几乎所有的JavaScript程序都涉及对象的创建、操作和管理。理解对象的引用模型对于编写正确和高效的代码至关重要。\r\n\r\n\r\n\r\nJavaScript提供了多种创建对象的方式，每种方式都有其特点和适用场景。\r\n\r\n\r\n\r\n对象字面量是创建对象最简单直观的方式：\r\n\r\n\r\n\r\n\r\n\r\n使用Object构造函数创建对象：\r\n\r\n\r\n\r\n\r\n\r\n自定义构造函数",
+      "size": "102KB",
+      "lastModified": "2025-12-03T13:46:15.432Z",
+      "wordCount": 94918
     },
     {
       "type": "file",
@@ -1420,6 +1524,19 @@
         },
         {
           "type": "file",
+          "title": "第10章 原型与原型链",
+          "filename": "第10章 原型与原型链.md",
+          "path": "JS/第10章 原型与原型链.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "原型与原型链是JavaScript面向对象编程的核心机制。理解原型链不仅有助于掌握JavaScript的继承体系，更是深入理解JavaScript运行机制的关键。\r\n\r\n\r\n\r\nJavaScript中的每个函数都有一个prototype属性，这是原型继承的基础。\r\n\r\n\r\n\r\n每个函数都有一个prototype属性，它指向一个对象：\r\n\r\n\r\n\r\n\r\n\r\n理解原型对象的内部结构：\r\n\r\n\r\n\r\n-",
+          "size": "79KB",
+          "lastModified": "2025-12-03T13:51:39.560Z",
+          "wordCount": 73141
+        },
+        {
+          "type": "file",
           "title": "第1章 JavaScript 是什么",
           "filename": "第1章 JavaScript 是什么.md",
           "path": "JS/第1章 JavaScript 是什么.md",
@@ -1492,9 +1609,48 @@
           "tags": [],
           "category": "JS",
           "description": "运算符是JavaScript编程的基础工具，用于执行各种操作和逻辑判断。掌握运算符的使用方法、优先级规则以及现代JavaScript的新特性，能够让你编写更简洁高效的代码。\r\n\r\n\r\n\r\n\r\n\r\n算术运算符用于执行数学运算，包括基本的加减乘除和其他数学操作：\r\n\r\n\r\n\r\n\r\n\r\n比较运算符用于比较两个值，返回布尔结果：\r\n\r\n\r\n\r\n\r\n\r\n逻辑运算符用于逻辑运算，通常与布尔值配合使用：\r\n\r\n",
-          "size": "22KB",
-          "lastModified": "2025-12-03T12:53:52.141Z",
-          "wordCount": 19926
+          "size": "102KB",
+          "lastModified": "2025-12-03T13:02:51.555Z",
+          "wordCount": 90661
+        },
+        {
+          "type": "file",
+          "title": "第7章 流程控制",
+          "filename": "第7章 流程控制.md",
+          "path": "JS/第7章 流程控制.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "流程控制是编程的核心概念，决定了代码的执行路径和逻辑结构。JavaScript提供了丰富的流程控制语句，包括条件判断、循环执行、分支选择等，掌握这些语句是编写复杂逻辑的基础。\r\n\r\n\r\n\r\n条件语句是程序中最基本的控制结构，允许根据不同的条件执行不同的代码分支。\r\n\r\n\r\n\r\n最简单的条件语句只包含一个if分支，当条件为真时执行相应代码：\r\n\r\n\r\n\r\n\r\n\r\nif/else提供了二元选择，当条件",
+          "size": "107KB",
+          "lastModified": "2025-12-03T13:19:26.803Z",
+          "wordCount": 98464
+        },
+        {
+          "type": "file",
+          "title": "第8章 函数基础",
+          "filename": "第8章 函数基础.md",
+          "path": "JS/第8章 函数基础.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "函数是JavaScript的核心概念，是第一类对象（First-class Object），可以作为值传递、存储在变量中、作为参数传递给其他函数，或作为返回值。理解函数是掌握JavaScript高级特性的关键。\r\n\r\n\r\n\r\nJavaScript提供了多种声明函数的方式，每种方式都有其特点和适用场景。理解这些差异对于编写高质量的代码至关重要。\r\n\r\n\r\n\r\n函数声明是最传统的定义函数的方式，具有提",
+          "size": "104KB",
+          "lastModified": "2025-12-03T13:28:03.209Z",
+          "wordCount": 95411
+        },
+        {
+          "type": "file",
+          "title": "第9章 对象与引用",
+          "filename": "第9章 对象与引用.md",
+          "path": "JS/第9章 对象与引用.md",
+          "date": "2025-12-03",
+          "tags": [],
+          "category": "JS",
+          "description": "对象是JavaScript的核心数据结构，几乎所有的JavaScript程序都涉及对象的创建、操作和管理。理解对象的引用模型对于编写正确和高效的代码至关重要。\r\n\r\n\r\n\r\nJavaScript提供了多种创建对象的方式，每种方式都有其特点和适用场景。\r\n\r\n\r\n\r\n对象字面量是创建对象最简单直观的方式：\r\n\r\n\r\n\r\n\r\n\r\n使用Object构造函数创建对象：\r\n\r\n\r\n\r\n\r\n\r\n自定义构造函数",
+          "size": "102KB",
+          "lastModified": "2025-12-03T13:46:15.432Z",
+          "wordCount": 94918
         }
       ]
     },
@@ -1717,7 +1873,7 @@
       ]
     }
   ],
-  "totalNotes": 40,
+  "totalNotes": 44,
   "totalCategories": 11,
-  "lastUpdated": "2025-12-03T12:54:49.410Z"
+  "lastUpdated": "2025-12-03T13:51:58.548Z"
 }
