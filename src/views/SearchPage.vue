@@ -11,7 +11,7 @@
             v-model="searchQuery"
             placeholder="输入关键词搜索..."
             @input="handleSearch"
-            @keyup.enter="handleSearch"
+            @keyup.enter="() => handleSearch(true)"
           />
           <button v-if="searchQuery" @click="clearSearch" class="clear-btn">
             <svg
@@ -70,8 +70,11 @@
             <h4 class="result-title" v-html="highlightText(result.title)"></h4>
             <p
               class="result-description"
-              v-html="highlightText(result.description)"
+              v-html="highlightText(result.matchedContent || result.description)"
             ></p>
+            <div v-if="result.relevanceScore" class="result-relevance">
+              <span class="relevance-score">相关度: {{ Math.round(result.relevanceScore * 100) }}%</span>
+            </div>
             <div class="result-meta">
               <span class="meta-category">{{ result.category }}</span>
               <span class="meta-date">{{ formatDate(result.date) }}</span>
@@ -107,11 +110,42 @@
 
       <div class="search-tips" v-else>
         <h3>搜索提示</h3>
-        <ul>
-          <li>支持搜索笔记标题、内容、标签和分类</li>
-          <li>输入关键词即可实时搜索</li>
-          <li>搜索结果会高亮显示匹配的关键词</li>
-        </ul>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <h4>📝 内容搜索</h4>
+            <p>搜索笔记的完整内容，找到任何相关信息</p>
+            <div class="tip-example">例如：搜索 "JavaScript 闭包"</div>
+          </div>
+          
+          <div class="tip-card">
+            <h4>🎯 精确搜索</h4>
+            <p>使用引号进行精确匹配</p>
+            <div class="tip-example">例如："CSS Grid布局"</div>
+          </div>
+          
+          <div class="tip-card">
+            <h4>🏷️ 标签搜索</h4>
+            <p>搜索特定标签的所有笔记</p>
+            <div class="tip-example">例如：前端、Vue、React</div>
+          </div>
+          
+          <div class="tip-card">
+            <h4>📂 分类搜索</h4>
+            <p>按笔记分类查找内容</p>
+            <div class="tip-example">例如：HTML、CSS、JavaScript</div>
+          </div>
+        </div>
+        
+        <div class="search-features">
+          <h4>✨ 搜索特性</h4>
+          <ul>
+            <li><strong>智能排序：</strong>根据相关性自动排序结果</li>
+            <li><strong>内容预览：</strong>显示匹配内容的上下文</li>
+            <li><strong>多词搜索：</strong>支持多个关键词组合搜索</li>
+            <li><strong>模糊匹配：</strong>即使拼写略有不同也能找到结果</li>
+            <li><strong>实时搜索：</strong>输入即搜索，无需按回车</li>
+          </ul>
+        </div>
       </div>
     </div>
   </AppLayout>
@@ -137,18 +171,37 @@ const searchQuery = ref("");
 const searchResults = ref([]);
 const searchHistory = ref([]);
 
-const handleSearch = () => {
+// 防抖搜索
+let searchTimeout = null;
+
+const handleSearch = (immediate = false) => {
   if (!searchQuery.value.trim()) {
     searchResults.value = [];
     return;
   }
 
-  const results = searchNotes(searchQuery.value);
-  searchResults.value = results;
+  // 清除之前的定时器
+  if (searchTimeout) {
+    clearTimeout(searchTimeout);
+  }
 
-  // 保存搜索历史
-  saveSearchHistory(searchQuery.value);
-  searchHistory.value = getSearchHistory();
+  const performSearch = () => {
+    const results = searchNotes(searchQuery.value);
+    searchResults.value = results;
+
+    // 保存搜索历史
+    if (searchQuery.value.trim()) {
+      saveSearchHistory(searchQuery.value);
+      searchHistory.value = getSearchHistory();
+    }
+  };
+
+  if (immediate) {
+    performSearch();
+  } else {
+    // 300ms 防抖延迟
+    searchTimeout = setTimeout(performSearch, 300);
+  }
 };
 
 const clearSearch = () => {
@@ -405,6 +458,19 @@ watch(
   border-radius: 2px;
 }
 
+.result-relevance {
+  margin: 8px 0;
+}
+
+.relevance-score {
+  font-size: 12px;
+  color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
 .result-meta {
   display: flex;
   align-items: center;
@@ -480,6 +546,72 @@ watch(
 .search-tips li {
   color: var(--text-secondary);
   line-height: 2;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.tip-card {
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.tip-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.tip-card p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 8px 0;
+  line-height: 1.5;
+}
+
+.tip-example {
+  font-size: 13px;
+  color: var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.search-features {
+  background-color: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.search-features h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.search-features ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.search-features li {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 4px;
+}
+
+.search-features strong {
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

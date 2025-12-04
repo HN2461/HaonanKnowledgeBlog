@@ -62,6 +62,18 @@
               </svg>
               <p>"{{ siteConfig.author.motto }}"</p>
             </div>
+
+            <!-- 休闲模式按钮 -->
+            <div class="relaxation-section">
+              <button class="relaxation-btn" @click="enterRelaxationMode">
+                <div class="btn-icon">🌅</div>
+                <div class="btn-text">
+                  <span class="btn-title">休闲模式</span>
+                  <span class="btn-subtitle">欣赏美景，放松心情</span>
+                </div>
+                <div class="btn-arrow">→</div>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -98,8 +110,10 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { siteConfig } from '../config/site'
 
+const router = useRouter()
 const showProfile = ref(false)
 const showAvatarPreview = ref(false)
 const fileInput = ref(null)
@@ -131,6 +145,12 @@ const previewAvatar = () => {
 
 const closeAvatarPreview = () => {
   showAvatarPreview.value = false
+}
+
+// 进入休闲模式
+const enterRelaxationMode = () => {
+  closeProfile() // 先关闭当前弹窗
+  router.push('/relaxation') // 跳转到休闲模式页面
 }
 
 // 更换头像
@@ -377,6 +397,69 @@ loadAvatar()
   color: var(--text-secondary);
   margin: 0;
   line-height: 1.6;
+}
+
+/* 休闲模式按钮 */
+.relaxation-section {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.relaxation-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.relaxation-btn:hover {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border-color: rgba(34, 197, 94, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.15);
+}
+
+.btn-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.btn-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.btn-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.btn-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.btn-arrow {
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: transform 0.3s ease;
+}
+
+.relaxation-btn:hover .btn-arrow {
+  transform: translateX(4px);
+  color: var(--text-primary);
 }
 
 /* 头像预览弹窗 */

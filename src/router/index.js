@@ -3,6 +3,7 @@ import HomePage from '../views/HomePage.vue'
 import NoteListPage from '../views/NoteListPage.vue'
 import NoteDetailPage from '../views/NoteDetailPage.vue'
 import SearchPage from '../views/SearchPage.vue'
+import RelaxationMode from '../views/RelaxationMode.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 
 const routes = [
@@ -29,6 +30,12 @@ const routes = [
     name: 'Search',
     component: SearchPage,
     meta: { title: '搜索' }
+  },
+  {
+    path: '/relaxation',
+    name: 'Relaxation',
+    component: RelaxationMode,
+    meta: { title: '休闲时光' }
   },
   {
     path: '/:pathMatch(.*)*',
