@@ -1,7 +1,7 @@
 <template>
-  <div class="table-of-contents" v-if="toc.length > 0">
+  <div class="table-of-contents" v-if="toc.length > 0" ref="tocContainer">
     <h4 class="toc-title">目录</h4>
-    <nav class="toc-nav">
+    <nav class="toc-nav" ref="tocNav">
       <a
         v-for="item in toc"
         :key="item.slug"
@@ -26,6 +26,8 @@ const props = defineProps({
 })
 
 const activeSlug = ref('')
+const tocContainer = ref(null)
+const tocNav = ref(null)
 let scrollContainer = null
 
 // 监听 toc 变化
@@ -36,6 +38,13 @@ watch(() => props.toc, (newToc) => {
     }, 200)
   }
 }, { immediate: true })
+
+// 监听 activeSlug 变化，为了在外部点击时也能滚动目录
+watch(activeSlug, () => {
+  nextTick(() => {
+    scrollTocToActive()
+  })
+})
 
 const scrollToHeading = (slug) => {
   const element = document.getElementById(slug)
@@ -83,10 +92,74 @@ const updateActiveSlug = () => {
     }
   }
   
-  activeSlug.value = activeHeading.slug
+  if (activeSlug.value !== activeHeading.slug) {
+    activeSlug.value = activeHeading.slug
+    // 目录自动滚动到当前活跃项
+    nextTick(() => {
+      scrollTocToActive()
+    })
+  }
+}
+
+// 目录自动滚动到活跃项
+const scrollTocToActive = () => {
+  if (!tocContainer.value || !activeSlug.value) return
+  
+  const activeElement = tocContainer.value.querySelector(`[href="#${activeSlug.value}"]`)
+  if (!activeElement) return
+  
+  const container = tocContainer.value
+  const containerHeight = container.clientHeight
+  const containerScrollTop = container.scrollTop
+  
+  // 获取活跃元素相对于容器的位置
+  const activeElementOffsetTop = activeElement.offsetTop
+  const activeElementHeight = activeElement.offsetHeight
+  
+  // 计算活跃元素在可视区域的位置
+  const elementVisibleTop = activeElementOffsetTop - containerScrollTop
+  const elementVisibleBottom = elementVisibleTop + activeElementHeight
+  
+  // 检查元素是否在可视区域内
+  const isVisible = elementVisibleTop >= 0 && elementVisibleBottom <= containerHeight
+  
+  if (!isVisible) {
+    // 计算目标滚动位置：将元素居中显示，留出一定的上下边距
+    const padding = 60 // 上下留白
+    let targetScrollTop
+    
+    if (elementVisibleTop < 0) {
+      // 元素在可视区域上方，滚动到元素顶部
+      targetScrollTop = activeElementOffsetTop - padding
+    } else {
+      // 元素在可视区域下方，滚动到元素底部
+      targetScrollTop = activeElementOffsetTop - containerHeight + activeElementHeight + padding
+    }
+    
+    // 确保滚动位置在合理范围内
+    const maxScrollTop = container.scrollHeight - containerHeight
+    targetScrollTop = Math.max(0, Math.min(targetScrollTop, maxScrollTop))
+    
+    // 平滑滚动
+    container.scrollTo({
+      top: targetScrollTop,
+      behavior: 'smooth'
+    })
+  }
 }
 
 let scrollHandler = null
+let scrollTimeout = null
+
+// 防抖的滚动处理
+const debouncedUpdateActiveSlug = () => {
+  if (scrollTimeout) {
+    clearTimeout(scrollTimeout)
+  }
+  scrollTimeout = setTimeout(() => {
+    updateActiveSlug()
+  }, 50) // 50ms防抖
+}
 
 onMounted(() => {
   nextTick(() => {
@@ -94,15 +167,13 @@ onMounted(() => {
     scrollContainer = document.querySelector('.main-content')
     
     if (scrollContainer) {
-      scrollHandler = () => {
-        updateActiveSlug()
-      }
+      scrollHandler = debouncedUpdateActiveSlug
       scrollContainer.addEventListener('scroll', scrollHandler, { passive: true })
       
       // 初始化时更新一次
       setTimeout(() => {
         updateActiveSlug()
-      }, 100)
+      }, 200)
     }
   })
 })
@@ -110,6 +181,9 @@ onMounted(() => {
 onUnmounted(() => {
   if (scrollHandler && scrollContainer) {
     scrollContainer.removeEventListener('scroll', scrollHandler)
+  }
+  if (scrollTimeout) {
+    clearTimeout(scrollTimeout)
   }
 })
 </script>
@@ -160,6 +234,9 @@ onUnmounted(() => {
   color: var(--primary-color);
   border-left-color: var(--primary-color);
   font-weight: 500;
+  background-color: var(--primary-color-light, rgba(59, 130, 246, 0.1));
+  border-radius: 4px;
+  transform: translateX(2px);
 }
 
 .toc-level-1 {

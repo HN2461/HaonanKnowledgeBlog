@@ -12,64 +12,90 @@
     
     <div class="note-detail-page" style="padding-top: 20px;">
       <div class="page-container">
-        <article class="note-content">
-          <div class="note-header">
-            <h1 class="note-title">{{ note.title }}</h1>
-            
-            <div class="note-meta">
-              <span class="meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                {{ formatDate(note.date) }}
-              </span>
-              <span class="meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                </svg>
-                {{ note.size }}
-              </span>
-              <span class="meta-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                {{ readingTime }} 分钟阅读
-              </span>
+        <!-- 骨架屏加载状态 -->
+        <template v-if="loading">
+          <article class="note-content">
+            <SkeletonScreen type="article" />
+          </article>
+        </template>
+
+        <!-- 实际内容 -->
+        <template v-else>
+          <article class="note-content">
+            <div class="note-header">
+              <h1 class="note-title">{{ note.title }}</h1>
+              
+              <div class="note-meta">
+                <span class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  {{ formatDate(note.date) }}
+                </span>
+                <span class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                  </svg>
+                  {{ note.size }}
+                </span>
+                <span class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  {{ readingTime }} 分钟阅读
+                </span>
+              </div>
+              
+              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+                <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+              </div>
             </div>
-            
-            <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-              <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+
+            <div class="markdown-content" :style="{ fontSize: fontSize + 'px' }">
+              <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
             </div>
-          </div>
 
-          <div class="markdown-content">
-            <MarkdownRenderer :content="markdownContent" />
-          </div>
+            <div class="note-footer">
+              <router-link v-if="prevNote" :to="`/note/${prevNote.path.replace('.md', '')}`" class="nav-link prev">
+                <span class="nav-label">上一篇</span>
+                <span class="nav-title">{{ prevNote.title }}</span>
+              </router-link>
+              <router-link v-if="nextNote" :to="`/note/${nextNote.path.replace('.md', '')}`" class="nav-link next">
+                <span class="nav-label">下一篇</span>
+                <span class="nav-title">{{ nextNote.title }}</span>
+              </router-link>
+            </div>
+          </article>
+        </template>
 
-          <div class="note-footer">
-            <router-link v-if="prevNote" :to="`/note/${prevNote.path.replace('.md', '')}`" class="nav-link prev">
-              <span class="nav-label">上一篇</span>
-              <span class="nav-title">{{ prevNote.title }}</span>
-            </router-link>
-            <router-link v-if="nextNote" :to="`/note/${nextNote.path.replace('.md', '')}`" class="nav-link next">
-              <span class="nav-label">下一篇</span>
-              <span class="nav-title">{{ nextNote.title }}</span>
-            </router-link>
-          </div>
-        </article>
-
-        <aside class="note-sidebar" v-if="toc.length > 0">
+        <aside class="note-sidebar" v-if="!loading && toc.length > 0">
           <TableOfContents :toc="toc" />
         </aside>
       </div>
-
-      <BackToTop />
     </div>
+    
+    <!-- 悬浮阅读工具栏 -->
+    <ReadingToolbar 
+      v-if="!loading"
+      @fontSizeChange="onFontSizeChange" 
+      @enterFullscreen="enterFullscreen"
+    />
+    
+    <!-- 全屏阅读模式 -->
+    <FullscreenReader ref="fullscreenRef">
+      <div class="fullscreen-article-content" :style="{ fontSize: fontSize + 'px' }">
+        <h1>{{ note.title }}</h1>
+        <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
+      </div>
+    </FullscreenReader>
+    
+    <!-- 图片灯箱 -->
+    <ImageLightbox ref="lightboxRef" />
   </AppLayout>
 </template>
 
@@ -81,10 +107,15 @@ import AppLayout from '../components/AppLayout.vue'
 import Breadcrumb from '../components/Breadcrumb.vue'
 import MarkdownRenderer from '../components/MarkdownRenderer.vue'
 import TableOfContents from '../components/TableOfContents.vue'
-import BackToTop from '../components/BackToTop.vue'
+import SkeletonScreen from '../components/SkeletonScreen.vue'
+import ImageLightbox from '../components/ImageLightbox.vue'
+import ReadingToolbar from '../components/ReadingToolbar.vue'
+import FullscreenReader from '../components/FullscreenReader.vue'
 import { extractTOC } from '../utils/markdown'
+import { calculateReadingTime } from '../utils/readingTime'
 
 const route = useRoute()
+const loading = ref(true)
 const note = ref({
   title: '加载中...',
   category: '',
@@ -95,13 +126,17 @@ const note = ref({
 const markdownContent = ref('')
 const toc = ref([])
 const notesData = ref(null)
+const fontSize = ref(16)
+
+// 组件引用
+const fullscreenRef = ref(null)
+const lightboxRef = ref(null)
 
 const notePath = computed(() => route.params.path)
 
+// 使用新的阅读时间计算器
 const readingTime = computed(() => {
-  const wordsPerMinute = 300
-  const words = markdownContent.value.length
-  return Math.ceil(words / wordsPerMinute)
+  return calculateReadingTime(markdownContent.value)
 })
 
 const currentIndex = computed(() => {
@@ -127,7 +162,25 @@ const formatDate = (date) => {
   return dayjs(date).format('YYYY年MM月DD日')
 }
 
+const onFontSizeChange = (size) => {
+  fontSize.value = size
+}
+
+const enterFullscreen = () => {
+  if (fullscreenRef.value) {
+    fullscreenRef.value.enterFullscreen()
+  }
+}
+
+const openLightbox = (src, alt) => {
+  if (lightboxRef.value) {
+    lightboxRef.value.open(src, alt)
+  }
+}
+
 const loadNote = async () => {
+  loading.value = true
+  
   try {
     // 加载笔记索引
     if (!notesData.value) {
@@ -158,6 +211,8 @@ const loadNote = async () => {
   } catch (error) {
     console.error('加载笔记失败:', error)
     markdownContent.value = '# 加载失败\n\n加载笔记时出错，请稍后重试。'
+  } finally {
+    loading.value = false
   }
 }
 
@@ -255,6 +310,17 @@ watch(() => route.params.path, () => {
   border-radius: 8px;
   border: 1px solid var(--border-color);
   margin-bottom: 32px;
+  transition: font-size 0.2s ease;
+}
+
+.fullscreen-article-content {
+  line-height: 1.8;
+}
+
+.fullscreen-article-content h1 {
+  font-size: 2em;
+  margin-bottom: 24px;
+  color: var(--text-primary);
 }
 
 .note-footer {

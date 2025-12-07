@@ -10,9 +10,17 @@
           <div class="hero-badge">{{ siteConfig.hero.badge }}</div>
           <h1 class="hero-title">{{ siteConfig.hero.title }}</h1>
           <p class="hero-subtitle">{{ siteConfig.hero.subtitle }}</p>
-          
+
           <div class="search-box">
-            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              class="search-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
@@ -22,9 +30,7 @@
               placeholder="搜索你想要的内容..."
               @keyup.enter="handleSearch"
             />
-            <button @click="handleSearch" class="search-button">
-              搜索
-            </button>
+            <button @click="handleSearch" class="search-button">搜索</button>
           </div>
         </div>
       </div>
@@ -55,12 +61,27 @@
 
       <section class="recent-section">
         <h2 class="section-title">最近更新</h2>
-        <div class="notes-grid" v-if="recentNotes.length > 0">
-          <NoteCard v-for="note in recentNotes" :key="note.path" :note="note" />
-        </div>
-        <div v-else class="empty-state">
-          <p>暂无笔记，请在 <code>public/notes/</code> 目录下添加 Markdown 文件</p>
-        </div>
+        <!-- 骨架屏加载状态 -->
+        <template v-if="loading">
+          <div class="notes-grid">
+            <SkeletonScreen type="card" :count="6" />
+          </div>
+        </template>
+        <!-- 实际内容 -->
+        <template v-else>
+          <div class="notes-grid" v-if="recentNotes.length > 0">
+            <NoteCard
+              v-for="note in recentNotes"
+              :key="note.path"
+              :note="note"
+            />
+          </div>
+          <div v-else class="empty-state">
+            <p>
+              暂无笔记，请在 <code>public/notes/</code> 目录下添加 Markdown 文件
+            </p>
+          </div>
+        </template>
       </section>
 
       <section class="categories-section">
@@ -85,62 +106,66 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import { siteConfig } from '../config/site'
-import AppLayout from '../components/AppLayout.vue'
-import NoteCard from '../components/NoteCard.vue'
-import BackToTop from '../components/BackToTop.vue'
+import { ref, onMounted, computed } from "vue";
+import { useRouter } from "vue-router";
+import { siteConfig } from "../config/site";
+import AppLayout from "../components/AppLayout.vue";
+import NoteCard from "../components/NoteCard.vue";
+import BackToTop from "../components/BackToTop.vue";
+import SkeletonScreen from "../components/SkeletonScreen.vue";
 
-const router = useRouter()
-const searchQuery = ref('')
-const notesData = ref(null)
+const router = useRouter();
+const searchQuery = ref("");
+const notesData = ref(null);
+const loading = ref(true);
 
 const stats = computed(() => {
   if (!notesData.value) {
-    return { totalNotes: 0, totalCategories: 0, totalTags: 0 }
+    return { totalNotes: 0, totalCategories: 0, totalTags: 0 };
   }
-  
-  const allTags = new Set()
-  notesData.value.allNotes.forEach(note => {
-    note.tags.forEach(tag => allTags.add(tag))
-  })
-  
+
+  const allTags = new Set();
+  notesData.value.allNotes.forEach((note) => {
+    note.tags.forEach((tag) => allTags.add(tag));
+  });
+
   return {
     totalNotes: notesData.value.totalNotes || 0,
     totalCategories: notesData.value.totalCategories || 0,
-    totalTags: allTags.size
-  }
-})
+    totalTags: allTags.size,
+  };
+});
 
 const recentNotes = computed(() => {
   if (!notesData.value || !notesData.value.allNotes) {
-    return []
+    return [];
   }
-  return notesData.value.allNotes.slice(0, 6)
-})
+  return notesData.value.allNotes.slice(0, 6);
+});
 
 const categories = computed(() => {
   if (!notesData.value || !notesData.value.categories) {
-    return []
+    return [];
   }
-  return notesData.value.categories
-})
+  return notesData.value.categories;
+});
 
 const handleSearch = () => {
   if (searchQuery.value.trim()) {
-    router.push(`/search?q=${encodeURIComponent(searchQuery.value)}`)
+    router.push(`/search?q=${encodeURIComponent(searchQuery.value)}`);
   }
-}
+};
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    notesData.value = await response.json()
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`);
+    notesData.value = await response.json();
   } catch (error) {
-    console.error('加载笔记索引失败:', error)
+    console.error("加载笔记索引失败:", error);
+  } finally {
+    loading.value = false;
   }
-})
+});
 </script>
 
 <style scoped>
@@ -183,15 +208,27 @@ onMounted(async () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  background-image: radial-gradient(
+      circle at 20% 50%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
   animation: float 20s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .hero-content {
@@ -303,7 +340,7 @@ onMounted(async () => {
 }
 
 .stat-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -365,7 +402,7 @@ onMounted(async () => {
 }
 
 .section-title::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 50%;
@@ -401,7 +438,7 @@ onMounted(async () => {
 }
 
 .category-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -468,24 +505,24 @@ onMounted(async () => {
   .hero-section {
     padding: 60px 20px;
   }
-  
+
   .hero-title {
     font-size: 36px;
   }
-  
+
   .hero-subtitle {
     font-size: 15px;
   }
-  
+
   .search-box {
     padding: 6px;
   }
-  
+
   .search-button {
     padding: 10px 20px;
     font-size: 14px;
   }
-  
+
   .notes-grid,
   .categories-grid {
     grid-template-columns: 1fr;

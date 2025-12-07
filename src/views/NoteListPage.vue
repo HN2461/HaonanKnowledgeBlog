@@ -23,13 +23,23 @@
         </div>
       </div>
 
-      <div class="notes-list" v-if="sortedNotes.length > 0">
-        <NoteCard v-for="note in sortedNotes" :key="note.path" :note="note" />
-      </div>
+      <!-- 骨架屏加载状态 -->
+      <template v-if="loading">
+        <div class="notes-list">
+          <SkeletonScreen type="card" :count="6" />
+        </div>
+      </template>
 
-      <div v-else class="empty-state">
-        <p>该分类下暂无笔记</p>
-      </div>
+      <!-- 实际内容 -->
+      <template v-else>
+        <div class="notes-list" v-if="sortedNotes.length > 0">
+          <NoteCard v-for="note in sortedNotes" :key="note.path" :note="note" />
+        </div>
+
+        <div v-else class="empty-state">
+          <p>该分类下暂无笔记</p>
+        </div>
+      </template>
 
       <BackToTop />
     </div>
@@ -42,10 +52,12 @@ import { useRoute } from 'vue-router'
 import AppLayout from '../components/AppLayout.vue'
 import NoteCard from '../components/NoteCard.vue'
 import BackToTop from '../components/BackToTop.vue'
+import SkeletonScreen from '../components/SkeletonScreen.vue'
 
 const route = useRoute()
 const notesData = ref(null)
 const sortBy = ref('date-desc')
+const loading = ref(true)
 
 const categoryPath = computed(() => route.params.category)
 
@@ -92,6 +104,8 @@ onMounted(async () => {
     notesData.value = await response.json()
   } catch (error) {
     console.error('加载笔记索引失败:', error)
+  } finally {
+    loading.value = false
   }
 })
 </script>

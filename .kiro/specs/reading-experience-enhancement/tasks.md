@@ -1,0 +1,120 @@
+# Implementation Plan
+
+- [x] 1. Set up testing infrastructure and utility functions
+  - [x] 1.1 Install testing dependencies (vitest, fast-check, @vue/test-utils)
+    - Add vitest, fast-check, @vue/test-utils to devDependencies
+    - Create vitest.config.js with jsdom environment
+    - _Requirements: Testing Strategy_
+  - [x] 1.2 Create scroll progress calculator utility
+    - Create `src/utils/scrollProgress.js` with `calculateScrollProgress` function
+    - Handle edge cases (division by zero, out of range values)
+    - _Requirements: 1.1, 1.2_
+  - [x] 1.3 Write property test for scroll progress calculation
+    - **Property 1: Scroll progress percentage calculation**
+    - **Validates: Requirements 1.1, 1.2**
+  - [x] 1.4 Create reading time calculator utility
+    - Create `src/utils/readingTime.js` with `calculateReadingTime` function
+    - Implement word counting for Chinese text (200 words/min)
+    - Implement code block detection and counting (100 chars/min)
+    - _Requirements: 2.1, 2.2, 2.3_
+  - [ ]* 1.5 Write property test for reading time calculation
+    - **Property 2: Reading time calculation**
+    - **Validates: Requirements 2.1, 2.2, 2.3**
+  - [x] 1.6 Create font size localStorage utility
+    - Create `src/utils/fontSizeStorage.js` with `getFontSize`, `setFontSize` functions
+    - Handle localStorage unavailability gracefully
+    - _Requirements: 3.3, 3.4_
+  - [ ]* 1.7 Write property test for font size persistence
+    - **Property 4: Font size persistence round-trip**
+    - **Validates: Requirements 3.3, 3.4**
+
+- [x] 2. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 3. Implement reading experience components
+  - [x] 3.1 Create ReadingProgressBar component
+    - Create `src/components/ReadingProgressBar.vue`
+    - Implement scroll event listener with throttling
+    - Display progress bar fixed at top of viewport
+    - Apply smooth CSS transition for progress updates
+    - _Requirements: 1.1, 1.2, 1.3, 1.4_
+  - [x] 3.2 Create FontSizeController component
+    - Create `src/components/FontSizeController.vue`
+    - Implement increase/decrease/reset buttons
+    - Enforce min (12px) and max (24px) bounds
+    - Persist changes to localStorage
+    - Restore saved preference on mount
+    - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
+  - [ ]* 3.3 Write property test for font size bounds
+    - **Property 3: Font size adjustment bounds**
+    - **Validates: Requirements 3.1, 3.2**
+  - [x] 3.4 Create FullscreenReader component
+    - Create `src/components/FullscreenReader.vue`
+    - Implement fullscreen toggle button
+    - Hide header, sidebar, breadcrumb when active
+    - Display floating toolbar with exit, font controls, theme toggle
+    - Handle Escape key to exit
+    - Apply 300ms transition animation
+    - Center content with max-width 800px
+    - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
+
+- [x] 4. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 5. Implement interaction experience components
+  - [x] 5.1 Add page transition to router
+    - Wrap router-view in Vue Transition component in App.vue
+    - Implement fade transition with 200ms duration
+    - Ensure scroll to top after transition completes
+    - _Requirements: 5.1, 5.2, 5.3_
+  - [x] 5.2 Create SkeletonScreen component
+    - Create `src/components/SkeletonScreen.vue`
+    - Implement article skeleton layout (title, meta, content blocks)
+    - Implement card skeleton layout for note list
+    - Add shimmer animation effect
+    - Apply 200ms fade-out transition when content loads
+    - _Requirements: 6.1, 6.2, 6.3, 6.4_
+  - [x] 5.3 Create ImageLightbox component
+    - Create `src/components/ImageLightbox.vue`
+    - Display image in centered overlay with dark backdrop
+    - Implement close on backdrop click, Escape key, close button
+    - Prevent body scrolling when open
+    - Apply scale and fade animation (200ms)
+    - Calculate display size (max 90% viewport, maintain aspect ratio)
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
+  - [ ]* 5.4 Write property test for image lightbox sizing
+    - **Property 5: Image lightbox sizing calculation**
+    - **Validates: Requirements 7.5**
+  - [x] 5.5 Add code copy button to MarkdownRenderer
+    - Modify `src/components/MarkdownRenderer.vue`
+    - Add copy button to each code block (top-right corner)
+    - Implement clipboard copy using Clipboard API
+    - Show success indicator (checkmark) for 2 seconds
+    - Show error indicator on failure
+    - Adjust button opacity on hover (0.6 to 1.0)
+    - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
+
+- [x] 6. Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [x] 7. Integrate components into pages
+  - [x] 7.1 Integrate reading components into NoteDetailPage
+    - Add ReadingProgressBar to page
+    - Update reading time display to use new calculator
+    - Add FontSizeController to page header area
+    - Add FullscreenReader wrapper
+    - Apply font size to markdown content
+    - _Requirements: 1.1-1.4, 2.1-2.3, 3.1-3.5, 4.1-4.5_
+  - [x] 7.2 Integrate ImageLightbox into MarkdownRenderer
+    - Add click handler to all rendered images
+    - Open lightbox with clicked image
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5_
+  - [x] 7.3 Add SkeletonScreen to loading states
+
+    - Add article skeleton to NoteDetailPage loading state
+    - Add card skeleton to NoteListPage loading state
+    - Add card skeleton to HomePage loading state
+    - _Requirements: 6.1, 6.2, 6.3, 6.4_
+
+- [x] 8. Final Checkpoint - Ensure all tests pass
+  - Ensure all tests pass, ask the user if questions arise.
