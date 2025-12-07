@@ -32,6 +32,12 @@
             />
             <button @click="handleSearch" class="search-button">搜索</button>
           </div>
+
+          <!-- 休闲模式入口 -->
+          <router-link to="/relaxation" class="relaxation-entry">
+            <span class="relaxation-icon">🌅</span>
+            <span class="relaxation-text">休闲模式</span>
+          </router-link>
         </div>
       </div>
 
@@ -317,6 +323,38 @@ onMounted(async () => {
 .search-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+/* 休闲模式入口 */
+.relaxation-entry {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.relaxation-entry:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.relaxation-icon {
+  font-size: 20px;
+}
+
+.relaxation-text {
+  letter-spacing: 0.5px;
 }
 
 .stats-section {

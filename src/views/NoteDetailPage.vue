@@ -26,7 +26,7 @@
               <h1 class="note-title">{{ note.title }}</h1>
               
               <div class="note-meta">
-                <span class="meta-item">
+                <span class="meta-item" v-if="note.hasRealDate">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -44,10 +44,17 @@
                 </span>
                 <span class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  {{ wordCount }} 字
+                </span>
+                <span class="meta-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
-                  {{ readingTime }} 分钟阅读
+                  预计 {{ readingTime }} 分钟
                 </span>
               </div>
               
@@ -137,6 +144,32 @@ const notePath = computed(() => route.params.path)
 // 使用新的阅读时间计算器
 const readingTime = computed(() => {
   return calculateReadingTime(markdownContent.value)
+})
+
+// 计算字数（不含代码块）
+const wordCount = computed(() => {
+  if (!markdownContent.value) return 0
+  
+  // 移除代码块
+  let text = markdownContent.value
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/`[^`\n]+`/g, '')
+  
+  // 移除 Markdown 语法
+  text = text
+    .replace(/#{1,6}\s/g, '')
+    .replace(/\*\*|__/g, '')
+    .replace(/\*|_/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+    .replace(/>\s/g, '')
+    .replace(/[-*+]\s/g, '')
+    .replace(/\d+\.\s/g, '')
+    .replace(/\|/g, '')
+    .replace(/---+/g, '')
+    .replace(/\s+/g, '')
+  
+  return text.length.toLocaleString()
 })
 
 const currentIndex = computed(() => {

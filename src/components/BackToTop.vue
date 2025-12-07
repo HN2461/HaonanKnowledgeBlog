@@ -37,44 +37,50 @@ onUnmounted(() => {
 <style scoped>
 .back-to-top {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
-  width: 48px;
-  height: 48px;
-  background-color: var(--primary-color);
+  right: 24px;
+  bottom: 24px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 50;
+  border: none;
 }
 
 .back-to-top:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-4px);
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5);
+}
+
+.back-to-top:active {
+  transform: translateY(-2px) scale(1.02);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(20px) scale(0.9);
 }
 
 @media (max-width: 768px) {
   .back-to-top {
     right: 20px;
     bottom: 20px;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
   }
 }
 </style>
