@@ -33,11 +33,18 @@
             <button @click="handleSearch" class="search-button">搜索</button>
           </div>
 
-          <!-- 休闲模式入口 -->
-          <router-link to="/relaxation" class="relaxation-entry">
-            <span class="relaxation-icon">🌅</span>
-            <span class="relaxation-text">休闲模式</span>
-          </router-link>
+          <!-- 功能入口 -->
+          <div class="hero-actions">
+            <router-link to="/editor" class="hero-action-btn primary">
+              <span class="action-icon">✍️</span>
+              <span class="action-text">开始写作</span>
+            </router-link>
+            
+            <router-link to="/relaxation" class="hero-action-btn">
+              <span class="action-icon">🌅</span>
+              <span class="action-text">休闲模式</span>
+            </router-link>
+          </div>
         </div>
       </div>
 
@@ -325,12 +332,18 @@ onMounted(async () => {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-/* 休闲模式入口 */
-.relaxation-entry {
+/* 功能入口 */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.hero-action-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 24px;
   padding: 12px 24px;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
@@ -343,17 +356,28 @@ onMounted(async () => {
   transition: all 0.3s;
 }
 
-.relaxation-entry:hover {
+.hero-action-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-.relaxation-icon {
+.hero-action-btn.primary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.hero-action-btn.primary:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.action-icon {
   font-size: 20px;
 }
 
-.relaxation-text {
+.action-text {
   letter-spacing: 0.5px;
 }
 

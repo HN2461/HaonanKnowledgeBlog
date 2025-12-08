@@ -4,6 +4,7 @@ import NoteListPage from '../views/NoteListPage.vue'
 import NoteDetailPage from '../views/NoteDetailPage.vue'
 import SearchPage from '../views/SearchPage.vue'
 import RelaxationMode from '../views/RelaxationMode.vue'
+import EditorPage from '../views/EditorPage.vue'
 import NotFoundPage from '../views/NotFoundPage.vue'
 
 const routes = [
@@ -30,6 +31,12 @@ const routes = [
     name: 'Search',
     component: SearchPage,
     meta: { title: '搜索' }
+  },
+  {
+    path: '/editor',
+    name: 'Editor',
+    component: EditorPage,
+    meta: { title: '笔记编辑器' }
   },
   {
     path: '/relaxation',

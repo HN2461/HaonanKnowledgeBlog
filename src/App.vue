@@ -9,13 +9,18 @@
         <component :is="Component" :key="route.path" />
       </Transition>
     </router-view>
+    <TerminalMode ref="terminal" />
+    <AIChatAssistant />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import TerminalMode from './components/TerminalMode.vue'
+import AIChatAssistant from './components/AIChatAssistant.vue'
 
 const isDarkTheme = ref(false)
+const terminal = ref(null)
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'instant' })

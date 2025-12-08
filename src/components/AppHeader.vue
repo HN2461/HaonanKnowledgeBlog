@@ -26,6 +26,13 @@
       </div>
       
       <div class="header-right">
+        <button class="editor-btn" @click="goToEditor" aria-label="编辑器">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+        </button>
+        
         <button class="search-btn" @click="goToSearch" aria-label="搜索">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="11" cy="11" r="8"></circle>
@@ -78,6 +85,10 @@ defineEmits(['toggle-sidebar'])
 
 const goToSearch = () => {
   router.push('/search')
+}
+
+const goToEditor = () => {
+  router.push('/editor')
 }
 
 const toggleTheme = () => {
@@ -232,6 +243,7 @@ onMounted(() => {
   }
 }
 
+.editor-btn,
 .search-btn,
 .theme-btn {
   display: flex;
@@ -245,12 +257,14 @@ onMounted(() => {
   cursor: pointer;
 }
 
+.editor-btn:hover,
 .search-btn:hover,
 .theme-btn:hover {
   background-color: var(--bg-secondary);
   transform: scale(1.05);
 }
 
+.editor-btn:active,
 .search-btn:active,
 .theme-btn:active {
   transform: scale(0.95);
