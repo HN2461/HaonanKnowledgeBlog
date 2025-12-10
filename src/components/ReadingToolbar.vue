@@ -85,6 +85,34 @@
             </div>
           </div>
 
+          <!-- 恢复阅读位置 -->
+          <div class="panel-section">
+            <button 
+              class="action-btn restore-position-btn" 
+              :class="{ 'disabled': !hasSavedPosition }"
+              :disabled="!hasSavedPosition"
+              @click.stop="restoreSavedPosition"
+              :title="hasSavedPosition ? '恢复到上次阅读位置' : '暂无保存的阅读位置'"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>{{ hasSavedPosition ? '恢复阅读' : '无记录' }}</span>
+            </button>
+          </div>
+
+          <!-- 回到顶部 -->
+          <div class="panel-section">
+            <button class="action-btn" @click.stop="scrollToTop">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+              <span>回到顶部</span>
+            </button>
+          </div>
+
           <!-- 全屏阅读 -->
           <div class="panel-section">
             <button class="action-btn" @click.stop="enterFullscreen">
@@ -115,17 +143,6 @@
               <span>{{ isDark ? '浅色模式' : '深色模式' }}</span>
             </button>
           </div>
-
-          <!-- 回到顶部 -->
-          <div class="panel-section">
-            <button class="action-btn" @click.stop="scrollToTop">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="12" y1="19" x2="12" y2="5"></line>
-                <polyline points="5 12 12 5 19 12"></polyline>
-              </svg>
-              <span>回到顶部</span>
-            </button>
-          </div>
         </div>
       </Transition>
     </div>
@@ -133,7 +150,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { calculateScrollProgress, getDocumentScrollInfo } from '../utils/scrollProgress'
 import { 
   getFontSize, 
@@ -142,14 +160,17 @@ import {
   MIN_FONT_SIZE,
   MAX_FONT_SIZE
 } from '../utils/fontSizeStorage'
+import { getReadingPosition } from '../utils/readingPosition'
 
 const emit = defineEmits(['fontSizeChange', 'enterFullscreen'])
 
+const route = useRoute()
 const containerRef = ref(null)
 const isExpanded = ref(false)
 const progress = ref(0)
 const fontSize = ref(16)
 const isDark = ref(false)
+const hasSavedPosition = ref(false)
 
 // 滚动容器引用
 const scrollContainer = ref(null)
@@ -464,6 +485,30 @@ const scrollToTop = () => {
   isExpanded.value = false
 }
 
+// 检查是否有保存的阅读位置
+const checkSavedPosition = () => {
+  const currentPath = route.params.path
+  if (currentPath) {
+    const savedPosition = getReadingPosition(currentPath)
+    hasSavedPosition.value = savedPosition !== null && savedPosition.position > 100
+  }
+}
+
+// 恢复保存的阅读位置
+const restoreSavedPosition = () => {
+  const currentPath = route.params.path
+  if (currentPath) {
+    const savedPosition = getReadingPosition(currentPath)
+    if (savedPosition && scrollContainer.value) {
+      scrollContainer.value.scrollTo({
+        top: savedPosition.position,
+        behavior: 'smooth'
+      })
+      isExpanded.value = false
+    }
+  }
+}
+
 // 恢复保存的位置
 const restorePosition = () => {
   const saved = localStorage.getItem('reading-toolbar-position')
@@ -505,6 +550,9 @@ onMounted(() => {
       // 降级到监听window滚动
       window.addEventListener('scroll', onScroll, { passive: true })
     }
+    
+    // 检查是否有保存的阅读位置
+    checkSavedPosition()
   }, 100)
   
   fontSize.value = getFontSize()
@@ -525,6 +573,17 @@ onUnmounted(() => {
   document.removeEventListener('touchmove', onDrag)
   document.removeEventListener('touchend', stopDrag)
 })
+
+// 监听路由变化，更新保存位置状态
+watch(() => route.params.path, (newPath, oldPath) => {
+  // 路由切换时重新检查按钮状态
+  console.log(`🔄 ReadingToolbar: 路由切换 ${oldPath} -> ${newPath}`)
+  
+  // 延时检查，确保新页面已经加载
+  setTimeout(() => {
+    checkSavedPosition()
+  }, 200) // 稍微增加延时确保页面加载完成
+}, { immediate: true })
 </script>
 
 <style>
@@ -767,6 +826,33 @@ onUnmounted(() => {
 .action-btn:hover {
   background: var(--bg-tertiary, #e0e0e0);
   border-color: var(--primary-color, #3b82f6);
+}
+
+.restore-position-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-color: #10b981;
+}
+
+.restore-position-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857);
+  border-color: #059669;
+}
+
+.restore-position-btn.disabled,
+.restore-position-btn:disabled {
+  background: var(--bg-tertiary, #e0e0e0);
+  color: var(--text-tertiary, #999);
+  border-color: var(--border-color, #e0e0e0);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.restore-position-btn.disabled:hover,
+.restore-position-btn:disabled:hover {
+  background: var(--bg-tertiary, #e0e0e0);
+  border-color: var(--border-color, #e0e0e0);
+  transform: none;
 }
 
 /* 面板动画 */
