@@ -172,6 +172,9 @@ const fontSize = ref(16)
 const isDark = ref(false)
 const hasSavedPosition = ref(false)
 
+const viewportWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1024)
+const isTouchDevice = ref(false)
+
 // 滚动容器引用
 const scrollContainer = ref(null)
 
@@ -320,6 +323,8 @@ const updateProgress = () => {
   }
 }
 
+let resizeHandler = null
+
 const onScroll = () => {
   if (!ticking) {
     requestAnimationFrame(() => {
@@ -422,7 +427,10 @@ const handleClick = () => {
     hasDragged.value = false
     return
   }
-  // 点击时不再切换展开状态，因为现在使用悬停
+  // 触屏/移动端没有 hover，使用点击切换面板
+  if (isTouchDevice.value || viewportWidth.value <= 768) {
+    toggleExpand()
+  }
 }
 
 const toggleExpand = () => {
@@ -431,12 +439,14 @@ const toggleExpand = () => {
 
 // 悬停事件处理
 const handleMouseEnter = () => {
+  if (isTouchDevice.value || viewportWidth.value <= 768) return
   if (!isDragging.value && !hasDragged.value) {
     isExpanded.value = true
   }
 }
 
 const handleMouseLeave = () => {
+  if (isTouchDevice.value || viewportWidth.value <= 768) return
   if (!isDragging.value) {
     isExpanded.value = false
   }
@@ -529,6 +539,11 @@ const restorePosition = () => {
 }
 
 onMounted(() => {
+  isTouchDevice.value = (typeof window !== 'undefined') && (
+    'ontouchstart' in window ||
+    (navigator && navigator.maxTouchPoints > 0)
+  )
+
   // 等待DOM渲染完成后查找滚动容器
   setTimeout(() => {
     // 查找.main-content滚动容器
@@ -537,11 +552,13 @@ onMounted(() => {
     if (scrollContainer.value) {
       // 监听滚动容器的滚动事件
       scrollContainer.value.addEventListener('scroll', onScroll, { passive: true })
-      
+
       // 监听窗口大小变化，重新计算进度
-      window.addEventListener('resize', () => {
+      resizeHandler = () => {
+        viewportWidth.value = window.innerWidth
         setTimeout(updateProgress, 100)
-      }, { passive: true })
+      }
+      window.addEventListener('resize', resizeHandler, { passive: true })
       
       // 初始化进度
       updateProgress()
@@ -567,7 +584,9 @@ onUnmounted(() => {
     scrollContainer.value.removeEventListener('scroll', onScroll)
   }
   window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', updateProgress)
+  if (resizeHandler) {
+    window.removeEventListener('resize', resizeHandler)
+  }
   document.removeEventListener('mousemove', onDrag)
   document.removeEventListener('mouseup', stopDrag)
   document.removeEventListener('touchmove', onDrag)

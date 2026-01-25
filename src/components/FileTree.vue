@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, provide, inject, watch, nextTick, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const props = defineProps({
@@ -50,13 +50,56 @@ const props = defineProps({
 const emit = defineEmits(['select'])
 
 const route = useRoute()
-const expandedDirs = ref(new Set())
+
+const FILE_TREE_CTX = Symbol('file-tree')
+
+const injectedCtx = inject(FILE_TREE_CTX, null)
+const isRoot = injectedCtx === null
+
+const loadExpandedDirs = () => {
+  try {
+    const raw = localStorage.getItem('file-tree-expanded-dirs')
+    const arr = raw ? JSON.parse(raw) : []
+    return new Set(Array.isArray(arr) ? arr : [])
+  } catch {
+    return new Set()
+  }
+}
+
+const expandedDirs = isRoot ? ref(loadExpandedDirs()) : injectedCtx.expandedDirs
+
+const persistExpandedDirs = () => {
+  if (!isRoot) return
+  try {
+    localStorage.setItem('file-tree-expanded-dirs', JSON.stringify(Array.from(expandedDirs.value)))
+  } catch {
+    // ignore
+  }
+}
 
 const toggleDirectory = (path) => {
-  if (expandedDirs.value.has(path)) {
-    expandedDirs.value.delete(path)
+  const next = new Set(expandedDirs.value)
+  if (next.has(path)) {
+    next.delete(path)
   } else {
-    expandedDirs.value.add(path)
+    next.add(path)
+  }
+  expandedDirs.value = next
+  persistExpandedDirs()
+}
+
+const expandPaths = (paths) => {
+  const next = new Set(expandedDirs.value)
+  let changed = false
+  paths.forEach((p) => {
+    if (!next.has(p)) {
+      next.add(p)
+      changed = true
+    }
+  })
+  if (changed) {
+    expandedDirs.value = next
+    persistExpandedDirs()
   }
 }
 
@@ -64,9 +107,46 @@ const isExpanded = (path) => {
   return expandedDirs.value.has(path)
 }
 
+if (isRoot) {
+  provide(FILE_TREE_CTX, { expandedDirs })
+}
+
 const isActive = (path) => {
   const notePath = path.replace('.md', '')
   return route.path === `/note/${notePath}`
+}
+
+const expandToActiveNote = async () => {
+  const activePath = route.params.path
+  if (!activePath) return
+
+  const filePath = `${activePath}.md`
+  const segments = String(filePath).split('/').filter(Boolean)
+  if (segments.length <= 1) return
+
+  const parents = []
+  for (let i = 0; i < segments.length - 1; i++) {
+    parents.push(segments.slice(0, i + 1).join('/'))
+  }
+
+  expandPaths(parents)
+
+  await nextTick()
+  const activeEl = document.querySelector('.app-sidebar .tree-node.file.active')
+  activeEl?.scrollIntoView({ block: 'center' })
+}
+
+if (isRoot) {
+  onMounted(() => {
+    expandToActiveNote()
+  })
+
+  watch(
+    () => route.params.path,
+    () => {
+      expandToActiveNote()
+    }
+  )
 }
 </script>
 

@@ -4,7 +4,7 @@ export const siteConfig = {
   author: {
     name: '浩男',
     title: '前端开发工程师',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix',
+    avatar: new URL('../assets/avatar.jpg', import.meta.url).href,
     bio: [
       '💪 始终保持着对技术的热爱与追求',
       '🎯 目标：通过不断学习和实践，提升技术能力',

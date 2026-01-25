@@ -217,7 +217,8 @@ const clearHistory = () => {
 const highlightText = (text) => {
   if (!searchQuery.value || !text) return text;
 
-  const regex = new RegExp(`(${searchQuery.value})`, "gi");
+  const escapedQuery = searchQuery.value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`(${escapedQuery})`, "gi");
   return text.replace(regex, "<mark>$1</mark>");
 };
 

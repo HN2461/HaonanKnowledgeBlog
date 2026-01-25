@@ -155,27 +155,42 @@ const enterRelaxationMode = () => {
 
 // 更换头像
 const changeAvatar = () => {
+  if (!fileInput.value) return
+  fileInput.value.value = ''
   fileInput.value.click()
 }
 
 const handleFileChange = (event) => {
-  const file = event.target.files[0]
-  if (file) {
-    const reader = new FileReader()
-    reader.onload = (e) => {
-      avatarUrl.value = e.target.result
-      // 可以在这里保存到 localStorage
-      localStorage.setItem('authorAvatar', e.target.result)
-    }
-    reader.readAsDataURL(file)
+  const file = event.target.files?.[0]
+  if (!file) return
+
+  if (file.type && !file.type.startsWith('image/')) {
+    return
   }
+
+  const reader = new FileReader()
+  reader.onload = (e) => {
+    const result = e.target?.result
+    if (!result) return
+    avatarUrl.value = result
+    try {
+      localStorage.setItem('authorAvatar', result)
+    } catch (err) {
+      console.error('保存头像失败（可能是图片过大导致存储空间不足）:', err)
+    }
+  }
+  reader.readAsDataURL(file)
 }
 
 // 从 localStorage 加载头像
 const loadAvatar = () => {
-  const savedAvatar = localStorage.getItem('authorAvatar')
-  if (savedAvatar) {
-    avatarUrl.value = savedAvatar
+  try {
+    const savedAvatar = localStorage.getItem('authorAvatar')
+    if (savedAvatar) {
+      avatarUrl.value = savedAvatar
+    }
+  } catch (err) {
+    console.error('读取已保存头像失败:', err)
   }
 }
 
