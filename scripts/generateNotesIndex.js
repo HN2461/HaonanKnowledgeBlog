@@ -103,8 +103,21 @@ function scanDirectory(dir, relativePath = '') {
       })
     } else if (file.endsWith('.md')) {
       // 处理 Markdown 文件
-      const content = fs.readFileSync(fullPath, 'utf-8')
-      const { data: frontmatter, content: markdownContent } = matter(content)
+      const rawContent = fs.readFileSync(fullPath, 'utf-8')
+      const content = rawContent.replace(/\u0000/g, '')
+      const shouldSkipFrontmatter = file.includes('目录')
+
+      let frontmatter = {}
+      let markdownContent = content
+
+      if (!shouldSkipFrontmatter) {
+        try {
+          ;({ data: frontmatter, content: markdownContent } = matter(content))
+        } catch (e) {
+          frontmatter = {}
+          markdownContent = content
+        }
+      }
       
       // 提取摘要（取前200个字符）
       const excerpt = markdownContent
