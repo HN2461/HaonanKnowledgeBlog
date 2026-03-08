@@ -1,11 +1,5 @@
 <template>
   <div class="ai-chat-wrapper">
-    <!-- 浮动按钮 -->
-    <button v-if="!isOpen" class="chat-fab" @click="openChat" title="AI助手">
-      <span class="fab-icon">🤖</span>
-      <span v-if="unreadCount > 0" class="unread-badge">{{ unreadCount }}</span>
-    </button>
-
     <!-- 聊天窗口 -->
     <Transition name="chat-slide">
       <div v-if="isOpen" class="chat-container">
@@ -21,7 +15,12 @@
             </div>
           </div>
           <div class="header-actions">
-            <button @click="clearChat" class="action-btn" title="清空对话">
+            <button
+              @click="clearChat"
+              class="action-btn action-btn-clear"
+              title="清空对话"
+              aria-label="清空对话"
+            >
               <svg
                 width="16"
                 height="16"
@@ -36,7 +35,12 @@
                 ></path>
               </svg>
             </button>
-            <button @click="toggleMinimize" class="action-btn" title="最小化">
+            <button
+              @click="toggleMinimize"
+              class="action-btn action-btn-minimize"
+              title="最小化"
+              aria-label="最小化"
+            >
               <svg
                 width="16"
                 height="16"
@@ -48,7 +52,12 @@
                 <line x1="5" y1="12" x2="19" y2="12"></line>
               </svg>
             </button>
-            <button @click="closeChat" class="action-btn" title="关闭">
+            <button
+              @click="closeChat"
+              class="action-btn action-btn-close"
+              title="关闭"
+              aria-label="关闭"
+            >
               <svg
                 width="16"
                 height="16"
@@ -180,8 +189,6 @@ const isOpen = ref(false);
 const isMinimized = ref(false);
 const isOnline = ref(true);
 const isTyping = ref(false);
-const unreadCount = ref(0);
-const isDarkMode = ref(false);
 
 // 消息相关
 const messages = ref([]);
@@ -190,6 +197,10 @@ const chatBody = ref(null);
 
 // 笔记数据
 let notesData = null;
+const CHAT_STORAGE_KEY = "chat-messages";
+const MAX_HISTORY_MESSAGES = 12;
+const MAX_ARTICLES_PER_MESSAGE = 3;
+const MAX_MESSAGE_TEXT_LENGTH = 1500;
 
 // 快速问题
 const quickQuestions = [
@@ -197,16 +208,6 @@ const quickQuestions = [
   "如何学习 JavaScript？",
   "推荐一些前端资源",
   "最新的文章是什么？",
-];
-
-// 对话提示
-const conversationStarters = [
-  "告诉我关于React Hooks",
-  "TypeScript的优势是什么",
-  "前端性能优化技巧",
-  "Node.js适合什么场景",
-  "webpack配置指南",
-  "CSS Grid vs Flexbox",
 ];
 
 // 格式化时间
@@ -231,6 +232,45 @@ const loadNotesData = async () => {
   }
 };
 
+const toArticlePreview = (note = {}, score = 0) => ({
+  title: note.title || "未命名文章",
+  path: note.path || "",
+  category: note.category || "未分类",
+  score,
+});
+
+const normalizeMessage = (message) => {
+  const source = message && typeof message === "object" ? message : {};
+  const normalized = {
+    type: source.type === "user" ? "user" : "ai",
+    text:
+      typeof source.text === "string"
+        ? source.text.slice(0, MAX_MESSAGE_TEXT_LENGTH)
+        : "",
+    timestamp:
+      typeof source.timestamp === "number" ? source.timestamp : Date.now(),
+  };
+
+  if (Array.isArray(source.articles) && source.articles.length > 0) {
+    normalized.articles = source.articles
+      .filter((article) => article && typeof article.path === "string")
+      .slice(0, MAX_ARTICLES_PER_MESSAGE)
+      .map((article) => ({
+        title: article.title || "未命名文章",
+        path: article.path,
+        category: article.category || "未分类",
+      }));
+  }
+
+  return normalized;
+};
+
+const trimMessages = () => {
+  if (messages.value.length > MAX_HISTORY_MESSAGES) {
+    messages.value = messages.value.slice(-MAX_HISTORY_MESSAGES);
+  }
+};
+
 // 搜索相关文章
 const searchArticles = (query) => {
   if (!notesData) return [];
@@ -250,8 +290,8 @@ const searchArticles = (query) => {
       if (tagsLower.includes(keyword)) score += 1;
     });
 
-    if (score > 0) {
-      results.push({ ...note, score });
+    if (score > 0 && note.path) {
+      results.push(toArticlePreview(note, score));
     }
   });
 
@@ -326,7 +366,11 @@ ${articles.length > 0 ? "本博客也有相关学习资源：" : "记得要多�
     const recentNotes = notesData?.allNotes?.slice(0, 3) || [];
     if (recentNotes.length > 0) {
       response = "以下是最近更新的文章：";
-      articles.push(...recentNotes);
+      articles.push(
+        ...recentNotes
+          .filter((note) => note.path)
+          .map((note) => toArticlePreview(note, 1))
+      );
     } else {
       response = "暂时没有找到最新的文章。";
     }
@@ -412,9 +456,16 @@ const sendMessage = async (text) => {
 
 // 保存消息到本地
 const saveMessages = () => {
-  // 只保存最近20条消息
-  const recentMessages = messages.value.slice(-20);
-  localStorage.setItem("chat-messages", JSON.stringify(recentMessages));
+  trimMessages();
+  const lightweightMessages = messages.value.map((message) =>
+    normalizeMessage(message)
+  );
+
+  try {
+    localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(lightweightMessages));
+  } catch (error) {
+    console.error("Failed to save messages:", error);
+  }
 };
 
 // 处理发送
@@ -439,12 +490,13 @@ const scrollToBottom = async () => {
 // 控制函数
 const openChat = () => {
   isOpen.value = true;
-  unreadCount.value = 0;
+  isMinimized.value = false;
   scrollToBottom();
 };
 
 const closeChat = () => {
   isOpen.value = false;
+  isMinimized.value = false;
 };
 
 const toggleMinimize = () => {
@@ -454,7 +506,7 @@ const toggleMinimize = () => {
 const clearChat = () => {
   if (confirm("确定要清空对话记录吗？")) {
     messages.value = [];
-    localStorage.removeItem("chat-messages");
+    localStorage.removeItem(CHAT_STORAGE_KEY);
   }
 };
 
@@ -467,23 +519,40 @@ const handleKeyboard = (e) => {
   }
 };
 
+const handleToggleFromHeader = () => {
+  if (isOpen.value && !isMinimized.value) {
+    closeChat();
+    return;
+  }
+  openChat();
+};
+
+const handleOpenFromHeader = () => {
+  openChat();
+};
+
+const handleCloseFromHeader = () => {
+  closeChat();
+};
+
 onMounted(() => {
   document.addEventListener("keydown", handleKeyboard);
   loadNotesData();
-
-  // 检测暗色模式
-  isDarkMode.value = document.documentElement.classList.contains("dark-theme");
-
-  // 监听主题变化
-  window.addEventListener("theme-change", (e) => {
-    isDarkMode.value = e.detail.isDark;
-  });
+  window.addEventListener("ai-assistant:toggle", handleToggleFromHeader);
+  window.addEventListener("ai-assistant:open", handleOpenFromHeader);
+  window.addEventListener("ai-assistant:close", handleCloseFromHeader);
 
   // 恢复聊天记录
-  const savedMessages = localStorage.getItem("chat-messages");
+  const savedMessages = localStorage.getItem(CHAT_STORAGE_KEY);
   if (savedMessages) {
     try {
-      messages.value = JSON.parse(savedMessages);
+      const restoredMessages = JSON.parse(savedMessages);
+      if (Array.isArray(restoredMessages)) {
+        messages.value = restoredMessages
+          .slice(-MAX_HISTORY_MESSAGES)
+          .map((message) => normalizeMessage(message));
+        saveMessages();
+      }
     } catch (e) {
       console.error("Failed to restore messages:", e);
     }
@@ -492,86 +561,46 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener("keydown", handleKeyboard);
+  window.removeEventListener("ai-assistant:toggle", handleToggleFromHeader);
+  window.removeEventListener("ai-assistant:open", handleOpenFromHeader);
+  window.removeEventListener("ai-assistant:close", handleCloseFromHeader);
 });
 </script>
 
 <style scoped>
-/* 浮动按钮 */
-.chat-fab {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: none;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-  cursor: pointer;
-  z-index: 998;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-  animation: pulse 2s infinite;
-}
-
-.chat-fab:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-.fab-icon {
-  font-size: 28px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.unread-badge {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  background: #ff5252;
-  color: white;
-  font-size: 11px;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 10px;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* 聊天容器 */
 .chat-container {
   position: fixed;
-  bottom: 96px;
-  right: 24px;
-  width: 380px;
-  max-width: calc(100vw - 48px);
-  height: 600px;
-  max-height: calc(100vh - 120px);
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  top: 76px;
+  right: 16px;
+  width: 392px;
+  max-width: calc(100vw - 32px);
+  height: 620px;
+  max-height: calc(100vh - 92px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(15, 91, 216, 0.16);
+  border-radius: 18px;
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.2);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   z-index: 999;
   overflow: hidden;
 }
 
-/* 暗色主题 */
 .dark-theme .chat-container {
-  background: #1a1a1a;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  background: rgba(18, 23, 36, 0.96);
+  border-color: rgba(125, 211, 252, 0.2);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.48);
 }
 
-/* 头部 */
 .chat-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(120deg, #0f5bd8 0%, #0b79c7 55%, #0ea89a 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .header-left {
@@ -582,23 +611,39 @@ onUnmounted(() => {
 
 .chat-icon {
   font-size: 24px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-info h4 {
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
 .status {
+  display: inline-flex;
+  align-items: center;
   font-size: 12px;
-  opacity: 0.9;
+  margin-top: 2px;
+  opacity: 0.92;
 }
 
 .status.online::before {
-  content: "●";
-  color: #4ade80;
-  margin-right: 4px;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  margin-right: 6px;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
 }
 
 .header-actions {
@@ -607,48 +652,81 @@ onUnmounted(() => {
 }
 
 .action-btn {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: transform 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.action-btn svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  fill: none;
+  stroke: #f8fbff;
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .action-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.52);
+  transform: translateY(-1px);
 }
 
-/* 对话区域 */
+.action-btn-clear:hover {
+  background: rgba(251, 191, 36, 0.3);
+}
+
+.action-btn-minimize:hover {
+  background: rgba(148, 163, 184, 0.34);
+}
+
+.action-btn-close:hover {
+  background: rgba(248, 113, 113, 0.34);
+}
+
 .chat-body {
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
-  background: var(--bg-secondary);
+  padding: 18px 16px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(15, 91, 216, 0.08) 0,
+      rgba(15, 91, 216, 0) 35%
+    ),
+    var(--bg-secondary);
 }
 
-/* 欢迎消息 */
 .welcome-message {
   text-align: center;
-  padding: 20px;
+  padding: 18px 16px;
+  border-radius: 14px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   color: var(--text-secondary);
 }
 
 .welcome-message h5 {
   font-size: 18px;
-  margin: 0 0 12px 0;
+  margin: 0 0 10px;
   color: var(--text-primary);
 }
 
 .welcome-message ul {
   list-style: none;
   padding: 0;
-  margin: 16px 0;
+  margin: 14px 0;
   text-align: left;
   display: inline-block;
 }
@@ -658,40 +736,40 @@ onUnmounted(() => {
 }
 
 .quick-questions {
-  margin-top: 24px;
+  margin-top: 20px;
 }
 
 .quick-questions p {
-  margin-bottom: 12px;
-  font-weight: 500;
+  margin: 0 0 12px;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
 .quick-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   margin: 4px;
-  padding: 6px 12px;
+  padding: 7px 12px;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 13px;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .quick-btn:hover {
-  background: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+  border-color: #0f5bd8;
+  color: #0f5bd8;
+  transform: translateY(-1px);
 }
 
-/* 消息 */
 .message {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
-  animation: slideIn 0.3s;
+  gap: 10px;
+  margin-bottom: 14px;
+  animation: slideIn 0.28s ease;
 }
 
 .message.user {
@@ -701,35 +779,41 @@ onUnmounted(() => {
 .message-avatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
   background: var(--bg-tertiary);
+  flex-shrink: 0;
 }
 
 .message.user .message-avatar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(120deg, #0f5bd8 0%, #0ea89a 100%);
 }
 
 .message-content {
-  max-width: 70%;
+  max-width: 76%;
   background: var(--bg-primary);
-  padding: 12px 16px;
-  border-radius: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
   border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.dark-theme .message-content {
+  box-shadow: none;
 }
 
 .message.user .message-content {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(120deg, #0f5bd8 0%, #0ea89a 100%);
+  color: #fff;
   border: none;
 }
 
 .message-text {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
   word-wrap: break-word;
 }
 
@@ -737,41 +821,41 @@ onUnmounted(() => {
   display: block;
   font-size: 11px;
   color: var(--text-tertiary);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .message.user .message-time {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.88);
 }
 
-/* 相关文章 */
 .related-articles {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border-color);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-color);
 }
 
 .related-title {
   font-size: 12px;
   color: var(--text-secondary);
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
 }
 
 .article-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px;
-  margin: 4px 0;
+  padding: 8px 10px;
+  margin: 6px 0;
   background: var(--bg-secondary);
-  border-radius: 6px;
+  border-radius: 10px;
+  border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .article-card:hover {
-  background: var(--bg-tertiary);
-  transform: translateX(4px);
+  border-color: rgba(15, 91, 216, 0.28);
+  transform: translateX(2px);
 }
 
 .article-title {
@@ -787,45 +871,45 @@ onUnmounted(() => {
   font-size: 11px;
   color: var(--text-tertiary);
   background: var(--bg-primary);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 3px 7px;
+  border-radius: 6px;
   margin-left: 8px;
 }
 
-/* 打字动画 */
 .typing-indicator {
   display: flex;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .typing-avatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 10px;
   background: var(--bg-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .typing-dots {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 12px 16px;
+  gap: 5px;
+  padding: 10px 14px;
   background: var(--bg-primary);
   border-radius: 12px;
   border: 1px solid var(--border-color);
 }
 
 .typing-dots span {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--text-tertiary);
-  animation: typing 1.4s infinite;
+  background: #0f5bd8;
+  opacity: 0.7;
+  animation: typing 1.2s infinite;
 }
 
 .typing-dots span:nth-child(2) {
@@ -836,33 +920,39 @@ onUnmounted(() => {
   animation-delay: 0.4s;
 }
 
-/* 输入区域 */
 .chat-footer {
-  padding: 16px;
+  padding: 14px 16px 12px;
   border-top: 1px solid var(--border-color);
-  background: var(--bg-primary);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 91, 216, 0.05) 0%,
+      rgba(15, 91, 216, 0) 40%
+    ),
+    var(--bg-primary);
 }
 
 .input-container {
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .chat-input {
   flex: 1;
   padding: 10px 14px;
   border: 1px solid var(--border-color);
-  border-radius: 24px;
+  border-radius: 999px;
   background: var(--bg-secondary);
   color: var(--text-primary);
   font-size: 14px;
   outline: none;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .chat-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #0f5bd8;
+  box-shadow: 0 0 0 3px rgba(15, 91, 216, 0.14);
 }
 
 .chat-input:disabled {
@@ -874,18 +964,19 @@ onUnmounted(() => {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(120deg, #0f5bd8 0%, #0ea89a 100%);
   border: none;
-  color: white;
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .send-btn:hover:not(:disabled) {
-  transform: scale(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 91, 216, 0.35);
 }
 
 .send-btn:disabled {
@@ -900,7 +991,6 @@ onUnmounted(() => {
   margin-top: 8px;
 }
 
-/* 滚动条 */
 .chat-body::-webkit-scrollbar {
   width: 6px;
 }
@@ -910,25 +1000,14 @@ onUnmounted(() => {
 }
 
 .chat-body::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 3px;
-}
-
-/* 动画 */
-@keyframes pulse {
-  0%,
-  100% {
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-  }
-  50% {
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
-  }
+  background: rgba(148, 163, 184, 0.6);
+  border-radius: 999px;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -941,35 +1020,37 @@ onUnmounted(() => {
   60%,
   100% {
     transform: translateY(0);
+    opacity: 0.6;
   }
   30% {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
+    opacity: 1;
   }
 }
 
 .chat-slide-enter-active,
 .chat-slide-leave-active {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .chat-slide-enter-from,
 .chat-slide-leave-to {
   opacity: 0;
-  transform: translateY(20px) scale(0.95);
+  transform: translateY(14px) scale(0.96);
 }
 
-/* 响应式 */
 @media (max-width: 480px) {
   .chat-container {
-    width: calc(100vw - 32px);
-    right: 16px;
-    bottom: 80px;
-    height: 500px;
+    width: calc(100vw - 20px);
+    right: 10px;
+    top: 66px;
+    height: calc(100vh - 76px);
+    max-height: calc(100vh - 76px);
+    border-radius: 14px;
   }
 
-  .chat-fab {
-    bottom: 16px;
-    right: 16px;
+  .message-content {
+    max-width: 80%;
   }
 }
 </style>

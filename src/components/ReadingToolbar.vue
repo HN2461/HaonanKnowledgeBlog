@@ -104,6 +104,27 @@
 
           <!-- 回到顶部 -->
           <div class="panel-section">
+            <button class="action-btn" @click.stop="copyFullText">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>复制全文</span>
+            </button>
+          </div>
+
+          <div class="panel-section">
+            <button class="action-btn" @click.stop="exportDocument">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>导出文档</span>
+            </button>
+          </div>
+
+          <div class="panel-section">
             <button class="action-btn" @click.stop="scrollToTop">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="12" y1="19" x2="12" y2="5"></line>
@@ -162,7 +183,7 @@ import {
 } from '../utils/fontSizeStorage'
 import { getReadingPosition } from '../utils/readingPosition'
 
-const emit = defineEmits(['fontSizeChange', 'enterFullscreen'])
+const emit = defineEmits(['fontSizeChange', 'enterFullscreen', 'copyFullText', 'exportDocument'])
 
 const route = useRoute()
 const containerRef = ref(null)
@@ -486,6 +507,16 @@ const toggleTheme = () => {
   window.dispatchEvent(new CustomEvent('theme-change', { detail: { isDark: isDark.value } }))
 }
 
+const copyFullText = () => {
+  emit('copyFullText')
+  isExpanded.value = false
+}
+
+const exportDocument = () => {
+  emit('exportDocument')
+  isExpanded.value = false
+}
+
 const scrollToTop = () => {
   if (scrollContainer.value) {
     scrollContainer.value.scrollTo({ top: 0, behavior: 'smooth' })
@@ -682,6 +713,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   padding: 16px;
   height: 320px;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(10px);
   z-index: 10001;
@@ -694,21 +727,14 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 /* 面板滚动条样式 */
-.toolbar-panel::-webkit-scrollbar {
-  width: 4px;
-}
-
-.toolbar-panel::-webkit-scrollbar-track {
+.toolbar-panel::-webkit-scrollbar-thumb {
   background: transparent;
 }
 
-.toolbar-panel::-webkit-scrollbar-thumb {
-  background: var(--border-color, #e0e0e0);
-  border-radius: 2px;
-}
-
-.toolbar-panel::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary, #999);
+.toolbar-panel::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .panel-header {

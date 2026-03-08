@@ -91,6 +91,8 @@
       v-if="!loading"
       @fontSizeChange="onFontSizeChange" 
       @enterFullscreen="enterFullscreen"
+      @copyFullText="copyFullText"
+      @exportDocument="exportDocument"
     />
     
     <!-- 全屏阅读模式 -->
@@ -126,6 +128,18 @@
               </button>
             </div>
           </div>
+        </div>
+      </Transition>
+    </Teleport>
+
+    <Teleport to="body">
+      <Transition name="article-action-toast">
+        <div
+          v-if="actionToast.visible"
+          class="article-action-toast"
+          :class="`is-${actionToast.type}`"
+        >
+          {{ actionToast.message }}
         </div>
       </Transition>
     </Teleport>
@@ -167,6 +181,12 @@ const markdownContent = ref('')
 const toc = ref([])
 const notesData = ref(null)
 const fontSize = ref(16)
+const actionToast = ref({
+  visible: false,
+  message: '',
+  type: 'success'
+})
+let actionToastTimer = null
 
 // 阅读位置相关
 const scrollContainer = ref(null)
@@ -248,6 +268,111 @@ const enterFullscreen = () => {
 const openLightbox = (src, alt) => {
   if (lightboxRef.value) {
     lightboxRef.value.open(src, alt)
+  }
+}
+
+const showActionToast = (message, type = 'success') => {
+  actionToast.value = {
+    visible: true,
+    message,
+    type
+  }
+
+  if (actionToastTimer) {
+    clearTimeout(actionToastTimer)
+  }
+
+  actionToastTimer = setTimeout(() => {
+    actionToast.value.visible = false
+  }, 2200)
+}
+
+const sanitizeFileName = (name) => {
+  const fallbackName = String(notePath.value || 'note').split('/').pop() || 'note'
+  const sourceName = name || fallbackName
+  const safeName = sourceName
+    .replace(/[\\/:*?"<>|]/g, '-')
+    .replace(/\s+/g, ' ')
+    .trim()
+
+  return safeName || 'note'
+}
+
+const buildShareableMarkdown = () => {
+  const content = markdownContent.value.trim()
+  if (!content) return ''
+
+  if (content.startsWith('# ')) {
+    return content
+  }
+
+  return '# ' + (note.value.title || '未命名笔记') + '\n\n' + content
+}
+
+const copyText = async (text) => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text)
+      return true
+    }
+  } catch {
+    // fallback below
+  }
+
+  try {
+    const textarea = document.createElement('textarea')
+    textarea.value = text
+    textarea.setAttribute('readonly', '')
+    textarea.style.position = 'fixed'
+    textarea.style.opacity = '0'
+    document.body.appendChild(textarea)
+    textarea.select()
+    document.execCommand('copy')
+    document.body.removeChild(textarea)
+    return true
+  } catch {
+    return false
+  }
+}
+
+const copyFullText = async () => {
+  const shareableContent = buildShareableMarkdown()
+  if (!shareableContent) {
+    showActionToast('当前文章暂无可复制内容', 'error')
+    return
+  }
+
+  const copied = await copyText(shareableContent)
+  if (copied) {
+    showActionToast('全文已复制到剪贴板', 'success')
+  } else {
+    showActionToast('复制失败，请手动复制', 'error')
+  }
+}
+
+const exportDocument = () => {
+  const shareableContent = buildShareableMarkdown()
+  if (!shareableContent) {
+    showActionToast('当前文章暂无可导出内容', 'error')
+    return
+  }
+
+  const filename = sanitizeFileName(note.value.title) + '.md'
+
+  try {
+    const blob = new Blob([shareableContent], { type: 'text/markdown;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+    showActionToast('已导出 ' + filename, 'success')
+  } catch (error) {
+    console.error('导出文档失败:', error)
+    showActionToast('导出失败，请稍后重试', 'error')
   }
 }
 
@@ -417,6 +542,10 @@ onUnmounted(() => {
   // 组件卸载前保存当前位置
   saveCurrentPosition()
   cleanupScrollListener()
+  if (actionToastTimer) {
+    clearTimeout(actionToastTimer)
+    actionToastTimer = null
+  }
 })
 
 onBeforeUnmount(() => {
@@ -764,6 +893,46 @@ watch(() => route.params.path, (newPath, oldPath) => {
   
   .position-prompt-leave-to {
     transform: translateY(-10px) scale(0.98);
+  }
+}
+.article-action-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10001;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.article-action-toast.is-success {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.article-action-toast.is-error {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.article-action-toast-enter-active,
+.article-action-toast-leave-active {
+  transition: all 0.22s ease;
+}
+
+.article-action-toast-enter-from,
+.article-action-toast-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+@media (max-width: 768px) {
+  .article-action-toast {
+    left: 16px;
+    right: 16px;
+    top: 16px;
+    text-align: center;
   }
 }
 </style>

@@ -41,16 +41,24 @@
 
           <div class="profile-content">
             <h3 class="profile-name">{{ authorName }}</h3>
-            <p class="profile-title">{{ siteConfig.author.title }}</p>
+            <p class="profile-title">{{ authorTitle }}</p>
             
             <div class="profile-bio">
-              <p v-for="(line, index) in siteConfig.author.bio" :key="index">{{ line }}</p>
+              <p v-for="(line, index) in authorBio" :key="index">{{ line }}</p>
             </div>
 
             <div class="profile-stats">
               <div class="stat-item">
                 <span class="stat-value">{{ stats.articles }}</span>
-                <span class="stat-label">文章数量</span>
+                <span class="stat-label">Articles</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">{{ stats.categories }}</span>
+                <span class="stat-label">Categories</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value stat-value-small">{{ stats.lastUpdated }}</span>
+                <span class="stat-label">Updated</span>
               </div>
             </div>
 
@@ -60,7 +68,7 @@
                 <path d="M5 21V7l8-4v18"></path>
                 <path d="M19 21V11l-6-4"></path>
               </svg>
-              <p>"{{ siteConfig.author.motto }}"</p>
+              <p>"{{ authorMotto }}"</p>
             </div>
 
             <!-- 休闲模式按钮 -->
@@ -109,7 +117,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { siteConfig } from '../config/site'
 
@@ -119,14 +127,19 @@ const showAvatarPreview = ref(false)
 const fileInput = ref(null)
 
 // 作者信息
-const authorName = ref(siteConfig.author.name)
-const avatarUrl = ref(siteConfig.author.avatar)
+const authorName = ref(siteConfig.author?.name || '技术博主')
+const avatarUrl = ref(siteConfig.author?.avatar || '')
+const authorTitle = computed(() => siteConfig.author?.title || '前端开发工程师')
+const authorBio = computed(() => {
+  return Array.isArray(siteConfig.author?.bio) ? siteConfig.author.bio : []
+})
+const authorMotto = computed(() => siteConfig.author?.motto || '持续学习，持续进步')
 
 // 统计数据
 const stats = ref({
-  articles: 42,
-  views: '1.2k',
-  days: 365
+  articles: 0,
+  categories: 0,
+  lastUpdated: '--'
 })
 
 // 切换简介弹窗
@@ -182,6 +195,33 @@ const handleFileChange = (event) => {
   reader.readAsDataURL(file)
 }
 
+const formatUpdateDate = (iso) => {
+  if (!iso) return '--'
+  const date = new Date(iso)
+  if (Number.isNaN(date.getTime())) return '--'
+  return date.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  })
+}
+
+const loadProfileStats = async () => {
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
+    if (!response.ok) return
+
+    const data = await response.json()
+    stats.value = {
+      articles: data.totalNotes || data.allNotes?.length || 0,
+      categories: data.totalCategories || data.categories?.length || 0,
+      lastUpdated: formatUpdateDate(data.lastUpdated)
+    }
+  } catch (err) {
+    console.error('加载作者统计数据失败:', err)
+  }
+}
+
 // 从 localStorage 加载头像
 const loadAvatar = () => {
   try {
@@ -194,7 +234,10 @@ const loadAvatar = () => {
   }
 }
 
-loadAvatar()
+onMounted(() => {
+  loadAvatar()
+  loadProfileStats()
+})
 </script>
 
 <style scoped>
@@ -233,24 +276,37 @@ loadAvatar()
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   padding: 20px;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .profile-card {
   background-color: var(--bg-primary);
   border-radius: 16px;
-  max-width: 500px;
+  max-width: 560px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
+  border: 1px solid var(--border-color);
+}
+
+.profile-modal::-webkit-scrollbar,
+.profile-card::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .close-modal-btn {
@@ -276,7 +332,7 @@ loadAvatar()
 .profile-header {
   padding: 40px 32px 24px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12) 0%, rgba(34, 197, 94, 0.12) 100%);
   border-radius: 16px 16px 0 0;
 }
 
@@ -349,7 +405,7 @@ loadAvatar()
 }
 
 .profile-title {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
   margin: 0 0 24px 0;
 }
@@ -366,8 +422,9 @@ loadAvatar()
 }
 
 .profile-stats {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
   padding: 16px;
   background-color: var(--bg-secondary);
   border-radius: 12px;
@@ -376,14 +433,23 @@ loadAvatar()
 
 .stat-item {
   text-align: center;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px 8px;
 }
 
 .stat-value {
   display: block;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--primary-color);
   margin-bottom: 4px;
+}
+
+.stat-value-small {
+  font-size: 15px;
+  line-height: 1.3;
 }
 
 .stat-label {
@@ -396,7 +462,7 @@ loadAvatar()
   display: flex;
   gap: 12px;
   padding: 16px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(34, 197, 94, 0.08) 100%);
   border-left: 3px solid var(--primary-color);
   border-radius: 8px;
 }
@@ -561,6 +627,14 @@ loadAvatar()
 
   .stat-value {
     font-size: 20px;
+  }
+
+  .profile-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-stats .stat-item:last-child {
+    grid-column: 1 / -1;
   }
 }
 </style>

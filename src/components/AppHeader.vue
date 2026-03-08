@@ -39,6 +39,16 @@
             <path d="m21 21-4.35-4.35"></path>
           </svg>
         </button>
+
+        <button class="ai-btn" @click="toggleAIAssistant" aria-label="AI助手" title="AI助手">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="7" y="8" width="10" height="8" rx="2"></rect>
+            <circle cx="10" cy="12" r="1"></circle>
+            <circle cx="14" cy="12" r="1"></circle>
+            <path d="M12 4v2"></path>
+            <path d="M9 16h6"></path>
+          </svg>
+        </button>
         
         <button class="theme-btn" @click="toggleTheme" aria-label="切换主题">
           <svg v-if="!isDark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -89,6 +99,10 @@ const goToSearch = () => {
 
 const goToEditor = () => {
   router.push('/editor')
+}
+
+const toggleAIAssistant = () => {
+  window.dispatchEvent(new CustomEvent('ai-assistant:toggle'))
 }
 
 const toggleTheme = () => {
@@ -245,6 +259,7 @@ onMounted(() => {
 
 .editor-btn,
 .search-btn,
+.ai-btn,
 .theme-btn {
   display: flex;
   align-items: center;
@@ -259,6 +274,7 @@ onMounted(() => {
 
 .editor-btn:hover,
 .search-btn:hover,
+.ai-btn:hover,
 .theme-btn:hover {
   background-color: var(--bg-secondary);
   transform: scale(1.05);
@@ -266,6 +282,7 @@ onMounted(() => {
 
 .editor-btn:active,
 .search-btn:active,
+.ai-btn:active,
 .theme-btn:active {
   transform: scale(0.95);
 }
