@@ -1,6 +1,6 @@
 <template>
+  <div class="sidebar-overlay" @click="$emit('close')" v-if="isMobile && visible"></div>
   <aside class="app-sidebar" :class="{ 'sidebar-visible': visible }">
-    <div class="sidebar-overlay" @click="$emit('close')" v-if="isMobile"></div>
     <div class="sidebar-content">
       <div class="sidebar-header">
         <h3>笔记目录</h3>
@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import FileTree from './FileTree.vue'
 
 const props = defineProps({
@@ -35,7 +35,7 @@ const emit = defineEmits(['close'])
 const notesTree = ref([])
 const isMobile = ref(false)
 
-const handleSelect = (item) => {
+const handleSelect = () => {
   if (isMobile.value) {
     emit('close')
   }
