@@ -93,6 +93,7 @@
       @enterFullscreen="enterFullscreen"
       @copyFullText="copyFullText"
       @exportDocument="exportDocument"
+      @printDocument="printDocument"
     />
     
     <!-- 全屏阅读模式 -->
@@ -373,6 +374,15 @@ const exportDocument = () => {
   } catch (error) {
     console.error('导出文档失败:', error)
     showActionToast('导出失败，请稍后重试', 'error')
+  }
+}
+
+const printDocument = () => {
+  try {
+    window.print()
+  } catch (error) {
+    console.error('打开打印窗口失败:', error)
+    showActionToast('当前环境暂不支持打印', 'error')
   }
 }
 

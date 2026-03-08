@@ -171,3 +171,78 @@ pre code {
     padding: 0 15px;
   }
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  .app-header,
+  .app-sidebar,
+  .reading-toolbar-container,
+  .reading-position-prompt,
+  .article-action-toast,
+  .note-sidebar,
+  .note-footer {
+    display: none !important;
+  }
+
+  .app-layout,
+  .layout-container,
+  .main-content,
+  .note-detail-page,
+  .page-container,
+  .note-content {
+    height: auto !important;
+    overflow: visible !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    background: #fff !important;
+  }
+
+  .markdown-content {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+    background: #fff !important;
+  }
+
+  .note-header {
+    padding-top: 0 !important;
+    margin-bottom: 14pt !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+
+  table,
+  pre,
+  blockquote,
+  img {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid-page;
+    page-break-after: avoid;
+  }
+}

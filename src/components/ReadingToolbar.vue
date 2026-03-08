@@ -125,6 +125,17 @@
           </div>
 
           <div class="panel-section">
+            <button class="action-btn" @click.stop="printDocument">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>打印文章</span>
+            </button>
+          </div>
+
+          <div class="panel-section">
             <button class="action-btn" @click.stop="scrollToTop">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="12" y1="19" x2="12" y2="5"></line>
@@ -183,7 +194,13 @@ import {
 } from '../utils/fontSizeStorage'
 import { getReadingPosition } from '../utils/readingPosition'
 
-const emit = defineEmits(['fontSizeChange', 'enterFullscreen', 'copyFullText', 'exportDocument'])
+const emit = defineEmits([
+  'fontSizeChange',
+  'enterFullscreen',
+  'copyFullText',
+  'exportDocument',
+  'printDocument'
+])
 
 const route = useRoute()
 const containerRef = ref(null)
@@ -514,6 +531,11 @@ const copyFullText = () => {
 
 const exportDocument = () => {
   emit('exportDocument')
+  isExpanded.value = false
+}
+
+const printDocument = () => {
+  emit('printDocument')
   isExpanded.value = false
 }
 
