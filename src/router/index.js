@@ -15,7 +15,7 @@ const routes = [
     meta: { title: '首页' }
   },
   {
-    path: '/category/:category',
+    path: '/category/:category(.*)',
     name: 'NoteList',
     component: NoteListPage,
     meta: { title: '笔记列表' }
