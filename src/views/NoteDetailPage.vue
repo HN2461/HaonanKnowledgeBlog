@@ -11,7 +11,7 @@
     </template>
     
     <div class="note-detail-page" style="padding-top: 20px;">
-      <div class="page-container">
+      <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
         <!-- 骨架屏加载状态 -->
         <template v-if="loading">
           <article class="note-content">
@@ -80,10 +80,25 @@
           </article>
         </template>
 
-        <aside class="note-sidebar" v-if="!loading && toc.length > 0">
+        <aside class="note-sidebar" v-if="showTocSidebar && !isTocCollapsed">
           <TableOfContents :toc="toc" />
         </aside>
       </div>
+
+      <button
+        v-if="showTocSidebar"
+        class="toc-toggle-btn"
+        :class="{ 'is-collapsed': isTocCollapsed }"
+        type="button"
+        :aria-label="isTocCollapsed ? '展开右侧导航' : '折叠右侧导航'"
+        :aria-expanded="String(!isTocCollapsed)"
+        @click="toggleTocSidebar"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span>{{ isTocCollapsed ? '展开导航' : '折叠导航' }}</span>
+      </button>
     </div>
     
     <!-- 悬浮阅读工具栏 -->
@@ -182,6 +197,8 @@ const markdownContent = ref('')
 const toc = ref([])
 const notesData = ref(null)
 const fontSize = ref(16)
+// 目录折叠状态放在详情页层，保证同一篇阅读过程可持续生效
+const isTocCollapsed = ref(false)
 const actionToast = ref({
   visible: false,
   message: '',
@@ -201,6 +218,7 @@ const fullscreenRef = ref(null)
 const lightboxRef = ref(null)
 
 const notePath = computed(() => route.params.path)
+const showTocSidebar = computed(() => !loading.value && toc.value.length > 0)
 
 // 使用新的阅读时间计算器
 const readingTime = computed(() => {
@@ -270,6 +288,10 @@ const openLightbox = (src, alt) => {
   if (lightboxRef.value) {
     lightboxRef.value.open(src, alt)
   }
+}
+
+const toggleTocSidebar = () => {
+  isTocCollapsed.value = !isTocCollapsed.value
 }
 
 const showActionToast = (message, type = 'success') => {
@@ -386,6 +408,34 @@ const printDocument = () => {
   }
 }
 
+const normalizeTitleForCompare = (title) => {
+  return String(title || '')
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_\-–—~`!@#$%^&*()+=[\]{}|\\:;"'<>,.?/·，。、《》？；：‘’“”（）【】]/g, '')
+}
+
+const stripDuplicateMarkdownTitle = (content, pageTitle) => {
+  const titleMatch = content.match(/^#\s+(.+)\r?\n+/)
+  if (!titleMatch) return content
+
+  const markdownTitle = titleMatch[1].trim()
+  const normalizedMarkdownTitle = normalizeTitleForCompare(markdownTitle)
+  const normalizedPageTitle = normalizeTitleForCompare(pageTitle)
+
+  if (!normalizedMarkdownTitle || !normalizedPageTitle) return content
+
+  const isDuplicateTitle = normalizedMarkdownTitle.includes(normalizedPageTitle)
+    || normalizedPageTitle.includes(normalizedMarkdownTitle)
+
+  // 页面头部已展示标题，遇到同名 Markdown 一级标题时去重，避免出现两个大标题
+  if (isDuplicateTitle) {
+    return content.replace(/^#\s+.+\r?\n+/, '')
+  }
+
+  return content
+}
+
 const loadNote = async () => {
   loading.value = true
   hasRestored.value = true // 改为true，允许保存位置
@@ -411,10 +461,11 @@ const loadNote = async () => {
       
       // 移除 frontmatter
       const contentWithoutFrontmatter = content.replace(/^---[\s\S]*?---\n/, '')
-      markdownContent.value = contentWithoutFrontmatter
+      const deduplicatedContent = stripDuplicateMarkdownTitle(contentWithoutFrontmatter, note.value.title)
+      markdownContent.value = deduplicatedContent
       
       // 提取目录
-      toc.value = extractTOC(contentWithoutFrontmatter)
+      toc.value = extractTOC(deduplicatedContent)
       
       // 检查是否有保存的阅读位置
       await checkAndRestoreReadingPosition()
@@ -584,23 +635,28 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .page-container {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  gap: 32px;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 24px;
   align-items: start;
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
+  transition: grid-template-columns 0.25s ease;
+}
+
+.page-container.sidebar-collapsed {
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .note-content {
   min-width: 0;
-  max-width: 800px;
+  max-width: min(100%, 92ch);
   margin: 0 auto;
   width: 100%;
 }
 
 .note-header {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   padding-top: 24px;
 }
 
@@ -618,8 +674,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   font-size: 32px;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0 0 20px 0;
-  line-height: 1.3;
+  margin: 0 0 18px 0;
+  line-height: 1.28;
 }
 
 .note-meta {
@@ -656,11 +712,11 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .markdown-content {
-  background-color: var(--bg-primary);
-  padding: 32px;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 32px;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  margin-bottom: 40px;
   transition: font-size 0.2s ease;
 }
 
@@ -718,17 +774,50 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .note-sidebar {
   position: sticky;
-  top: 50px;
+  top: 80px;
   align-self: start;
+}
+
+.toc-toggle-btn {
+  position: fixed;
+  top: 118px;
+  right: 24px;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+  transition: all 0.2s ease;
+}
+
+.toc-toggle-btn:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.toc-toggle-btn.is-collapsed svg {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 1024px) {
   .page-container {
     grid-template-columns: 1fr;
-    max-width: 800px;
+    max-width: 920px;
   }
   
   .note-sidebar {
+    display: none;
+  }
+
+  .toc-toggle-btn {
     display: none;
   }
 }
@@ -744,8 +833,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   }
   
   .markdown-content {
-    padding: 24px;
-    border-radius: 12px;
+    padding: 0;
+    border-radius: 0;
   }
   
   .note-meta {
@@ -946,3 +1035,4 @@ watch(() => route.params.path, (newPath, oldPath) => {
   }
 }
 </style>
+

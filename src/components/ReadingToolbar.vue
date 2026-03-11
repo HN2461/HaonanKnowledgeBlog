@@ -11,9 +11,15 @@
       <div 
         class="reading-fab"
         :class="{ 'is-expanded': isExpanded, 'is-dragging': isDragging }"
+        role="button"
+        tabindex="0"
+        aria-label="阅读工具栏"
+        :aria-expanded="String(isExpanded)"
         @mousedown="startDrag"
         @touchstart="startDrag"
         @click="handleClick"
+        @keydown.enter.prevent="toggleExpandByKeyboard"
+        @keydown.space.prevent="toggleExpandByKeyboard"
       >
         <!-- 进度环 -->
         <svg class="progress-ring" viewBox="0 0 44 44">
@@ -75,7 +81,7 @@
               <button 
                 class="font-btn reset-btn" 
                 @click.stop="resetFontSize"
-                :disabled="fontSize === 16"
+                :disabled="fontSize === defaultFontSize"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
@@ -184,11 +190,11 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { calculateScrollProgress, getDocumentScrollInfo } from '../utils/scrollProgress'
+import { calculateScrollProgress } from '../utils/scrollProgress'
 import { 
   getFontSize, 
   setFontSize,
-  DEFAULT_FONT_SIZE,
+  getDefaultFontSize,
   MIN_FONT_SIZE,
   MAX_FONT_SIZE
 } from '../utils/fontSizeStorage'
@@ -212,6 +218,7 @@ const hasSavedPosition = ref(false)
 
 const viewportWidth = ref(typeof window !== 'undefined' ? window.innerWidth : 1024)
 const isTouchDevice = ref(false)
+const defaultFontSize = computed(() => getDefaultFontSize(viewportWidth.value))
 
 // 滚动容器引用
 const scrollContainer = ref(null)
@@ -475,6 +482,11 @@ const toggleExpand = () => {
   isExpanded.value = !isExpanded.value
 }
 
+const toggleExpandByKeyboard = () => {
+  if (isDragging.value) return
+  toggleExpand()
+}
+
 // 悬停事件处理
 const handleMouseEnter = () => {
   if (isTouchDevice.value || viewportWidth.value <= 768) return
@@ -507,7 +519,7 @@ const decreaseFontSize = () => {
 }
 
 const resetFontSize = () => {
-  fontSize.value = DEFAULT_FONT_SIZE
+  fontSize.value = defaultFontSize.value
   setFontSize(fontSize.value)
   emit('fontSizeChange', fontSize.value)
 }
@@ -673,8 +685,9 @@ watch(() => route.params.path, (newPath, oldPath) => {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
   cursor: grab;
   display: flex;
   align-items: center;
@@ -686,18 +699,18 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .reading-fab:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.5);
+  transform: scale(1.02);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
 }
 
 .reading-fab.is-dragging {
   cursor: grabbing;
-  transform: scale(1.1);
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.6);
+  transform: scale(1.06);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.18);
 }
 
 .reading-fab.is-expanded {
-  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  background: var(--bg-secondary);
   cursor: pointer;
 }
 
@@ -710,18 +723,18 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .progress-ring-bg {
-  stroke: rgba(255, 255, 255, 0.2);
+  stroke: rgba(100, 116, 139, 0.24);
 }
 
 .progress-ring-fill {
-  stroke: #fff;
+  stroke: var(--primary-color);
   transition: stroke-dashoffset 0.3s ease;
 }
 
 .progress-text {
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   z-index: 1;
   pointer-events: none;
 }
@@ -737,8 +750,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.14);
+  backdrop-filter: blur(6px);
   z-index: 10001;
   transition: all 0.2s ease;
 }
@@ -956,6 +969,27 @@ watch(() => route.params.path, (newPath, oldPath) => {
   
   .section-label {
     font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-fab,
+  .progress-ring-fill,
+  .toolbar-panel,
+  .panel-close,
+  .font-btn,
+  .action-btn,
+  .progress-bar,
+  .panel-slide-enter-active,
+  .panel-slide-leave-active {
+    transition: none !important;
+  }
+
+  .reading-fab:hover,
+  .reading-fab.is-dragging,
+  .panel-slide-enter-from,
+  .panel-slide-leave-to {
+    transform: none !important;
   }
 }
 </style>

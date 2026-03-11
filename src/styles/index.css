@@ -13,6 +13,8 @@
   --success-color: #48bb78;
   --warning-color: #ed8936;
   --danger-color: #f56565;
+  --focus-ring-color: #1d4ed8;
+  --focus-ring-shadow: rgba(29, 78, 216, 0.28);
   --shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 8px 24px 0 rgba(0, 0, 0, 0.12);
 }
@@ -31,6 +33,8 @@
   --success-color: #67c23a;
   --warning-color: #e6a23c;
   --danger-color: #f56c6c;
+  --focus-ring-color: #93c5fd;
+  --focus-ring-shadow: rgba(147, 197, 253, 0.32);
   --shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.3);
   --shadow-hover: 0 4px 16px 0 rgba(0, 0, 0, 0.4);
 }
@@ -81,7 +85,6 @@ a:hover {
 button {
   cursor: pointer;
   border: none;
-  outline: none;
   background: none;
   font-family: inherit;
 }
@@ -90,7 +93,21 @@ button {
 input,
 textarea {
   font-family: inherit;
-  outline: none;
+}
+
+:where(
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  summary,
+  [role='button'],
+  [tabindex]
+):focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--focus-ring-shadow);
 }
 
 /* 代码样式 */

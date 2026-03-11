@@ -130,7 +130,7 @@ onUpdated(setupInteractions)
 
 .markdown-body {
   color: var(--text-primary);
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* 标题样式 */
@@ -140,11 +140,16 @@ onUpdated(setupInteractions)
 .markdown-body :deep(h4),
 .markdown-body :deep(h5),
 .markdown-body :deep(h6) {
-  margin-top: 24px;
-  margin-bottom: 16px;
+  margin-top: 40px;
+  margin-bottom: 18px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.35;
   color: var(--text-primary);
+}
+
+.markdown-body :deep(h1:first-child),
+.markdown-body :deep(h2:first-child) {
+  margin-top: 0;
 }
 
 .markdown-body :deep(h1) {
@@ -170,47 +175,49 @@ onUpdated(setupInteractions)
 /* 段落样式 */
 .markdown-body :deep(p) {
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 /* 链接样式 */
 .markdown-body :deep(a) {
   color: var(--primary-color);
-  text-decoration: none;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
 }
 
 .markdown-body :deep(a:hover) {
-  text-decoration: underline;
+  text-decoration-thickness: 0.12em;
 }
 
 /* 列表样式 */
 .markdown-body :deep(ul),
 .markdown-body :deep(ol) {
   padding-left: 2em;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .markdown-body :deep(li) {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 /* 引用样式 */
 .markdown-body :deep(blockquote) {
-  margin: 16px 0;
-  padding: 0 1em;
+  margin: 24px 0;
+  padding: 12px 16px;
   color: var(--text-secondary);
-  border-left: 4px solid var(--border-color);
+  border-left: 3px solid var(--primary-color);
   background-color: var(--bg-tertiary);
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 /* 代码块样式 */
 .markdown-body :deep(pre) {
-  margin: 16px 0;
+  margin: 24px 0;
   padding: 16px;
   overflow: auto;
   background-color: #1e1e1e;
-  border-radius: 8px;
+  border-radius: 10px;
   position: relative;
 }
 
@@ -307,7 +314,7 @@ onUpdated(setupInteractions)
 /* 分割线样式 */
 .markdown-body :deep(hr) {
   height: 1px;
-  margin: 24px 0;
+  margin: 36px 0;
   background-color: var(--border-color);
   border: 0;
 }
@@ -322,5 +329,16 @@ onUpdated(setupInteractions)
   background-color: #fff3cd;
   padding: 2px 4px;
   border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-body :deep(img),
+  .markdown-body :deep(.code-copy-btn) {
+    transition: none;
+  }
+
+  .markdown-body :deep(img:hover) {
+    transform: none;
+  }
 }
 </style>

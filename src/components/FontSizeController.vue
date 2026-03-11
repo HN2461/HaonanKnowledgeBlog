@@ -28,7 +28,7 @@
     <button 
       class="font-btn reset-btn" 
       @click="reset"
-      :disabled="fontSize === DEFAULT_FONT_SIZE"
+      :disabled="fontSize === defaultFontSize"
       title="重置字体"
     >
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -40,21 +40,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { 
   getFontSize, 
   setFontSize, 
+  getDefaultFontSize,
   increaseFontSize, 
   decreaseFontSize,
   resetFontSize,
-  DEFAULT_FONT_SIZE,
   MIN_FONT_SIZE,
   MAX_FONT_SIZE
 } from '../utils/fontSizeStorage'
 
 const emit = defineEmits(['change'])
 
-const fontSize = ref(DEFAULT_FONT_SIZE)
+const defaultFontSize = computed(() => getDefaultFontSize())
+const fontSize = ref(defaultFontSize.value)
 
 const increase = () => {
   fontSize.value = increaseFontSize(fontSize.value)

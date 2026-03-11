@@ -192,19 +192,19 @@ onUnmounted(() => {
 .table-of-contents {
   position: sticky;
   top: 80px;
-  padding: 16px;
-  background-color: var(--bg-primary);
+  padding: 12px;
+  background-color: transparent;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 12px;
   max-height: calc(100vh - 160px);
   overflow-y: auto;
 }
 
 .toc-title {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 12px 0;
+  color: var(--text-secondary);
+  margin: 0 0 10px 0;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border-color);
 }
@@ -216,48 +216,48 @@ onUnmounted(() => {
 }
 
 .toc-item {
-  padding: 6px 8px;
+  padding: 8px 10px;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 13px;
   line-height: 1.6;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
   display: block;
   border-left: 2px solid transparent;
+  border-radius: 6px;
 }
 
 .toc-item:hover {
-  color: var(--primary-color);
+  color: var(--text-primary);
+  background-color: rgba(148, 163, 184, 0.12);
 }
 
 .toc-item.active {
-  color: var(--primary-color);
+  color: var(--text-primary);
   border-left-color: var(--primary-color);
-  font-weight: 500;
-  background-color: var(--primary-color-light, rgba(59, 130, 246, 0.1));
-  border-radius: 4px;
-  transform: translateX(2px);
+  font-weight: 600;
+  background-color: transparent;
 }
 
 .toc-level-1 {
-  padding-left: 8px;
+  padding-left: 10px;
   font-weight: 500;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .toc-level-2 {
-  padding-left: 16px;
+  padding-left: 18px;
   margin-top: 4px;
 }
 
 .toc-level-3 {
-  padding-left: 28px;
+  padding-left: 30px;
   font-size: 12px;
   color: var(--text-tertiary);
 }
 
 .toc-level-4 {
-  padding-left: 40px;
+  padding-left: 42px;
   font-size: 12px;
   color: var(--text-tertiary);
 }

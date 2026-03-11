@@ -15,7 +15,7 @@
           </svg>
         </span>
         <span class="folder-icon">📁</span>
-        <span class="node-label">{{ item.name }}</span>
+        <span class="node-label" :title="item.name">{{ item.name }}</span>
       </div>
       
       <router-link
@@ -26,7 +26,7 @@
         @click="$emit('select', item)"
       >
         <span class="file-icon">📄</span>
-        <span class="node-label">{{ item.title }}</span>
+        <span class="node-label" :title="item.title">{{ item.title }}</span>
       </router-link>
       
       <div v-if="item.type === 'directory' && isExpanded(item.path)" class="tree-children">

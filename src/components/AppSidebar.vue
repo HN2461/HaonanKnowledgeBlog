@@ -149,11 +149,16 @@ onMounted(async () => {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10px;
+  /* 隐藏左侧栏滚动条，保留滚动能力 */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 /* 美化滚动条 */
 .sidebar-body::-webkit-scrollbar {
-  width: 6px;
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .sidebar-body::-webkit-scrollbar-track {

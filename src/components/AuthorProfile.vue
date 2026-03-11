@@ -50,15 +50,15 @@
             <div class="profile-stats">
               <div class="stat-item">
                 <span class="stat-value">{{ stats.articles }}</span>
-                <span class="stat-label">Articles</span>
+                <span class="stat-label">文章</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value">{{ stats.categories }}</span>
-                <span class="stat-label">Categories</span>
+                <span class="stat-label">分类</span>
               </div>
               <div class="stat-item">
                 <span class="stat-value stat-value-small">{{ stats.lastUpdated }}</span>
-                <span class="stat-label">Updated</span>
+                <span class="stat-label">最近更新</span>
               </div>
             </div>
 
@@ -432,30 +432,41 @@ onMounted(() => {
 }
 
 .stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 10px;
-  padding: 12px 8px;
+  min-height: 116px;
+  padding: 14px 10px;
 }
 
 .stat-value {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
   font-size: 24px;
   font-weight: 600;
   color: var(--primary-color);
-  margin-bottom: 4px;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat-value-small {
-  font-size: 15px;
-  line-height: 1.3;
+  font-size: 20px;
+  letter-spacing: 0.4px;
 }
 
 .stat-label {
   font-size: 13px;
   color: var(--text-secondary);
   font-weight: 500;
+  line-height: 1.3;
 }
 
 .profile-motto {
@@ -627,6 +638,10 @@ onMounted(() => {
 
   .stat-value {
     font-size: 20px;
+  }
+
+  .stat-value-small {
+    font-size: 18px;
   }
 
   .profile-stats {
