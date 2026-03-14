@@ -309,6 +309,12 @@ watch(
   color: var(--text-primary);
 }
 
+.search-box input:focus,
+.search-box input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 .clear-btn {
   display: flex;
   align-items: center;

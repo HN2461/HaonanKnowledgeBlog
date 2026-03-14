@@ -9,6 +9,40 @@
 - 变更 `public/notes/` 后必须运行 `npm run generate:index` 并提交 `public/notes-index.json`。
 - `dist/` 为构建产物目录，不应手动修改。
 
+## 笔记发布规范（新增）
+- `public/notes/**/*.md` 的发布文章建议统一包含 YAML frontmatter，至少包含：
+- `title`：文章标题（与正文 H1 一致或语义一致）。
+- `date`：发布日期，格式 `YYYY-MM-DD`。
+- `category`：分类名（应与目录语义一致）。
+- `tags`：标签数组（建议 3-6 个，避免空标签）。
+- `description`：摘要（建议 60-120 字，便于首页/搜索展示）。
+- frontmatter 模板：
+```yaml
+---
+title: 示例标题
+date: 2026-03-14
+category: 网络与代理
+tags:
+  - 标签1
+  - 标签2
+description: 这是一段用于列表页与搜索页展示的摘要。
+---
+```
+- 每篇文章的独立附件必须在 frontmatter 通过 `attachments` 显式声明，不再按目录自动分配给同目录所有文章。
+- `attachments` 支持写法：
+```yaml
+attachments:
+  - 清理代理残留.bat
+  - path: 网络与代理/xxx.zip
+    name: 下载压缩包
+```
+- `attachments` 写文件名时默认按“当前文章所在目录”解析；写完整相对路径时按 `public/notes/` 根目录解析。
+- 如果文章存在专属附件（如 `.bat`、`.zip`、`.pdf`），必须写入 `attachments`，否则前端不展示下载区。
+- frontmatter（程序元信息）必须放在文件最顶部，使用 `---` 包裹，且保持合法 YAML 键值结构。
+- 渲染层必须剥离 frontmatter，且要兼容 `UTF-8 BOM`、`CRLF/LF` 换行，避免将元信息渲染到正文。
+- 如页面出现 `title/date/tags` 原文内容，优先修复 frontmatter 解析逻辑，不通过删元信息回避问题。
+- 涉及笔记详情页渲染改动时，提交前至少人工验证 1 篇带 frontmatter 的文章页面，确认“元信息不出现在正文中”。
+
 ## 项目结构与模块组织
 - `src/main.js`：Vue 应用入口。
 - `src/views/`：路由级页面组件。

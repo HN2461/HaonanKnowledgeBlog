@@ -73,6 +73,182 @@ function smartSort(items, getFilename) {
   });
 }
 
+function toTagArray(value) {
+  if (Array.isArray(value)) {
+    return value
+      .flatMap((item) => String(item).split(/[、,，|/]/))
+      .map((item) => item.trim())
+      .filter(Boolean)
+  }
+
+  if (typeof value === 'string') {
+    return value
+      .split(/[、,，|/]/)
+      .map((item) => item.trim())
+      .filter(Boolean)
+  }
+
+  return []
+}
+
+function normalizeTags(tags) {
+  const unique = new Set()
+
+  tags.forEach((tag) => {
+    const cleanedTag = String(tag).replace(/^#+/, '').trim()
+    if (cleanedTag) {
+      unique.add(cleanedTag)
+    }
+  })
+
+  return Array.from(unique)
+}
+
+function extractInlineTags(markdownContent) {
+  const lines = markdownContent.split('\n').slice(0, 50)
+  const tagLine = lines.find((line) =>
+    /^(?:>\s*)?(?:tags?|标签|关键词|关键字)\s*[:：]/i.test(line.trim())
+  )
+
+  if (!tagLine) {
+    return []
+  }
+
+  const tagValue = tagLine
+    .replace(/^(?:>\s*)?(?:tags?|标签|关键词|关键字)\s*[:：]\s*/i, '')
+    .trim()
+
+  return normalizeTags(toTagArray(tagValue))
+}
+
+function buildFallbackTags(relPath, category) {
+  const pathSegments = relPath.split('/').slice(0, -1).filter(Boolean)
+  const fallbackTags = []
+
+  if (pathSegments.length > 0) {
+    fallbackTags.push(pathSegments[0])
+    fallbackTags.push(pathSegments[pathSegments.length - 1])
+  }
+
+  if (category) {
+    fallbackTags.push(category)
+  }
+
+  return normalizeTags(fallbackTags)
+}
+
+function resolveTags(frontmatter, markdownContent, relPath, category) {
+  const frontmatterTags = normalizeTags([
+    ...toTagArray(frontmatter.tags),
+    ...toTagArray(frontmatter.tag),
+    ...toTagArray(frontmatter.keywords),
+    ...toTagArray(frontmatter.keyword),
+    ...toTagArray(frontmatter['标签']),
+    ...toTagArray(frontmatter['关键词']),
+    ...toTagArray(frontmatter['关键字'])
+  ])
+
+  if (frontmatterTags.length > 0) {
+    return frontmatterTags
+  }
+
+  const inlineTags = extractInlineTags(markdownContent)
+  if (inlineTags.length > 0) {
+    return inlineTags
+  }
+
+  return buildFallbackTags(relPath, category)
+}
+
+function toAttachmentItems(value) {
+  if (!value) {
+    return []
+  }
+
+  if (Array.isArray(value)) {
+    return value
+  }
+
+  return [value]
+}
+
+function normalizeAttachmentPath(rawPath, noteDirRelPath) {
+  let filePath = String(rawPath || '').trim()
+  if (!filePath) {
+    return ''
+  }
+
+  filePath = filePath.replace(/\\/g, '/')
+  if (filePath.startsWith('/')) {
+    filePath = filePath.slice(1)
+  }
+  if (filePath.startsWith('notes/')) {
+    filePath = filePath.slice(6)
+  }
+
+  // 未带目录时，默认相对当前笔记所在目录解析
+  if (!filePath.includes('/')) {
+    filePath = noteDirRelPath ? `${noteDirRelPath}/${filePath}` : filePath
+  }
+
+  const normalizedPath = path.posix.normalize(filePath)
+  if (!normalizedPath || normalizedPath.startsWith('..')) {
+    return ''
+  }
+
+  return normalizedPath
+}
+
+function resolveAttachments(frontmatter, noteDirRelPath) {
+  const rawAttachments = frontmatter.attachments
+    || frontmatter.attachment
+    || frontmatter.files
+    || frontmatter['附件']
+
+  const items = toAttachmentItems(rawAttachments)
+  const attachments = []
+  const seenPaths = new Set()
+
+  items.forEach((item) => {
+    let filePath = ''
+    let fileName = ''
+
+    if (typeof item === 'string') {
+      filePath = item
+    } else if (item && typeof item === 'object') {
+      filePath = item.path || item.file || item.name || ''
+      fileName = item.name || ''
+    }
+
+    const normalizedPath = normalizeAttachmentPath(filePath, noteDirRelPath)
+    if (!normalizedPath || seenPaths.has(normalizedPath)) {
+      return
+    }
+
+    const absolutePath = path.join(NOTES_DIR, normalizedPath)
+    if (!fs.existsSync(absolutePath)) {
+      return
+    }
+
+    const stat = fs.statSync(absolutePath)
+    if (!stat.isFile()) {
+      return
+    }
+
+    attachments.push({
+      name: fileName || path.basename(normalizedPath),
+      path: normalizedPath,
+      ext: path.extname(normalizedPath).replace('.', '').toLowerCase(),
+      size: Math.round(stat.size / 1024) + 'KB',
+      lastModified: stat.mtime.toISOString()
+    })
+
+    seenPaths.add(normalizedPath)
+  })
+
+  return attachments
+}
+
 // 递归扫描目录
 function scanDirectory(dir, relativePath = '') {
   const items = []
@@ -145,6 +321,11 @@ function scanDirectory(dir, relativePath = '') {
         .replace(/\s+/g, ' ') // 合并多个空格
         .trim()
 
+      const category = frontmatter.category || relativePath.split('/')[0] || '未分类'
+      const tags = resolveTags(frontmatter, markdownContent, relPath, category)
+      const noteDirRelPath = relativePath || ''
+      const attachments = resolveAttachments(frontmatter, noteDirRelPath)
+
       items.push({
         type: 'file',
         title: frontmatter.title || file.replace('.md', ''),
@@ -152,8 +333,9 @@ function scanDirectory(dir, relativePath = '') {
         path: relPath,
         date: frontmatter.date || null,
         hasRealDate: !!frontmatter.date,
-        tags: frontmatter.tags || [],
-        category: frontmatter.category || relativePath.split('/')[0] || '未分类',
+        tags: tags,
+        category: category,
+        attachments: attachments,
         description: frontmatter.description || excerpt,
         content: searchableContent, // 添加完整的可搜索内容
         size: Math.round(stat.size / 1024) + 'KB',
@@ -176,6 +358,23 @@ function flattenNotes(items, result = []) {
     }
   })
   return result
+}
+
+function getNoteTimestamp(note) {
+  const candidates = [note.date, note.lastModified]
+
+  for (const value of candidates) {
+    if (!value) {
+      continue
+    }
+
+    const time = new Date(value).getTime()
+    if (!Number.isNaN(time)) {
+      return time
+    }
+  }
+
+  return 0
 }
 
 // 生成分类结构
@@ -214,13 +413,21 @@ function generateCategories(items) {
   }
 
   processItems(items)
+
+  const allNotes = flattenNotes(items)
+
+  // 统计分类下所有层级的笔记，避免父级目录出现 0 篇
+  Object.values(categories).forEach((category) => {
+    if (category.path === '根目录') {
+      category.notes = allNotes.filter((note) => !note.path.includes('/'))
+    } else {
+      category.notes = allNotes.filter((note) => note.path.startsWith(`${category.path}/`))
+    }
+
+    category.notes = smartSort(category.notes, (note) => note.filename)
+  })
   
-  // 对每个分类下的笔记进行排序
-  Object.values(categories).forEach(category => {
-    category.notes = smartSort(category.notes, (item) => item.filename);
-  });
-  
-  return Object.values(categories)
+  return Object.values(categories).filter((category) => category.notes.length > 0)
 }
 
 // 主函数
@@ -232,8 +439,8 @@ function generateIndex() {
   const allNotes = flattenNotes(items)
   const categories = generateCategories(items)
 
-  // 按日期排序笔记
-  allNotes.sort((a, b) => new Date(b.date) - new Date(a.date))
+  // 统一按可用时间倒序排序，优先 date，无则回退 lastModified
+  allNotes.sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a))
 
   const index = {
     categories: categories,

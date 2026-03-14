@@ -23,7 +23,7 @@
               <line x1="8" y1="2" x2="8" y2="6"></line>
               <line x1="3" y1="10" x2="21" y2="10"></line>
             </svg>
-            {{ formatDate(note.date) }}
+            {{ formatDate(note.date, note.lastModified) }}
           </span>
         </div>
       </div>
@@ -41,8 +41,21 @@ const props = defineProps({
   }
 })
 
-const formatDate = (date) => {
-  return dayjs(date).format('YYYY-MM-DD')
+const formatDate = (date, lastModified) => {
+  const candidates = [date, lastModified]
+
+  for (const value of candidates) {
+    if (!value) {
+      continue
+    }
+
+    const parsed = dayjs(value)
+    if (parsed.isValid()) {
+      return parsed.format('YYYY-MM-DD')
+    }
+  }
+
+  return '未标注日期'
 }
 </script>
 

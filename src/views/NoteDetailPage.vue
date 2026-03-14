@@ -63,6 +63,24 @@
               </div>
             </div>
 
+            <div class="note-attachments" v-if="attachments.length > 0">
+              <h2 class="attachments-title">同目录附件</h2>
+              <div class="attachments-list">
+                <a
+                  v-for="attachment in attachments"
+                  :key="attachment.path"
+                  :href="buildAttachmentUrl(attachment.path)"
+                  class="attachment-item"
+                  :download="attachment.name"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span class="attachment-name">{{ attachment.name }}</span>
+                  <span class="attachment-meta">{{ formatAttachmentMeta(attachment) }}</span>
+                </a>
+              </div>
+            </div>
+
             <div class="markdown-content" :style="{ fontSize: fontSize + 'px' }">
               <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
             </div>
@@ -191,7 +209,8 @@ const note = ref({
   category: '',
   date: '',
   size: '',
-  tags: []
+  tags: [],
+  attachments: []
 })
 const markdownContent = ref('')
 const toc = ref([])
@@ -219,6 +238,9 @@ const lightboxRef = ref(null)
 
 const notePath = computed(() => route.params.path)
 const showTocSidebar = computed(() => !loading.value && toc.value.length > 0)
+const attachments = computed(() => {
+  return Array.isArray(note.value.attachments) ? note.value.attachments : []
+})
 
 // 使用新的阅读时间计算器
 const readingTime = computed(() => {
@@ -272,6 +294,24 @@ const nextNote = computed(() => {
 
 const formatDate = (date) => {
   return dayjs(date).format('YYYY年MM月DD日')
+}
+
+const encodePathSegments = (filePath) => {
+  return String(filePath || '')
+    .split('/')
+    .filter(Boolean)
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')
+}
+
+const buildAttachmentUrl = (filePath) => {
+  return `${import.meta.env.BASE_URL}notes/${encodePathSegments(filePath)}`
+}
+
+const formatAttachmentMeta = (attachment) => {
+  const ext = attachment.ext ? attachment.ext.toUpperCase() : 'FILE'
+  const size = attachment.size || '--'
+  return `${ext} · ${size}`
 }
 
 const onFontSizeChange = (size) => {
@@ -436,6 +476,23 @@ const stripDuplicateMarkdownTitle = (content, pageTitle) => {
   return content
 }
 
+const stripMarkdownFrontmatter = (content) => {
+  const normalizedContent = String(content || '').replace(/^\uFEFF/, '')
+  const frontmatterMatch = normalizedContent.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n)?/)
+
+  if (!frontmatterMatch) {
+    return normalizedContent
+  }
+
+  const frontmatterBody = frontmatterMatch[1] || ''
+  const hasYamlKeyValue = /^[A-Za-z\u4e00-\u9fa5_][^:\r\n]*:\s*/m.test(frontmatterBody)
+  if (!hasYamlKeyValue) {
+    return normalizedContent
+  }
+
+  return normalizedContent.slice(frontmatterMatch[0].length)
+}
+
 const loadNote = async () => {
   loading.value = true
   hasRestored.value = true // 改为true，允许保存位置
@@ -459,8 +516,8 @@ const loadNote = async () => {
     if (response.ok) {
       const content = await response.text()
       
-      // 移除 frontmatter
-      const contentWithoutFrontmatter = content.replace(/^---[\s\S]*?---\n/, '')
+      // 移除 frontmatter（兼容 UTF-8 BOM 与 CRLF 换行）
+      const contentWithoutFrontmatter = stripMarkdownFrontmatter(content)
       const deduplicatedContent = stripDuplicateMarkdownTitle(contentWithoutFrontmatter, note.value.title)
       markdownContent.value = deduplicatedContent
       
@@ -709,6 +766,59 @@ watch(() => route.params.path, (newPath, oldPath) => {
   color: var(--text-secondary);
   border-radius: 4px;
   font-size: 12px;
+}
+
+.note-attachments {
+  margin-bottom: 24px;
+  padding: 18px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+
+.attachments-title {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attachment-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-secondary);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.attachment-item:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.attachment-name {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachment-meta {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  flex-shrink: 0;
 }
 
 .markdown-content {

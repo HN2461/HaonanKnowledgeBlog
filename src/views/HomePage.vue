@@ -1,115 +1,139 @@
 <template>
   <AppLayout>
-    <div class="home-page">
-      <div class="hero-section">
-        <div class="hero-background">
-          <div class="hero-gradient"></div>
-          <div class="hero-pattern"></div>
-        </div>
-        <div class="hero-content">
-          <div class="hero-badge">{{ siteConfig.hero.badge }}</div>
-          <h1 class="hero-title">{{ siteConfig.hero.title }}</h1>
-          <p class="hero-subtitle">{{ siteConfig.hero.subtitle }}</p>
+    <div class='home-page'>
+      <section class='hero-shell'>
+        <div class='hero-grid'>
+          <div class='hero-main'>
+            <p class='hero-badge'>{{ siteConfig.hero.badge }}</p>
+            <h1 class='hero-title'>{{ siteConfig.hero.title }}</h1>
+            <p class='hero-subtitle'>{{ siteConfig.hero.subtitle }}</p>
+            <p class='hero-description'>{{ siteConfig.description }}</p>
 
-          <div class="search-box">
-            <svg
-              class="search-icon"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.35-4.35"></path>
-            </svg>
-            <input
-              type="text"
-              v-model="searchQuery"
-              placeholder="搜索你想要的内容..."
-              @keyup.enter="handleSearch"
-            />
-            <button @click="handleSearch" class="search-button">搜索</button>
+            <div class='search-box'>
+              <label class='search-label' for='home-search'>全文检索</label>
+              <div class='search-field'>
+                <svg class='search-icon' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                  <circle cx='11' cy='11' r='8'></circle>
+                  <path d='m21 21-4.35-4.35'></path>
+                </svg>
+                <input
+                  id='home-search'
+                  type='text'
+                  v-model='searchQuery'
+                  placeholder='搜索你想要的内容'
+                  @keyup.enter='handleSearch'
+                />
+                <button class='search-button' @click='handleSearch'>搜索</button>
+              </div>
+            </div>
+
+            <div class='hero-actions'>
+              <router-link to='/editor' class='hero-action primary'>开始写作</router-link>
+              <router-link to='/relaxation' class='hero-action'>放松模式</router-link>
+            </div>
           </div>
 
-          <!-- 功能入口 -->
-          <div class="hero-actions">
-            <router-link to="/editor" class="hero-action-btn primary">
-              <span class="action-icon">✍️</span>
-              <span class="action-text">开始写作</span>
-            </router-link>
-            
-            <router-link to="/relaxation" class="hero-action-btn">
-              <span class="action-icon">🌅</span>
-              <span class="action-text">休闲模式</span>
-            </router-link>
-          </div>
-        </div>
-      </div>
+          <aside class='hero-panel'>
+            <h2 class='panel-title'>站点概览</h2>
+            <div class='stats-grid'>
+              <article class='stat-card'>
+                <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                  <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'></path>
+                  <path d='M14 2v6h6'></path>
+                </svg>
+                <p class='stat-value'>{{ stats.totalNotes }}</p>
+                <p class='stat-label'>篇笔记</p>
+              </article>
+              <article class='stat-card'>
+                <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                  <path d='M3 6h18'></path>
+                  <path d='M3 12h18'></path>
+                  <path d='M3 18h18'></path>
+                </svg>
+                <p class='stat-value'>{{ stats.totalCategories }}</p>
+                <p class='stat-label'>个分类</p>
+              </article>
+              <article class='stat-card'>
+                <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                  <path d='M20.59 13.41 12 22l-8.59-8.59a2 2 0 0 1 0-2.82L12 2l8.59 8.59a2 2 0 0 1 0 2.82Z'></path>
+                  <path d='M7 12h10'></path>
+                </svg>
+                <p class='stat-value'>{{ stats.totalTags }}</p>
+                <p class='stat-label'>个标签</p>
+              </article>
+            </div>
 
-      <div class="stats-section">
-        <div class="stat-card">
-          <div class="stat-icon">📝</div>
-          <div class="stat-content">
-            <div class="stat-value">{{ stats.totalNotes }}</div>
-            <div class="stat-label">篇笔记</div>
-          </div>
+            <div class='panel-divider'></div>
+            <h3 class='panel-subtitle'>最近三篇</h3>
+            <div class='quick-list' v-if='quickNotes.length > 0'>
+              <router-link
+                v-for='note in quickNotes'
+                :key='note.path'
+                :to='`/note/${note.path.replace(".md", "")}`'
+                class='quick-link'
+              >
+                <span class='quick-title'>{{ note.title }}</span>
+                <span class='quick-meta'>
+                  <span class='quick-category'>{{ note.category }}</span>
+                  <span class='quick-dot'>·</span>
+                  <span class='quick-date'>{{ formatDate(note.date, note.lastModified) }}</span>
+                </span>
+              </router-link>
+            </div>
+            <p class='quick-empty' v-else>索引加载后将显示最新内容</p>
+          </aside>
         </div>
-        <div class="stat-card">
-          <div class="stat-icon">📁</div>
-          <div class="stat-content">
-            <div class="stat-value">{{ stats.totalCategories }}</div>
-            <div class="stat-label">个分类</div>
-          </div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-icon">🏷️</div>
-          <div class="stat-content">
-            <div class="stat-value">{{ stats.totalTags }}</div>
-            <div class="stat-label">个标签</div>
-          </div>
-        </div>
-      </div>
+      </section>
 
-      <section class="recent-section">
-        <h2 class="section-title">最近更新</h2>
-        <!-- 骨架屏加载状态 -->
-        <template v-if="loading">
-          <div class="notes-grid">
-            <SkeletonScreen type="card" :count="6" />
+      <section class='section-block'>
+        <div class='section-head'>
+          <h2 class='section-title'>最近更新</h2>
+          <router-link class='section-link' to='/search'>查看全部</router-link>
+        </div>
+        <template v-if='loading'>
+          <div class='notes-grid'>
+            <SkeletonScreen type='card' :count='6' />
           </div>
         </template>
-        <!-- 实际内容 -->
         <template v-else>
-          <div class="notes-grid" v-if="recentNotes.length > 0">
+          <div class='notes-grid' v-if='recentNotes.length > 0'>
             <NoteCard
-              v-for="note in recentNotes"
-              :key="note.path"
-              :note="note"
+              v-for='note in recentNotes'
+              :key='note.path'
+              :note='note'
             />
           </div>
-          <div v-else class="empty-state">
-            <p>
-              暂无笔记，请在 <code>public/notes/</code> 目录下添加 Markdown 文件
-            </p>
+          <div v-else class='empty-state'>
+            <p>暂无笔记，请在 <code>public/notes/</code> 目录下添加 Markdown 文件</p>
           </div>
         </template>
       </section>
 
-      <section class="categories-section">
-        <h2 class="section-title">笔记分类</h2>
-        <div class="categories-grid" v-if="categories.length > 0">
+      <section class='section-block'>
+        <div class='section-head'>
+          <h2 class='section-title'>按主题浏览</h2>
+        </div>
+        <div class='categories-grid' v-if='categorySummaries.length > 0'>
           <router-link
-            v-for="category in categories"
-            :key="category.path"
-            :to="`/category/${category.path}`"
-            class="category-card"
+            v-for='category in categorySummaries'
+            :key='category.path'
+            :to='`/category/${category.path}`'
+            class='category-card'
           >
-            <div class="category-icon">📂</div>
-            <h3 class="category-name">{{ category.name }}</h3>
-            <p class="category-count">{{ category.notes.length }} 篇笔记</p>
+            <div class='category-icon'>
+              <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+                <path d='M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z'></path>
+              </svg>
+            </div>
+            <div class='category-content'>
+              <h3 class='category-name'>{{ category.name }}</h3>
+              <p class='category-count'>{{ category.notesCount }} 篇笔记</p>
+              <p class='category-date' v-if='category.latestDate'>更新于 {{ formatDate(category.latestDate) }}</p>
+            </div>
           </router-link>
+        </div>
+        <div class='empty-state' v-else>
+          <p>暂无分类数据</p>
         </div>
       </section>
 
@@ -119,475 +143,603 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from "vue";
-import { useRouter } from "vue-router";
-import { siteConfig } from "../config/site";
-import AppLayout from "../components/AppLayout.vue";
-import NoteCard from "../components/NoteCard.vue";
-import BackToTop from "../components/BackToTop.vue";
-import SkeletonScreen from "../components/SkeletonScreen.vue";
+import { computed, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import AppLayout from '@/components/AppLayout.vue'
+import BackToTop from '@/components/BackToTop.vue'
+import NoteCard from '@/components/NoteCard.vue'
+import SkeletonScreen from '@/components/SkeletonScreen.vue'
+import { siteConfig } from '@/config/site'
 
-const router = useRouter();
-const searchQuery = ref("");
-const notesData = ref(null);
-const loading = ref(true);
+const router = useRouter()
+const searchQuery = ref('')
+const notesData = ref(null)
+const loading = ref(true)
 
 const stats = computed(() => {
   if (!notesData.value) {
-    return { totalNotes: 0, totalCategories: 0, totalTags: 0 };
+    return { totalNotes: 0, totalCategories: 0, totalTags: 0 }
   }
 
-  const allTags = new Set();
+  const allTags = new Set()
   notesData.value.allNotes.forEach((note) => {
-    note.tags.forEach((tag) => allTags.add(tag));
-  });
+    note.tags.forEach((tag) => allTags.add(tag))
+  })
 
   return {
     totalNotes: notesData.value.totalNotes || 0,
     totalCategories: notesData.value.totalCategories || 0,
-    totalTags: allTags.size,
-  };
-});
+    totalTags: allTags.size
+  }
+})
+
+const getNoteTimestamp = (note) => {
+  const candidates = [note.date, note.lastModified]
+
+  for (const value of candidates) {
+    if (!value) {
+      continue
+    }
+
+    const time = new Date(value).getTime()
+    if (!Number.isNaN(time)) {
+      return time
+    }
+  }
+
+  return 0
+}
 
 const recentNotes = computed(() => {
   if (!notesData.value || !notesData.value.allNotes) {
-    return [];
+    return []
   }
-  return notesData.value.allNotes.slice(0, 6);
-});
+  return [...notesData.value.allNotes]
+    .sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a))
+    .slice(0, 6)
+})
 
-const categories = computed(() => {
-  if (!notesData.value || !notesData.value.categories) {
-    return [];
+const quickNotes = computed(() => {
+  if (!notesData.value || !notesData.value.allNotes) {
+    return []
   }
-  return notesData.value.categories;
-});
+  return [...notesData.value.allNotes]
+    .sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a))
+    .slice(0, 3)
+})
+
+const categorySummaries = computed(() => {
+  if (!notesData.value || !notesData.value.categories) {
+    return []
+  }
+
+  return notesData.value.categories.map((category) => {
+    const dates = category.notes
+      .map((note) => getNoteTimestamp(note))
+      .filter((time) => time > 0)
+      .sort((a, b) => b - a)
+
+    return {
+      name: category.name,
+      path: category.path,
+      notesCount: category.notes.length,
+      latestDate: dates[0] ? new Date(dates[0]).toISOString() : ''
+    }
+  }).filter((category) => category.notesCount > 0)
+})
+
+const formatDate = (date, fallbackDate) => {
+  const candidates = [date, fallbackDate]
+
+  for (const value of candidates) {
+    if (!value) {
+      continue
+    }
+
+    const parsed = new Date(value)
+    if (!Number.isNaN(parsed.getTime())) {
+      return parsed.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      })
+    }
+  }
+
+  return '未标注日期'
+}
 
 const handleSearch = () => {
-  if (searchQuery.value.trim()) {
-    router.push(`/search?q=${encodeURIComponent(searchQuery.value)}`);
+  if (!searchQuery.value.trim()) {
+    return
   }
-};
+  router.push(`/search?q=${encodeURIComponent(searchQuery.value)}`)
+}
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`);
-    notesData.value = await response.json();
+    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
+    notesData.value = await response.json()
   } catch (error) {
-    console.error("加载笔记索引失败:", error);
+    console.error('加载笔记索引失败:', error)
   } finally {
-    loading.value = false;
+    loading.value = false
   }
-});
+})
 </script>
 
 <style scoped>
 .home-page {
-  max-width: 1200px;
+  max-width: 1180px;
   margin: 0 auto;
+  padding-bottom: 28px;
 }
 
-.hero-section {
+.hero-shell {
   position: relative;
-  text-align: center;
-  padding: 80px 20px;
-  margin-bottom: 60px;
   overflow: hidden;
   border-radius: 24px;
+  border: 1px solid #dbe4f0;
+  padding: 36px;
+  margin-bottom: 36px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(37, 99, 235, 0.12), transparent 42%),
+    radial-gradient(circle at 90% 100%, rgba(14, 116, 144, 0.12), transparent 46%),
+    linear-gradient(145deg, #f9fcff 0%, #f6f9fe 45%, #f4f8fd 100%);
 }
 
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
-}
-
-.hero-gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  opacity: 0.9;
-}
-
-.hero-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-      circle at 20% 50%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-    );
-  animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.hero-content {
+.hero-grid {
   position: relative;
   z-index: 1;
-  color: white;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+}
+
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-badge {
-  display: inline-block;
-  padding: 8px 20px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0 0 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .hero-title {
-  font-size: 56px;
-  font-weight: 800;
-  margin: 0 0 16px 0;
-  letter-spacing: -1px;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  margin: 0;
+  color: #0f172a;
+  font-size: clamp(34px, 5.4vw, 56px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
 }
 
 .hero-subtitle {
+  margin: 16px 0 0;
+  color: #334155;
   font-size: 18px;
-  margin: 0 0 40px 0;
-  opacity: 0.95;
-  font-weight: 400;
-  letter-spacing: 1px;
+  line-height: 1.7;
+}
+
+.hero-description {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .search-box {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 6px 6px 6px 20px;
-  border-radius: 50px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.3s;
-}
-
-.search-box:hover {
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
-}
-
-.search-icon {
-  color: #666;
-  flex-shrink: 0;
-}
-
-.search-box input {
-  flex: 1;
-  border: none;
-  padding: 12px 8px;
-  font-size: 16px;
-  color: #333;
-  background: transparent;
-}
-
-.search-box input::placeholder {
-  color: #999;
-}
-
-.search-button {
-  padding: 12px 28px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 600;
-  transition: all 0.3s;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-}
-
-.search-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-}
-
-/* 功能入口 */
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
+  width: 100%;
+  max-width: 700px;
   margin-top: 24px;
 }
 
-.hero-action-btn {
+.search-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 14px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-field:focus-within {
+  border-color: #2563eb;
+  box-shadow: 0 10px 28px rgba(37, 99, 235, 0.2);
+}
+
+.search-icon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.search-field input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  font-size: 15px;
+  color: #0f172a;
+  min-width: 0;
+}
+
+.search-field input:focus,
+.search-field input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-field input::placeholder {
+  color: #94a3b8;
+}
+
+.search-button {
+  border-radius: 10px;
+  background: linear-gradient(145deg, #2563eb 0%, #1d4ed8 100%);
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 18px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.28);
+}
+
+.hero-actions {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-action {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
-  color: white;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.3s;
-}
-
-.hero-action-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
-.hero-action-btn.primary {
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--primary-color);
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  color: #334155;
   font-weight: 600;
+  text-decoration: none;
+  background: #fff;
+  transition: all 0.2s ease;
 }
 
-.hero-action-btn.primary:hover {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+.hero-action:hover {
+  border-color: #94a3b8;
+  transform: translateY(-1px);
 }
 
-.action-icon {
-  font-size: 20px;
+.hero-action.primary {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
 }
 
-.action-text {
-  letter-spacing: 0.5px;
+.hero-action.primary:hover {
+  border-color: #1e40af;
+  background: #1e40af;
 }
 
-.stats-section {
+.hero-panel {
+  border-radius: 18px;
+  border: 1px solid #dbe4f0;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(4px);
+  padding: 18px;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 17px;
+  color: #0f172a;
+}
+
+.stats-grid {
+  margin-top: 12px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-bottom: 40px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .stat-card {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 28px;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #dbe4f0;
+  background: #fff;
+  padding: 10px;
+  color: #475569;
 }
 
-.stat-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.stat-card:hover::before {
-  opacity: 1;
-}
-
-.stat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-.stat-icon {
-  font-size: 40px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.stat-content {
-  flex: 1;
+.stat-card svg {
+  color: #2563eb;
 }
 
 .stat-value {
-  font-size: 36px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin: 10px 0 0;
+  font-size: 22px;
+  color: #0f172a;
   line-height: 1;
-  margin-bottom: 6px;
 }
 
 .stat-label {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 500;
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 12px;
 }
 
-.recent-section,
-.categories-section {
-  margin-bottom: 40px;
+.panel-divider {
+  height: 1px;
+  background: #dbe4f0;
+  margin: 14px 0 12px;
+}
+
+.panel-subtitle {
+  margin: 0;
+  color: #334155;
+  font-size: 14px;
+}
+
+.quick-list {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.quick-link {
+  display: grid;
+  gap: 2px;
+  border-radius: 10px;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.quick-link:hover {
+  border-color: #93c5fd;
+  background-color: #f8fbff;
+}
+
+.quick-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.quick-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quick-category {
+  color: #475569;
+  font-size: 12px;
+}
+
+.quick-dot {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.quick-date {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.quick-empty {
+  margin: 10px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.section-block {
+  margin-bottom: 32px;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
 }
 
 .section-title {
-  position: relative;
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin: 0 0 32px 0;
-  padding-left: 20px;
+  margin: 0;
+  color: #0f172a;
+  font-size: 26px;
+  letter-spacing: -0.02em;
 }
 
-.section-title::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 32px;
-  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
-  border-radius: 3px;
+.section-link {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.section-link:hover {
+  color: #1d4ed8;
 }
 
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(304px, 1fr));
+  gap: 18px;
+}
+
+.notes-grid :deep(.note-card) {
+  border-radius: 14px;
+  border-color: #dbe4f0;
+  box-shadow: none;
+}
+
+.notes-grid :deep(.note-card:hover) {
+  transform: translateY(-4px);
+  border-color: #93c5fd;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+}
+
+.notes-grid :deep(.card-gradient) {
+  background: linear-gradient(90deg, #2563eb 0%, #0ea5e9 100%);
+}
+
+.notes-grid :deep(.card-category) {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+.notes-grid :deep(.note-card:hover .tag) {
+  color: #1d4ed8;
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
 }
 
 .category-card {
-  position: relative;
-  padding: 32px 24px;
-  background-color: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  text-align: center;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border: 1px solid #dbe4f0;
+  border-radius: 14px;
+  background: #fff;
+  padding: 16px;
   text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.category-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
-.category-card:hover::before {
-  opacity: 1;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  border-color: rgba(102, 126, 234, 0.4);
+  transform: translateY(-3px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
 
 .category-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  transition: transform 0.4s;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eff6ff;
+  color: #1d4ed8;
+  flex-shrink: 0;
 }
 
-.category-card:hover .category-icon {
-  transform: scale(1.1) rotate(5deg);
+.category-content {
+  min-width: 0;
 }
 
 .category-name {
-  position: relative;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin: 0 0 8px 0;
-  z-index: 1;
+  margin: 0;
+  color: #0f172a;
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .category-count {
-  position: relative;
+  margin: 6px 0 0;
+  color: #475569;
   font-size: 13px;
-  color: var(--text-secondary);
-  margin: 0;
-  font-weight: 500;
-  z-index: 1;
+}
+
+.category-date {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
 }
 
 .empty-state {
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
   text-align: center;
-  padding: 60px 20px;
-  color: var(--text-secondary);
+  padding: 36px 20px;
+  color: #64748b;
+  background: #fff;
 }
 
 .empty-state code {
-  color: var(--primary-color);
-  background-color: var(--bg-tertiary);
-  padding: 4px 8px;
-  border-radius: 4px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+@media (max-width: 1080px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    max-width: 560px;
+  }
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    padding: 60px 20px;
+  .hero-shell {
+    padding: 24px;
+    border-radius: 20px;
   }
 
   .hero-title {
-    font-size: 36px;
+    font-size: clamp(30px, 10vw, 42px);
   }
 
   .hero-subtitle {
-    font-size: 15px;
+    font-size: 16px;
   }
 
-  .search-box {
-    padding: 6px;
+  .search-field {
+    padding: 8px;
   }
 
   .search-button {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 9px 14px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .notes-grid,
   .categories-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search-field,
+  .search-button,
+  .hero-action,
+  .quick-link,
+  .category-card,
+  .notes-grid :deep(.note-card) {
+    transition: none;
   }
 }
 </style>
