@@ -5,20 +5,23 @@
       <span class="date">{{ currentDate }}</span>
     </div>
     <div class="weather-display" v-if="weather">
-      <span class="weather-icon">{{ getWeatherIcon(weather.description) }}</span>
       <div class="weather-info">
         <div class="weather-main">
           <span class="temperature">{{ weather.temperature }}°</span>
           <span class="weather-desc">{{ weather.description }}</span>
         </div>
         <div class="weather-detail" v-if="weather.city">
-          <span class="city-name" @click="showLocationModal = true" title="点击更改城市">{{ weather.city }}</span>
+          <button class="city-button" @click="showLocationModal = true" title="点击更改城市">{{ weather.city }}</button>
           <button 
             class="location-btn" 
             @click="showLocationModal = true"
             title="设置城市定位"
+            aria-label="设置城市定位"
           >
-            📍
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21s6-4.35 6-10a6 6 0 1 0-12 0c0 5.65 6 10 6 10z"></path>
+              <circle cx="12" cy="11" r="2"></circle>
+            </svg>
           </button>
         </div>
       </div>
@@ -36,7 +39,7 @@
         <div class="modal-body">
           <div class="location-options">
             <div class="option-card" :class="{ active: locationMode === 'auto' }" @click="setLocationMode('auto')">
-              <div class="option-icon">🌐</div>
+              <div class="option-icon">IP</div>
               <div class="option-text">
                 <h4>自动定位</h4>
                 <p>根据IP地址自动获取位置</p>
@@ -44,7 +47,7 @@
             </div>
             
             <div class="option-card" :class="{ active: locationMode === 'manual' }" @click="setLocationMode('manual')">
-              <div class="option-icon">📍</div>
+              <div class="option-icon">城市</div>
               <div class="option-text">
                 <h4>手动设置</h4>
                 <p>选择或搜索指定城市</p>
@@ -551,18 +554,17 @@ onUnmounted(() => {
 
 <style scoped>
 .time-weather {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  gap: 12px;
   font-size: 13px;
   color: var(--text-secondary);
 }
 
 .time-display {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px;
-  white-space: nowrap;
+  gap: 6px 10px;
 }
 
 .time {
@@ -578,16 +580,10 @@ onUnmounted(() => {
 }
 
 .weather-display {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding-left: 16px;
-  border-left: 1px solid var(--border-color);
-}
-
-.weather-icon {
-  font-size: 20px;
-  line-height: 1;
+  display: grid;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(var(--primary-color-rgb), 0.08);
 }
 
 .weather-info {
@@ -620,6 +616,17 @@ onUnmounted(() => {
   gap: 4px;
 }
 
+.city-button {
+  padding: 0;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  text-align: left;
+}
+
+.city-button:hover {
+  color: var(--primary-color);
+}
+
 .city-name {
   font-size: 11px;
   color: var(--text-tertiary);
@@ -632,18 +639,21 @@ onUnmounted(() => {
 }
 
 .location-btn {
-  background: none;
-  border: none;
-  font-size: 12px;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-  padding: 2px;
-  margin-left: 4px;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.16);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
 }
 
 .location-btn:hover {
-  opacity: 1;
+  color: var(--primary-color);
+  border-color: rgba(var(--primary-color-rgb), 0.26);
+  background: rgba(var(--primary-color-rgb), 0.06);
 }
 
 /* 位置设置弹窗 */
@@ -742,8 +752,17 @@ onUnmounted(() => {
 }
 
 .option-icon {
-  font-size: 24px;
-  line-height: 1;
+  min-width: 44px;
+  height: 28px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .option-text h4 {
@@ -980,7 +999,7 @@ onUnmounted(() => {
 
 @media (max-width: 1024px) {
   .time-weather {
-    gap: 16px;
+    gap: 14px;
   }
   
   .time-display {
@@ -1002,8 +1021,6 @@ onUnmounted(() => {
   .time-weather {
     gap: 12px;
     font-size: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
   }
   
   .time {
@@ -1016,7 +1033,7 @@ onUnmounted(() => {
   }
   
   .weather-display {
-    padding-left: 12px;
+    padding-top: 10px;
   }
   
   .weather-detail {
@@ -1069,12 +1086,8 @@ onUnmounted(() => {
   }
   
   .weather-display {
-    padding-left: 8px;
-    border-left: none;
-  }
-  
-  .weather-icon {
-    font-size: 16px;
+    padding-top: 8px;
+    border-top: none;
   }
   
   .temperature {

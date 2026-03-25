@@ -1,6 +1,6 @@
 <template>
   <div class="table-of-contents" v-if="toc.length > 0" ref="tocContainer">
-    <h4 class="toc-title">目录</h4>
+    <h4 class="toc-title">本页目录</h4>
     <nav class="toc-nav" ref="tocNav">
       <a
         v-for="item in toc"
@@ -192,21 +192,23 @@ onUnmounted(() => {
 .table-of-contents {
   position: sticky;
   top: 80px;
-  padding: 12px;
-  background-color: transparent;
+  padding: 16px;
+  background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 14px;
   max-height: calc(100vh - 160px);
   overflow-y: auto;
 }
 
 .toc-title {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
-  margin: 0 0 10px 0;
-  padding-bottom: 8px;
+  margin: 0 0 12px 0;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border-color);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .toc-nav {
@@ -216,20 +218,20 @@ onUnmounted(() => {
 }
 
 .toc-item {
-  padding: 8px 10px;
+  padding: 7px 10px;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.6;
   transition: color 0.2s, background-color 0.2s;
   display: block;
   border-left: 2px solid transparent;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 .toc-item:hover {
   color: var(--text-primary);
-  background-color: rgba(148, 163, 184, 0.12);
+  background-color: rgba(var(--primary-color-rgb), 0.05);
 }
 
 .toc-item.active {
@@ -242,22 +244,22 @@ onUnmounted(() => {
 .toc-level-1 {
   padding-left: 10px;
   font-weight: 500;
-  margin-top: 6px;
-}
-
-.toc-level-2 {
-  padding-left: 18px;
   margin-top: 4px;
 }
 
+.toc-level-2 {
+  padding-left: 16px;
+  margin-top: 2px;
+}
+
 .toc-level-3 {
-  padding-left: 30px;
+  padding-left: 26px;
   font-size: 12px;
   color: var(--text-tertiary);
 }
 
 .toc-level-4 {
-  padding-left: 42px;
+  padding-left: 36px;
   font-size: 12px;
   color: var(--text-tertiary);
 }

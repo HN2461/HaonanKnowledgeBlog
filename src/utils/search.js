@@ -1,9 +1,16 @@
 import Fuse from 'fuse.js'
+import { cleanNoteText, getNoteExcerpt } from '@/utils/notePresentation'
 
 let fuseInstance = null
+let indexedNotes = []
+let searchInitPromise = null
+const SEARCH_HISTORY_KEY = 'search-history'
+const SEARCH_HISTORY_LIMIT = 10
 
 // 初始化搜索引擎
 export function initSearch(notes) {
+  indexedNotes = Array.isArray(notes) ? notes : []
+
   const options = {
     keys: [
       { name: 'title', weight: 0.3 },        // 标题权重最高
@@ -21,8 +28,34 @@ export function initSearch(notes) {
     findAllMatches: true   // 查找所有匹配项
   }
 
-  fuseInstance = new Fuse(notes, options)
+  fuseInstance = new Fuse(indexedNotes, options)
   return fuseInstance
+}
+
+export async function ensureSearchReady() {
+  if (fuseInstance && indexedNotes.length > 0) {
+    return indexedNotes
+  }
+
+  if (!searchInitPromise) {
+    searchInitPromise = fetch(`${import.meta.env.BASE_URL}notes-index.json`)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`notes-index request failed: ${response.status}`)
+        }
+
+        const data = await response.json()
+        const notes = data.allNotes || []
+        initSearch(notes)
+        return notes
+      })
+      .catch((error) => {
+        searchInitPromise = null
+        throw error
+      })
+  }
+
+  return searchInitPromise
 }
 
 // 搜索笔记
@@ -123,7 +156,11 @@ function calculateRelevanceScore(result, query) {
 
 // 提取匹配的内容片段
 function extractMatchedContent(item, query) {
-  if (!item.content) return item.description || ''
+  if (!item.content) {
+    return getNoteExcerpt(item, {
+      maxLength: 160
+    })
+  }
   
   const queryLower = query.toLowerCase()
   const content = item.content
@@ -149,11 +186,13 @@ function extractMatchedContent(item, query) {
     if (start > 0) excerpt = '...' + excerpt
     if (end < content.length) excerpt = excerpt + '...'
     
-    return excerpt
+    return cleanNoteText(excerpt)
   }
   
   // 如果没找到匹配，返回开头部分
-  return content.substring(0, 200) + (content.length > 200 ? '...' : '')
+  return getNoteExcerpt(item, {
+    maxLength: 180
+  })
 }
 
 // 高亮匹配文本
@@ -189,25 +228,32 @@ export function highlightMatches(text, matches) {
 
 // 保存搜索历史
 export function saveSearchHistory(query) {
-  const history = getSearchHistory()
-  
-  // 移除重复项
-  const filtered = history.filter(item => item !== query)
-  
-  // 添加到开头
-  filtered.unshift(query)
-  
-  // 只保留最近10条
-  const limited = filtered.slice(0, 10)
-  
-  localStorage.setItem('search-history', JSON.stringify(limited))
+  const normalizedQuery = typeof query === 'string' ? query.trim() : ''
+
+  if (normalizedQuery.length <= 1) {
+    return
+  }
+
+  const nextHistory = normalizeSearchHistory([
+    normalizedQuery,
+    ...getSearchHistory().filter(item => item !== normalizedQuery)
+  ])
+
+  localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(nextHistory))
 }
 
 // 获取搜索历史
 export function getSearchHistory() {
   try {
-    const history = localStorage.getItem('search-history')
-    return history ? JSON.parse(history) : []
+    const history = localStorage.getItem(SEARCH_HISTORY_KEY)
+    const parsedHistory = history ? JSON.parse(history) : []
+    const normalizedHistory = normalizeSearchHistory(parsedHistory)
+
+    if (JSON.stringify(parsedHistory) !== JSON.stringify(normalizedHistory)) {
+      localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(normalizedHistory))
+    }
+
+    return normalizedHistory
   } catch (error) {
     console.error('读取搜索历史失败:', error)
     return []
@@ -216,5 +262,16 @@ export function getSearchHistory() {
 
 // 清除搜索历史
 export function clearSearchHistory() {
-  localStorage.removeItem('search-history')
+  localStorage.removeItem(SEARCH_HISTORY_KEY)
+}
+
+function normalizeSearchHistory(history) {
+  if (!Array.isArray(history)) {
+    return []
+  }
+
+  return history
+    .map((item) => typeof item === 'string' ? item.trim() : '')
+    .filter((item, index, list) => item.length > 1 && list.indexOf(item) === index)
+    .slice(0, SEARCH_HISTORY_LIMIT)
 }

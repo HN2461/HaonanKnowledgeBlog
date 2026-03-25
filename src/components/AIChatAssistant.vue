@@ -6,7 +6,7 @@
         <!-- 头部 -->
         <div class="chat-header">
           <div class="header-left">
-            <span class="chat-icon">🤖</span>
+            <span class="chat-icon">AI</span>
             <div class="header-info">
               <h4>AI 知识助手</h4>
               <span class="status" :class="{ online: isOnline }">
@@ -77,13 +77,13 @@
         <div v-show="!isMinimized" class="chat-body" ref="chatBody">
           <!-- 欢迎消息 -->
           <div v-if="messages.length === 0" class="welcome-message">
-            <h5>👋 您好！我是 AI 知识助手</h5>
+            <h5>您好，我是 AI 知识助手</h5>
             <p>我可以帮您：</p>
             <ul>
-              <li>🔍 搜索相关技术文章</li>
-              <li>📚 解答技术问题</li>
-              <li>💡 推荐学习资源</li>
-              <li>📝 总结文章要点</li>
+              <li>搜索相关技术笔记</li>
+              <li>整理问题对应的文章入口</li>
+              <li>辅助梳理学习路径和关键词</li>
+              <li>总结文章要点</li>
             </ul>
             <div class="quick-questions">
               <p>快速提问：</p>
@@ -106,7 +106,7 @@
             :class="msg.type"
           >
             <div class="message-avatar">
-              {{ msg.type === "user" ? "👤" : "🤖" }}
+              {{ msg.type === "user" ? "你" : "AI" }}
             </div>
             <div class="message-content">
               <div class="message-text" v-html="msg.text"></div>
@@ -116,7 +116,7 @@
                 v-if="msg.articles && msg.articles.length > 0"
                 class="related-articles"
               >
-                <p class="related-title">📎 相关文章：</p>
+                <p class="related-title">相关文章</p>
                 <div
                   v-for="article in msg.articles"
                   :key="article.path"
@@ -125,6 +125,7 @@
                 >
                   <span class="article-title">{{ article.title }}</span>
                   <span class="article-category">{{ article.category }}</span>
+                  <p class="article-excerpt" v-if="article.excerpt">{{ article.excerpt }}</p>
                 </div>
               </div>
 
@@ -134,7 +135,7 @@
 
           <!-- 打字动画 -->
           <div v-if="isTyping" class="typing-indicator">
-            <div class="typing-avatar">🤖</div>
+            <div class="typing-avatar">AI</div>
             <div class="typing-dots">
               <span></span>
               <span></span>
@@ -179,28 +180,29 @@
 </template>
 
 <script setup>
-import { ref, nextTick, onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { ref, nextTick, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { getNoteExcerpt } from '@/utils/notePresentation'
 
-const router = useRouter();
+const router = useRouter()
 
 // 状态
-const isOpen = ref(false);
-const isMinimized = ref(false);
-const isOnline = ref(true);
-const isTyping = ref(false);
+const isOpen = ref(false)
+const isMinimized = ref(false)
+const isOnline = ref(true)
+const isTyping = ref(false)
 
 // 消息相关
-const messages = ref([]);
-const inputText = ref("");
-const chatBody = ref(null);
+const messages = ref([])
+const inputText = ref('')
+const chatBody = ref(null)
 
 // 笔记数据
-let notesData = null;
-const CHAT_STORAGE_KEY = "chat-messages";
-const MAX_HISTORY_MESSAGES = 12;
-const MAX_ARTICLES_PER_MESSAGE = 3;
-const MAX_MESSAGE_TEXT_LENGTH = 1500;
+let notesData = null
+const CHAT_STORAGE_KEY = 'chat-messages'
+const MAX_HISTORY_MESSAGES = 12
+const MAX_ARTICLES_PER_MESSAGE = 3
+const MAX_MESSAGE_TEXT_LENGTH = 1500
 
 // 快速问题
 const quickQuestions = [
@@ -233,11 +235,14 @@ const loadNotesData = async () => {
 };
 
 const toArticlePreview = (note = {}, score = 0) => ({
-  title: note.title || "未命名文章",
-  path: note.path || "",
-  category: note.category || "未分类",
+  title: note.title || '未命名文章',
+  path: note.path || '',
+  category: note.category || '未分类',
+  excerpt: getNoteExcerpt(note, {
+    maxLength: 76
+  }),
   score,
-});
+})
 
 const normalizeMessage = (message) => {
   const source = message && typeof message === "object" ? message : {};
@@ -259,6 +264,7 @@ const normalizeMessage = (message) => {
         title: article.title || "未命名文章",
         path: article.path,
         category: article.category || "未分类",
+        excerpt: typeof article.excerpt === "string" ? article.excerpt : "",
       }));
   }
 
@@ -281,8 +287,8 @@ const searchArticles = (query) => {
   notesData.allNotes.forEach((note) => {
     let score = 0;
     const titleLower = note.title.toLowerCase();
-    const descLower = (note.description || "").toLowerCase();
-    const tagsLower = (note.tags || []).join(" ").toLowerCase();
+    const descLower = getNoteExcerpt(note, { maxLength: 120 }).toLowerCase()
+    const tagsLower = (note.tags || []).join(' ').toLowerCase()
 
     keywords.forEach((keyword) => {
       if (titleLower.includes(keyword)) score += 3;
@@ -610,7 +616,6 @@ onUnmounted(() => {
 }
 
 .chat-icon {
-  font-size: 24px;
   width: 34px;
   height: 34px;
   border-radius: 10px;
@@ -618,6 +623,9 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
 .header-info h4 {
@@ -783,7 +791,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 700;
   background: var(--bg-tertiary);
   flex-shrink: 0;
 }
@@ -836,15 +845,16 @@ onUnmounted(() => {
 
 .related-title {
   font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
   margin: 0 0 8px;
 }
 
 .article-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px 10px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 8px;
+  padding: 10px 12px;
   margin: 6px 0;
   background: var(--bg-secondary);
   border-radius: 10px;
@@ -873,7 +883,15 @@ onUnmounted(() => {
   background: var(--bg-primary);
   padding: 3px 7px;
   border-radius: 6px;
-  margin-left: 8px;
+  justify-self: end;
+}
+
+.article-excerpt {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .typing-indicator {
@@ -890,7 +908,8 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .typing-dots {

@@ -1,40 +1,50 @@
 <template>
-  <div id="app" :class="{ 'dark-theme': isDarkTheme }">
-    <router-view v-slot="{ Component, route }">
-      <Transition 
-        name="page-fade" 
-        mode="out-in"
-        @after-enter="scrollToTop"
+  <div id='app' :class="{ 'dark-theme': isDarkTheme }">
+    <router-view v-slot='{ Component, route }'>
+      <Transition
+        name='page-fade'
+        mode='out-in'
+        @after-enter='scrollToTop'
       >
-        <component :is="Component" :key="route.path" />
+        <component :is='Component' :key='route.path' />
       </Transition>
     </router-view>
-    <TerminalMode ref="terminal" />
+    <TerminalMode ref='terminal' />
     <AIChatAssistant />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import TerminalMode from './components/TerminalMode.vue'
 import AIChatAssistant from './components/AIChatAssistant.vue'
+import { getTheme } from './utils/theme'
 
 const isDarkTheme = ref(false)
 const terminal = ref(null)
+
+const applyThemeClass = (isDark) => {
+  document.documentElement.classList.toggle('dark-theme', isDark)
+  document.body.classList.toggle('dark-theme', isDark)
+}
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'instant' })
 }
 
+const handleThemeChange = (event) => {
+  isDarkTheme.value = event.detail.isDark
+  applyThemeClass(isDarkTheme.value)
+}
+
 onMounted(() => {
-  // 从 localStorage 读取主题设置
-  const savedTheme = localStorage.getItem('theme')
-  isDarkTheme.value = savedTheme === 'dark'
-  
-  // 监听主题切换事件
-  window.addEventListener('theme-change', (e) => {
-    isDarkTheme.value = e.detail.isDark
-  })
+  isDarkTheme.value = getTheme() === 'dark'
+  applyThemeClass(isDarkTheme.value)
+  window.addEventListener('theme-change', handleThemeChange)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('theme-change', handleThemeChange)
 })
 </script>
 
@@ -50,7 +60,6 @@ onMounted(() => {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* 页面切换动画 */
 .page-fade-enter-active,
 .page-fade-leave-active {
   transition: opacity 0.2s ease;

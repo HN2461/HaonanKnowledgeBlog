@@ -1,16 +1,6 @@
 <template>
   <AppLayout>
-    <template #breadcrumb>
-      <Breadcrumb>
-        <router-link to="/">首页</router-link>
-        <span class="separator">/</span>
-        <router-link :to="`/category/${note.category}`">{{ note.category }}</router-link>
-        <span class="separator">/</span>
-        <span class="current">{{ note.title }}</span>
-      </Breadcrumb>
-    </template>
-    
-    <div class="note-detail-page" style="padding-top: 20px;">
+    <div class="note-detail-page">
       <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
         <!-- 骨架屏加载状态 -->
         <template v-if="loading">
@@ -22,18 +12,32 @@
         <!-- 实际内容 -->
         <template v-else>
           <article class="note-content">
+            <Breadcrumb class="note-breadcrumb">
+              <router-link to="/">首页</router-link>
+              <span class="separator">/</span>
+              <router-link :to="`/category/${note.category}`">{{ note.category }}</router-link>
+              <span class="separator">/</span>
+              <span class="current">{{ note.title }}</span>
+            </Breadcrumb>
+
             <div class="note-header">
+              <div class="note-kicker">
+                <router-link :to="`/category/${note.category}`" class="note-category-chip">{{ note.category }}</router-link>
+                <span class="note-kicker-text">整理于 {{ noteDateLabel }}</span>
+                <span class="note-kicker-text" v-if="attachments.length > 0">含 {{ attachments.length }} 个附件</span>
+              </div>
               <h1 class="note-title">{{ note.title }}</h1>
-              
+              <p class="note-description" v-if="noteSummary">{{ noteSummary }}</p>
+
               <div class="note-meta">
-                <span class="meta-item" v-if="note.hasRealDate">
+                <span class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
                     <line x1="8" y1="2" x2="8" y2="6"></line>
                     <line x1="3" y1="10" x2="21" y2="10"></line>
                   </svg>
-                  {{ formatDate(note.date) }}
+                  {{ noteDateLabel }}
                 </span>
                 <span class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -44,8 +48,12 @@
                 </span>
                 <span class="meta-item">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M4 19h16"></path>
+                    <path d="M4 5h16"></path>
+                    <path d="M9 9h10"></path>
+                    <path d="M9 15h10"></path>
+                    <path d="M4 9h2"></path>
+                    <path d="M4 15h2"></path>
                   </svg>
                   {{ wordCount }} 字
                 </span>
@@ -64,7 +72,7 @@
             </div>
 
             <div class="note-attachments" v-if="attachments.length > 0">
-              <h2 class="attachments-title">同目录附件</h2>
+              <h2 class="attachments-title">附件与脚本</h2>
               <div class="attachments-list">
                 <a
                   v-for="attachment in attachments"
@@ -183,24 +191,28 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
-import dayjs from 'dayjs'
-import AppLayout from '../components/AppLayout.vue'
-import Breadcrumb from '../components/Breadcrumb.vue'
-import MarkdownRenderer from '../components/MarkdownRenderer.vue'
-import TableOfContents from '../components/TableOfContents.vue'
-import SkeletonScreen from '../components/SkeletonScreen.vue'
-import ImageLightbox from '../components/ImageLightbox.vue'
-import ReadingToolbar from '../components/ReadingToolbar.vue'
-import FullscreenReader from '../components/FullscreenReader.vue'
-import { extractTOC } from '../utils/markdown'
-import { calculateReadingTime } from '../utils/readingTime'
-import { 
-  getReadingPosition, 
-  createDebouncedSave, 
-  hasReadingPosition,
+import AppLayout from '@/components/AppLayout.vue'
+import Breadcrumb from '@/components/Breadcrumb.vue'
+import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
+import TableOfContents from '@/components/TableOfContents.vue'
+import SkeletonScreen from '@/components/SkeletonScreen.vue'
+import ImageLightbox from '@/components/ImageLightbox.vue'
+import ReadingToolbar from '@/components/ReadingToolbar.vue'
+import FullscreenReader from '@/components/FullscreenReader.vue'
+import { extractTOC } from '@/utils/markdown'
+import {
+  formatWordCount,
+  getNoteDateLabel,
+  getNoteExcerpt,
+  getNoteReadingMinutes,
+  getNoteWordCount
+} from '@/utils/notePresentation'
+import {
+  getReadingPosition,
+  createDebouncedSave,
   formatReadingPosition,
   saveReadingPosition
-} from '../utils/readingPosition'
+} from '@/utils/readingPosition'
 
 const route = useRoute()
 const loading = ref(true)
@@ -242,35 +254,30 @@ const attachments = computed(() => {
   return Array.isArray(note.value.attachments) ? note.value.attachments : []
 })
 
-// 使用新的阅读时间计算器
-const readingTime = computed(() => {
-  return calculateReadingTime(markdownContent.value)
+const notePresentationSource = computed(() => {
+  return {
+    ...note.value,
+    content: markdownContent.value || note.value.content || ''
+  }
 })
 
-// 计算字数（不含代码块）
+const noteSummary = computed(() => {
+  return getNoteExcerpt(notePresentationSource.value, {
+    maxLength: 220,
+    fallback: ''
+  })
+})
+
+const noteDateLabel = computed(() => {
+  return getNoteDateLabel(note.value, 'YYYY年MM月DD日')
+})
+
+const readingTime = computed(() => {
+  return getNoteReadingMinutes(notePresentationSource.value)
+})
+
 const wordCount = computed(() => {
-  if (!markdownContent.value) return 0
-  
-  // 移除代码块
-  let text = markdownContent.value
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/`[^`\n]+`/g, '')
-  
-  // 移除 Markdown 语法
-  text = text
-    .replace(/#{1,6}\s/g, '')
-    .replace(/\*\*|__/g, '')
-    .replace(/\*|_/g, '')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
-    .replace(/>\s/g, '')
-    .replace(/[-*+]\s/g, '')
-    .replace(/\d+\.\s/g, '')
-    .replace(/\|/g, '')
-    .replace(/---+/g, '')
-    .replace(/\s+/g, '')
-  
-  return text.length.toLocaleString()
+  return formatWordCount(getNoteWordCount(notePresentationSource.value))
 })
 
 const currentIndex = computed(() => {
@@ -291,10 +298,6 @@ const nextNote = computed(() => {
   }
   return null
 })
-
-const formatDate = (date) => {
-  return dayjs(date).format('YYYY年MM月DD日')
-}
 
 const encodePathSegments = (filePath) => {
   return String(filePath || '')
@@ -712,9 +715,43 @@ watch(() => route.params.path, (newPath, oldPath) => {
   width: 100%;
 }
 
+.note-breadcrumb {
+  margin-bottom: 14px;
+}
+
 .note-header {
   margin-bottom: 28px;
-  padding-top: 24px;
+  padding: 0 0 22px;
+  border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.12);
+}
+
+.dark-theme .note-header {
+  border-bottom-color: rgba(var(--primary-color-rgb), 0.16);
+}
+
+.note-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.note-category-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(var(--primary-color-rgb), 0.08);
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.note-kicker-text {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 /* 面包屑样式 */
@@ -728,16 +765,25 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .note-title {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 700;
   color: var(--text-primary);
-  margin: 0 0 18px 0;
-  line-height: 1.28;
+  margin: 0 0 14px 0;
+  line-height: 1.18;
+  letter-spacing: -0.04em;
+}
+
+.note-description {
+  margin: 0 0 18px;
+  max-width: 68ch;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .note-meta {
   display: flex;
-  gap: 24px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 20px;
 }
@@ -746,8 +792,16 @@ watch(() => route.params.path, (newPath, oldPath) => {
   display: flex;
   align-items: center;
   gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-secondary);
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 12px;
+}
+
+.dark-theme .meta-item {
+  background: rgba(11, 19, 32, 0.88);
 }
 
 .meta-item svg {
@@ -761,24 +815,33 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .tag {
-  padding: 4px 12px;
-  background-color: var(--bg-tertiary);
-  color: var(--text-secondary);
-  border-radius: 4px;
+  padding: 4px 10px;
+  border: 1px dashed rgba(var(--primary-color-rgb), 0.24);
+  background-color: transparent;
+  color: var(--text-tertiary);
+  border-radius: 999px;
   font-size: 12px;
 }
 
 .note-attachments {
   margin-bottom: 24px;
-  padding: 18px;
-  background-color: var(--bg-primary);
+  padding: 18px 0;
+  background: transparent;
   border: 1px solid var(--border-color);
-  border-radius: 10px;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+}
+
+.dark-theme .note-attachments {
+  background: transparent;
 }
 
 .attachments-title {
   margin: 0 0 12px 0;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   color: var(--text-primary);
 }
 
@@ -793,17 +856,17 @@ watch(() => route.params.path, (newPath, oldPath) => {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 12px;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-secondary);
   text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .attachment-item:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
+  border-color: rgba(var(--primary-color-rgb), 0.3);
+  background: rgba(var(--primary-color-rgb), 0.04);
 }
 
 .attachment-name {
@@ -843,24 +906,31 @@ watch(() => route.params.path, (newPath, oldPath) => {
 .note-footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  gap: 16px;
   margin-bottom: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(var(--primary-color-rgb), 0.12);
 }
 
 .nav-link {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   padding: 16px;
-  background-color: var(--bg-primary);
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dark-theme .nav-link {
+  background: rgba(11, 19, 32, 0.88);
 }
 
 .nav-link:hover {
-  border-color: var(--primary-color);
+  border-color: rgba(var(--primary-color-rgb), 0.3);
+  background: rgba(var(--primary-color-rgb), 0.04);
 }
 
 .nav-link.next {
@@ -870,7 +940,6 @@ watch(() => route.params.path, (newPath, oldPath) => {
 .nav-label {
   font-size: 11px;
   color: var(--text-tertiary);
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
 }
@@ -903,7 +972,7 @@ watch(() => route.params.path, (newPath, oldPath) => {
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 600;
-  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
   transition: all 0.2s ease;
 }
 
@@ -933,8 +1002,12 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 @media (max-width: 768px) {
+  .note-breadcrumb {
+    margin-bottom: 12px;
+  }
+
   .note-header {
-    padding-top: 16px;
+    padding: 0 0 18px;
     margin-bottom: 24px;
   }
   
@@ -966,9 +1039,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
 /* 阅读位置恢复提示样式 */
 .reading-position-prompt {
   position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 32px;
+  bottom: 32px;
   z-index: 10000;
   pointer-events: all;
 }
@@ -979,10 +1051,9 @@ watch(() => route.params.path, (newPath, oldPath) => {
   gap: 12px;
   background: var(--bg-primary, #fff);
   border: 1px solid var(--border-color, #e0e0e0);
-  border-radius: 12px;
+  border-radius: 10px;
   padding: 16px 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
   max-width: 480px;
   min-width: 320px;
 }
@@ -1032,8 +1103,7 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .action-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-color: rgba(var(--primary-color-rgb), 0.26);
 }
 
 .restore-btn {
@@ -1060,18 +1130,18 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .position-prompt-enter-from {
   opacity: 0;
-  transform: translateX(-50%) translateY(-20px) scale(0.95);
+  transform: translateY(10px) scale(0.96);
 }
 
 .position-prompt-leave-to {
   opacity: 0;
-  transform: translateX(-50%) translateY(-10px) scale(0.98);
+  transform: translateY(10px) scale(0.98);
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
   .reading-position-prompt {
-    top: 60px;
+    bottom: 16px;
     left: 16px;
     right: 16px;
     transform: none;
@@ -1118,11 +1188,11 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .article-action-toast.is-success {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: #0f8a5f;
 }
 
 .article-action-toast.is-error {
-  background: linear-gradient(135deg, #ef4444, #dc2626);
+  background: #c2410c;
 }
 
 .article-action-toast-enter-active,

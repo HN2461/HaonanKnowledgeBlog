@@ -130,7 +130,9 @@ onUpdated(setupInteractions)
 
 .markdown-body {
   color: var(--text-primary);
-  line-height: 1.9;
+  max-width: 72ch;
+  line-height: 1.85;
+  font-size: 1rem;
 }
 
 /* 标题样式 */
@@ -140,10 +142,10 @@ onUpdated(setupInteractions)
 .markdown-body :deep(h4),
 .markdown-body :deep(h5),
 .markdown-body :deep(h6) {
-  margin-top: 40px;
-  margin-bottom: 18px;
-  font-weight: 600;
-  line-height: 1.35;
+  margin-top: 42px;
+  margin-bottom: 14px;
+  font-weight: 700;
+  line-height: 1.32;
   color: var(--text-primary);
 }
 
@@ -153,19 +155,19 @@ onUpdated(setupInteractions)
 }
 
 .markdown-body :deep(h1) {
-  font-size: 2em;
+  font-size: 2.1em;
+  padding-bottom: 0.42em;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.3em;
 }
 
 .markdown-body :deep(h2) {
-  font-size: 1.5em;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 0.3em;
+  font-size: 1.55em;
+  padding-bottom: 0.38em;
+  border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.12);
 }
 
 .markdown-body :deep(h3) {
-  font-size: 1.25em;
+  font-size: 1.28em;
 }
 
 .markdown-body :deep(h4) {
@@ -175,7 +177,7 @@ onUpdated(setupInteractions)
 /* 段落样式 */
 .markdown-body :deep(p) {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 /* 链接样式 */
@@ -194,31 +196,33 @@ onUpdated(setupInteractions)
 .markdown-body :deep(ul),
 .markdown-body :deep(ol) {
   padding-left: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .markdown-body :deep(li) {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  line-height: 1.8;
 }
 
 /* 引用样式 */
 .markdown-body :deep(blockquote) {
   margin: 24px 0;
-  padding: 12px 16px;
+  padding: 14px 16px;
   color: var(--text-secondary);
-  border-left: 3px solid var(--primary-color);
-  background-color: var(--bg-tertiary);
-  border-radius: 10px;
+  border-left: 2px solid var(--primary-color);
+  background-color: rgba(var(--primary-color-rgb), 0.04);
+  border-radius: 12px;
 }
 
 /* 代码块样式 */
 .markdown-body :deep(pre) {
   margin: 24px 0;
-  padding: 16px;
+  padding: 18px 16px;
   overflow: auto;
   background-color: #1e1e1e;
-  border-radius: 10px;
+  border-radius: 12px;
   position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .markdown-body :deep(code) {
@@ -235,8 +239,8 @@ onUpdated(setupInteractions)
 .markdown-body :deep(:not(pre) > code) {
   padding: 2px 6px;
   background-color: var(--bg-tertiary);
-  border-radius: 3px;
-  color: var(--danger-color);
+  border-radius: 6px;
+  color: var(--primary-color);
 }
 
 /* 代码复制按钮 */
@@ -249,9 +253,9 @@ onUpdated(setupInteractions)
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   color: #999;
   cursor: pointer;
   opacity: 0.6;
@@ -260,7 +264,7 @@ onUpdated(setupInteractions)
 
 .markdown-body :deep(.code-copy-btn:hover) {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
@@ -277,15 +281,17 @@ onUpdated(setupInteractions)
 /* 表格样式 */
 .markdown-body :deep(table) {
   width: 100%;
-  margin: 16px 0;
+  margin: 18px 0;
   border-collapse: collapse;
   overflow: auto;
   display: block;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
 }
 
 .markdown-body :deep(table th),
 .markdown-body :deep(table td) {
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 1px solid var(--border-color);
 }
 
@@ -302,9 +308,10 @@ onUpdated(setupInteractions)
 .markdown-body :deep(img) {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  margin: 16px 0;
+  border-radius: 10px;
+  margin: 18px 0;
   transition: transform 0.2s;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
 }
 
 .markdown-body :deep(img:hover) {

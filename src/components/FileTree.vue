@@ -1,53 +1,64 @@
 <template>
-  <div class="file-tree">
-    <div v-for="item in tree" :key="item.path" class="tree-item">
-      <div
+  <div class='file-tree'>
+    <div v-for='item in tree' :key='item.path' class='tree-item'>
+      <button
         v-if="item.type === 'directory'"
-        class="tree-node directory"
-        @click="toggleDirectory(item.path)"
+        type='button'
+        class='tree-node directory'
+        :class="{ expanded: isExpanded(item.path) }"
+        @click='toggleDirectory(item.path)'
       >
-        <span class="expand-icon">
-          <svg v-if="!isExpanded(item.path)" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
+        <span class='expand-icon' aria-hidden='true'>
+          <svg v-if='!isExpanded(item.path)' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+            <polyline points='9 18 15 12 9 6'></polyline>
           </svg>
-          <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="6 9 12 15 18 9"></polyline>
+          <svg v-else width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+            <polyline points='6 9 12 15 18 9'></polyline>
           </svg>
         </span>
-        <span class="folder-icon">📁</span>
-        <span class="node-label" :title="item.name">{{ item.name }}</span>
-      </div>
-      
+        <span class='node-icon' aria-hidden='true'>
+          <svg width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+            <path d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z'></path>
+          </svg>
+        </span>
+        <span class='node-label' :title='item.name'>{{ item.name }}</span>
+      </button>
+
       <router-link
         v-else-if="item.type === 'file'"
         :to="`/note/${item.path.replace('.md', '')}`"
-        class="tree-node file"
+        class='tree-node file'
         :class="{ active: isActive(item.path) }"
         @click="$emit('select', item)"
       >
-        <span class="file-icon">📄</span>
-        <span class="node-label" :title="item.title">{{ item.title }}</span>
+        <span class='node-icon' aria-hidden='true'>
+          <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+            <path d='M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z'></path>
+            <path d='M14 2v5h5'></path>
+          </svg>
+        </span>
+        <span class='node-label' :title='item.title'>{{ item.title }}</span>
       </router-link>
-      
-      <div v-if="item.type === 'directory' && isExpanded(item.path)" class="tree-children">
-        <FileTree :tree="item.children" @select="$emit('select', $event)" />
+
+      <div v-if="item.type === 'directory' && isExpanded(item.path)" class='tree-children'>
+        <FileTree :tree='item.children' @select="$emit('select', $event)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, provide, inject, watch, nextTick, onMounted } from 'vue'
+import { ref, provide, inject, watch, nextTick, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
-const props = defineProps({
+defineProps({
   tree: {
     type: Array,
     default: () => []
   }
 })
 
-const emit = defineEmits(['select'])
+defineEmits(['select'])
 
 const route = useRoute()
 
@@ -59,8 +70,8 @@ const isRoot = injectedCtx === null
 const loadExpandedDirs = () => {
   try {
     const raw = localStorage.getItem('file-tree-expanded-dirs')
-    const arr = raw ? JSON.parse(raw) : []
-    return new Set(Array.isArray(arr) ? arr : [])
+    const value = raw ? JSON.parse(raw) : []
+    return new Set(Array.isArray(value) ? value : [])
   } catch {
     return new Set()
   }
@@ -69,7 +80,10 @@ const loadExpandedDirs = () => {
 const expandedDirs = isRoot ? ref(loadExpandedDirs()) : injectedCtx.expandedDirs
 
 const persistExpandedDirs = () => {
-  if (!isRoot) return
+  if (!isRoot) {
+    return
+  }
+
   try {
     localStorage.setItem('file-tree-expanded-dirs', JSON.stringify(Array.from(expandedDirs.value)))
   } catch {
@@ -79,11 +93,13 @@ const persistExpandedDirs = () => {
 
 const toggleDirectory = (path) => {
   const next = new Set(expandedDirs.value)
+
   if (next.has(path)) {
     next.delete(path)
   } else {
     next.add(path)
   }
+
   expandedDirs.value = next
   persistExpandedDirs()
 }
@@ -91,16 +107,20 @@ const toggleDirectory = (path) => {
 const expandPaths = (paths) => {
   const next = new Set(expandedDirs.value)
   let changed = false
-  paths.forEach((p) => {
-    if (!next.has(p)) {
-      next.add(p)
+
+  paths.forEach((path) => {
+    if (!next.has(path)) {
+      next.add(path)
       changed = true
     }
   })
-  if (changed) {
-    expandedDirs.value = next
-    persistExpandedDirs()
+
+  if (!changed) {
+    return
   }
+
+  expandedDirs.value = next
+  persistExpandedDirs()
 }
 
 const isExpanded = (path) => {
@@ -108,7 +128,9 @@ const isExpanded = (path) => {
 }
 
 if (isRoot) {
-  provide(FILE_TREE_CTX, { expandedDirs })
+  provide(FILE_TREE_CTX, {
+    expandedDirs
+  })
 }
 
 const isActive = (path) => {
@@ -118,22 +140,28 @@ const isActive = (path) => {
 
 const expandToActiveNote = async () => {
   const activePath = route.params.path
-  if (!activePath) return
+  if (!activePath) {
+    return
+  }
 
   const filePath = `${activePath}.md`
   const segments = String(filePath).split('/').filter(Boolean)
-  if (segments.length <= 1) return
+  if (segments.length <= 1) {
+    return
+  }
 
   const parents = []
-  for (let i = 0; i < segments.length - 1; i++) {
-    parents.push(segments.slice(0, i + 1).join('/'))
+  for (let index = 0; index < segments.length - 1; index += 1) {
+    parents.push(segments.slice(0, index + 1).join('/'))
   }
 
   expandPaths(parents)
 
   await nextTick()
   const activeEl = document.querySelector('.app-sidebar .tree-node.file.active')
-  activeEl?.scrollIntoView({ block: 'center' })
+  activeEl?.scrollIntoView({
+    block: 'center'
+  })
 }
 
 if (isRoot) {
@@ -160,43 +188,46 @@ if (isRoot) {
 }
 
 .tree-node {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   padding: 8px 10px;
-  border-radius: 6px;
+  border: 1px solid transparent;
+  border-radius: 10px;
   color: var(--text-primary);
-  cursor: pointer;
-  transition: background-color 0.2s;
+  text-align: left;
   text-decoration: none;
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
 }
 
 .tree-node:hover {
-  background-color: var(--bg-secondary);
-}
-
-.tree-node.active {
-  background-color: var(--primary-color);
-  color: white;
+  border-color: rgba(var(--primary-color-rgb), 0.12);
+  background: rgba(var(--primary-color-rgb), 0.04);
 }
 
 .tree-node.directory {
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
-.expand-icon {
-  display: flex;
+.tree-node.directory.expanded {
+  color: var(--text-primary);
+}
+
+.tree-node.active {
+  border-color: rgba(var(--primary-color-rgb), 0.24);
+  background: rgba(var(--primary-color-rgb), 0.08);
+  color: var(--primary-color);
+}
+
+.expand-icon,
+.node-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 16px;
-  height: 16px;
   flex-shrink: 0;
-}
-
-.folder-icon,
-.file-icon {
-  font-size: 16px;
-  flex-shrink: 0;
+  color: currentColor;
 }
 
 .node-label {
@@ -207,7 +238,8 @@ if (isRoot) {
 }
 
 .tree-children {
-  margin-left: 20px;
-  margin-top: 2px;
+  margin-left: 16px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(var(--primary-color-rgb), 0.1);
 }
 </style>

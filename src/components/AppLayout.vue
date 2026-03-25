@@ -62,8 +62,8 @@ onMounted(() => {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  background-color: var(--bg-secondary);
-  padding: 20px;
+  background: transparent;
+  padding: 24px 20px;
   height: 100%;
 }
 
@@ -87,7 +87,7 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .main-content {
-    padding: 15px;
+    padding: 18px 14px;
   }
 }
 </style>

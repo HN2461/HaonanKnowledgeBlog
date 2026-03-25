@@ -1,148 +1,147 @@
 <template>
-  <div class="motivational-quote">
-    <span class="quote-icon">{{ currentIcon }}</span>
-    <span class="quote-text">{{ currentQuote }}</span>
+  <div class='motivational-quote'>
+    <div class='quote-head'>
+      <span class='quote-label'>随机问候</span>
+      <button class='quote-refresh' type='button' :disabled='isLoading' @click='loadQuote'>
+        {{ isLoading ? '更新中' : '换一句' }}
+      </button>
+    </div>
+    <p class='quote-text' :class="{ 'is-loading': isLoading }">{{ currentQuote }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
-const currentQuote = ref('加载中...')
-const currentIcon = ref('💡')
-const isLoading = ref(true)
-
-// 备用语句库（API失败时使用）
 const fallbackQuotes = [
-  '学习是一场马拉松，不是短跑',
-  '每天进步一点点，就是成功的开始',
-  '代码改变世界，学习改变人生',
-  '今天的努力，是明天的底气',
-  '保持好奇心，永远在路上',
-  '不积跬步，无以至千里',
-  '坚持学习，时间会给你答案',
-  '学习没有捷径，但有方法'
+  '学习不是囤积信息，而是让问题下次出现时更从容。',
+  '把今天遇到的坑写下来，明天会感谢现在的自己。',
+  '知识库的价值，在于需要时能马上找到答案。',
+  '把抽象概念写成案例，理解才会真正落地。',
+  '记录不是为了显得努力，而是为了真正复用经验。',
+  '持续整理，比一次性冲刺更能形成自己的体系。'
 ]
 
-// 备用图标库
-const fallbackIcons = ['💡', '✨', '🌟', '⭐', '🎯', '🚀', '💪', '📚', '🎓', '🔥']
+const currentQuote = ref(fallbackQuotes[new Date().getDate() % fallbackQuotes.length])
+const isLoading = ref(false)
 
-// 从API获取随机emoji
-const fetchEmoji = async () => {
-  try {
-    // 使用emoji API获取随机emoji
-    const categories = ['smileys-emotion', 'people-body', 'animals-nature', 'food-drink', 'travel-places', 'activities', 'objects']
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)]
-    
-    const response = await fetch(`https://emojihub.yurace.pro/api/random/category/${randomCategory}`)
-    
-    if (response.ok) {
-      const data = await response.json()
-      if (data.htmlCode && data.htmlCode[0]) {
-        // 将HTML实体转换为emoji
-        const emoji = String.fromCodePoint(parseInt(data.htmlCode[0].replace('&#', '').replace(';', '')))
-        currentIcon.value = emoji
-        console.log('获取emoji成功:', emoji)
-      } else {
-        throw new Error('emoji数据格式错误')
-      }
-    } else {
-      throw new Error('API请求失败')
-    }
-  } catch (error) {
-    console.warn('获取emoji失败，使用备用图标:', error)
-    // 使用备用图标
-    const randomIndex = Math.floor(Math.random() * fallbackIcons.length)
-    currentIcon.value = fallbackIcons[randomIndex]
-  }
+let requestController = null
+
+const getRandomFallbackQuote = () => {
+  const randomIndex = Math.floor(Math.random() * fallbackQuotes.length)
+  return fallbackQuotes[randomIndex]
 }
 
-// 从API获取随机励志语句
-const fetchQuote = async () => {
+const sanitizeQuote = (quote) => {
+  return quote.replace(/\s+/g, ' ').trim()
+}
+
+const loadQuote = async () => {
+  if (requestController) {
+    requestController.abort()
+  }
+
+  const controller = new AbortController()
+  requestController = controller
+  isLoading.value = true
+
   try {
-    // 使用一言API（Hitokoto）- 免费的中文名言API
-    const response = await fetch('https://v1.hitokoto.cn/?c=i&c=k&encode=text')
-    
-    if (response.ok) {
-      const quote = await response.text()
-      currentQuote.value = quote
-      console.log('获取励志语句成功:', quote)
-    } else {
-      throw new Error('API请求失败')
+    const response = await fetch('https://v1.hitokoto.cn/?c=i&c=k&encode=text', {
+      cache: 'no-store',
+      signal: controller.signal
+    })
+
+    if (!response.ok) {
+      throw new Error(`request failed: ${response.status}`)
     }
+
+    const nextQuote = sanitizeQuote(await response.text())
+
+    if (!nextQuote) {
+      throw new Error('empty quote')
+    }
+
+    currentQuote.value = nextQuote
   } catch (error) {
-    console.warn('获取励志语句失败，使用备用语句:', error)
-    // 使用备用语句
-    const randomIndex = Math.floor(Math.random() * fallbackQuotes.length)
-    currentQuote.value = fallbackQuotes[randomIndex]
+    if (error.name === 'AbortError') {
+      return
+    }
+
+    console.warn('获取随机问候失败，已切换到本地备用文案', error)
+    currentQuote.value = getRandomFallbackQuote()
   } finally {
-    isLoading.value = false
+    if (requestController === controller) {
+      requestController = null
+      isLoading.value = false
+    }
   }
 }
 
 onMounted(() => {
-  // 同时获取emoji和励志语句
-  fetchEmoji()
-  fetchQuote()
+  // 角落面板使用 v-if 渲染，因此每次重新展开都会拿到一条新问候。
+  loadQuote()
+})
+
+onUnmounted(() => {
+  if (requestController) {
+    requestController.abort()
+  }
 })
 </script>
 
 <style scoped>
 .motivational-quote {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
-  border-radius: 8px;
-  font-size: 13px;
-  color: var(--text-secondary);
-  max-width: 350px;
-  min-width: 200px;
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.14);
+  border-radius: 12px;
+  background: rgba(var(--primary-color-rgb), 0.035);
 }
 
-.quote-icon {
-  font-size: 16px;
-  flex-shrink: 0;
+.quote-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.quote-label {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.quote-refresh {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.18s ease;
+}
+
+.quote-refresh:hover:not(:disabled) {
+  color: var(--primary-color);
+}
+
+.quote-refresh:disabled {
+  cursor: wait;
+  opacity: 0.72;
 }
 
 .quote-text {
-  line-height: 1.5;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
-@media (max-width: 1024px) {
-  .motivational-quote {
-    max-width: 300px;
-  }
-  
-  .quote-text {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .motivational-quote {
-    max-width: 250px;
-    padding: 8px 12px;
-    font-size: 11px;
-  }
-  
-  .quote-icon {
-    font-size: 14px;
-  }
-  
-  .quote-text {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .motivational-quote {
-    display: none;
-  }
+.quote-text.is-loading {
+  color: var(--text-tertiary);
 }
 </style>
