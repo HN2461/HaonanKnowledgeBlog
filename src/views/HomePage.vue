@@ -3,26 +3,19 @@
     <div class='home-page'>
       <section class='desk-shell'>
         <section class='desk-main'>
-          <div class='desk-intro'>
-            <p class='desk-kicker'>知识入口</p>
-            <h1 class='desk-title'>{{ siteConfig.hero.title }}</h1>
-            <p class='desk-description'>{{ siteConfig.hero.subtitle }}</p>
-            <p class='desk-summary'>{{ siteConfig.description }}</p>
-          </div>
+          <div class='desk-stage'>
+            <div class='desk-intro'>
+              <p class='desk-kicker'>知识入口</p>
+              <h1 class='desk-title'>{{ siteConfig.hero.title }}</h1>
+              <p class='desk-description'>{{ siteConfig.hero.subtitle }}</p>
+              <p class='desk-summary'>{{ siteConfig.description }}</p>
+            </div>
 
-          <div class='desk-guide'>
-            <article class='guide-item'>
-              <span class='guide-index'>01</span>
-              <p>按左侧目录继续阅读</p>
-            </article>
-            <article class='guide-item'>
-              <span class='guide-index'>02</span>
-              <p>需要找答案时直接用头部搜索</p>
-            </article>
-            <article class='guide-item'>
-              <span class='guide-index'>03</span>
-              <p>天气和提醒收进角落，随用随开</p>
-            </article>
+            <aside class='desk-usage'>
+              <span class='desk-usage-label'>阅读方式</span>
+              <p class='desk-usage-primary'>按左侧目录继续阅读</p>
+              <p class='desk-usage-secondary'>需要找答案时，直接用头部搜索。</p>
+            </aside>
           </div>
         </section>
 
@@ -281,15 +274,23 @@ onMounted(async () => {
 
 .desk-main {
   grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  min-height: clamp(300px, 44vh, 420px);
+  padding: 28px 28px 54px;
+}
+
+.desk-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.9fr);
-  gap: 20px;
-  align-items: end;
-  padding: 24px 26px;
+  grid-template-columns: minmax(0, 1.2fr) minmax(240px, 320px);
+  gap: 24px;
+  align-items: start;
+  width: 100%;
 }
 
 .desk-intro {
   min-width: 0;
+  align-self: start;
 }
 
 .desk-kicker,
@@ -326,33 +327,39 @@ onMounted(async () => {
   line-height: 1.8;
 }
 
-.desk-guide {
-  display: grid;
-  gap: 12px;
-}
-
-.guide-item {
-  min-width: 0;
+.desk-usage {
+  align-self: start;
+  justify-self: end;
+  width: 100%;
+  max-width: 320px;
   padding: 16px 18px;
   border: 1px solid rgba(var(--primary-color-rgb), 0.12);
-  border-radius: 12px;
-  background: var(--bg-secondary);
+  border-radius: 14px;
+  background: rgba(var(--primary-color-rgb), 0.035);
 }
 
-.dark-theme .guide-item {
-  background: rgba(11, 19, 32, 0.88);
+.dark-theme .desk-usage {
+  background: rgba(11, 19, 32, 0.74);
 }
 
-.guide-index {
-  color: var(--primary-color);
-  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-  font-size: 12px;
+.desk-usage-label {
+  color: var(--text-tertiary);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.guide-item p {
-  margin: 10px 0 0;
+.desk-usage-primary {
+  margin: 14px 0 0;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.desk-usage-secondary {
+  margin: 8px 0 0;
   color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.7;
@@ -571,6 +578,11 @@ onMounted(async () => {
   }
 
   .desk-main {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .desk-stage {
     grid-template-columns: 1fr;
   }
 }
@@ -588,7 +600,16 @@ onMounted(async () => {
   }
 
   .desk-main {
-    gap: 16px;
+    padding: 20px 18px;
+  }
+
+  .desk-stage {
+    gap: 18px;
+  }
+
+  .desk-usage {
+    justify-self: stretch;
+    max-width: none;
   }
 
   .panel-title,

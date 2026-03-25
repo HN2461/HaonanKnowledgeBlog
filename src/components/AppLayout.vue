@@ -4,7 +4,6 @@
     <div class="layout-container">
       <AppSidebar :visible="sidebarVisible" @close="closeSidebar" />
       <main class="main-content">
-        <slot name="breadcrumb"></slot>
         <slot />
       </main>
     </div>

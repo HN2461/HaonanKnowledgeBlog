@@ -67,11 +67,31 @@ const FILE_TREE_CTX = Symbol('file-tree')
 const injectedCtx = inject(FILE_TREE_CTX, null)
 const isRoot = injectedCtx === null
 
+function isDescendantPath(parentPath, currentPath) {
+  return currentPath !== parentPath && currentPath.startsWith(`${parentPath}/`)
+}
+
+function collapseDirectoryBranch(directorySet, path) {
+  Array.from(directorySet).forEach((dirPath) => {
+    if (dirPath === path || isDescendantPath(path, dirPath)) {
+      directorySet.delete(dirPath)
+    }
+  })
+}
+
+function pruneNestedExpandedDirs(paths) {
+  return [...new Set(paths)]
+    .sort((a, b) => a.length - b.length)
+    .filter((path, index, list) => {
+      return !list.slice(0, index).some((candidate) => isDescendantPath(candidate, path))
+    })
+}
+
 const loadExpandedDirs = () => {
   try {
     const raw = localStorage.getItem('file-tree-expanded-dirs')
     const value = raw ? JSON.parse(raw) : []
-    return new Set(Array.isArray(value) ? value : [])
+    return new Set(pruneNestedExpandedDirs(Array.isArray(value) ? value : []))
   } catch {
     return new Set()
   }
@@ -95,8 +115,9 @@ const toggleDirectory = (path) => {
   const next = new Set(expandedDirs.value)
 
   if (next.has(path)) {
-    next.delete(path)
+    collapseDirectoryBranch(next, path)
   } else {
+    collapseDirectoryBranch(next, path)
     next.add(path)
   }
 

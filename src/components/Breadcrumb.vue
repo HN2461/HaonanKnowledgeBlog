@@ -13,9 +13,10 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
   line-height: 1.6;
 }
 
@@ -29,7 +30,6 @@
 
 @media (max-width: 768px) {
   .breadcrumb-content {
-    gap: 6px;
     font-size: 11px;
   }
 }

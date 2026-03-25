@@ -1,6 +1,20 @@
 <template>
   <AppLayout>
     <div class="note-detail-page">
+      <div class="note-page-topbar">
+        <div class="note-page-topbar-inner">
+          <div class="note-page-topbar-track">
+            <Breadcrumb class="note-breadcrumb">
+              <router-link to="/">首页</router-link>
+              <span class="separator">/</span>
+              <router-link :to="`/category/${note.category}`">{{ note.category }}</router-link>
+              <span class="separator">/</span>
+              <span class="current">{{ note.title }}</span>
+            </Breadcrumb>
+          </div>
+        </div>
+      </div>
+
       <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
         <!-- 骨架屏加载状态 -->
         <template v-if="loading">
@@ -12,14 +26,6 @@
         <!-- 实际内容 -->
         <template v-else>
           <article class="note-content">
-            <Breadcrumb class="note-breadcrumb">
-              <router-link to="/">首页</router-link>
-              <span class="separator">/</span>
-              <router-link :to="`/category/${note.category}`">{{ note.category }}</router-link>
-              <span class="separator">/</span>
-              <span class="current">{{ note.title }}</span>
-            </Breadcrumb>
-
             <div class="note-header">
               <div class="note-kicker">
                 <router-link :to="`/category/${note.category}`" class="note-category-chip">{{ note.category }}</router-link>
@@ -690,7 +696,29 @@ watch(() => route.params.path, (newPath, oldPath) => {
 <style scoped>
 .note-detail-page {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+}
+
+.note-page-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 16;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  background: var(--bg-primary);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.03);
+}
+
+.note-page-topbar-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.note-page-topbar-track {
+  width: 100%;
+  max-width: min(100%, 92ch);
+  margin: 0 auto;
 }
 
 .page-container {
@@ -716,7 +744,13 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 .note-breadcrumb {
-  margin-bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 12px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
+  border-radius: 999px;
+  background: rgba(var(--primary-color-rgb), 0.04);
 }
 
 .note-header {
@@ -1002,8 +1036,13 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 @media (max-width: 768px) {
-  .note-breadcrumb {
-    margin-bottom: 12px;
+  .note-page-topbar {
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+  }
+
+  .note-page-topbar-inner {
+    padding: 0;
   }
 
   .note-header {
