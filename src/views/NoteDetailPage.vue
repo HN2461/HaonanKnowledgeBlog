@@ -11,11 +11,32 @@
               <span class="separator">/</span>
               <span class="current">{{ note.title }}</span>
             </Breadcrumb>
+
+            <button
+              v-if="showTocSidebar"
+              class="toc-toggle-btn"
+              :class="{ 'is-collapsed': isTocCollapsed }"
+              type="button"
+              :title="isTocCollapsed ? '展开目录' : '收起目录'"
+              :aria-label="isTocCollapsed ? '展开右侧导航' : '折叠右侧导航'"
+              :aria-expanded="String(!isTocCollapsed)"
+              @click="toggleTocSidebar"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span class="toc-toggle-text">目录</span>
+            </button>
           </div>
         </div>
       </div>
 
-      <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
+      <div
+        ref="detailBodyRef"
+        class="note-detail-body"
+        data-reading-scroll-container="true"
+      >
+        <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
         <!-- 骨架屏加载状态 -->
         <template v-if="loading">
           <article class="note-content">
@@ -26,7 +47,7 @@
         <!-- 实际内容 -->
         <template v-else>
           <article class="note-content">
-            <div class="note-header">
+            <header class="note-header">
               <div class="note-kicker">
                 <router-link :to="`/category/${note.category}`" class="note-category-chip">{{ note.category }}</router-link>
                 <span class="note-kicker-text">整理于 {{ noteDateLabel }}</span>
@@ -75,7 +96,7 @@
               <div class="note-tags" v-if="note.tags && note.tags.length > 0">
                 <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
               </div>
-            </div>
+            </header>
 
             <div class="note-attachments" v-if="attachments.length > 0">
               <h2 class="attachments-title">附件与脚本</h2>
@@ -115,22 +136,8 @@
         <aside class="note-sidebar" v-if="showTocSidebar && !isTocCollapsed">
           <TableOfContents :toc="toc" />
         </aside>
+        </div>
       </div>
-
-      <button
-        v-if="showTocSidebar"
-        class="toc-toggle-btn"
-        :class="{ 'is-collapsed': isTocCollapsed }"
-        type="button"
-        :aria-label="isTocCollapsed ? '展开右侧导航' : '折叠右侧导航'"
-        :aria-expanded="String(!isTocCollapsed)"
-        @click="toggleTocSidebar"
-      >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-        <span>{{ isTocCollapsed ? '展开导航' : '折叠导航' }}</span>
-      </button>
     </div>
     
     <!-- 悬浮阅读工具栏 -->
@@ -251,8 +258,10 @@ const showPositionPrompt = ref(false)
 const savedPosition = ref(null)
 
 // 组件引用
+const detailBodyRef = ref(null)
 const fullscreenRef = ref(null)
 const lightboxRef = ref(null)
+const NOTE_DETAIL_MAIN_CLASS = 'note-detail-main-content'
 
 const notePath = computed(() => route.params.path)
 const showTocSidebar = computed(() => !loading.value && toc.value.length > 0)
@@ -321,6 +330,24 @@ const formatAttachmentMeta = (attachment) => {
   const ext = attachment.ext ? attachment.ext.toUpperCase() : 'FILE'
   const size = attachment.size || '--'
   return `${ext} · ${size}`
+}
+
+const resolveScrollContainer = () => {
+  return detailBodyRef.value
+    || document.querySelector('[data-reading-scroll-container="true"]')
+    || document.querySelector('.main-content')
+}
+
+const enableDetachedDetailLayout = () => {
+  const mainContent = document.querySelector('.main-content')
+  if (!mainContent) return
+  mainContent.classList.add(NOTE_DETAIL_MAIN_CLASS)
+}
+
+const disableDetachedDetailLayout = () => {
+  const mainContent = document.querySelector('.main-content')
+  if (!mainContent) return
+  mainContent.classList.remove(NOTE_DETAIL_MAIN_CLASS)
 }
 
 const onFontSizeChange = (size) => {
@@ -599,7 +626,7 @@ const onScroll = () => {
 const initializeReadingPosition = () => {
   // 等待DOM渲染完成后查找滚动容器
   setTimeout(() => {
-    scrollContainer.value = document.querySelector('.main-content')
+    scrollContainer.value = resolveScrollContainer()
     
     if (scrollContainer.value && notePath.value) {
       console.log('找到滚动容器:', scrollContainer.value) // 调试信息
@@ -649,6 +676,7 @@ const cleanupScrollListener = () => {
 }
 
 onMounted(() => {
+  enableDetachedDetailLayout()
   loadNote()
   initializeReadingPosition()
   
@@ -661,6 +689,7 @@ onMounted(() => {
   
   // 在组件卸载时清理事件监听器
   onUnmounted(() => {
+    disableDetachedDetailLayout()
     window.removeEventListener('beforeunload', handleBeforeUnload)
   })
 })
@@ -694,31 +723,70 @@ watch(() => route.params.path, (newPath, oldPath) => {
 </script>
 
 <style scoped>
+:global(.main-content.note-detail-main-content) {
+  padding: 0;
+  overflow: hidden;
+}
+
 .note-detail-page {
   width: 100%;
-  min-height: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  position: relative;
 }
 
 .note-page-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 16;
-  margin-bottom: 18px;
-  padding-bottom: 10px;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  padding: 0 20px;
   background: var(--bg-primary);
-  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.03);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .note-page-topbar-inner {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 .note-page-topbar-track {
-  width: 100%;
-  max-width: min(100%, 92ch);
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 40px;
+  overflow: hidden;
+}
+
+.dark-theme .note-page-topbar {
+  background: rgba(15, 23, 42, 0.96);
+  border-bottom-color: rgba(148, 163, 184, 0.18);
+}
+
+.note-detail-body {
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 20px 40px;
+}
+
+.note-detail-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.note-detail-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.note-detail-body::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.note-detail-body::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
 }
 
 .page-container {
@@ -743,14 +811,38 @@ watch(() => route.params.path, (newPath, oldPath) => {
   width: 100%;
 }
 
-.note-breadcrumb {
-  display: inline-flex;
+.note-page-topbar .note-breadcrumb {
+  display: flex;
   align-items: center;
-  min-height: 30px;
-  padding: 5px 12px;
-  border: 1px solid rgba(var(--primary-color-rgb), 0.12);
-  border-radius: 999px;
-  background: rgba(var(--primary-color-rgb), 0.04);
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  gap: 8px;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.note-page-topbar :deep(a) {
+  flex: 0 1 auto;
+  min-width: 0;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+
+.note-page-topbar :deep(a:hover) {
+  color: var(--primary-color);
 }
 
 .note-header {
@@ -790,12 +882,23 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 /* 面包屑样式 */
 :deep(.separator) {
-  color: var(--text-tertiary);
-  margin: 0 4px;
+  color: var(--text-muted);
+  margin: 0;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  flex-shrink: 0;
 }
 
 :deep(.current) {
   color: var(--text-primary);
+  flex: 1 1 auto;
+  min-width: 0;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .note-title {
@@ -987,37 +1090,52 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .note-sidebar {
   position: sticky;
-  top: 80px;
+  top: 0;
   align-self: start;
 }
 
 .toc-toggle-btn {
-  position: fixed;
-  top: 118px;
-  right: 24px;
+  position: static;
   z-index: 30;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  background-color: var(--bg-primary);
+  justify-content: center;
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
   color: var(--text-secondary);
   font-size: 12px;
-  font-weight: 600;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
-  transition: all 0.2s ease;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: none;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .toc-toggle-btn:hover {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
-  transform: translateY(-1px);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.toc-toggle-btn svg {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.toc-toggle-text {
+  white-space: nowrap;
 }
 
 .toc-toggle-btn.is-collapsed svg {
   transform: rotate(180deg);
+}
+
+.dark-theme .toc-toggle-btn {
+  background: transparent;
 }
 
 @media (max-width: 1024px) {
@@ -1037,12 +1155,21 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 @media (max-width: 768px) {
   .note-page-topbar {
-    margin-bottom: 14px;
-    padding-bottom: 8px;
+    padding: 0 14px;
   }
 
-  .note-page-topbar-inner {
-    padding: 0;
+  .note-page-topbar-track {
+    gap: 10px;
+    min-height: 36px;
+  }
+
+  .note-page-topbar .note-breadcrumb {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .note-detail-body {
+    padding: 16px 14px 32px;
   }
 
   .note-header {
@@ -1065,6 +1192,17 @@ watch(() => route.params.path, (newPath, oldPath) => {
   
   .page-container {
     padding: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toc-toggle-btn {
+    width: 28px;
+    padding: 0;
+  }
+
+  .toc-toggle-text {
+    display: none;
   }
 }
 

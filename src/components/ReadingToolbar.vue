@@ -560,6 +560,11 @@ const scrollToTop = () => {
   isExpanded.value = false
 }
 
+const resolveScrollContainer = () => {
+  return document.querySelector('[data-reading-scroll-container="true"]')
+    || document.querySelector('.main-content')
+}
+
 // 检查是否有保存的阅读位置
 const checkSavedPosition = () => {
   const currentPath = route.params.path
@@ -612,7 +617,7 @@ onMounted(() => {
   // 等待DOM渲染完成后查找滚动容器
   setTimeout(() => {
     // 查找.main-content滚动容器
-    scrollContainer.value = document.querySelector('.main-content')
+    scrollContainer.value = resolveScrollContainer()
     
     if (scrollContainer.value) {
       // 监听滚动容器的滚动事件

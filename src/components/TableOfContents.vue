@@ -30,6 +30,11 @@ const tocContainer = ref(null)
 const tocNav = ref(null)
 let scrollContainer = null
 
+const resolveScrollContainer = () => {
+  return document.querySelector('[data-reading-scroll-container="true"]')
+    || document.querySelector('.main-content')
+}
+
 // 监听 toc 变化
 watch(() => props.toc, (newToc) => {
   if (newToc.length > 0) {
@@ -164,7 +169,7 @@ const debouncedUpdateActiveSlug = () => {
 onMounted(() => {
   nextTick(() => {
     // 查找主内容区域的滚动容器
-    scrollContainer = document.querySelector('.main-content')
+    scrollContainer = resolveScrollContainer()
     
     if (scrollContainer) {
       scrollHandler = debouncedUpdateActiveSlug
@@ -190,13 +195,11 @@ onUnmounted(() => {
 
 <style scoped>
 .table-of-contents {
-  position: sticky;
-  top: 80px;
   padding: 16px;
   background-color: var(--bg-primary);
   border: 1px solid var(--border-color);
   border-radius: 14px;
-  max-height: calc(100vh - 160px);
+  max-height: min(60vh, 520px);
   overflow-y: auto;
 }
 
