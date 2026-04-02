@@ -1,0 +1,91 @@
+import dayjs from 'dayjs'
+
+export const BUSINESS_NOTIFICATION_CATEGORIES = [
+  '系统公告',
+  '功能更新',
+  '内容上新',
+  '问题修复'
+]
+
+export const GIT_NOTIFICATION_CATEGORY = 'Git 提交'
+
+function normalizeText(value) {
+  return String(value || '')
+    .replace(/\r\n/g, '\n')
+    .trim()
+}
+
+function buildSummary(content, title) {
+  const source = normalizeText(content) || normalizeText(title)
+  return source
+    .split('\n')
+    .filter(Boolean)
+    .join(' ')
+    .slice(0, 120)
+}
+
+export function normalizeNotificationItem(item = {}, index = 0) {
+  const title = normalizeText(item.title) || `消息 ${index + 1}`
+  const content = normalizeText(item.content) || title
+  const date = normalizeText(item.date) || new Date().toISOString()
+  const source = normalizeText(item.source) || 'manual'
+  const preferredCategory = source === 'git'
+    ? GIT_NOTIFICATION_CATEGORY
+    : normalizeText(item.category) || normalizeText(item.tag) || '系统公告'
+
+  return {
+    id: normalizeText(item.id) || `notification-${index + 1}`,
+    title,
+    content,
+    summary: normalizeText(item.summary) || buildSummary(content, title),
+    date,
+    tag: preferredCategory,
+    category: preferredCategory,
+    source,
+    pinned: Boolean(item.pinned),
+    shortHash: normalizeText(item.shortHash),
+    fullHash: normalizeText(item.fullHash)
+  }
+}
+
+export function sortNotifications(items = []) {
+  return [...items].sort((a, b) => {
+    if (a.pinned !== b.pinned) {
+      return a.pinned ? -1 : 1
+    }
+
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
+}
+
+export function normalizeNotificationsPayload(payload = {}) {
+  const items = Array.isArray(payload.notifications) ? payload.notifications : []
+  const notifications = sortNotifications(
+    items.map((item, index) => normalizeNotificationItem(item, index))
+  )
+
+  return {
+    generatedAt: normalizeText(payload.generatedAt) || '',
+    total: Number(payload.total) || notifications.length,
+    notifications
+  }
+}
+
+export function formatNotificationDate(value) {
+  const parsed = dayjs(value)
+  if (!parsed.isValid()) {
+    return '时间未知'
+  }
+
+  return parsed.format('YYYY.MM.DD HH:mm')
+}
+
+export function formatNotificationMeta(item = {}) {
+  const parts = [formatNotificationDate(item.date)]
+
+  if (item.source === 'git' && item.shortHash) {
+    parts.push(GIT_NOTIFICATION_CATEGORY, `#${item.shortHash}`)
+  }
+
+  return parts.filter(Boolean).join(' · ')
+}

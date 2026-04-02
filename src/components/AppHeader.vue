@@ -97,6 +97,8 @@
           </svg>
         </button>
 
+        <NotificationCenter />
+
         <button class='icon-btn' @click='toggleTheme' aria-label='切换主题' title='切换主题'>
           <svg v-if='!isDark' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
             <path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'></path>
@@ -137,6 +139,7 @@ import { siteConfig } from '@/config/site'
 import AuthorProfile from './AuthorProfile.vue'
 import KnowledgeSearchPanel from './KnowledgeSearchPanel.vue'
 import MotivationalQuote from './MotivationalQuote.vue'
+import NotificationCenter from './NotificationCenter.vue'
 import TimeWeather from './TimeWeather.vue'
 
 defineProps({

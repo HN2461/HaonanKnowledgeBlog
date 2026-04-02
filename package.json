@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "npm run generate:index && vite build",
+    "dev": "npm run generate:notifications && vite",
+    "build": "npm run generate:index && npm run generate:notifications && vite build",
     "preview": "vite preview",
     "generate:index": "node scripts/generateNotesIndex.js",
+    "generate:notifications": "node scripts/generateNotifications.js",
     "test": "vitest run",
     "test:watch": "vitest"
   },

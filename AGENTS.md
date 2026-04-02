@@ -83,6 +83,15 @@ attachments:
 ## 配置提示
 - `vite.config.js` 中 `base: '/HaonanKnowledgeBlog/'` 用于 GitHub Pages 部署；部署路径变化时需同步更新。
 
+## 消息汇总协作规则
+- 当日代码改动摘要文件固定为 `data/dailyChangeSummary.js`。
+- Codex 每次完成“实际代码/脚本改动”后，应在该文件里补 1 到 3 条中文精简摘要；每条必须写入明确分类，当前分类统一使用：`系统公告`、`功能更新`、`内容上新`、`问题修复`。
+- `data/dailyChangeSummary.js` 中每条消息建议包含：`category`、`title`、`summary`、`content`，优先描述用户可感知的变化。
+- `data/dailyChangeSummary.js` 只保留“当天”的摘要：如果文件中的 `date` 不是当天日期，必须先清空旧内容，再写入当天的新摘要，禁止保留历史日期摘要。
+- 主人说“汇总消息”时，Codex 应优先查看当天的 git 变动与 `data/dailyChangeSummary.js`，刷新当日分类摘要内容，再执行 `npm run generate:notifications`，让头部通知抽屉展示最新汇总。
+- 长期保留的公告、置顶通知继续写在 `data/manualNotifications.js`；当日开发汇总不要写进长期公告文件。
+- `Git 提交` 为固定独立分类，由脚本自动从 git 历史生成；不要把 git 提交手动写进 `data/dailyChangeSummary.js`。
+
 ## 运行与截图（实测可用）
 - 执行“运行项目并截图”时，优先使用：`node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5173`。
 - 避免使用复杂的 `Start-Process + npm + 重定向` 组合，部分终端策略可能拦截并报 `blocked by policy`。
