@@ -1,4 +1,4 @@
-# Repository Guidelines（仓库指南）
+﻿# Repository Guidelines（仓库指南）
 
 ## 快速规则
 - 称呼用户为“主人”。
@@ -91,6 +91,7 @@ attachments:
 - 主人说“汇总消息”时，Codex 应优先查看当天的 git 变动与 `data/dailyChangeSummary.js`，刷新当日分类摘要内容，再执行 `npm run generate:notifications`，让头部通知抽屉展示最新汇总。
 - 长期保留的公告、置顶通知继续写在 `data/manualNotifications.js`；当日开发汇总不要写进长期公告文件。
 - `Git 提交` 为固定独立分类，由脚本自动从 git 历史生成；不要把 git 提交手动写进 `data/dailyChangeSummary.js`。
+- 清空 `data/dailyChangeSummary.js` 前，必须先将当天内容总结后追加一条到 `data/historyNotifications.js`，`category` 固定为 `历史消息`，`date` 写实际日期，确保历史可查；追加后再执行 `npm run generate:notifications`。
 
 ## 运行与截图（实测可用）
 - 执行“运行项目并截图”时，优先使用：`node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5173`。

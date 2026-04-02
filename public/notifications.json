@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-02T08:58:57.729Z",
-  "total": 58,
+  "generatedAt": "2026-04-02T13:06:46.151Z",
+  "total": 64,
   "notifications": [
+    {
+      "id": "git-37193a64ef17f68ad7dbcd87ada226745abe95a6",
+      "title": "feat(通知中心): 实现消息通知系统及UI组件",
+      "content": "新增通知中心功能，包含以下主要变更：\n- 添加 NotificationCenter.vue 组件实现铃铛入口和抽屉式消息面板\n- 创建 notifications.js 工具库处理消息格式化与分类\n- 新增 generateNotifications.js 脚本聚合 git 提交与手动消息\n- 扩展 package.json 脚本支持通知生成\n- 补充测试用例和文档说明\n\n同时更新了笔记索引的最后更新时间",
+      "summary": "新增通知中心功能，包含以下主要变更： - 添加 NotificationCenter.vue 组件实现铃铛入口和抽屉式消息面板 - 创建 notifications.js 工具库处理消息格式化与分类 - 新增 generateNotific",
+      "date": "2026-04-02T19:58:22+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "37193a6",
+      "fullHash": "37193a64ef17f68ad7dbcd87ada226745abe95a6"
+    },
     {
       "id": "git-9e29731cdd3b1d700544721a1a74885bf0ca6acb",
       "title": "优化导出功能",
@@ -49,6 +61,71 @@
       "tag": "问题修复",
       "category": "问题修复",
       "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "2026-04-02-feature-notification-drawer-wider",
+      "title": "消息通知抽屉加宽",
+      "content": "消息通知抽屉最大宽度由 420px 提升至 520px，移动端仍保持自适应全宽。",
+      "summary": "消息抽屉宽度从 420px 调整为 520px，内容展示更宽裕。",
+      "date": "2026-04-02T09:00:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "2026-04-02-fix-notification-text-overflow",
+      "title": "消息卡片纯英文内容溢出已修复",
+      "content": "为消息卡片的标题和摘要添加 word-break: break-all 与 overflow-wrap: break-word，解决纯英文 Git 提交信息溢出问题。",
+      "summary": "标题与摘要加入 word-break 规则，长英文和 URL 不再撑出卡片边界。",
+      "date": "2026-04-02T09:00:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "2026-04-02-fix-notification-hover-clip",
+      "title": "消息卡片悬浮截断已修复",
+      "content": "将 hover 动画从 translateX(-2px) 改为 translateY(-1px)，避免横向位移被 overflow-y 容器裁掉。",
+      "summary": "鼠标悬浮时卡片不再被滚动容器裁切，改为垂直方向轻微上移效果。",
+      "date": "2026-04-02T09:00:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "2026-04-02-feature-history-notifications",
+      "title": "消息抽屉新增历史消息分类",
+      "content": "新增 data/historyNotifications.js 作为历史归档数据源，脚本自动读取并合并进通知 JSON，前端分类顺序同步更新，历史消息 tab 永久展示。",
+      "summary": "新增 historyNotifications.js 归档文件，清空当日消息前可将内容存入历史，抽屉中永久可查。",
+      "date": "2026-04-02T09:00:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-02",
+      "title": "2026-04-02 更新汇总",
+      "content": "本次更新共包含以下改动：\n1. 头部新增消息通知中心，支持抽屉查看与详情弹窗。\n2. 资料导出中心升级为双栏结构，支持单篇、整目录、多篇打包导出。\n3. 修复导出弹窗滚动层级、勾选态与右侧摘要溢出问题。\n4. 消息抽屉宽度从 420px 调整为 520px。\n5. 修复消息卡片纯英文内容溢出（word-break）。\n6. 修复消息卡片 hover 时被滚动容器裁切（translateX 改为 translateY）。",
+      "summary": "消息通知中心接入；导出中心支持多选打包；修复导出弹窗、消息卡片溢出与悬浮截断问题；消息抽屉加宽至 520px。",
+      "date": "2026-04-02T09:00:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""

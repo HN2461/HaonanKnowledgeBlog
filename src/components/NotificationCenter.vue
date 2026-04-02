@@ -1,12 +1,7 @@
 <template>
   <div class="notification-center">
-    <button
-      class="notification-trigger"
-      type="button"
-      aria-label="消息通知"
-      :aria-expanded="String(isDrawerOpen)"
-      @click="toggleDrawer"
-    >
+    <button class="notification-trigger" type="button" aria-label="消息通知" :aria-expanded="String(isDrawerOpen)"
+      @click="toggleDrawer">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 1 0-12 0v3.2a2 2 0 0 1-.6 1.4L4 17h5"></path>
         <path d="M9 17a3 3 0 0 0 6 0"></path>
@@ -41,14 +36,8 @@
             </div>
 
             <div class="drawer-filters" v-if="categoryTabs.length > 1">
-              <button
-                v-for="tab in categoryTabs"
-                :key="tab.value"
-                type="button"
-                class="drawer-filter-chip"
-                :class="{ active: activeCategory === tab.value }"
-                @click="activeCategory = tab.value"
-              >
+              <button v-for="tab in categoryTabs" :key="tab.value" type="button" class="drawer-filter-chip"
+                :class="{ active: activeCategory === tab.value }" @click="activeCategory = tab.value">
                 <span>{{ tab.label }}</span>
                 <span class="drawer-filter-count">{{ tab.count }}</span>
               </button>
@@ -84,14 +73,8 @@
             </div>
 
             <div class="drawer-content" v-else>
-              <button
-                v-for="item in filteredNotifications"
-                :key="item.id"
-                type="button"
-                class="notification-item"
-                :class="{ 'is-pinned': item.pinned }"
-                @click="openDetail(item)"
-              >
+              <button v-for="item in filteredNotifications" :key="item.id" type="button" class="notification-item"
+                :class="{ 'is-pinned': item.pinned }" @click="openDetail(item)">
                 <div class="notification-item-topline">
                   <span class="notification-item-tag">{{ item.tag }}</span>
                   <span class="notification-item-meta">{{ formatNotificationMeta(item) }}</span>
@@ -105,12 +88,8 @@
       </Transition>
     </Teleport>
 
-    <BaseModal
-      :model-value="!!activeNotification"
-      @update:modelValue="handleDetailVisible"
-      modal-class="notification-detail-shell"
-      content-class="notification-detail-panel"
-    >
+    <BaseModal :model-value="!!activeNotification" @update:modelValue="handleDetailVisible"
+      modal-class="notification-detail-shell" content-class="notification-detail-panel">
       <article v-if="activeNotification" class="notification-detail">
         <div class="notification-detail-head">
           <div class="notification-detail-kicker-row">
@@ -126,7 +105,8 @@
           </p>
         </div>
 
-        <div class="notification-detail-footer" v-if="activeNotification.source === 'git' && activeNotification.fullHash">
+        <div class="notification-detail-footer"
+          v-if="activeNotification.source === 'git' && activeNotification.fullHash">
           <span>Git Commit</span>
           <code>{{ activeNotification.fullHash }}</code>
         </div>
@@ -357,7 +337,7 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   right: 0;
-  width: min(420px, calc(100vw - 16px));
+  width: min(620px, calc(100vw - 16px));
   height: 100%;
   padding: 22px 18px 18px;
   display: flex;
@@ -508,7 +488,7 @@ onUnmounted(() => {
 }
 
 .notification-item:hover {
-  transform: translateX(-2px);
+  transform: translateY(-1px);
   border-color: rgba(var(--primary-color-rgb), 0.22);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
 }
@@ -546,6 +526,8 @@ onUnmounted(() => {
   color: var(--text-primary);
   font-size: 15px;
   line-height: 1.5;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .notification-item-summary {
@@ -553,6 +535,8 @@ onUnmounted(() => {
   color: var(--text-secondary);
   font-size: 13px;
   line-height: 1.7;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .drawer-empty {
