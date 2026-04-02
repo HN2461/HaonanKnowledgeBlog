@@ -1,6 +1,16 @@
 import { mount, flushPromises } from '@vue/test-utils'
 import AppSidebar from '../AppSidebar.vue'
 
+const routeState = vi.hoisted(() => ({
+  name: 'Home',
+  params: {},
+  fullPath: '/'
+}))
+
+vi.mock('vue-router', () => ({
+  useRoute: () => routeState
+}))
+
 const setViewportWidth = (width) => {
   Object.defineProperty(window, 'innerWidth', {
     configurable: true,
@@ -12,6 +22,9 @@ const setViewportWidth = (width) => {
 describe('AppSidebar', () => {
   beforeEach(() => {
     setViewportWidth(500)
+    routeState.name = 'Home'
+    routeState.params = {}
+    routeState.fullPath = '/'
     vi.stubGlobal('fetch', vi.fn(() => Promise.resolve({
       json: () => Promise.resolve({ tree: [] })
     })))
@@ -28,7 +41,8 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
-          FileTree: true
+          FileTree: true,
+          SidebarExportModal: true
         }
       }
     })
@@ -45,7 +59,8 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
-          FileTree: true
+          FileTree: true,
+          SidebarExportModal: true
         }
       }
     })
@@ -54,5 +69,105 @@ describe('AppSidebar', () => {
 
     expect(wrapper.find('.sidebar-overlay').exists()).toBe(true)
     expect(wrapper.find('.app-sidebar .sidebar-overlay').exists()).toBe(false)
+  })
+
+  it('opens export modal from sidebar actions menu when notes exist', async () => {
+    setViewportWidth(1280)
+    global.fetch = vi.fn(() => Promise.resolve({
+      json: () => Promise.resolve({
+        tree: [
+          {
+            type: 'directory',
+            name: '网络与代理',
+            path: '网络与代理',
+            children: []
+          }
+        ]
+      })
+    }))
+
+    const wrapper = mount(AppSidebar, {
+      props: {
+        visible: true
+      },
+      global: {
+        stubs: {
+          FileTree: true,
+          SidebarExportModal: {
+            props: ['modelValue'],
+            template: '<div v-if="modelValue" class="sidebar-export-modal-stub"></div>'
+          }
+        }
+      }
+    })
+
+    await flushPromises()
+
+    const actionsBtn = wrapper.find('.actions-btn')
+    expect(actionsBtn.attributes('disabled')).toBeUndefined()
+
+    await actionsBtn.trigger('click')
+    expect(wrapper.find('.actions-menu').exists()).toBe(true)
+
+    const exportEntry = wrapper.findAll('.actions-menu-item').find((item) => item.text().includes('导出资料'))
+    expect(exportEntry).toBeTruthy()
+
+    await exportEntry.trigger('click')
+    expect(wrapper.find('.actions-menu').exists()).toBe(false)
+    expect(wrapper.find('.sidebar-export-modal-stub').exists()).toBe(true)
+  })
+
+  it('enables quick actions for current note route', async () => {
+    setViewportWidth(1280)
+    routeState.name = 'NoteDetail'
+    routeState.params = {
+      path: '网络与代理/代理网络问题处理指南'
+    }
+    routeState.fullPath = '/note/网络与代理/代理网络问题处理指南'
+
+    global.fetch = vi.fn(() => Promise.resolve({
+      json: () => Promise.resolve({
+        tree: [
+          {
+            type: 'directory',
+            name: '网络与代理',
+            path: '网络与代理',
+            children: [
+              {
+                type: 'file',
+                title: '代理网络问题处理指南',
+                filename: '代理网络问题处理指南.md',
+                path: '网络与代理/代理网络问题处理指南.md',
+                attachments: []
+              }
+            ]
+          }
+        ]
+      })
+    }))
+
+    const wrapper = mount(AppSidebar, {
+      props: {
+        visible: true
+      },
+      global: {
+        stubs: {
+          FileTree: true,
+          SidebarExportModal: true,
+          Teleport: true
+        }
+      }
+    })
+
+    await flushPromises()
+    await wrapper.find('.actions-btn').trigger('click')
+
+    const items = wrapper.findAll('.actions-menu-item')
+    expect(items[0].attributes('disabled')).toBeUndefined()
+    expect(items[0].text()).toContain('导出当前文章')
+    expect(items[0].text()).toContain('代理网络问题处理指南')
+    expect(items[1].attributes('disabled')).toBeUndefined()
+    expect(items[1].text()).toContain('网络与代理')
+    expect(items[2].attributes('disabled')).toBeUndefined()
   })
 })

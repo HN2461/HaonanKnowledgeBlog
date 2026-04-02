@@ -12,6 +12,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "jszip": "^3.10.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
