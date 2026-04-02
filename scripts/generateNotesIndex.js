@@ -15,62 +15,64 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true })
 }
 
+function extractSequenceNumber(filename) {
+  const normalizedName = String(filename || '').trim()
+
+  // 兼容 01-标题、1_标题 这类显式前缀命名
+  let match = normalizedName.match(/^(\d{1,3})(?=[\s._\-、]|[^\d]|$)/)
+  if (match) {
+    return parseInt(match[1], 10)
+  }
+
+  // 兼容 第1篇、第10章 这类命名
+  match = normalizedName.match(/第(\d+)[章节篇讲]/)
+  if (match) {
+    return parseInt(match[1], 10)
+  }
+
+  // 兼容 第一篇、第二章 这类命名
+  const chineseNums = {
+    '一': 1, '二': 2, '三': 3, '四': 4, '五': 5,
+    '六': 6, '七': 7, '八': 8, '九': 9, '十': 10
+  }
+
+  match = normalizedName.match(/第([一二三四五六七八九十]+)[章节篇讲]/)
+  if (match) {
+    return chineseNums[match[1]] || null
+  }
+
+  return null
+}
+
+function compareByFilenameOrder(filenameA, filenameB) {
+  const nameA = String(filenameA || '')
+  const nameB = String(filenameB || '')
+  const numA = extractSequenceNumber(nameA)
+  const numB = extractSequenceNumber(nameB)
+  const isSpecialA = nameA.includes('目录') || nameA.includes('补充') || nameA.includes('番外')
+  const isSpecialB = nameB.includes('目录') || nameB.includes('补充') || nameB.includes('番外')
+
+  if (numA !== null && numB !== null) {
+    return numA - numB || nameA.localeCompare(nameB, 'zh-CN')
+  }
+
+  if (numA !== null) return -1
+  if (numB !== null) return 1
+
+  if (isSpecialA && !isSpecialB) return 1
+  if (!isSpecialA && isSpecialB) return -1
+
+  return nameA.localeCompare(nameB, 'zh-CN')
+}
+
 // 智能排序函数（可复用）
 function smartSort(items, getFilename) {
   return items.sort((a, b) => {
-    const filenameA = getFilename ? getFilename(a) : a.filename || a.name;
-    const filenameB = getFilename ? getFilename(b) : b.filename || b.name;
-    
-    // 提取文件名中的数字（如"第1章"、"第10章"、"第一篇"、"第二篇"）
-    const getNumberFromFilename = (filename) => {
-      // 处理阿拉伯数字：第1章、第2篇等
-      let match = filename.match(/第(\d+)[章篇]/);
-      if (match) {
-        return parseInt(match[1], 10);
-      }
-      
-      // 处理中文数字：第一篇、第二篇等
-      const chineseNums = {
-        '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, 
-        '六': 6, '七': 7, '八': 8, '九': 9, '十': 10
-      };
-      
-      match = filename.match(/第([一二三四五六七八九十]+)[章篇]/);
-      if (match) {
-        const chineseNum = match[1];
-        return chineseNums[chineseNum] || null;
-      }
-      
-      return null;
-    }
-    
-    const numA = getNumberFromFilename(filenameA);
-    const numB = getNumberFromFilename(filenameB);
-    
-    // 如果都有数字，按数字排序
-    if (numA !== null && numB !== null) {
-      return numA - numB;
-    }
-    
-    // 处理特殊文件（目录文件、补充篇等）
-    const isSpecialA = filenameA.includes('目录') || filenameA.includes('补充') || filenameA.includes('番外');
-    const isSpecialB = filenameB.includes('目录') || filenameB.includes('补充') || filenameB.includes('番外');
-    
-    // 如果只有一个有数字，有数字的排在前面（除非是特殊文件）
-    if (numA !== null && numB === null) {
-      return isSpecialB ? -1 : -1; // 数字文件优先，但特殊文件排最后
-    }
-    if (numA === null && numB !== null) {
-      return isSpecialA ? 1 : 1; // 数字文件优先，但特殊文件排最后
-    }
-    
-    // 都没有数字时，特殊文件排在后面
-    if (isSpecialA && !isSpecialB) return 1;
-    if (!isSpecialA && isSpecialB) return -1;
-    
-    // 都没有数字，按字母排序
-    return filenameA.localeCompare(filenameB, 'zh-CN');
-  });
+    const filenameA = getFilename ? getFilename(a) : a.filename || a.name
+    const filenameB = getFilename ? getFilename(b) : b.filename || b.name
+
+    return compareByFilenameOrder(filenameA, filenameB)
+  })
 }
 
 function toTagArray(value) {
@@ -326,9 +328,13 @@ function scanDirectory(dir, relativePath = '') {
       const noteDirRelPath = relativePath || ''
       const attachments = resolveAttachments(frontmatter, noteDirRelPath)
 
+      const fileTitle = file.replace('.md', '')
+      const frontmatterTitle = frontmatter.title || fileTitle
+
       items.push({
         type: 'file',
-        title: frontmatter.title || file.replace('.md', ''),
+        title: fileTitle,
+        frontmatterTitle: frontmatterTitle,
         filename: file,
         path: relPath,
         date: frontmatter.date || null,
@@ -439,8 +445,15 @@ function generateIndex() {
   const allNotes = flattenNotes(items)
   const categories = generateCategories(items)
 
-  // 统一按可用时间倒序排序，优先 date，无则回退 lastModified
-  allNotes.sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a))
+  // 统一按可用时间倒序排序；同日期时再按文件序号/文件名稳定排序
+  allNotes.sort((a, b) => {
+    const timeDiff = getNoteTimestamp(b) - getNoteTimestamp(a)
+    if (timeDiff !== 0) {
+      return timeDiff
+    }
+
+    return compareByFilenameOrder(a.filename, b.filename)
+  })
 
   const index = {
     categories: categories,

@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-02T08:58:57.729Z",
-  "total": 58,
+  "generatedAt": "2026-04-02T15:54:07.369Z",
+  "total": 59,
   "notifications": [
+    {
+      "id": "git-37193a64ef17f68ad7dbcd87ada226745abe95a6",
+      "title": "feat(通知中心): 实现消息通知系统及UI组件",
+      "content": "新增通知中心功能，包含以下主要变更：\n- 添加 NotificationCenter.vue 组件实现铃铛入口和抽屉式消息面板\n- 创建 notifications.js 工具库处理消息格式化与分类\n- 新增 generateNotifications.js 脚本聚合 git 提交与手动消息\n- 扩展 package.json 脚本支持通知生成\n- 补充测试用例和文档说明\n\n同时更新了笔记索引的最后更新时间",
+      "summary": "新增通知中心功能，包含以下主要变更： - 添加 NotificationCenter.vue 组件实现铃铛入口和抽屉式消息面板 - 创建 notifications.js 工具库处理消息格式化与分类 - 新增 generateNotific",
+      "date": "2026-04-02T19:58:22+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "37193a6",
+      "fullHash": "37193a64ef17f68ad7dbcd87ada226745abe95a6"
+    },
     {
       "id": "git-9e29731cdd3b1d700544721a1a74885bf0ca6acb",
       "title": "优化导出功能",

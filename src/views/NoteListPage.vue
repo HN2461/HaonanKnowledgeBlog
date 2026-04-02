@@ -15,6 +15,7 @@
         <div class="sort-options">
           <label>排序：</label>
           <select v-model="sortBy" @change="handleSort">
+            <option value="sequence">默认顺序</option>
             <option value="date-desc">最新优先</option>
             <option value="date-asc">最旧优先</option>
             <option value="title-asc">标题 A-Z</option>
@@ -53,10 +54,15 @@ import AppLayout from '../components/AppLayout.vue'
 import NoteCard from '../components/NoteCard.vue'
 import BackToTop from '../components/BackToTop.vue'
 import SkeletonScreen from '../components/SkeletonScreen.vue'
+import {
+  compareNotesByNewest,
+  compareNotesByOldest,
+  compareNotesBySequence
+} from '@/utils/noteOrder'
 
 const route = useRoute()
 const notesData = ref(null)
-const sortBy = ref('date-desc')
+const sortBy = ref('sequence')
 const loading = ref(true)
 
 const categoryPath = computed(() => route.params.category)
@@ -81,16 +87,18 @@ const sortedNotes = computed(() => {
   const notesCopy = [...notes.value]
   
   switch (sortBy.value) {
+    case 'sequence':
+      return notesCopy.sort(compareNotesBySequence)
     case 'date-desc':
-      return notesCopy.sort((a, b) => new Date(b.date) - new Date(a.date))
+      return notesCopy.sort(compareNotesByNewest)
     case 'date-asc':
-      return notesCopy.sort((a, b) => new Date(a.date) - new Date(b.date))
+      return notesCopy.sort(compareNotesByOldest)
     case 'title-asc':
       return notesCopy.sort((a, b) => a.title.localeCompare(b.title))
     case 'title-desc':
       return notesCopy.sort((a, b) => b.title.localeCompare(a.title))
     default:
-      return notesCopy
+      return notesCopy.sort(compareNotesBySequence)
   }
 })
 
