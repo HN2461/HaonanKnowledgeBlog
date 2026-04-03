@@ -220,6 +220,7 @@ import {
   getNoteReadingMinutes,
   getNoteWordCount
 } from '@/utils/notePresentation'
+import { stripLeadingSequencePrefix } from '@/utils/noteOrder'
 import {
   getReadingPosition,
   createDebouncedSave,
@@ -485,7 +486,7 @@ const printDocument = () => {
 }
 
 const normalizeTitleForCompare = (title) => {
-  return String(title || '')
+  return stripLeadingSequencePrefix(title)
     .toLowerCase()
     .normalize('NFKC')
     .replace(/[\s_\-–—~`!@#$%^&*()+=[\]{}|\\:;"'<>,.?/·，。、《》？；：‘’“”（）【】]/g, '')

@@ -172,9 +172,9 @@ import {
   formatWordCount,
   getNoteDateLabel,
   getNoteExcerpt,
-  getNoteTimestamp,
   getNoteWordCount
 } from '@/utils/notePresentation'
+import { compareNotesByNewest } from '@/utils/noteOrder'
 
 const notesData = ref(null)
 const loading = ref(true)
@@ -204,7 +204,7 @@ const attachmentCount = computed(() => {
 })
 
 const sortedNotes = computed(() => {
-  return [...allNotes.value].sort((a, b) => getNoteTimestamp(b) - getNoteTimestamp(a))
+  return [...allNotes.value].sort(compareNotesByNewest)
 })
 
 const recentProblemNotes = computed(() => {
