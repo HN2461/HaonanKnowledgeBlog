@@ -3,13 +3,22 @@ import { cleanNoteText, getNoteExcerpt } from '@/utils/notePresentation'
 
 let fuseInstance = null
 let indexedNotes = []
+let indexedData = null
 let searchInitPromise = null
 const SEARCH_HISTORY_KEY = 'search-history'
 const SEARCH_HISTORY_LIMIT = 10
 
 // 初始化搜索引擎
-export function initSearch(notes) {
+export function initSearch(notes, data = null) {
   indexedNotes = Array.isArray(notes) ? notes : []
+  indexedData = data && typeof data === 'object'
+    ? {
+      ...data,
+      allNotes: indexedNotes
+    }
+    : {
+      allNotes: indexedNotes
+    }
 
   const options = {
     keys: [
@@ -33,8 +42,8 @@ export function initSearch(notes) {
 }
 
 export async function ensureSearchReady() {
-  if (fuseInstance && indexedNotes.length > 0) {
-    return indexedNotes
+  if (fuseInstance && indexedData) {
+    return indexedData
   }
 
   if (!searchInitPromise) {
@@ -46,8 +55,8 @@ export async function ensureSearchReady() {
 
         const data = await response.json()
         const notes = data.allNotes || []
-        initSearch(notes)
-        return notes
+        initSearch(notes, data)
+        return indexedData
       })
       .catch((error) => {
         searchInitPromise = null

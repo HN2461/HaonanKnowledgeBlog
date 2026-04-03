@@ -48,12 +48,13 @@ describe('notifications utilities', () => {
 
   it('formats notification date and git meta copy', () => {
     expect(formatNotificationDate('2026-04-02T10:00:00+08:00')).toBe('2026.04.02 10:00')
+    expect(formatNotificationDate('2026-04-02')).toBe('2026.04.02')
     expect(formatNotificationMeta({
       date: '2026-04-02T10:00:00+08:00',
       category: 'Git 提交',
       source: 'git',
       shortHash: '9e29731'
-    })).toBe('2026.04.02 10:00 · Git 提交 · #9e29731')
+    })).toBe('2026.04.02 10:00 路 Git 提交 路 #9e29731')
   })
 
   it('keeps business notifications in their own category', () => {
@@ -64,13 +65,13 @@ describe('notifications utilities', () => {
           content: '支持多选打包与当前目录导出',
           category: '功能更新',
           source: 'daily-summary',
-          date: '2026-04-02T09:00:00+08:00'
+          date: '2026-04-02T21:07:00+08:00'
         }
       ]
     })
 
     expect(payload.notifications[0].category).toBe('功能更新')
     expect(payload.notifications[0].tag).toBe('功能更新')
-    expect(formatNotificationMeta(payload.notifications[0])).toBe('2026.04.02 09:00')
+    expect(formatNotificationMeta(payload.notifications[0])).toBe('2026.04.02 21:07')
   })
 })

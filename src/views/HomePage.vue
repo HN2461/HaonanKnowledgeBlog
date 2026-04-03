@@ -170,6 +170,7 @@ import { siteConfig } from '@/config/site'
 import {
   buildRootTopics,
   formatWordCount,
+  getRootDirectoryPaths,
   getNoteDateLabel,
   getNoteExcerpt,
   getNoteWordCount
@@ -220,15 +221,9 @@ const recentRecordNotes = computed(() => {
 })
 
 const rootTopics = computed(() => {
-  return buildRootTopics(allNotes.value)
-    .sort((a, b) => {
-      if (b.notesCount !== a.notesCount) {
-        return b.notesCount - a.notesCount
-      }
-
-      return b.latestTimestamp - a.latestTimestamp
-    })
-    .slice(0, 6)
+  return buildRootTopics(allNotes.value, {
+    orderedPaths: getRootDirectoryPaths(notesData.value?.tree)
+  })
 })
 
 onMounted(async () => {

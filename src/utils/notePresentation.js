@@ -178,13 +178,24 @@ export const getNoteExcerpt = (note = {}, options = {}) => {
   return fallback
 }
 
-export const buildRootTopics = (notes = []) => {
+const getRootTopicPath = (value = '') => {
+  return String(value || '')
+    .split('/')
+    .filter(Boolean)[0] || ''
+}
+
+export const getRootDirectoryPaths = (tree = []) => {
+  return (Array.isArray(tree) ? tree : [])
+    .filter((item) => item?.type === 'directory' && item.path)
+    .map((item) => String(item.path))
+}
+
+export const buildRootTopics = (notes = [], options = {}) => {
+  const { orderedPaths = [] } = options
   const topics = new Map()
 
   notes.forEach((note) => {
-    const rootName = String(note.path || '')
-      .split('/')
-      .filter(Boolean)[0]
+    const rootName = getRootTopicPath(note.path)
 
     if (!rootName) {
       return
@@ -216,19 +227,34 @@ export const buildRootTopics = (notes = []) => {
     })
   })
 
-  return [...topics.values()]
-    .map((topic) => ({
-      ...topic,
-      featuredTags: [...topic.tags.entries()]
-        .sort((a, b) => b[1] - a[1])
-        .slice(0, 3)
-        .map(([tag]) => tag)
-    }))
-    .sort((a, b) => {
-      if (b.latestTimestamp !== a.latestTimestamp) {
-        return b.latestTimestamp - a.latestTimestamp
-      }
+  const resolvedOrderedPaths = []
+  const seenOrderedPaths = new Set()
 
-      return b.notesCount - a.notesCount
+  orderedPaths.forEach((path) => {
+    const rootPath = getRootTopicPath(path)
+
+    if (!rootPath || seenOrderedPaths.has(rootPath) || !topics.has(rootPath)) {
+      return
+    }
+
+    seenOrderedPaths.add(rootPath)
+    resolvedOrderedPaths.push(rootPath)
+  })
+
+  const fallbackPaths = [...topics.keys()]
+    .filter((path) => !seenOrderedPaths.has(path))
+    .sort((a, b) => a.localeCompare(b, 'zh-CN'))
+
+  return [...resolvedOrderedPaths, ...fallbackPaths]
+    .map((path) => {
+      const topic = topics.get(path)
+
+      return {
+        ...topic,
+        featuredTags: [...topic.tags.entries()]
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([tag]) => tag)
+      }
     })
 }

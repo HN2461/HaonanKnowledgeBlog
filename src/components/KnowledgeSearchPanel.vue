@@ -141,7 +141,7 @@
         <p>试试更短的关键词，或者直接搜专题名。</p>
         <div class='topic-list compact' v-if='rootTopics.length > 0'>
           <button
-            v-for='topic in rootTopics.slice(0, 6)'
+            v-for='topic in rootTopics'
             :key='topic.path'
             type='button'
             class='topic-chip'
@@ -166,6 +166,7 @@ import {
   getNoteDateLabel,
   getNoteExcerpt,
   getNoteReadingMinutes,
+  getRootDirectoryPaths,
   getNoteWordCount
 } from '@/utils/notePresentation'
 import {
@@ -201,12 +202,15 @@ const searchInput = ref(null)
 const searchQuery = ref((props.initialQuery || '').trim())
 const searchResults = ref([])
 const searchHistory = ref([])
-const allNotes = ref([])
+const searchIndex = ref(null)
 const isLoadingIndex = ref(false)
 
 let searchTimeout = null
 
 const hasQuery = computed(() => searchQuery.value.trim().length > 0)
+const allNotes = computed(() => {
+  return Array.isArray(searchIndex.value?.allNotes) ? searchIndex.value.allNotes : []
+})
 
 const panelTitle = computed(() => {
   return props.variant === 'overlay' ? '直接找答案' : '完整检索视图'
@@ -245,15 +249,9 @@ const visibleResults = computed(() => {
 })
 
 const rootTopics = computed(() => {
-  return buildRootTopics(allNotes.value)
-    .sort((a, b) => {
-      if (b.notesCount !== a.notesCount) {
-        return b.notesCount - a.notesCount
-      }
-
-      return b.latestTimestamp - a.latestTimestamp
-    })
-    .slice(0, props.variant === 'overlay' ? 8 : 10)
+  return buildRootTopics(allNotes.value, {
+    orderedPaths: getRootDirectoryPaths(searchIndex.value?.tree)
+  })
 })
 
 const focusInput = async () => {
@@ -372,7 +370,7 @@ onMounted(async () => {
   isLoadingIndex.value = true
 
   try {
-    allNotes.value = await ensureSearchReady()
+    searchIndex.value = await ensureSearchReady()
 
     if (hasQuery.value) {
       handleSearch(true)
