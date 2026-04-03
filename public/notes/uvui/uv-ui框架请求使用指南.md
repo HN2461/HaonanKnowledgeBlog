@@ -1,310 +1,167 @@
-# UV-UI框架 HTTP请求使用指南
+---
+title: uv-ui 框架请求使用指南
+date: 2026-04-03
+category: uv-ui
+tags:
+  - uv-ui
+  - uni-app
+  - 微信小程序
+  - HTTP
+  - 请求封装
+description: 结合 uv-ui 官方 Http 文档、扩展配置和 uni-app 请求能力，整理一套适合微信小程序项目落地的请求封装、拦截器与上传下载方案。
+---
 
-> 适合小白快速上手的uv-ui请求教程，让你轻松处理前后端数据交互 🚀
+# uv-ui 框架请求使用指南
 
-## 一、快速开始
+> 这篇不是把官方 API 原样搬过来，而是把 `uv-ui` 的 `http` 能力整理成一套适合微信小程序项目直接落地的写法。  
+> 重点是三件事：先把扩展配置接好、再把请求收口、最后把上传下载和常见坑补齐。
 
-### 1.1 前置条件
-确保你已经安装了uv-ui框架。如果还没安装，请先到[插件市场](https://ext.dcloud.net.cn/plugin?id=12287)下载。
+## 一、先说结论：页面里别散着写 `uni.$uv.http`
 
-### 1.2 基础配置（3步搞定）
+如果你只是在页面里临时写几个请求，前期会觉得很快，后期就会越来越乱：
 
-#### 第1步：创建请求配置文件
-在项目根目录创建 `/util/request/index.js`：
+- token 注入到处复制
+- 加载态和错误提示每页各写一套
+- 登录失效后跳转逻辑重复
+- 上传下载和普通请求风格不统一
 
-```javascript
-// 导出请求配置函数
-export const Request = (vm) => {
-  // 设置基础配置
-  uni.$uv.http.setConfig((config) => {
-    config.baseURL = 'https://your-api.com'; // 👈 改成你的API地址
-    config.timeout = 60000; // 超时时间60秒
-    return config
-  })
-  
-  // 请求拦截器（发送前处理）
-  uni.$uv.http.interceptors.request.use((config) => {
-    // 给所有请求加上token
-    const token = uni.getStorageSync('token');
-    if (token) {
-      config.header.token = token;
-    }
-    return config
-  })
-  
-  // 响应拦截器（接收后处理）
-  uni.$uv.http.interceptors.response.use((response) => {
-    const data = response.data
-    
-    // 请求成功但业务失败
-    if (data.code !== 200) {
-      uni.showToast({
-        title: data.message || '请求失败',
-        icon: 'none'
-      })
-      return Promise.reject(data)
-    }
-    
-    // 返回真正的数据
-    return data.data
-  })
-}
-```
+更稳的方式是：
 
-#### 第2步：在main.js中引入
-```javascript
+1. `main.js` 完成 `uv-ui` 扩展配置
+2. `@/utils/request/index.js` 统一写全局配置和拦截器
+3. `@/api/*.js` 只暴露具体接口方法
+4. 页面只关心“调用哪个接口”和“成功后怎么展示”
+
+## 二、前置条件：先把 `uni.$uv` 挂起来
+
+官方文档明确提到，`uv-ui` 内置方法默认不会直接挂到 `uni` 上，要先完成扩展配置，之后才能稳定使用 `uni.$uv.http`、`uni.$uv.toast` 这些能力。
+
+### 1. `main.js` 引入工具库
+
+```js
 import App from './App'
-import { Request } from '@/util/request/index'
+import { createSSRApp } from 'vue'
+import uvUI from '@/uni_modules/uv-ui-tools'
+import { setupRequest } from '@/utils/request'
 
-// Vue2写法
+// #ifndef VUE3
+Vue.use(uvUI)
+setupRequest()
+
 const app = new Vue({
   ...App
 })
-app.$mount()
-Request(app) // 👈 关键：初始化请求配置
 
-// Vue3写法
-import { createSSRApp } from 'vue'
+app.$mount()
+// #endif
+
+// #ifdef VUE3
 export function createApp() {
   const app = createSSRApp(App)
-  Request(app) // 👈 关键：初始化请求配置
-  return { app }
-}
-```
-
-#### 第3步：创建API管理文件
-在项目根目录创建 `/common/api.js`：
-
-```javascript
-// 用户登录
-export const login = (data) => uni.$uv.http.post('/user/login', data)
-
-// 获取用户信息
-export const getUserInfo = () => uni.$uv.http.get('/user/info')
-
-// 获取商品列表（带参数）
-export const getGoodsList = (params) => uni.$uv.http.get('/goods/list', {
-  params: params // GET请求参数放第二个参数的params里
-})
-```
-
-## 二、基础用法（最常用）
-
-### 2.1 GET请求
-```javascript
-// 方式1：直接调用
-uni.$uv.http.get('/user/list', {
-  params: {
-    page: 1,
-    pageSize: 10
-  }
-}).then(res => {
-  console.log('用户列表：', res)
-})
-
-// 方式2：使用api文件（推荐）
-import { getUserList } from '@/common/api.js'
-
-getUserList({ page: 1, pageSize: 10 }).then(res => {
-  console.log('用户列表：', res)
-})
-
-// 方式3：async/await写法（推荐）
-async function loadUsers() {
-  try {
-    const res = await getUserList({ page: 1 })
-    console.log('用户列表：', res)
-  } catch(err) {
-    console.error('加载失败：', err)
+  app.use(uvUI)
+  setupRequest(app)
+  return {
+    app
   }
 }
+// #endif
 ```
 
-### 2.2 POST请求
-```javascript
-// 登录示例
-uni.$uv.http.post('/user/login', {
-  username: 'admin',
-  password: '123456'
-}).then(res => {
-  // 保存token
-  uni.setStorageSync('token', res.token)
-  uni.showToast({ title: '登录成功' })
-})
+如果你是 Vue 2 项目，也是在 `Vue.use(uvUI)` 之后再调用请求初始化方法。
 
-// POST请求注意：
-// 第2个参数是请求体数据
-// 第3个参数才是配置项（如自定义header等）
-uni.$uv.http.post('/api/save', 
-  { name: '张三', age: 18 },  // 👈 请求数据
-  { header: { 'X-Custom': 'value' } }  // 👈 配置项
-)
+### 2. 推荐目录结构
+
+```text
+api/
+  auth.js
+  user.js
+  goods.js
+utils/
+  request/
+    index.js
 ```
 
-## 三、进阶用法
+## 三、请求层建议这样封装
 
-### 3.1 文件上传
-```javascript
-// 上传图片
-uni.chooseImage({
-  count: 1,
-  success: (res) => {
-    const filePath = res.tempFilePaths[0]
-    
-    uni.$uv.http.upload('/api/upload', {
-      filePath: filePath,  // 文件路径
-      name: 'file',       // 后端接收字段名
-      formData: {         // 额外参数
-        type: 'avatar',
-        userId: '123'
-      },
-      // 监听上传进度
-      getTask: (task, options) => {
-        task.onProgressUpdate((res) => {
-          console.log('上传进度：', res.progress + '%')
-        })
-      }
-    }).then(res => {
-      console.log('上传成功，图片地址：', res.url)
-    })
-  }
-})
-```
+下面这套写法，核心思路是：
 
-### 3.2 文件下载
-```javascript
-uni.$uv.http.download('/api/download/file.pdf', {
-  // 下载进度监听
-  getTask: (task, options) => {
-    task.onProgressUpdate((res) => {
-      console.log('下载进度：', res.progress + '%')
-    })
-  }
-}).then(res => {
-  console.log('文件下载到：', res.tempFilePath)
-  // 保存到本地
-  uni.saveFile({
-    tempFilePath: res.tempFilePath,
-    success: (saveRes) => {
-      console.log('保存成功：', saveRes.savedFilePath)
-    }
-  })
-})
-```
+- `setConfig` 放全局默认值
+- `custom` 传业务开关
+- 请求拦截器处理 token、loading、公共 header
+- 响应拦截器处理业务码、401、统一 toast
 
-### 3.3 自定义参数（custom用法）
-```javascript
-// 某些请求不需要token
-uni.$uv.http.get('/public/news', {
-  params: { type: 'hot' },
-  custom: {
-    auth: false,  // 👈 在拦截器中判断，不加token
-    loading: true // 👈 可以在拦截器中显示loading
-  }
-})
+### 1. `@/utils/request/index.js`
 
-// 在拦截器中使用custom参数
-uni.$uv.http.interceptors.request.use((config) => {
-  // 根据custom.auth决定是否加token
-  if (config.custom?.auth !== false) {
-    config.header.token = getToken()
-  }
-  
-  // 根据custom.loading显示加载框
-  if (config.custom?.loading) {
-    uni.showLoading({ title: '加载中...' })
-  }
-  
-  return config
-})
-```
-
-### 3.4 请求取消
-```javascript
-let requestTask = null
-
-// 发起可取消的请求
-uni.$uv.http.get('/api/search', {
-  params: { keyword: '手机' },
-  getTask: (task, options) => {
-    requestTask = task  // 保存请求任务
-  }
-})
-
-// 取消请求（比如用户快速输入时取消上一次搜索）
-if (requestTask) {
-  requestTask.abort()
-}
-```
-
-## 四、完整拦截器示例
-
-```javascript
-// /util/request/index.js 完整版
-export const Request = (vm) => {
-  // 全局配置
+```js
+export const setupRequest = (vm) => {
   uni.$uv.http.setConfig((config) => {
-    config.baseURL = process.env.VUE_APP_API_URL || 'https://api.example.com';
-    config.timeout = 30000;
+    config.baseURL = 'https://api.example.com'
+    config.timeout = 15000
     config.header = {
-      'Content-Type': 'application/json;charset=UTF-8'
-    };
+      'Content-Type': 'application/json'
+    }
+    config.custom = {
+      auth: true,
+      loading: false,
+      toast: true,
+      unwrap: true
+    }
+    config.validateStatus = (statusCode) => {
+      return statusCode >= 200 && statusCode < 500
+    }
     return config
   })
-  
-  // 请求拦截器
+
   uni.$uv.http.interceptors.request.use((config) => {
-    // 处理token
-    const token = uni.getStorageSync('token')
-    if (token && config.custom?.auth !== false) {
-      config.header.Authorization = 'Bearer ' + token
+    config.header = config.header || {}
+    config.custom = config.custom || {}
+
+    if (config.custom.auth !== false) {
+      const token = uni.getStorageSync('token')
+      if (token) {
+        config.header.Authorization = `Bearer ${token}`
+      }
     }
-    
-    // 显示loading
-    if (config.custom?.loading) {
-      uni.showLoading({ 
+
+    if (config.custom.loading) {
+      uni.showLoading({
         title: config.custom.loadingText || '加载中...',
-        mask: true 
+        mask: true
       })
     }
-    
-    // 添加时间戳防止缓存
-    if (config.method === 'GET') {
-      config.params = config.params || {}
-      config.params._ = Date.now()
-    }
-    
+
     return config
-  }, config => {
+  }, (config) => {
+    uni.hideLoading()
     return Promise.reject(config)
   })
-  
-  // 响应拦截器
+
   uni.$uv.http.interceptors.response.use((response) => {
-    // 隐藏loading
-    if (response.config?.custom?.loading) {
+    const data = response.data || {}
+    const custom = response.config?.custom || {}
+
+    if (custom.loading) {
       uni.hideLoading()
     }
-    
-    const data = response.data
-    
-    // 根据你的后端约定处理
-    if (data.code === 200) {
-      return data.data || data
-    } else if (data.code === 401) {
-      // token过期
+
+    if (data.code === 401) {
       uni.removeStorageSync('token')
-      uni.showToast({ 
-        title: '登录已过期',
-        icon: 'none' 
+      uni.showToast({
+        title: data.message || '登录已过期',
+        icon: 'none'
       })
+
       setTimeout(() => {
-        uni.reLaunch({ url: '/pages/login/login' })
-      }, 1500)
+        uni.reLaunch({
+          url: '/pages/login/login'
+        })
+      }, 1200)
+
       return Promise.reject(data)
-    } else {
-      // 业务错误
-      if (response.config?.custom?.toast !== false) {
+    }
+
+    if (data.code !== 200) {
+      if (custom.toast !== false) {
         uni.showToast({
           title: data.message || '请求失败',
           icon: 'none'
@@ -312,212 +169,323 @@ export const Request = (vm) => {
       }
       return Promise.reject(data)
     }
-  }, (error) => {
-    // 网络错误
-    uni.hideLoading()
-    
-    if (error.statusCode === 0) {
-      uni.showToast({ 
-        title: '网络连接失败',
-        icon: 'none' 
-      })
-    } else {
-      uni.showToast({ 
-        title: `请求失败(${error.statusCode})`,
-        icon: 'none' 
-      })
+
+    if (custom.unwrap === false) {
+      return data
     }
-    
+
+    return data.data
+  }, (error) => {
+    uni.hideLoading()
+
+    const statusCode = error?.statusCode || error?.response?.statusCode
+    const messageMap = {
+      400: '请求参数错误',
+      401: '未授权，请重新登录',
+      403: '没有权限访问',
+      404: '接口不存在',
+      500: '服务器异常',
+      502: '网关错误',
+      503: '服务暂不可用'
+    }
+
+    uni.showToast({
+      title: messageMap[statusCode] || '网络异常，请稍后重试',
+      icon: 'none'
+    })
+
     return Promise.reject(error)
   })
 }
 ```
 
-## 五、实战示例
+### 2. 在 `main.js` 里初始化
 
-### 5.1 登录流程
-```javascript
-// pages/login/login.vue
+```js
+import App from './App'
+import uvUI from '@/uni_modules/uv-ui-tools'
+import { setupRequest } from '@/utils/request'
+
+Vue.use(uvUI)
+setupRequest()
+
+const app = new Vue({
+  ...App
+})
+
+app.$mount()
+```
+
+如果你想在拦截器里访问 `store`，可以把 `app` 或 `vm` 传进去，再从 `vm.$store` 里读 token。
+
+## 四、接口文件不要写成“大杂烩”
+
+### 1. 登录相关接口
+
+```js
+export const login = (data) => {
+  return uni.$uv.http.post('/auth/login', data, {
+    custom: {
+      auth: false,
+      loading: true,
+      loadingText: '登录中...'
+    }
+  })
+}
+
+export const getUserInfo = () => {
+  return uni.$uv.http.get('/user/profile')
+}
+```
+
+### 2. 列表接口
+
+```js
+export const getGoodsList = (params) => {
+  return uni.$uv.http.get('/goods/list', {
+    params
+  })
+}
+
+export const createOrder = (data) => {
+  return uni.$uv.http.post('/order/create', data)
+}
+```
+
+这里最容易写错的一点是：
+
+- `get` 的参数和配置都在第二个参数里
+- `post` 的第二个参数是请求体，第三个参数才是配置
+
+## 五、页面里只保留业务流程
+
+```js
+import { login } from '@/api/auth'
+
 export default {
   data() {
     return {
       form: {
-        username: '',
+        mobile: '',
         password: ''
       }
     }
   },
   methods: {
     async handleLogin() {
-      // 表单验证
-      if (!this.form.username || !this.form.password) {
-        uni.showToast({ 
-          title: '请填写账号密码',
-          icon: 'none' 
+      if (!this.form.mobile || !this.form.password) {
+        uni.showToast({
+          title: '请先填写完整信息',
+          icon: 'none'
         })
         return
       }
-      
+
       try {
-        // 调用登录接口
-        const res = await uni.$uv.http.post('/user/login', this.form, {
-          custom: { loading: true, loadingText: '登录中...' }
+        const data = await login(this.form)
+        uni.setStorageSync('token', data.token)
+        uni.setStorageSync('userInfo', data.userInfo)
+        uni.switchTab({
+          url: '/pages/index/index'
         })
-        
-        // 保存登录信息
-        uni.setStorageSync('token', res.token)
-        uni.setStorageSync('userInfo', res.userInfo)
-        
-        uni.showToast({ 
-          title: '登录成功',
-          success: () => {
-            setTimeout(() => {
-              uni.switchTab({ url: '/pages/index/index' })
-            }, 1500)
-          }
-        })
-      } catch(err) {
-        console.error('登录失败：', err)
+      } catch (error) {
+        console.error('登录失败', error)
       }
     }
   }
 }
 ```
 
-### 5.2 列表分页加载
-```javascript
-// pages/goods/list.vue
-export default {
-  data() {
-    return {
-      list: [],
-      page: 1,
-      pageSize: 10,
-      loading: false,
-      finished: false
-    }
-  },
-  onLoad() {
-    this.loadList()
-  },
-  onReachBottom() {
-    this.loadMore()
-  },
-  methods: {
-    async loadList() {
-      if (this.loading || this.finished) return
-      
-      this.loading = true
-      
-      try {
-        const res = await uni.$uv.http.get('/goods/list', {
-          params: {
-            page: this.page,
-            pageSize: this.pageSize
-          }
-        })
-        
-        if (this.page === 1) {
-          this.list = res.list
-        } else {
-          this.list.push(...res.list)
-        }
-        
-        // 判断是否加载完毕
-        if (res.list.length < this.pageSize) {
-          this.finished = true
-        }
-      } finally {
-        this.loading = false
-      }
+这样页面层就只剩下：
+
+- 表单校验
+- 成功后保存状态
+- 成功后跳转
+
+请求细节都留在请求层和接口层。
+
+## 六、上传下载是小程序里最容易踩坑的地方
+
+### 1. 上传文件
+
+官方文档里说明，`upload` 和普通请求一样支持 `custom`、`header`、`getTask` 等配置。对微信小程序来说，最常用的仍然是 `filePath + name` 这种写法。
+
+```js
+export const uploadAvatar = (filePath) => {
+  return uni.$uv.http.upload('/file/upload', {
+    filePath,
+    name: 'file',
+    formData: {
+      scene: 'avatar'
     },
-    
-    loadMore() {
-      if (!this.finished) {
-        this.page++
-        this.loadList()
-      }
+    custom: {
+      loading: true,
+      loadingText: '上传中...'
     },
-    
-    // 下拉刷新
-    onPullDownRefresh() {
-      this.page = 1
-      this.finished = false
-      this.loadList().then(() => {
-        uni.stopPullDownRefresh()
+    getTask: (task) => {
+      task.onProgressUpdate((res) => {
+        console.log('上传进度', res.progress)
       })
     }
-  }
-}
-```
-
-## 六、常见问题
-
-### Q1: 如何处理不同环境的API地址？
-```javascript
-// 在.env文件中配置
-// .env.development
-VUE_APP_API_URL=http://localhost:3000
-
-// .env.production  
-VUE_APP_API_URL=https://api.production.com
-
-// 使用
-config.baseURL = process.env.VUE_APP_API_URL
-```
-
-### Q2: 如何统一处理错误？
-```javascript
-// 在响应拦截器中统一处理
-const errorHandler = {
-  400: '请求参数错误',
-  401: '未授权，请登录',
-  403: '拒绝访问',
-  404: '请求地址不存在',
-  500: '服务器内部错误',
-  502: '网关错误',
-  503: '服务不可用'
-}
-
-// 响应拦截器中
-if (error.statusCode && errorHandler[error.statusCode]) {
-  uni.showToast({ 
-    title: errorHandler[error.statusCode],
-    icon: 'none' 
   })
 }
 ```
 
-### Q3: GET和POST请求参数位置不同？
-- **GET请求**：所有配置都在第二个参数
-- **POST请求**：第二个参数是数据，第三个参数才是配置
+### 2. 下载文件
 
-```javascript
-// GET - 参数在第二个参数的params中
-uni.$uv.http.get('/api', { params: {id: 1}, header: {} })
-
-// POST - 数据在第二个，配置在第三个
-uni.$uv.http.post('/api', {id: 1}, { header: {} })
+```js
+export const downloadContract = () => {
+  return uni.$uv.http.download('/file/contract.pdf', {
+    custom: {
+      loading: true,
+      loadingText: '下载中...'
+    }
+  })
+}
 ```
 
-## 七、小技巧
+调用时记得区分“临时路径”和“持久保存”：
 
-1. **请求防抖**：搜索框输入时，使用防抖避免频繁请求
-2. **缓存策略**：对不常变化的数据进行本地缓存
-3. **错误重试**：网络错误时可以自动重试1-2次
-4. **请求合并**：同时需要多个接口数据时，使用Promise.all
+```js
+const res = await downloadContract()
 
-```javascript
-// 同时请求多个接口
-const [userInfo, menuList, config] = await Promise.all([
-  uni.$uv.http.get('/user/info'),
-  uni.$uv.http.get('/menu/list'),
-  uni.$uv.http.get('/system/config')
+await uni.saveFile({
+  tempFilePath: res.tempFilePath
+})
+```
+
+很多同学下载完就直接把 `tempFilePath` 当永久文件路径使用，这在小程序里很容易出问题。
+
+## 七、`custom` 是最值得用好的一个点
+
+官方文档里提到，全局 `custom` 和局部 `custom` 会合并，同名属性局部优先。这个设计很适合做“请求开关”。
+
+我更推荐你把它当成统一约定来用：
+
+```js
+uni.$uv.http.get('/public/banner', {
+  custom: {
+    auth: false,
+    loading: true,
+    toast: false,
+    unwrap: true
+  }
+})
+```
+
+常用约定可以是：
+
+- `auth` 是否自动带 token
+- `loading` 是否显示全局加载中
+- `loadingText` 加载文案
+- `toast` 业务错误时是否自动提示
+- `unwrap` 是否只返回 `data.data`
+
+## 八、请求取消、并发请求都可以收进来
+
+### 1. 搜索联想取消上一次请求
+
+```js
+let searchTask = null
+
+export const searchGoods = (keyword) => {
+  return uni.$uv.http.get('/goods/search', {
+    params: {
+      keyword
+    },
+    getTask: (task) => {
+      searchTask = task
+    }
+  })
+}
+
+export const abortSearchGoods = () => {
+  if (searchTask) {
+    searchTask.abort()
+    searchTask = null
+  }
+}
+```
+
+### 2. 首页多个接口并发加载
+
+```js
+const [userInfo, bannerList, noticeList] = await Promise.all([
+  uni.$uv.http.get('/user/profile'),
+  uni.$uv.http.get('/banner/list', {
+    custom: {
+      auth: false
+    }
+  }),
+  uni.$uv.http.get('/notice/list', {
+    custom: {
+      auth: false
+    }
+  })
 ])
 ```
 
----
+## 九、微信小程序里最常见的几个坑
 
-💡 **温馨提示**：以上就是uv-ui框架请求的核心用法，掌握这些足够应对90%的场景。遇到问题多看官方文档，多动手实践！
+### 1. 安装好 `uv-ui` 后组件或请求能力不生效
 
-📚 **官方文档**：https://www.uvui.cn/js/http.html
+官方安装文档和注意事项都提到，安装后最好重新运行项目。微信小程序场景下，建议：
+
+1. 关闭微信开发者工具
+2. 删除一次 `unpackage`
+3. 重新运行项目
+
+否则很容易被缓存干扰。
+
+### 2. 你能用 `uv-button`，但涉及 `open-type` 时别太死磕
+
+`uv-ui` 的基础样式文档提到，微信小程序某些授权或分享场景，更适合直接用原生 `button`，再配合 `uv-reset-button` 清理默认样式。
+
+```html
+<button
+  class="uv-reset-button"
+  open-type="getPhoneNumber"
+  @getphonenumber="handleGetPhoneNumber"
+>
+  获取手机号
+</button>
+```
+
+这类场景不要为了“统一组件风格”强行全改成 `uv-button`。
+
+### 3. 弹窗打开后页面还能滚动
+
+官方常见问题里给出的处理方式是配合 `page-meta` 控制页面 `overflow`：
+
+```html
+<template>
+  <page-meta :page-style="'overflow:' + (popupVisible ? 'hidden' : 'visible')"></page-meta>
+  <uv-popup
+    ref="detailPopup"
+    @open="popupVisible = true"
+    @close="popupVisible = false"
+  />
+</template>
+```
+
+### 4. Vue 3 下 `ref` 名不要和组件名撞车
+
+例如 `uv-picker` 组件，`ref` 不要写成 `uvPicker` 或 `uvpicker`，否则可能在 `script setup` 场景报错。
+
+## 十、我更推荐的落地规则
+
+1. 所有请求都从 `@/api` 进入，不要在页面直接写裸请求
+2. token、loading、错误提示统一交给拦截器
+3. 公共业务开关统一走 `custom`
+4. 下载后的临时文件要分清是否需要 `saveFile`
+5. 搜索联想、上传进度、并发首页这类高频场景提前收口
+6. 微信小程序授权按钮、滚动穿透、安装缓存这些坑提前规避
+
+## 参考资料
+
+- [uv-ui Http 请求文档](https://www.uvui.cn/js/http.html)
+- [uv-ui 扩展配置](https://www.uvui.cn/components/setting.html)
+- [uv-ui 基础样式](https://www.uvui.cn/components/common.html)
+- [uv-ui 安装文档](https://www.uvui.cn/components/install.html)
+- [uv-ui 常见问题](https://www.uvui.cn/components/problem.html)
+- [uv-ui GitHub 仓库](https://github.com/climblee/uv-ui)

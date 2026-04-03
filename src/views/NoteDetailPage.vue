@@ -6,8 +6,10 @@
           <div class="note-page-topbar-track">
             <Breadcrumb class="note-breadcrumb">
               <router-link to="/">首页</router-link>
-              <span class="separator">/</span>
-              <router-link :to="`/category/${note.category}`">{{ note.category }}</router-link>
+              <template v-for="item in categoryBreadcrumbs" :key="item.path">
+                <span class="separator">/</span>
+                <router-link :to="`/category/${item.path}`">{{ item.name }}</router-link>
+              </template>
               <span class="separator">/</span>
               <span class="current">{{ note.title }}</span>
             </Breadcrumb>
@@ -49,7 +51,20 @@
           <article class="note-content">
             <header class="note-header">
               <div class="note-kicker">
-                <router-link :to="`/category/${note.category}`" class="note-category-chip">{{ note.category }}</router-link>
+                <router-link
+                  v-if="rootCategoryPath"
+                  :to="`/category/${rootCategoryPath}`"
+                  class="note-category-chip"
+                >
+                  {{ rootCategoryName }}
+                </router-link>
+                <router-link
+                  v-if="currentSeriesPath && currentSeriesPath !== rootCategoryPath"
+                  :to="`/category/${currentSeriesPath}`"
+                  class="note-series-chip"
+                >
+                  {{ currentSeriesTitle }}
+                </router-link>
                 <span class="note-kicker-text">整理于 {{ noteDateLabel }}</span>
                 <span class="note-kicker-text" v-if="attachments.length > 0">含 {{ attachments.length }} 个附件</span>
               </div>
@@ -120,14 +135,53 @@
               <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
             </div>
 
+            <section v-if="showSeriesPanel" class="series-panel">
+              <div class="series-panel-header">
+                <div class="series-panel-copy">
+                  <p class="series-panel-eyebrow">专题导航</p>
+                  <h2 class="series-panel-title">{{ currentSeriesTitle || note.category }}</h2>
+                  <p class="series-panel-description">{{ currentSeriesDescription }}</p>
+                </div>
+                <div v-if="seriesNotes.length > 0 && seriesCurrentIndex >= 0" class="series-panel-progress">
+                  第 {{ String(seriesCurrentIndex + 1).padStart(2, '0') }} / {{ String(seriesNotes.length).padStart(2, '0') }} 篇
+                </div>
+              </div>
+
+              <div v-if="peerSeries.length > 0" class="series-switch-row">
+                <router-link
+                  v-for="series in peerSeries"
+                  :key="series.path"
+                  :to="`/category/${series.path}`"
+                  class="series-switch-card"
+                >
+                  <span class="series-switch-eyebrow">{{ series.eyebrow }}</span>
+                  <strong class="series-switch-title">{{ series.title }}</strong>
+                  <span class="series-switch-meta">{{ series.notesCount }} 篇</span>
+                </router-link>
+              </div>
+
+              <div v-if="seriesNotes.length > 0" class="series-outline">
+                <router-link
+                  v-for="seriesNote in seriesNotes"
+                  :key="seriesNote.path"
+                  :to="`/note/${seriesNote.path.replace('.md', '')}`"
+                  class="series-outline-item"
+                  :class="{ 'is-active': seriesNote.path === note.path }"
+                >
+                  <span class="series-outline-index">{{ getSeriesNoteIndexLabel(seriesNote) }}</span>
+                  <span class="series-outline-title">{{ seriesNote.title }}</span>
+                </router-link>
+              </div>
+            </section>
+
             <div class="note-footer">
-              <router-link v-if="prevNote" :to="`/note/${prevNote.path.replace('.md', '')}`" class="nav-link prev">
+              <router-link v-if="adjacentPrevNote" :to="`/note/${adjacentPrevNote.path.replace('.md', '')}`" class="nav-link prev">
                 <span class="nav-label">上一篇</span>
-                <span class="nav-title">{{ prevNote.title }}</span>
+                <span class="nav-title">{{ adjacentPrevNote.title }}</span>
               </router-link>
-              <router-link v-if="nextNote" :to="`/note/${nextNote.path.replace('.md', '')}`" class="nav-link next">
+              <router-link v-if="adjacentNextNote" :to="`/note/${adjacentNextNote.path.replace('.md', '')}`" class="nav-link next">
                 <span class="nav-label">下一篇</span>
-                <span class="nav-title">{{ nextNote.title }}</span>
+                <span class="nav-title">{{ adjacentNextNote.title }}</span>
               </router-link>
             </div>
           </article>
@@ -221,6 +275,15 @@ import {
   getNoteWordCount
 } from '@/utils/notePresentation'
 import { stripLeadingSequencePrefix } from '@/utils/noteOrder'
+import { getTopicGuide, getTopicGuideSection } from '@/config/topicGuides'
+import {
+  buildCategoryBreadcrumbs,
+  getAdjacentNotes,
+  getNotesInDirectory,
+  getPrimarySeriesPath,
+  getSequenceLabel,
+  normalizeNotePath
+} from '@/utils/noteSeries'
 import {
   getReadingPosition,
   createDebouncedSave,
@@ -296,23 +359,132 @@ const wordCount = computed(() => {
   return formatWordCount(getNoteWordCount(notePresentationSource.value))
 })
 
-const currentIndex = computed(() => {
-  if (!notesData.value || !notesData.value.allNotes) return -1
-  return notesData.value.allNotes.findIndex(n => n.path.replace('.md', '') === notePath.value)
+const categoryBreadcrumbs = computed(() => {
+  return buildCategoryBreadcrumbs(note.value.path || note.value.category || '')
 })
 
-const prevNote = computed(() => {
+const rootCategoryPath = computed(() => {
+  return categoryBreadcrumbs.value[0]?.path || normalizeNotePath(note.value.category || '')
+})
+
+const rootCategoryName = computed(() => {
+  return categoryBreadcrumbs.value[0]?.name || note.value.category || '未分类'
+})
+
+const currentSeriesPath = computed(() => {
+  return getPrimarySeriesPath(note.value)
+})
+
+const currentGuide = computed(() => {
+  return getTopicGuide(rootCategoryPath.value)
+})
+
+const currentSeriesMeta = computed(() => {
+  if (!currentGuide.value || !currentSeriesPath.value) {
+    return null
+  }
+
+  return getTopicGuideSection(rootCategoryPath.value, currentSeriesPath.value)
+})
+
+const currentSeriesTitle = computed(() => {
+  return currentSeriesMeta.value?.title || categoryBreadcrumbs.value.at(-1)?.name || note.value.category || '当前专题'
+})
+
+const currentSeriesDescription = computed(() => {
+  if (currentSeriesMeta.value?.summary) {
+    return currentSeriesMeta.value.summary
+  }
+
+  return noteSummary.value || '当前文章所属专题正在持续整理中。'
+})
+
+const seriesNotes = computed(() => {
+  if (!notesData.value || !Array.isArray(notesData.value.allNotes)) {
+    return []
+  }
+
+  const directoryPath = normalizeNotePath(note.value.path || '').split('/').slice(0, -1).join('/')
+  if (!directoryPath) {
+    return []
+  }
+
+  return getNotesInDirectory(notesData.value.allNotes, directoryPath)
+})
+
+const seriesAdjacent = computed(() => {
+  return getAdjacentNotes(seriesNotes.value, note.value.path)
+})
+
+const seriesCurrentIndex = computed(() => {
+  return seriesAdjacent.value.index
+})
+
+const currentIndex = computed(() => {
+  if (!notesData.value || !Array.isArray(notesData.value.allNotes)) return -1
+  return notesData.value.allNotes.findIndex((item) => item.path.replace('.md', '') === notePath.value)
+})
+
+const globalPrevNote = computed(() => {
   if (currentIndex.value > 0 && notesData.value) {
     return notesData.value.allNotes[currentIndex.value - 1]
   }
+
   return null
 })
 
-const nextNote = computed(() => {
+const globalNextNote = computed(() => {
   if (currentIndex.value >= 0 && currentIndex.value < notesData.value.allNotes.length - 1) {
     return notesData.value.allNotes[currentIndex.value + 1]
   }
+
   return null
+})
+
+const adjacentPrevNote = computed(() => {
+  return seriesAdjacent.value.prev || globalPrevNote.value
+})
+
+const adjacentNextNote = computed(() => {
+  return seriesAdjacent.value.next || globalNextNote.value
+})
+
+const peerSeries = computed(() => {
+  if (!notesData.value || !Array.isArray(notesData.value.categories) || !rootCategoryPath.value) {
+    return []
+  }
+
+  const rootSegmentsLength = rootCategoryPath.value.split('/').filter(Boolean).length
+
+  return notesData.value.categories
+    .filter((item) => {
+      const normalizedPath = normalizeNotePath(item.path)
+      return normalizedPath
+        && normalizedPath !== currentSeriesPath.value
+        && normalizedPath.startsWith(rootCategoryPath.value + '/')
+        && normalizedPath.split('/').filter(Boolean).length === rootSegmentsLength + 1
+    })
+    .map((item) => {
+      const section = currentGuide.value ? getTopicGuideSection(rootCategoryPath.value, normalizeNotePath(item.path)) : null
+      return {
+        path: normalizeNotePath(item.path),
+        title: section?.title || item.name,
+        eyebrow: section?.eyebrow || '切换专题',
+        order: Number.isFinite(section?.order) ? section.order : Number.MAX_SAFE_INTEGER,
+        notesCount: Array.isArray(item.notes) ? item.notes.length : 0
+      }
+    })
+    .sort((a, b) => {
+      if (a.order !== b.order) {
+        return a.order - b.order
+      }
+
+      return a.title.localeCompare(b.title, 'zh-CN')
+    })
+})
+
+const showSeriesPanel = computed(() => {
+  return seriesNotes.value.length > 1 || peerSeries.value.length > 0
 })
 
 const encodePathSegments = (filePath) => {
@@ -331,6 +503,20 @@ const formatAttachmentMeta = (attachment) => {
   const ext = attachment.ext ? attachment.ext.toUpperCase() : 'FILE'
   const size = attachment.size || '--'
   return `${ext} · ${size}`
+}
+
+const getSeriesNoteIndexLabel = (seriesNote) => {
+  const explicitLabel = getSequenceLabel(seriesNote)
+  if (explicitLabel) {
+    return explicitLabel
+  }
+
+  const index = seriesNotes.value.findIndex((item) => item.path === seriesNote.path)
+  if (index === -1) {
+    return '--'
+  }
+
+  return String(index + 1).padStart(2, '0')
 }
 
 const resolveScrollContainer = () => {
@@ -875,6 +1061,24 @@ watch(() => route.params.path, (newPath, oldPath) => {
   font-weight: 700;
 }
 
+.note-series-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.16);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.note-series-chip:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.3);
+  color: var(--text-primary);
+}
+
 .note-kicker-text {
   color: var(--text-tertiary);
   font-size: 12px;
@@ -1029,6 +1233,157 @@ watch(() => route.params.path, (newPath, oldPath) => {
   border: none;
   margin-bottom: 40px;
   transition: font-size 0.2s ease;
+}
+
+.series-panel {
+  margin-bottom: 32px;
+  padding: 22px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.06), rgba(var(--primary-color-rgb), 0.015)),
+    var(--bg-primary);
+}
+
+.series-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.series-panel-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.series-panel-eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.series-panel-title {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.series-panel-description {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.series-panel-progress {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.series-switch-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.series-switch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.series-switch-card:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.28);
+  background: rgba(var(--primary-color-rgb), 0.04);
+}
+
+.series-switch-eyebrow {
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.series-switch-title {
+  color: var(--text-primary);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.series-switch-meta {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.series-outline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.series-outline-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+}
+
+.series-outline-item:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.28);
+  transform: translateY(-1px);
+}
+
+.series-outline-item.is-active {
+  border-color: rgba(var(--primary-color-rgb), 0.34);
+  background: rgba(var(--primary-color-rgb), 0.08);
+}
+
+.series-outline-index {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(var(--primary-color-rgb), 0.08);
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.series-outline-title {
+  min-width: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .fullscreen-article-content {

@@ -333,8 +333,9 @@ function scanDirectory(dir, relativePath = '') {
 
       items.push({
         type: 'file',
-        title: fileTitle,
+        title: frontmatterTitle,
         frontmatterTitle: frontmatterTitle,
+        fileTitle: fileTitle,
         filename: file,
         path: relPath,
         date: frontmatter.date || null,

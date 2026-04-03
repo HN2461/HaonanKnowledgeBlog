@@ -16,7 +16,9 @@
         </button>
 
         <router-link to='/' class='logo'>
-          <span class='logo-mark' aria-hidden='true'>KB</span>
+          <span class='logo-mark' aria-hidden='true'>
+            <img class='logo-mark-image' :src='siteLogoUrl' alt='' loading='eager' decoding='async'>
+          </span>
           <span class='logo-copy'>
             <span class='logo-title'>{{ siteConfig.title }}</span>
             <span class='logo-subtitle'>{{ siteConfig.author.title }}</span>
@@ -157,6 +159,7 @@ const isDark = ref(false)
 const isSearchOpen = ref(false)
 const isCornerOpen = ref(false)
 const cornerRef = ref(null)
+const siteLogoUrl = `${import.meta.env.BASE_URL}favicon.png`
 
 const goToEditor = () => {
   router.push('/editor')
@@ -333,14 +336,18 @@ onUnmounted(() => {
   justify-content: center;
   width: 38px;
   height: 38px;
+  overflow: hidden;
   border: 1px solid rgba(var(--primary-color-rgb), 0.2);
-  border-radius: 10px;
-  background: var(--bg-secondary);
-  color: var(--primary-color);
-  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(var(--primary-color-rgb), 0.14);
+}
+
+.logo-mark-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logo-copy {

@@ -1,7 +1,11 @@
 <template>
   <router-link :to="`/note/${note.path.replace('.md', '')}`" class='note-card'>
     <div class='card-head'>
-      <span class='card-category'>{{ note.category }}</span>
+      <div class='card-track'>
+        <span class='card-category'>{{ note.category }}</span>
+        <span v-if='seriesLabel' class='card-series'>{{ seriesLabel }}</span>
+        <span v-if='sequenceLabel' class='card-sequence'>{{ sequenceLabel }}</span>
+      </div>
       <span class='card-date'>{{ getNoteDateLabel(note) }}</span>
     </div>
 
@@ -37,11 +41,20 @@ import {
   getNoteReadingMinutes,
   getNoteWordCount
 } from '@/utils/notePresentation'
+import {
+  getImmediateChildCategoryName,
+  getPrimarySeriesName,
+  getSequenceLabel
+} from '@/utils/noteSeries'
 
 const props = defineProps({
   note: {
     type: Object,
     required: true
+  },
+  contextCategoryPath: {
+    type: String,
+    default: ''
   }
 })
 
@@ -49,6 +62,19 @@ const excerpt = computed(() => {
   return getNoteExcerpt(props.note, {
     maxLength: 120
   })
+})
+
+const seriesLabel = computed(() => {
+  if (props.contextCategoryPath) {
+    return getImmediateChildCategoryName(props.note.path, props.contextCategoryPath)
+  }
+
+  return getPrimarySeriesName(props.note)
+})
+
+const sequenceLabel = computed(() => {
+  const label = getSequenceLabel(props.note)
+  return label ? `第 ${label} 篇` : ''
 })
 </script>
 
@@ -82,6 +108,14 @@ const excerpt = computed(() => {
   gap: 12px;
 }
 
+.card-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
 .card-category {
   display: inline-flex;
   align-items: center;
@@ -91,6 +125,19 @@ const excerpt = computed(() => {
   color: var(--primary-color);
   font-size: 12px;
   font-weight: 700;
+}
+
+.card-series,
+.card-sequence {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
 }
 
 .card-date {
