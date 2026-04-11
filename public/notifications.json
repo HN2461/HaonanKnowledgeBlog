@@ -1,7 +1,31 @@
 {
-  "generatedAt": "2026-04-11T07:02:14.341Z",
-  "total": 84,
+  "generatedAt": "2026-04-11T09:10:07.113Z",
+  "total": 87,
   "notifications": [
+    {
+      "id": "git-f50d67c0dc263435b51453222c2571c7f93fb297",
+      "title": "内容上新: 新增 Agent Skills 系列笔记共4篇，涵盖开放标准、高级用法、场景模板与团队协作",
+      "content": "提交说明：内容上新: 新增 Agent Skills 系列笔记共4篇，涵盖开放标准、高级用法、场景模板与团队协作",
+      "summary": "内容上新: 新增 Agent Skills 系列笔记共4篇，涵盖开放标准、高级用法、场景模板与团队协作",
+      "date": "2026-04-11T17:09:20+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "f50d67c",
+      "fullHash": "f50d67c0dc263435b51453222c2571c7f93fb297"
+    },
+    {
+      "id": "git-6dec30cadb3eeb9e6a5b3cce5fb881da3e533454",
+      "title": "Kiro笔记: 新增6篇系列笔记与目录更新",
+      "content": "提交说明：Kiro笔记: 新增6篇系列笔记与目录更新",
+      "summary": "Kiro笔记: 新增6篇系列笔记与目录更新",
+      "date": "2026-04-11T15:02:23+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "6dec30c",
+      "fullHash": "6dec30cadb3eeb9e6a5b3cce5fb881da3e533454"
+    },
     {
       "id": "daily-2026-04-11-1",
       "title": "新增 6 篇 Kiro 系列笔记",
@@ -21,6 +45,19 @@
       "content": "目录文件新增推荐阅读顺序列表、按功能模块分组的覆盖主题区块，以及常见问题到对应篇目的快速查找映射表。",
       "summary": "目录文件重写为推荐阅读顺序 + 覆盖主题 + 快速查找三区块结构，方便按需跳转。",
       "date": "2026-04-11T10:00:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-11-3",
+      "title": "新增 Agent Skills 系列笔记共 4 篇",
+      "content": "第一篇：开放标准与各工具兼容性全解，含 Claude Code / Kiro / Cursor / Codex / Gemini CLI 路径、字段、调用方式详细对比；第二篇：高级用法，含参数传递、shell 动态注入、context:fork 子代理、hooks 正确格式、压缩行为；第三篇：12 个开箱即用场景模板（代码审查、提交、部署、文档、规范、调试）；第四篇：团队协作与社区资源，含 Git 共享方案、LobeHub / OpenAI Skills Catalog 导航、Skills vs Steering 选择原则。",
+      "summary": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+      "date": "2026-04-11",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",

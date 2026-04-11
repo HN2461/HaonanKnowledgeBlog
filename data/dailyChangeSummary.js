@@ -27,5 +27,13 @@ export const dailyChangeSummary = {
       content:
         "目录文件新增推荐阅读顺序列表、按功能模块分组的覆盖主题区块，以及常见问题到对应篇目的快速查找映射表。",
     },
+    {
+      category: "内容上新",
+      title: "新增 Agent Skills 系列笔记共 4 篇",
+      summary:
+        "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+      content:
+        "第一篇：开放标准与各工具兼容性全解，含 Claude Code / Kiro / Cursor / Codex / Gemini CLI 路径、字段、调用方式详细对比；第二篇：高级用法，含参数传递、shell 动态注入、context:fork 子代理、hooks 正确格式、压缩行为；第三篇：12 个开箱即用场景模板（代码审查、提交、部署、文档、规范、调试）；第四篇：团队协作与社区资源，含 Git 共享方案、LobeHub / OpenAI Skills Catalog 导航、Skills vs Steering 选择原则。",
+    },
   ],
 };
