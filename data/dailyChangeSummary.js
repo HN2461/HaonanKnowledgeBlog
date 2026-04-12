@@ -10,6 +10,33 @@ export const dailyChangeSummary = {
   date: "2026-04-12",
   items: [
     {
+      category: "功能更新",
+      time: "22:02",
+      title: "分类页改为直接显示目录.md 导读",
+      summary:
+        "现在进入任意分类时，会在文章列表上方直接展示该目录下的目录.md 内容，同时目录文章本身继续隐藏，不再挤进普通文章顺序里。",
+      content:
+        "本次修改 src/views/NoteListPage.vue，为分类页新增“目录导读”区块，自动读取当前分类目录下的 目录.md，渲染前会去掉 frontmatter 和重复的大标题，并把目录里的相对 Markdown 链接转换成站内分类页、文章页或附件链接；这样左侧和文章序列里不再显示目录.md，但分类页本身仍然能承担导航总览作用。",
+    },
+    {
+      category: "问题修复",
+      time: "21:54",
+      title: "修复详情页顶部导航文字被裁切",
+      summary:
+        "调整文章详情页面包屑导航的行高、最小高度和裁切方式，解决导航栏里中文底部被遮住的问题。",
+      content:
+        "本次修改 src/views/NoteDetailPage.vue 中顶部导航条的样式，提升 breadcrumb 区域的 min-height 与 line-height，并取消外层 track 的垂直裁切；这样在文章详情页顶部显示“首页 / 分类 / 当前文章”时，中文文字不会再出现下边缘被切掉的情况。",
+    },
+    {
+      category: "功能更新",
+      time: "21:46",
+      title: "新增文章 frontmatter 排序字段 order",
+      summary:
+        "笔记索引与前端目录改为优先读取 frontmatter 里的 order 值，并把各目录下的目录.md 从文章序列中移出，让同一目录下的阅读顺序可以人工固定。",
+      content:
+        "本次更新为 scripts/generateNotesIndex.js、noteOrder.js、noteSeries.js 增加了 order 排序支持，左侧知识目录、分类页默认顺序、详情页同专题导航和上一篇下一篇都会优先按 order 排列；同时目录结构里的 目录.md 不再进入索引文章序列，左侧文件夹本身可直接进入对应分类页，旧的 /note/.../目录 链接也会自动跳转到 /category/...；另外已为 public/notes/电脑/系统与文件/ 和电脑网络下的现有笔记补上顺序值，方便后续继续按人为定义的阅读顺序维护。",
+    },
+    {
       category: "内容上新",
       time: "21:17",
       title: "补充 4 篇电脑系统与网络基础笔记",

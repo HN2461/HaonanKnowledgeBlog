@@ -943,8 +943,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  min-height: 40px;
-  overflow: hidden;
+  min-height: 44px;
+  overflow: visible;
 }
 
 .dark-theme .note-page-topbar {
@@ -1005,8 +1005,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   min-width: 0;
   flex-wrap: nowrap;
   gap: 8px;
-  min-height: 0;
-  padding: 0;
+  min-height: 28px;
+  padding: 4px 0;
   border: none;
   border-radius: 0;
   background: transparent;
@@ -1015,7 +1015,7 @@ watch(() => route.params.path, (newPath, oldPath) => {
   color: var(--text-secondary);
   font-size: 12px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .note-page-topbar :deep(a) {
@@ -1516,7 +1516,7 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
   .note-page-topbar-track {
     gap: 10px;
-    min-height: 36px;
+    min-height: 40px;
   }
 
   .note-page-topbar .note-breadcrumb {

@@ -1,6 +1,7 @@
 ---
 title: Windows hosts、DNS缓存、网络类型与防火墙基础
 date: 2026-04-12
+order: 2
 category: 电脑
 tags:
   - Windows

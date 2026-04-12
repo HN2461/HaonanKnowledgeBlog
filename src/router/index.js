@@ -70,6 +70,29 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (to.name === 'NoteDetail') {
+    const rawPath = String(to.params.path || '')
+    const segments = rawPath.split('/').filter(Boolean)
+    const lastSegment = segments[segments.length - 1]
+
+    if (lastSegment === '目录') {
+      const categorySegments = segments.slice(0, -1)
+
+      if (categorySegments.length === 0) {
+        next({ name: 'Home' })
+        return
+      }
+
+      next({
+        name: 'NoteList',
+        params: {
+          category: categorySegments.join('/')
+        }
+      })
+      return
+    }
+  }
+
   document.title = to.meta.title ? `${to.meta.title} - 个人技术博客` : '个人技术博客'
   next()
 })

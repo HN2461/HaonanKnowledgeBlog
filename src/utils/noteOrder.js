@@ -14,7 +14,9 @@ const chineseSequenceNumbers = {
 const numericPrefixPattern = /^(\d{1,3})(?=[\s._\-、]|[^\d]|$)/
 const arabicSequencePattern = /^第\s*(\d+)\s*[章节篇讲]/
 const chineseSequencePattern = /^第\s*([一二三四五六七八九十]+)\s*[章节篇讲]/
-const sequenceTitlePrefixPattern = /^(?:\d{1,3}[\s._\-、:：)]*|第\s*(?:\d+|[一二三四五六七八九十]+)\s*[章节篇讲][\s._\-、:：)]*)/
+const sequenceTitlePrefixPattern = /^(?:\d{1,3}[\s._\-、:：]*|第\s*(?:\d+|[一二三四五六七八九十]+)\s*[章节篇讲][\s._\-、:：]*)/
+const specialKeywords = ['目录', '补充', '番外']
+const orderFieldNames = ['order', 'sort', 'sequence', 'index', '排序', '顺序', '序号']
 
 const normalizeSequenceLabel = (value = '') => {
   const label = String(value || '').trim()
@@ -47,6 +49,51 @@ const extractSequenceLabel = (filename = '') => {
   return ''
 }
 
+const normalizeNoteOrderValue = (value) => {
+  if (value === null || value === undefined || value === '') {
+    return null
+  }
+
+  const parsed = Number(value)
+  if (!Number.isFinite(parsed) || !Number.isInteger(parsed)) {
+    return null
+  }
+
+  return parsed
+}
+
+const hasSpecialKeyword = (value = '') => {
+  return specialKeywords.some((keyword) => String(value || '').includes(keyword))
+}
+
+const getNoteFilename = (note = {}) => {
+  if (note.filename) {
+    return String(note.filename)
+  }
+
+  const normalizedPath = String(note.path || '').replace(/\\/g, '/')
+  const pathFilename = normalizedPath.split('/').filter(Boolean).pop()
+
+  return pathFilename || String(note.title || '')
+}
+
+const compareByExplicitOrder = (noteA = {}, noteB = {}) => {
+  const orderA = getNoteOrder(noteA)
+  const orderB = getNoteOrder(noteB)
+  const hasOrderA = orderA !== null
+  const hasOrderB = orderB !== null
+
+  if (!hasOrderA && !hasOrderB) {
+    return null
+  }
+
+  if (hasOrderA && hasOrderB) {
+    return orderA - orderB
+  }
+
+  return hasOrderA ? -1 : 1
+}
+
 export const extractSequenceNumber = (filename = '') => {
   const label = extractSequenceLabel(filename)
   if (!label) {
@@ -54,6 +101,17 @@ export const extractSequenceNumber = (filename = '') => {
   }
 
   return parseInt(label, 10)
+}
+
+export const getNoteOrder = (note = {}) => {
+  for (const fieldName of orderFieldNames) {
+    const normalizedValue = normalizeNoteOrderValue(note?.[fieldName])
+    if (normalizedValue !== null) {
+      return normalizedValue
+    }
+  }
+
+  return null
 }
 
 export const stripLeadingSequencePrefix = (title = '') => {
@@ -80,9 +138,8 @@ export const compareByFilenameOrder = (filenameA = '', filenameB = '') => {
   const nameB = String(filenameB || '')
   const numA = extractSequenceNumber(nameA)
   const numB = extractSequenceNumber(nameB)
-  const specialKeywords = ['目录', '补充', '番外']
-  const isSpecialA = specialKeywords.some((keyword) => nameA.includes(keyword))
-  const isSpecialB = specialKeywords.some((keyword) => nameB.includes(keyword))
+  const isSpecialA = hasSpecialKeyword(nameA)
+  const isSpecialB = hasSpecialKeyword(nameB)
 
   if (numA !== null && numB !== null) {
     return numA - numB || nameA.localeCompare(nameB, 'zh-CN')
@@ -98,6 +155,11 @@ export const compareByFilenameOrder = (filenameA = '', filenameB = '') => {
 }
 
 export const compareNotesBySequence = (noteA = {}, noteB = {}) => {
+  const explicitOrderDiff = compareByExplicitOrder(noteA, noteB)
+  if (explicitOrderDiff !== null && explicitOrderDiff !== 0) {
+    return explicitOrderDiff
+  }
+
   return compareByFilenameOrder(getNoteFilename(noteA), getNoteFilename(noteB))
 }
 
@@ -118,24 +180,13 @@ const getNoteTimestamp = (note = {}) => {
   return 0
 }
 
-const getNoteFilename = (note = {}) => {
-  if (note.filename) {
-    return String(note.filename)
-  }
-
-  const normalizedPath = String(note.path || '').replace(/\\/g, '/')
-  const pathFilename = normalizedPath.split('/').filter(Boolean).pop()
-
-  return pathFilename || String(note.title || '')
-}
-
 export const compareNotesByNewest = (noteA = {}, noteB = {}) => {
   const timeDiff = getNoteTimestamp(noteB) - getNoteTimestamp(noteA)
   if (timeDiff !== 0) {
     return timeDiff
   }
 
-  return compareByFilenameOrder(getNoteFilename(noteA), getNoteFilename(noteB))
+  return compareNotesBySequence(noteA, noteB)
 }
 
 export const compareNotesByOldest = (noteA = {}, noteB = {}) => {
@@ -144,5 +195,5 @@ export const compareNotesByOldest = (noteA = {}, noteB = {}) => {
     return timeDiff
   }
 
-  return compareByFilenameOrder(getNoteFilename(noteA), getNoteFilename(noteB))
+  return compareNotesBySequence(noteA, noteB)
 }

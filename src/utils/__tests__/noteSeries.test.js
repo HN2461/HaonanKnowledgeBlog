@@ -78,4 +78,8 @@ describe('noteSeries', () => {
     expect(getSequenceLabel({ filename: '3-能力实战.md' })).toBe('03')
     expect(getSequenceLabel({ filename: '补充说明.md' })).toBe('')
   })
+
+  it('prefers explicit order when rendering sequence label', () => {
+    expect(getSequenceLabel({ filename: '补充说明.md', order: 4 })).toBe('04')
+  })
 })

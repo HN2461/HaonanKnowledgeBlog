@@ -1,6 +1,7 @@
 ---
 title: Windows 管理员权限、UAC 与“以管理员身份运行”
 date: 2026-04-12
+order: 6
 category: 电脑
 tags:
   - Windows

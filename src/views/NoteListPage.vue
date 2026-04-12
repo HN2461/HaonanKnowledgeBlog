@@ -19,6 +19,20 @@
         <p class="page-subtitle">{{ categorySubtitle }}</p>
       </div>
 
+      <section v-if="directoryGuideMarkdown" class="category-overview">
+        <div class="category-overview-header">
+          <p class="category-overview-eyebrow">目录导读</p>
+          <h2 class="category-overview-title">{{ categoryName }}导览</h2>
+          <p class="category-overview-description">
+            当前分类的目录说明会直接显示在这里，方便先看结构再进入具体文章。
+          </p>
+        </div>
+
+        <div class="category-overview-body">
+          <MarkdownRenderer :content="directoryGuideMarkdown" />
+        </div>
+      </section>
+
       <section v-if="guide && seriesGroups.length > 0" class="topic-guide">
         <div class="topic-guide-header">
           <p class="topic-guide-eyebrow">专题导读</p>
@@ -120,16 +134,18 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import AppLayout from '../components/AppLayout.vue'
-import NoteCard from '../components/NoteCard.vue'
-import BackToTop from '../components/BackToTop.vue'
-import SkeletonScreen from '../components/SkeletonScreen.vue'
+import AppLayout from '@/components/AppLayout.vue'
+import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
+import NoteCard from '@/components/NoteCard.vue'
+import BackToTop from '@/components/BackToTop.vue'
+import SkeletonScreen from '@/components/SkeletonScreen.vue'
 import {
   compareNotesByNewest,
   compareNotesByOldest,
-  compareNotesBySequence
+  compareNotesBySequence,
+  stripLeadingSequencePrefix
 } from '@/utils/noteOrder'
 import { getTopicGuide, getTopicGuideSection } from '@/config/topicGuides'
 import {
@@ -142,6 +158,8 @@ const route = useRoute()
 const notesData = ref(null)
 const sortBy = ref('sequence')
 const loading = ref(true)
+const directoryGuideMarkdown = ref('')
+let directoryGuideRequestId = 0
 
 const categoryPath = computed(() => normalizeNotePath(route.params.category))
 
@@ -172,6 +190,158 @@ const categoryName = computed(() => {
 const notes = computed(() => {
   return Array.isArray(categoryEntry.value?.notes) ? categoryEntry.value.notes : []
 })
+
+const encodePathSegments = (filePath) => {
+  return String(filePath || '')
+    .split('/')
+    .filter(Boolean)
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')
+}
+
+const safeDecodeURIComponent = (value) => {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return value
+  }
+}
+
+const normalizeTitleForCompare = (title) => {
+  return stripLeadingSequencePrefix(title)
+    .toLowerCase()
+    .normalize('NFKC')
+    .replace(/[\s_\-–—~`!@#$%^&*()+=[\]{}|\\:;"'<>,.?/·，。、《》？；：‘’“”（）【】]/g, '')
+}
+
+const stripDuplicateMarkdownTitle = (content, pageTitle) => {
+  const titleMatch = String(content || '').match(/^#\s+(.+)\r?\n+/)
+  if (!titleMatch) return String(content || '')
+
+  const markdownTitle = titleMatch[1].trim()
+  const normalizedMarkdownTitle = normalizeTitleForCompare(markdownTitle)
+  const normalizedPageTitle = normalizeTitleForCompare(pageTitle)
+
+  if (!normalizedMarkdownTitle || !normalizedPageTitle) {
+    return String(content || '')
+  }
+
+  const isDuplicateTitle = normalizedMarkdownTitle.includes(normalizedPageTitle)
+    || normalizedPageTitle.includes(normalizedMarkdownTitle)
+
+  if (isDuplicateTitle) {
+    return String(content || '').replace(/^#\s+.+\r?\n+/, '')
+  }
+
+  return String(content || '')
+}
+
+const stripMarkdownFrontmatter = (content) => {
+  const normalizedContent = String(content || '').replace(/^\uFEFF/, '')
+  const frontmatterMatch = normalizedContent.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n)?/)
+
+  if (!frontmatterMatch) {
+    return normalizedContent
+  }
+
+  const frontmatterBody = frontmatterMatch[1] || ''
+  const hasYamlKeyValue = /^[A-Za-z\u4e00-\u9fa5_][^:\r\n]*:\s*/m.test(frontmatterBody)
+  if (!hasYamlKeyValue) {
+    return normalizedContent
+  }
+
+  return normalizedContent.slice(frontmatterMatch[0].length)
+}
+
+const resolveRelativeNotePath = (basePath, targetPath) => {
+  const stack = String(basePath || '').split('/').filter(Boolean)
+
+  for (const rawSegment of String(targetPath || '').replace(/\\/g, '/').split('/')) {
+    const segment = safeDecodeURIComponent(rawSegment.trim())
+    if (!segment || segment === '.') {
+      continue
+    }
+
+    if (segment === '..') {
+      stack.pop()
+      continue
+    }
+
+    stack.push(segment)
+  }
+
+  return stack.join('/')
+}
+
+const buildGuideLinkUrl = (targetPath, currentDirectoryPath) => {
+  const normalizedTarget = String(targetPath || '').trim()
+  if (!normalizedTarget || /^(?:[a-z]+:|#|\/)/i.test(normalizedTarget)) {
+    return normalizedTarget
+  }
+
+  const [pathPart] = normalizedTarget.split('#')
+  const resolvedPath = resolveRelativeNotePath(currentDirectoryPath, pathPart)
+
+  if (/\.md$/i.test(resolvedPath)) {
+    const notePath = resolvedPath.replace(/\.md$/i, '')
+
+    if (/\/目录$/i.test(notePath)) {
+      return `${import.meta.env.BASE_URL}#/category/${encodePathSegments(notePath.replace(/\/目录$/i, ''))}`
+    }
+
+    return `${import.meta.env.BASE_URL}#/note/${encodePathSegments(notePath)}`
+  }
+
+  return `${import.meta.env.BASE_URL}notes/${encodePathSegments(resolvedPath)}`
+}
+
+const rewriteRelativeMarkdownLinks = (content, currentDirectoryPath) => {
+  return String(content || '').replace(/(!?\[[^\]]*]\()([^)]+)(\))/g, (match, prefix, target, suffix) => {
+    const normalizedTarget = String(target || '').trim()
+    if (!normalizedTarget || /^(?:[a-z]+:|#|\/)/i.test(normalizedTarget)) {
+      return match
+    }
+
+    return `${prefix}${buildGuideLinkUrl(normalizedTarget, currentDirectoryPath)}${suffix}`
+  })
+}
+
+const loadDirectoryGuide = async () => {
+  const requestId = ++directoryGuideRequestId
+  const currentCategoryPath = categoryPath.value
+
+  if (!currentCategoryPath) {
+    directoryGuideMarkdown.value = ''
+    return
+  }
+
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}notes/${encodePathSegments(currentCategoryPath)}/目录.md`)
+    if (!response.ok) {
+      throw new Error(`Failed to load directory guide: ${response.status}`)
+    }
+
+    const content = await response.text()
+    if (requestId !== directoryGuideRequestId) {
+      return
+    }
+
+    const contentWithoutFrontmatter = stripMarkdownFrontmatter(content)
+    const deduplicatedContent = stripDuplicateMarkdownTitle(contentWithoutFrontmatter, categoryName.value)
+    const normalizedContent = rewriteRelativeMarkdownLinks(deduplicatedContent, currentCategoryPath).trim()
+
+    directoryGuideMarkdown.value = normalizedContent
+  } catch (error) {
+    if (requestId !== directoryGuideRequestId) {
+      return
+    }
+
+    directoryGuideMarkdown.value = ''
+    if (error?.message && !error.message.includes('404')) {
+      console.error('加载目录导读失败:', error)
+    }
+  }
+}
 
 const sortNotes = (inputNotes = []) => {
   const notesCopy = [...inputNotes]
@@ -240,6 +410,10 @@ const handleSort = () => {
   // 排序逻辑已在 computed 中处理
 }
 
+watch(categoryPath, () => {
+  loadDirectoryGuide()
+}, { immediate: true })
+
 onMounted(async () => {
   try {
     const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
@@ -300,6 +474,56 @@ onMounted(async () => {
   font-size: 16px;
   color: var(--text-secondary);
   margin: 0;
+}
+
+.category-overview {
+  margin-bottom: 28px;
+  padding: 24px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.14);
+  border-radius: 18px;
+  background:
+    linear-gradient(145deg, rgba(var(--primary-color-rgb), 0.05), rgba(var(--primary-color-rgb), 0.015)),
+    var(--bg-primary);
+}
+
+.category-overview-header {
+  margin-bottom: 18px;
+}
+
+.category-overview-eyebrow {
+  margin: 0 0 8px;
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.category-overview-title {
+  margin: 0 0 10px;
+  color: var(--text-primary);
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.category-overview-description {
+  margin: 0;
+  max-width: 68ch;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.category-overview-body {
+  padding-top: 18px;
+  border-top: 1px solid rgba(var(--primary-color-rgb), 0.12);
+}
+
+.category-overview-body :deep(.markdown-body) {
+  max-width: none;
+}
+
+.category-overview-body :deep(h1:first-child) {
+  display: none;
 }
 
 .topic-guide {
@@ -553,6 +777,15 @@ onMounted(async () => {
   .topic-guide {
     padding: 18px;
     border-radius: 16px;
+  }
+
+  .category-overview {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .category-overview-title {
+    font-size: 22px;
   }
 
   .topic-guide-title {

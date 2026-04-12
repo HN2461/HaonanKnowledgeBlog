@@ -1,6 +1,7 @@
 ---
 title: 电脑WIFI图标消失修复
 date: 2026-03-14
+order: 1
 category: 电脑
 tags:
   - Windows

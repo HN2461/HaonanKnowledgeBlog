@@ -1,6 +1,7 @@
 ---
 title: Windows 常见系统路径与环境变量速查
 date: 2026-04-12
+order: 5
 category: 电脑
 tags:
   - Windows

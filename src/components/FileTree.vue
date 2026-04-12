@@ -1,34 +1,44 @@
 <template>
   <div class='file-tree'>
     <div v-for='item in tree' :key='item.path' class='tree-item'>
-      <button
-        v-if="item.type === 'directory'"
-        type='button'
-        class='tree-node directory'
-        :class="{ expanded: isExpanded(item.path) }"
-        @click='toggleDirectory(item.path)'
-      >
-        <span class='expand-icon' aria-hidden='true'>
-          <svg v-if='!isExpanded(item.path)' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
-            <polyline points='9 18 15 12 9 6'></polyline>
-          </svg>
-          <svg v-else width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
-            <polyline points='6 9 12 15 18 9'></polyline>
-          </svg>
-        </span>
-        <span class='node-icon' aria-hidden='true'>
-          <svg width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
-            <path d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z'></path>
-          </svg>
-        </span>
-        <span class='node-label' :title='item.name'>{{ item.name }}</span>
-      </button>
+      <div v-if="item.type === 'directory'" class='tree-directory-row'>
+        <button
+          type='button'
+          class='tree-expand-btn'
+          :class="{ expanded: isExpanded(item.path) }"
+          :aria-label="isExpanded(item.path) ? '收起目录' : '展开目录'"
+          @click='toggleDirectory(item.path)'
+        >
+          <span class='expand-icon' aria-hidden='true'>
+            <svg v-if='!isExpanded(item.path)' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+              <polyline points='9 18 15 12 9 6'></polyline>
+            </svg>
+            <svg v-else width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+              <polyline points='6 9 12 15 18 9'></polyline>
+            </svg>
+          </span>
+        </button>
+
+        <router-link
+          :to="`/category/${item.path}`"
+          class='tree-node directory'
+          :class="{ active: isActiveDirectory(item.path), expanded: isExpanded(item.path) }"
+          @click="$emit('select', item)"
+        >
+          <span class='node-icon' aria-hidden='true'>
+            <svg width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+              <path d='M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z'></path>
+            </svg>
+          </span>
+          <span class='node-label' :title='item.name'>{{ item.name }}</span>
+        </router-link>
+      </div>
 
       <router-link
         v-else-if="item.type === 'file'"
         :to="`/note/${item.path.replace('.md', '')}`"
         class='tree-node file'
-        :class="{ active: isActive(item.path) }"
+        :class="{ active: isActiveFile(item.path) }"
         @click="$emit('select', item)"
       >
         <span class='node-icon' aria-hidden='true'>
@@ -154,32 +164,44 @@ if (isRoot) {
   })
 }
 
-const isActive = (path) => {
+const isActiveFile = (path) => {
   const notePath = path.replace('.md', '')
-  return route.path === `/note/${notePath}`
+  return route.name === 'NoteDetail' && route.path === `/note/${notePath}`
 }
 
-const expandToActiveNote = async () => {
-  const activePath = route.params.path
-  if (!activePath) {
+const isActiveDirectory = (path) => {
+  return route.name === 'NoteList' && String(route.params.category || '') === path
+}
+
+const expandToCurrentTarget = async () => {
+  const isNoteRoute = route.name === 'NoteDetail'
+  const targetPath = String(
+    isNoteRoute ? route.params.path || '' : route.name === 'NoteList' ? route.params.category || '' : ''
+  )
+
+  if (!targetPath) {
     return
   }
 
-  const filePath = `${activePath}.md`
-  const segments = String(filePath).split('/').filter(Boolean)
-  if (segments.length <= 1) {
+  const segments = targetPath.split('/').filter(Boolean)
+  const directorySegments = isNoteRoute ? segments.slice(0, -1) : segments
+
+  if (directorySegments.length === 0) {
     return
   }
 
   const parents = []
-  for (let index = 0; index < segments.length - 1; index += 1) {
-    parents.push(segments.slice(0, index + 1).join('/'))
+  for (let index = 0; index < directorySegments.length; index += 1) {
+    parents.push(directorySegments.slice(0, index + 1).join('/'))
   }
 
   expandPaths(parents)
 
   await nextTick()
-  const activeEl = document.querySelector('.app-sidebar .tree-node.file.active')
+  const activeSelector = isNoteRoute
+    ? '.app-sidebar .tree-node.file.active'
+    : '.app-sidebar .tree-node.directory.active'
+  const activeEl = document.querySelector(activeSelector)
   activeEl?.scrollIntoView({
     block: 'center'
   })
@@ -187,13 +209,13 @@ const expandToActiveNote = async () => {
 
 if (isRoot) {
   onMounted(() => {
-    expandToActiveNote()
+    expandToCurrentTarget()
   })
 
   watch(
-    () => route.params.path,
+    () => route.fullPath,
     () => {
-      expandToActiveNote()
+      expandToCurrentTarget()
     }
   )
 }
@@ -206,6 +228,35 @@ if (isRoot) {
 
 .tree-item {
   margin-bottom: 2px;
+}
+
+.tree-directory-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tree-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.tree-expand-btn:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.12);
+  background: rgba(var(--primary-color-rgb), 0.04);
+  color: var(--text-primary);
+}
+
+.tree-expand-btn.expanded {
+  color: var(--text-primary);
 }
 
 .tree-node {

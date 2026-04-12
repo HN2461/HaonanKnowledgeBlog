@@ -75,6 +75,78 @@ function smartSort(items, getFilename) {
   })
 }
 
+function normalizeOrderValue(value) {
+  if (value === null || value === undefined || value === '') {
+    return null
+  }
+
+  const parsed = Number(value)
+  if (!Number.isFinite(parsed) || !Number.isInteger(parsed)) {
+    return null
+  }
+
+  return parsed
+}
+
+function isDirectoryIndexFile(filename = '') {
+  return String(filename || '').trim() === '目录.md'
+}
+
+function resolveExplicitOrder(source = {}) {
+  const candidates = [
+    source.order,
+    source.sort,
+    source.sequence,
+    source.index,
+    source['排序'],
+    source['顺序'],
+    source['序号']
+  ]
+
+  for (const candidate of candidates) {
+    const normalizedValue = normalizeOrderValue(candidate)
+    if (normalizedValue !== null) {
+      return normalizedValue
+    }
+  }
+
+  return null
+}
+
+function compareByNoteOrder(noteA = {}, noteB = {}) {
+  const orderA = resolveExplicitOrder(noteA)
+  const orderB = resolveExplicitOrder(noteB)
+  const hasOrderA = orderA !== null
+  const hasOrderB = orderB !== null
+
+  if (hasOrderA && hasOrderB) {
+    const diff = orderA - orderB
+    if (diff !== 0) {
+      return diff
+    }
+  } else if (hasOrderA) {
+    return -1
+  } else if (hasOrderB) {
+    return 1
+  }
+
+  return compareByFilenameOrder(noteA.filename || noteA.name, noteB.filename || noteB.name)
+}
+
+function sortDirectoryEntries(items = []) {
+  return [...items].sort((a, b) => {
+    if (a.type !== b.type) {
+      return a.type === 'directory' ? -1 : 1
+    }
+
+    if (a.type === 'directory') {
+      return compareByFilenameOrder(a.name, b.name)
+    }
+
+    return compareByNoteOrder(a, b)
+  })
+}
+
 function toTagArray(value) {
   if (Array.isArray(value)) {
     return value
@@ -280,21 +352,21 @@ function scanDirectory(dir, relativePath = '') {
         children: children
       })
     } else if (file.endsWith('.md')) {
+      if (isDirectoryIndexFile(file)) {
+        return
+      }
+
       // 处理 Markdown 文件
       const rawContent = fs.readFileSync(fullPath, 'utf-8')
       const content = rawContent.replace(/\u0000/g, '')
-      const shouldSkipFrontmatter = file.includes('目录')
-
       let frontmatter = {}
       let markdownContent = content
 
-      if (!shouldSkipFrontmatter) {
-        try {
-          ;({ data: frontmatter, content: markdownContent } = matter(content))
-        } catch (e) {
-          frontmatter = {}
-          markdownContent = content
-        }
+      try {
+        ;({ data: frontmatter, content: markdownContent } = matter(content))
+      } catch (e) {
+        frontmatter = {}
+        markdownContent = content
       }
       
       // 提取摘要（取前200个字符）
@@ -327,6 +399,7 @@ function scanDirectory(dir, relativePath = '') {
       const tags = resolveTags(frontmatter, markdownContent, relPath, category)
       const noteDirRelPath = relativePath || ''
       const attachments = resolveAttachments(frontmatter, noteDirRelPath)
+      const order = resolveExplicitOrder(frontmatter)
 
       const fileTitle = file.replace('.md', '')
       const frontmatterTitle = frontmatter.title || fileTitle
@@ -340,6 +413,7 @@ function scanDirectory(dir, relativePath = '') {
         path: relPath,
         date: frontmatter.date || null,
         hasRealDate: !!frontmatter.date,
+        order: order,
         tags: tags,
         category: category,
         attachments: attachments,
@@ -352,7 +426,7 @@ function scanDirectory(dir, relativePath = '') {
     }
   })
 
-  return items
+  return sortDirectoryEntries(items)
 }
 
 // 扁平化笔记列表
@@ -431,7 +505,7 @@ function generateCategories(items) {
       category.notes = allNotes.filter((note) => note.path.startsWith(`${category.path}/`))
     }
 
-    category.notes = smartSort(category.notes, (note) => note.filename)
+    category.notes = [...category.notes].sort(compareByNoteOrder)
   })
   
   return Object.values(categories).filter((category) => category.notes.length > 0)
@@ -453,7 +527,7 @@ function generateIndex() {
       return timeDiff
     }
 
-    return compareByFilenameOrder(a.filename, b.filename)
+    return compareByNoteOrder(a, b)
   })
 
   const index = {

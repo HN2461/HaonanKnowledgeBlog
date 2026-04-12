@@ -1,6 +1,7 @@
 ---
 title: Windows 文件扩展名、隐藏文件与资源管理器显示设置
 date: 2026-04-12
+order: 3
 category: 电脑
 tags:
   - Windows

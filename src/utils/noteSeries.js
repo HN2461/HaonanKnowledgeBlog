@@ -1,4 +1,4 @@
-import { compareNotesBySequence, extractSequenceNumber } from '@/utils/noteOrder'
+import { compareNotesBySequence, extractSequenceNumber, getNoteOrder } from '@/utils/noteOrder'
 
 export const normalizeNotePath = (value = '') => {
   return String(value || '')
@@ -99,6 +99,11 @@ export const getImmediateChildCategoryName = (fullPath = '', parentPath = '') =>
 }
 
 export const getSequenceLabel = (note = {}) => {
+  const explicitOrder = getNoteOrder(note)
+  if (explicitOrder !== null) {
+    return String(explicitOrder).padStart(2, '0')
+  }
+
   const rawValue = note.filename || note.path || note.title || ''
   const sequence = extractSequenceNumber(rawValue)
 

@@ -1,6 +1,7 @@
 ---
 title: Windows IP地址、DNS、网关、DHCP、私网公网速查
 date: 2026-04-12
+order: 1
 category: 电脑
 tags:
   - Windows

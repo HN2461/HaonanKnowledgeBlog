@@ -1,6 +1,7 @@
 ---
 title: Windows C盘空间清理：Storage Sense、临时文件与 Windows.old
 date: 2026-04-12
+order: 4
 category: 电脑
 tags:
   - Windows
