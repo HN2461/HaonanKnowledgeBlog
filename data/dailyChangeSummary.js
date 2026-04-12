@@ -35,5 +35,14 @@ export const dailyChangeSummary = {
       content:
         "第一篇：开放标准与各工具兼容性全解，含 Claude Code / Kiro / Cursor / Codex / Gemini CLI 路径、字段、调用方式详细对比；第二篇：高级用法，含参数传递、shell 动态注入、context:fork 子代理、hooks 正确格式、压缩行为；第三篇：12 个开箱即用场景模板（代码审查、提交、部署、文档、规范、调试）；第四篇：团队协作与社区资源，含 Git 共享方案、LobeHub / OpenAI Skills Catalog 导航、Skills vs Steering 选择原则。",
     },
+    {
+      category: "内容上新",
+      time: "14:00",
+      title: "新增《AI 工具规则文档》系列笔记共 5 篇",
+      summary:
+        "独立新建 Rules 文件夹，系统介绍 AGENTS.md 开放标准、CLAUDE.md 记忆系统、Cursor/Windsurf/Kiro 规则文档、Gemini CLI 与 GitHub Copilot 指令文件，搜索资料后详细撰写。",
+      content:
+        "第一篇：规则文档是什么与为什么，含七大工具速览对比表；第二篇：AGENTS.md 开放标准完全指南，含起源、AAIF 治理、四段式格式、多级目录、三套实战模板；第三篇：CLAUDE.md 与 Claude Code 记忆系统，含四层文件层级、@import 语法、.claude/rules/ 路径作用域、Auto Memory；第四篇：Cursor/Windsurf/Kiro 三工具深度对比与实战配置；第五篇：Gemini CLI GEMINI.md 三层加载机制与 GitHub Copilot 双格式系统，附五大工具终极对比表。",
+    },
   ],
 };
