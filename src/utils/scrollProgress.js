@@ -15,17 +15,14 @@ export function calculateScrollProgress(scrollTop, scrollHeight, clientHeight) {
   // 计算可滚动距离
   const maxScroll = scrollHeight - clientHeight
   
-  // 防止除零错误或负数情况
+  // 没有可滚动内容时，阅读进度应保持在起点
   if (maxScroll <= 0) {
-    return scrollHeight <= clientHeight ? 100 : 0
+    return 0
   }
   
   // 计算进度百分比
   let progress = (scrollTop / maxScroll) * 100
-  
-  // 处理浮点数精度问题
-  progress = Math.round(progress * 100) / 100
-  
+
   // 确保结果在 0-100 范围内
   return Math.min(100, Math.max(0, progress))
 }
@@ -54,6 +51,6 @@ export function getDocumentScrollInfo() {
     scrollTop,
     scrollHeight,
     clientHeight,
-    maxScroll: scrollHeight - clientHeight
+    maxScroll: Math.max(0, scrollHeight - clientHeight)
   }
 }

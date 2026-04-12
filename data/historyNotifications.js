@@ -119,4 +119,29 @@ export const historyNotifications = [
       },
     ],
   },
+  {
+    id: "history-2026-04-11",
+    date: "2026-04-11",
+    items: [
+      {
+        time: "10:00",
+        title: "新增 6 篇 Kiro 系列笔记",
+        summary: "完整覆盖 Kiro 快速上手、Specs 规格系统、Steering 上下文管理、Hooks 自动化、MCP 集成与工作流实战，每篇均含 frontmatter、目录导航与参考资料。",
+      },
+      {
+        time: "10:00",
+        title: "更新 Kiro 目录文件",
+        summary: "目录文件重写为推荐阅读顺序 + 覆盖主题 + 快速查找三区块结构，方便按需跳转。",
+      },
+      {
+        title: "新增 Agent Skills 系列笔记共 4 篇",
+        summary: "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+      },
+      {
+        time: "14:00",
+        title: "新增《AI 工具规则文档》系列笔记共 5 篇",
+        summary: "独立新建 Rules 文件夹，系统介绍 AGENTS.md 开放标准、CLAUDE.md 记忆系统、Cursor/Windsurf/Kiro 规则文档、Gemini CLI 与 GitHub Copilot 指令文件，搜索资料后详细撰写。",
+      },
+    ],
+  },
 ];

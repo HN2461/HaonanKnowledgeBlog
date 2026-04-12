@@ -7,42 +7,52 @@
 // 4. 当天消息归档到 historyNotifications.js 时，优先按 items 逐条归档，保留 time 和一行 summary。
 
 export const dailyChangeSummary = {
-  date: "2026-04-11",
+  date: "2026-04-12",
   items: [
     {
       category: "内容上新",
-      time: "10:00",
-      title: "新增 6 篇 Kiro 系列笔记",
+      time: "21:17",
+      title: "补充 4 篇电脑系统与网络基础笔记",
       summary:
-        "完整覆盖 Kiro 快速上手、Specs 规格系统、Steering 上下文管理、Hooks 自动化、MCP 集成与工作流实战，每篇均含 frontmatter、目录导航与参考资料。",
+        "围绕电脑目录继续扩写系统与文件、电脑网络两条主线，新增 UAC 与管理员权限、启动项与 MSConfig、IP 与 DNS 基础、hosts 与防火墙基础共 4 篇实用笔记。",
       content:
-        "本次新增 Kiro 系列共 6 篇笔记，从安装入门到六大核心功能逐篇展开，包含大量代码示例与实战配置，并附有与 Claude Code、Codex 的横向对比，适合希望系统学习 Kiro 的读者按顺序阅读。",
+        "本次新增 public/notes/电脑/系统与文件/Windows 管理员权限、UAC 与以管理员身份运行.md、Windows 启动项、任务管理器、MSConfig 与常用系统配置工具.md，以及 public/notes/电脑/电脑网络/网络基础/ 下的两篇网络基础笔记与目录页；内容统一按微软官方资料整理，并同步更新电脑总目录、系统与文件目录、电脑网络目录，便于后续继续扩展电脑配置类知识。",
     },
     {
       category: "内容上新",
-      time: "10:00",
-      title: "更新 Kiro 目录文件",
+      time: "20:28",
+      title: "新增 Windows C盘常见系统文件夹说明",
       summary:
-        "目录文件重写为推荐阅读顺序 + 覆盖主题 + 快速查找三区块结构，方便按需跳转。",
+        "在新的电脑一级目录下补充系统与文件笔记，系统梳理 Program Files、Program Files (x86)、ProgramData、Users、AppData、System32 与 SysWOW64 的职责和区别。",
       content:
-        "目录文件新增推荐阅读顺序列表、按功能模块分组的覆盖主题区块，以及常见问题到对应篇目的快速查找映射表。",
+        "新笔记现放在 public/notes/电脑/系统与文件/ 目录下，按微软官方资料解释 C 盘常见系统目录的用途，重点说明 64 位系统中的 Program Files 与 Program Files (x86) 分工、ProgramData 与 AppData 的区别，以及 System32 / SysWOW64 的反直觉命名。",
+    },
+    {
+      category: "功能更新",
+      time: "20:36",
+      title: "新增电脑一级目录与子分类",
+      summary:
+        "新建电脑一级目录，并补上系统与文件、电脑网络两个子层级，后续电脑类内容可以按主题继续沉淀。",
+      content:
+        "这次将电脑相关内容从通用常识中独立出来，新增 public/notes/电脑/目录.md 作为总入口，同时建立系统与文件、电脑网络两个子目录，方便后续持续补充电脑基础、网络与排障类笔记。",
+    },
+    {
+      category: "功能更新",
+      time: "20:43",
+      title: "重整旧网络与代理内容到电脑网络体系",
+      summary:
+        "将原来的网络与代理笔记按内容拆分到电脑网络下的网络排障、代理与VPN两个位置，附件也随文归位。",
+      content:
+        "原 public/notes/网络与代理 下的电脑WIFI图标消失修复已迁入 public/notes/电脑/电脑网络/网络排障/，代理网络问题处理指南与清理代理残留.bat 已迁入 public/notes/电脑/电脑网络/代理与VPN/，并补充了对应目录说明，避免电脑类内容继续留在旧分类中。",
     },
     {
       category: "内容上新",
-      title: "新增 Agent Skills 系列笔记共 4 篇",
+      time: "21:02",
+      title: "补强系统与文件专题为多篇官方资料笔记",
       summary:
-        "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+        "把原本只有一篇的系统与文件目录扩成总览、用户与应用数据、资源管理器显示设置、C盘清理、路径变量等多篇内容，统一以微软官方资料为主线整理。",
       content:
-        "第一篇：开放标准与各工具兼容性全解，含 Claude Code / Kiro / Cursor / Codex / Gemini CLI 路径、字段、调用方式详细对比；第二篇：高级用法，含参数传递、shell 动态注入、context:fork 子代理、hooks 正确格式、压缩行为；第三篇：12 个开箱即用场景模板（代码审查、提交、部署、文档、规范、调试）；第四篇：团队协作与社区资源，含 Git 共享方案、LobeHub / OpenAI Skills Catalog 导航、Skills vs Steering 选择原则。",
-    },
-    {
-      category: "内容上新",
-      time: "14:00",
-      title: "新增《AI 工具规则文档》系列笔记共 5 篇",
-      summary:
-        "独立新建 Rules 文件夹，系统介绍 AGENTS.md 开放标准、CLAUDE.md 记忆系统、Cursor/Windsurf/Kiro 规则文档、Gemini CLI 与 GitHub Copilot 指令文件，搜索资料后详细撰写。",
-      content:
-        "第一篇：规则文档是什么与为什么，含七大工具速览对比表；第二篇：AGENTS.md 开放标准完全指南，含起源、AAIF 治理、四段式格式、多级目录、三套实战模板；第三篇：CLAUDE.md 与 Claude Code 记忆系统，含四层文件层级、@import 语法、.claude/rules/ 路径作用域、Auto Memory；第四篇：Cursor/Windsurf/Kiro 三工具深度对比与实战配置；第五篇：Gemini CLI GEMINI.md 三层加载机制与 GitHub Copilot 双格式系统，附五大工具终极对比表。",
+        "本次围绕 public/notes/电脑/系统与文件/ 重新整理专题结构，新增 Windows 用户目录、Public、AppData、ProgramData 详解，Windows 文件扩展名、隐藏文件与资源管理器显示设置，Windows C盘空间清理：Storage Sense、临时文件与 Windows.old，Windows 常见系统路径与环境变量速查，并重写目录页与总览文末配套阅读，方便按问题类型查找。",
     },
   ],
 };

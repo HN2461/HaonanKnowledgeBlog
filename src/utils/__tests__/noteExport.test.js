@@ -11,35 +11,35 @@ import {
 const treeFixture = [
   {
     type: 'directory',
-    name: '网络与代理',
-    path: '网络与代理',
+    name: '代理与VPN',
+    path: '电脑/电脑网络/代理与VPN',
     children: [
       {
         type: 'file',
         title: '代理网络问题处理指南',
         filename: '代理网络问题处理指南.md',
-        path: '网络与代理/代理网络问题处理指南.md',
+        path: '电脑/电脑网络/代理与VPN/代理网络问题处理指南.md',
         attachments: [
           {
             name: '清理代理残留.bat',
-            path: '网络与代理/清理代理残留.bat'
+            path: '电脑/电脑网络/代理与VPN/清理代理残留.bat'
           }
         ]
       },
       {
         type: 'directory',
         name: '子目录',
-        path: '网络与代理/子目录',
+        path: '电脑/电脑网络/代理与VPN/子目录',
         children: [
           {
             type: 'file',
             title: '第二篇',
             filename: '第二篇.md',
-            path: '网络与代理/子目录/第二篇.md',
+            path: '电脑/电脑网络/代理与VPN/子目录/第二篇.md',
             attachments: [
               {
                 name: '清理代理残留.bat',
-                path: '网络与代理/清理代理残留.bat'
+                path: '电脑/电脑网络/代理与VPN/清理代理残留.bat'
               },
               {
                 name: '跨目录附件.pdf',
@@ -68,10 +68,10 @@ describe('noteExport', () => {
     const directories = flattenExportDirectories(treeFixture)
 
     expect(directories).toHaveLength(2)
-    expect(directories[0].path).toBe('网络与代理')
+    expect(directories[0].path).toBe('电脑/电脑网络/代理与VPN')
     expect(directories[0].noteCount).toBe(2)
     expect(directories[0].attachmentCount).toBe(2)
-    expect(directories[1].path).toBe('网络与代理/子目录')
+    expect(directories[1].path).toBe('电脑/电脑网络/代理与VPN/子目录')
     expect(directories[1].noteCount).toBe(1)
   })
 
@@ -81,7 +81,7 @@ describe('noteExport', () => {
     expect(notes).toHaveLength(2)
     expect(attachments).toHaveLength(2)
     expect(attachments.map((item) => item.path)).toEqual([
-      '网络与代理/清理代理残留.bat',
+      '电脑/电脑网络/代理与VPN/清理代理残留.bat',
       '外部资料/跨目录附件.pdf'
     ])
   })
@@ -95,17 +95,21 @@ describe('noteExport', () => {
     expect(notes).toHaveLength(2)
     expect(attachments).toHaveLength(2)
     expect(attachments.map((item) => item.path)).toEqual([
-      '网络与代理/清理代理残留.bat',
+      '电脑/电脑网络/代理与VPN/清理代理残留.bat',
       '外部资料/跨目录附件.pdf'
     ])
   })
 
   it('moves external attachments into a dedicated archive directory', () => {
-    expect(getArchiveRelativePath('网络与代理/子目录/第二篇.md', '网络与代理')).toBe('子目录/第二篇.md')
-    expect(getArchiveRelativePath('外部资料/跨目录附件.pdf', '网络与代理')).toBe('外部附件/外部资料/跨目录附件.pdf')
+    expect(getArchiveRelativePath('电脑/电脑网络/代理与VPN/子目录/第二篇.md', '电脑/电脑网络/代理与VPN')).toBe('子目录/第二篇.md')
+    expect(getArchiveRelativePath('外部资料/跨目录附件.pdf', '电脑/电脑网络/代理与VPN')).toBe('外部附件/外部资料/跨目录附件.pdf')
   })
 
   it('exports a single note as markdown', async () => {
+    const encodedPath = '电脑/电脑网络/代理与VPN/代理网络问题处理指南.md'
+      .split('/')
+      .map(encodeURIComponent)
+      .join('/')
     const fetchImpl = vi.fn(() =>
       Promise.resolve({
         ok: true,
@@ -119,7 +123,7 @@ describe('noteExport', () => {
     })
 
     expect(filename).toBe('代理网络问题处理指南.md')
-    expect(fetchImpl).toHaveBeenCalledWith('/HaonanKnowledgeBlog/notes/%E7%BD%91%E7%BB%9C%E4%B8%8E%E4%BB%A3%E7%90%86/%E4%BB%A3%E7%90%86%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86%E6%8C%87%E5%8D%97.md')
+    expect(fetchImpl).toHaveBeenCalledWith(`/HaonanKnowledgeBlog/notes/${encodedPath}`)
     expect(globalThis.URL.createObjectURL).toHaveBeenCalledTimes(1)
   })
 
@@ -144,7 +148,7 @@ describe('noteExport', () => {
     })
 
     expect(result).toEqual({
-      filename: '网络与代理.zip',
+      filename: '代理与VPN.zip',
       noteCount: 2,
       attachmentCount: 2
     })

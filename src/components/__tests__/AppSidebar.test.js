@@ -78,8 +78,8 @@ describe('AppSidebar', () => {
         tree: [
           {
             type: 'directory',
-            name: '网络与代理',
-            path: '网络与代理',
+            name: '电脑',
+            path: '电脑',
             children: []
           }
         ]
@@ -121,23 +121,23 @@ describe('AppSidebar', () => {
     setViewportWidth(1280)
     routeState.name = 'NoteDetail'
     routeState.params = {
-      path: '网络与代理/代理网络问题处理指南'
+      path: '电脑/电脑网络/代理与VPN/代理网络问题处理指南'
     }
-    routeState.fullPath = '/note/网络与代理/代理网络问题处理指南'
+    routeState.fullPath = '/note/电脑/电脑网络/代理与VPN/代理网络问题处理指南'
 
     global.fetch = vi.fn(() => Promise.resolve({
       json: () => Promise.resolve({
         tree: [
           {
             type: 'directory',
-            name: '网络与代理',
-            path: '网络与代理',
+            name: '代理与VPN',
+            path: '电脑/电脑网络/代理与VPN',
             children: [
               {
                 type: 'file',
                 title: '代理网络问题处理指南',
                 filename: '代理网络问题处理指南.md',
-                path: '网络与代理/代理网络问题处理指南.md',
+                path: '电脑/电脑网络/代理与VPN/代理网络问题处理指南.md',
                 attachments: []
               }
             ]
@@ -167,7 +167,7 @@ describe('AppSidebar', () => {
     expect(items[0].text()).toContain('导出当前文章')
     expect(items[0].text()).toContain('代理网络问题处理指南')
     expect(items[1].attributes('disabled')).toBeUndefined()
-    expect(items[1].text()).toContain('网络与代理')
+    expect(items[1].text()).toContain('电脑/电脑网络/代理与VPN')
     expect(items[2].attributes('disabled')).toBeUndefined()
   })
 })
