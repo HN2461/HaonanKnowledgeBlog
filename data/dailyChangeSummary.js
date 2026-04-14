@@ -13,10 +13,10 @@ export const dailyChangeSummary = {
     },
     {
       category: '内容上新',
-      time: '21:25',
-      title: '完善 Cursor 官方资料专题并校正关键表述',
-      summary: 'AI 工具目录下的 Cursor 专题已扩展为完整系列，并重新对照官方文档收紧了模型、权限、GitHub、Slack、远程环境与常见问题等易误解内容。',
-      content: '今天集中补齐了 public/notes/AI工具/Cursor 下的多篇专题文章与目录页，把内容扩展到覆盖安装、Rules、MCP、CLI、Bugbot、模型选择、隐私、团队治理、GitHub、Slack、Data Science 和排障等主题，同时对第 5、9、12、25、26、27、28 篇进行了官方口径校验，尽量避免旧截图或经验化说法误导读者。'
+      time: '23:04',
+      title: '将 Cursor 专题重构为 8 篇官方主线文章',
+      summary: 'AI 工具目录下的 Cursor 专题已从 28 篇细分稿压缩为 8 篇主线文章，目录、搜索索引与阅读顺序同步切到新的能力分组结构。',
+      content: '今天对 public/notes/AI工具/Cursor 做了整组内容收敛：重新研究 Cursor 官方 docs、pricing、dashboard 与 troubleshooting 资料后，把安装迁移、核心交互、上下文治理、本地工作流、协作自动化、工具权限、团队治理和数据科学排障分别合并成 8 篇主线文章，并删除旧的 28 篇拆分稿，减少重复主题和目录噪声。'
     },
     {
       category: '内容上新',
