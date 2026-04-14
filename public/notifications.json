@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-14T15:11:47.482Z",
-  "total": 97,
+  "generatedAt": "2026-04-14T15:26:25.476Z",
+  "total": 98,
   "notifications": [
+    {
+      "id": "git-2655b116f67e016645372bf60d2b44e7c3249747",
+      "title": "Cursor专题: 精简系列结构并刷新通知摘要",
+      "content": "提交说明：Cursor专题: 精简系列结构并刷新通知摘要",
+      "summary": "Cursor专题: 精简系列结构并刷新通知摘要",
+      "date": "2026-04-14T23:14:30+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "2655b11",
+      "fullHash": "2655b116f67e016645372bf60d2b44e7c3249747"
+    },
     {
       "id": "daily-2026-04-14-2",
       "title": "将 Cursor 专题重构为 8 篇官方主线文章",
