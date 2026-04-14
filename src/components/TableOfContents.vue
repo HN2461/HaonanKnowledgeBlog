@@ -17,6 +17,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { resolveScrollableContainer } from '../utils/scrollContainer'
 
 const props = defineProps({
   toc: {
@@ -31,8 +32,10 @@ const tocNav = ref(null)
 let scrollContainer = null
 
 const resolveScrollContainer = () => {
-  return document.querySelector('[data-reading-scroll-container="true"]')
-    || document.querySelector('.main-content')
+  return resolveScrollableContainer(
+    document.querySelector('[data-reading-scroll-container="true"]'),
+    document.querySelector('.main-content')
+  )
 }
 
 // 监听 toc 变化

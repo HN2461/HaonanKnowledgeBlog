@@ -199,6 +199,7 @@ import {
   MAX_FONT_SIZE
 } from '../utils/fontSizeStorage'
 import { getReadingPosition } from '../utils/readingPosition'
+import { resolveScrollableContainer } from '../utils/scrollContainer'
 
 const emit = defineEmits([
   'fontSizeChange',
@@ -561,8 +562,10 @@ const scrollToTop = () => {
 }
 
 const resolveScrollContainer = () => {
-  return document.querySelector('[data-reading-scroll-container="true"]')
-    || document.querySelector('.main-content')
+  return resolveScrollableContainer(
+    document.querySelector('[data-reading-scroll-container="true"]'),
+    document.querySelector('.main-content')
+  )
 }
 
 // 检查是否有保存的阅读位置

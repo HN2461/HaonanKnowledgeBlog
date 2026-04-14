@@ -44,7 +44,10 @@ onMounted(() => {
 
 <style scoped>
 .app-layout {
+  min-height: 100vh;
+  min-height: 100dvh;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   overflow: hidden;

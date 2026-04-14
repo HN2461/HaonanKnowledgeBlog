@@ -290,6 +290,7 @@ import {
   formatReadingPosition,
   saveReadingPosition
 } from '@/utils/readingPosition'
+import { resolveScrollableContainer } from '@/utils/scrollContainer'
 
 const route = useRoute()
 const loading = ref(true)
@@ -520,9 +521,11 @@ const getSeriesNoteIndexLabel = (seriesNote) => {
 }
 
 const resolveScrollContainer = () => {
-  return detailBodyRef.value
-    || document.querySelector('[data-reading-scroll-container="true"]')
-    || document.querySelector('.main-content')
+  return resolveScrollableContainer(
+    detailBodyRef.value,
+    document.querySelector('[data-reading-scroll-container="true"]'),
+    document.querySelector('.main-content')
+  )
 }
 
 const enableDetachedDetailLayout = () => {
@@ -1510,6 +1513,18 @@ watch(() => route.params.path, (newPath, oldPath) => {
 }
 
 @media (max-width: 768px) {
+  :global(.main-content.note-detail-main-content) {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .note-detail-page {
+    display: block;
+    height: auto;
+    min-height: 100%;
+  }
+
   .note-page-topbar {
     padding: 0 14px;
   }
@@ -1525,6 +1540,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
   }
 
   .note-detail-body {
+    min-height: auto;
+    overflow: visible;
     padding: 16px 14px 32px;
   }
 
