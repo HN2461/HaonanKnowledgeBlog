@@ -180,4 +180,16 @@ export const historyNotifications = [
       },
     ],
   },
+  {
+    id: "history-2026-04-15",
+    date: "2026-04-15",
+    items: [
+      {
+        time: "16:18",
+        title: "uni-app 人脸摄像机封装专题升级为长教程版",
+        summary: "把原先偏提纲式的人脸摄像机文章重写为更细的长教程，完整补齐能力边界、分层思路、工具函数模板、页面骨架、业务套法、接入顺序和排障方法。",
+        content: "归档 2026-04-15 的内容上新摘要：将 uni-app 人脸摄像机封装专题从简版说明升级为可长期复用的长教程版本，补齐为什么人脸页容易写乱、相机能力层/图片处理层/权限处理层/识别流程层/业务适配层的拆分思路，以及 useCamera.js、faceImage.js、facePermission.js、useFaceCaptureFlow.js 与完整页面骨架的详细讲解。",
+      }
+    ]
+  },
 ];
