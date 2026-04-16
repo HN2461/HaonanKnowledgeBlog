@@ -9,7 +9,7 @@ tags:
   - 客户端封装
   - 心跳
   - 订阅
-description: 这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、消息缓冲区、心跳、订阅表、回调分发和基础生命周期管理。
+description: 这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、STOMP 帧缓冲、heart-beat 协商、订阅表、回调分发和基础生命周期管理。
 ---
 
 # StompClient 封装实战：connect、订阅、心跳与回调分发
@@ -73,7 +73,8 @@ export default class StompClient {
     this.socket = null
     this.config = {
       url: config.url || 'ws://localhost:3000/ws',
-      heartbeatInterval: config.heartbeatInterval || 5000,
+      heartbeatOutgoing: config.heartbeatOutgoing ?? 10000,
+      heartbeatIncoming: config.heartbeatIncoming ?? 10000,
       connectTimeout: config.connectTimeout || 10000,
       ...config,
     }
@@ -82,7 +83,9 @@ export default class StompClient {
     this.sessionId = null
     this.userId = null
     this.subscriptions = new Map()
-    this.heartbeatTimer = null
+    this.outgoingHeartbeatTimer = null
+    this.incomingHeartbeatTimer = null
+    this.lastServerActivityAt = 0
     this.messageBuffer = ''
     this.connectTimer = null
 
@@ -173,7 +176,12 @@ connect(headers) {
     })
 
     this.socket.onOpen(() => {
-      const connectFrame = StompFrame.buildConnectFrame(headers)
+      const connectFrame = StompFrame.buildConnectFrame({
+        ...headers,
+        heartbeat:
+          headers.heartbeat ||
+          `${this.config.heartbeatOutgoing},${this.config.heartbeatIncoming}`,
+      })
       this.send(connectFrame)
 
       this.clearConnectTimer()
@@ -212,16 +220,16 @@ connect(headers) {
 
 “WebSocket 不是消息一条一条收吗，为什么还要缓冲区？”
 
-因为在文本协议场景里，你并不能完全假设：
+更严谨地说，浏览器和 uni-app 的 `onMessage` 会给你一条完整 WebSocket message。  
+但问题在于：
 
-1. 一次 `onMessage` 只收到一条完整 frame
-2. 或一次只收到一个心跳
+`一条 WebSocket message 不等于一条 STOMP frame。`
 
-更现实的情况是：
+实际服务端可能这样发：
 
-1. 一次收多条 frame
-2. 一次只收到半条 frame
-3. 心跳和 frame 混在一起
+1. 一条 WebSocket message 里放多条 STOMP frame
+2. 一条 STOMP frame 分两条 WebSocket message 发
+3. 心跳和正常 frame 在应用层缓冲后一起到达
 
 所以这里必须有：
 
@@ -243,7 +251,11 @@ this.messageBuffer += text
  */
 handleMessage(data, resolve, reject) {
   let text = typeof data === 'string' ? data : String(data || '')
-  if (text && text.replace(/\n/g, '') === '') {
+  if (!text) return
+
+  this.lastServerActivityAt = Date.now()
+
+  if (text.replace(/\r/g, '').replace(/\n/g, '') === '') {
     return
   }
 
@@ -265,6 +277,14 @@ handleMessage(data, resolve, reject) {
   })
 }
 ```
+
+收到 `CONNECTED` 后，`handleConnected(frame)` 里要把服务端返回的 header 传给心跳层：
+
+```js
+this.startHeartbeat(frame.headers)
+```
+
+这样心跳间隔才会基于协商结果计算，而不是写死成客户端自己的固定值。
 
 ### 这里最值得学的，不是 `if/else`
 
@@ -336,22 +356,63 @@ subscribe(destination, callback, headers = {}) {
 
 `在空闲时证明连接还活着`
 
+但 STOMP 的心跳不是客户端单方面固定几秒发一次。  
+更稳的做法是用客户端配置和服务端 `CONNECTED` 帧里的 `heart-beat` 一起协商：
+
+1. 客户端要不要给服务端发心跳
+2. 服务端会不会给客户端发心跳
+3. 服务端长时间没有任何数据时，客户端什么时候判定连接失活
+
 ### 推荐模板：心跳相关
 
 ```js
-startHeartbeat() {
+startHeartbeat(headers = {}) {
   this.stopHeartbeat()
-  this.heartbeatTimer = setInterval(() => {
-    if (this.status === CONNECTION_STATUS.CONNECTED) {
-      this.send(StompFrame.buildHeartbeatFrame())
-    }
-  }, this.config.heartbeatInterval)
+
+  const [serverCanSend, serverWantsReceive] = String(headers['heart-beat'] || '0,0')
+    .split(',')
+    .map((value) => Number(value || 0))
+
+  const sendInterval =
+    this.config.heartbeatOutgoing > 0 && serverWantsReceive > 0
+      ? Math.max(this.config.heartbeatOutgoing, serverWantsReceive)
+      : 0
+
+  const receiveInterval =
+    this.config.heartbeatIncoming > 0 && serverCanSend > 0
+      ? Math.max(this.config.heartbeatIncoming, serverCanSend)
+      : 0
+
+  this.lastServerActivityAt = Date.now()
+
+  if (sendInterval > 0) {
+    this.outgoingHeartbeatTimer = setInterval(() => {
+      if (this.status === CONNECTION_STATUS.CONNECTED) {
+        this.send(StompFrame.buildHeartbeatFrame())
+      }
+    }, sendInterval)
+  }
+
+  if (receiveInterval > 0) {
+    this.incomingHeartbeatTimer = setInterval(() => {
+      const idleTime = Date.now() - this.lastServerActivityAt
+      if (idleTime > receiveInterval * 2) {
+        this.handleError(new Error('STOMP 心跳超时'))
+        this.close()
+      }
+    }, receiveInterval)
+  }
 }
 
 stopHeartbeat() {
-  if (this.heartbeatTimer) {
-    clearInterval(this.heartbeatTimer)
-    this.heartbeatTimer = null
+  if (this.outgoingHeartbeatTimer) {
+    clearInterval(this.outgoingHeartbeatTimer)
+    this.outgoingHeartbeatTimer = null
+  }
+
+  if (this.incomingHeartbeatTimer) {
+    clearInterval(this.incomingHeartbeatTimer)
+    this.incomingHeartbeatTimer = null
   }
 }
 ```
@@ -361,16 +422,20 @@ stopHeartbeat() {
 因为不清旧定时器，很容易重复启动多个心跳任务。  
 这种 bug 平时不明显，但线上会慢慢放大。
 
+同时，心跳检测要把“收到业务消息”也算作连接活跃。  
+所以 `handleMessage()` 一开始就更新 `lastServerActivityAt`，不需要只等纯 `\n` 心跳。
+
 ## 十、这一层最容易踩的坑
 
 1. 把 `onOpen` 当成最终连接成功
 2. 不做连接超时
 3. 不做消息缓冲区
 4. 不维护订阅表
-5. 不做心跳
-6. 心跳重复启动
-7. socket 断开后不清状态
-8. 直接在客户端层做重连策略
+5. 把固定 `setInterval` 当成 STOMP 心跳协商
+6. 只发出站心跳，不检测入站心跳超时
+7. 心跳重复启动
+8. socket 断开后不清状态
+9. 直接在客户端层做重连策略
 
 ## 十一、建议的接入顺序
 

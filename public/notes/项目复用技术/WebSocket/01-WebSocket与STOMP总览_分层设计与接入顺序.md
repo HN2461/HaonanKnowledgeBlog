@@ -71,7 +71,7 @@ description: 这是 WebSocket 专题的第 1 篇总览，系统梳理 WebSocket 
 1. `协议常量层`
    只负责命令、状态、事件名、消息类型映射
 2. `帧构建与解析层`
-   只负责 STOMP frame 的构建、拆帧、粘包处理
+   只负责 STOMP frame 的构建、拆帧、帧边界处理
 3. `底层客户端层`
    只负责具体运行时的 socket 生命周期和 STOMP 协议发送接收
 4. `连接管理层`
@@ -171,17 +171,23 @@ STOMP 官方规范把它叫：
 7. `ERROR`
 8. `DISCONNECT`
 
-### 3. STOMP 最重要的两个细节
+### 3. STOMP 最重要的几个细节
 
 1. frame 以 NULL 字符结束
-2. 心跳可以是换行符
+2. 心跳可以表现为换行符，但发送频率要通过 `heart-beat` 协商
+3. 一条 WebSocket message 不一定等于一条 STOMP frame
+4. 严格 STOMP 1.2 还要考虑 header 转义、`content-length` 和 `CRLF/LF` 换行兼容
 
 这直接决定了你的客户端封装里必须考虑：
 
 1. 如何拼 frame
 2. 如何拆 frame
-3. 如何处理粘包
+3. 如何处理 STOMP frame 和 WebSocket message 边界不一致
 4. 如何忽略纯心跳
+5. 如何判断服务端心跳超时
+
+这组文章里的模板主要面向“文本 JSON body + 项目内约定认证头”的常见业务场景。  
+如果你要沉淀完整通用 STOMP 客户端，就要继续补齐 ACK/NACK、transaction、`content-length` 字节级解析等能力。
 
 ## 六、第一层：协议常量为什么一定要集中管理
 
@@ -368,7 +374,7 @@ export default class StompFrame {
 
   /**
    * 解析多个 STOMP 帧并保留未完成片段。
-   * 用途：处理 TCP 粘包/拆包，把完整帧解析出来，把半帧留到下一次继续拼接。
+   * 用途：处理 WebSocket message 与 STOMP frame 边界不完全一致的情况，把完整帧解析出来，把半帧留到下一次继续拼接。
    * 参数：data 为当前缓冲区文本。
    * 返回值：{ frames, remainder }。
    * 边界行为：没有数据时返回空帧数组和空 remainder。
@@ -917,22 +923,23 @@ export default class MessageParser {
 3. `getConnectionStatus`
 4. `on(EVENT_TYPES.MESSAGE_RECEIVED, ...)`
 
-## 十二、最容易踩的 14 个坑
+## 十二、最容易踩的 15 个坑
 
 1. 页面里直接写 `connectSocket`
 2. 不做协议常量统一
-3. 不做帧边界处理
+3. 把 WebSocket message 当成 STOMP frame 边界
 4. 不区分心跳和真正消息
-5. 没有连接超时机制
-6. 自动重连无限循环
-7. 不做指数退避
-8. 重连成功后没恢复订阅
-9. 不保存连接参数
-10. 后端字段直接透给页面
-11. 文件消息和位置消息没有单独解析
-12. 页面直接消费未标准化原始消息
-13. 页面既监听全局回调又监听订阅回调但没统一入口
-14. 连接状态没抽成统一事件
+5. 不按 `heart-beat` 协商心跳
+6. 没有连接超时机制
+7. 自动重连无限循环
+8. 不做指数退避
+9. 重连成功后没恢复订阅
+10. 不保存连接参数
+11. 后端字段直接透给页面
+12. 文件消息和位置消息没有单独解析
+13. 页面直接消费未标准化原始消息
+14. 页面既监听全局回调又监听订阅回调但没统一入口
+15. 连接状态没抽成统一事件
 
 ## 十三、建议的接入顺序
 

@@ -94,6 +94,20 @@ export const dailyChangeSummary = {
       title: '新增 WebSocket 跨运行时适配篇',
       summary: 'WebSocket 专题新增第 8 篇，专门讲 uni-app 与 PC Vue 如何共用核心层，只替换底层 socket adapter 和服务挂载方式。',
       content: '今天在 public/notes/项目复用技术/WebSocket 下继续新增了第 8 篇“WebSocket 跨运行时适配实战”，专门回答“这套方案是不是只能用于 uni-app”的问题。文章重点讲清哪些层可以完全跨端复用，哪些层只需要做 uni-app / 浏览器的 socket adapter 区分，以及在 uni-app 与 Vue 3 中分别如何挂载 messageService，让这套实时通信底座以后更容易跨项目、跨端复用。'
+    },
+    {
+      category: '问题修复',
+      time: '21:22',
+      title: '增强 WebSocket 专题中的 STOMP 规范表述',
+      summary: '把 WebSocket 专题从“项目经验口吻”进一步收紧到“项目级实现 + 明确规范边界”的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。',
+      content: '今晚继续完善 public/notes/项目复用技术/WebSocket 专题，重点修正那些容易让懂协议的人挑出硬伤的表述：总览篇补充了 STOMP 1.2 的关键边界，帧封装篇明确了当前模板是面向文本 JSON body 的项目级实现，并补上 heart-beat 协商、header 转义、CRLF/LF 兼容和 content-length 注意事项；同时把原先笼统写成“TCP 粘包”的地方改成更准确的“WebSocket message 与 STOMP frame 边界不一致”。'
+    },
+    {
+      category: '问题修复',
+      time: '21:22',
+      title: '收紧 WebSocket 客户端与消息解析模板的一致性',
+      summary: '同步调整 StompClient 与 MessageParser 两篇文章，让心跳协商、消息缓冲和字段映射可配置真正落到代码模板里，不再只停留在正文说明。',
+      content: '今晚继续收口 WebSocket 专题的代码示例：StompClient 篇把固定 heartbeatInterval 改成 heartbeatOutgoing / heartbeatIncoming，并补上基于 CONNECTED 帧 heart-beat 头的协商思路和入站活跃检测；消息解析篇则让基础解析入口和 normalizeIncomingType 真正接入 fieldMap，不再一边强调字段映射可配置、一边在模板里继续写死 type/chatType 和 fromUserID 这类字段。'
     }
   ]
 }

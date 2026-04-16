@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-16T09:47:25.565Z",
-  "total": 115,
+  "generatedAt": "2026-04-16T12:50:02.805Z",
+  "total": 116,
   "notifications": [
+    {
+      "id": "git-ead85b56d02088d1874fdef1994eb9e4bb5f3399",
+      "title": "优化websocket文档",
+      "content": "提交说明：优化websocket文档",
+      "summary": "优化websocket文档",
+      "date": "2026-04-16T17:50:05+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "ead85b5",
+      "fullHash": "ead85b56d02088d1874fdef1994eb9e4bb5f3399"
+    },
     {
       "id": "git-7a9cfb005483d1859966017f5fab5a78f3b2a4ee",
       "title": "feat(项目复用技术): 新增 uni-app WebSocket 专题并拆分为多篇文档",
