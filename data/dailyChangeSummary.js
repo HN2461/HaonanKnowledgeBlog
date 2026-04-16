@@ -65,14 +65,35 @@ export const dailyChangeSummary = {
       time: '13:06',
       title: '把 WebSocket 能力拆成专题文件夹逐篇沉淀',
       summary: '项目复用技术目录下为 WebSocket 单独建立专题文件夹，不再只保留一篇总览，而是按 STOMP 帧、客户端、连接管理、消息解析与服务层继续拆成可逐篇照着搭的文档。',
-      content: '今天将 uni-app 的 WebSocket 相关沉淀升级成一个可持续扩展的专题目录，在 public/notes/项目复用技术/uni-app/WebSocket 下补齐专题结构：把原本的总览文章移入专题作为第 1 篇，并新增 STOMP 帧封装、StompClient 客户端、连接管理与自动重连、消息解析与服务层 4 个分篇。这样后面在别的项目里接入 WebSocket / STOMP 时，不需要一次性啃完一篇大文，而可以按“协议层 -> 客户端 -> 重连管理 -> 消息服务”逐步研究、逐步模仿、逐步照着搭。'
+      content: '今天将 WebSocket 相关沉淀升级成一个可持续扩展的专题目录，在 public/notes/项目复用技术/WebSocket 下补齐专题结构：把原本的总览文章移入专题作为第 1 篇，并新增 STOMP 帧封装、StompClient 客户端、连接管理与自动重连、消息解析与服务层 4 个分篇。这样后面在别的项目里接入 WebSocket / STOMP 时，不需要一次性啃完一篇大文，而可以按“协议层 -> 客户端 -> 重连管理 -> 消息服务”逐步研究、逐步模仿、逐步照着搭。'
     },
     {
       category: '内容上新',
       time: '13:18',
       title: '补齐 WebSocket 专题的适配器篇与目录页',
       summary: '继续扩展 WebSocket 专题，新增 MessageServiceAdapter 与页面接入文章，并补了一篇专题目录页，把整组文档串成清晰阅读顺序。',
-      content: '今天继续完善 public/notes/项目复用技术/uni-app/WebSocket 专题，新增了第 6 篇 “MessageServiceAdapter 与页面接入实战”，专门讲如何把 ConnectionManager、MessageService 和页面层桥接成统一入口；同时新增目录页，把总览、STOMP 帧、客户端、连接管理、消息解析与服务层、页面接入这几篇串成完整阅读顺序，方便后续在其他项目里直接按专题路径逐步搭建。'
+      content: '今天继续完善 public/notes/项目复用技术/WebSocket 专题，新增了第 6 篇 “MessageServiceAdapter 与页面接入实战”，专门讲如何把 ConnectionManager、MessageService 和页面层桥接成统一入口；同时新增目录页，把总览、STOMP 帧、客户端、连接管理、消息解析与服务层、页面接入这几篇串成完整阅读顺序，方便后续在其他项目里直接按专题路径逐步搭建。'
+    },
+    {
+      category: '内容上新',
+      time: '13:32',
+      title: '新增 WebSocket 接入检查清单篇',
+      summary: 'WebSocket 专题继续补齐第 7 篇落地清单，从后端协议确认、目录搭建、STOMP 帧联调、连接重连、消息解析到页面接入逐项列出验收点。',
+      content: '今天继续完善 public/notes/项目复用技术/WebSocket 专题，新增第 7 篇“WebSocket 接入检查清单”。这篇不再讲新概念，而是把前 6 篇的内容整理成可执行落地步骤：先确认后端协议和订阅地址，再搭目录结构，随后依次联调 STOMP 帧、WebSocket 连接、心跳粘包、订阅恢复、连接管理、消息解析和页面 Adapter 接入，并补充生产上线前容易漏掉的 wss、token 过期、退出登录断开、切换账号销毁旧连接等检查项。'
+    },
+    {
+      category: '问题修复',
+      time: '13:49',
+      title: '将 WebSocket 专题改成跨端通用写法',
+      summary: '把 WebSocket 专题从“偏 uni-app 视角”继续收敛成“跨端核心 + 运行时适配”的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。',
+      content: '今天继续调整 public/notes/项目复用技术/WebSocket 专题，把总览篇、消息解析篇、Adapter 篇和接入清单篇进一步改成跨端通用手册：移除“专题属于 uni-app”的表述，明确 WebSocket/STOMP 的协议层、连接管理层、消息解析层本身可同时服务 uni-app 和 PC Vue；补充“字段映射不要写死”的配置式方案、Vue 3 中 app.config.globalProperties 和 provide/inject 的挂载方式，以及 uni.connectSocket 与浏览器原生 WebSocket 之间只属于运行时适配差异的说明。'
+    },
+    {
+      category: '内容上新',
+      time: '13:56',
+      title: '新增 WebSocket 跨运行时适配篇',
+      summary: 'WebSocket 专题新增第 8 篇，专门讲 uni-app 与 PC Vue 如何共用核心层，只替换底层 socket adapter 和服务挂载方式。',
+      content: '今天在 public/notes/项目复用技术/WebSocket 下继续新增了第 8 篇“WebSocket 跨运行时适配实战”，专门回答“这套方案是不是只能用于 uni-app”的问题。文章重点讲清哪些层可以完全跨端复用，哪些层只需要做 uni-app / 浏览器的 socket adapter 区分，以及在 uni-app 与 Vue 3 中分别如何挂载 messageService，让这套实时通信底座以后更容易跨项目、跨端复用。'
     }
   ]
 }
