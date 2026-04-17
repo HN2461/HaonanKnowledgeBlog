@@ -108,6 +108,13 @@ export const dailyChangeSummary = {
       title: '收紧 WebSocket 客户端与消息解析模板的一致性',
       summary: '同步调整 StompClient 与 MessageParser 两篇文章，让心跳协商、消息缓冲和字段映射可配置真正落到代码模板里，不再只停留在正文说明。',
       content: '今晚继续收口 WebSocket 专题的代码示例：StompClient 篇把固定 heartbeatInterval 改成 heartbeatOutgoing / heartbeatIncoming，并补上基于 CONNECTED 帧 heart-beat 头的协商思路和入站活跃检测；消息解析篇则让基础解析入口和 normalizeIncomingType 真正接入 fieldMap，不再一边强调字段映射可配置、一边在模板里继续写死 type/chatType 和 fromUserID 这类字段。'
+    },
+    {
+      category: '内容上新',
+      time: '22:17',
+      title: '新增 GitHub Pages 部署 Vue 项目教程',
+      summary: 'Vue3 目录下新增一篇面向初学者的 GitHub Pages 部署教程，覆盖 Vite base、Hash 路由、手动分支部署、Actions 自动部署与常见问题排查。',
+      content: '今晚在 public/notes/Vue/vue3 下新增“GitHub Pages 部署 Vue 项目完整教程”，把主人提供的部署流程整理成更适合博客阅读的完整笔记：从 npm run build、vite.config.js 的 base 配置、createWebHashHistory 路由模式讲起，再补充 dist 手动发布、GitHub Actions 自动部署、访问地址验证和页面空白、刷新 404、图片加载失败等排查清单。'
     }
   ]
 }
