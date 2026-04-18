@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-18T10:38:41.829Z",
-  "total": 130,
+  "generatedAt": "2026-04-18T13:23:04.115Z",
+  "total": 131,
   "notifications": [
+    {
+      "id": "git-aa325b6ccfb5e94dc9ad4f4313babb48f3bcbfd3",
+      "title": "Node.js系列: 新增8篇完整教程并深度升级，完善AGENTS.md消息规则",
+      "content": "提交说明：Node.js系列: 新增8篇完整教程并深度升级，完善AGENTS.md消息规则",
+      "summary": "Node.js系列: 新增8篇完整教程并深度升级，完善AGENTS.md消息规则",
+      "date": "2026-04-18T18:48:49+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "aa325b6",
+      "fullHash": "aa325b6ccfb5e94dc9ad4f4313babb48f3bcbfd3"
+    },
     {
       "id": "daily-2026-04-18-3",
       "title": "Node.js 系列 8 篇深度升级：废弃标记 + 参数说明 + 最新特性",

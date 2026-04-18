@@ -211,16 +211,16 @@ const http = require('node:http')  // Node 14.18+ 推荐加 node: 前缀
 
 // http.createServer([options][, requestListener]) → http.Server
 //   options（可选）：
-//     keepAlive: boolean，是否启用 keep-alive（默认 false）
-//     keepAliveInitialDelay: number，keep-alive 初始延迟（毫秒，默认 0）
-//     connectionsCheckingInterval: number，检查超时连接的间隔（默认 30000ms）
-//     requestTimeout: number，请求超时（毫秒，默认 300000ms = 5分钟）
-//     headersTimeout: number，等待请求头的超时（默认 60000ms）
-//     maxHeaderSize: number，请求头最大字节数（默认 16384 = 16KB）
+//     keepAlive: boolean，是否启用 keep-alive，是否保持连接（长连接），避免每次请求重新握手（默认 false）
+//     keepAliveInitialDelay: number，keep-alive 长连接保持多久才开始算超时（毫秒，默认 0）
+//     connectionsCheckingInterval: number，每隔多久检查一次死连接（默认 30000ms）
+//     requestTimeout: number，整个请求多久算超时（毫秒，默认 300000ms = 5分钟）
+//     headersTimeout: number，只等请求头多久算超时（默认 60000ms）
+//     maxHeaderSize: number，请求头最大允许多大（默认 16384 = 16KB）
 //   requestListener: (req, res) => void，请求处理函数
 const server = http.createServer((req, res) => {
-  // req：IncomingMessage 实例（可读流）
-  // res：ServerResponse 实例（可写流）
+//   req = 可读流（浏览器发来的请求）
+//   res = 可写流（返回给浏览器的响应）
   res.end('Hello, World!')
 })
 
@@ -266,6 +266,8 @@ const server = http.createServer((req, res) => {
   console.log(req.headers.authorization)    // 'Bearer xxx'
 
   // ── 解析 URL ──
+  // 把 req.url 转成方便操作的 URL 对象
+  // 第二个参数是补全协议+域名，让解析不出错
   const url = new URL(req.url, `http://${req.headers.host}`)
   console.log(url.pathname)                    // '/api/users'
   console.log(url.searchParams.get('page'))    // '1'
@@ -316,6 +318,7 @@ const http = require('http')
 const url = require('url')
 
 const server = http.createServer((req, res) => {
+  // req.url 不完整 → 必须补协议域名 → 才能用 JS 内置的 URL 解析路径
   const { pathname } = new URL(req.url, `http://${req.headers.host}`)
   const method = req.method
 

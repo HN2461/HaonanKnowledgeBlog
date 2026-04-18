@@ -529,9 +529,16 @@ JavaScript 最初设计用于处理文本（字符串），但服务器端经常
 
 ### 6.2 创建 Buffer
 
+> ⚠️ **废弃警告**：旧写法 `new Buffer(size)` / `new Buffer(string)` 已在 Node.js 6 废弃，Node.js 10 起正式移除。原因是它存在内存安全漏洞（未初始化内存可能泄露敏感数据）。请统一使用下面三个静态方法替代。
+
 ```javascript
 // ── 方式一：Buffer.alloc(size[, fill[, encoding]]) ──
-// 创建指定大小的 Buffer，初始值全为 0（安全）
+// 作用：创建一个指定字节长度的 Buffer，内存全部初始化为 0（或指定填充值）。
+// 参数：
+//   size: number — Buffer 的字节长度
+//   fill: string | Buffer | Uint8Array | number — 填充值（默认 0）
+//   encoding: string — fill 为字符串时的编码（默认 'utf8'）
+// 特点：安全，内存清零，适合存储敏感数据或需要确定初始值的场景。
 const buf1 = Buffer.alloc(10)
 console.log(buf1)
 // <Buffer 00 00 00 00 00 00 00 00 00 00>
@@ -541,17 +548,28 @@ const buf1b = Buffer.alloc(5, 0xff)
 console.log(buf1b)
 // <Buffer ff ff ff ff ff>
 
+const buf1c = Buffer.alloc(6, 'ab', 'utf8')
+console.log(buf1c.toString())
+// 'ababab'（循环填充）
+
 // ── 方式二：Buffer.allocUnsafe(size) ──
-// 创建指定大小的 Buffer，不初始化（可能含旧数据，但更快）
+// 作用：创建指定字节长度的 Buffer，但不初始化内存（内容不确定，可能含旧数据）。
+// 参数：
+//   size: number — Buffer 的字节长度
+// 特点：比 alloc 快约 2-3 倍（省去清零操作），但内容随机。
+//       只在"创建后立即全部写入"的场景使用，不要用于存储敏感信息。
 const buf2 = Buffer.allocUnsafe(10)
 // 内容不确定，可能是之前内存中的数据！
-// 适合：立即会被覆盖写入的场景
 
 // ── 方式三：Buffer.from(string[, encoding]) ──
+// 作用：把字符串按指定编码转成二进制 Buffer。
+// 参数：
+//   string: string — 要转换的字符串
+//   encoding: string — 字符编码（默认 'utf8'，支持 'hex'、'base64'、'latin1' 等）
+// 特点：复制数据，新 Buffer 与原字符串互不影响。
 const buf3 = Buffer.from('Hello', 'utf8')
 console.log(buf3)
 // <Buffer 48 65 6c 6c 6f>
-// H=0x48, e=0x65, l=0x6c, l=0x6c, o=0x6f
 
 const buf3b = Buffer.from('你好', 'utf8')
 console.log(buf3b)
@@ -559,22 +577,34 @@ console.log(buf3b)
 // 中文 UTF-8 编码，每个汉字 3 字节
 
 // ── 方式四：Buffer.from(array) ──
+// 作用：从字节数组（每个元素为 0-255 的整数）创建 Buffer。
+// 参数：
+//   array: number[] — 字节值数组，超出 0-255 的值会被截断取低 8 位
+// 特点：复制数据。
 const buf4 = Buffer.from([72, 101, 108, 108, 111])
 console.log(buf4.toString())
-// Hello
+// 'Hello'
 
 // ── 方式五：Buffer.from(buffer) ──
-// 复制一个 Buffer（深拷贝）
+// 作用：复制一个已有的 Buffer，生成内容相同但内存独立的新 Buffer（深拷贝）。
+// 参数：
+//   buffer: Buffer | Uint8Array — 要复制的源 Buffer
+// 特点：修改新 Buffer 不影响原 Buffer，反之亦然。
 const original = Buffer.from('Hello')
 const copy = Buffer.from(original)
 copy[0] = 0x68  // 修改 copy 不影响 original
-console.log(original.toString())  // Hello
-console.log(copy.toString())      // hello
+console.log(original.toString())  // 'Hello'
+console.log(copy.toString())      // 'hello'
 
 // ── 方式六：Buffer.from(arrayBuffer[, byteOffset[, length]]) ──
-// 从 ArrayBuffer 创建（共享内存，不复制）
+// 作用：基于 ArrayBuffer 创建 Buffer，两者共享同一块内存（不复制）。
+// 参数：
+//   arrayBuffer: ArrayBuffer | SharedArrayBuffer — 底层内存
+//   byteOffset: number — 从第几个字节开始（默认 0）
+//   length: number — 取多少字节（默认到末尾）
+// 特点：修改 Buffer 会同步影响原 ArrayBuffer，反之亦然，适合与 WebAssembly 等互操作。
 const ab = new ArrayBuffer(8)
-const buf5 = Buffer.from(ab)
+const buf5 = Buffer.from(ab, 0, 4)  // 只取前 4 字节
 ```
 
 > **alloc vs allocUnsafe 性能对比**：
@@ -583,44 +613,106 @@ const buf5 = Buffer.from(ab)
 
 ### 6.3 Buffer 与字符串互转
 
+#### buf.toString([encoding[, start[, end]]])
+
+**作用**：把 Buffer 的二进制数据按指定编码解码成字符串。这是 Buffer 最常用的方法之一。
+
+**参数**：
+- `encoding`：字符编码，决定如何把字节解读成字符（默认 `'utf8'`）
+- `start`：从第几个字节开始解码（默认 `0`）
+- `end`：解码到第几个字节（不含，默认 `buf.length`）
+
+**返回值**：`string`
+
 ```javascript
-// ── 字符串 → Buffer ──
-const str = '你好，Node.js'
-const buf = Buffer.from(str, 'utf8')
-console.log(buf)
-// <Buffer e4 bd a0 e5 a5 bd ef bc 8c 4e 6f 64 65 2e 6a 73>
-console.log(buf.length)  // 16（字节数，不是字符数！）
-console.log(str.length)  // 10（字符数）
+const buf = Buffer.from('你好，Node.js', 'utf8')
+console.log(buf.length)   // 16（字节数）
+console.log(buf.toString())           // '你好，Node.js'（默认 utf8）
+console.log(buf.toString('utf8'))     // '你好，Node.js'（同上）
 
-// ── Buffer → 字符串 ──
-const decoded = buf.toString('utf8')
-console.log(decoded)  // 你好，Node.js
+// start / end 参数：只解码一部分字节
+const buf2 = Buffer.from('Hello World', 'utf8')
+console.log(buf2.toString('utf8', 0, 5))   // 'Hello'（第 0-4 字节）
+console.log(buf2.toString('utf8', 6, 11))  // 'World'（第 6-10 字节）
+```
 
-// ── 支持的编码格式 ──
-// 'utf8' / 'utf-8'：默认，支持所有 Unicode 字符
-// 'ascii'：只支持 ASCII（0-127），超出范围会截断
-// 'latin1' / 'binary'：单字节编码
-// 'base64'：Base64 编码
-// 'base64url'：URL 安全的 Base64
-// 'hex'：十六进制字符串
-// 'ucs2' / 'utf16le'：UTF-16 小端序
+**注意**：`start` / `end` 是**字节**偏移，不是字符偏移。中文等多字节字符如果截断位置不对，会出现乱码：
 
-// ── Base64 编码（常用于图片传输）──
-const imageBuffer = Buffer.from([0x89, 0x50, 0x4e, 0x47])  // PNG 文件头
-const base64 = imageBuffer.toString('base64')
-console.log(base64)  // 'iVBORw=='
+```javascript
+const buf3 = Buffer.from('你好', 'utf8')
+// '你' 占 3 字节（e4 bd a0），'好' 占 3 字节（e5 a5 bd）
+console.log(buf3.toString('utf8', 0, 3))  // '你'（完整的 3 字节）
+console.log(buf3.toString('utf8', 0, 2))  // '??'（截断了，乱码！）
+```
 
-// 从 base64 还原
-const restored = Buffer.from(base64, 'base64')
-console.log(restored)  // <Buffer 89 50 4e 47>
+---
 
-// ── Hex 编码（调试时常用）──
-const hexStr = buf.toString('hex')
-console.log(hexStr)  // 'e4bda0e5a5bdefbc8c4e6f64652e6a73'
+**各编码的用途和效果对比**：
 
-// 从 hex 还原
-const fromHex = Buffer.from(hexStr, 'hex')
-console.log(fromHex.toString('utf8'))  // 你好，Node.js
+| 编码 | 说明 | 典型场景 |
+|------|------|----------|
+| `'utf8'`（默认） | 支持全部 Unicode，变长 1-4 字节/字符 | 文本文件、JSON、HTML |
+| `'ascii'` | 只支持 0-127，超出截断低 7 位 | 纯英文协议头 |
+| `'latin1'` / `'binary'` | 单字节，0-255 直接映射 | 二进制数据透传 |
+| `'base64'` | 每 3 字节编码为 4 个可打印字符 | 图片/文件嵌入 HTML、JSON |
+| `'base64url'` | 同 base64，但用 `-_` 替换 `+/`，无 `=` 填充 | URL 参数、JWT |
+| `'hex'` | 每字节编码为 2 位十六进制字符 | 调试、哈希值展示 |
+| `'ucs2'` / `'utf16le'` | UTF-16 小端序，每字符 2 字节 | Windows 文件、某些协议 |
+
+```javascript
+const buf = Buffer.from('Hi!')
+
+// utf8（默认）
+console.log(buf.toString())          // 'Hi!'
+
+// hex：每字节变成两位十六进制，常用于调试
+console.log(buf.toString('hex'))     // '486921'
+// 48=H, 69=i, 21=!
+
+// base64：3字节 → 4个字符，常用于图片传输
+console.log(buf.toString('base64'))  // 'SGkh'
+
+// base64url：URL 安全版，不含 + / =
+console.log(buf.toString('base64url'))  // 'SGkh'（本例无差异，含特殊字符时才不同）
+
+// ascii：只取低 7 位
+console.log(buf.toString('ascii'))   // 'Hi!'
+
+// latin1：0-255 直接映射
+console.log(buf.toString('latin1'))  // 'Hi!'
+```
+
+**实际场景示例**：
+
+```javascript
+const fs = require('fs')
+
+// 场景一：读取文本文件
+const textBuf = fs.readFileSync('./readme.txt')
+const text = textBuf.toString('utf8')          // ✅ 正确读取中文
+
+// 场景二：图片转 base64 给前端用
+const imgBuf = fs.readFileSync('./photo.jpg')
+const dataUrl = `data:image/jpeg;base64,${imgBuf.toString('base64')}`
+// 直接赋值给 <img src="...">
+
+// 场景三：查看文件头魔数（调试用）
+const fileBuf = fs.readFileSync('./unknown.bin')
+console.log(fileBuf.subarray(0, 4).toString('hex'))
+// 'ffd8ffe0' → JPEG
+// '89504e47' → PNG
+// '25504446' → PDF
+
+// 场景四：哈希值展示
+const crypto = require('crypto')
+const hash = crypto.createHash('sha256').update('hello').digest()
+console.log(hash.toString('hex'))
+// '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
+
+// 场景五：从 base64 字符串还原 Buffer
+const b64 = 'SGVsbG8='
+const restored = Buffer.from(b64, 'base64')
+console.log(restored.toString('utf8'))  // 'Hello'
 ```
 
 ### 6.4 Buffer 的常用操作
