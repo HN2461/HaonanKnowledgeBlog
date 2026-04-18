@@ -288,4 +288,16 @@ export const historyNotifications = [
       }
     ]
   },
+  {
+    id: 'history-2026-04-17',
+    date: '2026-04-17',
+    items: [
+      {
+        time: '23:59',
+        title: '4 月 17 日网络基础短文批量上新归档',
+        summary: '归档当天围绕常用缺易忘网络目录补齐的一组高频短文，涵盖登录态、跨域、安全、缓存、状态码、上传下载与请求治理等主题。',
+        content: '归档 2026-04-17 的历史消息摘要：当天主要围绕 public/notes/常用缺易忘/开发的基础知识/网络 补齐一组高频短文，覆盖 Cookie/Session/JWT、CORS/CSRF/SameSite、Access Token/Refresh Token、AbortController、OAuth2、预签名上传、分片上传、缓存协商、状态码差异、实时通信与请求治理等主题，并同步刷新了站内索引与通知数据。'
+      }
+    ]
+  },
 ];
