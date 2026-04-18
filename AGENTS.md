@@ -85,13 +85,24 @@ attachments:
 
 ## 消息汇总协作规则
 - 当日代码改动摘要文件固定为 `data/dailyChangeSummary.js`。
-- Codex 每次完成“实际代码/脚本改动”后，应在该文件里补 1 到 3 条中文精简摘要；每条必须写入明确分类，当前分类统一使用：`系统公告`、`功能更新`、`内容上新`、`问题修复`。
-- `data/dailyChangeSummary.js` 中每条消息建议包含：`category`、`title`、`summary`、`content`，优先描述用户可感知的变化。
-- `data/dailyChangeSummary.js` 只保留“当天”的摘要：如果文件中的 `date` 不是当天日期，必须先清空旧内容，再写入当天的新摘要，禁止保留历史日期摘要。
-- 主人说“汇总消息”时，Codex 应优先查看当天的 git 变动与 `data/dailyChangeSummary.js`，刷新当日分类摘要内容，再执行 `npm run generate:notifications`，让头部通知抽屉展示最新汇总。
+- Codex 每次完成"实际代码/脚本改动"后，应在该文件里补摘要条目；**同一次对话内完成的改动合并为 1 条，跨多次对话的不同改动才分条写**，每次对话最多新增 3 条。
+- `data/dailyChangeSummary.js` 中每条消息必须包含以下字段：
+  - `category`：分类（见下方分类说明，必填）
+  - `time`：当前系统时间，格式 `HH:mm`（必填，写入前必须先执行 `Get-Date -Format "HH:mm"` 获取，不允许估算）
+  - `title`：标题（必填）
+  - `summary`：摘要（必填）
+  - `content`：详细内容（建议填写，不填时前端回退显示 summary）
+- **分类使用场景说明**（`category` 只能从以下四项中选一个）：
+  - `内容上新`：新增或大幅扩充笔记/文章内容
+  - `功能更新`：站点功能、UI、交互、脚本逻辑改动
+  - `问题修复`：修复 bug、错误内容、样式异常
+  - `系统公告`：重要通知，会置顶展示，谨慎使用
+- `data/dailyChangeSummary.js` 只保留"当天"的摘要：如果文件中的 `date` 不是当天日期，必须先清空旧内容，再写入当天的新摘要，禁止保留历史日期摘要。
+- 主人说"汇总消息"时，Codex 应优先查看当天的 git 变动与 `data/dailyChangeSummary.js`，刷新当日分类摘要内容，再执行 `npm run generate:notifications`，让头部通知抽屉展示最新汇总。
 - 长期保留的公告、置顶通知继续写在 `data/manualNotifications.js`；当日开发汇总不要写进长期公告文件。
 - `Git 提交` 为固定独立分类，由脚本自动从 git 历史生成；不要把 git 提交手动写进 `data/dailyChangeSummary.js`。
-- 清空 `data/dailyChangeSummary.js` 前，必须先将当天内容总结后追加一条到 `data/historyNotifications.js`，`category` 固定为 `历史消息`，`date` 写实际日期，确保历史可查；追加后再执行 `npm run generate:notifications`。
+- 清空 `data/dailyChangeSummary.js` 前，必须先将当天所有改动**归并为一条**追加到 `data/historyNotifications.js` 对应日期的分组里（`id` 格式为 `history-YYYY-MM-DD`，`date` 写实际日期）；归档条目的 `content` 字段须按"第一点：…；第二点：…"格式逐条列出当天每项改动，不得精简省略；追加后再执行 `npm run generate:notifications`。
+- 归档条目的每个要点都必须保留 `time`（取该改动实际发生时间）、`title`、`summary` 信息，合并写入 `content` 时不得丢失任何一条的核心内容。
 
 ## 运行与截图（实测可用）
 - 执行“运行项目并截图”时，优先使用：`node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5173`。
