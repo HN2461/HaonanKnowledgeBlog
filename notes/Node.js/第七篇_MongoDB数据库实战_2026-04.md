@@ -1029,7 +1029,31 @@ module.exports = router
 
 ---
 
-## 十一、小结
+## 十一、图形化管理工具
+
+命令行操作适合学习，实际开发中更推荐用图形化工具来查看和管理数据。
+
+| 工具 | 费用 | 特点 | 下载 |
+|------|------|------|------|
+| **MongoDB Compass** | 免费 | 官方出品，功能全面，支持聚合管道可视化 | [compass 官网](https://www.mongodb.com/products/compass) |
+| **Robo 3T（Studio 3T 免费版）** | 免费 | 轻量，老牌工具，社区常用 | [github releases](https://github.com/Studio3T/robomongo/releases) |
+| **Navicat for MongoDB** | 收费 | 界面统一，同时支持 MySQL/PostgreSQL/MongoDB | [navicat 官网](https://www.navicat.com.cn/) |
+
+### 推荐：MongoDB Compass
+
+```
+1. 下载安装 MongoDB Compass
+2. 连接字符串填写：mongodb://127.0.0.1:27017
+3. 点击 Connect
+4. 左侧可以看到所有数据库 → 集合 → 文档
+5. 支持可视化 CRUD、聚合管道构建、索引管理、性能分析
+```
+
+> **实战提醒**：Compass 内置的 Aggregation Pipeline Builder 非常好用，可以逐阶段预览聚合结果，调试复杂管道时效率极高。
+
+---
+
+## 十二、小结
 
 | 知识点 | 核心要点 |
 |--------|----------|
@@ -1044,5 +1068,6 @@ module.exports = router
 | 聚合管道 | `$match → $group → $sort → $project → $lookup` |
 | 索引 | `unique: true`、复合索引、TTL 索引，遵循最左前缀原则 |
 | 事务 | `mongoose.startSession()` + `session.startTransaction()` |
+| 图形化工具 | MongoDB Compass（官方免费）、Robo 3T（免费）、Navicat（收费） |
 
 **下一篇**预告：接口开发规范与会话控制，RESTful 设计、apipost 测试工具、Cookie 与 Session 的原理与实现，以及 JWT 无状态认证。

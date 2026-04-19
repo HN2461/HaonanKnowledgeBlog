@@ -255,6 +255,52 @@ async function goodFn() {
 }
 ```
 
+### 5.6 常见困惑：async 函数明明返回 Promise，为什么打印出来是普通值？
+
+很多人刚用 `async/await` 时都会疑惑：**"不是说 async 函数返回 Promise 吗？为什么我打印出来是实际的值？"**
+
+关键在于：**你打印的是 `await` 之后的结果，而不是 async 函数本身的返回值**。
+
+```javascript
+async function getNumber() {
+  return 42
+}
+
+// 不加 await：得到的是 Promise 对象
+const result = getNumber()
+console.log(result)        // Promise {<fulfilled>: 42}
+
+// 加 await：Promise 被"解开"，拿到里面的值
+const realValue = await getNumber()
+console.log(realValue)     // 42
+```
+
+**一张表帮你记住：**
+
+| 写法 | 得到的类型 | 打印结果 |
+| --- | --- | --- |
+| `const x = asyncFunc()` | Promise 对象 | `Promise { <fulfilled>: ... }` |
+| `const x = await asyncFunc()` | 普通值（Promise 里装的值） | 具体的数字 / 对象 / 字符串等 |
+
+**封装请求时的典型场景：**
+
+```javascript
+async function fetchUser() {
+  const response = await axios.get('/user')
+  return response.data   // return 的是普通对象
+}
+
+// 调用时也加了 await，所以 data 是普通对象，不是 Promise
+const data = await fetchUser()
+console.log(data)   // { name: '张三' }
+
+// 如果不加 await，立刻就能看到 Promise
+const promiseObj = fetchUser()
+console.log(promiseObj)   // Promise {<pending>}
+```
+
+**一句话总结**：async 函数永远返回 Promise（制造礼物盒）；await 负责拆开礼物盒取出里面的值。你打印的是拆开后的礼物，所以是普通值；别人说"返回 Promise"，是指没拆开的礼物盒。
+
 ---
 
 ## 6. Promise 错误处理（结合 try/catch）
