@@ -1,55 +1,112 @@
 {
-  "generatedAt": "2026-04-19T10:42:58.179Z",
-  "total": 137,
+  "generatedAt": "2026-04-20T15:19:55.846Z",
+  "total": 141,
   "notifications": [
     {
-      "id": "daily-2026-04-19-5",
+      "id": "daily-2026-04-20-4",
+      "title": "通知中心配色方案升级：活泼主题色系",
+      "content": "第一点：六种分类标签配色升级（内容上新薄荷绿 #10b981、功能更新天蓝 #0ea5e9、问题修复琥珀橙 #f59e0b、系统公告玫瑰红 #f43f5e、历史消息紫粉 #a855f7、Git 提交青橙 #f97316）；第二点：全部 tab 改用深灰黑中性色（#374151），避免与功能更新蓝色撞色；第三点：顶部筛选 tab 未激活状态带淡色提示，激活后边框加粗、背景加深、字重 800；第四点：标签边框统一加上 1px solid 增强视觉层次；第五点：深色模式配色同步调整为更亮的对应色系。",
+      "summary": "为六种分类标签重新设计配色方案，采用更鲜明活泼的主题色系，全部 tab 改用深灰黑中性色，历史消息改用紫粉色与全部明显区分，整体视觉辨识度大幅提升。",
+      "date": "2026-04-20T23:18:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-20-3",
+      "title": "消息弹框优化：换行展示与高度限制",
+      "content": "优化消息通知详情弹框的展示效果。内容包含：① 修复 content 字段全角分号分隔的条目无法换行的问题；② detailParagraphs 计算属性新增按「；」拆分逻辑，同时识别「内容包含：」前缀单独成行；③ 弹框面板加入 max-height 限制（min(80vh, 640px)）；④ 弹框内容区改为 overflow-y: auto，内容多时内部滚动；⑤ 修复 content 路径末尾斜杠紧跟句号导致视觉异常的问题。",
+      "summary": "消息详情弹框内容改为逐条换行展示，同时限制弹框最大高度，内容过多时内部滚动，不再撑大弹框。",
+      "date": "2026-04-20T21:49:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-20-2",
+      "title": "新增前端代码混淆接入实施记录",
+      "content": "新增文章：前端代码混淆接入实施记录，放置于 public/notes/项目复用技术/前端工程化与安全 目录。内容包含：① webpack-obfuscator 工作机制与执行阶段顺序；② Vue CLI 配置加载时机（NODE_ENV 注入时序）；③ 依赖版本对照表（Webpack 4/5/Vite）；④ vue.config.js 完整配置（obfuscatorOptions + obfuscatorExcludes）；⑤ 六大踩坑记录（NODE_ENV 时序、glob 路径前缀、selfDefending 冲突等）；⑥ 混淆强度 L0-L5 降级策略；⑦ 多框架接入指南（Vue CLI 4/5、Vite、Next.js、Nuxt 3）；⑧ PowerShell/Bash/Node.js 三套验证脚本。",
+      "summary": "整理 Vue 3 + Vue CLI 5 + Webpack 5 项目接入 webpack-obfuscator 的完整实战记录，含原理解析、踩坑六大坑、多框架适配方案及验证脚本，发布到\"项目复用技术/前端工程化与安全\"目录。",
+      "date": "2026-04-20T21:21:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-20-1",
+      "title": "新增 Fetch API 避坑指南",
+      "content": "新增文章：Fetch API 避坑指南，放置于 public/notes/常用缺易忘/开发的基础知识/网络 目录。内容包含：① 规范 frontmatter（title/date/category/tags/description）；② 核心特点速览与两种请求写法（GET/POST）；③ response.ok vs response.status 区别详解；④ HTTP 状态码与业务 code 两套规则对比表；⑤ 超时控制两种方案（AbortSignal.timeout() 新 API + AbortController 兼容方案）；⑥ 主动取消请求用法；⑦ 通用封装函数（含超时降级逻辑）；⑧ 常见疑问解答与五条避坑核心原则。",
+      "summary": "整理主人的 Fetch API 学习笔记，完善格式与内容后发布到\"常用缺易忘/开发的基础知识/网络\"目录，补充 AbortSignal.timeout() 新 API、超时控制两种方案、主动取消请求和通用封装模板。",
+      "date": "2026-04-20T20:42:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-ac5095c1b1ae76820a0e36344a02d3bd0b765f65",
+      "title": "优化express和mongoDB文档",
+      "content": "提交说明：优化express和mongoDB文档",
+      "summary": "优化express和mongoDB文档",
+      "date": "2026-04-19T18:43:25+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "ac5095c",
+      "fullHash": "ac5095c1b1ae76820a0e36344a02d3bd0b765f65"
+    },
+    {
+      "id": "history-2026-04-19-4",
       "title": "Node.js 第七篇 MongoDB 数据库实战补充图形化工具章节",
-      "content": "新增十一章节：图形化管理工具，包含三款工具对比表（Compass 官方免费/Robo 3T 免费/Navicat 收费）及 Compass 连接步骤说明，并附实战提醒（Aggregation Pipeline Builder 调试聚合管道效率高）；小结表格新增\"图形化工具\"行。原章节\"十一、小结\"顺延为\"十二、小结\"。",
+      "content": "第一点：新增十一章节\"图形化管理工具\"，包含三款工具对比表（Compass 官方免费/Robo 3T 免费/Navicat 收费）及 Compass 连接步骤说明，并附实战提醒（Aggregation Pipeline Builder 调试聚合管道效率高）；第二点：小结表格新增\"图形化工具\"行；第三点：原章节\"十一、小结\"顺延为\"十二、小结\"。",
       "summary": "根据参考资料，在第七篇末尾新增\"图形化管理工具\"章节，介绍 MongoDB Compass、Robo 3T、Navicat 三款工具，并在小结表格中补充对应条目。",
       "date": "2026-04-19T17:55:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-19",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-19-4",
-      "title": "Node.js 第六篇 Express 框架全解补充代码行内讲解（第三轮）",
-      "content": "代码讲解补充：① 1.1 基础代码逐步拆解（require/app/listen 每步说明）；② 2.1 HTTP 方法语义（GET查/POST增/PUT改/DELETE删）及 204 状态码说明；③ 2.3 urlencoded extended 参数含义（qs vs querystring）；④ 3.1 中间件函数注释（next 不调用的后果、return 终止请求）；⑤ 3.2 全局中间件注释（express.json 必须放路由前的原因）；⑥ 3.3 路由级中间件注释（return 防止重复发响应的原因）；⑦ 3.4 错误处理注释（next(err) 跳过普通中间件、err.status||500 含义）；⑧ 3.5 内置中间件加说明文字；⑨ 3.6 cors/morgan 工作原理注释；⑩ 5.1 app.set 含义及 res.render 工作流程；⑪ 9章 app.js 和 errorHandler 逐行注释（limit/NODE_ENV/module.exports 等）。",
-      "summary": "针对零基础学习者，对所有核心代码块逐行补充注释和说明，包括 app 创建流程、HTTP 方法语义、urlencoded 参数含义、next() 不调用的后果、return 的必要性、err.status 含义、cors/morgan 工作原理、app.set 配置项说明、生产级 app.js 和 errorHandler 逐行解释。",
-      "date": "2026-04-19T15:07:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
-      "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
-    },
-    {
-      "id": "daily-2026-04-19-3",
-      "title": "Node.js 第六篇 Express 框架全解补充概念解释（第二轮）",
-      "content": "新增概念节：① 1.0 Express 是什么（框架定义、与原生 http 对比的价值）；② 2.0 路由是什么（分发规则、生活类比、三要素、匹配过程）；③ 2.2 路由参数三种类型（路径参数/查询参数/请求体参数对比表）；④ 2.4 为什么需要 Router（职责分离、目录结构示意）；⑤ 3.0 中间件是什么（快递类比、能做什么、执行顺序、洋葱模型图解）；⑥ 3.2/3.3/3.4 各类中间件加概念说明；⑦ 4.0 什么是静态资源（静态 vs 动态）；⑧ 5.0 什么是模板引擎（邮件模板类比、字符串拼接痛点、SSR vs CSR 说明）；⑨ 7/8 章 req/res 对象加一句话定义；⑩ 9.0 为什么要分层（职责分离、分层对比表）。",
-      "summary": "针对零基础学习者，在每个核心章节前补充\"是什么、为什么\"的概念解释，包括 Express 框架定义、路由概念与匹配过程、路由参数三种类型对比、中间件概念与洋葱模型、静态资源定义、模板引擎原理与 SSR/CSR 对比、req/res 对象说明、分层架构职责表。",
+      "id": "history-2026-04-19-3",
+      "title": "Node.js 第六篇 Express 框架全解补充概念解释与代码讲解（第二、三轮）",
+      "content": "第一点：新增概念节，包括 Express 框架定义、路由概念与匹配过程、路由参数三种类型对比、中间件概念与洋葱模型、静态资源定义、模板引擎原理与 SSR/CSR 对比、req/res 对象说明、分层架构职责表；第二点：代码讲解补充，包括 app 创建流程、HTTP 方法语义、urlencoded 参数含义、next() 不调用的后果、return 的必要性、err.status 含义、cors/morgan 工作原理、app.set 配置项说明、生产级 app.js 和 errorHandler 逐行解释。",
+      "summary": "针对零基础学习者，在每个核心章节前补充\"是什么、为什么\"的概念解释，并对所有核心代码块逐行补充注释和说明。",
       "date": "2026-04-19T13:10:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-19",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-19-2",
+      "id": "history-2026-04-19-2",
       "title": "Node.js 第六篇 Express 框架全解内容补充（第一轮）",
-      "content": "新增内容：① 七、req 对象常用属性速查（method/url/params/query/body/headers/cookies 等）；② 2.3 节补充 body-parser 历史说明（Express 4.16+ 已内置，老项目了解即可）；③ 2.5 节新增自定义 404 路由（app.all 通配符用法及 Express 5 写法变化）；④ 5.4 节新增 ejs 独立使用示例（ejs.render / ejs.renderFile）；⑤ 1.1 节补充 nodemon 开发启动提示。修复问题：三、中间件机制和六、express-generator 脚手架的章节标题在之前编辑中丢失，已补回；修正重复的\"八\"和跳号的\"十一\"，章节编号现为一至十连续。",
+      "content": "第一点：新增七、req 对象常用属性速查（method/url/params/query/body/headers/cookies 等）；第二点：2.3 节补充 body-parser 历史说明（Express 4.16+ 已内置，老项目了解即可）；第三点：2.5 节新增自定义 404 路由（app.all 通配符用法及 Express 5 写法变化）；第四点：5.4 节新增 ejs 独立使用示例（ejs.render / ejs.renderFile）；第五点：1.1 节补充 nodemon 开发启动提示；第六点：修复三、中间件机制和六、express-generator 脚手架的章节标题丢失问题，修正重复的\"八\"和跳号的\"十一\"，章节编号现为一至十连续。",
       "summary": "补充 req 对象速查表、body-parser 历史说明、自定义 404 路由、ejs 独立使用示例、nodemon 提示，并修复章节编号缺失问题，章节从一到十连续完整。",
       "date": "2026-04-19T12:51:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-19",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -67,14 +124,16 @@
       "fullHash": "3ee7d0baa3d06652c70901b6e5ff2d0d2019a268"
     },
     {
-      "id": "daily-2026-04-19-1",
+      "id": "history-2026-04-19-1",
       "title": "Node.js 第五篇补充包管理基础概念与纠错",
-      "content": "新增零章节：① 包的定义（package = 一组特定功能的源码集合）；② 包管理工具的作用（下载/更新/删除/上传）及跨语言类比；③ 前端常用工具对比表（npm/yarn/pnpm/cnpm）。纠错三处：① exports 字段从\"Node 12+\"改为\"Node 12.7+ 引入，12.17+ 稳定\"；② nvm-windows 明确标注不支持 .nvmrc 文件；③ npm audit fix --force 补充破坏性变更风险说明。",
+      "content": "第一点：新增零章节，包含包的定义（package = 一组特定功能的源码集合）、包管理工具的作用（下载/更新/删除/上传）及跨语言类比、前端常用工具对比表（npm/yarn/pnpm/cnpm）；第二点：纠错三处，exports 字段从\"Node 12+\"改为\"Node 12.7+ 引入，12.17+ 稳定\"，nvm-windows 明确标注不支持 .nvmrc 文件，npm audit fix --force 补充破坏性变更风险说明。",
       "summary": "为 npm 包管理与 nvm 版本管理篇新增\"零、基础概念\"章节，补充包/包管理工具/常用工具表格的定义说明，并纠正 exports 字段版本号、nvm-windows 不支持 .nvmrc、npm audit fix --force 风险等三处错误。",
       "date": "2026-04-19T11:05:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-19",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -111,6 +170,8 @@
       "date": "2026-04-18T18:37:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-18",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -124,6 +185,8 @@
       "date": "2026-04-18T18:00:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-18",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -149,6 +212,8 @@
       "date": "2026-04-18T15:26:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-18",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -162,6 +227,8 @@
       "date": "2026-04-18T15:25:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-18",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -175,6 +242,8 @@
       "date": "2026-04-18T15:24:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-18",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -188,6 +257,8 @@
       "date": "2026-04-17T23:59:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-17",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -249,6 +320,8 @@
       "date": "2026-04-16T21:22:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -262,6 +335,8 @@
       "date": "2026-04-16T21:22:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -299,6 +374,8 @@
       "date": "2026-04-16T13:56:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -312,6 +389,8 @@
       "date": "2026-04-16T13:49:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -325,6 +404,8 @@
       "date": "2026-04-16T13:32:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -338,6 +419,8 @@
       "date": "2026-04-16T13:18:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -351,6 +434,8 @@
       "date": "2026-04-16T13:06:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -364,6 +449,8 @@
       "date": "2026-04-16T12:52:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -377,6 +464,8 @@
       "date": "2026-04-16T12:41:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -390,6 +479,8 @@
       "date": "2026-04-16T12:19:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -403,6 +494,8 @@
       "date": "2026-04-16T12:02:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -416,6 +509,8 @@
       "date": "2026-04-16T11:43:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -429,6 +524,8 @@
       "date": "2026-04-16T11:24:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -442,6 +539,8 @@
       "date": "2026-04-16T11:08:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -455,6 +554,8 @@
       "date": "2026-04-16T10:12:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-16",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -480,6 +581,8 @@
       "date": "2026-04-15T16:18:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-15",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -517,6 +620,8 @@
       "date": "2026-04-14T23:04:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-14",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -542,6 +647,8 @@
       "date": "2026-04-14T21:26:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-14",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -555,6 +662,8 @@
       "date": "2026-04-14T21:24:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-14",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -580,6 +689,8 @@
       "date": "2026-04-12T22:02:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-12",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -653,6 +764,23 @@
       "date": "2026-04-11T14:00:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-11",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-11-3",
+      "title": "新增 Agent Skills 系列笔记共 4 篇",
+      "content": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+      "summary": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+      "date": "2026-04-11T11:00:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-11",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -666,6 +794,8 @@
       "date": "2026-04-11T10:00:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-11",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -679,19 +809,8 @@
       "date": "2026-04-11T10:00:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
-      "source": "history",
-      "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
-    },
-    {
-      "id": "history-2026-04-11-3",
-      "title": "新增 Agent Skills 系列笔记共 4 篇",
-      "content": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
-      "summary": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
-      "date": "2026-04-11",
-      "tag": "历史消息",
-      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-11",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -729,6 +848,8 @@
       "date": "2026-04-03T23:19:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -742,6 +863,8 @@
       "date": "2026-04-03T23:19:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -767,6 +890,8 @@
       "date": "2026-04-03T22:36:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -792,6 +917,8 @@
       "date": "2026-04-03T22:22:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -805,6 +932,8 @@
       "date": "2026-04-03T22:16:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -818,6 +947,8 @@
       "date": "2026-04-03T22:11:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -831,6 +962,8 @@
       "date": "2026-04-03T22:05:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -844,6 +977,8 @@
       "date": "2026-04-03T21:58:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -857,6 +992,8 @@
       "date": "2026-04-03T21:44:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -870,6 +1007,8 @@
       "date": "2026-04-03T21:32:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -883,6 +1022,8 @@
       "date": "2026-04-03T21:18:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -896,6 +1037,8 @@
       "date": "2026-04-03T21:10:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-03",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -933,6 +1076,8 @@
       "date": "2026-04-02T23:56:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -958,6 +1103,8 @@
       "date": "2026-04-02T23:55:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -971,6 +1118,8 @@
       "date": "2026-04-02T21:12:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -996,6 +1145,8 @@
       "date": "2026-04-02T21:07:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -1021,6 +1172,8 @@
       "date": "2026-04-02T19:58:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -1046,6 +1199,8 @@
       "date": "2026-04-02T16:10:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-02",
       "source": "history",
       "pinned": false,
       "shortHash": "",
@@ -1698,6 +1853,370 @@
       "pinned": false,
       "shortHash": "39f0e75",
       "fullHash": "39f0e755149c6d247a01da942c55b35d64c67f73"
+    }
+  ],
+  "historyGroups": [
+    {
+      "date": "2026-04-19",
+      "items": [
+        {
+          "title": "Node.js 第五篇补充包管理基础概念与纠错",
+          "summary": "为 npm 包管理与 nvm 版本管理篇新增\"零、基础概念\"章节，补充包/包管理工具/常用工具表格的定义说明，并纠正 exports 字段版本号、nvm-windows 不支持 .nvmrc、npm audit fix --force 风险等三处错误。",
+          "time": "11:05",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Node.js 第六篇 Express 框架全解内容补充（第一轮）",
+          "summary": "补充 req 对象速查表、body-parser 历史说明、自定义 404 路由、ejs 独立使用示例、nodemon 提示，并修复章节编号缺失问题，章节从一到十连续完整。",
+          "time": "12:51",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Node.js 第六篇 Express 框架全解补充概念解释与代码讲解（第二、三轮）",
+          "summary": "针对零基础学习者，在每个核心章节前补充\"是什么、为什么\"的概念解释，并对所有核心代码块逐行补充注释和说明。",
+          "time": "13:10",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Node.js 第七篇 MongoDB 数据库实战补充图形化工具章节",
+          "summary": "根据参考资料，在第七篇末尾新增\"图形化管理工具\"章节，介绍 MongoDB Compass、Robo 3T、Navicat 三款工具，并在小结表格中补充对应条目。",
+          "time": "17:55",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-18",
+      "items": [
+        {
+          "title": "网络基础笔记收敛为两篇前端手册",
+          "summary": "将原本零散拆开的状态码、缓存、跨域、认证、上传下载、实时通信与请求治理短文，按前端联调视角重构为两篇主文，阅读路径更集中。",
+          "time": "15:24",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "清理网络目录里的重复碎片稿",
+          "summary": "删除同主题的多篇短文，减少目录噪音和搜索重复结果，让常用缺易忘的网络目录更适合前端复习与联调排障。",
+          "time": "15:25",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "同步刷新笔记索引与通知数据",
+          "summary": "根据新的笔记结构重建 notes 索引和通知数据，确保首页、搜索、分类页与通知中心都反映这次网络专题重构。",
+          "time": "15:26",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "Node.js 从零到实战系列 8 篇全部完结",
+          "summary": "新增第八篇《接口开发与会话控制》，至此 8 篇全部完成，覆盖 Buffer、fs、HTTP、模块化、npm、Express、MongoDB、RESTful 接口与 JWT 认证完整链路。",
+          "time": "18:00",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Node.js 系列 8 篇深度升级：废弃标记 + 参数说明 + 最新特性",
+          "summary": "逐篇核查官方文档，标记废弃 API、补全函数参数说明、新增 Node.js 22+ 新特性和 Mongoose 9 变更，确保内容与当前最新版本一致。",
+          "time": "18:37",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-17",
+      "items": [
+        {
+          "title": "4 月 17 日网络基础短文批量上新归档",
+          "summary": "归档当天围绕常用缺易忘网络目录补齐的一组高频短文，涵盖登录态、跨域、安全、缓存、状态码、上传下载与请求治理等主题。",
+          "time": "23:59",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-16",
+      "items": [
+        {
+          "title": "新增“项目复用技术”分类并迁移首篇文章",
+          "summary": "博客新增独立的“项目复用技术”文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
+          "time": "10:12",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 uni-app 语音输入与语音转文字封装专题",
+          "summary": "项目复用技术目录下新增第 2 篇 uni-app 文章，系统整理按住说话、上滑取消、H5 录音兼容、语音转文字接口接入与自动发送链路的可复用方案。",
+          "time": "11:08",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补齐项目复用技术文章中的 JSDoc 注释",
+          "summary": "为项目复用技术目录下的 uni-app 人脸摄像机封装和语音输入封装两篇文章补上 JSDoc 风格注释，让导出函数、关键方法、参数、返回值和边界行为更清楚。",
+          "time": "11:24",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "新增 uni-app 附件上传与智能预览封装专题",
+          "summary": "基于最值得复用的一组能力，新增一篇附件上传与预览专题，系统整理图片、文件、视频上传、智能预览分流、文件大小格式化和文件图标映射的统一封装思路。",
+          "time": "11:43",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 uni-app 自定义 tabBar 与角标同步封装专题",
+          "summary": "基于 tabBar 配置、角标同步和安全区适配方案，新补一篇专门整理多角色入口、badge 刷新和底部安全区统一计算的复用文章。",
+          "time": "12:02",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "将项目复用技术文章改为脱离来源上下文的手册风格",
+          "summary": "把项目复用技术目录下的 uni-app 文章继续去来源化，移除对具体工具文件和来源项目的依赖表述，调整成看完就能直接套用的通用手册风格。",
+          "time": "12:19",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "新增 uni-app WebSocket 与 STOMP 封装专题",
+          "summary": "项目复用技术目录下新增第 5 篇 uni-app 文章，系统整理 WebSocket 与 STOMP 的协议常量、帧处理、连接管理、自动重连、消息解析与页面消费方式。",
+          "time": "12:41",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "继续收敛复用文章中的来源项目痕迹",
+          "summary": "把项目复用技术目录下的现有 uni-app 文章进一步改成纯手册口吻，去掉来源工具文件和来源项目依赖，让文章单独存在时也能直接照着用。",
+          "time": "12:52",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "把 WebSocket 能力拆成专题文件夹逐篇沉淀",
+          "summary": "项目复用技术目录下为 WebSocket 单独建立专题文件夹，不再只保留一篇总览，而是按 STOMP 帧、客户端、连接管理、消息解析与服务层继续拆成可逐篇照着搭的文档。",
+          "time": "13:06",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补齐 WebSocket 专题的适配器篇与目录页",
+          "summary": "继续扩展 WebSocket 专题，新增 MessageServiceAdapter 与页面接入文章，并补了一篇专题目录页，把整组文档串成清晰阅读顺序。",
+          "time": "13:18",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 WebSocket 接入检查清单篇",
+          "summary": "WebSocket 专题继续补齐第 7 篇落地清单，从后端协议确认、目录搭建、STOMP 帧联调、连接重连、消息解析到页面接入逐项列出验收点。",
+          "time": "13:32",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "将 WebSocket 专题改成跨端通用写法",
+          "summary": "把 WebSocket 专题从“偏 uni-app 视角”继续收敛成“跨端核心 + 运行时适配”的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
+          "time": "13:49",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "新增 WebSocket 跨运行时适配篇",
+          "summary": "WebSocket 专题新增第 8 篇，专门讲 uni-app 与 PC Vue 如何共用核心层，只替换底层 socket adapter 和服务挂载方式。",
+          "time": "13:56",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "增强 WebSocket 专题中的 STOMP 规范表述",
+          "summary": "把 WebSocket 专题从“项目经验口吻”进一步收紧到“项目级实现 + 明确规范边界”的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
+          "time": "21:22",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "收紧 WebSocket 客户端与消息解析模板的一致性",
+          "summary": "同步调整 StompClient 与 MessageParser 两篇文章，让心跳协商、消息缓冲和字段映射可配置真正落到代码模板里，不再只停留在正文说明。",
+          "time": "21:22",
+          "itemCategory": "问题修复"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-15",
+      "items": [
+        {
+          "title": "uni-app 人脸摄像机封装专题升级为长教程版",
+          "summary": "把原先偏提纲式的人脸摄像机文章重写为更细的长教程，完整补齐能力边界、分层思路、工具函数模板、页面骨架、业务套法、接入顺序和排障方法。",
+          "time": "16:18",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "items": [
+        {
+          "title": "修复移动端阅读页滚动与定位体验",
+          "summary": "文章详情页在手机视图下改为更稳定的滚动容器方案，阅读进度、目录高亮、返回顶部和阅读位置恢复都会跟随真实滚动区域工作。",
+          "time": "21:24",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "将 Cursor 专题重构为 8 篇官方主线文章",
+          "summary": "AI 工具目录下的 Cursor 专题已从 28 篇细分稿压缩为 8 篇主线文章，目录、搜索索引与阅读顺序同步切到新的能力分组结构。",
+          "time": "23:04",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "上线 Windsurf 专题并扩展为 4 篇官方深挖内容",
+          "summary": "AI 工具目录下新增 Windsurf 专题，已经形成从入门总览、官方最新深拆、Code/Plan/Ask 模式分工到 Rules/AGENTS.md/Skills/Workflows 项目治理的连续阅读链路。",
+          "time": "21:26",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-12",
+      "items": [
+        {
+          "title": "4 月 12 日站点结构与内容整理归档",
+          "summary": "当天完成电脑专题扩展、分类页目录导读、详情页导航裁切修复和笔记顺序接管等一组整理，已从当日摘要转入历史消息。",
+          "time": "22:02",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-11",
+      "items": [
+        {
+          "title": "新增 6 篇 Kiro 系列笔记",
+          "summary": "完整覆盖 Kiro 快速上手、Specs 规格系统、Steering 上下文管理、Hooks 自动化、MCP 集成与工作流实战，每篇均含 frontmatter、目录导航与参考资料。",
+          "time": "10:00",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "更新 Kiro 目录文件",
+          "summary": "目录文件重写为推荐阅读顺序 + 覆盖主题 + 快速查找三区块结构，方便按需跳转。",
+          "time": "10:00",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 Agent Skills 系列笔记共 4 篇",
+          "summary": "系统整理 Agent Skills 开放标准，涵盖各工具兼容性对比、高级用法、场景模板与团队协作，经官方文档多轮核实。",
+          "time": "11:00",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增《AI 工具规则文档》系列笔记共 5 篇",
+          "summary": "独立新建 Rules 文件夹，系统介绍 AGENTS.md 开放标准、CLAUDE.md 记忆系统、Cursor/Windsurf/Kiro 规则文档、Gemini CLI 与 GitHub Copilot 指令文件，搜索资料后详细撰写。",
+          "time": "14:00",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-03",
+      "items": [
+        {
+          "title": "休闲模式升级为沉浸式频道页",
+          "summary": "休闲模式从旧版按钮堆叠页改成带 Hero、节奏提示和频道切换卡片的沉浸式布局，整体更像轻杂志式的情绪补给页。",
+          "time": "23:19",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补齐休闲模式三种视图的真实布局切换",
+          "summary": "把原先几乎没有视觉差异的网格、长卡、拼贴三种视图补成真实布局效果，不再只是切换按钮文案。",
+          "time": "23:19",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "站点品牌图标改为新版灯泡 Logo",
+          "summary": "浏览器页签图标与站内左上角品牌标识统一切换为新版灯泡图标，站点识别度更高。",
+          "time": "21:10",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 uni-app 通用基础专题",
+          "summary": "在 uni-app 目录下新增\"通用基础\"子专题，先把跨端共性知识从微信小程序系列里抽离出来。",
+          "time": "21:18",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补齐 4 篇 uni-app 基础笔记",
+          "summary": "新增跨端编译与平台边界、应用与页面生命周期、工程结构与配置、路由请求缓存上传下载与条件编译 4 篇基础稿。",
+          "time": "21:32",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "重构 uni-app 微信篇阅读分工",
+          "summary": "为微信小程序目录里的 8 篇文章补上\"建议先读\"引导，明确哪些共性知识应先回到通用基础专题学习。",
+          "time": "21:44",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补强微信小程序系列代码讲解",
+          "summary": "针对登录、手机号、上传下载、支付、web-view、性能优化、组件通信等关键示例补充逐段代码说明。",
+          "time": "21:58",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "uni-app 分类页改为专题分区展示",
+          "summary": "为 uni-app 专题增加\"通用基础 / 微信小程序\"分区导读与专题入口，不再只按一整页平铺卡片展示。",
+          "time": "22:05",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "笔记详情页补上专题导航与顺序跳转",
+          "summary": "详情页新增同专题导航、系列切换与更贴合专题顺序的上一篇下一篇跳转，卡片标题也改用 frontmatter 标题展示。",
+          "time": "22:11",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 uv-ui 入门安装与小程序配置专题",
+          "summary": "围绕 uv-ui 的安装方式、扩展配置、主题样式和微信小程序常见踩坑补齐一篇起步资料。",
+          "time": "22:16",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "重写 uv-ui 请求使用指南",
+          "summary": "把原来 uv-ui 请求笔记升级为更贴近实战的小程序请求封装方案，补齐拦截器、上传下载、custom 参数和常见坑。",
+          "time": "22:22",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "根目录入口改为完整根目录导航",
+          "summary": "首页与搜索面板的根目录入口不再按篇数截断，改为按真实顶层目录顺序展示，和左侧知识目录保持一致。",
+          "time": "22:36",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-02",
+      "items": [
+        {
+          "title": "资料导出中心升级为双栏结构",
+          "summary": "支持单篇、整目录与多篇打包导出，导出入口更清晰。",
+          "time": "16:10",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "站点头部接入消息通知中心",
+          "summary": "通知抽屉与详情弹窗上线，最近动态可以直接在站内查看。",
+          "time": "19:58",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "历史消息归档能力接入通知中心",
+          "summary": "当日消息开始支持归档回看，旧摘要不会再随着次日清空而消失。",
+          "time": "21:07",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "消息抽屉宽度调整到 520px",
+          "summary": "抽屉阅读区变宽，长标题和长摘要的浏览体验更稳定。",
+          "time": "21:12",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "修复消息卡片纯英文内容溢出",
+          "summary": "长英文和长路径不再把消息卡片撑破，列表排版更稳。",
+          "time": "23:55",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "修复卡片 hover 裁切与导出弹窗摘要溢出",
+          "summary": "修掉 hover 位移被裁切和导出弹窗右侧摘要溢出的问题。",
+          "time": "23:56",
+          "itemCategory": "问题修复"
+        }
+      ]
     }
   ]
 }
