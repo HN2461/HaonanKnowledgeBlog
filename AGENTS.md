@@ -103,6 +103,7 @@ attachments:
 - `Git 提交` 为固定独立分类，由脚本自动从 git 历史生成；不要把 git 提交手动写进 `data/dailyChangeSummary.js`。
 - 清空 `data/dailyChangeSummary.js` 前，必须先将当天所有改动**归并为一条**追加到 `data/historyNotifications.js` 对应日期的分组里（`id` 格式为 `history-YYYY-MM-DD`，`date` 写实际日期）；归档条目的 `content` 字段须按"第一点：…；第二点：…"格式逐条列出当天每项改动，不得精简省略；追加后再执行 `npm run generate:notifications`。
 - 归档条目的每个要点都必须保留 `time`（取该改动实际发生时间）、`title`、`summary` 信息，合并写入 `content` 时不得丢失任何一条的核心内容。
+- `data/historyNotifications.js` 中每个 `items` 条目必须包含 `category` 字段，值从以下四项中选一个：`内容上新`、`功能更新`、`问题修复`、`系统公告`；缺少 `category` 时前端时间轴将回退显示"历史消息"标签，无法按类型分色。
 
 ## 运行与截图（实测可用）
 - 执行“运行项目并截图”时，优先使用：`node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 5173`。

@@ -130,6 +130,12 @@ function normalizeHistoryEntry(entry, entryIndex, group) {
     return null
   }
 
+  // 保留原始分类，回退到"历史消息"
+  const rawCategory = normalizeText(entry?.category)
+  const itemCategory = BUSINESS_NOTIFICATION_CATEGORIES.includes(rawCategory) && rawCategory !== '历史消息'
+    ? rawCategory
+    : '历史消息'
+
   return {
     id:
       normalizeText(entry?.id) ||
@@ -140,6 +146,8 @@ function normalizeHistoryEntry(entry, entryIndex, group) {
     date,
     tag: '历史消息',
     category: '历史消息',
+    itemCategory,          // 条目原始分类，用于前端分色展示
+    historyDate: normalizeText(group.date), // 所属日期，用于前端分组
     source: 'history',
     pinned: false,
     shortHash: '',

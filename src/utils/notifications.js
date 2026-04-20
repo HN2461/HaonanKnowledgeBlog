@@ -41,6 +41,9 @@ export function normalizeNotificationItem(item = {}, index = 0) {
     date,
     tag: preferredCategory,
     category: preferredCategory,
+    // 历史消息专属字段
+    itemCategory: normalizeText(item.itemCategory) || '',
+    historyDate: normalizeText(item.historyDate) || '',
     source,
     pinned: Boolean(item.pinned),
     shortHash: normalizeText(item.shortHash),
@@ -66,10 +69,16 @@ export function normalizeNotificationsPayload(payload = {}) {
     items.map((item, index) => normalizeNotificationItem(item, index))
   )
 
+  // 透传 historyGroups（脚本生成的按日期分组结构）
+  const historyGroups = Array.isArray(payload.historyGroups)
+    ? payload.historyGroups
+    : []
+
   return {
     generatedAt: normalizeText(payload.generatedAt) || '',
     total: Number(payload.total) || notifications.length,
-    notifications
+    notifications,
+    historyGroups
   }
 }
 

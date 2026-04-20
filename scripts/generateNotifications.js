@@ -11,7 +11,8 @@ import {
   normalizeHistoryNotifications,
   normalizeManualNotifications,
   normalizeText,
-  sortNotifications
+  sortNotifications,
+  ensureArray
 } from './notificationTransforms.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -64,6 +65,50 @@ function loadGitNotifications() {
   }
 }
 
+function buildHistoryGroups(rawHistoryNotifications) {
+  // 先按日期合并同日的多个 group
+  const dateMap = new Map()
+
+  ensureArray(rawHistoryNotifications).forEach((group) => {
+    const date = normalizeText(group?.date)
+    if (!date) return
+
+    const items = ensureArray(group?.items || group?.entries)
+      .map((entry) => {
+        const title = normalizeText(entry?.title) || normalizeText(entry?.summary)
+        const summary = normalizeText(entry?.summary) || title
+        const time = normalizeText(entry?.time)
+        const rawCategory = normalizeText(entry?.category)
+        // 有明确业务分类就用；否则尝试从 content/summary 字段推断；最后回退"历史消息"
+        let itemCategory = '历史消息'
+        if (['内容上新', '功能更新', '问题修复', '系统公告'].includes(rawCategory)) {
+          itemCategory = rawCategory
+        } else {
+          const hint = normalizeText(entry?.content) || normalizeText(entry?.summary)
+          if (/内容上新/.test(hint)) itemCategory = '内容上新'
+          else if (/功能更新/.test(hint)) itemCategory = '功能更新'
+          else if (/问题修复/.test(hint)) itemCategory = '问题修复'
+          else if (/系统公告/.test(hint)) itemCategory = '系统公告'
+        }
+        return title ? { title, summary, time, itemCategory } : null
+      })
+      .filter(Boolean)
+
+    if (items.length === 0) return
+
+    if (dateMap.has(date)) {
+      // 同日期合并：按 time 顺序追加
+      dateMap.get(date).push(...items)
+    } else {
+      dateMap.set(date, items)
+    }
+  })
+
+  return Array.from(dateMap.entries())
+    .map(([date, items]) => ({ date, items }))
+    .sort((a, b) => b.date.localeCompare(a.date))
+}
+
 function generateNotifications() {
   const dailySummaryItems = normalizeDailySummaryNotifications(dailyChangeSummary)
   const manualItems = normalizeManualNotifications(manualNotifications)
@@ -79,7 +124,8 @@ function generateNotifications() {
   const payload = {
     generatedAt: new Date().toISOString(),
     total: notifications.length,
-    notifications
+    notifications,
+    historyGroups: buildHistoryGroups(historyNotifications)
   }
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(payload, null, 2), 'utf8')
