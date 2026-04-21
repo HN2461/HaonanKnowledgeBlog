@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-21T13:39:16.778Z",
-  "total": 148,
+  "generatedAt": "2026-04-21T13:44:06.799Z",
+  "total": 149,
   "notifications": [
+    {
+      "id": "git-321ff9f32c5c09202951a01590e58181a664021f",
+      "title": "chore: 更新笔记索引和通知的生成时间及内容",
+      "content": "更新 public/notes-index.json 中的 lastUpdated 时间戳\n在 public/notifications.json 中添加新的 Git 提交通知并更新总数",
+      "summary": "更新 public/notes-index.json 中的 lastUpdated 时间戳 在 public/notifications.json 中添加新的 Git 提交通知并更新总数",
+      "date": "2026-04-21T21:40:44+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "321ff9f",
+      "fullHash": "321ff9f32c5c09202951a01590e58181a664021f"
+    },
     {
       "id": "git-609cf8481f546ad049f46c28f76801f1a7360b60",
       "title": "Node.js系列: 新增MongoDB详解与接口会话控制详解共14篇，整理目录结构",
