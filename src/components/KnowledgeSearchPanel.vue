@@ -152,6 +152,26 @@
           </button>
         </div>
       </div>
+
+      <!-- overlay 模式：结果被截断时显示跳转按钮 -->
+      <div v-if='variant === "overlay" && searchResults.length > visibleResults.length' class='more-results-bar'>
+        <span class='more-results-hint'>还有 {{ searchResults.length - visibleResults.length }} 条未显示</span>
+        <router-link
+          :to='`/search?q=${encodeURIComponent(searchQuery)}`'
+          class='more-results-btn'
+          @click='handleResultSelect'
+        >
+          <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'>
+            <circle cx='11' cy='11' r='8'></circle>
+            <path d='m21 21-4.35-4.35'></path>
+          </svg>
+          查看全部 {{ searchResults.length }} 条结果
+          <svg width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5'>
+            <path d='M5 12h14'></path>
+            <path d='m12 5 7 7-7 7'></path>
+          </svg>
+        </router-link>
+      </div>
     </section>
   </section>
 </template>
@@ -224,7 +244,7 @@ const panelDescription = computed(() => {
 
 const placeholder = computed(() => {
   return props.variant === 'overlay'
-    ? '搜索报错、命令、专题或正文片段'
+    ? '搜索关键词，逗号分隔多词'
     : '搜索报错、命令、工具名、概念或专题'
 })
 
@@ -664,10 +684,9 @@ defineExpose({
   gap: 10px;
 }
 
-.knowledge-search.is-overlay .results-list {
-  max-height: min(52vh, 560px);
+.knowledge-search.is-overlay {
+  max-height: calc(100vh - 106px);
   overflow-y: auto;
-  padding-right: 4px;
 }
 
 .result-item {
@@ -750,6 +769,40 @@ defineExpose({
 .topic-list.compact {
   justify-content: center;
   margin-top: 14px;
+}
+
+.more-results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px dashed rgba(var(--primary-color-rgb), 0.28);
+  border-radius: 12px;
+  background: rgba(var(--primary-color-rgb), 0.03);
+}
+
+.more-results-hint {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.more-results-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.18s ease;
+}
+
+.more-results-btn:hover {
+  opacity: 0.88;
 }
 
 @media (max-width: 900px) {

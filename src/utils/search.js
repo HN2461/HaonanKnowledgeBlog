@@ -22,19 +22,19 @@ export function initSearch(notes, data = null) {
 
   const options = {
     keys: [
-      { name: 'title', weight: 0.3 },        // 标题权重最高
-      { name: 'content', weight: 0.4 },      // 内容权重最高，这是关键改进
-      { name: 'description', weight: 0.15 }, // 描述权重
-      { name: 'tags', weight: 0.1 },        // 标签权重
-      { name: 'category', weight: 0.05 }     // 分类权重最低
+      { name: 'title', weight: 0.35 },
+      { name: 'content', weight: 0.4 },
+      { name: 'description', weight: 0.15 },
+      { name: 'tags', weight: 0.07 },
+      { name: 'category', weight: 0.03 }
     ],
-    threshold: 0.3,        // 降低阈值，提高搜索敏感度
+    threshold: 0.1,        // 严格匹配，减少误判（原 0.3）
     includeScore: true,
     includeMatches: true,
-    minMatchCharLength: 1, // 降低最小匹配长度
-    distance: 1000,        // 增加搜索距离，允许更模糊的匹配
-    ignoreLocation: true,  // 忽略位置，在整个文本中搜索
-    findAllMatches: true   // 查找所有匹配项
+    minMatchCharLength: 2, // 至少 2 个字符才算匹配
+    distance: 200,         // 缩短搜索距离（原 1000）
+    ignoreLocation: true,  // 全文搜索
+    findAllMatches: true
   }
 
   fuseInstance = new Fuse(indexedNotes, options)
@@ -68,7 +68,7 @@ export async function ensureSearchReady() {
 }
 
 // 搜索笔记
-export function searchNotes(query) {
+export function searchNotes(query, mode = 'AND') {
   if (!fuseInstance) {
     console.warn('搜索引擎未初始化')
     return []
@@ -79,52 +79,49 @@ export function searchNotes(query) {
   }
 
   const trimmedQuery = query.trim()
-  
-  // 多重搜索策略
-  let results = []
-  
-  // 1. 精确搜索（完整匹配）
-  const exactResults = fuseInstance.search(`"${trimmedQuery}"`)
-  
-  // 2. 普通模糊搜索
-  const fuzzyResults = fuseInstance.search(trimmedQuery)
-  
-  // 3. 分词搜索（对于中文和多词查询）
-  const words = trimmedQuery.split(/[\s\u3000]+/).filter(word => word.length > 0)
-  let wordResults = []
-  if (words.length > 1) {
-    words.forEach(word => {
-      const wordMatches = fuseInstance.search(word)
-      wordResults = wordResults.concat(wordMatches)
+
+  // 逗号分隔 → 多词；否则单词
+  const hasSeparator = trimmedQuery.includes(',') || trimmedQuery.includes('，')
+  const words = hasSeparator
+    ? trimmedQuery.split(/[,，]+/).map(w => w.trim()).filter(w => w.length > 0)
+    : [trimmedQuery]
+
+  const wordsLower = words.map(w => w.toLowerCase())
+
+  const results = []
+  indexedNotes.forEach(item => {
+    const titleLower = (item.title || '').toLowerCase()
+    const text = [
+      item.title || '',
+      item.content || '',
+      item.description || '',
+      (item.tags || []).join(' '),
+      item.category || ''
+    ].join(' ').toLowerCase()
+
+    // AND：每个词都必须出现；OR：至少一个词出现
+    const matched = mode === 'AND'
+      ? wordsLower.every(w => text.includes(w))
+      : wordsLower.some(w => text.includes(w))
+
+    if (!matched) return
+
+    // 相关度：标题命中词越多、内容出现频率越高得分越高
+    const titleHits = wordsLower.filter(w => titleLower.includes(w)).length
+    const contentHits = wordsLower.reduce((acc, w) => {
+      const matches = (text.match(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length
+      return acc + matches
+    }, 0)
+    const relevanceScore = titleHits * 2 + Math.min(contentHits * 0.05, 1)
+
+    results.push({
+      ...item,
+      relevanceScore,
+      matchedContent: extractMatchedContent(item, words[0])
     })
-  }
-  
-  // 合并并去重结果
-  const allResults = [...exactResults, ...fuzzyResults, ...wordResults]
-  const uniqueResults = []
-  const seenPaths = new Set()
-  
-  allResults.forEach(result => {
-    if (!seenPaths.has(result.item.path)) {
-      seenPaths.add(result.item.path)
-      
-      // 计算增强的相关性得分
-      const relevanceScore = calculateRelevanceScore(result, trimmedQuery)
-      
-      uniqueResults.push({
-        ...result.item,
-        score: result.score,
-        matches: result.matches,
-        relevanceScore: relevanceScore,
-        matchedContent: extractMatchedContent(result.item, trimmedQuery)
-      })
-    }
   })
-  
-  // 按相关性得分排序
-  return uniqueResults
-    .sort((a, b) => b.relevanceScore - a.relevanceScore)
-    .slice(0, 50) // 限制最多50个结果
+
+  return results.sort((a, b) => b.relevanceScore - a.relevanceScore).slice(0, 100)
 }
 
 // 计算相关性得分
