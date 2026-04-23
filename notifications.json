@@ -1,13 +1,38 @@
 {
-  "generatedAt": "2026-04-22T13:01:08.419Z",
-  "total": 151,
+  "generatedAt": "2026-04-23T13:35:40.231Z",
+  "total": 156,
   "notifications": [
     {
-      "id": "daily-2026-04-22-2",
-      "title": "新增前端开发必知的常见网络安全攻击",
-      "content": "第一点：XSS 跨站脚本攻击，含存储型/反射型/DOM型三种分类、危险写法示例（innerHTML/eval）、DOMPurify 净化方案和 CSP 响应头配置；第二点：CSRF 跨站请求伪造，含自动提交表单攻击示例、CSRF Token 方案和 SameSite Cookie 配置；第三点：SQL 注入，含注释符绕过登录示例、参数化查询防御方案；第四点：XXE XML外部实体注入，含读取 /etc/passwd 示例、禁用外部实体配置；第五点：SSRF 服务器端请求伪造，含 AWS 元数据接口攻击示例、URL 校验防御代码；第六点：点击劫持，含透明 iframe 攻击示例、X-Frame-Options 响应头防御；第七点：中间人攻击，含公共 WiFi 场景说明、HTTPS+HSTS 防御；第八点：七种攻击快速记忆对比表；第九点：前端安全习惯清单（输入处理/Cookie/请求/页面/依赖五个维度）；第十点：重新生成 notes-index.json，总笔记数 309 篇。",
-      "summary": "在 Web安全 目录下新增第二篇文章，用生活化比喻讲清楚 XSS、CSRF、SQL注入、XXE、SSRF、点击劫持、中间人攻击七种常见攻击的原理、示例代码和防御方案，附快速记忆表和前端安全习惯清单。",
-      "date": "2026-04-22T20:50:00+08:00",
+      "id": "git-45cee5f823c13b25f3d0c01ec5f967a2fce6e29b",
+      "title": "搜索全面升级：增强搜索页 + 多词 AND/OR 模式 + 全文精确匹配",
+      "content": "提交说明：搜索全面升级：增强搜索页 + 多词 AND/OR 模式 + 全文精确匹配",
+      "summary": "搜索全面升级：增强搜索页 + 多词 AND/OR 模式 + 全文精确匹配",
+      "date": "2026-04-23T21:32:31+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "45cee5f",
+      "fullHash": "45cee5f823c13b25f3d0c01ec5f967a2fce6e29b"
+    },
+    {
+      "id": "daily-2026-04-23-3",
+      "title": "搜索全面升级：跳转按钮 + 增强搜索页 + 多词 AND/OR 模式",
+      "content": "第一点：KnowledgeSearchPanel.vue overlay 模式底部新增\"还有 N 条未显示 · 查看全部 N 条结果\"跳转按钮，携带关键词跳转到 /search 页；第二点：SearchPage.vue 重构为独立增强搜索页，支持逗号分隔多词输入（如\"vue,钉钉\"），有多词时搜索框右侧出现\"全部/任意\"模式切换按钮；第三点：搜索引擎（search.js）改为全文 includes 精确匹配，AND 模式要求每个词都出现，OR 模式只需包含任意一个词，彻底替换 Fuse.js 模糊匹配；第四点：分类筛选改为单选（点击切换，再点取消），底部分页器左侧每页条数选择（10/20/50），右侧页码导航；第五点：修复 overlay 内容超出视口被截断的问题。",
+      "summary": "头部搜索浮层底部新增\"查看全部结果\"跳转按钮；独立搜索页支持逗号分隔多词搜索、全部包含/任意包含模式切换、分类单选筛选、每页条数（10/20/50）、分页器；搜索引擎改为全文 includes 精确匹配，彻底解决 Fuse.js 模糊误判问题。",
+      "date": "2026-04-23T20:26:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-23-2",
+      "title": "新增 window 对象常用 API 速查文章",
+      "content": "第一点：location 对象——URL 读取、URLSearchParams 解析参数、href/replace/assign 三种跳转方式区别、hash 修改不刷新；第二点：history 对象——back/forward/go 前进后退、pushState/replaceState 修改 URL 不刷新（SPA 核心）、popstate 事件监听、OAuth 回调后清理 URL 实战；第三点：navigator 对象——userAgent 判断移动端/iOS/微信/钉钉/企业微信、clipboard 剪贴板读写、geolocation 地理位置、sendBeacon 页面关闭前可靠发数据；第四点：postMessage 跨窗口通信——向 iframe/父页面/子窗口发消息、origin 白名单安全校验、钉钉/微信扫码登录 iframe 回调监听实战；第五点：window.open/close——打开新窗口参数详解、轮询检测子窗口关闭实现 OAuth 弹窗；第六点：定时器——setTimeout/setInterval/clearTimeout/clearInterval、防抖和节流实现；第七点：全局事件——load/DOMContentLoaded/beforeunload/visibilitychange/online/offline/resize/scroll/hashchange；第八点：scrollTo/scrollBy 平滑滚动、scrollY/scrollX 读取位置；第九点：localStorage/sessionStorage 存储与对象序列化；第十点：requestAnimationFrame 动画帧；第十一点：getComputedStyle 获取计算样式；第十二点：crypto.randomUUID 生成 UUID、performance 性能监控、matchMedia 媒体查询；第十三点：常用属性速查表汇总；第十四点：重新生成 notes-index.json，总笔记数 311 篇。",
+      "summary": "在\"常用缺易忘\"目录下新增一篇 window 对象实战速查文章，覆盖 location 跳转、history 路由、navigator 设备判断、postMessage 跨窗口通信、open/close 窗口控制、定时器、滚动、存储、requestAnimationFrame、getComputedStyle、crypto、performance、matchMedia 等前端高频 API，每个配实战场景代码。",
+      "date": "2026-04-23T19:54:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
@@ -16,14 +41,56 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-22-1",
+      "id": "daily-2026-04-23-1",
+      "title": "新增第三方登录对接系列：PC端钉钉/微信/企业微信 OAuth2.0 全攻略",
+      "content": "第一点：新建 public/notes/项目复用技术/第三方登录对接 目录，发布《PC端第三方扫码登录全攻略（钉钉/微信/企业微信）》；第二点：讲解 OAuth2.0 授权码模式核心流程，说明 code 一次性、后端换取 access_token 的安全原则；第三点：钉钉部分——DDLogin.js 初始化、goto 参数构造、监听 login.dingtalk.com 的 postMessage 拿 loginTmpCode 再跳转换 code；第四点：微信开放平台部分——WxLogin.js 初始化、self_redirect:true 参数说明、监听 open.weixin.qq.com 的 postMessage 解析回调 URL 拿 code；第五点：企业微信部分——WwLogin.js 初始化、监听 open.work.weixin.qq.com 的 postMessage 拿 { code, state } 对象；第六点：三种 window 跳转方式对比（整页跳转/Ajax不跳转/新窗口轮询）；第七点：常见问题汇总（redirect_uri 域名不匹配、state 防 CSRF、postMessage origin 白名单校验、code 只能用一次、弹框关闭清理监听、钉钉新版 API 迁移说明）；第八点：Vue 3 弹框组件完整示例；第九点：重新生成 notes-index.json，总笔记数 310 篇。",
+      "summary": "在\"项目复用技术\"目录下新建\"第三方登录对接\"分类，发布第一篇文章，系统讲解钉钉、微信开放平台、企业微信三家 PC 端扫码登录的 OAuth2.0 对接方案，重点覆盖内嵌 iframe 弹框渲染、window.postMessage 回调监听与安全校验、window 跳转三种方式，附 Vue 3 组件示例和三平台对比速查表。",
+      "date": "2026-04-23T19:33:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-eac45ff9309764200e1094523c37fb57805a957b",
+      "title": "feat(Web安全): 新增SVG文件上传XSS攻击和常见Web安全攻击文章",
+      "content": "新增Web安全分类，包含两篇安全相关文章：\n1. SVG文件上传与XSS攻击详解：分析SVG作为XML文本的安全风险及防御方案\n2. 前端开发必知的常见网络安全攻击：介绍XSS、CSRF等七种常见攻击原理及防御措施\n\n更新相关索引文件和通知数据，总笔记数增至309篇",
+      "summary": "新增Web安全分类，包含两篇安全相关文章： 1. SVG文件上传与XSS攻击详解：分析SVG作为XML文本的安全风险及防御方案 2. 前端开发必知的常见网络安全攻击：介绍XSS、CSRF等七种常见攻击原理及防御措施 更新相关索引文件和通知数",
+      "date": "2026-04-22T21:01:26+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "eac45ff",
+      "fullHash": "eac45ff9309764200e1094523c37fb57805a957b"
+    },
+    {
+      "id": "history-2026-04-22-2",
+      "title": "新增前端开发必知的常见网络安全攻击",
+      "content": "第一点：XSS 跨站脚本攻击，含存储型/反射型/DOM型三种分类、危险写法示例（innerHTML/eval）、DOMPurify 净化方案和 CSP 响应头配置；第二点：CSRF 跨站请求伪造，含自动提交表单攻击示例、CSRF Token 方案和 SameSite Cookie 配置；第三点：SQL 注入，含注释符绕过登录示例、参数化查询防御方案；第四点：XXE XML外部实体注入，含读取 /etc/passwd 示例、禁用外部实体配置；第五点：SSRF 服务器端请求伪造，含 AWS 元数据接口攻击示例、URL 校验防御代码；第六点：点击劫持，含透明 iframe 攻击示例、X-Frame-Options 响应头防御；第七点：中间人攻击，含公共 WiFi 场景说明、HTTPS+HSTS 防御；第八点：七种攻击快速记忆对比表；第九点：前端安全习惯清单（输入处理/Cookie/请求/页面/依赖五个维度）；第十点：重新生成 notes-index.json，总笔记数 309 篇。",
+      "summary": "在 Web安全 目录下新增第二篇文章，用生活化比喻讲清楚 XSS、CSRF、SQL注入、XXE、SSRF、点击劫持、中间人攻击七种常见攻击的原理、示例代码和防御方案，附快速记忆表和前端安全习惯清单。",
+      "date": "2026-04-22T20:50:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-22",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-22-1",
       "title": "新增 Web安全 分类：SVG文件上传与XSS攻击详解",
       "content": "第一点：新建 public/notes/Web安全 目录，发布首篇文章《SVG文件上传为什么会引发XSS攻击？》；第二点：文章内容涵盖 SVG 是 XML 文本而非普通图片的本质说明、四种攻击方式（script标签/onload事件/use引用/CDATA绕过）、img标签与直接访问URL的安全差异对比表、Stored XSS 攻击链路说明；第三点：列举 Plane/Umbraco/Traccar/Halo 等真实开源项目漏洞案例；第四点：提供五种防御方案（禁止SVG/服务端净化/响应头配置/转PNG/隔离域名）及对比表，附 DOMPurify+jsdom 和 sharp 代码示例；第五点：顺带介绍 SVG 的 XXE 漏洞攻击面；第六点：重新生成 notes-index.json，总笔记数 308 篇。",
       "summary": "新建 Web安全 目录，首篇文章系统讲解 SVG 文件上传为何会引发 XSS 攻击，从 SVG 本质、攻击原理、真实案例到五种防御方案全面覆盖，扩展安全知识面。",
       "date": "2026-04-22T20:43:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-22",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -1998,6 +2065,23 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-04-22",
+      "items": [
+        {
+          "title": "新增 Web安全 分类：SVG文件上传与XSS攻击详解",
+          "summary": "新建 Web安全 目录，首篇文章系统讲解 SVG 文件上传为何会引发 XSS 攻击，从 SVG 本质、攻击原理、真实案例到五种防御方案全面覆盖，扩展安全知识面。",
+          "time": "20:43",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增前端开发必知的常见网络安全攻击",
+          "summary": "在 Web安全 目录下新增第二篇文章，用生活化比喻讲清楚 XSS、CSRF、SQL注入、XXE、SSRF、点击劫持、中间人攻击七种常见攻击的原理、示例代码和防御方案，附快速记忆表和前端安全习惯清单。",
+          "time": "20:50",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
     {
       "date": "2026-04-21",
       "items": [
