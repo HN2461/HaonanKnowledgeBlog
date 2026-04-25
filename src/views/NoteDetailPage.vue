@@ -291,6 +291,7 @@ import {
   saveReadingPosition
 } from '@/utils/readingPosition'
 import { resolveScrollableContainer } from '@/utils/scrollContainer'
+import { loadNotesIndex } from '@/utils/indexData'
 
 const route = useRoute()
 const loading = ref(true)
@@ -727,8 +728,7 @@ const loadNote = async () => {
   try {
     // 加载笔记索引
     if (!notesData.value) {
-      const indexResponse = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-      notesData.value = await indexResponse.json()
+      notesData.value = await loadNotesIndex()
     }
 
     // 查找当前笔记信息

@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-04-25T09:00:58.892Z",
-  "total": 158,
+  "generatedAt": "2026-04-25T14:41:01.468Z",
+  "total": 159,
   "notifications": [
+    {
+      "id": "git-79af6ff9ba042623b7b7aa29e10f1fc32195d8ab",
+      "title": "第三方登录: 迁移精心整理版并补全全部 frontmatter",
+      "content": "提交说明：第三方登录: 迁移精心整理版并补全全部 frontmatter",
+      "summary": "第三方登录: 迁移精心整理版并补全全部 frontmatter",
+      "date": "2026-04-25T17:01:31+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "79af6ff",
+      "fullHash": "79af6ff9ba042623b7b7aa29e10f1fc32195d8ab"
+    },
     {
       "id": "daily-2026-04-25-2",
       "title": "第三方登录系列 19 篇文章补全 frontmatter",

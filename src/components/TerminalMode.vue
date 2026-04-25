@@ -54,6 +54,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { loadSearchIndex } from '@/utils/indexData'
 
 const router = useRouter()
 const visible = ref(false)
@@ -240,8 +241,7 @@ const commands = {
 const loadNotesData = async () => {
   if (notesData) return
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    notesData = await response.json()
+    notesData = await loadSearchIndex()
   } catch (error) {
     console.error('Failed to load notes:', error)
   }

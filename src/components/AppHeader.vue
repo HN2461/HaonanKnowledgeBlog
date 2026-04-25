@@ -118,7 +118,10 @@
           </svg>
         </button>
 
-        <AuthorProfile />
+        <div class='author-profile-shell' :class="{ 'is-search-loading': searchWarmupStatus === 'loading' }">
+          <AuthorProfile />
+          <span v-if="searchWarmupStatus === 'loading'" class='author-search-ring' aria-hidden='true'></span>
+        </div>
       </div>
     </div>
   </header>
@@ -131,18 +134,28 @@
       </div>
     </div>
   </Teleport>
+
+  <Teleport to='body'>
+    <Transition name='search-ready-toast'>
+      <div v-if='showSearchReadyNotice' class='search-ready-toast'>
+        搜索索引已准备完成，现在可以直接全站搜索了
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { defineAsyncComponent, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getTheme, toggleTheme as toggle } from '@/utils/theme'
 import { siteConfig } from '@/config/site'
 import AuthorProfile from './AuthorProfile.vue'
-import KnowledgeSearchPanel from './KnowledgeSearchPanel.vue'
-import MotivationalQuote from './MotivationalQuote.vue'
 import NotificationCenter from './NotificationCenter.vue'
-import TimeWeather from './TimeWeather.vue'
+import { ensureSearchWarmup, searchWarmupStatus } from '@/utils/searchWarmup'
+
+const KnowledgeSearchPanel = defineAsyncComponent(() => import('./KnowledgeSearchPanel.vue'))
+const MotivationalQuote = defineAsyncComponent(() => import('./MotivationalQuote.vue'))
+const TimeWeather = defineAsyncComponent(() => import('./TimeWeather.vue'))
 
 defineProps({
   sidebarVisible: {
@@ -160,6 +173,8 @@ const isSearchOpen = ref(false)
 const isCornerOpen = ref(false)
 const cornerRef = ref(null)
 const siteLogoUrl = `${import.meta.env.BASE_URL}favicon.png`
+const showSearchReadyNotice = ref(false)
+let searchReadyNoticeTimer = null
 
 const goToEditor = () => {
   router.push('/editor')
@@ -247,6 +262,26 @@ watch(
   }
 )
 
+watch(isSearchOpen, (nextValue) => {
+  if (nextValue) {
+    ensureSearchWarmup()
+  }
+})
+
+watch(searchWarmupStatus, (nextStatus, prevStatus) => {
+  if (nextStatus === 'ready' && prevStatus === 'loading') {
+    showSearchReadyNotice.value = true
+
+    if (searchReadyNoticeTimer) {
+      clearTimeout(searchReadyNoticeTimer)
+    }
+
+    searchReadyNoticeTimer = setTimeout(() => {
+      showSearchReadyNotice.value = false
+    }, 4000)
+  }
+})
+
 onMounted(() => {
   isDark.value = getTheme() === 'dark'
   window.addEventListener('theme-change', handleThemeChange)
@@ -258,6 +293,10 @@ onUnmounted(() => {
   window.removeEventListener('theme-change', handleThemeChange)
   document.removeEventListener('pointerdown', handleDocumentPointerDown)
   document.removeEventListener('keydown', handleDocumentKeydown)
+
+  if (searchReadyNoticeTimer) {
+    clearTimeout(searchReadyNoticeTimer)
+  }
 })
 </script>
 
@@ -580,6 +619,70 @@ onUnmounted(() => {
     max-width: 132px;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+}
+</style>
+<style scoped>
+.author-profile-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-search-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 999px;
+  border: 2px solid rgba(56, 189, 248, 0.14);
+  border-top-color: rgba(14, 165, 233, 0.92);
+  border-right-color: rgba(59, 130, 246, 0.56);
+  pointer-events: none;
+  animation: authorSearchSpin 1s linear infinite;
+}
+
+.search-ready-toast-enter-active,
+.search-ready-toast-leave-active {
+  transition: opacity 0.24s ease, transform 0.24s ease;
+}
+
+.search-ready-toast-enter-from,
+.search-ready-toast-leave-to {
+  opacity: 0;
+  transform: translate3d(0, -10px, 0);
+}
+
+.search-ready-toast {
+  position: fixed;
+  top: 86px;
+  right: 24px;
+  z-index: 2100;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.92);
+  color: #f8fafc;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+@keyframes authorSearchSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .search-ready-toast {
+    top: 74px;
+    right: 16px;
+    left: 16px;
+    text-align: center;
   }
 }
 </style>

@@ -7,10 +7,10 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const NOTES_DIR = path.join(__dirname, '../public/notes')
-const OUTPUT_FILE = path.join(__dirname, '../public/notes-index.json')
+const NOTES_INDEX_FILE = path.join(__dirname, '../public/notes-index.json')
+const SEARCH_INDEX_FILE = path.join(__dirname, '../public/search-index.json')
 
-// 确保输出目录存在
-const outputDir = path.dirname(OUTPUT_FILE)
+const outputDir = path.dirname(NOTES_INDEX_FILE)
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true })
 }
@@ -18,22 +18,27 @@ if (!fs.existsSync(outputDir)) {
 function extractSequenceNumber(filename) {
   const normalizedName = String(filename || '').trim()
 
-  // 兼容 01-标题、1_标题 这类显式前缀命名
   let match = normalizedName.match(/^(\d{1,3})(?=[\s._\-、]|[^\d]|$)/)
   if (match) {
-    return parseInt(match[1], 10)
+    return Number.parseInt(match[1], 10)
   }
 
-  // 兼容 第1篇、第10章 这类命名
   match = normalizedName.match(/第(\d+)[章节篇讲]/)
   if (match) {
-    return parseInt(match[1], 10)
+    return Number.parseInt(match[1], 10)
   }
 
-  // 兼容 第一篇、第二章 这类命名
   const chineseNums = {
-    '一': 1, '二': 2, '三': 3, '四': 4, '五': 5,
-    '六': 6, '七': 7, '八': 8, '九': 9, '十': 10
+    '一': 1,
+    '二': 2,
+    '三': 3,
+    '四': 4,
+    '五': 5,
+    '六': 6,
+    '七': 7,
+    '八': 8,
+    '九': 9,
+    '十': 10
   }
 
   match = normalizedName.match(/第([一二三四五六七八九十]+)[章节篇讲]/)
@@ -65,12 +70,10 @@ function compareByFilenameOrder(filenameA, filenameB) {
   return nameA.localeCompare(nameB, 'zh-CN')
 }
 
-// 智能排序函数（可复用）
 function smartSort(items, getFilename) {
   return items.sort((a, b) => {
     const filenameA = getFilename ? getFilename(a) : a.filename || a.name
     const filenameB = getFilename ? getFilename(b) : b.filename || b.name
-
     return compareByFilenameOrder(filenameA, filenameB)
   })
 }
@@ -150,14 +153,14 @@ function sortDirectoryEntries(items = []) {
 function toTagArray(value) {
   if (Array.isArray(value)) {
     return value
-      .flatMap((item) => String(item).split(/[、,，|/]/))
+      .flatMap((item) => String(item).split(/[、，,]/))
       .map((item) => item.trim())
       .filter(Boolean)
   }
 
   if (typeof value === 'string') {
     return value
-      .split(/[、,，|/]/)
+      .split(/[、，,]/)
       .map((item) => item.trim())
       .filter(Boolean)
   }
@@ -169,7 +172,7 @@ function normalizeTags(tags) {
   const unique = new Set()
 
   tags.forEach((tag) => {
-    const cleanedTag = String(tag).replace(/^#+/, '').trim()
+    const cleanedTag = String(tag || '').replace(/^#+/, '').trim()
     if (cleanedTag) {
       unique.add(cleanedTag)
     }
@@ -179,7 +182,7 @@ function normalizeTags(tags) {
 }
 
 function extractInlineTags(markdownContent) {
-  const lines = markdownContent.split('\n').slice(0, 50)
+  const lines = String(markdownContent || '').split('\n').slice(0, 50)
   const tagLine = lines.find((line) =>
     /^(?:>\s*)?(?:tags?|标签|关键词|关键字)\s*[:：]/i.test(line.trim())
   )
@@ -196,7 +199,7 @@ function extractInlineTags(markdownContent) {
 }
 
 function buildFallbackTags(relPath, category) {
-  const pathSegments = relPath.split('/').slice(0, -1).filter(Boolean)
+  const pathSegments = String(relPath || '').split('/').slice(0, -1).filter(Boolean)
   const fallbackTags = []
 
   if (pathSegments.length > 0) {
@@ -239,11 +242,7 @@ function toAttachmentItems(value) {
     return []
   }
 
-  if (Array.isArray(value)) {
-    return value
-  }
-
-  return [value]
+  return Array.isArray(value) ? value : [value]
 }
 
 function normalizeAttachmentPath(rawPath, noteDirRelPath) {
@@ -253,14 +252,15 @@ function normalizeAttachmentPath(rawPath, noteDirRelPath) {
   }
 
   filePath = filePath.replace(/\\/g, '/')
+
   if (filePath.startsWith('/')) {
     filePath = filePath.slice(1)
   }
+
   if (filePath.startsWith('notes/')) {
     filePath = filePath.slice(6)
   }
 
-  // 未带目录时，默认相对当前笔记所在目录解析
   if (!filePath.includes('/')) {
     filePath = noteDirRelPath ? `${noteDirRelPath}/${filePath}` : filePath
   }
@@ -313,7 +313,7 @@ function resolveAttachments(frontmatter, noteDirRelPath) {
       name: fileName || path.basename(normalizedPath),
       path: normalizedPath,
       ext: path.extname(normalizedPath).replace('.', '').toLowerCase(),
-      size: Math.round(stat.size / 1024) + 'KB',
+      size: `${Math.round(stat.size / 1024)}KB`,
       lastModified: stat.mtime.toISOString()
     })
 
@@ -323,121 +323,143 @@ function resolveAttachments(frontmatter, noteDirRelPath) {
   return attachments
 }
 
-// 递归扫描目录
+function buildExcerpt(markdownContent) {
+  return String(markdownContent || '')
+    .replace(/^#.*$/gm, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[#*`_~]/g, '')
+    .trim()
+    .substring(0, 200)
+}
+
+function buildSearchableContent(markdownContent) {
+  return String(markdownContent || '')
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/`([^`]+)`/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\*(.*?)\*/g, '$1')
+    .replace(/~~(.*?)~~/g, '$1')
+    .replace(/^\s*[-*+]\s+/gm, '')
+    .replace(/^\s*\d+\.\s+/gm, '')
+    .replace(/^\s*>\s+/gm, '')
+    .replace(/\n{2,}/g, '\n')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function toLightNote(note = {}) {
+  const { searchContent, ...lightNote } = note
+  return lightNote
+}
+
+function stripTreeSearchContent(items = []) {
+  return items.map((item) => {
+    if (item.type === 'directory') {
+      return {
+        ...item,
+        children: stripTreeSearchContent(item.children || [])
+      }
+    }
+
+    return toLightNote(item)
+  })
+}
+
 function scanDirectory(dir, relativePath = '') {
   const items = []
-  
+
   if (!fs.existsSync(dir)) {
     console.log(`目录不存在: ${dir}`)
     return items
   }
 
   const files = fs.readdirSync(dir)
-  
-  // 使用智能排序
-  const sortedFiles = smartSort(files.map(file => ({ name: file })), (item) => item.name).map(item => item.name)
+  const sortedFiles = smartSort(
+    files.map((file) => ({ name: file })),
+    (item) => item.name
+  ).map((item) => item.name)
 
-  sortedFiles.forEach(file => {
+  sortedFiles.forEach((file) => {
     const fullPath = path.join(dir, file)
     const stat = fs.statSync(fullPath)
     const relPath = relativePath ? `${relativePath}/${file}` : file
 
     if (stat.isDirectory()) {
-      // 递归扫描子目录
-      const children = scanDirectory(fullPath, relPath)
       items.push({
         type: 'directory',
         name: file,
         path: relPath,
-        children: children
+        children: scanDirectory(fullPath, relPath)
       })
-    } else if (file.endsWith('.md')) {
-      if (isDirectoryIndexFile(file)) {
-        return
-      }
-
-      // 处理 Markdown 文件
-      const rawContent = fs.readFileSync(fullPath, 'utf-8')
-      const content = rawContent.replace(/\u0000/g, '')
-      let frontmatter = {}
-      let markdownContent = content
-
-      try {
-        ;({ data: frontmatter, content: markdownContent } = matter(content))
-      } catch (e) {
-        frontmatter = {}
-        markdownContent = content
-      }
-      
-      // 提取摘要（取前200个字符）
-      const excerpt = markdownContent
-        .replace(/^#.*$/gm, '') // 移除标题
-        .replace(/```[\s\S]*?```/g, '') // 移除代码块
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 移除链接
-        .replace(/[#*`_~]/g, '') // 移除 Markdown 符号
-        .trim()
-        .substring(0, 200)
-
-      // 清理并提取纯文本内容用于搜索
-      const searchableContent = markdownContent
-        .replace(/```[\s\S]*?```/g, ' ') // 移除代码块但保留空格
-        .replace(/`([^`]+)`/g, '$1') // 移除行内代码标记
-        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 提取链接文本
-        .replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1') // 提取图片alt文本
-        .replace(/^#{1,6}\s+/gm, '') // 移除标题标记
-        .replace(/\*\*(.*?)\*\*/g, '$1') // 移除粗体标记
-        .replace(/\*(.*?)\*/g, '$1') // 移除斜体标记
-        .replace(/~~(.*?)~~/g, '$1') // 移除删除线标记
-        .replace(/^\s*[-*+]\s+/gm, '') // 移除列表标记
-        .replace(/^\s*\d+\.\s+/gm, '') // 移除有序列表标记
-        .replace(/^\s*>\s+/gm, '') // 移除引用标记
-        .replace(/\n{2,}/g, '\n') // 合并多个换行
-        .replace(/\s+/g, ' ') // 合并多个空格
-        .trim()
-
-      const category = frontmatter.category || relativePath.split('/')[0] || '未分类'
-      const tags = resolveTags(frontmatter, markdownContent, relPath, category)
-      const noteDirRelPath = relativePath || ''
-      const attachments = resolveAttachments(frontmatter, noteDirRelPath)
-      const order = resolveExplicitOrder(frontmatter)
-
-      const fileTitle = file.replace('.md', '')
-      const frontmatterTitle = frontmatter.title || fileTitle
-
-      items.push({
-        type: 'file',
-        title: frontmatterTitle,
-        frontmatterTitle: frontmatterTitle,
-        fileTitle: fileTitle,
-        filename: file,
-        path: relPath,
-        date: frontmatter.date || null,
-        hasRealDate: !!frontmatter.date,
-        order: order,
-        tags: tags,
-        category: category,
-        attachments: attachments,
-        description: frontmatter.description || excerpt,
-        content: searchableContent, // 添加完整的可搜索内容
-        size: Math.round(stat.size / 1024) + 'KB',
-        lastModified: stat.mtime.toISOString(),
-        wordCount: markdownContent.length
-      })
+      return
     }
+
+    if (!file.endsWith('.md') || isDirectoryIndexFile(file)) {
+      return
+    }
+
+    const rawContent = fs.readFileSync(fullPath, 'utf-8')
+    const content = rawContent.replace(/\u0000/g, '')
+    let frontmatter = {}
+    let markdownContent = content
+
+    try {
+      ;({ data: frontmatter, content: markdownContent } = matter(content))
+    } catch {
+      frontmatter = {}
+      markdownContent = content
+    }
+
+    const excerpt = buildExcerpt(markdownContent)
+    const searchContent = buildSearchableContent(markdownContent)
+    const category = frontmatter.category || relativePath.split('/')[0] || '未分类'
+    const tags = resolveTags(frontmatter, markdownContent, relPath, category)
+    const noteDirRelPath = relativePath || ''
+    const attachments = resolveAttachments(frontmatter, noteDirRelPath)
+    const order = resolveExplicitOrder(frontmatter)
+    const fileTitle = file.replace(/\.md$/i, '')
+    const frontmatterTitle = frontmatter.title || fileTitle
+
+    items.push({
+      type: 'file',
+      title: frontmatterTitle,
+      frontmatterTitle,
+      fileTitle,
+      filename: file,
+      path: relPath,
+      date: frontmatter.date || null,
+      hasRealDate: !!frontmatter.date,
+      order,
+      tags,
+      category,
+      attachments,
+      description: frontmatter.description || excerpt,
+      searchContent,
+      size: `${Math.round(stat.size / 1024)}KB`,
+      lastModified: stat.mtime.toISOString(),
+      wordCount: markdownContent.length
+    })
   })
 
   return sortDirectoryEntries(items)
 }
 
-// 扁平化笔记列表
 function flattenNotes(items, result = []) {
-  items.forEach(item => {
+  items.forEach((item) => {
     if (item.type === 'file') {
       result.push(item)
-    } else if (item.type === 'directory' && item.children) {
+      return
+    }
+
+    if (item.type === 'directory' && item.children) {
       flattenNotes(item.children, result)
     }
   })
+
   return result
 }
 
@@ -445,10 +467,7 @@ function getNoteTimestamp(note) {
   const candidates = [note.date, note.lastModified]
 
   for (const value of candidates) {
-    if (!value) {
-      continue
-    }
-
+    if (!value) continue
     const time = new Date(value).getTime()
     if (!Number.isNaN(time)) {
       return time
@@ -458,28 +477,31 @@ function getNoteTimestamp(note) {
   return 0
 }
 
-// 生成分类结构
 function generateCategories(items) {
   const categories = {}
 
-  function processItems(items, parentPath = '') {
-    items.forEach(item => {
+  function processItems(currentItems) {
+    currentItems.forEach((item) => {
       if (item.type === 'directory') {
-        const categoryPath = item.path
-        if (!categories[categoryPath]) {
-          categories[categoryPath] = {
+        if (!categories[item.path]) {
+          categories[item.path] = {
             name: item.name,
             path: item.path,
             notes: [],
             children: []
           }
         }
-        
+
         if (item.children) {
-          processItems(item.children, categoryPath)
+          processItems(item.children)
         }
-      } else if (item.type === 'file') {
+
+        return
+      }
+
+      if (item.type === 'file') {
         const categoryPath = item.path.substring(0, item.path.lastIndexOf('/')) || '根目录'
+
         if (!categories[categoryPath]) {
           categories[categoryPath] = {
             name: categoryPath.split('/').pop() || '根目录',
@@ -488,6 +510,7 @@ function generateCategories(items) {
             children: []
           }
         }
+
         categories[categoryPath].notes.push(item)
       }
     })
@@ -497,7 +520,6 @@ function generateCategories(items) {
 
   const allNotes = flattenNotes(items)
 
-  // 统计分类下所有层级的笔记，避免父级目录出现 0 篇
   Object.values(categories).forEach((category) => {
     if (category.path === '根目录') {
       category.notes = allNotes.filter((note) => !note.path.includes('/'))
@@ -507,21 +529,19 @@ function generateCategories(items) {
 
     category.notes = [...category.notes].sort(compareByNoteOrder)
   })
-  
+
   return Object.values(categories).filter((category) => category.notes.length > 0)
 }
 
-// 主函数
 function generateIndex() {
   console.log('开始生成笔记索引...')
   console.log(`扫描目录: ${NOTES_DIR}`)
 
-  const items = scanDirectory(NOTES_DIR)
-  const allNotes = flattenNotes(items)
-  const categories = generateCategories(items)
+  const treeWithSearch = scanDirectory(NOTES_DIR)
+  const allNotesWithSearch = flattenNotes(treeWithSearch)
+  const categoriesWithSearch = generateCategories(treeWithSearch)
 
-  // 统一按可用时间倒序排序；同日期时再按文件序号/文件名稳定排序
-  allNotes.sort((a, b) => {
+  allNotesWithSearch.sort((a, b) => {
     const timeDiff = getNoteTimestamp(b) - getNoteTimestamp(a)
     if (timeDiff !== 0) {
       return timeDiff
@@ -530,25 +550,46 @@ function generateIndex() {
     return compareByNoteOrder(a, b)
   })
 
-  const index = {
-    categories: categories,
-    allNotes: allNotes,
-    tree: items,
-    totalNotes: allNotes.length,
-    totalCategories: categories.length,
-    lastUpdated: new Date().toISOString()
+  const lastUpdated = new Date().toISOString()
+  const lightTree = stripTreeSearchContent(treeWithSearch)
+  const lightAllNotes = allNotesWithSearch.map((note) => toLightNote(note))
+  const lightCategories = categoriesWithSearch.map((category) => ({
+    ...category,
+    notes: category.notes.map((note) => toLightNote(note))
+  }))
+
+  const searchNotes = allNotesWithSearch.map((note) => ({
+    ...toLightNote(note),
+    content: note.searchContent || ''
+  }))
+
+  const notesIndex = {
+    categories: lightCategories,
+    allNotes: lightAllNotes,
+    tree: lightTree,
+    totalNotes: lightAllNotes.length,
+    totalCategories: lightCategories.length,
+    lastUpdated
   }
 
-  // 写入文件
-  fs.writeFileSync(OUTPUT_FILE, JSON.stringify(index, null, 2), 'utf-8')
-  
-  console.log(`✓ 索引生成成功!`)
-  console.log(`  - 总笔记数: ${index.totalNotes}`)
-  console.log(`  - 总分类数: ${index.totalCategories}`)
-  console.log(`  - 输出文件: ${OUTPUT_FILE}`)
+  const searchIndex = {
+    allNotes: searchNotes,
+    tree: lightTree,
+    totalNotes: searchNotes.length,
+    totalCategories: lightCategories.length,
+    lastUpdated
+  }
+
+  fs.writeFileSync(NOTES_INDEX_FILE, JSON.stringify(notesIndex, null, 2), 'utf-8')
+  fs.writeFileSync(SEARCH_INDEX_FILE, JSON.stringify(searchIndex, null, 2), 'utf-8')
+
+  console.log('✓ 索引生成成功!')
+  console.log(`  - 总笔记数: ${notesIndex.totalNotes}`)
+  console.log(`  - 总分类数: ${notesIndex.totalCategories}`)
+  console.log(`  - 输出文件: ${NOTES_INDEX_FILE}`)
+  console.log(`  - 搜索索引: ${SEARCH_INDEX_FILE}`)
 }
 
-// 执行
 try {
   generateIndex()
 } catch (error) {

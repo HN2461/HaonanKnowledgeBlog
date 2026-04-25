@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js'
 import { cleanNoteText, getNoteExcerpt } from '@/utils/notePresentation'
+import { loadSearchIndex } from '@/utils/indexData'
 
 let fuseInstance = null
 let indexedNotes = []
@@ -47,13 +48,8 @@ export async function ensureSearchReady() {
   }
 
   if (!searchInitPromise) {
-    searchInitPromise = fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-      .then(async (response) => {
-        if (!response.ok) {
-          throw new Error(`notes-index request failed: ${response.status}`)
-        }
-
-        const data = await response.json()
+    searchInitPromise = loadSearchIndex()
+      .then((data) => {
         const notes = data.allNotes || []
         initSearch(notes, data)
         return indexedData

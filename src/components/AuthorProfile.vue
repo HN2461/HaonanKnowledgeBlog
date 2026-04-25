@@ -120,6 +120,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { siteConfig } from '../config/site'
+import { loadNotesIndex } from '@/utils/indexData'
 
 const router = useRouter()
 const showProfile = ref(false)
@@ -144,7 +145,12 @@ const stats = ref({
 
 // 切换简介弹窗
 const toggleProfile = () => {
-  showProfile.value = !showProfile.value
+  const nextVisible = !showProfile.value
+  showProfile.value = nextVisible
+
+  if (nextVisible && stats.value.articles === 0) {
+    loadProfileStats()
+  }
 }
 
 const closeProfile = () => {
@@ -208,10 +214,7 @@ const formatUpdateDate = (iso) => {
 
 const loadProfileStats = async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    if (!response.ok) return
-
-    const data = await response.json()
+    const data = await loadNotesIndex()
     stats.value = {
       articles: data.totalNotes || data.allNotes?.length || 0,
       categories: data.totalCategories || data.categories?.length || 0,
@@ -236,7 +239,6 @@ const loadAvatar = () => {
 
 onMounted(() => {
   loadAvatar()
-  loadProfileStats()
 })
 </script>
 

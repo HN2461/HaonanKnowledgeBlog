@@ -183,6 +183,7 @@
 import { ref, nextTick, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getNoteExcerpt } from '@/utils/notePresentation'
+import { loadSearchIndex } from '@/utils/indexData'
 
 const router = useRouter()
 
@@ -226,8 +227,7 @@ const loadNotesData = async () => {
   if (notesData) return;
 
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`);
-    notesData = await response.json();
+    notesData = await loadSearchIndex();
   } catch (error) {
     console.error("Failed to load notes:", error);
     isOnline.value = false;
@@ -543,7 +543,6 @@ const handleCloseFromHeader = () => {
 
 onMounted(() => {
   document.addEventListener("keydown", handleKeyboard);
-  loadNotesData();
   window.addEventListener("ai-assistant:toggle", handleToggleFromHeader);
   window.addEventListener("ai-assistant:open", handleOpenFromHeader);
   window.addEventListener("ai-assistant:close", handleCloseFromHeader);

@@ -19,6 +19,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import TerminalMode from './components/TerminalMode.vue'
 import AIChatAssistant from './components/AIChatAssistant.vue'
 import { getTheme } from './utils/theme'
+import { ensureSearchWarmup } from './utils/searchWarmup'
 
 const isDarkTheme = ref(false)
 const terminal = ref(null)
@@ -41,6 +42,21 @@ onMounted(() => {
   isDarkTheme.value = getTheme() === 'dark'
   applyThemeClass(isDarkTheme.value)
   window.addEventListener('theme-change', handleThemeChange)
+
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+  const shouldDeferWarmup = connection?.saveData || ['slow-2g', '2g', '3g'].includes(connection?.effectiveType)
+
+  if (shouldDeferWarmup) {
+    return
+  }
+
+  const scheduleWarmup = () => ensureSearchWarmup()
+
+  if (typeof window.requestIdleCallback === 'function') {
+    window.requestIdleCallback(scheduleWarmup, { timeout: 2000 })
+  } else {
+    window.setTimeout(scheduleWarmup, 1200)
+  }
 })
 
 onUnmounted(() => {

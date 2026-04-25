@@ -108,6 +108,7 @@ import {
   flattenExportDirectories,
   flattenExportNotes
 } from '@/utils/noteExport'
+import { loadNotesIndex } from '@/utils/indexData'
 
 defineProps({
   visible: {
@@ -329,8 +330,7 @@ onMounted(async () => {
   window.addEventListener('keydown', keydownHandler)
 
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    const data = await response.json()
+    const data = await loadNotesIndex()
     notesTree.value = data.tree || []
   } catch (error) {
     console.error('加载笔记索引失败:', error)

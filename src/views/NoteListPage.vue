@@ -153,6 +153,7 @@ import {
   groupNotesByImmediateChild,
   normalizeNotePath
 } from '@/utils/noteSeries'
+import { loadNotesIndex } from '@/utils/indexData'
 
 const route = useRoute()
 const notesData = ref(null)
@@ -416,8 +417,7 @@ watch(categoryPath, () => {
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    notesData.value = await response.json()
+    notesData.value = await loadNotesIndex()
   } catch (error) {
     console.error('加载笔记索引失败:', error)
   } finally {

@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-toc-done-right'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/common'
 
 // 创建 Markdown 实例
 const md = new MarkdownIt({

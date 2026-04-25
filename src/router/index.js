@@ -1,11 +1,12 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue'
-import NoteListPage from '../views/NoteListPage.vue'
-import NoteDetailPage from '../views/NoteDetailPage.vue'
-import SearchPage from '../views/SearchPage.vue'
-import RelaxationMode from '../views/RelaxationMode.vue'
-import EditorPage from '../views/EditorPage.vue'
-import NotFoundPage from '../views/NotFoundPage.vue'
+
+const HomePage = () => import('@/views/HomePage.vue')
+const NoteListPage = () => import('@/views/NoteListPage.vue')
+const NoteDetailPage = () => import('@/views/NoteDetailPage.vue')
+const SearchPage = () => import('@/views/SearchPage.vue')
+const RelaxationMode = () => import('@/views/RelaxationMode.vue')
+const EditorPage = () => import('@/views/EditorPage.vue')
+const NotFoundPage = () => import('@/views/NotFoundPage.vue')
 
 const routes = [
   {
@@ -58,14 +59,16 @@ const router = createRouter({
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else if (to.hash) {
+    }
+
+    if (to.hash) {
       return {
         el: to.hash,
         behavior: 'smooth'
       }
-    } else {
-      return { top: 0 }
     }
+
+    return { top: 0 }
   }
 })
 
@@ -93,7 +96,9 @@ router.beforeEach((to, from, next) => {
     }
   }
 
-  document.title = to.meta.title ? `${to.meta.title} - 个人技术博客` : '个人技术博客'
+  document.title = to.meta.title
+    ? `${to.meta.title} - 个人技术博客`
+    : '个人技术博客'
   next()
 })
 

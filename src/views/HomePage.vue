@@ -176,6 +176,7 @@ import {
   getNoteWordCount
 } from '@/utils/notePresentation'
 import { compareNotesByNewest } from '@/utils/noteOrder'
+import { loadNotesIndex } from '@/utils/indexData'
 
 const notesData = ref(null)
 const loading = ref(true)
@@ -228,8 +229,7 @@ const rootTopics = computed(() => {
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}notes-index.json`)
-    notesData.value = await response.json()
+    notesData.value = await loadNotesIndex()
   } catch (error) {
     console.error('加载笔记索引失败:', error)
   } finally {
