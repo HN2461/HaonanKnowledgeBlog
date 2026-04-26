@@ -1,17 +1,337 @@
 import Fuse from 'fuse.js'
-import { cleanNoteText, getNoteExcerpt } from '@/utils/notePresentation'
+import { cleanNoteText, escapeHtml, getNoteExcerpt } from '@/utils/notePresentation'
 import { loadSearchIndex } from '@/utils/indexData'
 
 let fuseInstance = null
 let indexedNotes = []
 let indexedData = null
+let preparedNotes = []
 let searchInitPromise = null
+
 const SEARCH_HISTORY_KEY = 'search-history'
 const SEARCH_HISTORY_LIMIT = 10
+const GENERIC_NOTE_TITLES = new Set(['readme', '目录'])
+const TOKEN_SEPARATOR_RE = /[\s,，、|/]+/g
+const CJK_CHAR_RE = /[\u3400-\u9fff]/
+
+function normalizeSearchValue(value = '') {
+  return String(value || '')
+    .toLowerCase()
+    .trim()
+}
+
+function normalizeLooseValue(value = '') {
+  return normalizeSearchValue(value)
+    .replace(/[\\/_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function escapeRegExp(value = '') {
+  return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function isMeaningfulTerm(term = '') {
+  const normalized = normalizeSearchValue(term)
+
+  if (!normalized) {
+    return false
+  }
+
+  if (CJK_CHAR_RE.test(normalized)) {
+    return normalized.length >= 1
+  }
+
+  return normalized.length >= 2
+}
+
+export function getSearchTerms(query = '') {
+  const normalizedQuery = normalizeSearchValue(query)
+
+  if (!normalizedQuery) {
+    return []
+  }
+
+  return Array.from(
+    new Set(
+      normalizedQuery
+        .split(TOKEN_SEPARATOR_RE)
+        .map((item) => item.trim())
+        .filter((item) => isMeaningfulTerm(item))
+    )
+  )
+}
+
+function buildQueryBundle(query = '') {
+  const rawQuery = String(query || '').trim()
+  const normalizedQuery = normalizeSearchValue(rawQuery)
+  const terms = getSearchTerms(rawQuery)
+
+  const highlightSource = terms.length > 0 ? terms : [normalizedQuery]
+  const highlightTerms = Array.from(
+    new Set(
+      highlightSource
+        .filter((item) => isMeaningfulTerm(item))
+        .sort((a, b) => b.length - a.length)
+    )
+  )
+
+  const fuseQueries = Array.from(
+    new Set(
+      [rawQuery, normalizedQuery, ...terms]
+        .map((item) => String(item || '').trim())
+        .filter(Boolean)
+    )
+  )
+
+  return {
+    rawQuery,
+    normalizedQuery,
+    terms,
+    highlightTerms,
+    fuseQueries
+  }
+}
+
+function buildPreparedNote(note = {}) {
+  const fieldValues = {
+    title: [note.title, note.frontmatterTitle, note.fileTitle].filter(Boolean).join(' '),
+    description: note.description || '',
+    tags: Array.isArray(note.tags) ? note.tags.join(' ') : '',
+    category: note.category || '',
+    filename: note.filename || '',
+    path: note.path || '',
+    content: note.content || ''
+  }
+
+  const fields = Object.fromEntries(
+    Object.entries(fieldValues).map(([key, value]) => [key, normalizeSearchValue(value)])
+  )
+
+  const looseFields = Object.fromEntries(
+    Object.entries(fieldValues).map(([key, value]) => [key, normalizeLooseValue(value)])
+  )
+
+  return {
+    note,
+    fields,
+    looseFields,
+    genericTitle: GENERIC_NOTE_TITLES.has(fields.title)
+  }
+}
+
+function containsTerm(text = '', looseText = '', term = '') {
+  const normalizedTerm = normalizeSearchValue(term)
+
+  if (!normalizedTerm) {
+    return false
+  }
+
+  if (text.includes(normalizedTerm)) {
+    return true
+  }
+
+  return looseText.includes(normalizeLooseValue(normalizedTerm))
+}
+
+function countOccurrences(text = '', term = '') {
+  const normalizedText = normalizeSearchValue(text)
+  const normalizedTerm = normalizeSearchValue(term)
+
+  if (!normalizedText || !normalizedTerm) {
+    return 0
+  }
+
+  const matches = normalizedText.match(new RegExp(escapeRegExp(normalizedTerm), 'g'))
+  return matches ? matches.length : 0
+}
+
+function getFieldMatch(meta, term = '') {
+  const normalizedTerm = normalizeSearchValue(term)
+
+  if (!normalizedTerm) {
+    return {
+      matched: false,
+      score: 0,
+      contentHits: 0
+    }
+  }
+
+  const title = containsTerm(meta.fields.title, meta.looseFields.title, normalizedTerm)
+  const description = containsTerm(meta.fields.description, meta.looseFields.description, normalizedTerm)
+  const tags = containsTerm(meta.fields.tags, meta.looseFields.tags, normalizedTerm)
+  const category = containsTerm(meta.fields.category, meta.looseFields.category, normalizedTerm)
+  const filename = containsTerm(meta.fields.filename, meta.looseFields.filename, normalizedTerm)
+  const path = containsTerm(meta.fields.path, meta.looseFields.path, normalizedTerm)
+  const content = containsTerm(meta.fields.content, meta.looseFields.content, normalizedTerm)
+  const contentHits = countOccurrences(meta.fields.content, normalizedTerm)
+
+  const score =
+    (title ? 20 : 0) +
+    (tags ? 14 : 0) +
+    (path ? 14 : 0) +
+    (filename ? 10 : 0) +
+    (description ? 8 : 0) +
+    (category ? 6 : 0) +
+    (content ? Math.min(10, 2 + contentHits * 1.2) : 0)
+
+  return {
+    matched: title || description || tags || category || filename || path || content,
+    title,
+    description,
+    tags,
+    category,
+    filename,
+    path,
+    content,
+    contentHits,
+    score
+  }
+}
+
+function collectExactMatches(meta, queryBundle) {
+  const matchedTerms = new Set()
+  let score = 0
+
+  queryBundle.terms.forEach((term) => {
+    const fieldMatch = getFieldMatch(meta, term)
+
+    if (!fieldMatch.matched) {
+      return
+    }
+
+    matchedTerms.add(term)
+    score += fieldMatch.score
+  })
+
+  const phraseMatch = getFieldMatch(meta, queryBundle.normalizedQuery)
+  if (phraseMatch.matched) {
+    score += 24
+
+    if (phraseMatch.title) {
+      score += 14
+    }
+
+    if (phraseMatch.path || phraseMatch.filename) {
+      score += 12
+    }
+  }
+
+  if (matchedTerms.size > 0) {
+    score += (matchedTerms.size / Math.max(queryBundle.terms.length, 1)) * 18
+  }
+
+  if (meta.genericTitle && !phraseMatch.title) {
+    score -= 8
+  }
+
+  return {
+    score: Math.max(0, score),
+    matchedTerms,
+    phraseMatched: phraseMatch.matched
+  }
+}
+
+function collectFuzzyMatches(queryBundle) {
+  const fuzzyMatches = new Map()
+
+  if (!fuseInstance) {
+    return fuzzyMatches
+  }
+
+  queryBundle.fuseQueries.forEach((query) => {
+    const normalizedQuery = normalizeSearchValue(query)
+    const termMatches = queryBundle.terms.includes(normalizedQuery)
+
+    fuseInstance.search(query).slice(0, 80).forEach((result) => {
+      const pathKey = result.item?.path
+
+      if (!pathKey) {
+        return
+      }
+
+      const current = fuzzyMatches.get(pathKey) || {
+        item: result.item,
+        bestScore: Number.POSITIVE_INFINITY,
+        matchedTerms: new Set(),
+        phraseMatched: false
+      }
+
+      current.bestScore = Math.min(current.bestScore, result.score ?? Number.POSITIVE_INFINITY)
+
+      if (termMatches) {
+        current.matchedTerms.add(normalizedQuery)
+      }
+
+      if (normalizedQuery === queryBundle.normalizedQuery) {
+        current.phraseMatched = true
+      }
+
+      fuzzyMatches.set(pathKey, current)
+    })
+  })
+
+  return fuzzyMatches
+}
+
+function passesMatchMode(queryTerms = [], exactTerms = new Set(), fuzzyTerms = new Set(), mode = 'AND') {
+  if (queryTerms.length === 0) {
+    return true
+  }
+
+  const hasTerm = (term) => exactTerms.has(term) || fuzzyTerms.has(term)
+
+  if (mode === 'OR') {
+    return queryTerms.some((term) => hasTerm(term))
+  }
+
+  return queryTerms.every((term) => hasTerm(term))
+}
+
+function getFuzzyScore(entry) {
+  if (!entry || !Number.isFinite(entry.bestScore)) {
+    return 0
+  }
+
+  return Math.max(0, (1 - entry.bestScore) * 28)
+}
+
+function getCoverageBonus(queryTerms = [], exactTerms = new Set(), fuzzyTerms = new Set()) {
+  if (queryTerms.length === 0) {
+    return 0
+  }
+
+  const matchedCount = queryTerms.filter((term) => exactTerms.has(term) || fuzzyTerms.has(term)).length
+  return (matchedCount / queryTerms.length) * 20
+}
+
+function getSortTimestamp(note = {}) {
+  const candidates = [note.date, note.lastModified]
+
+  for (const value of candidates) {
+    if (!value) {
+      continue
+    }
+
+    const timestamp = new Date(value).getTime()
+    if (!Number.isNaN(timestamp)) {
+      return timestamp
+    }
+  }
+
+  return 0
+}
+
+function pickPrimaryTerm(queryBundle, exactTerms = new Set(), fuzzyTerms = new Set()) {
+  const preferredTerms = [queryBundle.normalizedQuery, ...queryBundle.terms]
+
+  return preferredTerms.find((term) => exactTerms.has(term) || fuzzyTerms.has(term)) || queryBundle.normalizedQuery || queryBundle.terms[0] || ''
+}
 
 // 初始化搜索引擎
 export function initSearch(notes, data = null) {
   indexedNotes = Array.isArray(notes) ? notes : []
+  preparedNotes = indexedNotes.map((note) => buildPreparedNote(note))
   indexedData = data && typeof data === 'object'
     ? {
       ...data,
@@ -23,19 +343,19 @@ export function initSearch(notes, data = null) {
 
   const options = {
     keys: [
-      { name: 'title', weight: 0.35 },
-      { name: 'content', weight: 0.4 },
-      { name: 'description', weight: 0.15 },
-      { name: 'tags', weight: 0.07 },
-      { name: 'category', weight: 0.03 }
+      { name: 'title', weight: 0.3 },
+      { name: 'description', weight: 0.18 },
+      { name: 'tags', weight: 0.16 },
+      { name: 'path', weight: 0.12 },
+      { name: 'filename', weight: 0.08 },
+      { name: 'category', weight: 0.06 },
+      { name: 'content', weight: 0.1 }
     ],
-    threshold: 0.1,        // 严格匹配，减少误判（原 0.3）
+    threshold: 0.35,
     includeScore: true,
-    includeMatches: true,
-    minMatchCharLength: 2, // 至少 2 个字符才算匹配
-    distance: 200,         // 缩短搜索距离（原 1000）
-    ignoreLocation: true,  // 全文搜索
-    findAllMatches: true
+    ignoreLocation: true,
+    minMatchCharLength: 2,
+    distance: 300
   }
 
   fuseInstance = new Fuse(indexedNotes, options)
@@ -70,90 +390,85 @@ export function searchNotes(query, mode = 'AND') {
     return []
   }
 
-  if (!query || query.trim() === '') {
+  const queryBundle = buildQueryBundle(query)
+
+  if (!queryBundle.rawQuery) {
     return []
   }
 
-  const trimmedQuery = query.trim()
+  if (queryBundle.terms.length === 0 && !isMeaningfulTerm(queryBundle.normalizedQuery)) {
+    return []
+  }
 
-  // 逗号分隔 → 多词；否则单词
-  const hasSeparator = trimmedQuery.includes(',') || trimmedQuery.includes('，')
-  const words = hasSeparator
-    ? trimmedQuery.split(/[,，]+/).map(w => w.trim()).filter(w => w.length > 0)
-    : [trimmedQuery]
+  const exactMatches = new Map()
+  preparedNotes.forEach((meta) => {
+    const exactEntry = collectExactMatches(meta, queryBundle)
+    if (exactEntry.score > 0 || exactEntry.phraseMatched) {
+      exactMatches.set(meta.note.path, exactEntry)
+    }
+  })
 
-  const wordsLower = words.map(w => w.toLowerCase())
+  const fuzzyMatches = collectFuzzyMatches(queryBundle)
+  const candidatePaths = new Set([
+    ...exactMatches.keys(),
+    ...fuzzyMatches.keys()
+  ])
 
   const results = []
-  indexedNotes.forEach(item => {
-    const titleLower = (item.title || '').toLowerCase()
-    const text = [
-      item.title || '',
-      item.content || '',
-      item.description || '',
-      (item.tags || []).join(' '),
-      item.category || ''
-    ].join(' ').toLowerCase()
 
-    // AND：每个词都必须出现；OR：至少一个词出现
-    const matched = mode === 'AND'
-      ? wordsLower.every(w => text.includes(w))
-      : wordsLower.some(w => text.includes(w))
+  candidatePaths.forEach((pathKey) => {
+    const note = indexedNotes.find((item) => item.path === pathKey)
 
-    if (!matched) return
+    if (!note) {
+      return
+    }
 
-    // 相关度：标题命中词越多、内容出现频率越高得分越高
-    const titleHits = wordsLower.filter(w => titleLower.includes(w)).length
-    const contentHits = wordsLower.reduce((acc, w) => {
-      const matches = (text.match(new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length
-      return acc + matches
-    }, 0)
-    const relevanceScore = titleHits * 2 + Math.min(contentHits * 0.05, 1)
+    const exactEntry = exactMatches.get(pathKey) || {
+      score: 0,
+      matchedTerms: new Set(),
+      phraseMatched: false
+    }
+    const fuzzyEntry = fuzzyMatches.get(pathKey) || {
+      bestScore: Number.POSITIVE_INFINITY,
+      matchedTerms: new Set(),
+      phraseMatched: false
+    }
+
+    if (!passesMatchMode(queryBundle.terms, exactEntry.matchedTerms, fuzzyEntry.matchedTerms, mode)) {
+      return
+    }
+
+    const relevanceScore =
+      exactEntry.score +
+      getFuzzyScore(fuzzyEntry) +
+      getCoverageBonus(queryBundle.terms, exactEntry.matchedTerms, fuzzyEntry.matchedTerms)
+
+    if (relevanceScore <= 0) {
+      return
+    }
+
+    const primaryTerm = pickPrimaryTerm(queryBundle, exactEntry.matchedTerms, fuzzyEntry.matchedTerms)
 
     results.push({
-      ...item,
+      ...note,
       relevanceScore,
-      matchedContent: extractMatchedContent(item, words[0])
+      matchedTerms: Array.from(new Set([
+        ...exactEntry.matchedTerms,
+        ...fuzzyEntry.matchedTerms
+      ])),
+      matchedContent: extractMatchedContent(note, primaryTerm || queryBundle.normalizedQuery)
     })
   })
 
-  return results.sort((a, b) => b.relevanceScore - a.relevanceScore).slice(0, 100)
-}
+  return results
+    .sort((a, b) => {
+      if (b.relevanceScore !== a.relevanceScore) {
+        return b.relevanceScore - a.relevanceScore
+      }
 
-// 计算相关性得分
-function calculateRelevanceScore(result, query) {
-  const item = result.item
-  const queryLower = query.toLowerCase()
-  let score = 1 - (result.score || 0) // Fuse.js的得分是越低越好，我们要反转
-  
-  // 标题完全匹配加分
-  if (item.title && item.title.toLowerCase().includes(queryLower)) {
-    score += 0.5
-  }
-  
-  // 标题开头匹配加分更多
-  if (item.title && item.title.toLowerCase().startsWith(queryLower)) {
-    score += 0.3
-  }
-  
-  // 内容中匹配次数加分
-  if (item.content) {
-    const contentLower = item.content.toLowerCase()
-    const matchCount = (contentLower.match(new RegExp(queryLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length
-    score += matchCount * 0.1
-  }
-  
-  // 标签精确匹配加分
-  if (item.tags && item.tags.some(tag => tag.toLowerCase().includes(queryLower))) {
-    score += 0.2
-  }
-  
-  // 文档长度调节（较短的文档如果匹配应该得分更高）
-  if (item.wordCount) {
-    score += Math.max(0, (1000 - item.wordCount) / 10000)
-  }
-  
-  return Math.max(0, score)
+      return getSortTimestamp(b) - getSortTimestamp(a)
+    })
+    .slice(0, 100)
 }
 
 // 提取匹配的内容片段
@@ -163,69 +478,68 @@ function extractMatchedContent(item, query) {
       maxLength: 160
     })
   }
-  
-  const queryLower = query.toLowerCase()
+
+  const queryBundle = buildQueryBundle(query)
+  const preferredTerms = [queryBundle.normalizedQuery, ...queryBundle.terms].filter(Boolean)
   const content = item.content
   const contentLower = content.toLowerCase()
-  
-  // 查找匹配位置
-  let matchIndex = contentLower.indexOf(queryLower)
-  if (matchIndex === -1) {
-    // 如果没有完全匹配，尝试查找第一个词
-    const firstWord = query.split(/\s+/)[0]
-    if (firstWord && firstWord.length > 1) {
-      matchIndex = contentLower.indexOf(firstWord.toLowerCase())
+
+  let matchIndex = -1
+  let matchedTerm = ''
+
+  preferredTerms.some((term) => {
+    const index = contentLower.indexOf(term)
+
+    if (index === -1) {
+      return false
     }
-  }
-  
+
+    matchIndex = index
+    matchedTerm = term
+    return true
+  })
+
   if (matchIndex !== -1) {
-    // 提取匹配周围的文本
     const start = Math.max(0, matchIndex - 100)
-    const end = Math.min(content.length, matchIndex + query.length + 100)
+    const end = Math.min(content.length, matchIndex + matchedTerm.length + 100)
     let excerpt = content.substring(start, end)
-    
-    // 如果不是从开头开始，添加省略号
-    if (start > 0) excerpt = '...' + excerpt
-    if (end < content.length) excerpt = excerpt + '...'
-    
+
+    if (start > 0) {
+      excerpt = '...' + excerpt
+    }
+
+    if (end < content.length) {
+      excerpt += '...'
+    }
+
     return cleanNoteText(excerpt)
   }
-  
-  // 如果没找到匹配，返回开头部分
+
   return getNoteExcerpt(item, {
     maxLength: 180
   })
 }
 
-// 高亮匹配文本
-export function highlightMatches(text, matches) {
-  if (!matches || matches.length === 0) {
-    return text
+export function highlightSearchText(text = '', query = '') {
+  const safeText = escapeHtml(text || '')
+
+  if (!safeText) {
+    return ''
   }
 
-  let result = text
-  const replacements = []
+  const { highlightTerms } = buildQueryBundle(query)
 
-  matches.forEach(match => {
-    match.indices.forEach(([start, end]) => {
-      replacements.push({
-        start,
-        end: end + 1,
-        text: text.substring(start, end + 1)
-      })
-    })
-  })
+  if (highlightTerms.length === 0) {
+    return safeText
+  }
 
-  // 按位置倒序排序，避免替换时位置偏移
-  replacements.sort((a, b) => b.start - a.start)
+  return highlightTerms.reduce((result, term) => {
+    if (!term) {
+      return result
+    }
 
-  replacements.forEach(({ start, end, text }) => {
-    result = result.substring(0, start) + 
-             `<mark>${text}</mark>` + 
-             result.substring(end)
-  })
-
-  return result
+    return result.replace(new RegExp(`(${escapeRegExp(term)})`, 'gi'), '<mark>$1</mark>')
+  }, safeText)
 }
 
 // 保存搜索历史
@@ -238,7 +552,7 @@ export function saveSearchHistory(query) {
 
   const nextHistory = normalizeSearchHistory([
     normalizedQuery,
-    ...getSearchHistory().filter(item => item !== normalizedQuery)
+    ...getSearchHistory().filter((item) => item !== normalizedQuery)
   ])
 
   localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(nextHistory))

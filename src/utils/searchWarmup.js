@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { loadSearchIndex } from '@/utils/indexData'
+import { ensureSearchReady } from '@/utils/search'
 
 export const searchWarmupStatus = ref('idle')
 
@@ -16,7 +16,7 @@ export function ensureSearchWarmup() {
 
   searchWarmupStatus.value = 'loading'
 
-  warmupPromise = loadSearchIndex()
+  warmupPromise = ensureSearchReady()
     .then(() => {
       searchWarmupStatus.value = 'ready'
     })

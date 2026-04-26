@@ -537,4 +537,17 @@ export const historyNotifications = [
       },
     ],
   },
+  {
+    id: 'history-2026-04-25',
+    date: '2026-04-25',
+    items: [
+      {
+        category: '内容上新',
+        time: '16:55',
+        title: '4 月 25 日第三方登录专题整理归档',
+        summary: '归档当天围绕第三方登录专题迁移与 frontmatter 补全的一组内容整理，方便后续继续在通知中心回看。',
+        content: '第一点：16:43｜第三方登录系列迁移重组：精心整理版替换旧目录｜将精心整理的"第三方登录"文件夹迁移到 public/notes/uni-app/第三方登录，结构更完整，新增 PC微应用、排障记录、改造过程等内容；同步删除旧的钉钉、企业微信、第三方登录对比三个目录，重新生成索引，总笔记数 322 篇。；第二点：16:55｜第三方登录系列 19 篇文章补全 frontmatter｜为 public/notes/uni-app/第三方登录 目录下所有缺少 frontmatter 的文章补全 title、date、category、tags、description 字段，共处理 19 篇，覆盖概念速查、钉钉 H5/PC/小程序、企业微信 H5/PC/小程序及对比笔记全部子目录。',
+      },
+    ],
+  },
 ];

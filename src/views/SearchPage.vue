@@ -12,12 +12,12 @@
             ref='searchInput'
             v-model='searchQuery'
             type='text'
-            placeholder='搜索关键词，多个词用逗号分隔…'
+            placeholder='搜索关键词，空格或逗号分隔多词…'
             @input='handleSearch'
             @keyup.enter='handleSearch(true)'
           />
 
-          <!-- 多词匹配模式切换（有逗号时才显示） -->
+          <!-- 多词匹配模式切换（分词后超过 1 个词时显示） -->
           <div class='match-mode' v-if='hasMultipleWords'>
             <button
               class='mode-btn'
@@ -241,7 +241,6 @@ import { useRoute, useRouter } from 'vue-router'
 import AppLayout from '@/components/AppLayout.vue'
 import {
   buildRootTopics,
-  escapeHtml,
   formatWordCount,
   getAttachmentLabel,
   getNoteDateLabel,
@@ -253,7 +252,9 @@ import {
 import {
   clearSearchHistory,
   ensureSearchReady,
+  getSearchTerms,
   getSearchHistory,
+  highlightSearchText,
   saveSearchHistory,
   searchNotes
 } from '@/utils/search'
@@ -284,10 +285,9 @@ const sortOptions = [
 
 const hasQuery = computed(() => searchQuery.value.trim().length > 0)
 
-// 是否有多个词（逗号分隔）
+// 是否有多个词（空格或逗号分词后）
 const hasMultipleWords = computed(() => {
-  const q = searchQuery.value
-  return q.includes(',') || q.includes('，')
+  return getSearchTerms(searchQuery.value).length > 1
 })
 
 const allNotes = computed(() =>
@@ -349,12 +349,7 @@ const pageNumbers = computed(() => {
   return pages
 })
 
-const highlight = (text) => {
-  const safe = escapeHtml(text || '')
-  if (!searchQuery.value || !safe) return safe
-  const escaped = escapeHtml(searchQuery.value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  return safe.replace(new RegExp(`(${escaped})`, 'gi'), '<mark>$1</mark>')
-}
+const highlight = (text) => highlightSearchText(text, searchQuery.value)
 
 const runSearch = () => {
   if (!hasQuery.value || allNotes.value.length === 0) {

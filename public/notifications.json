@@ -1,7 +1,45 @@
 {
-  "generatedAt": "2026-04-25T14:41:01.468Z",
-  "total": 159,
+  "generatedAt": "2026-04-26T12:17:07.180Z",
+  "total": 161,
   "notifications": [
+    {
+      "id": "daily-2026-04-26-1",
+      "title": "新增 CC Switch 完整使用指南（v3.14.1）",
+      "content": "第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、\"本地代理\"在 v3.14.0 已统一改名为\"Local Routing\"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。",
+      "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记：纠正支持工具数量（当前为 6 款含 Hermes Agent）、界面结构、功能命名（Local Routing 非 Local Proxy）等多处错误，内容与 v3.14.1 实际版本完全对齐。",
+      "date": "2026-04-26T20:10:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-26-2",
+      "title": "站内搜索改为碎片记忆友好的混合检索",
+      "content": "第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例；第五点：当前终端环境里的 Node 进程初始化异常，导致本次无法实际跑通 Vitest 与通知生成脚本，需在 Node 环境恢复后补一次验证。",
+      "summary": "搜索从纯 includes 过滤升级为“多字段精确命中 + Fuse 模糊兜底”混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热，更适合内容增多后的零星记忆回找。",
+      "date": "2026-04-26T19:34:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-b8fda0544c981e3125cf3f41affd32ff236cd91d",
+      "title": "refactor(数据加载): 集中管理笔记索引加载逻辑并优化性能",
+      "content": "将分散在各处的笔记索引加载逻辑统一封装到 indexData.js 模块\n添加搜索索引预热机制，根据网络条件智能延迟加载\n实现搜索索引加载状态提示和完成通知\n优化路由组件按需加载\n生成轻量级搜索专用索引文件减少传输体积",
+      "summary": "将分散在各处的笔记索引加载逻辑统一封装到 indexData.js 模块 添加搜索索引预热机制，根据网络条件智能延迟加载 实现搜索索引加载状态提示和完成通知 优化路由组件按需加载 生成轻量级搜索专用索引文件减少传输体积",
+      "date": "2026-04-25T22:41:21+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "b8fda05",
+      "fullHash": "b8fda0544c981e3125cf3f41affd32ff236cd91d"
+    },
     {
       "id": "git-79af6ff9ba042623b7b7aa29e10f1fc32195d8ab",
       "title": "第三方登录: 迁移精心整理版并补全全部 frontmatter",
@@ -15,27 +53,16 @@
       "fullHash": "79af6ff9ba042623b7b7aa29e10f1fc32195d8ab"
     },
     {
-      "id": "daily-2026-04-25-2",
-      "title": "第三方登录系列 19 篇文章补全 frontmatter",
-      "content": "第一点：补全 00-概念速查 1 篇；第二点：补全 01-钉钉/01-H5微应用 5 篇（从0到1指南、uni-app适配模板、双链路梳理研究、核验结论研究、JSAPI对接清单）；第三点：补全 01-钉钉/02-PC微应用 2 篇（四链路实现指南、账号绑定方案）；第四点：补全 01-钉钉/03-小程序/02-改造过程 3 篇（总索引、阶段1步骤记录、CE1000.01错误记录）；第五点：补全 02-企业微信/00-通用知识 2 篇（从0到1、ID速查）；第六点：补全 02-企业微信/01-H5微应用 4 篇（从0到1指南、JSSDK接入、uni-app适配、扫一扫对接清单）；第七点：补全 02-企业微信/01-H5微应用/02-排障记录 2 篇；第八点：补全 02-企业微信/02-PC扫码登录 2 篇；第九点：补全 02-企业微信/03-小程序 1 篇；第十点：补全 99-对比笔记 1 篇；第十一点：重新生成 notes-index.json，总笔记数 322 篇。",
-      "summary": "为 public/notes/uni-app/第三方登录 目录下所有缺少 frontmatter 的文章补全 title、date、category、tags、description 字段，共处理 19 篇，覆盖概念速查、钉钉 H5/PC/小程序、企业微信 H5/PC/小程序及对比笔记全部子目录。",
+      "id": "history-2026-04-25-1",
+      "title": "4 月 25 日第三方登录专题整理归档",
+      "content": "第一点：16:43｜第三方登录系列迁移重组：精心整理版替换旧目录｜将精心整理的\"第三方登录\"文件夹迁移到 public/notes/uni-app/第三方登录，结构更完整，新增 PC微应用、排障记录、改造过程等内容；同步删除旧的钉钉、企业微信、第三方登录对比三个目录，重新生成索引，总笔记数 322 篇。；第二点：16:55｜第三方登录系列 19 篇文章补全 frontmatter｜为 public/notes/uni-app/第三方登录 目录下所有缺少 frontmatter 的文章补全 title、date、category、tags、description 字段，共处理 19 篇，覆盖概念速查、钉钉 H5/PC/小程序、企业微信 H5/PC/小程序及对比笔记全部子目录。",
+      "summary": "归档当天围绕第三方登录专题迁移与 frontmatter 补全的一组内容整理，方便后续继续在通知中心回看。",
       "date": "2026-04-25T16:55:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
-      "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
-    },
-    {
-      "id": "daily-2026-04-25-1",
-      "title": "第三方登录系列迁移重组：精心整理版替换旧目录",
-      "content": "第一点：将根目录 第三方登录/ 文件夹完整迁移到 public/notes/uni-app/第三方登录/，保留原有四级目录结构（00-概念速查、01-钉钉、02-企业微信、99-对比笔记）；第二点：新版目录比旧版更完整，钉钉新增 PC微应用（3篇）和小程序改造过程（步骤记录+错误记录），企业微信新增 PC扫码登录（2篇）和 H5排障记录（2篇）；第三点：删除旧的 public/notes/uni-app/钉钉、public/notes/uni-app/企业微信、public/notes/uni-app/第三方登录对比 三个目录，共清理约 20 篇旧文章；第四点：重新生成 notes-index.json，总笔记数 322 篇。",
-      "summary": "将精心整理的\"第三方登录\"文件夹迁移到 public/notes/uni-app/第三方登录，结构更完整，新增 PC微应用、排障记录、改造过程等内容；同步删除旧的钉钉、企业微信、第三方登录对比三个目录，重新生成索引，总笔记数 322 篇。",
-      "date": "2026-04-25T16:43:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-25",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -2109,6 +2136,17 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-04-25",
+      "items": [
+        {
+          "title": "4 月 25 日第三方登录专题整理归档",
+          "summary": "归档当天围绕第三方登录专题迁移与 frontmatter 补全的一组内容整理，方便后续继续在通知中心回看。",
+          "time": "16:55",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
     {
       "date": "2026-04-23",
       "items": [

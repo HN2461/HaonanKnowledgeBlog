@@ -2,21 +2,21 @@
 // 主人说"汇总消息"时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-04-25',
+  date: '2026-04-26',
   items: [
     {
       category: '内容上新',
-      time: '16:43',
-      title: '第三方登录系列迁移重组：精心整理版替换旧目录',
-      summary: '将精心整理的"第三方登录"文件夹迁移到 public/notes/uni-app/第三方登录，结构更完整，新增 PC微应用、排障记录、改造过程等内容；同步删除旧的钉钉、企业微信、第三方登录对比三个目录，重新生成索引，总笔记数 322 篇。',
-      content: '第一点：将根目录 第三方登录/ 文件夹完整迁移到 public/notes/uni-app/第三方登录/，保留原有四级目录结构（00-概念速查、01-钉钉、02-企业微信、99-对比笔记）；第二点：新版目录比旧版更完整，钉钉新增 PC微应用（3篇）和小程序改造过程（步骤记录+错误记录），企业微信新增 PC扫码登录（2篇）和 H5排障记录（2篇）；第三点：删除旧的 public/notes/uni-app/钉钉、public/notes/uni-app/企业微信、public/notes/uni-app/第三方登录对比 三个目录，共清理约 20 篇旧文章；第四点：重新生成 notes-index.json，总笔记数 322 篇。',
+      time: '20:10',
+      title: '新增 CC Switch 完整使用指南（v3.14.1）',
+      summary: '基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记：纠正支持工具数量（当前为 6 款含 Hermes Agent）、界面结构、功能命名（Local Routing 非 Local Proxy）等多处错误，内容与 v3.14.1 实际版本完全对齐。',
+      content: '第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、"本地代理"在 v3.14.0 已统一改名为"Local Routing"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。',
     },
     {
-      category: '内容上新',
-      time: '16:55',
-      title: '第三方登录系列 19 篇文章补全 frontmatter',
-      summary: '为 public/notes/uni-app/第三方登录 目录下所有缺少 frontmatter 的文章补全 title、date、category、tags、description 字段，共处理 19 篇，覆盖概念速查、钉钉 H5/PC/小程序、企业微信 H5/PC/小程序及对比笔记全部子目录。',
-      content: '第一点：补全 00-概念速查 1 篇；第二点：补全 01-钉钉/01-H5微应用 5 篇（从0到1指南、uni-app适配模板、双链路梳理研究、核验结论研究、JSAPI对接清单）；第三点：补全 01-钉钉/02-PC微应用 2 篇（四链路实现指南、账号绑定方案）；第四点：补全 01-钉钉/03-小程序/02-改造过程 3 篇（总索引、阶段1步骤记录、CE1000.01错误记录）；第五点：补全 02-企业微信/00-通用知识 2 篇（从0到1、ID速查）；第六点：补全 02-企业微信/01-H5微应用 4 篇（从0到1指南、JSSDK接入、uni-app适配、扫一扫对接清单）；第七点：补全 02-企业微信/01-H5微应用/02-排障记录 2 篇；第八点：补全 02-企业微信/02-PC扫码登录 2 篇；第九点：补全 02-企业微信/03-小程序 1 篇；第十点：补全 99-对比笔记 1 篇；第十一点：重新生成 notes-index.json，总笔记数 322 篇。',
+      category: '功能更新',
+      time: '19:34',
+      title: '站内搜索改为碎片记忆友好的混合检索',
+      summary: '搜索从纯 includes 过滤升级为“多字段精确命中 + Fuse 模糊兜底”混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热，更适合内容增多后的零星记忆回找。',
+      content: '第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例；第五点：当前终端环境里的 Node 进程初始化异常，导致本次无法实际跑通 Vitest 与通知生成脚本，需在 Node 环境恢复后补一次验证。',
     },
   ],
 }

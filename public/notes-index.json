@@ -5943,6 +5943,31 @@
         },
         {
           "type": "file",
+          "title": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
+          "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+          "path": "AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+          "date": "2026-04-26T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "AI CLI",
+            "配置管理",
+            "中转服务商",
+            "Provider",
+            "MCP"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "15KB",
+          "lastModified": "2026-04-26T12:14:21.817Z",
+          "wordCount": 8874
+        },
+        {
+          "type": "file",
           "title": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
           "frontmatterTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
           "fileTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
@@ -6963,6 +6988,38 @@
           "size": "3KB",
           "lastModified": "2026-03-08T13:58:25.864Z",
           "wordCount": 2555
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "CC Switch",
+      "path": "AI工具/CC Switch",
+      "notes": [
+        {
+          "type": "file",
+          "title": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
+          "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+          "path": "AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+          "date": "2026-04-26T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "AI CLI",
+            "配置管理",
+            "中转服务商",
+            "Provider",
+            "MCP"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "15KB",
+          "lastModified": "2026-04-26T12:14:21.817Z",
+          "wordCount": 8874
         }
       ],
       "children": []
@@ -17472,6 +17529,31 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "CC Switch 快速上手与核心概念（v3.14.1）",
+      "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+      "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
+      "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+      "path": "AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+      "date": "2026-04-26T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CC Switch",
+        "AI CLI",
+        "配置管理",
+        "中转服务商",
+        "Provider",
+        "MCP"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+      "size": "15KB",
+      "lastModified": "2026-04-26T12:14:21.817Z",
+      "wordCount": 8874
+    },
+    {
+      "type": "file",
       "title": "README",
       "frontmatterTitle": "README",
       "fileTitle": "README",
@@ -26825,6 +26907,38 @@
         },
         {
           "type": "directory",
+          "name": "CC Switch",
+          "path": "AI工具/CC Switch",
+          "children": [
+            {
+              "type": "file",
+              "title": "CC Switch 快速上手与核心概念（v3.14.1）",
+              "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+              "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
+              "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+              "path": "AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
+              "date": "2026-04-26T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "CC Switch",
+                "AI CLI",
+                "配置管理",
+                "中转服务商",
+                "Provider",
+                "MCP"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+              "size": "15KB",
+              "lastModified": "2026-04-26T12:14:21.817Z",
+              "wordCount": 8874
+            }
+          ]
+        },
+        {
+          "type": "directory",
           "name": "Claude Code",
           "path": "AI工具/Claude Code",
           "children": [
@@ -32271,7 +32385,7 @@
       ]
     }
   ],
-  "totalNotes": 322,
-  "totalCategories": 76,
-  "lastUpdated": "2026-04-25T14:40:59.545Z"
+  "totalNotes": 323,
+  "totalCategories": 77,
+  "lastUpdated": "2026-04-26T12:17:06.493Z"
 }

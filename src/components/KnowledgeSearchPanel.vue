@@ -180,7 +180,6 @@
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   buildRootTopics,
-  escapeHtml,
   formatWordCount,
   getAttachmentLabel,
   getNoteDateLabel,
@@ -193,6 +192,7 @@ import {
   clearSearchHistory,
   ensureSearchReady,
   getSearchHistory,
+  highlightSearchText,
   saveSearchHistory,
   searchNotes
 } from '@/utils/search'
@@ -244,7 +244,7 @@ const panelDescription = computed(() => {
 
 const placeholder = computed(() => {
   return props.variant === 'overlay'
-    ? '搜索关键词，逗号分隔多词'
+    ? '搜索关键词，空格或逗号分隔多词'
     : '搜索报错、命令、工具名、概念或专题'
 })
 
@@ -336,18 +336,7 @@ const clearHistory = () => {
   searchHistory.value = []
 }
 
-const highlightText = (text) => {
-  const safeText = escapeHtml(text)
-
-  if (!searchQuery.value || !safeText) {
-    return safeText
-  }
-
-  const escapedQuery = escapeHtml(searchQuery.value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-  const regex = new RegExp(`(${escapedQuery})`, 'gi')
-
-  return safeText.replace(regex, '<mark>$1</mark>')
-}
+const highlightText = (text) => highlightSearchText(text, searchQuery.value)
 
 const handleResultSelect = () => {
   commitSearchHistory()
