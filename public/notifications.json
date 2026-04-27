@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-04-26T12:17:07.180Z",
-  "total": 161,
+  "generatedAt": "2026-04-27T06:19:00.938Z",
+  "total": 165,
   "notifications": [
     {
-      "id": "daily-2026-04-26-1",
-      "title": "新增 CC Switch 完整使用指南（v3.14.1）",
-      "content": "第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、\"本地代理\"在 v3.14.0 已统一改名为\"Local Routing\"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。",
-      "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记：纠正支持工具数量（当前为 6 款含 Hermes Agent）、界面结构、功能命名（Local Routing 非 Local Proxy）等多处错误，内容与 v3.14.1 实际版本完全对齐。",
-      "date": "2026-04-26T20:10:00+08:00",
+      "id": "daily-2026-04-27-3",
+      "title": "中转站、CC Switch 与开发计费规则说明补全（2026-04核对）",
+      "content": "第一点：在 public/notes/AI工具/AI开发基础/ 新增第二篇《中转站、官转与计费规则到底怎么回事》，把官方计费层、中转售卖层、客户端耗费层拆开解释，并给出买前买后 10 个必问问题；第二点：按 OpenAI、Anthropic、Gemini 最新官方定价页和缓存文档核对输入、输出、缓存、长上下文、Batch、搜索等关键规则，避免把中转站报价和上游成本混为一谈；第三点：在 public/notes/AI工具/CC Switch/ 新增第二篇《CC Switch 接入中转站与计费排查实战》，把卖家手册翻译为 Base URL、API Key、模型 ID、余额与限速等实际配置项；第四点：补充 OpenRouter credits 与 BYOK 费用、CC Switch 最新 Releases 中的余额可视化、用量追踪、模型自动发现等开发相关信息；第五点：同步更新 AI开发基础 与 CC Switch 的目录页，方便后续检索与串联阅读。",
+      "summary": "新增两篇面向开发者的说明文档，一篇系统解释中转站、官转、余额、倍率、缓存、长上下文和买前排查问题，一篇落到 CC Switch 的 Provider 配置、模型映射、余额与用量排查，统一按 2026-04-27 官方资料重新核对。",
+      "date": "2026-04-27T14:14:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
@@ -16,14 +16,69 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-26-2",
-      "title": "站内搜索改为碎片记忆友好的混合检索",
-      "content": "第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例；第五点：当前终端环境里的 Node 进程初始化异常，导致本次无法实际跑通 Vitest 与通知生成脚本，需在 Node 环境恢复后补一次验证。",
-      "summary": "搜索从纯 includes 过滤升级为“多字段精确命中 + Fuse 模糊兜底”混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热，更适合内容增多后的零星记忆回找。",
-      "date": "2026-04-26T19:34:00+08:00",
-      "tag": "功能更新",
-      "category": "功能更新",
+      "id": "daily-2026-04-27-2",
+      "title": "AI开发基础：Token、输入输出与缓存计费全解（2026-04最新版）",
+      "content": "第一点：在 public/notes/AI工具/ 下新建《AI开发基础》目录，新增第一篇《Token、输入输出与缓存——AI开发计费全解》；第二点：价格表更新为 2026-04 最新数据，包含 GPT-5.5/5.4/5.4mini、GPT-4.1 系列（1M上下文）、Claude Opus/Sonnet/Haiku 4.x、Gemini 2.5 Pro/Flash 全系列；第三点：更新 Prompt Caching 对比，OpenAI 缓存折扣已升至 90%（原为50%），Claude 新增 1小时 TTL 选项（写入成本+100%，读取仍为10%）；第四点：补充 Claude 4.6 的 1M 上下文于 2026-03-13 正式 GA 的信息；第五点：新增 Claude vs OpenAI 缓存设计差异对比表（手动标记 vs 自动检测）；第六点：重新生成 notes-index.json 索引，总笔记数 325 篇。",
+      "summary": "新增并更新 AI 开发必备基础知识文档，基于 2026-04 最新定价数据，覆盖 OpenAI GPT-5 系列、Claude 4.6、Gemini 2.5 最新价格，以及 Claude 双 TTL 缓存机制、OpenAI 缓存升至 90% 折扣等最新变化。",
+      "date": "2026-04-27T14:04:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
       "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-27-1",
+      "title": "Git 命令速查与常见问题笔记",
+      "content": "第一点：在 public/notes/常用缺易忘/技术/ 下新增《Git命令速查与常见问题.md》，内容包含日常基础操作（status/add/commit/pull/push）、分支操作、撤销回退、远程仓库管理、stash 暂存、SSH Key 配置；第二点：专门整理国内连不上 GitHub 443 端口的排查步骤，涵盖清残留代理、ghproxy 镜像、SSH 协议切换、梯子代理配置四种方案；第三点：附 VSCode 插件按钮与命令行对照表，方便从点按钮过渡到命令行操作；第四点：重新生成 notes-index.json 索引，总笔记数 324 篇。",
+      "summary": "新增 Git 命令行速查手册，覆盖日常操作、分支管理、撤销回退、VSCode 按钮对照表，以及国内连不上 GitHub 443 端口的多种解决方案。",
+      "date": "2026-04-27T11:41:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-5f76dd9dc2efb6e6f4ebf45bd456ca0b65796495",
+      "title": "内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "content": "提交说明：内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "summary": "内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "date": "2026-04-26T20:17:26+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "5f76dd9",
+      "fullHash": "5f76dd9dc2efb6e6f4ebf45bd456ca0b65796495"
+    },
+    {
+      "id": "history-2026-04-26-1",
+      "title": "新增 CC Switch 完整使用指南（v3.14.1）",
+      "content": "第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、\"本地代理\"在 v3.14.0 已统一改名为\"Local Routing\"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。",
+      "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记，内容与 v3.14.1 实际版本完全对齐。",
+      "date": "2026-04-26T20:10:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-26",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-26-2",
+      "title": "站内搜索改为碎片记忆友好的混合检索",
+      "content": "第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例。",
+      "summary": "搜索从纯 includes 过滤升级为\"多字段精确命中 + Fuse 模糊兜底\"混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热。",
+      "date": "2026-04-26T19:34:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-26",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -2136,6 +2191,23 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-04-26",
+      "items": [
+        {
+          "title": "新增 CC Switch 完整使用指南（v3.14.1）",
+          "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记，内容与 v3.14.1 实际版本完全对齐。",
+          "time": "20:10",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "站内搜索改为碎片记忆友好的混合检索",
+          "summary": "搜索从纯 includes 过滤升级为\"多字段精确命中 + Fuse 模糊兜底\"混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热。",
+          "time": "19:34",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
     {
       "date": "2026-04-25",
       "items": [
