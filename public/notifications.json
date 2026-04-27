@@ -1,7 +1,70 @@
 {
-  "generatedAt": "2026-04-27T06:19:00.938Z",
-  "total": 165,
+  "generatedAt": "2026-04-27T08:02:43.009Z",
+  "total": 170,
   "notifications": [
+    {
+      "id": "daily-2026-04-27-6",
+      "title": "第三方登录知识库完整迁移（钉钉 + 企业微信 37 篇）",
+      "content": "第一点：删除旧版浅层文章《第一篇_PC端第三方扫码登录全攻略_钉钉微信企业微信.md》；第二点：从根目录 第三方登录/ 完整复制 37 个文件到 public/notes/项目复用技术/第三方登录对接/，保留原有目录结构（00-概念速查、01-钉钉、02-企业微信、99-对比笔记）；第三点：钉钉部分包含通用知识（ID 速查）、H5 微应用（5 篇）、PC 微应用（3 篇）、小程序（5 篇 + 改造记录）；第四点：企业微信部分包含通用知识（2 篇）、H5 微应用（4 篇知识文档 + 2 篇排障记录）、PC 扫码登录（2 篇）、小程序（1 篇）；第五点：重新生成 notes-index.json，总笔记数从 328 篇增至 364 篇。",
+      "summary": "将原始第三方登录知识库（37 篇文档）完整迁移到 public/notes/项目复用技术/第三方登录对接/，覆盖钉钉与企业微信的 H5 微应用、PC 扫码登录、小程序全场景，删除旧的浅层概览文章。",
+      "date": "2026-04-27T15:59:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-27-5",
+      "title": "修订 Codex 与 PowerShell 冲突排查文档中的泛化结论",
+      "content": "第一点：将《Codex 命令调用失败与 PowerShell 版本冲突排查修复实录》改写为“真实案例 + 谨慎结论”的表述，不再直接断言 Codex 必须依赖 PowerShell 7；第二点：把 powershell.exe 与 pwsh.exe 的调用差异单独说明，强调是否出问题取决于工具实际调用链，而不是简单归因于系统里存在 5.1；第三点：删除把 System.Management.Automation.dll 是否存在当成 5.1/7 或安装是否损坏的通用判断标准；第四点：删除“手工复制核心 DLL 回 $PSHOME”这类高风险操作，改为优先官方修复/重装与显式指定 pwsh.exe；第五点：重新生成 notes-index.json 与 search-index.json，当前总笔记数 328 篇。",
+      "summary": "核对官方资料与本机复现结果后，修正 Codex 第十篇里把个案经验写成通用结论的问题，删掉不可靠的 DLL 诊断与手工复制核心文件建议。",
+      "date": "2026-04-27T15:45:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-27-4",
+      "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+      "content": "第一点：在 public/notes/AI工具/Codex/ 新增第十篇《Codex 命令调用失败与 PowerShell 版本冲突排查修复实录》，基于真实故障复盘整理；第二点：覆盖三大核心诱因——PowerShell 5.1/7 双版本冲突、CC Switch 强制覆盖 MCP 配置、旧版内核文件异常；第三点：提供四步修复方案：固定默认使用 PowerShell 7、重新部署 MCP、修复 5.1 系统文件（sfc /scannow）、Codex/Cursor 编辑器专项适配；第四点：附 PowerShell 版本速查对比表，以及 Test-Path 返回 False 的原因解析；第五点：更新 Codex 目录页，新增\"故障排查专篇\"分组；第六点：重新生成 notes-index.json 索引。",
+      "summary": "新增 Codex 第十篇故障排查实录，记录 PowerShell 5.1/7 双版本冲突导致命令调用失败、CC Switch 覆盖 MCP 配置的完整排查与修复流程，附长期规避建议。",
+      "date": "2026-04-27T14:48:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-e82e273eb02b761f56039e82bada6e60fe388329",
+      "title": "git提交命令知识文档",
+      "content": "提交说明：git提交命令知识文档",
+      "summary": "git提交命令知识文档",
+      "date": "2026-04-27T14:40:47+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "e82e273",
+      "fullHash": "e82e273eb02b761f56039e82bada6e60fe388329"
+    },
+    {
+      "id": "git-985a6548eaca0554dde9622eecf4504421c2ad96",
+      "title": "AI工具: 补充中转站与CC Switch计费说明",
+      "content": "提交说明：AI工具: 补充中转站与CC Switch计费说明",
+      "summary": "AI工具: 补充中转站与CC Switch计费说明",
+      "date": "2026-04-27T14:37:59+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "985a654",
+      "fullHash": "985a6548eaca0554dde9622eecf4504421c2ad96"
+    },
     {
       "id": "daily-2026-04-27-3",
       "title": "中转站、CC Switch 与开发计费规则说明补全（2026-04核对）",
