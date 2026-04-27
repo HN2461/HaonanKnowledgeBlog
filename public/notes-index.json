@@ -906,24 +906,28 @@
         },
         {
           "type": "file",
-          "title": "Router",
-          "frontmatterTitle": "Router",
+          "title": "Vue Router 超详细总笔记",
+          "frontmatterTitle": "Vue Router 超详细总笔记",
           "fileTitle": "Router",
           "filename": "Router.md",
           "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-27T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "常用缺易忘",
-            "vue辅助"
+            "Vue Router",
+            "Vue2",
+            "Vue3",
+            "路由守卫",
+            "动态路由",
+            "传参"
           ],
-          "category": "常用缺易忘",
+          "category": "Vue",
           "attachments": [],
-          "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-          "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.527Z",
-          "wordCount": 17333
+          "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+          "size": "36KB",
+          "lastModified": "2026-04-27T10:23:25.714Z",
+          "wordCount": 26380
         },
         {
           "type": "file",
@@ -1758,24 +1762,28 @@
         },
         {
           "type": "file",
-          "title": "Router",
-          "frontmatterTitle": "Router",
+          "title": "Vue Router 超详细总笔记",
+          "frontmatterTitle": "Vue Router 超详细总笔记",
           "fileTitle": "Router",
           "filename": "Router.md",
           "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-27T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "常用缺易忘",
-            "vue辅助"
+            "Vue Router",
+            "Vue2",
+            "Vue3",
+            "路由守卫",
+            "动态路由",
+            "传参"
           ],
-          "category": "常用缺易忘",
+          "category": "Vue",
           "attachments": [],
-          "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-          "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.527Z",
-          "wordCount": 17333
+          "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+          "size": "36KB",
+          "lastModified": "2026-04-27T10:23:25.714Z",
+          "wordCount": 26380
         },
         {
           "type": "file",
@@ -3025,24 +3033,28 @@
         },
         {
           "type": "file",
-          "title": "Router",
-          "frontmatterTitle": "Router",
+          "title": "Vue Router 超详细总笔记",
+          "frontmatterTitle": "Vue Router 超详细总笔记",
           "fileTitle": "Router",
           "filename": "Router.md",
           "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-27T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "常用缺易忘",
-            "vue辅助"
+            "Vue Router",
+            "Vue2",
+            "Vue3",
+            "路由守卫",
+            "动态路由",
+            "传参"
           ],
-          "category": "常用缺易忘",
+          "category": "Vue",
           "attachments": [],
-          "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-          "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.527Z",
-          "wordCount": 17333
+          "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+          "size": "36KB",
+          "lastModified": "2026-04-27T10:23:25.714Z",
+          "wordCount": 26380
         },
         {
           "type": "file",
@@ -3326,24 +3338,28 @@
         },
         {
           "type": "file",
-          "title": "Router",
-          "frontmatterTitle": "Router",
+          "title": "Vue Router 超详细总笔记",
+          "frontmatterTitle": "Vue Router 超详细总笔记",
           "fileTitle": "Router",
           "filename": "Router.md",
           "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-27T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "常用缺易忘",
-            "vue辅助"
+            "Vue Router",
+            "Vue2",
+            "Vue3",
+            "路由守卫",
+            "动态路由",
+            "传参"
           ],
-          "category": "常用缺易忘",
+          "category": "Vue",
           "attachments": [],
-          "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-          "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.527Z",
-          "wordCount": 17333
+          "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+          "size": "36KB",
+          "lastModified": "2026-04-27T10:23:25.714Z",
+          "wordCount": 26380
         },
         {
           "type": "file",
@@ -15721,7 +15737,7 @@
           "attachments": [],
           "description": "点击对应tab，跳转到对应的页面\r\n\r\n<!-- 这是一张图片，ocr 内容为： -->\r\n![](https://cdn.nlark.com/yuque/0/2024/png/27167233/1734612084083-43e5ebf0-158d-4667-aa50-fba3eedf48c4.png)\r\n\r\n\r\n vu3要安装vue-router4，参考官网：https://router.vu",
           "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.515Z",
+          "lastModified": "2026-04-27T10:05:19.918Z",
           "wordCount": 19140
         },
         {
@@ -17233,7 +17249,7 @@
           "attachments": [],
           "description": "点击对应tab，跳转到对应的页面\r\n\r\n<!-- 这是一张图片，ocr 内容为： -->\r\n![](https://cdn.nlark.com/yuque/0/2024/png/27167233/1734612084083-43e5ebf0-158d-4667-aa50-fba3eedf48c4.png)\r\n\r\n\r\n vu3要安装vue-router4，参考官网：https://router.vu",
           "size": "24KB",
-          "lastModified": "2026-03-30T01:08:20.515Z",
+          "lastModified": "2026-04-27T10:05:19.918Z",
           "wordCount": 19140
         },
         {
@@ -17413,6 +17429,27 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "《5、路由》",
+      "frontmatterTitle": "《5、路由》",
+      "fileTitle": "《5、路由》",
+      "filename": "《5、路由》.md",
+      "path": "Vue/vue3/《5、路由》.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "Vue",
+        "vue3"
+      ],
+      "category": "Vue",
+      "attachments": [],
+      "description": "点击对应tab，跳转到对应的页面\r\n\r\n<!-- 这是一张图片，ocr 内容为： -->\r\n![](https://cdn.nlark.com/yuque/0/2024/png/27167233/1734612084083-43e5ebf0-158d-4667-aa50-fba3eedf48c4.png)\r\n\r\n\r\n vu3要安装vue-router4，参考官网：https://router.vu",
+      "size": "24KB",
+      "lastModified": "2026-04-27T10:05:19.918Z",
+      "wordCount": 19140
+    },
+    {
+      "type": "file",
       "title": "第一篇：Token、输入输出与缓存——AI开发计费全解（2026-04）",
       "frontmatterTitle": "第一篇：Token、输入输出与缓存——AI开发计费全解（2026-04）",
       "fileTitle": "第一篇_Token输入输出与缓存_AI开发计费全解_2026-04",
@@ -17534,6 +17571,31 @@
       "size": "7KB",
       "lastModified": "2026-04-27T03:41:13.470Z",
       "wordCount": 4483
+    },
+    {
+      "type": "file",
+      "title": "Vue Router 超详细总笔记",
+      "frontmatterTitle": "Vue Router 超详细总笔记",
+      "fileTitle": "Router",
+      "filename": "Router.md",
+      "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
+      "date": "2026-04-27T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Vue Router",
+        "Vue2",
+        "Vue3",
+        "路由守卫",
+        "动态路由",
+        "传参"
+      ],
+      "category": "Vue",
+      "attachments": [],
+      "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+      "size": "36KB",
+      "lastModified": "2026-04-27T10:23:25.714Z",
+      "wordCount": 26380
     },
     {
       "type": "file",
@@ -20742,27 +20804,6 @@
     },
     {
       "type": "file",
-      "title": "Router",
-      "frontmatterTitle": "Router",
-      "fileTitle": "Router",
-      "filename": "Router.md",
-      "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "常用缺易忘",
-        "vue辅助"
-      ],
-      "category": "常用缺易忘",
-      "attachments": [],
-      "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-      "size": "24KB",
-      "lastModified": "2026-03-30T01:08:20.527Z",
-      "wordCount": 17333
-    },
-    {
-      "type": "file",
       "title": "Vue 2 组件五大核心配置项",
       "frontmatterTitle": "Vue 2 组件五大核心配置项",
       "fileTitle": "Vue 2 组件五大核心配置项",
@@ -20949,27 +20990,6 @@
       "size": "16KB",
       "lastModified": "2026-03-30T01:08:20.516Z",
       "wordCount": 9195
-    },
-    {
-      "type": "file",
-      "title": "《5、路由》",
-      "frontmatterTitle": "《5、路由》",
-      "fileTitle": "《5、路由》",
-      "filename": "《5、路由》.md",
-      "path": "Vue/vue3/《5、路由》.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "Vue",
-        "vue3"
-      ],
-      "category": "Vue",
-      "attachments": [],
-      "description": "点击对应tab，跳转到对应的页面\r\n\r\n<!-- 这是一张图片，ocr 内容为： -->\r\n![](https://cdn.nlark.com/yuque/0/2024/png/27167233/1734612084083-43e5ebf0-158d-4667-aa50-fba3eedf48c4.png)\r\n\r\n\r\n vu3要安装vue-router4，参考官网：https://router.vu",
-      "size": "24KB",
-      "lastModified": "2026-03-30T01:08:20.515Z",
-      "wordCount": 19140
     },
     {
       "type": "file",
@@ -25271,24 +25291,28 @@
                     },
                     {
                       "type": "file",
-                      "title": "Router",
-                      "frontmatterTitle": "Router",
+                      "title": "Vue Router 超详细总笔记",
+                      "frontmatterTitle": "Vue Router 超详细总笔记",
                       "fileTitle": "Router",
                       "filename": "Router.md",
                       "path": "常用缺易忘/常识/Vue/vue辅助/Router.md",
-                      "date": null,
-                      "hasRealDate": false,
+                      "date": "2026-04-27T00:00:00.000Z",
+                      "hasRealDate": true,
                       "order": null,
                       "tags": [
-                        "常用缺易忘",
-                        "vue辅助"
+                        "Vue Router",
+                        "Vue2",
+                        "Vue3",
+                        "路由守卫",
+                        "动态路由",
+                        "传参"
                       ],
-                      "category": "常用缺易忘",
+                      "category": "Vue",
                       "attachments": [],
-                      "description": "---\r\n\r\n\r\n在讲 Vue Router 之前，先搞懂两个核心概念：\r\n\r\n\r\n+ 多页应用（MPA）：传统网站，每个页面对应一个 .html 文件，点击链接时浏览器会重新加载整个页面（白屏闪烁），体验较差。\r\n+ 单页应用（SPA）：只有一个 .html 文件，页面切换通过 JavaScript 动态替换内容，浏览器地址变了但页面不刷新，体验像原生 APP 一样流畅。\r\n\r\n\r\nVue Ro",
-                      "size": "24KB",
-                      "lastModified": "2026-03-30T01:08:20.527Z",
-                      "wordCount": 17333
+                      "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
+                      "size": "36KB",
+                      "lastModified": "2026-04-27T10:23:25.714Z",
+                      "wordCount": 26380
                     },
                     {
                       "type": "file",
@@ -32151,7 +32175,7 @@
               "attachments": [],
               "description": "点击对应tab，跳转到对应的页面\r\n\r\n<!-- 这是一张图片，ocr 内容为： -->\r\n![](https://cdn.nlark.com/yuque/0/2024/png/27167233/1734612084083-43e5ebf0-158d-4667-aa50-fba3eedf48c4.png)\r\n\r\n\r\n vu3要安装vue-router4，参考官网：https://router.vu",
               "size": "24KB",
-              "lastModified": "2026-03-30T01:08:20.515Z",
+              "lastModified": "2026-04-27T10:05:19.918Z",
               "wordCount": 19140
             },
             {
@@ -32331,5 +32355,5 @@
   ],
   "totalNotes": 327,
   "totalCategories": 77,
-  "lastUpdated": "2026-04-27T08:02:42.488Z"
+  "lastUpdated": "2026-04-27T10:24:32.710Z"
 }
