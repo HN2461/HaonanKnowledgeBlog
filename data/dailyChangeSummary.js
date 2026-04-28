@@ -18,5 +18,12 @@ export const dailyChangeSummary = {
       summary: '对 CSS 系列第一至第六篇进行逐篇阅读审校，核实技术细节，修正多处错误描述，补充遗漏知识点，确保内容准确无误。',
       content: '第一点：第一篇——修正 <b>/<i> 标签"废弃"的错误描述（HTML5 已重新定义其语义），补全伪类顺序口诀为 L-V-F-H-A，修正 outline 圆角说明（现代浏览器已支持跟随圆角），补充渐变角度方向规律，新增 font 简写重置陷阱示例；第二点：第二篇——修正 float 副作用描述（变成块级盒子而非 inline-block），修正 display:flow-root 注释（删除"不触发 BFC"的错误说法，补充兼容性信息 Chrome 58+/Firefox 53+/Safari 13+）；第三点：第三篇——删除文件开头多余的 ****--- 字符，修正 flex:1 等价写法为 flex:1 1 0%，修正 flex-basis 默认值描述末尾多余括号，补全 auto-fit vs auto-fill 的差别说明（仅在项目数量少于可容纳列数时体现），修正 grid-template-areas 错误示例（原示例中 a 实为矩形，改为真正的 L 形示例）；第四点：第四篇——animation 简写补充关键约束（duration 必须在 delay 之前），修正 transform 多函数顺序注释（矩阵运算从右到左），更新 -webkit-backdrop-filter 注释（Safari 18+ 已无需前缀）；第五点：第五篇——补全 calc() 运算符空格规则（+/- 两侧必须有空格，*/不强制），补充 var() 回退值语法说明，新增 -var() 不合法的说明，修正 prefers-color-scheme:light 注释（默认样式即亮色，通常无需单独写）；第六点：第六篇——修正 Sass darken() 已废弃的问题（改为 color.adjust()），修正 @layer 兼容性描述（2022年已全面落地，非新特性），修正 @container 兼容性描述（2023年已全面落地，非实验性）。',
     },
+    {
+      category: '内容上新',
+      time: '20:22',
+      title: '新增 SCSS 常见写法速通补充篇',
+      summary: '把原先偏工程化的 CSS 补充文改写成更白话的 SCSS 入门速通，重点只讲看懂别人代码最常见的变量、嵌套、&、mixin、@include、@use 等写法。',
+      content: '第一点：将 public/notes/CSS/《项目里看到 SCSS、Sass、Less、PostCSS 时，到底分别在干嘛》重写为更适合入门阅读的《SCSS 常见写法速通：先学会看懂别人代码》，不再从 Sass、Less、PostCSS 的工程化全景切入，而是聚焦“看懂别人写的 SCSS”这个目标，重点补充变量、选择器嵌套、&、@mixin、@include、@use、@extend、单行注释与 Vue 里 <style lang="scss" scoped> 的常见读法；第二点：同步更新 CSS/目录.md 中第17章延伸阅读的文案，并刷新索引与通知所依赖的派生数据，让站内显示的新标题、新摘要和搜索内容都与文章新版内容保持一致。',
+    },
   ],
 }

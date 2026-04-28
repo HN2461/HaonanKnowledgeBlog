@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-04-28T09:43:12.157Z",
-  "total": 174,
+  "generatedAt": "2026-04-28T12:27:20.040Z",
+  "total": 176,
   "notifications": [
+    {
+      "id": "daily-2026-04-28-3",
+      "title": "新增 SCSS 常见写法速通补充篇",
+      "content": "第一点：将 public/notes/CSS/《项目里看到 SCSS、Sass、Less、PostCSS 时，到底分别在干嘛》重写为更适合入门阅读的《SCSS 常见写法速通：先学会看懂别人代码》，不再从 Sass、Less、PostCSS 的工程化全景切入，而是聚焦“看懂别人写的 SCSS”这个目标，重点补充变量、选择器嵌套、&、@mixin、@include、@use、@extend、单行注释与 Vue 里 <style lang=\"scss\" scoped> 的常见读法；第二点：同步更新 CSS/目录.md 中第17章延伸阅读的文案，并刷新索引与通知所依赖的派生数据，让站内显示的新标题、新摘要和搜索内容都与文章新版内容保持一致。",
+      "summary": "把原先偏工程化的 CSS 补充文改写成更白话的 SCSS 入门速通，重点只讲看懂别人代码最常见的变量、嵌套、&、mixin、@include、@use 等写法。",
+      "date": "2026-04-28T20:22:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-17e82847d063b4b28bf6578e6773f271265fa370",
+      "title": "CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "content": "提交说明：CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "summary": "CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "date": "2026-04-28T17:43:35+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "17e8284",
+      "fullHash": "17e82847d063b4b28bf6578e6773f271265fa370"
+    },
     {
       "id": "daily-2026-04-28-2",
       "title": "CSS 系列笔记六篇全面审校与修正",
