@@ -149,7 +149,7 @@ Vue 常见开发模式是单页应用：
 | 挂载方式 | `new Vue({ router })` | `app.use(router)` |
 | 组件中获取 | `this.$route` / `this.$router` | `useRoute()` / `useRouter()` 或 `this` |
 | 404 通配写法 | 常见 `*` | `/:pathMatch(.*)*` |
-| 动态注册路由 | 旧项目常见 `addRoutes()` | 官方推荐 `addRoute()` |
+| 动态注册路由 | `addRoutes()`（Vue Router 3 已废弃） | `addRoute()`（Vue Router 4 移除了 `addRoutes`） |
 
 ### 记忆方法
 
@@ -400,45 +400,89 @@ app.mount('#app')
 
 ### 4. `components`
 
-命名视图时使用多个组件。
+命名视图，一个路由同时渲染多个区域。注意是复数 `components`，不是 `component`。
 
 ```js
 {
   path: '/dashboard',
   components: {
-    default: DashboardPage,
-    sidebar: SidebarPanel,
-    header: HeaderPanel
+    default: DashboardPage,   // 对应 <router-view />（无 name）
+    sidebar: SidebarPanel,    // 对应 <router-view name="sidebar" />
+    header: HeaderPanel       // 对应 <router-view name="header" />
   }
 }
 ```
 
+模板里需要对应写多个 `<router-view>`：
+
+```vue
+<template>
+  <router-view name="header" />
+  <router-view name="sidebar" />
+  <router-view />            <!-- default -->
+</template>
+```
+
+容易忘的点：
+
+- 用了 `components`（复数），模板里就必须有对应 `name` 的 `<router-view>`，否则那个区域什么都不渲染
+- `default` 对应没有 `name` 属性的 `<router-view />`
+- 普通单组件路由用 `component`（单数），命名视图才用 `components`（复数）
+
 ### 5. `redirect`
 
-重定向。
+重定向，访问 A 路径自动跳到 B。
 
 ```js
+// 字符串写法
+{ path: '/', redirect: '/home' }
+
+// 命名路由写法（推荐，路径改了也不用改这里）
+{ path: '/', redirect: { name: 'home' } }
+
+// 函数写法（可以根据条件动态决定跳哪里）
 {
   path: '/',
-  redirect: '/home'
+  redirect: to => {
+    const token = localStorage.getItem('token')
+    return token ? '/home' : '/login'
+  }
 }
 ```
 
+容易忘的点：
+
+- `redirect` 会改变 URL，用户最终看到的是目标路径
+- 和 `alias` 的区别：`redirect` 跳走了，`alias` URL 不变但渲染同一个组件
+
 ### 6. `alias`
 
-别名。
+别名，让同一个组件可以被多个路径访问，但 URL 不会跳转。
 
 ```js
 {
   path: '/home',
-  alias: '/index',
+  alias: '/index',       // 访问 /index，URL 保持 /index，但渲染 HomePage
+  component: HomePage
+}
+
+// 也可以配多个别名
+{
+  path: '/home',
+  alias: ['/index', '/main'],
   component: HomePage
 }
 ```
 
+容易忘的点：
+
+- `alias` 不改变 URL，用户访问 `/index` 看到的地址栏还是 `/index`
+- `redirect` 会改变 URL，用户访问 `/` 地址栏会变成 `/home`
+- 别名常用于：旧路径兼容、SEO 多入口、短路径映射
+
 ### 7. `children`
 
-子路由。
+嵌套子路由，父路由下再挂一层路由。
 
 ```js
 {
@@ -446,12 +490,30 @@ app.mount('#app')
   component: HomeLayout,
   children: [
     {
-      path: 'news',
-      component: HomeNewsPage
+      path: '',          // 空字符串 = 访问 /home 时默认渲染这个
+      component: HomeDefaultPage
+    },
+    {
+      path: 'hot',       // 不加 /，最终路径是 /home/hot
+      name: 'home-hot',
+      component: HomeHotPage
+    },
+    {
+      path: 'new',
+      name: 'home-new',
+      component: HomeNewPage
     }
   ]
 }
 ```
+
+容易忘的点：
+
+- 子路由 `path` 不加 `/`，写相对路径，最终会自动拼成 `/home/hot`
+- 如果加了 `/` 变成 `/hot`，就是绝对路径，和父路由没有嵌套关系了
+- 父组件 `HomeLayout` 里必须有 `<router-view />`，否则子路由没地方渲染
+- `path: ''` 表示访问父路径 `/home` 时默认展示的子组件（也可以用 `redirect` 代替）
+- 子路由也可以继续嵌套 `children`，形成多级嵌套
 
 ### 8. `meta`
 
@@ -470,15 +532,51 @@ app.mount('#app')
 
 ### 9. `props`
 
-把路由参数转成组件的 `props`。
+把路由参数转成组件的 `props`，让组件不用直接依赖 `$route` / `useRoute()`，更易复用和测试。
+
+有三种写法：
+
+**布尔值（最常用）**：把 `params` 全量映射成 props
 
 ```js
 {
   path: '/user/:id',
   component: UserDetailPage,
-  props: true
+  props: true   // route.params.id 会作为 prop id 传给组件
 }
 ```
+
+组件里直接用 `defineProps(['id'])` 接收，不用再写 `useRoute()`。
+
+**函数（最灵活）**：可以同时取 params、query，还能加固定值
+
+```js
+{
+  path: '/user/:id',
+  component: UserDetailPage,
+  props: route => ({
+    id: route.params.id,
+    from: route.query.from,   // query 也能传进来
+    title: '用户详情'          // 固定值也行
+  })
+}
+```
+
+**对象（较少用）**：只能传固定值，不能取路由参数
+
+```js
+{
+  path: '/about',
+  component: AboutPage,
+  props: { source: 'router' }
+}
+```
+
+容易忘的点：
+
+- `props: true` 只映射 `params`，不映射 `query`；想要 `query` 必须用函数写法
+- 命名视图时，`props` 要对每个视图分别配置：`props: { default: true, sidebar: false }`
+- 用了 `props` 之后，组件里就不需要再 `import { useRoute }` 了，组件更纯粹
 
 ### 10. `beforeEnter`
 
@@ -539,7 +637,7 @@ app.mount('#app')
 
 ## 7.5 携带 `params`
 
-前提：路由必须有占位符。
+前提：路由必须有占位符，且必须用 `name` 而不是 `path`。
 
 ```vue
 <router-link
@@ -554,7 +652,27 @@ app.mount('#app')
 </router-link>
 ```
 
+对应的路由规则必须有 `:id` 占位符：
+
+```js
+{
+  path: '/user/:id',
+  name: 'user-detail',
+  component: UserDetailPage
+}
+```
+
+容易忘的点：
+
+- 必须用 `name` 配合 `params`，不能用 `path` 配 `params`
+- 用 `path` 时 `params` 会被直接忽略（Vue Router 4 会有控制台警告）
+- 如果想用 `path`，就自己把参数拼进去：`:to="'/user/' + item.id"`
+- `params` 参数会体现在 URL 路径里（`/user/1001`），刷新不丢失
+- 组件里用 `route.params.id` 或 `props: true` 接收
+
 ## 7.6 带 `hash`
+
+跳转到页面内的锚点位置。
 
 ```vue
 <router-link
@@ -567,42 +685,74 @@ app.mount('#app')
 </router-link>
 ```
 
+容易忘的点：
+
+- `hash` 值要带 `#`，写成 `'#comment'` 而不是 `'comment'`
+- 跳转后 URL 变成 `/article#comment`，浏览器会自动滚动到 `id="comment"` 的元素
+- 可以配合 `scrollBehavior` 做更精细的滚动控制
+
 ## 7.7 `replace`
 
-默认 `<router-link>` 是 `push` 行为，会新增历史记录。
+默认 `<router-link>` 是 `push` 行为，会新增历史记录，用户可以点浏览器后退回来。
 
-如果不想新增历史记录：
+加了 `replace` 之后，不新增历史记录，直接替换当前记录：
 
 ```vue
 <router-link to="/login" replace>登录</router-link>
 ```
 
-### 等价理解
-
-它更像：
+等价于编程式导航：
 
 ```js
 router.replace('/login')
 ```
 
+什么时候用 `replace`：
+
+- 登录成功后跳首页，不希望用户后退回登录页
+- 表单提交成功后跳结果页，不希望后退重复提交
+- 重定向场景，不需要保留中间跳转记录
+
 ## 7.8 激活样式
 
-默认会自动加：
+Vue Router 会自动给当前激活的链接加 class，有两个，含义不同：
 
-- `router-link-active`
-- `router-link-exact-active`
+- `router-link-active`：**模糊匹配**，当前路径包含该链接路径时就加。比如当前在 `/home/hot`，`/home` 的链接也会加这个 class
+- `router-link-exact-active`：**精确匹配**，当前路径和链接路径完全一致才加
 
-也可以自定义：
+```
+当前路径：/home/hot
+
+/home      → router-link-active ✓（包含关系）
+/home/hot  → router-link-active ✓ + router-link-exact-active ✓（完全匹配）
+/about     → 都不加
+```
+
+实际开发中，导航菜单高亮通常用 `router-link-active`（模糊匹配），这样父级菜单也能跟着高亮。
+
+单条链接精确高亮用 `router-link-exact-active`。
+
+自定义 class 名：
+
+`active-class` 和 `exact-active-class` 是 `<router-link>` 的属性，用来把默认的 class 名替换成你自己的名字：
+
+```
+router-link-active       ← 默认 class 名（加在 HTML 元素上的）
+active-class="active"    ← 用这个属性把它改名叫 "active"
+
+router-link-exact-active          ← 默认 class 名
+exact-active-class="exact-active" ← 用这个属性把它改名叫 "exact-active"
+```
 
 ```vue
-<router-link to="/home" active-class="active">
+<router-link to="/home" active-class="active" exact-active-class="exact-active">
   首页
 </router-link>
 ```
 
-### Vue Router 4 全局可配
+加了之后，元素上就不再是 `router-link-active`，而是你写的 `active`。
 
-在创建路由器时可配置：
+全局统一配置（推荐，不用每个链接都写）：
 
 ```js
 const router = createRouter({
@@ -615,20 +765,31 @@ const router = createRouter({
 
 ## 7.9 自定义模式 `custom`
 
-高级用法，可完全自定义渲染。
+高级用法，完全自定义渲染，不再输出默认的 `<a>` 标签。
 
 ```vue
-<router-link to="/home" custom v-slot="{ href, navigate, isActive }">
-  <span :class="{ active: isActive }" :href="href" @click="navigate">
+<router-link to="/home" custom v-slot="{ href, navigate, isActive, isExactActive }">
+  <span
+    :class="{ active: isActive, 'exact-active': isExactActive }"
+    @click="navigate"
+  >
     首页
   </span>
 </router-link>
 ```
 
-适合：
+`v-slot` 暴露的常用变量：
 
-- 想不用默认 `<a>`
-- 想包装成更复杂 UI
+- `href`：解析后的目标 URL 字符串，可以绑给 `<a>` 的 `href`
+- `navigate`：触发导航的函数，绑给点击事件
+- `isActive`：是否模糊激活（对应 `router-link-active`）
+- `isExactActive`：是否精确激活（对应 `router-link-exact-active`）
+
+适合场景：
+
+- UI 组件库里的菜单项，不能直接用 `<a>` 标签
+- 需要在链接外层包一层复杂结构
+- 需要同时拿到 `href` 和激活状态做自定义渲染
 
 ---
 
@@ -660,15 +821,57 @@ const router = createRouter({
 
 ## 8.4 配合插槽使用
 
-高级用法，常用于：
-
-- `keep-alive`
-- `transition`
-- 手动控制组件渲染
+`<router-view>` 提供了 `v-slot`，让你能拿到当前匹配的组件和路由信息，自己控制渲染方式。
 
 ```vue
 <router-view v-slot="{ Component, route }">
   <component :is="Component" :key="route.fullPath" />
+</router-view>
+```
+
+- `Component`：当前路由匹配到的组件，等价于路由规则里的 `component`
+- `route`：当前路由信息对象，等价于 `useRoute()` 的返回值
+
+直接写 `<component :is="Component" />` 和写 `<router-view />` 效果一样，但中间可以插入其他东西。
+
+**用途一：加过渡动画**
+
+```vue
+<router-view v-slot="{ Component }">
+  <transition name="fade">
+    <component :is="Component" />
+  </transition>
+</router-view>
+```
+
+**用途二：配合 keep-alive 缓存**
+
+```vue
+<router-view v-slot="{ Component }">
+  <keep-alive>
+    <component :is="Component" />
+  </keep-alive>
+</router-view>
+```
+
+**用途三：用 `key` 强制刷新组件**
+
+```vue
+<router-view v-slot="{ Component, route }">
+  <!-- key 变化时，组件会销毁重建，解决同组件不同参数不刷新的问题 -->
+  <component :is="Component" :key="route.fullPath" />
+</router-view>
+```
+
+这三种也可以组合用：
+
+```vue
+<router-view v-slot="{ Component, route }">
+  <transition name="fade">
+    <keep-alive :include="cachedViews">
+      <component :is="Component" :key="route.fullPath" />
+    </keep-alive>
+  </transition>
 </router-view>
 ```
 
@@ -909,23 +1112,31 @@ router.push({
 })
 ```
 
-### 注意点 3：如果同时写了 `path` 和 `params`，`params` 可能被忽略
+### 注意点 3：同时写了 `path` 和 `params`，`params` 会被直接忽略
+
+这不是"可能"，而是确定行为。Vue Router 4 会在控制台输出警告：
+
+> `"/detail" was passed with params but they will be ignored. Use a named route alongside params instead.`
 
 比如：
 
 ```js
+// 错误写法，params 会被忽略
 router.push({
   path: '/detail',
   params: { id: 1001 }
 })
 ```
 
-这种写法通常不符合预期。
-
 正确做法：
 
-- 用 `path` 时自己把参数拼进路径
-- 用 `params` 时优先用 `name`
+```js
+// 方式一：用 name 配合 params
+router.push({ name: 'detail', params: { id: 1001 } })
+
+// 方式二：用 path 自己拼参数
+router.push({ path: `/detail/${item.id}` })
+```
 
 ### 注意点 4：`params` 更适合资源标识
 
@@ -1115,65 +1326,104 @@ const props = defineProps(['id', 'from', 'title'])
 
 ### 1. `push`
 
+新增一条历史记录，用户可以点后退回来。
+
 ```js
+// 字符串路径
 router.push('/home')
-```
 
-```js
+// 对象 + path
 router.push({ path: '/home' })
-```
 
-```js
+// 对象 + name（推荐，路径改了不用改这里）
 router.push({ name: 'home' })
+
+// 带 params（必须用 name，不能用 path）
+router.push({ name: 'detail', params: { id: 1001 } })
+
+// 带 query
+router.push({ path: '/search', query: { keyword: 'vue', page: 1 } })
+
+// 带 hash
+router.push({ path: '/article', hash: '#comment' })
 ```
 
-```js
-router.push({
-  name: 'detail',
-  params: { id: 1001 }
-})
-```
+Vue Router 4 中 `push` 返回 Promise，可以 `await` 等待导航完成或捕获失败：
 
 ```js
-router.push({
-  path: '/search',
-  query: { keyword: 'vue' }
-})
+// 捕获导航失败（被守卫拦截、重复导航等）
+try {
+  await router.push({ name: 'home' })
+} catch (err) {
+  console.log('导航失败', err)
+}
 ```
 
 ### 2. `replace`
 
+替换当前历史记录，用户点后退回不来。
+
 ```js
 router.replace('/login')
+router.replace({ name: 'login' })
 ```
 
-### 3. `back`
+什么时候用 `replace` 而不是 `push`：
+
+- 登录成功后跳首页，不希望后退回登录页
+- 表单提交成功后跳结果页，不希望后退重复提交
+- 重定向场景
+
+也可以在 `push` 里加 `replace: true`，效果一样：
 
 ```js
-router.back()
+router.push({ name: 'home', replace: true })
 ```
 
-### 4. `forward`
+### 3. `back` / `forward` / `go`
+
+操作浏览器历史记录栈：
 
 ```js
-router.forward()
+router.back()      // 后退一步，等价于 router.go(-1)
+router.forward()   // 前进一步，等价于 router.go(1)
+
+router.go(-1)      // 后退 1 步
+router.go(-2)      // 后退 2 步
+router.go(1)       // 前进 1 步
+router.go(0)       // 刷新当前页
 ```
 
-### 5. `go`
+注意：如果历史记录不够，`go` 会静默失败，不报错。
+
+### 4. 登录拦截 + 回跳完整写法
+
+这是项目里最常见的场景，分两步：
+
+**第一步：守卫里记录来源路径**
 
 ```js
-router.go(-1)
-router.go(-2)
-router.go(1)
-router.go(2)
+router.beforeEach((to) => {
+  const token = localStorage.getItem('token')
+  if (to.meta.requiresAuth && !token) {
+    // 把当前要去的路径存进 query，登录后用来回跳
+    return {
+      name: 'login',
+      query: { redirect: to.fullPath }
+    }
+  }
+})
 ```
 
-### 6. 登录后回跳常见写法
+**第二步：登录成功后跳回去**
 
 ```js
+// 登录成功后
 const redirect = route.query.redirect || '/home'
-router.replace(redirect)
+router.replace(redirect)  // 用 replace，不留登录页历史记录
 ```
+
+用 `replace` 而不是 `push`，是为了让用户登录后点后退不会再回到登录页。
 
 ---
 
@@ -1587,11 +1837,23 @@ router.afterEach((to, from) => {
 })
 ```
 
+后置守卫还支持第三个参数 `failure`，可以判断导航是否失败：
+
+```js
+router.afterEach((to, from, failure) => {
+  if (!failure) {
+    // 导航成功，做埋点
+    sendToAnalytics(to.fullPath)
+  }
+})
+```
+
 ### 常见用途
 
 - 页面标题
 - 埋点统计
 - 关闭 loading
+- 区分导航成功/失败做差异化处理
 
 ### 注意
 
@@ -1612,9 +1874,47 @@ router.afterEach((to, from) => {
 }
 ```
 
+### 重要特性：不响应 params/query/hash 变化
+
+`beforeEnter` 只在从不同路由进入时触发。
+
+如果只是 `params`、`query`、`hash` 发生变化（比如从 `/user/1` 到 `/user/2`），`beforeEnter` 不会重新执行。
+
+这是一个高频踩坑点：
+
+```js
+// 从 /user/1 跳到 /user/2，beforeEnter 不会再触发
+// 如果需要响应参数变化，应该用 beforeRouteUpdate 或 watch
+```
+
+### 支持传入函数数组（复用守卫逻辑）
+
+```js
+function checkRole(to) {
+  if (localStorage.getItem('role') !== 'admin') {
+    return '/home'
+  }
+}
+
+function checkExpiry(to) {
+  if (isTokenExpired()) {
+    return '/login'
+  }
+}
+
+{
+  path: '/admin',
+  component: AdminPage,
+  beforeEnter: [checkRole, checkExpiry]
+}
+```
+
+这样可以把守卫逻辑拆成小函数，在多条路由间复用。
+
 ### 适合场景
 
 - 某一条路由有特殊限制
+- 需要复用多个守卫逻辑
 
 ## 20.6 组件内守卫
 
@@ -1650,14 +1950,27 @@ beforeRouteUpdate(to, from, next) {
 
 离开当前组件前执行。
 
+Vue2 / 选项式写法（需要调用 `next`）：
+
 ```js
 beforeRouteLeave(to, from, next) {
   const ok = window.confirm('确定离开吗？')
   if (!ok) {
-    return next(false)
+    return next(false)  // Vue2 / 选项式：用 next(false) 取消
   }
   next()
 }
+```
+
+Vue3 / 组合式写法（直接 `return false`）：废除了 next,
+
+```js
+onBeforeRouteLeave(() => {
+  const ok = window.confirm('确定离开吗？')
+  if (!ok) {
+    return false  // Vue Router 4 组合式：直接 return false
+  }
+})
 ```
 
 ## 20.7 Vue3 组合式守卫
@@ -1786,6 +2099,13 @@ http://localhost:5173/#/home
 
 ```js
 createWebHistory()
+```
+
+部署在子路径时可以传 `base`：
+
+```js
+// 部署在 /my-app/ 下
+createWebHistory('/my-app/')
 ```
 
 URL 例子：
@@ -2332,42 +2652,170 @@ const router = useRouter()
 
 ### 2. `route` 和 `router` 有什么区别
 
-- `route` 是当前路由信息对象
-- `router` 是整个路由器实例
+- `route` 是当前路由信息对象，偏"读"（path、params、query、meta 等）
+- `router` 是整个路由器实例，偏"操作"（push、replace、addRoute 等）
 
 ### 3. `params` 和 `query` 的区别
 
-- `params` 更适合路径标识
-- `query` 更适合筛选条件
+| 对比项 | `params` | `query` |
+| --- | --- | --- |
+| 地址表现 | `/detail/1` | `/detail?id=1` |
+| 是否需要占位符 | 通常需要 | 不需要 |
+| 刷新是否丢失 | 不丢 | 不丢 |
+| 对象写法搭配 | 推荐 `name` | `path` 或 `name` 都行 |
+| 适合场景 | 资源 id、详情页 | 搜索、分页、筛选 |
 
 ### 4. `router-link` 和 `a` 标签区别
 
-- `router-link` 不刷新整页
-- `a` 标签走传统页面跳转
+- `router-link` 不刷新整页，通过 History API 或 hash 切换，不会重新请求资源
+- `router-link` 自动处理激活样式（`router-link-active`）
+- `router-link` 在 History 模式下会阻止默认跳转行为
+- `a` 标签走传统页面跳转，会重新加载整个页面
 
 ### 5. 为什么详情页参数变了，组件不一定重新挂载
 
-因为 Vue Router 可能复用同一个组件实例。
+因为 Vue Router 可能复用同一个组件实例（`/user/1` → `/user/2` 匹配同一组件）。
 
-### 6. 守卫有哪些
+`mounted` 不会重新执行，需要用 `watch` 监听 `route.params` 或使用 `beforeRouteUpdate` 守卫来响应变化。
 
-- 全局前置
-- 全局解析
-- 全局后置
-- 路由独享
-- 组件内守卫
+### 6. 守卫有哪些，分别在什么时机执行
+
+- 全局前置 `beforeEach`：每次导航触发，最先执行，常用于登录拦截
+- 全局解析 `beforeResolve`：所有组件守卫和异步组件解析完后执行
+- 全局后置 `afterEach`：导航确认后执行，不能中断导航，常用于埋点、改标题
+- 路由独享 `beforeEnter`：进入该路由时执行，params/query/hash 变化不触发
+- 组件内 `beforeRouteEnter`：进入前执行，此时组件实例未创建，不能用 `this`
+- 组件内 `beforeRouteUpdate`：路由变化但组件复用时执行
+- 组件内 `beforeRouteLeave`：离开前执行，常用于防止未保存就离开
 
 ### 7. Hash 和 History 区别
 
-- Hash 带 `#`，部署简单
-- History 不带 `#`，刷新需要服务器回退
+| 对比项 | Hash | History |
+| --- | --- | --- |
+| URL 表现 | 带 `#` | 不带 `#` |
+| 底层原理 | 监听 `hashchange` 事件 | 使用 HTML5 `pushState` / `replaceState` |
+| 刷新是否 404 | 不会，`#` 后内容不发给服务器 | 会，需要服务器配置回退 |
+| 部署难度 | 简单，静态托管友好 | 需要服务器配合 |
+| SEO | 较差 | 较好 |
 
-### 8. 动态路由是什么
+### 8. Hash 模式和 History 模式的底层原理
+
+**Hash 模式：**
+
+- URL 中 `#` 后面的内容是 hash，浏览器不会把 hash 部分发给服务器
+- 通过监听 `window.addEventListener('hashchange', ...)` 感知路由变化
+- 改变 hash 用 `location.hash = '/home'`
+
+**History 模式：**
+
+- 依赖 HTML5 History API：`pushState()`、`replaceState()`、`popstate` 事件
+- `pushState` 可以改变 URL 但不触发页面刷新
+- 通过监听 `window.addEventListener('popstate', ...)` 感知前进后退
+- 刷新时浏览器会真实请求该路径，服务器需要配置所有路径都返回 `index.html`
+
+### 9. 动态路由是什么
 
 要分两种回答：
 
-- `/user/:id`：动态参数路由
-- `router.addRoute()`：动态添加路由
+- `/user/:id`：动态参数路由，路由规则固定，只是参数值变化
+- `router.addRoute()`：动态添加路由，运行时把新路由规则注册进去
+
+### 10. 如何实现权限路由（后台项目常考）
+
+完整流程：
+
+1. 用户登录，获取 token 和角色/权限信息
+2. 存入 Pinia/Vuex
+3. 根据权限过滤出该用户可访问的路由表
+4. 调用 `router.addRoute()` 动态注册这些路由
+5. 在 `beforeEach` 中判断：未登录跳登录页，已登录但路由未加载则先加载再跳转
+6. 刷新后需要重新执行步骤 3-4（因为内存中的动态路由会丢失）
+
+```js
+router.beforeEach(async (to) => {
+  const token = localStorage.getItem('token')
+
+  if (!token) {
+    if (to.name !== 'login') return { name: 'login' }
+    return
+  }
+
+  const userStore = useUserStore()
+
+  if (!userStore.routesLoaded) {
+    await userStore.loadDynamicRoutes()  // 请求权限，addRoute
+    return to.fullPath  // 重新导航，命中新加的路由
+  }
+})
+```
+
+### 11. 路由懒加载是什么，为什么要用
+
+懒加载就是把路由组件改成动态 `import`：
+
+```js
+// 静态导入：打包时全部打进主包
+import UserPage from '@/views/UserPage.vue'
+
+// 懒加载：访问该路由时才加载对应 chunk
+component: () => import('@/views/UserPage.vue')
+```
+
+原理：利用 Webpack/Vite 的代码分割（code splitting），每个懒加载路由会被打成独立的 chunk 文件。
+
+好处：减少首屏 JS 体积，加快首屏加载速度。
+
+### 12. `router.push` 返回的是什么
+
+Vue Router 4 中 `router.push()` 返回一个 `Promise`，可以用 `await` 等待导航完成：
+
+```js
+// 可以捕获导航失败
+try {
+  await router.push({ name: 'home' })
+} catch (err) {
+  // 导航被守卫拦截或其他失败
+}
+```
+
+Vue Router 3 中 `push` 没有返回 Promise（需要传回调）。
+
+### 13. `beforeRouteEnter` 为什么不能用 `this`
+
+因为 `beforeRouteEnter` 在导航确认之前执行，此时组件实例还没有被创建，所以 `this` 是 `undefined`。
+
+这是唯一一个支持给 `next` 传回调的守卫：
+
+```js
+beforeRouteEnter(to, from, next) {
+  next(vm => {
+    // 导航确认后，组件实例通过 vm 传入
+    vm.fetchData()
+  })
+}
+```
+
+Vue3 组合式 API 中没有对应的 `onBeforeRouteEnter`，因为 `setup()` 执行时导航已经确认，可以直接在 `setup` 里做初始化。
+
+### 14. `redirect` 和 `alias` 的区别
+
+- `redirect`：访问 `/`，URL 会变成 `/home`，用户看到的是 `/home`
+- `alias`：访问 `/index`，URL 保持 `/index`，但渲染的是 `/home` 对应的组件
+
+```js
+// redirect：URL 会跳转
+{ path: '/', redirect: '/home' }
+
+// alias：URL 不变，但渲染同一个组件
+{ path: '/home', alias: '/index', component: HomePage }
+```
+
+### 15. 嵌套路由子路由 path 加不加 `/` 的区别
+
+- 不加 `/`（相对路径）：最终路径是父路径 + 子路径，如 `/home/hot`
+- 加 `/`（绝对路径）：直接以 `/` 开头，不再拼接父路径
+
+子路由推荐写相对路径（不加 `/`），语义更清晰，也更符合嵌套关系。
 
 ---
 
@@ -2383,7 +2831,7 @@ const router = useRouter()
 
 ### 3. 用 `path` 配 `params`
 
-可能导致 `params` 不按预期生效。
+Vue Router 4 中这是确定行为：`params` 会被直接忽略，控制台会有警告。必须用 `name` 配 `params`，或者用 `path` 自己拼参数进路径。
 
 ### 4. 详情页切换 id 不更新
 
