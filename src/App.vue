@@ -10,14 +10,12 @@
       </Transition>
     </router-view>
     <TerminalMode ref='terminal' />
-    <AIChatAssistant />
   </div>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 import TerminalMode from './components/TerminalMode.vue'
-import AIChatAssistant from './components/AIChatAssistant.vue'
 import { getTheme } from './utils/theme'
 import { ensureSearchWarmup } from './utils/searchWarmup'
 

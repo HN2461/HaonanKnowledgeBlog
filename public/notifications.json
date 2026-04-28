@@ -1,7 +1,71 @@
 {
-  "generatedAt": "2026-04-28T12:27:20.040Z",
-  "total": 176,
+  "generatedAt": "2026-04-28T14:42:55.163Z",
+  "total": 181,
   "notifications": [
+    {
+      "id": "daily-2026-04-28-7",
+      "title": "移动端头部改为分层布局",
+      "content": "第一点：调整 src/components/AppHeader.vue 的移动端布局，让第一行只保留菜单、站点品牌、通知、更多和头像，第二行单独放搜索入口，不再让标题与一排图标互相抢宽度；第二点：新增手机端“更多功能”面板，把写作台、主题切换、个人角落和随机阅读收纳进去，减少顶栏长期常驻按钮数量；第三点：将个人角落弹层改为 Teleport 到 body 的固定浮层，保证它既能从桌面端原按钮打开，也能从移动端更多面板打开；第四点：补充 420px 以下的超窄屏兜底样式，继续压缩 logo 区宽度与头部间距，尽量避免小屏设备再次拥挤。",
+      "summary": "把手机端头部从单行硬塞改成“上层品牌与高频入口、下层独立搜索”的分层布局，并新增“更多功能”面板，把低频操作收起来，避免顶部继续挤成一串。",
+      "date": "2026-04-28T22:33:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-6",
+      "title": "移除 AI 助手入口与挂载",
+      "content": "第一点：删除头部原有的 AI 助手按钮，避免它继续占用工具位并与现有搜索入口形成重复认知；第二点：从 App 根组件移除 AIChatAssistant 挂载，让这块纯前端助手不再参与当前首屏加载；第三点：这次调整单独作为一条功能更新保留在当日消息里，方便后续回看时把“随机阅读入口改造”和“AI 助手下线”区分开。",
+      "summary": "将与站内搜索功能重叠的 AI 助手从头部入口和根组件挂载中一并移除，单独作为一次更明确的前端减负改动记录。",
+      "date": "2026-04-28T22:19:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-5",
+      "title": "头部阅读入口重整为随机阅读",
+      "content": "第一点：将头部阅读入口固定为稳定的 40x40 小图标按钮，按钮本身只占一个标准工具位，不再因为文案、缩放或弹层内容撑乱头部；第二点：随机阅读面板改为通过 Teleport 挂到 body 的固定浮层，避免弹出时继续挤压头部和正文布局；第三点：点击图标后在面板中统一展示当前已随机篇数、最低目标进度条、随机跳一篇按钮和重置今日计数按钮，后续如果还要加提醒型能力，也可以继续往这个面板里扩；第四点：进度以“3篇为最低达标线”而不是硬上限，达到 3/3 后仍可继续随机抽读，计数会继续累加，例如 5/3、8/3；第五点：新增手动重置能力，可随时清空当天计数与最近随机历史，方便重新开始；第六点：随机历史改为保留最近抽过的文章，用来尽量避开当前页和最近重复内容，但在文章池不足时仍允许继续抽，不会被 3 篇卡死。",
+      "summary": "把头部阅读入口改成不参与布局的小图标按钮 + body 浮层面板的结构，面板内统一放随机跳转、重置和当前阅读计数，同时保留“达标后继续抽读”的能力。",
+      "date": "2026-04-28T21:57:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-4",
+      "title": "完善 ElementPlus 专题首批六篇系列",
+      "content": "第一点：保留并完善 public/notes/ElementPlus/第一篇《快速认识 Element Plus：为什么它是 Vue 3 里常见的 PC 端组件库》，继续作为专题总览文，明确当前最新正式版为 2.13.7（2026-04-10 发布）以及 Vue 3 + Vite 下的总体定位；第二点：新增第二篇《安装与引入：把 Element Plus 真正接进 Vue 3 项目》，基于官方安装与快速开始文档详细整理兼容性、完整引入、自动按需导入、手动导入、Volar 支持与全局 size/zIndex 配置；第三点：新增第三篇《基础组件：Button、Icon、Container、Space、Text 怎么搭出像样的后台界面》，专门讲按钮分层、图标使用、容器骨架、统一间距和文字收口；第四点：新增第四篇《表单体系：Form、Input、Select、DateTimePicker、Upload 怎么配合》，系统整理表单校验、尺寸继承、scroll-to-error、Input 最新 count-graphemes、Select 宽度注意点、DateTimePicker 返回值与 value-format、Upload 文件列表与钩子；第五点：新增第五篇《中后台核心组件：Table、Pagination、Dialog、Drawer、Message 怎么配合》，围绕列表页主循环讲清表格展示、分页 layout、弹窗与抽屉的适用边界，以及 Message / MessageBox 的反馈职责；第六点：新增第六篇《主题定制、国际化、暗黑模式、ConfigProvider：Element Plus 全局能力怎么管》，结合官方国际化、主题与暗黑模式文档讲清 locale、Day.js 语言包、CSS 变量主题、SCSS 变量主题、按需导入下的 useSource 与 scss.additionalData、html.dark 与暗黑变量覆盖；第七点：同步更新 public/notes/ElementPlus/目录.md，补全当前六篇内容、建议阅读顺序和后续扩展方向，并刷新索引与通知派生数据，让站内分类、搜索与通知展示与专题最新结构保持一致。",
+      "summary": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，把原先只有首篇概览的专题扩写成首批六篇系列，覆盖接入、基础组件、表单体系、中后台核心组件、主题定制、国际化与暗黑模式。",
+      "date": "2026-04-28T21:41:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-3ea9f99cb70ef4a5d1fea9f0408f87274d899d82",
+      "title": "功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "content": "提交说明：功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "summary": "功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "date": "2026-04-28T20:54:35+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "3ea9f99",
+      "fullHash": "3ea9f99cb70ef4a5d1fea9f0408f87274d899d82"
+    },
     {
       "id": "daily-2026-04-28-3",
       "title": "新增 SCSS 常见写法速通补充篇",
