@@ -2930,12 +2930,13 @@ float: none;   /* 不浮动（默认） */
 - ❌ 但不再占据原本的"行"（后面的块级元素会顶上来）
 - ❌ 父元素不会自动根据它计算高度
 
-**2. 变成类似 inline-block**
+**2. 变成块级盒子（但宽度行为类似 inline-block）**
 
 ```css
 .box {
   float: left;
-  /* 现在可以设置宽高了，即使原本是 span */
+  /* 浮动元素的 computed display 会变成 block */
+  /* 但宽度不会自动撑满父容器，而是由内容决定（类似 inline-block） */
 }
 ```
 
@@ -3077,7 +3078,7 @@ float: none;   /* 不浮动（默认） */
 .wrapper { overflow: hidden; }   /* 会裁剪溢出 */
 
 /* 方式2：display */
-.wrapper { display: flow-root; } /* 现代浏览器推荐，CSS3 新增属性，专门用于创建一个 “包含浮动元素” 的容器，直接解决高度塌陷，不触发 BFC 也无副作用。 */
+.wrapper { display: flow-root; } /* 现代浏览器推荐，专门用于创建 BFC 包含浮动元素，无副作用（Chrome 58+、Firefox 53+、Safari 13+，IE 不支持） */
 .wrapper { display: flex; }      /* 改变布局方式 */
 
 /* 方式3：float */

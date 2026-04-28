@@ -542,8 +542,11 @@ $radius-md: 12px;         // 圆角变量
 
   // &代表父选择器（.btn）
   &:hover {                      // 等同于 .btn:hover
-    // darken()是Sass内置函数
-    background: darken($primary, 8%); // 颜色加深8%
+    // ⚠️ darken() 在 Dart Sass 1.79+ 已废弃，会产生警告
+    // 旧写法（不推荐）：background: darken($primary, 8%);
+    // 新写法：使用 color.adjust() 或 color.scale()
+    @use 'sass:color';
+    background: color.adjust($primary, $lightness: -8%); // 亮度降低8%
   }
   
   // 嵌套修饰符
@@ -868,13 +871,13 @@ CSS 工程化流程图：
   &:hover { }             /* 不再需要Sass */
 }
 
-/* 3. @layer 层叠层（新特性） */
+/* 3. @layer 层叠层（2022年已全面落地，Chrome 99+/Firefox 97+/Safari 15.4+） */
 @layer base, components, utilities;
 @layer components {
   .btn { }                /* 明确控制层级 */
 }
 
-/* 4. @container 容器查询（实验性） */
+/* 4. @container 容器查询（2023年已全面落地，Chrome 105+/Firefox 110+/Safari 16+） */
 .card {
   container-type: inline-size;
 }

@@ -1,13 +1,52 @@
 {
-  "generatedAt": "2026-04-26T12:17:07.180Z",
-  "total": 161,
+  "generatedAt": "2026-04-28T14:42:55.163Z",
+  "total": 181,
   "notifications": [
     {
-      "id": "daily-2026-04-26-1",
-      "title": "新增 CC Switch 完整使用指南（v3.14.1）",
-      "content": "第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、\"本地代理\"在 v3.14.0 已统一改名为\"Local Routing\"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。",
-      "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记：纠正支持工具数量（当前为 6 款含 Hermes Agent）、界面结构、功能命名（Local Routing 非 Local Proxy）等多处错误，内容与 v3.14.1 实际版本完全对齐。",
-      "date": "2026-04-26T20:10:00+08:00",
+      "id": "daily-2026-04-28-7",
+      "title": "移动端头部改为分层布局",
+      "content": "第一点：调整 src/components/AppHeader.vue 的移动端布局，让第一行只保留菜单、站点品牌、通知、更多和头像，第二行单独放搜索入口，不再让标题与一排图标互相抢宽度；第二点：新增手机端“更多功能”面板，把写作台、主题切换、个人角落和随机阅读收纳进去，减少顶栏长期常驻按钮数量；第三点：将个人角落弹层改为 Teleport 到 body 的固定浮层，保证它既能从桌面端原按钮打开，也能从移动端更多面板打开；第四点：补充 420px 以下的超窄屏兜底样式，继续压缩 logo 区宽度与头部间距，尽量避免小屏设备再次拥挤。",
+      "summary": "把手机端头部从单行硬塞改成“上层品牌与高频入口、下层独立搜索”的分层布局，并新增“更多功能”面板，把低频操作收起来，避免顶部继续挤成一串。",
+      "date": "2026-04-28T22:33:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-6",
+      "title": "移除 AI 助手入口与挂载",
+      "content": "第一点：删除头部原有的 AI 助手按钮，避免它继续占用工具位并与现有搜索入口形成重复认知；第二点：从 App 根组件移除 AIChatAssistant 挂载，让这块纯前端助手不再参与当前首屏加载；第三点：这次调整单独作为一条功能更新保留在当日消息里，方便后续回看时把“随机阅读入口改造”和“AI 助手下线”区分开。",
+      "summary": "将与站内搜索功能重叠的 AI 助手从头部入口和根组件挂载中一并移除，单独作为一次更明确的前端减负改动记录。",
+      "date": "2026-04-28T22:19:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-5",
+      "title": "头部阅读入口重整为随机阅读",
+      "content": "第一点：将头部阅读入口固定为稳定的 40x40 小图标按钮，按钮本身只占一个标准工具位，不再因为文案、缩放或弹层内容撑乱头部；第二点：随机阅读面板改为通过 Teleport 挂到 body 的固定浮层，避免弹出时继续挤压头部和正文布局；第三点：点击图标后在面板中统一展示当前已随机篇数、最低目标进度条、随机跳一篇按钮和重置今日计数按钮，后续如果还要加提醒型能力，也可以继续往这个面板里扩；第四点：进度以“3篇为最低达标线”而不是硬上限，达到 3/3 后仍可继续随机抽读，计数会继续累加，例如 5/3、8/3；第五点：新增手动重置能力，可随时清空当天计数与最近随机历史，方便重新开始；第六点：随机历史改为保留最近抽过的文章，用来尽量避开当前页和最近重复内容，但在文章池不足时仍允许继续抽，不会被 3 篇卡死。",
+      "summary": "把头部阅读入口改成不参与布局的小图标按钮 + body 浮层面板的结构，面板内统一放随机跳转、重置和当前阅读计数，同时保留“达标后继续抽读”的能力。",
+      "date": "2026-04-28T21:57:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-04-28-4",
+      "title": "完善 ElementPlus 专题首批六篇系列",
+      "content": "第一点：保留并完善 public/notes/ElementPlus/第一篇《快速认识 Element Plus：为什么它是 Vue 3 里常见的 PC 端组件库》，继续作为专题总览文，明确当前最新正式版为 2.13.7（2026-04-10 发布）以及 Vue 3 + Vite 下的总体定位；第二点：新增第二篇《安装与引入：把 Element Plus 真正接进 Vue 3 项目》，基于官方安装与快速开始文档详细整理兼容性、完整引入、自动按需导入、手动导入、Volar 支持与全局 size/zIndex 配置；第三点：新增第三篇《基础组件：Button、Icon、Container、Space、Text 怎么搭出像样的后台界面》，专门讲按钮分层、图标使用、容器骨架、统一间距和文字收口；第四点：新增第四篇《表单体系：Form、Input、Select、DateTimePicker、Upload 怎么配合》，系统整理表单校验、尺寸继承、scroll-to-error、Input 最新 count-graphemes、Select 宽度注意点、DateTimePicker 返回值与 value-format、Upload 文件列表与钩子；第五点：新增第五篇《中后台核心组件：Table、Pagination、Dialog、Drawer、Message 怎么配合》，围绕列表页主循环讲清表格展示、分页 layout、弹窗与抽屉的适用边界，以及 Message / MessageBox 的反馈职责；第六点：新增第六篇《主题定制、国际化、暗黑模式、ConfigProvider：Element Plus 全局能力怎么管》，结合官方国际化、主题与暗黑模式文档讲清 locale、Day.js 语言包、CSS 变量主题、SCSS 变量主题、按需导入下的 useSource 与 scss.additionalData、html.dark 与暗黑变量覆盖；第七点：同步更新 public/notes/ElementPlus/目录.md，补全当前六篇内容、建议阅读顺序和后续扩展方向，并刷新索引与通知派生数据，让站内分类、搜索与通知展示与专题最新结构保持一致。",
+      "summary": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，把原先只有首篇概览的专题扩写成首批六篇系列，覆盖接入、基础组件、表单体系、中后台核心组件、主题定制、国际化与暗黑模式。",
+      "date": "2026-04-28T21:41:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
@@ -16,14 +55,241 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-26-2",
-      "title": "站内搜索改为碎片记忆友好的混合检索",
-      "content": "第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例；第五点：当前终端环境里的 Node 进程初始化异常，导致本次无法实际跑通 Vitest 与通知生成脚本，需在 Node 环境恢复后补一次验证。",
-      "summary": "搜索从纯 includes 过滤升级为“多字段精确命中 + Fuse 模糊兜底”混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热，更适合内容增多后的零星记忆回找。",
-      "date": "2026-04-26T19:34:00+08:00",
+      "id": "git-3ea9f99cb70ef4a5d1fea9f0408f87274d899d82",
+      "title": "功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "content": "提交说明：功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "summary": "功能：新增Vue项目SCSS语法与使用方法的完整指南",
+      "date": "2026-04-28T20:54:35+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "3ea9f99",
+      "fullHash": "3ea9f99cb70ef4a5d1fea9f0408f87274d899d82"
+    },
+    {
+      "id": "daily-2026-04-28-3",
+      "title": "新增 SCSS 常见写法速通补充篇",
+      "content": "第一点：将 public/notes/CSS/《项目里看到 SCSS、Sass、Less、PostCSS 时，到底分别在干嘛》重写为更适合入门阅读的《SCSS 常见写法速通：先学会看懂别人代码》，不再从 Sass、Less、PostCSS 的工程化全景切入，而是聚焦“看懂别人写的 SCSS”这个目标，重点补充变量、选择器嵌套、&、@mixin、@include、@use、@extend、单行注释与 Vue 里 <style lang=\"scss\" scoped> 的常见读法；第二点：同步更新 CSS/目录.md 中第17章延伸阅读的文案，并刷新索引与通知所依赖的派生数据，让站内显示的新标题、新摘要和搜索内容都与文章新版内容保持一致。",
+      "summary": "把原先偏工程化的 CSS 补充文改写成更白话的 SCSS 入门速通，重点只讲看懂别人代码最常见的变量、嵌套、&、mixin、@include、@use 等写法。",
+      "date": "2026-04-28T20:22:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-17e82847d063b4b28bf6578e6773f271265fa370",
+      "title": "CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "content": "提交说明：CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "summary": "CSS笔记: 六篇全面审校与修正，补充遗漏知识点",
+      "date": "2026-04-28T17:43:35+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "17e8284",
+      "fullHash": "17e82847d063b4b28bf6578e6773f271265fa370"
+    },
+    {
+      "id": "daily-2026-04-28-2",
+      "title": "CSS 系列笔记六篇全面审校与修正",
+      "content": "第一点：第一篇——修正 <b>/<i> 标签\"废弃\"的错误描述（HTML5 已重新定义其语义），补全伪类顺序口诀为 L-V-F-H-A，修正 outline 圆角说明（现代浏览器已支持跟随圆角），补充渐变角度方向规律，新增 font 简写重置陷阱示例；第二点：第二篇——修正 float 副作用描述（变成块级盒子而非 inline-block），修正 display:flow-root 注释（删除\"不触发 BFC\"的错误说法，补充兼容性信息 Chrome 58+/Firefox 53+/Safari 13+）；第三点：第三篇——删除文件开头多余的 ****--- 字符，修正 flex:1 等价写法为 flex:1 1 0%，修正 flex-basis 默认值描述末尾多余括号，补全 auto-fit vs auto-fill 的差别说明（仅在项目数量少于可容纳列数时体现），修正 grid-template-areas 错误示例（原示例中 a 实为矩形，改为真正的 L 形示例）；第四点：第四篇——animation 简写补充关键约束（duration 必须在 delay 之前），修正 transform 多函数顺序注释（矩阵运算从右到左），更新 -webkit-backdrop-filter 注释（Safari 18+ 已无需前缀）；第五点：第五篇——补全 calc() 运算符空格规则（+/- 两侧必须有空格，*/不强制），补充 var() 回退值语法说明，新增 -var() 不合法的说明，修正 prefers-color-scheme:light 注释（默认样式即亮色，通常无需单独写）；第六点：第六篇——修正 Sass darken() 已废弃的问题（改为 color.adjust()），修正 @layer 兼容性描述（2022年已全面落地，非新特性），修正 @container 兼容性描述（2023年已全面落地，非实验性）。",
+      "summary": "对 CSS 系列第一至第六篇进行逐篇阅读审校，核实技术细节，修正多处错误描述，补充遗漏知识点，确保内容准确无误。",
+      "date": "2026-04-28T17:41:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-0c5d396dd51704018a793077a3889458cb7ee59e",
+      "title": "常用缺易忘目录深度重组",
+      "content": "提交说明：常用缺易忘目录深度重组",
+      "summary": "常用缺易忘目录深度重组",
+      "date": "2026-04-28T11:53:31+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "0c5d396",
+      "fullHash": "0c5d396dd51704018a793077a3889458cb7ee59e"
+    },
+    {
+      "id": "daily-2026-04-28-1",
+      "title": "常用缺易忘目录深度重组",
+      "content": "第一点：顶层新建 public/notes/我的总结/ 目录，将 常用缺易忘/常识/JS/（JS常识.md + 辅助资料18篇）和 常用缺易忘/常识/Vue/（Vue.md + vue辅助10篇 + vue随记3篇）整体迁移进去，共32个文件；第二点：将 常用缺易忘/常识/URL到页面显示/ 6篇（HTTP协议/TCP/DNS/HTTP缓存/浏览器渲染/URL全过程）迁移到新建的 常用缺易忘/浏览器与网络/ 目录；第三点：将 常用缺易忘/开发的基础知识/数据/ 7篇（File/Blob/ArrayBuffer/浏览器存储/MIME等）迁移到新建的 常用缺易忘/数据类型/ 目录；第四点：将 常用缺易忘/开发的基础知识/网络/ 4篇迁移到新建的 常用缺易忘/网络请求/ 目录；第五点：将 常用缺易忘/技术/ 3篇和 window对象常用API速查.md 迁移到新建的 常用缺易忘/工具速查/ 目录；第六点：删除\"提高效率的技术\"目录中已被覆盖的 WebSocket 3篇（被项目复用技术/WebSocket 8篇覆盖）和 Codex入门指南（被 AI工具/Codex 10篇覆盖），将 Markdown完全指南 迁移到 常用缺易忘/工具速查/；第七点：重新生成 notes-index.json 索引，总笔记数 323 篇。",
+      "summary": "对\"常用缺易忘\"目录进行深度整理：将 JS/Vue 精简总结迁移到新建的\"我的总结\"顶层目录，原有三个语义模糊的子目录（常识/技术/开发的基础知识）重命名为浏览器与网络、数据类型、网络请求、工具速查四个语义清晰的目录，同时清理\"提高效率的技术\"目录中被覆盖的重复文章。",
+      "date": "2026-04-28T11:45:00+08:00",
       "tag": "功能更新",
       "category": "功能更新",
       "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-1709f2f6c04bb5c65ea449ffb5a2e6799e94c4b0",
+      "title": "优化路由文档",
+      "content": "提交说明：优化路由文档",
+      "summary": "优化路由文档",
+      "date": "2026-04-27T18:27:31+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "1709f2f",
+      "fullHash": "1709f2f6c04bb5c65ea449ffb5a2e6799e94c4b0"
+    },
+    {
+      "id": "history-2026-04-27-5",
+      "title": "Vue Router 总笔记扩写为一站式复习手册",
+      "content": "第一点：将 Router.md 再次重写为《Vue Router 超详细总笔记》，从\"复习优先的项目版\"进一步扩成\"一站式知识手册\"；第二点：围绕官方资料补全知识体系，系统整理 route/routes/router、router-link、router-view、命名路由、重定向、别名、404、命名视图、嵌套路由等；第三点：重点把路由传参完整展开，细分 query、params、props 三大类；第四点：补充动态路径匹配语法，包括自定义正则、可选参数、可重复参数；第五点：补齐守卫分类、执行顺序、scrollBehavior、懒加载、keep-alive 等。",
+      "summary": "继续扩充 Router.md，按\"以后只看这一篇就够\"的目标，系统补全 Router 核心概念、路由规则配置项、每种传参形式、每种跳转形式、守卫、历史模式、动态路由匹配语法与动态添加路由等完整知识面。",
+      "date": "2026-04-27T18:24:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-27",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-f3a7a23ad55f357d2417e12507aecd0a25f3a471",
+      "title": "新增codex遇到powershell调用问题文档和迁移第三方登录文章位置",
+      "content": "提交说明：新增codex遇到powershell调用问题文档和迁移第三方登录文章位置",
+      "summary": "新增codex遇到powershell调用问题文档和迁移第三方登录文章位置",
+      "date": "2026-04-27T16:09:15+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "f3a7a23",
+      "fullHash": "f3a7a23ad55f357d2417e12507aecd0a25f3a471"
+    },
+    {
+      "id": "history-2026-04-27-4",
+      "title": "第三方登录知识库完整迁移（钉钉 + 企业微信 37 篇）",
+      "content": "第一点：删除旧版浅层文章《第一篇_PC端第三方扫码登录全攻略_钉钉微信企业微信.md》；第二点：从根目录 第三方登录/ 完整复制 37 个文件到 public/notes/项目复用技术/第三方登录对接/，保留原有目录结构；第三点：钉钉部分包含通用知识、H5 微应用（5 篇）、PC 微应用（3 篇）、小程序（5 篇 + 改造记录）；第四点：企业微信部分包含通用知识（2 篇）、H5 微应用（4 篇 + 2 篇排障）、PC 扫码登录（2 篇）、小程序（1 篇）；第五点：重新生成 notes-index.json，总笔记数从 328 篇增至 364 篇。",
+      "summary": "将原始第三方登录知识库（37 篇文档）完整迁移到 public/notes/项目复用技术/第三方登录对接/，覆盖钉钉与企业微信的 H5 微应用、PC 扫码登录、小程序全场景，删除旧的浅层概览文章。",
+      "date": "2026-04-27T15:59:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-27",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-27-3",
+      "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+      "content": "第一点：在 public/notes/AI工具/Codex/ 新增第十篇《Codex 命令调用失败与 PowerShell 版本冲突排查修复实录》；第二点：覆盖三大核心诱因——PowerShell 5.1/7 双版本冲突、CC Switch 强制覆盖 MCP 配置、旧版内核文件异常；第三点：提供四步修复方案：固定默认使用 PowerShell 7、重新部署 MCP、修复 5.1 系统文件、Codex/Cursor 编辑器专项适配；第四点：附 PowerShell 版本速查对比表；第五点：更新 Codex 目录页，新增\"故障排查专篇\"分组。",
+      "summary": "新增 Codex 第十篇故障排查实录，记录 PowerShell 5.1/7 双版本冲突导致命令调用失败、CC Switch 覆盖 MCP 配置的完整排查与修复流程，附长期规避建议。",
+      "date": "2026-04-27T14:48:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-27",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-e82e273eb02b761f56039e82bada6e60fe388329",
+      "title": "git提交命令知识文档",
+      "content": "提交说明：git提交命令知识文档",
+      "summary": "git提交命令知识文档",
+      "date": "2026-04-27T14:40:47+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "e82e273",
+      "fullHash": "e82e273eb02b761f56039e82bada6e60fe388329"
+    },
+    {
+      "id": "git-985a6548eaca0554dde9622eecf4504421c2ad96",
+      "title": "AI工具: 补充中转站与CC Switch计费说明",
+      "content": "提交说明：AI工具: 补充中转站与CC Switch计费说明",
+      "summary": "AI工具: 补充中转站与CC Switch计费说明",
+      "date": "2026-04-27T14:37:59+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "985a654",
+      "fullHash": "985a6548eaca0554dde9622eecf4504421c2ad96"
+    },
+    {
+      "id": "history-2026-04-27-2",
+      "title": "AI开发基础：Token、输入输出与缓存计费全解（2026-04最新版）",
+      "content": "第一点：在 public/notes/AI工具/ 下新建《AI开发基础》目录，新增第一篇《Token、输入输出与缓存——AI开发计费全解》；第二点：价格表更新为 2026-04 最新数据，包含 GPT-5.5/5.4/5.4mini、GPT-4.1 系列、Claude Opus/Sonnet/Haiku 4.x、Gemini 2.5 Pro/Flash 全系列；第三点：更新 Prompt Caching 对比，OpenAI 缓存折扣已升至 90%，Claude 新增 1小时 TTL 选项；第四点：补充 Claude 4.6 的 1M 上下文于 2026-03-13 正式 GA 的信息。",
+      "summary": "新增并更新 AI 开发必备基础知识文档，基于 2026-04 最新定价数据，覆盖 OpenAI GPT-5 系列、Claude 4.6、Gemini 2.5 最新价格，以及 Claude 双 TTL 缓存机制、OpenAI 缓存升至 90% 折扣等最新变化。",
+      "date": "2026-04-27T14:04:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-27",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-27-1",
+      "title": "Git 命令速查与常见问题笔记",
+      "content": "第一点：在 public/notes/常用缺易忘/技术/ 下新增《Git命令速查与常见问题.md》，内容包含日常基础操作、分支操作、撤销回退、远程仓库管理、stash 暂存、SSH Key 配置；第二点：专门整理国内连不上 GitHub 443 端口的排查步骤，涵盖清残留代理、ghproxy 镜像、SSH 协议切换、梯子代理配置四种方案；第三点：附 VSCode 插件按钮与命令行对照表；第四点：重新生成 notes-index.json 索引，总笔记数 324 篇。",
+      "summary": "新增 Git 命令行速查手册，覆盖日常操作、分支管理、撤销回退、VSCode 按钮对照表，以及国内连不上 GitHub 443 端口的多种解决方案。",
+      "date": "2026-04-27T11:41:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-27",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-5f76dd9dc2efb6e6f4ebf45bd456ca0b65796495",
+      "title": "内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "content": "提交说明：内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "summary": "内容上新: 新增 CC Switch v3.14.1 完整使用指南",
+      "date": "2026-04-26T20:17:26+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "5f76dd9",
+      "fullHash": "5f76dd9dc2efb6e6f4ebf45bd456ca0b65796495"
+    },
+    {
+      "id": "history-2026-04-26-1",
+      "title": "新增 CC Switch 完整使用指南（v3.14.1）",
+      "content": "第一点：拉取官方完整 CHANGELOG（115KB）和中文 README，发现原文章存在多处错误：支持工具实为 6 款（v3.14.0 新增 Hermes Agent）、\"本地代理\"在 v3.14.0 已统一改名为\"Local Routing\"、界面操作描述与实际 v3.14.1 不符；第二点：彻底重写 public/notes/AI工具/CC Switch/第一篇_CCSwitch快速上手与核心概念_2026-04.md，新增界面结构解析、版本演进简史（v3.0.0 至 v3.14.1 关键里程碑）、Hermes Agent 说明、本地路由注意事项（开启时无法切换官方 Provider）、系统托盘操作方式等；第三点：同步更新目录.md 的描述与覆盖主题，重新生成 notes-index.json 索引。",
+      "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记，内容与 v3.14.1 实际版本完全对齐。",
+      "date": "2026-04-26T20:10:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-26",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-26-2",
+      "title": "站内搜索改为碎片记忆友好的混合检索",
+      "content": "第一点：重写 src/utils/search.js，搜索字段覆盖 title、description、tags、category、filename、path、content，保留精确命中优先的排序，同时让 Fuse.js 真正参与模糊兜底；第二点：SearchPage.vue 与 KnowledgeSearchPanel.vue 改为支持空格或逗号分词，多词查询会逐词高亮，不再只认整句；第三点：searchWarmup.js 预热阶段改为直接初始化完整搜索引擎，而不是只拉取 JSON；第四点：新增 src/utils/__tests__/search.test.js，补上碎片词检索、路径召回、多词 AND/OR、高亮与历史归一化的测试样例。",
+      "summary": "搜索从纯 includes 过滤升级为\"多字段精确命中 + Fuse 模糊兜底\"混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热。",
+      "date": "2026-04-26T19:34:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-26",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -2136,6 +2402,58 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-04-27",
+      "items": [
+        {
+          "title": "Git 命令速查与常见问题笔记",
+          "summary": "新增 Git 命令行速查手册，覆盖日常操作、分支管理、撤销回退、VSCode 按钮对照表，以及国内连不上 GitHub 443 端口的多种解决方案。",
+          "time": "11:41",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "AI开发基础：Token、输入输出与缓存计费全解（2026-04最新版）",
+          "summary": "新增并更新 AI 开发必备基础知识文档，基于 2026-04 最新定价数据，覆盖 OpenAI GPT-5 系列、Claude 4.6、Gemini 2.5 最新价格，以及 Claude 双 TTL 缓存机制、OpenAI 缓存升至 90% 折扣等最新变化。",
+          "time": "14:04",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+          "summary": "新增 Codex 第十篇故障排查实录，记录 PowerShell 5.1/7 双版本冲突导致命令调用失败、CC Switch 覆盖 MCP 配置的完整排查与修复流程，附长期规避建议。",
+          "time": "14:48",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "第三方登录知识库完整迁移（钉钉 + 企业微信 37 篇）",
+          "summary": "将原始第三方登录知识库（37 篇文档）完整迁移到 public/notes/项目复用技术/第三方登录对接/，覆盖钉钉与企业微信的 H5 微应用、PC 扫码登录、小程序全场景，删除旧的浅层概览文章。",
+          "time": "15:59",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "Vue Router 总笔记扩写为一站式复习手册",
+          "summary": "继续扩充 Router.md，按\"以后只看这一篇就够\"的目标，系统补全 Router 核心概念、路由规则配置项、每种传参形式、每种跳转形式、守卫、历史模式、动态路由匹配语法与动态添加路由等完整知识面。",
+          "time": "18:24",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
+    {
+      "date": "2026-04-26",
+      "items": [
+        {
+          "title": "新增 CC Switch 完整使用指南（v3.14.1）",
+          "summary": "基于官方 CHANGELOG 和中文 README 全力核实，彻底重写 CC Switch 笔记，内容与 v3.14.1 实际版本完全对齐。",
+          "time": "20:10",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "站内搜索改为碎片记忆友好的混合检索",
+          "summary": "搜索从纯 includes 过滤升级为\"多字段精确命中 + Fuse 模糊兜底\"混合检索，支持空格分词、路径召回、逐词高亮和真正的搜索预热。",
+          "time": "19:34",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
     {
       "date": "2026-04-25",
       "items": [
