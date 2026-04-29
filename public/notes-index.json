@@ -11024,9 +11024,9 @@
           "category": "CSS",
           "attachments": [],
           "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-          "size": "80KB",
-          "lastModified": "2026-04-28T08:59:53.361Z",
-          "wordCount": 51408
+          "size": "92KB",
+          "lastModified": "2026-04-29T08:53:25.762Z",
+          "wordCount": 58224
         },
         {
           "type": "file",
@@ -11179,9 +11179,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-          "size": "14KB",
-          "lastModified": "2026-04-29T01:10:36.751Z",
-          "wordCount": 9506
+          "size": "17KB",
+          "lastModified": "2026-04-29T03:55:41.617Z",
+          "wordCount": 11454
         },
         {
           "type": "file",
@@ -11553,9 +11553,9 @@
           "category": "HTML",
           "attachments": [],
           "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
-          "size": "12KB",
-          "lastModified": "2026-04-29T02:00:55.123Z",
-          "wordCount": 7703
+          "size": "13KB",
+          "lastModified": "2026-04-29T03:39:48.402Z",
+          "wordCount": 8855
         },
         {
           "type": "file",
@@ -16590,6 +16590,26 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第三篇_现代布局_从弹性到网格",
+      "frontmatterTitle": "第三篇_现代布局_从弹性到网格",
+      "fileTitle": "第三篇_现代布局_从弹性到网格",
+      "filename": "第三篇_现代布局_从弹性到网格.md",
+      "path": "CSS/第三篇_现代布局_从弹性到网格.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "CSS"
+      ],
+      "category": "CSS",
+      "attachments": [],
+      "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
+      "size": "92KB",
+      "lastModified": "2026-04-29T08:53:25.762Z",
+      "wordCount": 58224
+    },
+    {
+      "type": "file",
       "title": "HTML 目录",
       "frontmatterTitle": "HTML 目录",
       "fileTitle": "HTML 目录",
@@ -16653,9 +16673,9 @@
       "category": "HTML",
       "attachments": [],
       "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
-      "size": "12KB",
-      "lastModified": "2026-04-29T02:00:55.123Z",
-      "wordCount": 7703
+      "size": "13KB",
+      "lastModified": "2026-04-29T03:39:48.402Z",
+      "wordCount": 8855
     },
     {
       "type": "file",
@@ -16797,26 +16817,6 @@
     },
     {
       "type": "file",
-      "title": "第三篇_现代布局_从弹性到网格",
-      "frontmatterTitle": "第三篇_现代布局_从弹性到网格",
-      "fileTitle": "第三篇_现代布局_从弹性到网格",
-      "filename": "第三篇_现代布局_从弹性到网格.md",
-      "path": "CSS/第三篇_现代布局_从弹性到网格.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "CSS"
-      ],
-      "category": "CSS",
-      "attachments": [],
-      "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-      "size": "80KB",
-      "lastModified": "2026-04-28T08:59:53.361Z",
-      "wordCount": 51408
-    },
-    {
-      "type": "file",
       "title": "第二篇_CSS核心_盒子_布局_视觉",
       "frontmatterTitle": "第二篇_CSS核心_盒子_布局_视觉",
       "fileTitle": "第二篇_CSS核心_盒子_布局_视觉",
@@ -16875,9 +16875,9 @@
       "category": "Element Plus",
       "attachments": [],
       "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-      "size": "14KB",
-      "lastModified": "2026-04-29T01:10:36.751Z",
-      "wordCount": 9506
+      "size": "17KB",
+      "lastModified": "2026-04-29T03:55:41.617Z",
+      "wordCount": 11454
     },
     {
       "type": "file",
@@ -28342,9 +28342,9 @@
           "category": "CSS",
           "attachments": [],
           "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-          "size": "80KB",
-          "lastModified": "2026-04-28T08:59:53.361Z",
-          "wordCount": 51408
+          "size": "92KB",
+          "lastModified": "2026-04-29T08:53:25.762Z",
+          "wordCount": 58224
         },
         {
           "type": "file",
@@ -28497,9 +28497,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-          "size": "14KB",
-          "lastModified": "2026-04-29T01:10:36.751Z",
-          "wordCount": 9506
+          "size": "17KB",
+          "lastModified": "2026-04-29T03:55:41.617Z",
+          "wordCount": 11454
         },
         {
           "type": "file",
@@ -28871,9 +28871,9 @@
           "category": "HTML",
           "attachments": [],
           "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
-          "size": "12KB",
-          "lastModified": "2026-04-29T02:00:55.123Z",
-          "wordCount": 7703
+          "size": "13KB",
+          "lastModified": "2026-04-29T03:39:48.402Z",
+          "wordCount": 8855
         },
         {
           "type": "file",
@@ -31941,5 +31941,5 @@
   ],
   "totalNotes": 335,
   "totalCategories": 76,
-  "lastUpdated": "2026-04-29T02:01:11.159Z"
+  "lastUpdated": "2026-04-29T08:53:35.598Z"
 }
