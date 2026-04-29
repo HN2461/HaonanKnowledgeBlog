@@ -38,6 +38,10 @@ attachments:
 ```
 - `attachments` 写文件名时默认按“当前文章所在目录”解析；写完整相对路径时按 `public/notes/` 根目录解析。
 - 如果文章存在专属附件（如 `.bat`、`.zip`、`.pdf`），必须写入 `attachments`，否则前端不展示下载区。
+- 如果主人要求“给某篇文章配一个可弹窗预览的学习型 HTML 示例 / 效果 demo”，优先复用现有“`attachments` + 详情页 HTML 预览弹窗”机制，不额外新建独立路由页面。
+- 这类示例文件统一放在 `public/notes/` 下，建议与文章放在同目录或其子目录，并通过 frontmatter 的 `attachments` 显式声明 `.html` / `.htm` 文件。
+- HTML 示例附件应默认保留下载 / 新窗口打开入口，同时在文章详情页提供“预览示例”按钮；新增实现时优先沿用现有附件识别、`iframe sandbox` 预览和路径编码逻辑。
+- 示例页尽量做成自包含静态页面；若依赖图片、样式或脚本资源，优先使用同目录相对路径资源，避免破坏 GitHub Pages `base` 路径和站内 iframe 预览。
 - frontmatter（程序元信息）必须放在文件最顶部，使用 `---` 包裹，且保持合法 YAML 键值结构。
 - 渲染层必须剥离 frontmatter，且要兼容 `UTF-8 BOM`、`CRLF/LF` 换行，避免将元信息渲染到正文。
 - 如页面出现 `title/date/tags` 原文内容，优先修复 frontmatter 解析逻辑，不通过删元信息回避问题。
@@ -62,6 +66,10 @@ attachments:
 - `npm test`：执行一次 Vitest 测试。
 - `npm run test:watch`：以监听模式运行测试。
 - `npm test -- --coverage`：输出覆盖率报告（`text`、`json`、`html`）。
+- 在 Codex / 代理终端里准备执行任何 `node`、`npm`、`vite` 脚本前，优先先跑一次 `pwsh -File scripts/checkNodeRuntime.ps1` 做运行时预检。
+- 如果预检里 `node -v` 正常、但 `node -e` 失败，并出现 `ncrypto::CSPRNG(nullptr, 0)`、`NTE_PROVIDER_DLL_FAIL` 或 `0x8009001d`，应判定为“当前终端环境的加密提供程序初始化异常”，不要盲目重复执行 `npm` / `node` 命令。
+- 如果主人自己在外部 PowerShell / CMD 里执行 `node -e` 正常，而 Codex 终端里的预检失败，应优先判定为“Codex 命令执行环境与主人外部终端不一致”，不要误报为“主人机器上的 Node 坏了”。
+- 出现上述异常时，优先改走“外部终端手动执行脚本”或“本地手动同步生成文件”的回退方案，并在回复主人时明确这是环境问题，不是仓库代码问题。
 
 ## 代码风格与命名规范
 - 技术栈使用 Vue 3 SFC + ESM JavaScript。

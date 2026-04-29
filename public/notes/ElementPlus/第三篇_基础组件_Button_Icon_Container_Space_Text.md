@@ -67,7 +67,10 @@ Element Plus 的基础组件，很多不是为了“炫”，而是为了：
 - `circle`
 - `disabled`
 - `loading`
+- `text`
 - `link`
+- `icon`
+- `dashed`
 - 自定义颜色
 
 ### 1. 最基础的 type
@@ -146,24 +149,64 @@ Element Plus 的基础组件，很多不是为了“炫”，而是为了：
 
 这比只弹一句“提交中”更直观。
 
-### 5. `link`
+### 5. `link` 和 `text` 别混
 
 官方 Button 文档特别提醒了一点：
 
 - `type='text'` 已经被废弃
 - `3.0.0` 会移除
-- 应该改用新的 `link` API
+- 但 `text` 这个布尔属性本身仍然是现行能力
+- `link` 和 `text` 都能做轻量按钮，只是视觉风格不同
 
-所以主人现在看新代码时，建议优先写：
+所以主人现在看新代码时，更准确的理解是：
 
 ```vue
+<el-button text>次级操作</el-button>
+<el-button text type="primary">查看日志</el-button>
 <el-button link type="primary">编辑</el-button>
 <el-button link type="danger">删除</el-button>
 ```
 
-这正是列表操作区最常见的写法。
+这几种写法的区别可以这样记：
 
-### 6. 新版能力顺手记一下
+- `link`
+  - 更像链接，适合表格行内操作、操作列
+- `text`
+  - 仍然保留按钮交互区块，但视觉更轻，适合工具栏里的次操作
+- `type='text'`
+  - 这是旧写法，看到老代码要知道该迁移，但不要把新的 `text` 属性也误判成废弃 API
+
+主人如果只是写后台列表的“编辑 / 删除 / 详情”，优先用 `link` 往往更贴切。
+
+### 6. `icon` 和 ButtonGroup 也很常用
+
+如果只是想在按钮前面放一个图标，官方也支持直接传 `icon` 属性：
+
+```vue
+<script setup>
+import { Plus, ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
+</script>
+
+<template>
+  <el-button type="primary" :icon="Plus">新建项目</el-button>
+
+  <el-button-group>
+    <el-button :icon="ArrowLeft">上一步</el-button>
+    <el-button type="primary">
+      下一步
+      <el-icon class="el-icon--right"><ArrowRight /></el-icon>
+    </el-button>
+  </el-button-group>
+</template>
+```
+
+它常见于：
+
+- 新建、刷新、导出这类带图标的主动作
+- 上一步 / 下一步
+- 列表切换、批量操作这类一组并列动作
+
+### 7. 新版能力顺手记一下
 
 结合最新发布记录：
 
@@ -392,7 +435,41 @@ import { Search, Refresh, Plus } from '@element-plus/icons-vue'
 </el-space>
 ```
 
-### 4. 官方给的一个注意点
+### 4. `spacer` 适合做轻分隔
+
+如果操作项很多，但又不想每个都手写分隔符，可以直接用：
+
+```vue
+<el-space spacer="|">
+  <el-button text>编辑</el-button>
+  <el-button text>复制</el-button>
+  <el-button text type="danger">删除</el-button>
+</el-space>
+```
+
+这种写法特别适合：
+
+- 表格操作列
+- 卡片头部的小操作区
+- 一排文字按钮
+
+### 5. `fill` 适合做均分按钮区
+
+官方还提供了 `fill` 和 `fill-ratio`。
+
+它适合那种“同一排按钮要自动拉开宽度”的场景：
+
+```vue
+<el-space fill>
+  <el-button>按周</el-button>
+  <el-button>按月</el-button>
+  <el-button>按年</el-button>
+</el-space>
+```
+
+比如筛选卡片顶部的视图切换、时间维度切换，就很适合先试 `fill`，再考虑自己写 flex。
+
+### 6. 官方给的一个注意点
 
 文档里专门提醒：
 
@@ -416,6 +493,8 @@ import { Search, Refresh, Plus } from '@element-plus/icons-vue'
 - `type`
 - `size`
 - `truncated`
+- `line-clamp`
+- `tag`
 
 ### 1. 基础类型
 
@@ -453,6 +532,30 @@ import { Search, Refresh, Plus } from '@element-plus/icons-vue'
 ```
 
 对后台表头、副标题、卡片描述很有用。
+
+### 4. 多行省略
+
+如果不是一行标题，而是简介、说明文这种两三行内容，更适合用 `line-clamp`：
+
+```vue
+<el-text :line-clamp="2">
+  这是一段比较长的说明文案，用来演示两行截断。超过两行以后，组件会自动帮你做省略处理。
+</el-text>
+```
+
+列表卡片、资讯摘要、详情页说明区都很常见。
+
+### 5. `tag` 控制最终渲染的语义标签
+
+`ElText` 不只是样式包装，它还可以改最终输出的 HTML 标签：
+
+```vue
+<el-text tag="p" type="info">
+  这里是一段说明文字
+</el-text>
+```
+
+这在文章摘要、卡片副标题、表单说明文里会更顺手，因为你不用为了语义标签再额外包一层。
 
 ---
 

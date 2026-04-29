@@ -116,18 +116,39 @@
             <div class="note-attachments" v-if="attachments.length > 0">
               <h2 class="attachments-title">附件与脚本</h2>
               <div class="attachments-list">
-                <a
+                <article
                   v-for="attachment in attachments"
                   :key="attachment.path"
-                  :href="buildAttachmentUrl(attachment.path)"
                   class="attachment-item"
-                  :download="attachment.name"
-                  target="_blank"
-                  rel="noopener"
                 >
-                  <span class="attachment-name">{{ attachment.name }}</span>
-                  <span class="attachment-meta">{{ formatAttachmentMeta(attachment) }}</span>
-                </a>
+                  <div class="attachment-copy">
+                    <div class="attachment-title-row">
+                      <span class="attachment-name">{{ attachment.name }}</span>
+                      <span v-if="attachment.previewable" class="attachment-badge">HTML 示例</span>
+                    </div>
+                    <span class="attachment-meta">{{ formatAttachmentMeta(attachment) }}</span>
+                  </div>
+
+                  <div class="attachment-actions">
+                    <button
+                      v-if="attachment.previewable"
+                      type="button"
+                      class="attachment-action primary"
+                      @click="openAttachmentPreview(attachment)"
+                    >
+                      预览示例
+                    </button>
+                    <a
+                      :href="attachment.url"
+                      class="attachment-action secondary"
+                      :download="attachment.name"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      {{ getAttachmentDownloadLabel(attachment) }}
+                    </a>
+                  </div>
+                </article>
               </div>
             </div>
 
@@ -214,6 +235,13 @@
     
     <!-- 图片灯箱 -->
     <ImageLightbox ref="lightboxRef" />
+
+    <HtmlAttachmentPreviewModal
+      :model-value="!!activePreviewAttachment"
+      :attachment="activePreviewAttachment"
+      :note-title="note.title"
+      @update:modelValue="handleAttachmentPreviewVisible"
+    />
     
     <!-- 阅读位置恢复提示 -->
     <Teleport to="body">
@@ -260,6 +288,7 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick, onBeforeUnmount
 import { useRoute } from 'vue-router'
 import AppLayout from '@/components/AppLayout.vue'
 import Breadcrumb from '@/components/Breadcrumb.vue'
+import HtmlAttachmentPreviewModal from '@/components/HtmlAttachmentPreviewModal.vue'
 import MarkdownRenderer from '@/components/MarkdownRenderer.vue'
 import TableOfContents from '@/components/TableOfContents.vue'
 import SkeletonScreen from '@/components/SkeletonScreen.vue'
@@ -292,6 +321,10 @@ import {
 } from '@/utils/readingPosition'
 import { resolveScrollableContainer } from '@/utils/scrollContainer'
 import { loadNotesIndex } from '@/utils/indexData'
+import {
+  buildAttachmentUrl,
+  getAttachmentPreviewType
+} from '@/utils/noteAttachments'
 
 const route = useRoute()
 const loading = ref(true)
@@ -315,6 +348,7 @@ const actionToast = ref({
   type: 'success'
 })
 let actionToastTimer = null
+const activePreviewAttachment = ref(null)
 
 // 阅读位置相关
 const scrollContainer = ref(null)
@@ -332,7 +366,18 @@ const NOTE_DETAIL_MAIN_CLASS = 'note-detail-main-content'
 const notePath = computed(() => route.params.path)
 const showTocSidebar = computed(() => !loading.value && toc.value.length > 0)
 const attachments = computed(() => {
-  return Array.isArray(note.value.attachments) ? note.value.attachments : []
+  const rawAttachments = Array.isArray(note.value.attachments) ? note.value.attachments : []
+
+  return rawAttachments.map((attachment) => {
+    const previewType = getAttachmentPreviewType(attachment)
+
+    return {
+      ...attachment,
+      previewType,
+      previewable: !!previewType,
+      url: buildAttachmentUrl(attachment.path, import.meta.env.BASE_URL)
+    }
+  })
 })
 
 const notePresentationSource = computed(() => {
@@ -489,22 +534,14 @@ const showSeriesPanel = computed(() => {
   return seriesNotes.value.length > 1 || peerSeries.value.length > 0
 })
 
-const encodePathSegments = (filePath) => {
-  return String(filePath || '')
-    .split('/')
-    .filter(Boolean)
-    .map((segment) => encodeURIComponent(segment))
-    .join('/')
-}
-
-const buildAttachmentUrl = (filePath) => {
-  return `${import.meta.env.BASE_URL}notes/${encodePathSegments(filePath)}`
-}
-
 const formatAttachmentMeta = (attachment) => {
   const ext = attachment.ext ? attachment.ext.toUpperCase() : 'FILE'
   const size = attachment.size || '--'
   return `${ext} · ${size}`
+}
+
+const getAttachmentDownloadLabel = (attachment) => {
+  return attachment.previewable ? '下载原文件' : '下载附件'
 }
 
 const getSeriesNoteIndexLabel = (seriesNote) => {
@@ -554,6 +591,20 @@ const enterFullscreen = () => {
 const openLightbox = (src, alt) => {
   if (lightboxRef.value) {
     lightboxRef.value.open(src, alt)
+  }
+}
+
+const openAttachmentPreview = (attachment) => {
+  if (!attachment?.previewable) {
+    return
+  }
+
+  activePreviewAttachment.value = attachment
+}
+
+const handleAttachmentPreviewVisible = (visible) => {
+  if (!visible) {
+    activePreviewAttachment.value = null
   }
 }
 
@@ -905,7 +956,8 @@ watch(() => route.params.path, (newPath, oldPath) => {
     console.log(`🔄 路由切换: ${oldPath} -> ${newPath}`)
     saveCurrentPosition()
   }
-  
+
+  activePreviewAttachment.value = null
   cleanupScrollListener()
   loadNote()
   initializeReadingPosition()
@@ -1200,33 +1252,109 @@ watch(() => route.params.path, (newPath, oldPath) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 10px;
+  gap: 18px;
+  padding: 14px;
+  border-radius: 14px;
   border: 1px solid var(--border-color);
   background-color: var(--bg-secondary);
-  text-decoration: none;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .attachment-item:hover {
   border-color: rgba(var(--primary-color-rgb), 0.3);
   background: rgba(var(--primary-color-rgb), 0.04);
+  transform: translateY(-1px);
+}
+
+.attachment-copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.attachment-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
 }
 
 .attachment-name {
   color: var(--text-primary);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
+.attachment-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
 .attachment-meta {
   color: var(--text-tertiary);
   font-size: 12px;
+}
+
+.attachment-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   flex-shrink: 0;
+}
+
+.attachment-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+}
+
+.attachment-action:hover {
+  transform: translateY(-1px);
+}
+
+.attachment-action.primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: #fff;
+}
+
+.attachment-action.primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #fff;
+}
+
+.attachment-action.secondary {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+.attachment-action.secondary:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.28);
+  background: rgba(var(--primary-color-rgb), 0.08);
 }
 
 .markdown-content {
@@ -1561,6 +1689,24 @@ watch(() => route.params.path, (newPath, oldPath) => {
   
   .note-meta {
     gap: 16px;
+  }
+
+  .attachment-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .attachment-title-row {
+    flex-wrap: wrap;
+  }
+
+  .attachment-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .attachment-action {
+    flex: 1 1 160px;
   }
   
   .page-container {
