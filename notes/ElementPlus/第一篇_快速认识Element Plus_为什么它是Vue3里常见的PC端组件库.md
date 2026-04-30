@@ -92,28 +92,36 @@ npm i element-plus
 ### 1. `main.js` 直接完整引入
 
 ```js
-import { createApp } from "vue";
-import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
-import App from "./App.vue";
+import { createApp } from 'vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import App from './App.vue'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(ElementPlus, {
-  size: "default",
-  zIndex: 3000,
-});
-
-app.mount("#app");
+app.use(ElementPlus)
+app.mount('#app')
 ```
 
-这里先看懂 3 件事：
+这里先看懂 2 件事：
 
 - `app.use(ElementPlus)`：把整个组件库挂到项目里
 - `import 'element-plus/dist/index.css'`：把默认样式引进来
-- `size`、`zIndex`：这是官方支持的全局配置入口
 
 如果主人是刚开始接触，先用这个方案最省脑子。
+
+### 2. 全局配置 size 和 zIndex（可选）
+
+完整引入时，可以在 `app.use` 第二个参数传入全局配置：
+
+```js
+app.use(ElementPlus, { size: 'default', zIndex: 3000 })
+```
+
+- `size`：设置表单类组件的默认尺寸，可选值 `'large'`、`'default'`、`'small'`
+- `zIndex`：设置弹出层组件（Dialog、Popover 等）的初始 z-index，**官方默认值是 `2000`**，这里写 `3000` 是把它调高了
+
+> 注意：这两个配置只在**完整引入**时通过 `app.use` 第二参数传入有效。如果用按需导入，需要改用 `<el-config-provider>` 组件来配置（见第七节）。
 
 ---
 
@@ -138,25 +146,26 @@ npm i -D unplugin-auto-import unplugin-vue-components
 然后配置 `vite.config.js`：
 
 ```js
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ["vue"],
       resolvers: [ElementPlusResolver()],
     }),
     Components({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-});
+})
 ```
+
+> 这里 `AutoImport` 只需要配 `resolvers`，不需要加 `imports: ['vue']`。`imports: ['vue']` 是用来自动导入 Vue 的 `ref`、`computed` 等 API 的，是另一个独立功能，按需加，不是 Element Plus 按需导入的必要配置。
 
 这样配完后，很多时候你在组件模板里直接写：
 
@@ -207,9 +216,8 @@ const tableData = ref([
 function handleSearch() {
   console.log('查询条件', query)
 }
-```
+</script>
 
-```vue
 <template>
   <el-card class="panel-card">
     <template #header>
@@ -313,13 +321,13 @@ function handleSearch() {
 
 ## 七、国际化：让分页、日期等默认文案显示中文
 
-如果主人发现分页、日期控件这些内置文案不是你想要的语言，官方推荐用 `ConfigProvider`。
+如果主人发现分页、日期控件这些内置文案不是你想要的语言，官方推荐用 `el-config-provider` 包裹根组件。
 
-比如切成中文：
+比如切成中文，在 `App.vue` 里这样写：
 
 ```vue
 <script setup>
-import zhCn from "element-plus/es/locale/lang/zh-cn";
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 </script>
 
 <template>
@@ -329,16 +337,24 @@ import zhCn from "element-plus/es/locale/lang/zh-cn";
 </template>
 ```
 
-这个写法很常见。
-
-因为很多后台项目不只是自己写按钮文案，还要让：
+这个写法很常见，因为很多后台项目不只是自己写按钮文案，还要让：
 
 - 分页
 - 日期选择器
 - 时间选择器
-- 表格空态
+- 表格空态提示
 
 这些组件内部默认文案也统一起来。
+
+> 补充：`el-config-provider` 除了 `locale`，还可以配 `size` 和 `z-index`，这也是**按需导入时**设置全局尺寸和层级的正确方式：
+>
+> ```vue
+> <el-config-provider :locale="zhCn" size="default" :z-index="3000">
+>   <router-view />
+> </el-config-provider>
+> ```
+>
+> 完整引入时用 `app.use(ElementPlus, { size, zIndex })` 传；按需导入时用 `el-config-provider` 传。两种方式不要混用。
 
 ---
 
@@ -383,27 +399,33 @@ Element Plus 现在很强调 **CSS 变量**。
 `src/styles/element/index.scss`
 
 ```scss
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
+/* 只覆盖你需要的变量 */
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
   $colors: (
-    "primary": (
-      "base": #0f766e,
+    'primary': (
+      'base': #0f766e,
     ),
   )
 );
 
-@use "element-plus/theme-chalk/src/index.scss" as *;
+/* 如果需要全量引入所有组件样式，加上这行 */
+/* 如果是按需导入，可以不加，由插件自动处理 */
+@use 'element-plus/theme-chalk/src/index.scss' as *;
 ```
 
 然后在入口引入：
 
 ```js
-import "./styles/element/index.scss";
+import './styles/element/index.scss'
+import ElementPlus from 'element-plus'
 ```
 
-这里要注意两点：
+这里要注意几点：
 
-1. 既然你已经自己引入了 `index.scss`，就不要再同时引 `element-plus/dist/index.css`
-2. 官方主题文档明确建议优先使用 `@use` / `@forward`，而不是旧的 `@import`
+1. 既然你已经自己引入了 `index.scss`，就不要再同时引 `element-plus/dist/index.css`，否则样式会重复
+2. 官方主题文档明确建议优先使用 `@use` / `@forward`，而不是旧的 `@import`（Sass 团队已宣布 `@import` 将被废弃）
+3. `@forward` 必须写在 `@use` 之前，这是 Sass 模块系统的规则
+4. 如果是**按需导入**场景，还需要在 `vite.config.js` 里配 `scss.additionalData`，让每个组件的 SCSS 都能读到你的变量文件，具体见官方主题文档
 
 这个点其实也和前面那篇 SCSS 补充文刚好能连起来。
 
@@ -416,7 +438,7 @@ Element Plus 官方已经提供了暗黑模式变量文件。
 先在入口引入：
 
 ```js
-import "element-plus/theme-chalk/dark/css-vars.css";
+import 'element-plus/theme-chalk/dark/css-vars.css'
 ```
 
 如果只想固定暗黑模式，官方文档给的方式很直接：
@@ -428,10 +450,20 @@ import "element-plus/theme-chalk/dark/css-vars.css";
 如果你想动态切换，本质上就是切换 `html` 的 `dark` 类名：
 
 ```js
-document.documentElement.classList.toggle("dark");
+// 切换暗黑/亮色
+document.documentElement.classList.toggle('dark')
+
+// 或者根据状态精确控制
+function setDark(isDark) {
+  if (isDark) {
+    document.documentElement.classList.add('dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+  }
+}
 ```
 
-你还可以继续覆盖深色变量：
+你还可以继续覆盖深色变量，新建一个文件比如 `styles/dark/css-vars.css`：
 
 ```css
 html.dark {
@@ -440,10 +472,17 @@ html.dark {
 }
 ```
 
+然后在入口里，**在 Element Plus 暗黑变量之后**引入你的覆盖文件：
+
+```js
+import 'element-plus/theme-chalk/dark/css-vars.css'
+import './styles/dark/css-vars.css'  // 你的覆盖，放在后面才能生效
+```
+
 也就是说：
 
 - 默认主题靠 CSS 变量
-- 暗黑模式也还是靠 CSS 变量
+- 暗黑模式也还是靠 CSS 变量，只是加了 `html.dark` 作用域
 
 这套思路非常统一。
 
@@ -491,6 +530,20 @@ Element Plus 现在很多样式都已经变量化了。
 
 如果是手机 H5、触屏操作优先、底部弹层和手势交互很多，那一般还是移动端组件库更顺手。
 
+### 5. TypeScript 项目里组件没有类型提示
+
+如果主人用的是 TypeScript + Volar，需要在 `tsconfig.json` 里加一行，才能让 `el-button` 这些组件有类型提示：
+
+```json
+{
+  "compilerOptions": {
+    "types": ["element-plus/global"]
+  }
+}
+```
+
+不加的话，模板里用 `el-button` 不会报错，但也没有属性提示，写起来不方便。
+
 ---
 
 ## 十二、如果主人问我该怎么选
@@ -512,14 +565,16 @@ Element Plus 现在很多样式都已经变量化了。
 
 ## 十三、给主人一份最短记忆版
 
-如果主人现在只想先抓重点，那就记这 6 句：
+如果主人现在只想先抓重点，那就记这几句：
 
 1. `Element Plus` 是 `Vue 3` 常见的 PC 端组件库
 2. 快速接入：`npm i element-plus`
 3. 最简单：`app.use(ElementPlus)` + `import 'element-plus/dist/index.css'`
-4. 正式项目更常见：`Vite + 自动按需导入`
-5. 改主题优先用 `CSS 变量`
-6. 中文、多语言、暗黑模式，官方都已经给了标准方案
+4. 正式项目更常见：`Vite + 自动按需导入`（只配 `resolvers`，不需要 `imports: ['vue']`）
+5. 改主题优先用 `CSS 变量`；大改主题走 `SCSS @forward` 方案
+6. 中文、多语言用 `el-config-provider :locale="zhCn"` 包根组件
+7. 暗黑模式：引入 `dark/css-vars.css`，切换 `html.dark` 类名
+8. `zIndex` 默认值是 `2000`；按需导入时全局配置走 `el-config-provider`，不走 `app.use` 第二参数
 
 ---
 

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>现代布局示例：弹性与网格对照</title>
+  <style>
+    :root {
+      --paper: #f7f2e8;
+      --paper-strong: #efe5d6;
+      --ink: #1a2533;
+      --ink-soft: #5f6d7d;
+      --line: rgba(26, 37, 51, 0.12);
+      --accent: #1d4ed8;
+      --accent-soft: rgba(29, 78, 216, 0.08);
+      --accent-strong: #b45309;
+      --shadow: 0 24px 60px rgba(35, 45, 62, 0.12);
+      --stage-gap: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Segoe UI Variable Text', 'PingFang SC', 'Noto Sans SC', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.16), transparent 38%),
+        radial-gradient(circle at right 12% bottom 10%, rgba(180, 83, 9, 0.14), transparent 28%),
+        linear-gradient(180deg, #fbf7ef, #f3ecdf 58%, #eee5d5);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(26, 37, 51, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 37, 51, 0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 92%);
+    }
+
+    .shell {
+      width: min(1380px, 100%);
+      margin: 0 auto;
+      padding: clamp(20px, 3vw, 36px);
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 22px;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid rgba(26, 37, 51, 0.08);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(29, 78, 216, 0.1);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: 'Georgia', 'Times New Roman', 'STSong', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 72ch;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid rgba(26, 37, 51, 0.08);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid rgba(26, 37, 51, 0.08);
+    }
+
+    .panel-head h2,
+    .panel-head h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .panel-head p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .mode-flag {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 78px;
+      min-height: 36px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 16px;
+      padding: 18px 22px 0;
+    }
+
+    .control-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .control-label {
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .segmented {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .segmented button {
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: rgba(26, 37, 51, 0.05);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+    }
+
+    .segmented button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(26, 37, 51, 0.08);
+    }
+
+    .segmented button.is-active {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(29, 78, 216, 0.22);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 18px 22px 0;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--ink-soft);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .preview-stage {
+      position: relative;
+      margin: 18px 22px 22px;
+      padding: 24px;
+      min-height: 450px;
+      border-radius: 24px;
+      border: 1px solid rgba(26, 37, 51, 0.08);
+      background:
+        linear-gradient(180deg, rgba(29, 78, 216, 0.05), rgba(29, 78, 216, 0.015)),
+        linear-gradient(rgba(26, 37, 51, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 37, 51, 0.04) 1px, transparent 1px),
+        #fff;
+      background-size: auto, 26px 26px, 26px 26px, auto;
+      overflow: hidden;
+    }
+
+    .preview-stage::after {
+      content: '舞台';
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      color: rgba(26, 37, 51, 0.24);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cards-grid {
+      width: 100%;
+      min-height: 100%;
+      gap: var(--stage-gap);
+      transition: all 0.25s ease;
+    }
+
+    .cards-grid.is-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: start;
+    }
+
+    .cards-grid.is-grid {
+      display: grid;
+      align-content: start;
+    }
+
+    .demo-card {
+      position: relative;
+      min-height: 126px;
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      border: 1px solid rgba(26, 37, 51, 0.08);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 28px rgba(31, 41, 55, 0.06);
+      overflow: hidden;
+    }
+
+    .demo-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: var(--card-accent, var(--accent));
+    }
+
+    .demo-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .demo-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .demo-card[data-accent='cobalt'] {
+      --card-accent: #1d4ed8;
+    }
+
+    .demo-card[data-accent='amber'] {
+      --card-accent: #c2410c;
+    }
+
+    .demo-card[data-accent='emerald'] {
+      --card-accent: #0f766e;
+    }
+
+    .demo-card[data-accent='violet'] {
+      --card-accent: #7c3aed;
+    }
+
+    .demo-card[data-accent='rose'] {
+      --card-accent: #e11d48;
+    }
+
+    .demo-card[data-accent='slate'] {
+      --card-accent: #334155;
+    }
+
+    .code-stack {
+      display: grid;
+      gap: 14px;
+      padding: 18px;
+    }
+
+    .code-card {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(26, 37, 51, 0.08);
+      background: #131c2b;
+      color: #e8eef9;
+    }
+
+    .code-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .code-card-head strong {
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .code-card-head span {
+      color: rgba(232, 238, 249, 0.7);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    pre {
+      margin: 0;
+      padding: 18px 16px 20px;
+      overflow: auto;
+      font-family: 'JetBrains Mono', 'Cascadia Code', 'Consolas', monospace;
+      font-size: 13px;
+      line-height: 1.72;
+    }
+
+    code {
+      white-space: pre;
+    }
+
+    .footer-note {
+      padding: 0 22px 22px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1100px) {
+      .workbench {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        padding: 16px;
+      }
+
+      .hero,
+      .panel {
+        border-radius: 22px;
+      }
+
+      .panel-head,
+      .toolbar,
+      .legend,
+      .code-stack {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .panel-head {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .preview-stage {
+        margin: 16px;
+        min-height: 380px;
+        padding: 18px;
+      }
+
+      .control-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <span class="eyebrow">CSS Modern Layout Lab</span>
+      <h1>左边看效果，右边读代码</h1>
+      <p>
+        这是一个专门给《现代布局：从弹性到网格》准备的学习型示例页。你可以切换 Flex 和 Grid，
+        观察布局如何改变，同时右侧代码会同步刷新，帮助你把“看到的效果”和“写出来的样式”连起来。
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Flex 看一条主轴</span>
+        <span class="hero-tag">Grid 先画格子再放内容</span>
+        <span class="hero-tag">gap / 对齐 / 列数一起联动</span>
+      </div>
+    </section>
+
+    <section class="workbench">
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>预览舞台</h2>
+            <p>切换参数后，左边舞台会立即重排，适合感受布局系统是怎么“调度”盒子的。</p>
+          </div>
+          <span class="mode-flag" id="modeFlag">FLEX</span>
+        </div>
+
+        <div class="toolbar">
+          <div class="control-row">
+            <span class="control-label">布局模式</span>
+            <div class="segmented">
+              <button type="button" data-group="mode" data-value="flex">Flex</button>
+              <button type="button" data-group="mode" data-value="grid">Grid</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label">列数 / 项目宽度</span>
+            <div class="segmented">
+              <button type="button" data-group="columns" data-value="2">2 列</button>
+              <button type="button" data-group="columns" data-value="3">3 列</button>
+              <button type="button" data-group="columns" data-value="4">4 列</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label">项目间距 gap</span>
+            <div class="segmented">
+              <button type="button" data-group="gap" data-value="12">12px</button>
+              <button type="button" data-group="gap" data-value="20">20px</button>
+              <button type="button" data-group="gap" data-value="28">28px</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label">主轴分配 / 区域分布</span>
+            <div class="segmented">
+              <button type="button" data-group="justify" data-value="start">start</button>
+              <button type="button" data-group="justify" data-value="center">center</button>
+              <button type="button" data-group="justify" data-value="space-between">space-between</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label">交叉轴 / 单元格对齐</span>
+            <div class="segmented">
+              <button type="button" data-group="align" data-value="start">start</button>
+              <button type="button" data-group="align" data-value="center">center</button>
+              <button type="button" data-group="align" data-value="stretch">stretch</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span id="modeInsight">Flex 更适合一维分配</span>
+          <span id="columnsInsight">当前是 3 列</span>
+          <span id="gapInsight">gap: 20px</span>
+        </div>
+
+        <div class="preview-stage">
+          <div class="cards-grid is-flex" id="layoutStage">
+            <article class="demo-card" data-accent="cobalt">
+              <strong>导航</strong>
+              <p>适合横向排列一组链接或按钮，最常见是 Flex 一排排开。</p>
+            </article>
+            <article class="demo-card" data-accent="amber">
+              <strong>卡片组</strong>
+              <p>看项目如何在主轴和交叉轴上分布，最直观感受 gap 的作用。</p>
+            </article>
+            <article class="demo-card" data-accent="emerald">
+              <strong>内容区</strong>
+              <p>当模块数量变多时，Grid 会更像先画棋盘，再决定每块内容放哪。</p>
+            </article>
+            <article class="demo-card" data-accent="violet">
+              <strong>边栏</strong>
+              <p>二维布局下，侧栏和内容区的关系会更清晰，尤其适合后台页面。</p>
+            </article>
+            <article class="demo-card" data-accent="rose">
+              <strong>推荐位</strong>
+              <p>卡片内容高低不同也没关系，现代布局能帮你减少大量手搓定位。</p>
+            </article>
+            <article class="demo-card" data-accent="slate">
+              <strong>页脚</strong>
+              <p>结构一旦明确，响应式改造也更顺，后续再配合媒体查询就行。</p>
+            </article>
+          </div>
+        </div>
+
+        <p class="footer-note">
+          小提示：如果你刚学布局，先把 Flex 和 Grid 都理解成“父元素在安排子元素”，不要一上来就死记属性表。
+        </p>
+      </section>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <div>
+            <h3>代码对照</h3>
+            <p>右边并不是固定示例，而是会根据左边状态实时生成对应的 HTML 和 CSS。</p>
+          </div>
+          <span class="mode-flag">Live Code</span>
+        </div>
+
+        <div class="code-stack">
+          <section class="code-card">
+            <div class="code-card-head">
+              <strong>HTML 结构</strong>
+              <span>template</span>
+            </div>
+            <pre><code id="htmlCode"></code></pre>
+          </section>
+
+          <section class="code-card">
+            <div class="code-card-head">
+              <strong>CSS 布局代码</strong>
+              <span>styles</span>
+            </div>
+            <pre><code id="cssCode"></code></pre>
+          </section>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    const state = {
+      mode: 'flex',
+      columns: 3,
+      gap: 20,
+      justify: 'space-between',
+      align: 'stretch'
+    }
+
+    const layoutStage = document.getElementById('layoutStage')
+    const modeFlag = document.getElementById('modeFlag')
+    const htmlCode = document.getElementById('htmlCode')
+    const cssCode = document.getElementById('cssCode')
+    const modeInsight = document.getElementById('modeInsight')
+    const columnsInsight = document.getElementById('columnsInsight')
+    const gapInsight = document.getElementById('gapInsight')
+    const cards = Array.from(layoutStage.querySelectorAll('.demo-card'))
+    const controlButtons = Array.from(document.querySelectorAll('[data-group]'))
+
+    const resolveJustify = () => {
+      if (state.justify === 'start') {
+        return 'flex-start'
+      }
+
+      return state.justify
+    }
+
+    const resolveAlign = () => {
+      if (state.align === 'start') {
+        return state.mode === 'flex' ? 'flex-start' : 'start'
+      }
+
+      return state.align
+    }
+
+    const getCardBasis = () => {
+      const totalGap = (state.columns - 1) * state.gap
+      return `calc((100% - ${totalGap}px) / ${state.columns})`
+    }
+
+    const getHtmlTemplate = () => {
+      return [
+        '<section class="layout-demo">',
+        "  <article class='demo-card'>导航</article>",
+        "  <article class='demo-card'>卡片组</article>",
+        "  <article class='demo-card'>内容区</article>",
+        "  <article class='demo-card'>边栏</article>",
+        "  <article class='demo-card'>推荐位</article>",
+        "  <article class='demo-card'>页脚</article>",
+        '</section>'
+      ].join('\n')
+    }
+
+    const getCssTemplate = () => {
+      const justifyValue = state.mode === 'flex' ? resolveJustify() : state.justify
+      const alignValue = resolveAlign()
+
+      if (state.mode === 'flex') {
+        return [
+          '.layout-demo {',
+          '  display: flex',
+          '  flex-wrap: wrap',
+          `  gap: ${state.gap}px`,
+          `  justify-content: ${justifyValue}`,
+          `  align-items: ${alignValue}`,
+          '}',
+          '',
+          '.demo-card {',
+          `  flex: 0 0 ${getCardBasis()}`,
+          '  min-height: 126px',
+          '}'
+        ].join('\n')
+      }
+
+      return [
+        '.layout-demo {',
+        '  display: grid',
+        `  grid-template-columns: repeat(${state.columns}, minmax(0, 1fr))`,
+        `  gap: ${state.gap}px`,
+        `  justify-content: ${justifyValue}`,
+        `  align-items: ${alignValue}`,
+        '}',
+        '',
+        '.demo-card {',
+        '  min-height: 126px',
+        '}'
+      ].join('\n')
+    }
+
+    const updateInsights = () => {
+      modeInsight.textContent = state.mode === 'flex'
+        ? 'Flex 更适合一维分配'
+        : 'Grid 更适合二维排布'
+      columnsInsight.textContent = `当前是 ${state.columns} 列`
+      gapInsight.textContent = `gap: ${state.gap}px`
+      modeFlag.textContent = state.mode.toUpperCase()
+    }
+
+    const updateControls = () => {
+      controlButtons.forEach((button) => {
+        const group = button.dataset.group
+        const rawValue = button.dataset.value
+        const currentValue = String(state[group])
+        const isActive = rawValue === currentValue
+
+        button.classList.toggle('is-active', isActive)
+        button.setAttribute('aria-pressed', String(isActive))
+      })
+    }
+
+    const updateStage = () => {
+      layoutStage.className = `cards-grid is-${state.mode}`
+      layoutStage.style.setProperty('--stage-gap', `${state.gap}px`)
+      layoutStage.style.justifyContent = state.mode === 'flex' ? resolveJustify() : state.justify
+      layoutStage.style.alignItems = resolveAlign()
+      layoutStage.style.gridTemplateColumns = state.mode === 'grid'
+        ? `repeat(${state.columns}, minmax(0, 1fr))`
+        : ''
+
+      cards.forEach((card) => {
+        card.style.flexBasis = state.mode === 'flex' ? getCardBasis() : ''
+      })
+    }
+
+    const updateCode = () => {
+      htmlCode.textContent = getHtmlTemplate()
+      cssCode.textContent = getCssTemplate()
+    }
+
+    const update = () => {
+      updateStage()
+      updateCode()
+      updateControls()
+      updateInsights()
+    }
+
+    controlButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const group = button.dataset.group
+        const rawValue = button.dataset.value
+        state[group] = ['columns', 'gap'].includes(group) ? Number(rawValue) : rawValue
+        update()
+      })
+    })
+
+    update()
+  </script>
+</body>
+</html>
