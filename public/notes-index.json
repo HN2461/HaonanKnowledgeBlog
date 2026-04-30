@@ -93,6 +93,31 @@
         },
         {
           "type": "file",
+          "title": "前端里的各种\"帧\"——Frame 全解",
+          "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+          "fileTitle": "前端里的各种帧_Frame全解",
+          "filename": "前端里的各种帧_Frame全解.md",
+          "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "帧",
+            "渲染",
+            "动画",
+            "性能",
+            "JavaScript",
+            "CSS"
+          ],
+          "category": "浏览器与网络",
+          "attachments": [],
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+          "size": "11KB",
+          "lastModified": "2026-04-30T03:03:04.360Z",
+          "wordCount": 6570
+        },
+        {
+          "type": "file",
           "title": "前端认证、安全与文件上传协作手册",
           "frontmatterTitle": "前端认证、安全与文件上传协作手册",
           "fileTitle": "前端认证、安全与文件上传协作手册",
@@ -657,6 +682,31 @@
           "size": "16KB",
           "lastModified": "2026-01-14T03:37:57.163Z",
           "wordCount": 10741
+        },
+        {
+          "type": "file",
+          "title": "前端里的各种\"帧\"——Frame 全解",
+          "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+          "fileTitle": "前端里的各种帧_Frame全解",
+          "filename": "前端里的各种帧_Frame全解.md",
+          "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "帧",
+            "渲染",
+            "动画",
+            "性能",
+            "JavaScript",
+            "CSS"
+          ],
+          "category": "浏览器与网络",
+          "attachments": [],
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+          "size": "11KB",
+          "lastModified": "2026-04-30T03:03:04.360Z",
+          "wordCount": 6570
         },
         {
           "type": "file",
@@ -16788,6 +16838,31 @@
     },
     {
       "type": "file",
+      "title": "前端里的各种\"帧\"——Frame 全解",
+      "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+      "fileTitle": "前端里的各种帧_Frame全解",
+      "filename": "前端里的各种帧_Frame全解.md",
+      "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+      "date": "2026-04-30T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "帧",
+        "渲染",
+        "动画",
+        "性能",
+        "JavaScript",
+        "CSS"
+      ],
+      "category": "浏览器与网络",
+      "attachments": [],
+      "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+      "size": "11KB",
+      "lastModified": "2026-04-30T03:03:04.360Z",
+      "wordCount": 6570
+    },
+    {
+      "type": "file",
       "title": "Node 环境排查实录：为什么一台电脑能跑，另一台不行",
       "frontmatterTitle": "Node 环境排查实录：为什么一台电脑能跑，另一台不行",
       "fileTitle": "Node环境排查实录_为什么一台电脑能跑另一台不行_2026-04",
@@ -24433,6 +24508,31 @@
               "size": "16KB",
               "lastModified": "2026-01-14T03:37:57.163Z",
               "wordCount": 10741
+            },
+            {
+              "type": "file",
+              "title": "前端里的各种\"帧\"——Frame 全解",
+              "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+              "fileTitle": "前端里的各种帧_Frame全解",
+              "filename": "前端里的各种帧_Frame全解.md",
+              "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+              "date": "2026-04-30T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "帧",
+                "渲染",
+                "动画",
+                "性能",
+                "JavaScript",
+                "CSS"
+              ],
+              "category": "浏览器与网络",
+              "attachments": [],
+              "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+              "size": "11KB",
+              "lastModified": "2026-04-30T03:03:04.360Z",
+              "wordCount": 6570
             },
             {
               "type": "file",
@@ -32323,7 +32423,7 @@
       ]
     }
   ],
-  "totalNotes": 338,
+  "totalNotes": 339,
   "totalCategories": 79,
-  "lastUpdated": "2026-04-30T01:49:10.040Z"
+  "lastUpdated": "2026-04-30T03:03:40.201Z"
 }
