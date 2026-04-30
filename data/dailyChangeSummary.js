@@ -13,6 +13,13 @@ export const dailyChangeSummary = {
     },
     {
       category: '功能更新',
+      time: '15:13',
+      title: '历史消息拆分为按10天分片的文件结构',
+      summary: '将 historyNotifications.js 从单一大文件重构为聚合入口 + data/history/ 分片目录，每10天一个文件，同时补齐了4月29日缺失的归档记录，并更新 AGENTS.md 归档规则。',
+      content: '第一点：新建 data/history/ 目录，将历史消息按10天拆分为 2026-04-01_10.js、2026-04-11_20.js、2026-04-21_30.js 三个分片文件；第二点：data/historyNotifications.js 改为聚合入口，只做 import + 展开，对外导出名不变，generateNotifications.js 无需任何修改；第三点：补齐4月29日缺失的归档记录（共10条改动，含 SVG 入门笔记、ElementPlus 第七至十篇、CSS 第三篇重写、HTML 附件预览功能、AGENTS 规则补充等）；第四点：更新 AGENTS.md 归档规则，明确归档时找对应分片文件追加，新月份需新建分片并在聚合入口同步添加 import。',
+    },
+    {
+      category: '功能更新',
       time: '09:48',
       title: '精简 Node 问题目录并保留报告归档结构',
       summary: '保留 Node问题 下的对比报告目录结构，删除不再需要的对比入口模板文件，并重新生成笔记索引。',
