@@ -1,3 +1,16 @@
+---
+title: 第一篇：Codex 从 0 到 1 配置实战（CLI）
+date: 2026-03-08
+category: AI工具
+tags:
+  - Codex
+  - CLI
+  - 配置实战
+  - 中转站
+  - API Key
+description: 以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。
+---
+
 # 第一篇：Codex 从 0 到 1 配置实战（CLI）
 
 > 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  

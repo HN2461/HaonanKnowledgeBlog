@@ -1,3 +1,16 @@
+---
+title: 第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）
+date: 2026-03-08
+category: AI工具
+tags:
+  - Codex
+  - CLI
+  - 插件
+  - App
+  - 配置联动
+description: 详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。
+---
+
 # 第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）
 
 > 更新时间：2026-03-08  

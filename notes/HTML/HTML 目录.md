@@ -110,6 +110,17 @@
 - 16.3 Shadow DOM与样式隔离
 - 16.4 未来学习方向指引
 
+### 第七篇　SVG入门——看懂图标代码不再懵
+
+#### 第17章　SVG基础
+- 17.1 SVG 是什么，和普通图片有什么区别
+- 17.2 viewBox 坐标系详解
+- 17.3 常用图形元素（circle、rect、line、polyline、path）
+- 17.4 fill、stroke、currentColor 样式属性
+- 17.5 path 的 d 属性命令全解（M/L/H/V/Z/Q/C/A）
+- 17.6 读懂真实图标代码实战拆解
+- 17.7 transform 变换与常见问题
+
 ---
 
 ### 特别补充篇（番外）

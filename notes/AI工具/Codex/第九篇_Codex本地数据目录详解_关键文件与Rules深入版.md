@@ -1,3 +1,16 @@
+---
+title: 第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）
+date: 2026-03-10
+category: AI工具
+tags:
+  - Codex
+  - 本地数据目录
+  - auth.json
+  - Rules
+  - 日志
+description: 深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。
+---
+
 # 第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）
 
 > 更新时间：2026-03-10  

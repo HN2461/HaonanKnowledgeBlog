@@ -93,6 +93,31 @@
         },
         {
           "type": "file",
+          "title": "前端里的各种\"帧\"——Frame 全解",
+          "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+          "fileTitle": "前端里的各种帧_Frame全解",
+          "filename": "前端里的各种帧_Frame全解.md",
+          "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "帧",
+            "渲染",
+            "动画",
+            "性能",
+            "JavaScript",
+            "CSS"
+          ],
+          "category": "浏览器与网络",
+          "attachments": [],
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+          "size": "11KB",
+          "lastModified": "2026-04-30T12:10:43.527Z",
+          "wordCount": 6570
+        },
+        {
+          "type": "file",
           "title": "前端认证、安全与文件上传协作手册",
           "frontmatterTitle": "前端认证、安全与文件上传协作手册",
           "fileTitle": "前端认证、安全与文件上传协作手册",
@@ -657,6 +682,31 @@
           "size": "16KB",
           "lastModified": "2026-04-28T11:18:24.375Z",
           "wordCount": 10741
+        },
+        {
+          "type": "file",
+          "title": "前端里的各种\"帧\"——Frame 全解",
+          "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+          "fileTitle": "前端里的各种帧_Frame全解",
+          "filename": "前端里的各种帧_Frame全解.md",
+          "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "帧",
+            "渲染",
+            "动画",
+            "性能",
+            "JavaScript",
+            "CSS"
+          ],
+          "category": "浏览器与网络",
+          "attachments": [],
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+          "size": "11KB",
+          "lastModified": "2026-04-30T12:10:43.527Z",
+          "wordCount": 6570
         },
         {
           "type": "file",
@@ -3847,6 +3897,30 @@
       "name": "项目复用技术",
       "path": "项目复用技术",
       "notes": [
+        {
+          "type": "file",
+          "title": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+          "frontmatterTitle": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+          "fileTitle": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写",
+          "filename": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+          "path": "项目复用技术/WebSocket/00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "uni-app",
+            "浏览器",
+            "STOMP",
+            "实时通信"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是给零基础读者准备的 WebSocket 前置知识文章，尽量站在协议无关的底层视角，从它是什么、握手怎么发生、和 HTTP/STOMP 的关系，到浏览器与 uni-app 的最小使用方式、心跳、重连、关闭码与换协议时的分析方法，帮助先补基础再看项目级封装。",
+          "size": "30KB",
+          "lastModified": "2026-04-29T14:07:07.239Z",
+          "wordCount": 16552
+        },
         {
           "type": "file",
           "title": "钉钉开发常见 ID 速查：corpId、agentId、miniAppId、clientId、userId、unionId、openId",
@@ -8174,6 +8248,30 @@
       "notes": [
         {
           "type": "file",
+          "title": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+          "frontmatterTitle": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+          "fileTitle": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写",
+          "filename": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+          "path": "项目复用技术/WebSocket/00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "uni-app",
+            "浏览器",
+            "STOMP",
+            "实时通信"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是给零基础读者准备的 WebSocket 前置知识文章，尽量站在协议无关的底层视角，从它是什么、握手怎么发生、和 HTTP/STOMP 的关系，到浏览器与 uni-app 的最小使用方式、心跳、重连、关闭码与换协议时的分析方法，帮助先补基础再看项目级封装。",
+          "size": "30KB",
+          "lastModified": "2026-04-29T14:07:07.239Z",
+          "wordCount": 16552
+        },
+        {
+          "type": "file",
           "title": "WebSocket 与 STOMP 总览：分层设计、概念边界与接入顺序",
           "frontmatterTitle": "WebSocket 与 STOMP 总览：分层设计、概念边界与接入顺序",
           "fileTitle": "01-WebSocket与STOMP总览_分层设计与接入顺序",
@@ -8661,24 +8759,61 @@
         },
         {
           "type": "file",
-          "title": "第一篇_Codex从0到1配置实战",
-          "frontmatterTitle": "第一篇_Codex从0到1配置实战",
+          "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+          "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
           "fileTitle": "第一篇_Codex从0到1配置实战",
           "filename": "第一篇_Codex从0到1配置实战.md",
           "path": "AI工具/Codex/第一篇_Codex从0到1配置实战.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "CLI",
+            "配置实战",
+            "中转站",
+            "API Key"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  \n> 记录时间：2026-03-08  \n> 定位：线路选读 B（rpcod 路线的 CLI 快速打通）。  \n> 前置：建议先读第三篇第 14 节（先懂通用配置层级）。  \n> 使用方式：如果你不用 rpcod，这篇可跳过，改看第四篇对应线路。  \n",
+          "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
           "size": "6KB",
-          "lastModified": "2026-03-08T13:57:44.446Z",
-          "wordCount": 3606
+          "lastModified": "2026-04-30T13:43:30.307Z",
+          "wordCount": 3607
+        },
+        {
+          "type": "file",
+          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-04-30T12:10:43.488Z"
+            }
+          ],
+          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+          "size": "26KB",
+          "lastModified": "2026-04-30T13:48:31.836Z",
+          "wordCount": 15326
         },
         {
           "type": "file",
@@ -8895,24 +9030,27 @@
         },
         {
           "type": "file",
-          "title": "第二篇_Codex官方资料补充与进阶实践",
-          "frontmatterTitle": "第二篇_Codex官方资料补充与进阶实践",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "官方文档",
+            "exec",
+            "MCP",
+            "自动化"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 本文基于 OpenAI 官方 Codex 文档整理，时间点为 2026-03-08。  \n> 定位：主线 05（进阶能力：自动化、治理、团队标准化）。  \n> 前置：建议先读第三篇、第五篇、第六篇、第七篇。  \n> 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n",
-          "size": "7KB",
-          "lastModified": "2026-03-08T14:02:31.372Z",
-          "wordCount": 5042
+          "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
+          "size": "8KB",
+          "lastModified": "2026-04-30T13:43:30.308Z",
+          "wordCount": 5043
         },
         {
           "type": "file",
@@ -9055,24 +9193,27 @@
         },
         {
           "type": "file",
-          "title": "第三篇_Codex文档地图与配置逐项详解_小白版",
-          "frontmatterTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
+          "title": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
+          "frontmatterTitle": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
           "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
           "filename": "第三篇_Codex文档地图与配置逐项详解_小白版.md",
           "path": "AI工具/Codex/第三篇_Codex文档地图与配置逐项详解_小白版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "配置文件",
+            "auth",
+            "sandbox",
+            "AGENTS"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 01（先建立配置心智模型）。  \n> 前置：无。  \n> 下一篇建议：第五篇（字段字典）。  \n> 本篇不展开：三端具体点位与截图（看第六篇、第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n大部分人卡住不是因为命令难，而是这 4 件事混在一起了：\n\n1. ",
-          "size": "12KB",
-          "lastModified": "2026-03-08T13:51:06.401Z",
-          "wordCount": 8714
+          "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
+          "size": "13KB",
+          "lastModified": "2026-04-30T13:43:30.312Z",
+          "wordCount": 8715
         },
         {
           "type": "file",
@@ -9191,24 +9332,27 @@
         },
         {
           "type": "file",
-          "title": "第四篇_Codex多来源完整配置手册_小白友好版",
-          "frontmatterTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+          "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+          "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
           "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
           "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
           "path": "AI工具/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "Packy",
+            "中转站",
+            "配置迁移",
+            "多线路"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。  \n> 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。  \n> 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  \n> 本篇不展开：逐字段截图核对（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n",
+          "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
           "size": "13KB",
-          "lastModified": "2026-03-08T13:58:20.166Z",
-          "wordCount": 8337
+          "lastModified": "2026-04-30T13:43:30.314Z",
+          "wordCount": 8338
         },
         {
           "type": "file",
@@ -9325,24 +9469,27 @@
         },
         {
           "type": "file",
-          "title": "第五篇_Codex配置字段字典与文档对照_完整版",
-          "frontmatterTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
+          "title": "第五篇：Codex 配置字段字典与文档对照（完整版）",
+          "frontmatterTitle": "第五篇：Codex 配置字段字典与文档对照（完整版）",
           "fileTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
           "filename": "第五篇_Codex配置字段字典与文档对照_完整版.md",
           "path": "AI工具/Codex/第五篇_Codex配置字段字典与文档对照_完整版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "config.toml",
+            "auth.json",
+            "配置字段",
+            "字典"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 02（字段查询手册 + 场景模板）。  \n> 前置：第三篇（看完配置层级再看字段会更顺）。  \n> 下一篇建议：第六篇（三端联动实战）。  \n> 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n\n\n1. co",
+          "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
           "size": "12KB",
-          "lastModified": "2026-03-08T13:51:21.968Z",
-          "wordCount": 9266
+          "lastModified": "2026-04-30T13:43:30.324Z",
+          "wordCount": 9267
         },
         {
           "type": "file",
@@ -9456,24 +9603,27 @@
         },
         {
           "type": "file",
-          "title": "第六篇_CLI插件App全链路配置实战_超详细",
-          "frontmatterTitle": "第六篇_CLI插件App全链路配置实战_超详细",
+          "title": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
+          "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
           "fileTitle": "第六篇_CLI插件App全链路配置实战_超详细",
           "filename": "第六篇_CLI插件App全链路配置实战_超详细.md",
           "path": "AI工具/Codex/第六篇_CLI插件App全链路配置实战_超详细.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "CLI",
+            "插件",
+            "App",
+            "配置联动"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 03（三端统一与联动排障）。  \n> 前置：第三篇 + 第五篇（先懂原理和字段，再做联动最稳）。  \n> 下一篇建议：第七篇（逐字段截图对照）。  \n> 本篇不展开：各字段逐格截图（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多同学以为 CLI、插",
-          "size": "13KB",
-          "lastModified": "2026-03-08T14:02:54.821Z",
-          "wordCount": 9277
+          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+          "size": "14KB",
+          "lastModified": "2026-04-30T13:43:30.325Z",
+          "wordCount": 9278
         },
         {
           "type": "file",
@@ -9500,71 +9650,80 @@
         },
         {
           "type": "file",
-          "title": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-          "frontmatterTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
+          "title": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
+          "frontmatterTitle": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
           "fileTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
           "filename": "第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
           "path": "AI工具/Codex/第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "截图对照",
+            "CLI",
+            "插件",
+            "App"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 04（截图核对与SOP落地）。  \n> 前置：第六篇（先懂三端关系，再对照截图效率最高）。  \n> 下一篇建议：第二篇（进阶能力与长期治理）。  \n> 本篇不展开：字段原理深讲（看第三篇、第五篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n这篇不是“看懂概念”",
-          "size": "11KB",
-          "lastModified": "2026-03-08T13:51:40.814Z",
-          "wordCount": 8053
+          "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
+          "size": "12KB",
+          "lastModified": "2026-04-30T13:43:30.328Z",
+          "wordCount": 8054
         },
         {
           "type": "file",
-          "title": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-          "frontmatterTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
+          "title": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
+          "frontmatterTitle": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
           "fileTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
           "filename": "第八篇_Codex命令与配置文件作用全解_小白可查版.md",
           "path": "AI工具/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "命令",
+            "配置文件",
+            "AGENTS",
+            "速查"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：工具底座（全系列命令与配置文件统一说明）。  \n> 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多新手把 Codex 当成“一个命令”，其实它是三层：\n\n1. 命令层：你在终端执行 codex ...\n2. 配置层：你在 config.toml 里定义默认行为\n3. 项",
+          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
           "size": "7KB",
-          "lastModified": "2026-03-08T13:50:41.841Z",
-          "wordCount": 4519
+          "lastModified": "2026-04-30T13:43:30.329Z",
+          "wordCount": 4520
         },
         {
           "type": "file",
-          "title": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-          "frontmatterTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
+          "title": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
+          "frontmatterTitle": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
           "fileTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
           "filename": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
           "path": "AI工具/Codex/第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-10T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "本地数据目录",
+            "auth.json",
+            "Rules",
+            "日志"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-10  \r\n> 定位：本机 Codex “关键文件与安全边界”讲透。  \r\n> 适用：你需要排查登录、配置、权限或命令执行问题时。\r\n\r\n章节导航（点击跳转）：\r\n\r\n[[toc]]\r\n\r\n---\r\n\r\n\r\n\r\nC:\\Users\\Administrator\\.codex 是 Codex 桌面应用的本地数据目录。  \r\n它不是项目代码，也不是缓存垃圾桶，而是 “账号认证",
-          "size": "13KB",
-          "lastModified": "2026-03-11T12:25:21.641Z",
+          "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
+          "size": "14KB",
+          "lastModified": "2026-04-30T13:43:30.331Z",
           "wordCount": 9126
         },
         {
           "type": "file",
-          "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
-          "frontmatterTitle": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+          "title": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+          "frontmatterTitle": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
           "fileTitle": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04",
           "filename": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
           "path": "AI工具/Codex/第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
@@ -9583,8 +9742,8 @@
           "attachments": [],
           "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
           "size": "7KB",
-          "lastModified": "2026-04-28T11:18:24.341Z",
-          "wordCount": 3724
+          "lastModified": "2026-04-30T13:43:30.333Z",
+          "wordCount": 3727
         },
         {
           "type": "file",
@@ -9627,6 +9786,48 @@
           "size": "4KB",
           "lastModified": "2026-03-01T11:42:22.974Z",
           "wordCount": 3267
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "公司电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+          "size": "26KB",
+          "lastModified": "2026-04-30T12:10:43.510Z",
+          "wordCount": 26260
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "个人电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+          "size": "25KB",
+          "lastModified": "2026-04-30T12:35:17.554Z",
+          "wordCount": 24920
         }
       ],
       "children": []
@@ -10017,197 +10218,258 @@
       "notes": [
         {
           "type": "file",
-          "title": "第一篇_Codex从0到1配置实战",
-          "frontmatterTitle": "第一篇_Codex从0到1配置实战",
+          "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+          "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
           "fileTitle": "第一篇_Codex从0到1配置实战",
           "filename": "第一篇_Codex从0到1配置实战.md",
           "path": "AI工具/Codex/第一篇_Codex从0到1配置实战.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "CLI",
+            "配置实战",
+            "中转站",
+            "API Key"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  \n> 记录时间：2026-03-08  \n> 定位：线路选读 B（rpcod 路线的 CLI 快速打通）。  \n> 前置：建议先读第三篇第 14 节（先懂通用配置层级）。  \n> 使用方式：如果你不用 rpcod，这篇可跳过，改看第四篇对应线路。  \n",
+          "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
           "size": "6KB",
-          "lastModified": "2026-03-08T13:57:44.446Z",
-          "wordCount": 3606
+          "lastModified": "2026-04-30T13:43:30.307Z",
+          "wordCount": 3607
         },
         {
           "type": "file",
-          "title": "第二篇_Codex官方资料补充与进阶实践",
-          "frontmatterTitle": "第二篇_Codex官方资料补充与进阶实践",
+          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-04-30T12:10:43.488Z"
+            }
+          ],
+          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+          "size": "26KB",
+          "lastModified": "2026-04-30T13:48:31.836Z",
+          "wordCount": 15326
+        },
+        {
+          "type": "file",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "官方文档",
+            "exec",
+            "MCP",
+            "自动化"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 本文基于 OpenAI 官方 Codex 文档整理，时间点为 2026-03-08。  \n> 定位：主线 05（进阶能力：自动化、治理、团队标准化）。  \n> 前置：建议先读第三篇、第五篇、第六篇、第七篇。  \n> 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n",
-          "size": "7KB",
-          "lastModified": "2026-03-08T14:02:31.372Z",
-          "wordCount": 5042
+          "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
+          "size": "8KB",
+          "lastModified": "2026-04-30T13:43:30.308Z",
+          "wordCount": 5043
         },
         {
           "type": "file",
-          "title": "第三篇_Codex文档地图与配置逐项详解_小白版",
-          "frontmatterTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
+          "title": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
+          "frontmatterTitle": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
           "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
           "filename": "第三篇_Codex文档地图与配置逐项详解_小白版.md",
           "path": "AI工具/Codex/第三篇_Codex文档地图与配置逐项详解_小白版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "配置文件",
+            "auth",
+            "sandbox",
+            "AGENTS"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 01（先建立配置心智模型）。  \n> 前置：无。  \n> 下一篇建议：第五篇（字段字典）。  \n> 本篇不展开：三端具体点位与截图（看第六篇、第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n大部分人卡住不是因为命令难，而是这 4 件事混在一起了：\n\n1. ",
-          "size": "12KB",
-          "lastModified": "2026-03-08T13:51:06.401Z",
-          "wordCount": 8714
+          "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
+          "size": "13KB",
+          "lastModified": "2026-04-30T13:43:30.312Z",
+          "wordCount": 8715
         },
         {
           "type": "file",
-          "title": "第四篇_Codex多来源完整配置手册_小白友好版",
-          "frontmatterTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+          "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+          "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
           "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
           "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
           "path": "AI工具/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "Packy",
+            "中转站",
+            "配置迁移",
+            "多线路"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。  \n> 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。  \n> 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  \n> 本篇不展开：逐字段截图核对（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n",
+          "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
           "size": "13KB",
-          "lastModified": "2026-03-08T13:58:20.166Z",
-          "wordCount": 8337
+          "lastModified": "2026-04-30T13:43:30.314Z",
+          "wordCount": 8338
         },
         {
           "type": "file",
-          "title": "第五篇_Codex配置字段字典与文档对照_完整版",
-          "frontmatterTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
+          "title": "第五篇：Codex 配置字段字典与文档对照（完整版）",
+          "frontmatterTitle": "第五篇：Codex 配置字段字典与文档对照（完整版）",
           "fileTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
           "filename": "第五篇_Codex配置字段字典与文档对照_完整版.md",
           "path": "AI工具/Codex/第五篇_Codex配置字段字典与文档对照_完整版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "config.toml",
+            "auth.json",
+            "配置字段",
+            "字典"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 02（字段查询手册 + 场景模板）。  \n> 前置：第三篇（看完配置层级再看字段会更顺）。  \n> 下一篇建议：第六篇（三端联动实战）。  \n> 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n\n\n1. co",
+          "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
           "size": "12KB",
-          "lastModified": "2026-03-08T13:51:21.968Z",
-          "wordCount": 9266
+          "lastModified": "2026-04-30T13:43:30.324Z",
+          "wordCount": 9267
         },
         {
           "type": "file",
-          "title": "第六篇_CLI插件App全链路配置实战_超详细",
-          "frontmatterTitle": "第六篇_CLI插件App全链路配置实战_超详细",
+          "title": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
+          "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
           "fileTitle": "第六篇_CLI插件App全链路配置实战_超详细",
           "filename": "第六篇_CLI插件App全链路配置实战_超详细.md",
           "path": "AI工具/Codex/第六篇_CLI插件App全链路配置实战_超详细.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "CLI",
+            "插件",
+            "App",
+            "配置联动"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 03（三端统一与联动排障）。  \n> 前置：第三篇 + 第五篇（先懂原理和字段，再做联动最稳）。  \n> 下一篇建议：第七篇（逐字段截图对照）。  \n> 本篇不展开：各字段逐格截图（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多同学以为 CLI、插",
-          "size": "13KB",
-          "lastModified": "2026-03-08T14:02:54.821Z",
-          "wordCount": 9277
+          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+          "size": "14KB",
+          "lastModified": "2026-04-30T13:43:30.325Z",
+          "wordCount": 9278
         },
         {
           "type": "file",
-          "title": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-          "frontmatterTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
+          "title": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
+          "frontmatterTitle": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
           "fileTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
           "filename": "第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
           "path": "AI工具/Codex/第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "截图对照",
+            "CLI",
+            "插件",
+            "App"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：主线 04（截图核对与SOP落地）。  \n> 前置：第六篇（先懂三端关系，再对照截图效率最高）。  \n> 下一篇建议：第二篇（进阶能力与长期治理）。  \n> 本篇不展开：字段原理深讲（看第三篇、第五篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n这篇不是“看懂概念”",
-          "size": "11KB",
-          "lastModified": "2026-03-08T13:51:40.814Z",
-          "wordCount": 8053
+          "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
+          "size": "12KB",
+          "lastModified": "2026-04-30T13:43:30.328Z",
+          "wordCount": 8054
         },
         {
           "type": "file",
-          "title": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-          "frontmatterTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
+          "title": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
+          "frontmatterTitle": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
           "fileTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
           "filename": "第八篇_Codex命令与配置文件作用全解_小白可查版.md",
           "path": "AI工具/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-08T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "命令",
+            "配置文件",
+            "AGENTS",
+            "速查"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-08  \n> 定位：工具底座（全系列命令与配置文件统一说明）。  \n> 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多新手把 Codex 当成“一个命令”，其实它是三层：\n\n1. 命令层：你在终端执行 codex ...\n2. 配置层：你在 config.toml 里定义默认行为\n3. 项",
+          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
           "size": "7KB",
-          "lastModified": "2026-03-08T13:50:41.841Z",
-          "wordCount": 4519
+          "lastModified": "2026-04-30T13:43:30.329Z",
+          "wordCount": 4520
         },
         {
           "type": "file",
-          "title": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-          "frontmatterTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
+          "title": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
+          "frontmatterTitle": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
           "fileTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
           "filename": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
           "path": "AI工具/Codex/第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-03-10T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "AI工具",
-            "Codex"
+            "Codex",
+            "本地数据目录",
+            "auth.json",
+            "Rules",
+            "日志"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "> 更新时间：2026-03-10  \r\n> 定位：本机 Codex “关键文件与安全边界”讲透。  \r\n> 适用：你需要排查登录、配置、权限或命令执行问题时。\r\n\r\n章节导航（点击跳转）：\r\n\r\n[[toc]]\r\n\r\n---\r\n\r\n\r\n\r\nC:\\Users\\Administrator\\.codex 是 Codex 桌面应用的本地数据目录。  \r\n它不是项目代码，也不是缓存垃圾桶，而是 “账号认证",
-          "size": "13KB",
-          "lastModified": "2026-03-11T12:25:21.641Z",
+          "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
+          "size": "14KB",
+          "lastModified": "2026-04-30T13:43:30.331Z",
           "wordCount": 9126
         },
         {
           "type": "file",
-          "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
-          "frontmatterTitle": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+          "title": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+          "frontmatterTitle": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
           "fileTitle": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04",
           "filename": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
           "path": "AI工具/Codex/第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
@@ -10226,8 +10488,238 @@
           "attachments": [],
           "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
           "size": "7KB",
-          "lastModified": "2026-04-28T11:18:24.341Z",
-          "wordCount": 3724
+          "lastModified": "2026-04-30T13:43:30.333Z",
+          "wordCount": 3727
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "公司电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+          "size": "26KB",
+          "lastModified": "2026-04-30T12:10:43.510Z",
+          "wordCount": 26260
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "个人电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+          "size": "25KB",
+          "lastModified": "2026-04-30T12:35:17.554Z",
+          "wordCount": 24920
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "中转切换与Node排障",
+      "path": "AI工具/Codex/中转切换与Node排障",
+      "notes": [
+        {
+          "type": "file",
+          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-04-30T12:10:43.488Z"
+            }
+          ],
+          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+          "size": "26KB",
+          "lastModified": "2026-04-30T13:48:31.836Z",
+          "wordCount": 15326
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "公司电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+          "size": "26KB",
+          "lastModified": "2026-04-30T12:10:43.510Z",
+          "wordCount": 26260
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "个人电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+          "size": "25KB",
+          "lastModified": "2026-04-30T12:35:17.554Z",
+          "wordCount": 24920
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "对比报告",
+      "path": "AI工具/Codex/中转切换与Node排障/对比报告",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "公司电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+          "size": "26KB",
+          "lastModified": "2026-04-30T12:10:43.510Z",
+          "wordCount": 26260
+        },
+        {
+          "type": "file",
+          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "个人电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+          "size": "25KB",
+          "lastModified": "2026-04-30T12:35:17.554Z",
+          "wordCount": 24920
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "个人电脑",
+      "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "个人电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+          "size": "25KB",
+          "lastModified": "2026-04-30T12:35:17.554Z",
+          "wordCount": 24920
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "公司电脑",
+      "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": null,
+          "hasRealDate": false,
+          "order": null,
+          "tags": [
+            "AI工具",
+            "公司电脑"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+          "size": "26KB",
+          "lastModified": "2026-04-30T12:10:43.510Z",
+          "wordCount": 26260
         }
       ],
       "children": []
@@ -11010,23 +11502,35 @@
         },
         {
           "type": "file",
-          "title": "第三篇_现代布局_从弹性到网格",
-          "frontmatterTitle": "第三篇_现代布局_从弹性到网格",
+          "title": "第三篇 现代布局：从弹性到网格",
+          "frontmatterTitle": "第三篇 现代布局：从弹性到网格",
           "fileTitle": "第三篇_现代布局_从弹性到网格",
           "filename": "第三篇_现代布局_从弹性到网格.md",
           "path": "CSS/第三篇_现代布局_从弹性到网格.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "CSS"
+            "CSS",
+            "Flexbox",
+            "Grid",
+            "响应式布局",
+            "前端布局"
           ],
           "category": "CSS",
-          "attachments": [],
-          "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-          "size": "80KB",
-          "lastModified": "2026-04-28T11:18:24.346Z",
-          "wordCount": 51408
+          "attachments": [
+            {
+              "name": "第三篇_现代布局_示例_弹性与网格对照.html",
+              "path": "CSS/第三篇_现代布局_示例_弹性与网格对照.html",
+              "ext": "html",
+              "size": "20KB",
+              "lastModified": "2026-04-29T15:02:39.737Z"
+            }
+          ],
+          "description": "从 Flex 和 Grid 的区别讲起，用最适合小白理解的顺序讲清 Grid 的画格子、对齐、合并单元格、响应式、自适应列数和常见坑点，帮你真正把现代布局用起来。",
+          "size": "83KB",
+          "lastModified": "2026-04-29T15:02:39.736Z",
+          "wordCount": 51438
         },
         {
           "type": "file",
@@ -11179,9 +11683,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-          "size": "13KB",
-          "lastModified": "2026-04-28T14:11:31.539Z",
-          "wordCount": 8965
+          "size": "17KB",
+          "lastModified": "2026-04-29T11:27:17.303Z",
+          "wordCount": 11454
         },
         {
           "type": "file",
@@ -11227,9 +11731,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 官方文档，系统整理 Button、Icon、Container、Space、Text 这些基础组件在后台页面里的常见用法和搭配思路。",
-          "size": "12KB",
-          "lastModified": "2026-04-28T13:45:18.642Z",
-          "wordCount": 7774
+          "size": "15KB",
+          "lastModified": "2026-04-29T12:51:05.550Z",
+          "wordCount": 9532
         },
         {
           "type": "file",
@@ -11302,6 +11806,109 @@
           "size": "11KB",
           "lastModified": "2026-04-28T13:45:18.644Z",
           "wordCount": 7117
+        },
+        {
+          "type": "file",
+          "title": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+          "frontmatterTitle": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+          "fileTitle": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown",
+          "filename": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+          "path": "ElementPlus/第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Menu",
+            "Tabs",
+            "Breadcrumb",
+            "Steps",
+            "Dropdown"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解后台导航体系的五类核心组件：侧边菜单、标签页、面包屑、步骤条、下拉菜单，以及它们与 Vue Router 的联动方式。",
+          "size": "18KB",
+          "lastModified": "2026-04-29T11:27:17.307Z",
+          "wordCount": 14456
+        },
+        {
+          "type": "file",
+          "title": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+          "frontmatterTitle": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+          "fileTitle": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate",
+          "filename": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+          "path": "ElementPlus/第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Cascader",
+            "TreeSelect",
+            "Transfer",
+            "Checkbox",
+            "Radio",
+            "Switch"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解表单里的高级录入组件：级联选择、树形选择、穿梭框、多选组、单选组、开关、滑块、评分的用法与联动校验。",
+          "size": "17KB",
+          "lastModified": "2026-04-29T11:27:17.329Z",
+          "wordCount": 13561
+        },
+        {
+          "type": "file",
+          "title": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+          "frontmatterTitle": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+          "fileTitle": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty",
+          "filename": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+          "path": "ElementPlus/第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Descriptions",
+            "Timeline",
+            "Collapse",
+            "Tag",
+            "Badge",
+            "Statistic"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解详情页、状态标记、加载态与空态相关的数据展示组件，覆盖 Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty。",
+          "size": "19KB",
+          "lastModified": "2026-04-29T11:27:17.321Z",
+          "wordCount": 15150
+        },
+        {
+          "type": "file",
+          "title": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+          "frontmatterTitle": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+          "fileTitle": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件",
+          "filename": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+          "path": "ElementPlus/第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Tooltip",
+            "Popover",
+            "Popconfirm",
+            "Notification",
+            "Alert",
+            "VirtualizedTable"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，补全第五篇未覆盖的反馈组件：Tooltip、Popover、Popconfirm、Notification、Alert，以及虚拟化组件的适用场景与基础用法。",
+          "size": "18KB",
+          "lastModified": "2026-04-29T11:27:17.337Z",
+          "wordCount": 13388
         }
       ],
       "children": []
@@ -11432,6 +12039,30 @@
         },
         {
           "type": "file",
+          "title": "SVG入门——看懂图标代码不再懵",
+          "frontmatterTitle": "SVG入门——看懂图标代码不再懵",
+          "fileTitle": "第七篇：SVG入门——看懂图标代码不再懵",
+          "filename": "第七篇：SVG入门——看懂图标代码不再懵.md",
+          "path": "HTML/第七篇：SVG入门——看懂图标代码不再懵.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "SVG",
+            "图标",
+            "前端基础",
+            "HTML",
+            "矢量图形"
+          ],
+          "category": "HTML",
+          "attachments": [],
+          "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
+          "size": "13KB",
+          "lastModified": "2026-04-29T11:27:17.353Z",
+          "wordCount": 8855
+        },
+        {
+          "type": "file",
           "title": "HTML 目录",
           "frontmatterTitle": "HTML 目录",
           "fileTitle": "HTML 目录",
@@ -11447,8 +12078,8 @@
           "attachments": [],
           "description": "- 1.1 网站、网页与HTML的关系\r\n- 1.2 浏览器：我们看网页的窗口\r\n- 1.3 HTML、CSS、JavaScript的分工合作\r\n- 1.4 开发环境搭建与第一个网页\r\n\r\n\r\n- 2.1 DOCTYPE声明与HTML版本\r\n- 2.2 html、head、body三大核心结构\r\n- 2.3 meta标签与页面元信息\r\n- 2.4 字符编码与国际化\r\n\r\n\r\n\r\n\r\n- 3.1 标",
           "size": "25KB",
-          "lastModified": "2026-01-25T13:23:07.477Z",
-          "wordCount": 19687
+          "lastModified": "2026-04-29T11:27:17.345Z",
+          "wordCount": 19956
         },
         {
           "type": "file",
@@ -16463,6 +17094,310 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+      "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+      "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+      "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+      "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "AI工具",
+        "个人电脑"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+      "size": "25KB",
+      "lastModified": "2026-04-30T12:35:17.554Z",
+      "wordCount": 24920
+    },
+    {
+      "type": "file",
+      "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+      "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+      "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+      "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+      "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "AI工具",
+        "公司电脑"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+      "size": "26KB",
+      "lastModified": "2026-04-30T12:10:43.510Z",
+      "wordCount": 26260
+    },
+    {
+      "type": "file",
+      "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+      "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+      "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
+      "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+      "path": "AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+      "date": "2026-04-30T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Node.js",
+        "Codex",
+        "CC Switch",
+        "PowerShell",
+        "Windows",
+        "环境配置",
+        "故障排查"
+      ],
+      "category": "AI工具",
+      "attachments": [
+        {
+          "name": "Node环境一键对比采集脚本.ps1",
+          "path": "AI工具/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+          "ext": "ps1",
+          "size": "6KB",
+          "lastModified": "2026-04-30T12:10:43.488Z"
+        }
+      ],
+      "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+      "size": "26KB",
+      "lastModified": "2026-04-30T13:48:31.836Z",
+      "wordCount": 15326
+    },
+    {
+      "type": "file",
+      "title": "前端里的各种\"帧\"——Frame 全解",
+      "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+      "fileTitle": "前端里的各种帧_Frame全解",
+      "filename": "前端里的各种帧_Frame全解.md",
+      "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+      "date": "2026-04-30T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "帧",
+        "渲染",
+        "动画",
+        "性能",
+        "JavaScript",
+        "CSS"
+      ],
+      "category": "浏览器与网络",
+      "attachments": [],
+      "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+      "size": "11KB",
+      "lastModified": "2026-04-30T12:10:43.527Z",
+      "wordCount": 6570
+    },
+    {
+      "type": "file",
+      "title": "HTML 目录",
+      "frontmatterTitle": "HTML 目录",
+      "fileTitle": "HTML 目录",
+      "filename": "HTML 目录.md",
+      "path": "HTML/HTML 目录.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "HTML"
+      ],
+      "category": "HTML",
+      "attachments": [],
+      "description": "- 1.1 网站、网页与HTML的关系\r\n- 1.2 浏览器：我们看网页的窗口\r\n- 1.3 HTML、CSS、JavaScript的分工合作\r\n- 1.4 开发环境搭建与第一个网页\r\n\r\n\r\n- 2.1 DOCTYPE声明与HTML版本\r\n- 2.2 html、head、body三大核心结构\r\n- 2.3 meta标签与页面元信息\r\n- 2.4 字符编码与国际化\r\n\r\n\r\n\r\n\r\n- 3.1 标",
+      "size": "25KB",
+      "lastModified": "2026-04-29T11:27:17.345Z",
+      "wordCount": 19956
+    },
+    {
+      "type": "file",
+      "title": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+      "frontmatterTitle": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+      "fileTitle": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写",
+      "filename": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+      "path": "项目复用技术/WebSocket/00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "WebSocket",
+        "uni-app",
+        "浏览器",
+        "STOMP",
+        "实时通信"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "这是给零基础读者准备的 WebSocket 前置知识文章，尽量站在协议无关的底层视角，从它是什么、握手怎么发生、和 HTTP/STOMP 的关系，到浏览器与 uni-app 的最小使用方式、心跳、重连、关闭码与换协议时的分析方法，帮助先补基础再看项目级封装。",
+      "size": "30KB",
+      "lastModified": "2026-04-29T14:07:07.239Z",
+      "wordCount": 16552
+    },
+    {
+      "type": "file",
+      "title": "第三篇 现代布局：从弹性到网格",
+      "frontmatterTitle": "第三篇 现代布局：从弹性到网格",
+      "fileTitle": "第三篇_现代布局_从弹性到网格",
+      "filename": "第三篇_现代布局_从弹性到网格.md",
+      "path": "CSS/第三篇_现代布局_从弹性到网格.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CSS",
+        "Flexbox",
+        "Grid",
+        "响应式布局",
+        "前端布局"
+      ],
+      "category": "CSS",
+      "attachments": [
+        {
+          "name": "第三篇_现代布局_示例_弹性与网格对照.html",
+          "path": "CSS/第三篇_现代布局_示例_弹性与网格对照.html",
+          "ext": "html",
+          "size": "20KB",
+          "lastModified": "2026-04-29T15:02:39.737Z"
+        }
+      ],
+      "description": "从 Flex 和 Grid 的区别讲起，用最适合小白理解的顺序讲清 Grid 的画格子、对齐、合并单元格、响应式、自适应列数和常见坑点，帮你真正把现代布局用起来。",
+      "size": "83KB",
+      "lastModified": "2026-04-29T15:02:39.736Z",
+      "wordCount": 51438
+    },
+    {
+      "type": "file",
+      "title": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+      "frontmatterTitle": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+      "fileTitle": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown",
+      "filename": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+      "path": "ElementPlus/第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Element Plus",
+        "Menu",
+        "Tabs",
+        "Breadcrumb",
+        "Steps",
+        "Dropdown"
+      ],
+      "category": "Element Plus",
+      "attachments": [],
+      "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解后台导航体系的五类核心组件：侧边菜单、标签页、面包屑、步骤条、下拉菜单，以及它们与 Vue Router 的联动方式。",
+      "size": "18KB",
+      "lastModified": "2026-04-29T11:27:17.307Z",
+      "wordCount": 14456
+    },
+    {
+      "type": "file",
+      "title": "SVG入门——看懂图标代码不再懵",
+      "frontmatterTitle": "SVG入门——看懂图标代码不再懵",
+      "fileTitle": "第七篇：SVG入门——看懂图标代码不再懵",
+      "filename": "第七篇：SVG入门——看懂图标代码不再懵.md",
+      "path": "HTML/第七篇：SVG入门——看懂图标代码不再懵.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "SVG",
+        "图标",
+        "前端基础",
+        "HTML",
+        "矢量图形"
+      ],
+      "category": "HTML",
+      "attachments": [],
+      "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
+      "size": "13KB",
+      "lastModified": "2026-04-29T11:27:17.353Z",
+      "wordCount": 8855
+    },
+    {
+      "type": "file",
+      "title": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+      "frontmatterTitle": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+      "fileTitle": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate",
+      "filename": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+      "path": "ElementPlus/第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Element Plus",
+        "Cascader",
+        "TreeSelect",
+        "Transfer",
+        "Checkbox",
+        "Radio",
+        "Switch"
+      ],
+      "category": "Element Plus",
+      "attachments": [],
+      "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解表单里的高级录入组件：级联选择、树形选择、穿梭框、多选组、单选组、开关、滑块、评分的用法与联动校验。",
+      "size": "17KB",
+      "lastModified": "2026-04-29T11:27:17.329Z",
+      "wordCount": 13561
+    },
+    {
+      "type": "file",
+      "title": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+      "frontmatterTitle": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+      "fileTitle": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty",
+      "filename": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+      "path": "ElementPlus/第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Element Plus",
+        "Descriptions",
+        "Timeline",
+        "Collapse",
+        "Tag",
+        "Badge",
+        "Statistic"
+      ],
+      "category": "Element Plus",
+      "attachments": [],
+      "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解详情页、状态标记、加载态与空态相关的数据展示组件，覆盖 Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty。",
+      "size": "19KB",
+      "lastModified": "2026-04-29T11:27:17.321Z",
+      "wordCount": 15150
+    },
+    {
+      "type": "file",
+      "title": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+      "frontmatterTitle": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+      "fileTitle": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件",
+      "filename": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+      "path": "ElementPlus/第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+      "date": "2026-04-29T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Element Plus",
+        "Tooltip",
+        "Popover",
+        "Popconfirm",
+        "Notification",
+        "Alert",
+        "VirtualizedTable"
+      ],
+      "category": "Element Plus",
+      "attachments": [],
+      "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，补全第五篇未覆盖的反馈组件：Tooltip、Popover、Popconfirm、Notification、Alert，以及虚拟化组件的适用场景与基础用法。",
+      "size": "18KB",
+      "lastModified": "2026-04-29T11:27:17.337Z",
+      "wordCount": 13388
+    },
+    {
+      "type": "file",
       "title": "README",
       "frontmatterTitle": "README",
       "fileTitle": "README",
@@ -18160,26 +19095,6 @@
     },
     {
       "type": "file",
-      "title": "第三篇_现代布局_从弹性到网格",
-      "frontmatterTitle": "第三篇_现代布局_从弹性到网格",
-      "fileTitle": "第三篇_现代布局_从弹性到网格",
-      "filename": "第三篇_现代布局_从弹性到网格.md",
-      "path": "CSS/第三篇_现代布局_从弹性到网格.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "CSS"
-      ],
-      "category": "CSS",
-      "attachments": [],
-      "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-      "size": "80KB",
-      "lastModified": "2026-04-28T11:18:24.346Z",
-      "wordCount": 51408
-    },
-    {
-      "type": "file",
       "title": "第一篇_认识CSS_风格的起点",
       "frontmatterTitle": "第一篇_认识CSS_风格的起点",
       "fileTitle": "第一篇_认识CSS_风格的起点",
@@ -18218,9 +19133,9 @@
       "category": "Element Plus",
       "attachments": [],
       "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-      "size": "13KB",
-      "lastModified": "2026-04-28T14:11:31.539Z",
-      "wordCount": 8965
+      "size": "17KB",
+      "lastModified": "2026-04-29T11:27:17.303Z",
+      "wordCount": 11454
     },
     {
       "type": "file",
@@ -18266,9 +19181,9 @@
       "category": "Element Plus",
       "attachments": [],
       "description": "基于 2026-04-28 查阅的 Element Plus 官方文档，系统整理 Button、Icon、Container、Space、Text 这些基础组件在后台页面里的常见用法和搭配思路。",
-      "size": "12KB",
-      "lastModified": "2026-04-28T13:45:18.642Z",
-      "wordCount": 7774
+      "size": "15KB",
+      "lastModified": "2026-04-29T12:51:05.550Z",
+      "wordCount": 9532
     },
     {
       "type": "file",
@@ -18443,8 +19358,8 @@
     },
     {
       "type": "file",
-      "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
-      "frontmatterTitle": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+      "title": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+      "frontmatterTitle": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
       "fileTitle": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04",
       "filename": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
       "path": "AI工具/Codex/第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
@@ -18463,8 +19378,8 @@
       "attachments": [],
       "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
       "size": "7KB",
-      "lastModified": "2026-04-28T11:18:24.341Z",
-      "wordCount": 3724
+      "lastModified": "2026-04-30T13:43:30.333Z",
+      "wordCount": 3727
     },
     {
       "type": "file",
@@ -21749,27 +22664,6 @@
     },
     {
       "type": "file",
-      "title": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-      "frontmatterTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-      "fileTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-      "filename": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
-      "path": "AI工具/Codex/第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-10  \r\n> 定位：本机 Codex “关键文件与安全边界”讲透。  \r\n> 适用：你需要排查登录、配置、权限或命令执行问题时。\r\n\r\n章节导航（点击跳转）：\r\n\r\n[[toc]]\r\n\r\n---\r\n\r\n\r\n\r\nC:\\Users\\Administrator\\.codex 是 Codex 桌面应用的本地数据目录。  \r\n它不是项目代码，也不是缓存垃圾桶，而是 “账号认证",
-      "size": "13KB",
-      "lastModified": "2026-03-11T12:25:21.641Z",
-      "wordCount": 9126
-    },
-    {
-      "type": "file",
       "title": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
       "frontmatterTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
       "fileTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
@@ -21875,45 +22769,27 @@
     },
     {
       "type": "file",
-      "title": "第六篇_CLI插件App全链路配置实战_超详细",
-      "frontmatterTitle": "第六篇_CLI插件App全链路配置实战_超详细",
-      "fileTitle": "第六篇_CLI插件App全链路配置实战_超详细",
-      "filename": "第六篇_CLI插件App全链路配置实战_超详细.md",
-      "path": "AI工具/Codex/第六篇_CLI插件App全链路配置实战_超详细.md",
-      "date": null,
-      "hasRealDate": false,
+      "title": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
+      "frontmatterTitle": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
+      "fileTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
+      "filename": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
+      "path": "AI工具/Codex/第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
+      "date": "2026-03-10T00:00:00.000Z",
+      "hasRealDate": true,
       "order": null,
       "tags": [
-        "AI工具",
-        "Codex"
+        "Codex",
+        "本地数据目录",
+        "auth.json",
+        "Rules",
+        "日志"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：主线 03（三端统一与联动排障）。  \n> 前置：第三篇 + 第五篇（先懂原理和字段，再做联动最稳）。  \n> 下一篇建议：第七篇（逐字段截图对照）。  \n> 本篇不展开：各字段逐格截图（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多同学以为 CLI、插",
-      "size": "13KB",
-      "lastModified": "2026-03-08T14:02:54.821Z",
-      "wordCount": 9277
-    },
-    {
-      "type": "file",
-      "title": "第二篇_Codex官方资料补充与进阶实践",
-      "frontmatterTitle": "第二篇_Codex官方资料补充与进阶实践",
-      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
-      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
-      "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 本文基于 OpenAI 官方 Codex 文档整理，时间点为 2026-03-08。  \n> 定位：主线 05（进阶能力：自动化、治理、团队标准化）。  \n> 前置：建议先读第三篇、第五篇、第六篇、第七篇。  \n> 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n",
-      "size": "7KB",
-      "lastModified": "2026-03-08T14:02:31.372Z",
-      "wordCount": 5042
+      "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
+      "size": "14KB",
+      "lastModified": "2026-04-30T13:43:30.331Z",
+      "wordCount": 9126
     },
     {
       "type": "file",
@@ -21935,48 +22811,6 @@
       "size": "3KB",
       "lastModified": "2026-03-08T13:58:25.864Z",
       "wordCount": 2555
-    },
-    {
-      "type": "file",
-      "title": "第四篇_Codex多来源完整配置手册_小白友好版",
-      "frontmatterTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
-      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
-      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "path": "AI工具/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。  \n> 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。  \n> 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  \n> 本篇不展开：逐字段截图核对（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n",
-      "size": "13KB",
-      "lastModified": "2026-03-08T13:58:20.166Z",
-      "wordCount": 8337
-    },
-    {
-      "type": "file",
-      "title": "第一篇_Codex从0到1配置实战",
-      "frontmatterTitle": "第一篇_Codex从0到1配置实战",
-      "fileTitle": "第一篇_Codex从0到1配置实战",
-      "filename": "第一篇_Codex从0到1配置实战.md",
-      "path": "AI工具/Codex/第一篇_Codex从0到1配置实战.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  \n> 记录时间：2026-03-08  \n> 定位：线路选读 B（rpcod 路线的 CLI 快速打通）。  \n> 前置：建议先读第三篇第 14 节（先懂通用配置层级）。  \n> 使用方式：如果你不用 rpcod，这篇可跳过，改看第四篇对应线路。  \n",
-      "size": "6KB",
-      "lastModified": "2026-03-08T13:57:44.446Z",
-      "wordCount": 3606
     },
     {
       "type": "file",
@@ -22043,90 +22877,6 @@
     },
     {
       "type": "file",
-      "title": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-      "frontmatterTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-      "fileTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-      "filename": "第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
-      "path": "AI工具/Codex/第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：主线 04（截图核对与SOP落地）。  \n> 前置：第六篇（先懂三端关系，再对照截图效率最高）。  \n> 下一篇建议：第二篇（进阶能力与长期治理）。  \n> 本篇不展开：字段原理深讲（看第三篇、第五篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n这篇不是“看懂概念”",
-      "size": "11KB",
-      "lastModified": "2026-03-08T13:51:40.814Z",
-      "wordCount": 8053
-    },
-    {
-      "type": "file",
-      "title": "第五篇_Codex配置字段字典与文档对照_完整版",
-      "frontmatterTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
-      "fileTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
-      "filename": "第五篇_Codex配置字段字典与文档对照_完整版.md",
-      "path": "AI工具/Codex/第五篇_Codex配置字段字典与文档对照_完整版.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：主线 02（字段查询手册 + 场景模板）。  \n> 前置：第三篇（看完配置层级再看字段会更顺）。  \n> 下一篇建议：第六篇（三端联动实战）。  \n> 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n\n\n1. co",
-      "size": "12KB",
-      "lastModified": "2026-03-08T13:51:21.968Z",
-      "wordCount": 9266
-    },
-    {
-      "type": "file",
-      "title": "第三篇_Codex文档地图与配置逐项详解_小白版",
-      "frontmatterTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
-      "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
-      "filename": "第三篇_Codex文档地图与配置逐项详解_小白版.md",
-      "path": "AI工具/Codex/第三篇_Codex文档地图与配置逐项详解_小白版.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：主线 01（先建立配置心智模型）。  \n> 前置：无。  \n> 下一篇建议：第五篇（字段字典）。  \n> 本篇不展开：三端具体点位与截图（看第六篇、第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n大部分人卡住不是因为命令难，而是这 4 件事混在一起了：\n\n1. ",
-      "size": "12KB",
-      "lastModified": "2026-03-08T13:51:06.401Z",
-      "wordCount": 8714
-    },
-    {
-      "type": "file",
-      "title": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-      "frontmatterTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-      "fileTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-      "filename": "第八篇_Codex命令与配置文件作用全解_小白可查版.md",
-      "path": "AI工具/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "AI工具",
-        "Codex"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "> 更新时间：2026-03-08  \n> 定位：工具底座（全系列命令与配置文件统一说明）。  \n> 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多新手把 Codex 当成“一个命令”，其实它是三层：\n\n1. 命令层：你在终端执行 codex ...\n2. 配置层：你在 config.toml 里定义默认行为\n3. 项",
-      "size": "7KB",
-      "lastModified": "2026-03-08T13:50:41.841Z",
-      "wordCount": 4519
-    },
-    {
-      "type": "file",
       "title": "第四篇_OpenClaw101全7天资料总研版_龙虾中文版可执行手册",
       "frontmatterTitle": "第四篇_OpenClaw101全7天资料总研版_龙虾中文版可执行手册",
       "fileTitle": "第四篇_OpenClaw101全7天资料总研版_龙虾中文版可执行手册",
@@ -22166,6 +22916,198 @@
       "size": "4KB",
       "lastModified": "2026-03-08T13:46:57.273Z",
       "wordCount": 2256
+    },
+    {
+      "type": "file",
+      "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+      "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+      "fileTitle": "第一篇_Codex从0到1配置实战",
+      "filename": "第一篇_Codex从0到1配置实战.md",
+      "path": "AI工具/Codex/第一篇_Codex从0到1配置实战.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "配置实战",
+        "中转站",
+        "API Key"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
+      "size": "6KB",
+      "lastModified": "2026-04-30T13:43:30.307Z",
+      "wordCount": 3607
+    },
+    {
+      "type": "file",
+      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
+      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
+      "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "官方文档",
+        "exec",
+        "MCP",
+        "自动化"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
+      "size": "8KB",
+      "lastModified": "2026-04-30T13:43:30.308Z",
+      "wordCount": 5043
+    },
+    {
+      "type": "file",
+      "title": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
+      "frontmatterTitle": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
+      "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
+      "filename": "第三篇_Codex文档地图与配置逐项详解_小白版.md",
+      "path": "AI工具/Codex/第三篇_Codex文档地图与配置逐项详解_小白版.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "配置文件",
+        "auth",
+        "sandbox",
+        "AGENTS"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
+      "size": "13KB",
+      "lastModified": "2026-04-30T13:43:30.312Z",
+      "wordCount": 8715
+    },
+    {
+      "type": "file",
+      "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+      "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "path": "AI工具/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "Packy",
+        "中转站",
+        "配置迁移",
+        "多线路"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+      "size": "13KB",
+      "lastModified": "2026-04-30T13:43:30.314Z",
+      "wordCount": 8338
+    },
+    {
+      "type": "file",
+      "title": "第五篇：Codex 配置字段字典与文档对照（完整版）",
+      "frontmatterTitle": "第五篇：Codex 配置字段字典与文档对照（完整版）",
+      "fileTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
+      "filename": "第五篇_Codex配置字段字典与文档对照_完整版.md",
+      "path": "AI工具/Codex/第五篇_Codex配置字段字典与文档对照_完整版.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "config.toml",
+        "auth.json",
+        "配置字段",
+        "字典"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
+      "size": "12KB",
+      "lastModified": "2026-04-30T13:43:30.324Z",
+      "wordCount": 9267
+    },
+    {
+      "type": "file",
+      "title": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
+      "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
+      "fileTitle": "第六篇_CLI插件App全链路配置实战_超详细",
+      "filename": "第六篇_CLI插件App全链路配置实战_超详细.md",
+      "path": "AI工具/Codex/第六篇_CLI插件App全链路配置实战_超详细.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "插件",
+        "App",
+        "配置联动"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+      "size": "14KB",
+      "lastModified": "2026-04-30T13:43:30.325Z",
+      "wordCount": 9278
+    },
+    {
+      "type": "file",
+      "title": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
+      "frontmatterTitle": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
+      "fileTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
+      "filename": "第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
+      "path": "AI工具/Codex/第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "截图对照",
+        "CLI",
+        "插件",
+        "App"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
+      "size": "12KB",
+      "lastModified": "2026-04-30T13:43:30.328Z",
+      "wordCount": 8054
+    },
+    {
+      "type": "file",
+      "title": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
+      "frontmatterTitle": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
+      "fileTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
+      "filename": "第八篇_Codex命令与配置文件作用全解_小白可查版.md",
+      "path": "AI工具/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版.md",
+      "date": "2026-03-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "命令",
+        "配置文件",
+        "AGENTS",
+        "速查"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
+      "size": "7KB",
+      "lastModified": "2026-04-30T13:43:30.329Z",
+      "wordCount": 4520
     },
     {
       "type": "file",
@@ -23661,26 +24603,6 @@
     },
     {
       "type": "file",
-      "title": "HTML 目录",
-      "frontmatterTitle": "HTML 目录",
-      "fileTitle": "HTML 目录",
-      "filename": "HTML 目录.md",
-      "path": "HTML/HTML 目录.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "HTML"
-      ],
-      "category": "HTML",
-      "attachments": [],
-      "description": "- 1.1 网站、网页与HTML的关系\r\n- 1.2 浏览器：我们看网页的窗口\r\n- 1.3 HTML、CSS、JavaScript的分工合作\r\n- 1.4 开发环境搭建与第一个网页\r\n\r\n\r\n- 2.1 DOCTYPE声明与HTML版本\r\n- 2.2 html、head、body三大核心结构\r\n- 2.3 meta标签与页面元信息\r\n- 2.4 字符编码与国际化\r\n\r\n\r\n\r\n\r\n- 3.1 标",
-      "size": "25KB",
-      "lastModified": "2026-01-25T13:23:07.477Z",
-      "wordCount": 19687
-    },
-    {
-      "type": "file",
       "title": "HTML 特别补充篇（番外）",
       "frontmatterTitle": "HTML 特别补充篇（番外）",
       "fileTitle": "HTML 特别补充篇（番外）",
@@ -23925,6 +24847,31 @@
               "size": "16KB",
               "lastModified": "2026-04-28T11:18:24.375Z",
               "wordCount": 10741
+            },
+            {
+              "type": "file",
+              "title": "前端里的各种\"帧\"——Frame 全解",
+              "frontmatterTitle": "前端里的各种\"帧\"——Frame 全解",
+              "fileTitle": "前端里的各种帧_Frame全解",
+              "filename": "前端里的各种帧_Frame全解.md",
+              "path": "常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md",
+              "date": "2026-04-30T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "帧",
+                "渲染",
+                "动画",
+                "性能",
+                "JavaScript",
+                "CSS"
+              ],
+              "category": "浏览器与网络",
+              "attachments": [],
+              "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
+              "size": "11KB",
+              "lastModified": "2026-04-30T12:10:43.527Z",
+              "wordCount": 6570
             },
             {
               "type": "file",
@@ -26492,6 +27439,30 @@
           "children": [
             {
               "type": "file",
+              "title": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+              "frontmatterTitle": "WebSocket 零基础入门：它是什么、为什么用、浏览器与 uni-app 怎么写",
+              "fileTitle": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写",
+              "filename": "00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+              "path": "项目复用技术/WebSocket/00-WebSocket零基础入门_它是什么_为什么用_浏览器与uni-app怎么写.md",
+              "date": "2026-04-29T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "WebSocket",
+                "uni-app",
+                "浏览器",
+                "STOMP",
+                "实时通信"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "这是给零基础读者准备的 WebSocket 前置知识文章，尽量站在协议无关的底层视角，从它是什么、握手怎么发生、和 HTTP/STOMP 的关系，到浏览器与 uni-app 的最小使用方式、心跳、重连、关闭码与换协议时的分析方法，帮助先补基础再看项目级封装。",
+              "size": "30KB",
+              "lastModified": "2026-04-29T14:07:07.239Z",
+              "wordCount": 16552
+            },
+            {
+              "type": "file",
               "title": "WebSocket 与 STOMP 总览：分层设计、概念边界与接入顺序",
               "frontmatterTitle": "WebSocket 与 STOMP 总览：分层设计、概念边界与接入顺序",
               "fileTitle": "01-WebSocket与STOMP总览_分层设计与接入顺序",
@@ -27085,198 +28056,329 @@
           "path": "AI工具/Codex",
           "children": [
             {
+              "type": "directory",
+              "name": "中转切换与Node排障",
+              "path": "AI工具/Codex/中转切换与Node排障",
+              "children": [
+                {
+                  "type": "directory",
+                  "name": "对比报告",
+                  "path": "AI工具/Codex/中转切换与Node排障/对比报告",
+                  "children": [
+                    {
+                      "type": "directory",
+                      "name": "个人电脑",
+                      "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑",
+                      "children": [
+                        {
+                          "type": "file",
+                          "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+                          "frontmatterTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+                          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+                          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                          "path": "AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                          "date": null,
+                          "hasRealDate": false,
+                          "order": null,
+                          "tags": [
+                            "AI工具",
+                            "个人电脑"
+                          ],
+                          "category": "AI工具",
+                          "attachments": [],
+                          "description": "生成时间：2026-04-30 20:14:02 +08:00\r\n用户名：HN246\r\n脚本位置：C:\\Users\\HN246\\Desktop\\git项目\\个人技术博客网站\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.npmrc、PATH、环境变量和加密初始化结果。\r\n\r\n",
+                          "size": "25KB",
+                          "lastModified": "2026-04-30T12:35:17.554Z",
+                          "wordCount": 24920
+                        }
+                      ]
+                    },
+                    {
+                      "type": "directory",
+                      "name": "公司电脑",
+                      "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑",
+                      "children": [
+                        {
+                          "type": "file",
+                          "title": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+                          "frontmatterTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+                          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+                          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                          "path": "AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                          "date": null,
+                          "hasRealDate": false,
+                          "order": null,
+                          "tags": [
+                            "AI工具",
+                            "公司电脑"
+                          ],
+                          "category": "AI工具",
+                          "attachments": [],
+                          "description": "生成时间：2026-04-30 09:30:55 +08:00\r\n用户名：Administrator\r\n脚本位置：C:\\Users\\Administrator\\Desktop\\git组合\\HaonanKnowledgeBlog\\public\\notes\\Node问题\\Node环境一键对比采集脚本.ps1\r\n\r\n> 这份报告用于和站内那篇“Node 环境排查实录”逐项对照，重点看路径、命令命中、.n",
+                          "size": "26KB",
+                          "lastModified": "2026-04-30T12:10:43.510Z",
+                          "wordCount": 26260
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "file",
+                  "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+                  "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
+                  "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
+                  "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+                  "path": "AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+                  "date": "2026-04-30T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Node.js",
+                    "Codex",
+                    "CC Switch",
+                    "PowerShell",
+                    "Windows",
+                    "环境配置",
+                    "故障排查"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [
+                    {
+                      "name": "Node环境一键对比采集脚本.ps1",
+                      "path": "AI工具/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+                      "ext": "ps1",
+                      "size": "6KB",
+                      "lastModified": "2026-04-30T12:10:43.488Z"
+                    }
+                  ],
+                  "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+                  "size": "26KB",
+                  "lastModified": "2026-04-30T13:48:31.836Z",
+                  "wordCount": 15326
+                }
+              ]
+            },
+            {
               "type": "file",
-              "title": "第一篇_Codex从0到1配置实战",
-              "frontmatterTitle": "第一篇_Codex从0到1配置实战",
+              "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+              "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
               "fileTitle": "第一篇_Codex从0到1配置实战",
               "filename": "第一篇_Codex从0到1配置实战.md",
               "path": "AI工具/Codex/第一篇_Codex从0到1配置实战.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "CLI",
+                "配置实战",
+                "中转站",
+                "API Key"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  \n> 记录时间：2026-03-08  \n> 定位：线路选读 B（rpcod 路线的 CLI 快速打通）。  \n> 前置：建议先读第三篇第 14 节（先懂通用配置层级）。  \n> 使用方式：如果你不用 rpcod，这篇可跳过，改看第四篇对应线路。  \n",
+              "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
               "size": "6KB",
-              "lastModified": "2026-03-08T13:57:44.446Z",
-              "wordCount": 3606
+              "lastModified": "2026-04-30T13:43:30.307Z",
+              "wordCount": 3607
             },
             {
               "type": "file",
-              "title": "第二篇_Codex官方资料补充与进阶实践",
-              "frontmatterTitle": "第二篇_Codex官方资料补充与进阶实践",
+              "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+              "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
               "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
               "filename": "第二篇_Codex官方资料补充与进阶实践.md",
               "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "官方文档",
+                "exec",
+                "MCP",
+                "自动化"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 本文基于 OpenAI 官方 Codex 文档整理，时间点为 2026-03-08。  \n> 定位：主线 05（进阶能力：自动化、治理、团队标准化）。  \n> 前置：建议先读第三篇、第五篇、第六篇、第七篇。  \n> 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n",
-              "size": "7KB",
-              "lastModified": "2026-03-08T14:02:31.372Z",
-              "wordCount": 5042
+              "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
+              "size": "8KB",
+              "lastModified": "2026-04-30T13:43:30.308Z",
+              "wordCount": 5043
             },
             {
               "type": "file",
-              "title": "第三篇_Codex文档地图与配置逐项详解_小白版",
-              "frontmatterTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
+              "title": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
+              "frontmatterTitle": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
               "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
               "filename": "第三篇_Codex文档地图与配置逐项详解_小白版.md",
               "path": "AI工具/Codex/第三篇_Codex文档地图与配置逐项详解_小白版.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "配置文件",
+                "auth",
+                "sandbox",
+                "AGENTS"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：主线 01（先建立配置心智模型）。  \n> 前置：无。  \n> 下一篇建议：第五篇（字段字典）。  \n> 本篇不展开：三端具体点位与截图（看第六篇、第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n大部分人卡住不是因为命令难，而是这 4 件事混在一起了：\n\n1. ",
-              "size": "12KB",
-              "lastModified": "2026-03-08T13:51:06.401Z",
-              "wordCount": 8714
+              "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
+              "size": "13KB",
+              "lastModified": "2026-04-30T13:43:30.312Z",
+              "wordCount": 8715
             },
             {
               "type": "file",
-              "title": "第四篇_Codex多来源完整配置手册_小白友好版",
-              "frontmatterTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+              "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+              "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
               "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
               "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
               "path": "AI工具/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "Packy",
+                "中转站",
+                "配置迁移",
+                "多线路"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。  \n> 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。  \n> 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  \n> 本篇不展开：逐字段截图核对（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n",
+              "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
               "size": "13KB",
-              "lastModified": "2026-03-08T13:58:20.166Z",
-              "wordCount": 8337
+              "lastModified": "2026-04-30T13:43:30.314Z",
+              "wordCount": 8338
             },
             {
               "type": "file",
-              "title": "第五篇_Codex配置字段字典与文档对照_完整版",
-              "frontmatterTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
+              "title": "第五篇：Codex 配置字段字典与文档对照（完整版）",
+              "frontmatterTitle": "第五篇：Codex 配置字段字典与文档对照（完整版）",
               "fileTitle": "第五篇_Codex配置字段字典与文档对照_完整版",
               "filename": "第五篇_Codex配置字段字典与文档对照_完整版.md",
               "path": "AI工具/Codex/第五篇_Codex配置字段字典与文档对照_完整版.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "config.toml",
+                "auth.json",
+                "配置字段",
+                "字典"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：主线 02（字段查询手册 + 场景模板）。  \n> 前置：第三篇（看完配置层级再看字段会更顺）。  \n> 下一篇建议：第六篇（三端联动实战）。  \n> 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n\n\n1. co",
+              "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
               "size": "12KB",
-              "lastModified": "2026-03-08T13:51:21.968Z",
-              "wordCount": 9266
+              "lastModified": "2026-04-30T13:43:30.324Z",
+              "wordCount": 9267
             },
             {
               "type": "file",
-              "title": "第六篇_CLI插件App全链路配置实战_超详细",
-              "frontmatterTitle": "第六篇_CLI插件App全链路配置实战_超详细",
+              "title": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
+              "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细）",
               "fileTitle": "第六篇_CLI插件App全链路配置实战_超详细",
               "filename": "第六篇_CLI插件App全链路配置实战_超详细.md",
               "path": "AI工具/Codex/第六篇_CLI插件App全链路配置实战_超详细.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "CLI",
+                "插件",
+                "App",
+                "配置联动"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：主线 03（三端统一与联动排障）。  \n> 前置：第三篇 + 第五篇（先懂原理和字段，再做联动最稳）。  \n> 下一篇建议：第七篇（逐字段截图对照）。  \n> 本篇不展开：各字段逐格截图（看第七篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多同学以为 CLI、插",
-              "size": "13KB",
-              "lastModified": "2026-03-08T14:02:54.821Z",
-              "wordCount": 9277
+              "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+              "size": "14KB",
+              "lastModified": "2026-04-30T13:43:30.325Z",
+              "wordCount": 9278
             },
             {
               "type": "file",
-              "title": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
-              "frontmatterTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
+              "title": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
+              "frontmatterTitle": "第七篇：Codex 三端逐字段截图对照版（每一步可复现）",
               "fileTitle": "第七篇_Codex三端逐字段截图对照版_每一步可复现",
               "filename": "第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
               "path": "AI工具/Codex/第七篇_Codex三端逐字段截图对照版_每一步可复现.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "截图对照",
+                "CLI",
+                "插件",
+                "App"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：主线 04（截图核对与SOP落地）。  \n> 前置：第六篇（先懂三端关系，再对照截图效率最高）。  \n> 下一篇建议：第二篇（进阶能力与长期治理）。  \n> 本篇不展开：字段原理深讲（看第三篇、第五篇）。\n> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n这篇不是“看懂概念”",
-              "size": "11KB",
-              "lastModified": "2026-03-08T13:51:40.814Z",
-              "wordCount": 8053
+              "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
+              "size": "12KB",
+              "lastModified": "2026-04-30T13:43:30.328Z",
+              "wordCount": 8054
             },
             {
               "type": "file",
-              "title": "第八篇_Codex命令与配置文件作用全解_小白可查版",
-              "frontmatterTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
+              "title": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
+              "frontmatterTitle": "第八篇：Codex 命令与配置文件作用全解（小白可查版）",
               "fileTitle": "第八篇_Codex命令与配置文件作用全解_小白可查版",
               "filename": "第八篇_Codex命令与配置文件作用全解_小白可查版.md",
               "path": "AI工具/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-08T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "命令",
+                "配置文件",
+                "AGENTS",
+                "速查"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-08  \n> 定位：工具底座（全系列命令与配置文件统一说明）。  \n> 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。\n\n章节导航（点击跳转）：\n\n[[toc]]\n\n---\n\n\n\n很多新手把 Codex 当成“一个命令”，其实它是三层：\n\n1. 命令层：你在终端执行 codex ...\n2. 配置层：你在 config.toml 里定义默认行为\n3. 项",
+              "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
               "size": "7KB",
-              "lastModified": "2026-03-08T13:50:41.841Z",
-              "wordCount": 4519
+              "lastModified": "2026-04-30T13:43:30.329Z",
+              "wordCount": 4520
             },
             {
               "type": "file",
-              "title": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
-              "frontmatterTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
+              "title": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
+              "frontmatterTitle": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）",
               "fileTitle": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版",
               "filename": "第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
               "path": "AI工具/Codex/第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-03-10T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "AI工具",
-                "Codex"
+                "Codex",
+                "本地数据目录",
+                "auth.json",
+                "Rules",
+                "日志"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "> 更新时间：2026-03-10  \r\n> 定位：本机 Codex “关键文件与安全边界”讲透。  \r\n> 适用：你需要排查登录、配置、权限或命令执行问题时。\r\n\r\n章节导航（点击跳转）：\r\n\r\n[[toc]]\r\n\r\n---\r\n\r\n\r\n\r\nC:\\Users\\Administrator\\.codex 是 Codex 桌面应用的本地数据目录。  \r\n它不是项目代码，也不是缓存垃圾桶，而是 “账号认证",
-              "size": "13KB",
-              "lastModified": "2026-03-11T12:25:21.641Z",
+              "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
+              "size": "14KB",
+              "lastModified": "2026-04-30T13:43:30.331Z",
               "wordCount": 9126
             },
             {
               "type": "file",
-              "title": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
-              "frontmatterTitle": "Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+              "title": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
+              "frontmatterTitle": "第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录",
               "fileTitle": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04",
               "filename": "第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
               "path": "AI工具/Codex/第十篇_Codex命令调用失败与PowerShell版本冲突排查修复实录_2026-04.md",
@@ -27295,8 +28397,8 @@
               "attachments": [],
               "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
               "size": "7KB",
-              "lastModified": "2026-04-28T11:18:24.341Z",
-              "wordCount": 3724
+              "lastModified": "2026-04-30T13:43:30.333Z",
+              "wordCount": 3727
             }
           ]
         },
@@ -28087,23 +29189,35 @@
         },
         {
           "type": "file",
-          "title": "第三篇_现代布局_从弹性到网格",
-          "frontmatterTitle": "第三篇_现代布局_从弹性到网格",
+          "title": "第三篇 现代布局：从弹性到网格",
+          "frontmatterTitle": "第三篇 现代布局：从弹性到网格",
           "fileTitle": "第三篇_现代布局_从弹性到网格",
           "filename": "第三篇_现代布局_从弹性到网格.md",
           "path": "CSS/第三篇_现代布局_从弹性到网格.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "CSS"
+            "CSS",
+            "Flexbox",
+            "Grid",
+            "响应式布局",
+            "前端布局"
           ],
           "category": "CSS",
-          "attachments": [],
-          "description": "> 目标：掌握现代网页布局的两大主力——Flexbox 和 Grid。看完这一篇，你应该能：\r\n>\r\n> - 用 Flexbox 写出常见的一维布局：导航栏、卡片列表、左右结构等；\r\n> - 用 Grid 写出二维布局：后台面板、多区域页面框架等；\r\n> - 读懂别人写的现代布局代码，不再只会靠 position: absolute 硬拼页面。\r\n\r\n---\r\n\r\n\r\n\r\n> Flexbox 适合",
-          "size": "80KB",
-          "lastModified": "2026-04-28T11:18:24.346Z",
-          "wordCount": 51408
+          "attachments": [
+            {
+              "name": "第三篇_现代布局_示例_弹性与网格对照.html",
+              "path": "CSS/第三篇_现代布局_示例_弹性与网格对照.html",
+              "ext": "html",
+              "size": "20KB",
+              "lastModified": "2026-04-29T15:02:39.737Z"
+            }
+          ],
+          "description": "从 Flex 和 Grid 的区别讲起，用最适合小白理解的顺序讲清 Grid 的画格子、对齐、合并单元格、响应式、自适应列数和常见坑点，帮你真正把现代布局用起来。",
+          "size": "83KB",
+          "lastModified": "2026-04-29T15:02:39.736Z",
+          "wordCount": 51438
         },
         {
           "type": "file",
@@ -28256,9 +29370,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 最新官方资料，作为 Element Plus 专题第一篇，先讲清它为什么常用于 Vue 3 的 PC 端项目，以及接入、按需导入、主题定制、国际化与暗黑模式的核心用法。",
-          "size": "13KB",
-          "lastModified": "2026-04-28T14:11:31.539Z",
-          "wordCount": 8965
+          "size": "17KB",
+          "lastModified": "2026-04-29T11:27:17.303Z",
+          "wordCount": 11454
         },
         {
           "type": "file",
@@ -28304,9 +29418,9 @@
           "category": "Element Plus",
           "attachments": [],
           "description": "基于 2026-04-28 查阅的 Element Plus 官方文档，系统整理 Button、Icon、Container、Space、Text 这些基础组件在后台页面里的常见用法和搭配思路。",
-          "size": "12KB",
-          "lastModified": "2026-04-28T13:45:18.642Z",
-          "wordCount": 7774
+          "size": "15KB",
+          "lastModified": "2026-04-29T12:51:05.550Z",
+          "wordCount": 9532
         },
         {
           "type": "file",
@@ -28379,6 +29493,109 @@
           "size": "11KB",
           "lastModified": "2026-04-28T13:45:18.644Z",
           "wordCount": 7117
+        },
+        {
+          "type": "file",
+          "title": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+          "frontmatterTitle": "导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构",
+          "fileTitle": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown",
+          "filename": "第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+          "path": "ElementPlus/第七篇_导航体系_Menu_Tabs_Breadcrumb_Steps_Dropdown.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Menu",
+            "Tabs",
+            "Breadcrumb",
+            "Steps",
+            "Dropdown"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解后台导航体系的五类核心组件：侧边菜单、标签页、面包屑、步骤条、下拉菜单，以及它们与 Vue Router 的联动方式。",
+          "size": "18KB",
+          "lastModified": "2026-04-29T11:27:17.307Z",
+          "wordCount": 14456
+        },
+        {
+          "type": "file",
+          "title": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+          "frontmatterTitle": "表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate",
+          "fileTitle": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate",
+          "filename": "第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+          "path": "ElementPlus/第八篇_表单进阶_Cascader_TreeSelect_Transfer_Checkbox_Radio_Switch_Slider_Rate.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Cascader",
+            "TreeSelect",
+            "Transfer",
+            "Checkbox",
+            "Radio",
+            "Switch"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解表单里的高级录入组件：级联选择、树形选择、穿梭框、多选组、单选组、开关、滑块、评分的用法与联动校验。",
+          "size": "17KB",
+          "lastModified": "2026-04-29T11:27:17.329Z",
+          "wordCount": 13561
+        },
+        {
+          "type": "file",
+          "title": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+          "frontmatterTitle": "数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty",
+          "fileTitle": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty",
+          "filename": "第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+          "path": "ElementPlus/第九篇_数据展示扩展_Descriptions_Timeline_Collapse_Tag_Badge_Statistic_Skeleton_Result_Empty.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Descriptions",
+            "Timeline",
+            "Collapse",
+            "Tag",
+            "Badge",
+            "Statistic"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，系统讲解详情页、状态标记、加载态与空态相关的数据展示组件，覆盖 Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty。",
+          "size": "19KB",
+          "lastModified": "2026-04-29T11:27:17.321Z",
+          "wordCount": 15150
+        },
+        {
+          "type": "file",
+          "title": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+          "frontmatterTitle": "反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件",
+          "fileTitle": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件",
+          "filename": "第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+          "path": "ElementPlus/第十篇_反馈与浮层补全_Tooltip_Popover_Popconfirm_Notification_Alert_虚拟化组件.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Element Plus",
+            "Tooltip",
+            "Popover",
+            "Popconfirm",
+            "Notification",
+            "Alert",
+            "VirtualizedTable"
+          ],
+          "category": "Element Plus",
+          "attachments": [],
+          "description": "基于 2026-04-29 查阅的 Element Plus 官方文档，补全第五篇未覆盖的反馈组件：Tooltip、Popover、Popconfirm、Notification、Alert，以及虚拟化组件的适用场景与基础用法。",
+          "size": "18KB",
+          "lastModified": "2026-04-29T11:27:17.337Z",
+          "wordCount": 13388
         }
       ]
     },
@@ -28509,6 +29726,30 @@
         },
         {
           "type": "file",
+          "title": "SVG入门——看懂图标代码不再懵",
+          "frontmatterTitle": "SVG入门——看懂图标代码不再懵",
+          "fileTitle": "第七篇：SVG入门——看懂图标代码不再懵",
+          "filename": "第七篇：SVG入门——看懂图标代码不再懵.md",
+          "path": "HTML/第七篇：SVG入门——看懂图标代码不再懵.md",
+          "date": "2026-04-29T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "SVG",
+            "图标",
+            "前端基础",
+            "HTML",
+            "矢量图形"
+          ],
+          "category": "HTML",
+          "attachments": [],
+          "description": "从零讲清楚 SVG 是什么、坐标系怎么理解、常用元素和属性是什么意思，重点拆解 path 的 d 属性命令，让你看到别人写的 SVG 代码不再一头雾水。",
+          "size": "13KB",
+          "lastModified": "2026-04-29T11:27:17.353Z",
+          "wordCount": 8855
+        },
+        {
+          "type": "file",
           "title": "HTML 目录",
           "frontmatterTitle": "HTML 目录",
           "fileTitle": "HTML 目录",
@@ -28524,8 +29765,8 @@
           "attachments": [],
           "description": "- 1.1 网站、网页与HTML的关系\r\n- 1.2 浏览器：我们看网页的窗口\r\n- 1.3 HTML、CSS、JavaScript的分工合作\r\n- 1.4 开发环境搭建与第一个网页\r\n\r\n\r\n- 2.1 DOCTYPE声明与HTML版本\r\n- 2.2 html、head、body三大核心结构\r\n- 2.3 meta标签与页面元信息\r\n- 2.4 字符编码与国际化\r\n\r\n\r\n\r\n\r\n- 3.1 标",
           "size": "25KB",
-          "lastModified": "2026-01-25T13:23:07.477Z",
-          "wordCount": 19687
+          "lastModified": "2026-04-29T11:27:17.345Z",
+          "wordCount": 19956
         },
         {
           "type": "file",
@@ -31571,7 +32812,7 @@
       ]
     }
   ],
-  "totalNotes": 330,
-  "totalCategories": 76,
-  "lastUpdated": "2026-04-28T14:42:54.552Z"
+  "totalNotes": 340,
+  "totalCategories": 80,
+  "lastUpdated": "2026-04-30T15:19:16.512Z"
 }

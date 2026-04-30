@@ -1,3 +1,16 @@
+---
+title: 第五篇：Codex 配置字段字典与文档对照（完整版）
+date: 2026-03-08
+category: AI工具
+tags:
+  - Codex
+  - config.toml
+  - auth.json
+  - 配置字段
+  - 字典
+description: 逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。
+---
+
 # 第五篇：Codex 配置字段字典与文档对照（完整版）
 
 > 更新时间：2026-03-08  

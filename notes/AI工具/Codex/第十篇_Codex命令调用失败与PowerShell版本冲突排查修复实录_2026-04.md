@@ -1,5 +1,5 @@
 ---
-title: Codex 命令调用失败与 PowerShell 版本冲突排查修复实录
+title: 第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录
 date: 2026-04-27
 category: AI工具
 tags:
@@ -12,7 +12,7 @@ tags:
 description: 记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。
 ---
 
-# Codex 命令调用失败与 PowerShell 版本冲突排查修复实录
+# 第十篇：Codex 命令调用失败与 PowerShell 版本冲突排查修复实录
 
 > 本文记录一次真实的本地开发环境故障：Codex 本地命令调用频繁失败，排查中发现 PowerShell 5.1 / 7 并存与 MCP 配置被其他工具改写都可能影响结果。文中结论以这次机器上的实际现象为主，不把个案经验直接当成所有环境的通用定律。
 
