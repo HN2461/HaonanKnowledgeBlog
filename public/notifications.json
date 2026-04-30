@@ -1,13 +1,38 @@
 {
-  "generatedAt": "2026-04-29T15:38:09.1840676Z",
-  "total": 191,
+  "generatedAt": "2026-04-30T07:49:53.588Z",
+  "total": 202,
   "notifications": [
     {
-      "id": "daily-2026-04-29-10",
-      "title": "新增 Node 运行时预检与失败回退约定",
-      "content": "第一点：新增 `scripts/checkNodeRuntime.ps1`，会同时检测 `node -v` 与 `node -e`，并在命中 `ncrypto::CSPRNG(nullptr, 0)`、`NTE_PROVIDER_DLL_FAIL`、`0x8009001d` 时直接给出环境级诊断和回退建议；第二点：在 `AGENTS.md` 里补充 Node 运行时预检规则，要求以后在 Codex / 代理终端里执行任何 `node`、`npm`、`vite` 脚本前，优先先跑这份预检脚本；第三点：进一步明确约定：如果主人自己在外部 PowerShell / CMD 里 `node -e` 正常，而 Codex 终端预检失败，应优先判定为“Codex 命令执行环境与主人外部终端不一致”，不要误报成主人机器上的 Node 损坏；第四点：同步固化回退办法：改由主人在外部终端手动执行脚本，或由 Codex 走本地手动同步生成文件方案，减少后续重复卡在同一环境故障上。",
-      "summary": "定位出 Codex 终端里的 Node 失败与加密提供程序初始化异常有关后，补充了可复用的预检脚本和 AGENTS 规则，并明确区分“Codex 环境问题”和“主人自己终端正常”的场景。",
-      "date": "2026-04-29T23:37:00+08:00",
+      "id": "daily-2026-04-30-4",
+      "title": "清理 AGENTS 重复规则并修复历史消息 id 格式",
+      "content": "第一点：删除 AGENTS.md 末尾重复的 Global Engineering Rules 块，避免同一规则出现两份导致后续执行标准不一致；第二点：将 `data/history/2026-04-11_20.js` 中 `history-2026-04-18-early` 更正为合规 `history-2026-04-18`；第三点：把同日拆分的两个 2026-04-18 归档对象合并为一个对象，保留全部 items，避免同日重复节点和结构歧义。",
+      "summary": "针对规则执行口径混乱问题，移除 AGENTS.md 中重复的 Global Engineering Rules 段；同时修复 history 分片里不符合 id 规范的 2026-04-18 归档条目。",
+      "date": "2026-04-30T15:18:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-bea1c10f60752f53260ca5d51f5c269c6d078f3a",
+      "title": "消息汇总: 补充历史消息分片重构的当日摘要",
+      "content": "提交说明：消息汇总: 补充历史消息分片重构的当日摘要",
+      "summary": "消息汇总: 补充历史消息分片重构的当日摘要",
+      "date": "2026-04-30T15:13:28+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "bea1c10",
+      "fullHash": "bea1c10f60752f53260ca5d51f5c269c6d078f3a"
+    },
+    {
+      "id": "daily-2026-04-30-2",
+      "title": "历史消息拆分为按10天分片的文件结构",
+      "content": "第一点：新建 data/history/ 目录，将历史消息按10天拆分为 2026-04-01_10.js、2026-04-11_20.js、2026-04-21_30.js 三个分片文件；第二点：data/historyNotifications.js 改为聚合入口，只做 import + 展开，对外导出名不变，generateNotifications.js 无需任何修改；第三点：补齐4月29日缺失的归档记录（共10条改动，含 SVG 入门笔记、ElementPlus 第七至十篇、CSS 第三篇重写、HTML 附件预览功能、AGENTS 规则补充等）；第四点：更新 AGENTS.md 归档规则，明确归档时找对应分片文件追加，新月份需新建分片并在聚合入口同步添加 import。",
+      "summary": "将 historyNotifications.js 从单一大文件重构为聚合入口 + data/history/ 分片目录，每10天一个文件，同时补齐了4月29日缺失的归档记录，并更新 AGENTS.md 归档规则。",
+      "date": "2026-04-30T15:13:00+08:00",
       "tag": "功能更新",
       "category": "功能更新",
       "source": "daily-summary",
@@ -16,37 +41,35 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-29-9",
-      "title": "AGENTS 补充文章 HTML 示例预览约定",
-      "content": "第一点：在 `AGENTS.md` 的笔记发布规范中新增文章 HTML 示例预览规则，明确这类需求优先走“`attachments` + 详情页预览弹窗”机制，不另起独立路由；第二点：约定 `.html/.htm` 示例文件应放在 `public/notes/` 下并通过 frontmatter 的 `attachments` 显式声明；第三点：补充要求：详情页应同时保留下载 / 新窗口入口，并优先复用现有路径编码、附件识别和 `iframe sandbox` 预览逻辑；第四点：强调示例页尽量自包含，外部资源优先使用同目录相对路径，避免破坏 GitHub Pages `base` 路径和站内预览兼容性。",
-      "summary": "在仓库规则文档中补充“文章配套 HTML 学习示例”的统一实现约定，后续再做同类需求时会优先复用现有附件预览体系。",
-      "date": "2026-04-29T23:21:00+08:00",
-      "tag": "功能更新",
-      "category": "功能更新",
-      "source": "daily-summary",
+      "id": "git-3b017ad0b9c431192145d393aada6f357a11126e",
+      "title": "历史消息: 拆分为按10天分片的文件结构，补齐4月29日归档",
+      "content": "提交说明：历史消息: 拆分为按10天分片的文件结构，补齐4月29日归档",
+      "summary": "历史消息: 拆分为按10天分片的文件结构，补齐4月29日归档",
+      "date": "2026-04-30T15:12:13+08:00",
+      "tag": "Git 提交",
+      "source": "git",
       "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
+      "shortHash": "3b017ad",
+      "fullHash": "3b017ad0b9c431192145d393aada6f357a11126e"
     },
     {
-      "id": "daily-2026-04-29-8",
-      "title": "文章详情页支持 HTML 示例附件弹窗预览",
-      "content": "第一点：新增 `src/utils/noteAttachments.js` 与对应测试，统一处理附件路径编码、HTML 扩展名识别和可预览判断，避免详情页里散落硬编码逻辑；第二点：新增 `src/components/HtmlAttachmentPreviewModal.vue`，用 `BaseModal + iframe sandbox` 承载 HTML 示例，并保留“新窗口打开”兜底入口；第三点：改造 `src/views/NoteDetailPage.vue` 的附件区，普通附件继续下载，`.html/.htm` 附件会额外显示“预览示例”按钮；第四点：为 `public/notes/CSS/第三篇_现代布局_从弹性到网格.md` 挂上首个示例附件，并新增一个可交互的现代布局示例页，支持切换 Flex / Grid、列数、gap 与对齐方式，右侧代码实时联动；第五点：由于当前终端里的 Node 脚本依旧无法执行，本次改用本地回退方式手动同步 `public/notes-index.json`、`public/search-index.json` 与通知数据，保证前端读取到的新附件信息一致。",
-      "summary": "为笔记详情页接入 HTML 附件识别与弹窗预览能力，文章现在可以像挂附件一样挂学习型 demo，并在站内直接打开预览。",
-      "date": "2026-04-29T23:15:00+08:00",
-      "tag": "功能更新",
-      "category": "功能更新",
-      "source": "daily-summary",
+      "id": "git-3380f38a3f954a0d2481a64679b8ba10f3541cc1",
+      "title": "内容上新: 新增前端各种帧Frame全解笔记",
+      "content": "提交说明：内容上新: 新增前端各种帧Frame全解笔记",
+      "summary": "内容上新: 新增前端各种帧Frame全解笔记",
+      "date": "2026-04-30T11:14:27+08:00",
+      "tag": "Git 提交",
+      "source": "git",
       "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
+      "shortHash": "3380f38",
+      "fullHash": "3380f38a3f954a0d2481a64679b8ba10f3541cc1"
     },
     {
-      "id": "daily-2026-04-29-7",
-      "title": "CSS 第三篇改写为更适合小白的 Grid 学习路径",
-      "content": "第一点：为 `public/notes/CSS/第三篇_现代布局_从弹性到网格.md` 补充规范 frontmatter，新增 `title`、`date`、`category`、`tags`、`description`，让列表页与搜索索引能正确读取文章元信息；第二点：将第 8 章整体改写成“小白学习路径”结构，从 Flex 和 Grid 的区别、父级画格子、对齐属性辨析开始，一步讲到格子内对齐、默认 `stretch`、`align-self` 覆盖行为；第三点：补强 `span` 合并单元格、按网格线定位、`fr` / `repeat()` / `minmax()`、`repeat(auto-fit, minmax())` 响应式万能句，并加入 `auto-fit` / `auto-fill`、隐式网格、`grid-auto-flow`、`minmax(0, 1fr)` 等实战坑点说明；第四点：保留后台骨架和卡片墙等高频模板，但把讲解从“属性罗列”改成“先有画面再记属性”的口语化方式，降低第一次学习 Grid 的理解门槛；第五点：由于当前终端里的 Node 脚本运行仍会触发本机异常，本次改用本地回退方式同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保新 frontmatter 与正文摘要已进入索引。",
-      "summary": "结合“从 0 到吃透 Grid”的学习顺序，重写《第三篇 现代布局：从弹性到网格》的 Grid 章节，补上 frontmatter，并把对齐、合并单元格、响应式、自适应列数和常见坑点改成更口语化、更好记的讲法。",
-      "date": "2026-04-29T22:36:00+08:00",
+      "id": "daily-2026-04-30-1",
+      "title": "新增《前端里的各种帧 Frame 全解》",
+      "content": "第一点：新增文章 `public/notes/常用缺易忘/浏览器与网络/前端里的各种帧_Frame全解.md`，系统梳理前端开发中所有叫\"帧\"的概念；第二点：覆盖渲染帧（60fps/16.7ms 帧预算、掉帧 jank）、CSS 关键帧（@keyframes）、Web Animations API 关键帧、requestAnimationFrame（与 setInterval 对比）、调用栈帧（Stack Frame、火焰图）、视频帧（canvas 抓帧、VideoFrame API）、iframe（内联框架、sandbox）、WebRTC 媒体流帧、WebGL 帧缓冲共 8 类；第三点：文章末尾附有一张树状总结图和快速记忆对照表，方便查阅。",
+      "summary": "在\"常用缺易忘/浏览器与网络\"下新增一篇系统梳理前端所有\"帧\"概念的文章，覆盖渲染帧、关键帧、rAF、调用栈帧、视频帧、iframe、媒体流帧、帧缓冲共 8 类。",
+      "date": "2026-04-30T11:01:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
@@ -55,14 +78,140 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-29-5",
-      "title": "ElementPlus 专题核对官方文档并修正文案覆盖声明",
-      "content": "第一点：复核第三篇《基础组件：Button、Icon、Container、Space、Text 怎么搭出像样的后台界面》，修正“`type='text'` 废弃”与现行 `text` 布尔属性容易混淆的问题，明确区分旧 `type='text'`、新 `text` 和 `link` 的适用场景；第二点：在第三篇补充 Button 的 `icon`、ButtonGroup、`dashed` 能力说明，以及 Space 的 `spacer`、`fill` / `fill-ratio`、Text 的 `line-clamp`、`tag` 等官方文档里高频但原文遗漏的能力点；第三点：修正 `ElementPlus/目录.md` 中“已覆盖组件”过度乐观的问题，把统计改成“本专题主讲覆盖 / 仍未系统展开”两列，避免把示例里顺带出现的组件误写成已系统覆盖；第四点：同步把第十篇摘要改成与正文实际范围一致，明确 `Loading`、`Tree`、`VirtualizedTree` 等仍值得后续继续补专题；第五点：重新生成 `public/notes-index.json` 与 `public/search-index.json`，确认本次文档修正已写入搜索索引。",
-      "summary": "深度复核 Element Plus 专题后，修正第三篇对 Button `text/link` 的表述偏差，补充 Space 与 Text 的常用能力，并把目录页的组件覆盖清单改为与实际文章范围一致。",
-      "date": "2026-04-29T20:53:00+08:00",
-      "tag": "问题修复",
-      "category": "问题修复",
+      "id": "git-fe23fdb7dc1a96ff36a4129f3a6dd1d3a386341b",
+      "title": "新增node问题检测目录，方便我检查node运行问题",
+      "content": "提交说明：新增node问题检测目录，方便我检查node运行问题",
+      "summary": "新增node问题检测目录，方便我检查node运行问题",
+      "date": "2026-04-30T09:52:32+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "fe23fdb",
+      "fullHash": "fe23fdb7dc1a96ff36a4129f3a6dd1d3a386341b"
+    },
+    {
+      "id": "daily-2026-04-30-3",
+      "title": "精简 Node 问题目录并保留报告归档结构",
+      "content": "第一点：保留 `public/notes/Node问题/对比报告/公司电脑/` 与 `public/notes/Node问题/对比报告/个人电脑/` 两个归档子目录，继续作为公司电脑基准报告和个人电脑报告的固定存放位置；第二点：删除 `public/notes/Node问题/对比入口模板_公司电脑_vs_个人电脑.md`，避免 Node问题 目录里多一份重复性的说明文档；第三点：同步更新 `public/notes/Node问题/目录.md`，移除已删除模板的入口，保持目录页只展示真正需要保留的内容；第四点：执行 `npm run generate:index`，确认删除模板后索引已刷新，当前总站笔记数更新为 338 篇。",
+      "summary": "保留 Node问题 下的对比报告目录结构，删除不再需要的对比入口模板文件，并重新生成笔记索引。",
+      "date": "2026-04-30T09:48:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
       "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-bc585c95f239d09a5fa66a09eb92f0699c377354",
+      "title": "删除不需要的文档，无需记录",
+      "content": "提交说明：删除不需要的文档，无需记录",
+      "summary": "删除不需要的文档，无需记录",
+      "date": "2026-04-30T09:05:28+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "bc585c9",
+      "fullHash": "bc585c95f239d09a5fa66a09eb92f0699c377354"
+    },
+    {
+      "id": "git-8b288f43882763892c1dc27fc01353f1001d2d11",
+      "title": "升级elementplus和css文档，添加预览html功能",
+      "content": "提交说明：升级elementplus和css文档，添加预览html功能",
+      "summary": "升级elementplus和css文档，添加预览html功能",
+      "date": "2026-04-29T23:44:23+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "8b288f4",
+      "fullHash": "8b288f43882763892c1dc27fc01353f1001d2d11"
+    },
+    {
+      "id": "history-2026-04-29-10",
+      "title": "新增 Node 运行时预检与失败回退约定",
+      "content": "第一点：新增 scripts/checkNodeRuntime.ps1，会同时检测 node -v 与 node -e，并在命中 ncrypto::CSPRNG(nullptr, 0)、NTE_PROVIDER_DLL_FAIL、0x8009001d 时直接给出环境级诊断和回退建议；第二点：在 AGENTS.md 里补充 Node 运行时预检规则，要求以后在 Codex/代理终端里执行任何 node、npm、vite 脚本前，优先先跑这份预检脚本；第三点：明确约定：如果主人自己在外部 PowerShell/CMD 里 node -e 正常，而 Codex 终端预检失败，应优先判定为\"Codex 命令执行环境与主人外部终端不一致\"；第四点：同步固化回退办法：改由主人在外部终端手动执行脚本，或由 Codex 走本地手动同步生成文件方案。",
+      "summary": "定位出 Codex 终端里的 Node 失败与加密提供程序初始化异常有关后，补充了可复用的预检脚本和 AGENTS 规则，并明确区分\"Codex 环境问题\"和\"主人自己终端正常\"的场景。",
+      "date": "2026-04-29T23:37:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-29",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-29-9",
+      "title": "AGENTS 补充文章 HTML 示例预览约定",
+      "content": "第一点：在 AGENTS.md 的笔记发布规范中新增文章 HTML 示例预览规则，明确这类需求优先走 attachments + 详情页预览弹窗机制，不另起独立路由；第二点：约定 .html/.htm 示例文件应放在 public/notes/ 下并通过 frontmatter 的 attachments 显式声明；第三点：补充要求：详情页应同时保留下载/新窗口入口，并优先复用现有路径编码、附件识别和 iframe sandbox 预览逻辑；第四点：强调示例页尽量自包含，外部资源优先使用同目录相对路径。",
+      "summary": "在仓库规则文档中补充\"文章配套 HTML 学习示例\"的统一实现约定，后续再做同类需求时会优先复用现有附件预览体系。",
+      "date": "2026-04-29T23:21:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-29",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-29-8",
+      "title": "文章详情页支持 HTML 示例附件弹窗预览",
+      "content": "第一点：新增 src/utils/noteAttachments.js 与对应测试，统一处理附件路径编码、HTML 扩展名识别和可预览判断；第二点：新增 src/components/HtmlAttachmentPreviewModal.vue，用 BaseModal + iframe sandbox 承载 HTML 示例，并保留\"新窗口打开\"兜底入口；第三点：改造 NoteDetailPage.vue 的附件区，.html/.htm 附件会额外显示\"预览示例\"按钮；第四点：为 CSS 第三篇挂上首个示例附件，新增可交互的现代布局示例页，支持切换 Flex/Grid、列数、gap 与对齐方式，右侧代码实时联动；第五点：改用本地回退方式手动同步 notes-index.json、search-index.json 与通知数据。",
+      "summary": "为笔记详情页接入 HTML 附件识别与弹窗预览能力，文章现在可以像挂附件一样挂学习型 demo，并在站内直接打开预览。",
+      "date": "2026-04-29T23:15:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-04-29",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-29-7",
+      "title": "CSS 第三篇改写为更适合小白的 Grid 学习路径",
+      "content": "第一点：为第三篇补充规范 frontmatter，新增 title、date、category、tags、description；第二点：将第 8 章整体改写成\"小白学习路径\"结构；第三点：补强 span 合并单元格、按网格线定位、fr/repeat()/minmax()、repeat(auto-fit, minmax()) 响应式万能句，并加入 auto-fit/auto-fill、隐式网格、grid-auto-flow、minmax(0, 1fr) 等实战坑点说明；第四点：把讲解从\"属性罗列\"改成\"先有画面再记属性\"的口语化方式；第五点：改用本地回退方式同步刷新 notes-index.json 与 search-index.json。",
+      "summary": "结合\"从 0 到吃透 Grid\"的学习顺序，重写《第三篇 现代布局：从弹性到网格》的 Grid 章节，补上 frontmatter，并把对齐、合并单元格、响应式、自适应列数和常见坑点改成更口语化、更好记的讲法。",
+      "date": "2026-04-29T22:36:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-29-6",
+      "title": "WebSocket 专题补上零基础前置入门篇",
+      "content": "第一点：新增 00-WebSocket零基础入门 文章，按零基础视角系统讲解 WebSocket 的概念、适用场景、ws/wss、readyState、浏览器原生 API、uni.connectSocket、心跳、重连、订阅与 STOMP 的关系；第二点：补充 HTTP Upgrade 握手、101 Switching Protocols、Sec-WebSocket-Protocol、关闭码、WebSocket 本体与上层协议的职责边界；第三点：新增\"不要把 WebSocket、WebService、STOMP、Socket.IO 混在一起\"的扫盲部分；第四点：补了一组面试最常见的基础问法与短答法；第五点：更新目录.md，把阅读顺序调整为先读 00 前置篇，再看后面的 01 至 08 封装实战。",
+      "summary": "在项目复用技术 / WebSocket 专题前新增并继续补强一篇真正面向小白的前置知识文章，重点改成\"协议无关的底层 WebSocket 通识版\"，从 WebSocket 是什么、HTTP Upgrade 握手、底层通道和上层协议的边界，到浏览器与 uni-app 的最小写法、心跳、重连、关闭码、换协议时怎么拆，一次讲清。",
+      "date": "2026-04-29T22:06:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-04-29-5",
+      "title": "ElementPlus 专题核对官方文档并修正文案覆盖声明",
+      "content": "第一点：修正第三篇 type=\"text\" 废弃与现行 text 布尔属性容易混淆的问题；第二点：补充 Button 的 icon、ButtonGroup、dashed 能力说明，以及 Space 的 spacer、fill/fill-ratio、Text 的 line-clamp、tag 等遗漏能力点；第三点：修正 ElementPlus/目录.md 中\"已覆盖组件\"过度乐观的问题，改成\"本专题主讲覆盖 / 仍未系统展开\"两列；第四点：同步把第十篇摘要改成与正文实际范围一致；第五点：重新生成 public/notes-index.json 与 public/search-index.json。",
+      "summary": "深度复核 Element Plus 专题后，修正第三篇对 Button text/link 的表述偏差，补充 Space 与 Text 的常用能力，并把目录页的组件覆盖清单改为与实际文章范围一致。",
+      "date": "2026-04-29T20:53:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-04-29",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -80,27 +229,31 @@
       "fullHash": "db37e66a800cfc500c18c652fee6887f754c683b"
     },
     {
-      "id": "daily-2026-04-29-4",
+      "id": "history-2026-04-29-4",
       "title": "CSS 第三篇补齐现代布局实战缺口",
-      "content": "第一点：在 Flex 章节新增 `gap` 与 `auto margin` 的实战用法，补清楚为什么现代项目更常用 gap 管项目间距，以及 `margin-left:auto`、`margin-top:auto` 如何把项目推到主轴尽头；第二点：新增 `order` 小节，说明它只改变视觉顺序、不改变 HTML 顺序，并补充可访问性与移动端局部重排边界；第三点：在 Grid 章节新增 `justify-items`、`align-items`、`place-items` 与 `justify-self`、`place-self`，补齐“格子划好了以后，项目在格子里怎么摆”的关键知识；第四点：新增 `grid-auto-flow`、`grid-auto-rows`、隐式网格与 `minmax(0, 1fr)` 防撑爆说明，解决读者学会语法后仍容易遇到的自动排布和长内容撑坏布局问题；第五点：压缩 `grid-template-areas` 重复示例，避免篇幅耗在重复讲解；第六点：执行 `npm run generate:index`，刷新笔记索引与搜索索引。",
+      "content": "第一点：在 Flex 章节新增 gap 与 auto margin 的实战用法；第二点：新增 order 小节，说明它只改变视觉顺序、不改变 HTML 顺序；第三点：在 Grid 章节新增 justify-items、align-items、place-items 与 justify-self、place-self；第四点：新增 grid-auto-flow、grid-auto-rows、隐式网格与 minmax(0, 1fr) 防撑爆说明；第五点：压缩 grid-template-areas 重复示例；第六点：执行 npm run generate:index，刷新笔记索引与搜索索引。",
       "summary": "对《第三篇 现代布局：从弹性到网格》补强 Flex 和 Grid 的关键桥接知识，新增 gap/auto margin/order、Grid 项目对齐、自动放置与防撑爆内容，并压缩重复示例段落。",
       "date": "2026-04-29T16:51:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-29-3",
+      "id": "history-2026-04-29-3",
       "title": "ElementPlus 第一篇纠错与完善",
-      "content": "第一点：修复第六节代码示例被拆成两个独立代码块的错误，合并为完整的 .vue 单文件组件；第二点：修正第四节 main.js 完整引入写法，将全局配置 size/zIndex 拆为独立小节，并补充说明 zIndex 官方默认值是 2000（不是 3000），避免读者误以为 3000 是默认值；第三点：修正第五节 vite.config.js 按需导入配置，移除 AutoImport 里多余的 imports: [\"vue\"]，并补充说明该字段的实际用途，避免误导；第四点：第七节国际化补充说明 el-config-provider 同时可配 size 和 z-index，以及按需导入时全局配置的正确方式；第五点：第九节 SCSS 方案补充 @forward 必须在 @use 之前的规则，以及按需导入场景需要额外配置 scss.additionalData 的说明；第六点：第十节暗黑模式补充精确控制 classList.add/remove 的写法，以及覆盖变量文件必须在 Element Plus 暗黑变量之后引入的顺序说明；第七点：第十一节新增第五个坑：TypeScript 项目需要在 tsconfig.json 加 element-plus/global 才有组件类型提示；第八点：同步更新记忆版要点。",
+      "content": "第一点：修复第六节代码示例被拆成两个独立代码块的错误，合并为完整的 .vue 单文件组件；第二点：修正 zIndex 官方默认值是 2000（不是 3000）；第三点：修正 vite.config.js 按需导入配置，移除 AutoImport 里多余的 imports: [\"vue\"]；第四点：补充 el-config-provider 同时可配 size 和 z-index 的说明；第五点：补充 @forward 必须在 @use 之前的规则；第六点：暗黑模式补充精确控制 classList.add/remove 的写法；第七点：新增第五个坑：TypeScript 项目需要在 tsconfig.json 加 element-plus/global 才有组件类型提示。",
       "summary": "对第一篇《快速认识 Element Plus》进行核实与修正：修复代码示例错误、补充 zIndex 默认值说明、完善按需导入配置说明、补充 TypeScript Volar 支持、优化暗黑模式覆盖写法。",
       "date": "2026-04-29T11:55:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -130,27 +283,31 @@
       "fullHash": "abd646fe3a7665ceee43205d4ac3ac32e3921fc5"
     },
     {
-      "id": "daily-2026-04-29-1",
+      "id": "history-2026-04-29-1",
       "title": "HTML 分类新增 SVG 入门笔记",
       "content": "第一点：讲解 SVG 与普通图片的区别，以及 viewBox 坐标系的直观理解方式；第二点：覆盖 circle、rect、line、polyline、polygon、ellipse 六种基础图形元素及其属性；第三点：详解 fill、stroke、currentColor 样式属性，说明 currentColor 为何是图标库的标准做法；第四点：系统讲解 path 的 d 属性所有命令（M/L/H/V/Z/Q/C/A），含大小写区别（绝对/相对坐标）；第五点：实战拆解关闭按钮、搜索图标、向上箭头、月亮图标四个真实案例；第六点：补充 transform 变换用法和常见问题解答；第七点：更新 HTML 目录，索引从 334 篇增至 335 篇。",
       "summary": "新增第七篇《SVG入门——看懂图标代码不再懵》，从 viewBox 坐标系、常用元素到 path 的 d 属性命令全解，配合真实图标代码拆解，帮助看懂别人写的 SVG。",
       "date": "2026-04-29T09:55:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
     },
     {
-      "id": "daily-2026-04-29-2",
+      "id": "history-2026-04-29-2",
       "title": "ElementPlus 专题新增第七至第十篇",
-      "content": "第一点：新增第七篇《导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构》，覆盖侧边菜单与 Vue Router 联动、折叠菜单、动态路由菜单生成、多页签关闭、面包屑动态生成、步骤条引导、Dropdown 收纳操作，附完整后台框架示例；第二点：新增第八篇《表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate》，覆盖级联选择懒加载、树形选择多选、穿梭框搜索、全选半选、Switch 切换前确认、Slider 范围选择、Rate 只读模式，附 Form 联动校验完整示例；第三点：新增第九篇《数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty》，覆盖详情页字段展示、操作历史时间轴、折叠面板、动态标签增删、徽章计数、数字指标卡片、骨架屏占位、结果页（含 404/403/500）、空状态，附完整详情页组合示例；第四点：新增第十篇《反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件》，补全 disabled 按钮 Tooltip 方案、Popover 用户信息卡片、Popconfirm 轻确认、Notification 位置与不自动关闭、Alert 页面内嵌，以及 VirtualizedSelect/VirtualizedTable/InfiniteScroll 的适用时机与基础用法，附反馈组件层次对比表；第五点：更新 ElementPlus/目录.md，将\"待写内容\"标注为已完成，阅读顺序延伸至第十篇，官方组件覆盖情况表同步更新；第六点：重新生成 notes-index.json，总笔记数 334 篇。",
+      "content": "第一点：新增第七篇《导航体系：Menu、Tabs、Breadcrumb、Steps、Dropdown 怎么组织后台页面结构》；第二点：新增第八篇《表单进阶：Cascader、TreeSelect、Transfer、Checkbox、Radio、Switch、Slider、Rate》；第三点：新增第九篇《数据展示扩展：Descriptions、Timeline、Collapse、Tag、Badge、Statistic、Skeleton、Result、Empty》；第四点：新增第十篇《反馈与浮层补全：Tooltip、Popover、Popconfirm、Notification、Alert + 虚拟化组件》；第五点：更新 ElementPlus/目录.md，将\"待写内容\"标注为已完成，阅读顺序延伸至第十篇；第六点：重新生成 notes-index.json，总笔记数 334 篇。",
       "summary": "基于 2026-04-29 查阅的 Element Plus 官方文档（v2.13.7），补全导航体系、表单进阶、数据展示扩展、反馈与浮层补全四篇，ElementPlus 专题正式扩展为十篇完整系列，同步更新目录文件与笔记索引。",
       "date": "2026-04-29T09:30:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-04-29",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -623,7 +780,7 @@
     {
       "id": "history-2026-04-21-2",
       "title": "MongoDB 详解系列 7 篇全量上新",
-      "content": "第一点：第一篇——MongoDB安装与基础概念，含文档型数据库原理、与MySQL对比、ObjectId解析、Windows/Mac/Linux安装步骤、mongosh基础操作；第二点：第二篇——MongoDB原生CRUD操作，含insertOne/insertMany、find全套查询操作符（$gt/$in/$regex/$or等）、updateOne/updateMany及所有更新操作符（$set/$inc/$push/$pull等）、deleteOne/deleteMany，附综合练习题；第三点：第三篇——Mongoose连接与Schema建模，含连接配置、所有数据类型详解（String/Number/ObjectId/Array/Map等）、校验规则（required/min/max/enum/validate）、字符串转换、Schema选项、虚拟字段；第四点：第四篇——Mongoose CRUD与中间件，含create/find/findById/findByIdAndUpdate/delete全套API、链式查询、lean优化、pre save密码加密、pre find软删除过滤、实例方法与静态方法；第五点：第五篇——关联查询与聚合管道，含populate基础/选字段/配置对象/多级嵌套、aggregate全套阶段（$match/$group/$sort/$project/$lookup/$unwind/$facet）、分页+总数一次查询、标签热度统计等实战场景；第六点：第六篇——索引优化与事务，含explain执行计划、单字段/复合/文本/TTL/稀疏/部分索引、最左前缀原则、事务基本写法与withTransaction简洁写法、转账和库存扣减实战；第七点：第七篇——完整项目实战，从零搭建 Express+MongoDB 笔记管理API，含用户注册登录（bcrypt+JWT）、笔记CRUD、分页搜索、软删除自动过滤，串联所有知识点。",
+      "content": "第一点：第一篇——MongoDB安装与基础概念；第二点：第二篇——MongoDB原生CRUD操作，含insertOne/insertMany、find全套查询操作符（$gt/$in/$regex/$or等）、updateOne/updateMany及所有更新操作符（$set/$inc/$push/$pull等）、deleteOne/deleteMany；第三点：第三篇——Mongoose连接与Schema建模；第四点：第四篇——Mongoose CRUD与中间件；第五点：第五篇——关联查询与聚合管道；第六点：第六篇——索引优化与事务；第七点：第七篇——完整项目实战，从零搭建 Express+MongoDB 笔记管理API，含用户注册登录（bcrypt+JWT）、笔记CRUD、分页搜索、软删除自动过滤。",
       "summary": "在 Node.js 目录下新建 MongoDB详解 文件夹，将原第七篇拆分并大幅扩充为 7 篇从0到1的细讲文章，覆盖安装概念、原生CRUD、Mongoose建模、CRUD与中间件、关联查询与聚合管道、索引优化与事务、完整项目实战。",
       "date": "2026-04-21T21:09:00+08:00",
       "tag": "历史消息",
@@ -843,7 +1000,7 @@
       "fullHash": "aa325b6ccfb5e94dc9ad4f4313babb48f3bcbfd3"
     },
     {
-      "id": "history-2026-04-18-2",
+      "id": "history-2026-04-18-5",
       "title": "Node.js 系列 8 篇深度升级：废弃标记 + 参数说明 + 最新特性",
       "content": "核查要点：① 废弃标记：buf.slice() 改 subarray()、fs.rmdir recursive 改 fs.rm()、Mongoose 9 pre 中间件不再接收 next()、Express 5 移除 res.json(status,obj) 等；② 参数补全：fs.readFile/writeFile/rm/createReadStream、http.createServer/listen、res.cookie、jwt.sign/verify 等所有主要函数；③ 新特性：Node.js 22 内置 fetch（稳定）/WebSocket 客户端/node:test/SQLite（实验性）/TypeScript 直接运行（实验性）；④ npm 新增 exports 条件导出字段和 overrides 依赖覆盖字段。",
       "summary": "逐篇核查官方文档，标记废弃 API、补全函数参数说明、新增 Node.js 22+ 新特性和 Mongoose 9 变更，确保内容与当前最新版本一致。",
@@ -858,7 +1015,7 @@
       "fullHash": ""
     },
     {
-      "id": "history-2026-04-18-1",
+      "id": "history-2026-04-18-4",
       "title": "Node.js 从零到实战系列 8 篇全部完结",
       "content": "新增第八篇，内容涵盖 RESTful 设计规范、apipost 测试工具、Cookie/Session/JWT 三种会话控制方案、bcrypt 密码加密、express-validator 参数校验、express-rate-limit 限流、helmet 安全头，以及完整的用户注册登录实战代码。",
       "summary": "新增第八篇《接口开发与会话控制》，至此 8 篇全部完成，覆盖 Buffer、fs、HTTP、模块化、npm、Express、MongoDB、RESTful 接口与 JWT 认证完整链路。",
@@ -885,7 +1042,7 @@
       "fullHash": "ba5208a64d363eab3cedabb0899341c5ad50fd74"
     },
     {
-      "id": "history-2026-04-18-early-3",
+      "id": "history-2026-04-18-3",
       "title": "同步刷新笔记索引与通知数据",
       "content": "根据新的笔记结构重建 notes 索引和通知数据，确保首页、搜索、分类页与通知中心都反映这次网络专题重构。",
       "summary": "根据新的笔记结构重建 notes 索引和通知数据，确保首页、搜索、分类页与通知中心都反映这次网络专题重构。",
@@ -900,7 +1057,7 @@
       "fullHash": ""
     },
     {
-      "id": "history-2026-04-18-early-2",
+      "id": "history-2026-04-18-2",
       "title": "清理网络目录里的重复碎片稿",
       "content": "删除同主题的多篇短文，减少目录噪音和搜索重复结果，让常用缺易忘的网络目录更适合前端复习与联调排障。",
       "summary": "删除同主题的多篇短文，减少目录噪音和搜索重复结果，让常用缺易忘的网络目录更适合前端复习与联调排障。",
@@ -915,7 +1072,7 @@
       "fullHash": ""
     },
     {
-      "id": "history-2026-04-18-early-1",
+      "id": "history-2026-04-18-1",
       "title": "网络基础笔记收敛为两篇前端手册",
       "content": "将原本零散拆开的状态码、缓存、跨域、认证、上传下载、实时通信与请求治理短文，按前端联调视角重构为两篇主文，阅读路径更集中。",
       "summary": "将原本零散拆开的状态码、缓存、跨域、认证、上传下载、实时通信与请求治理短文，按前端联调视角重构为两篇主文，阅读路径更集中。",
@@ -995,8 +1152,8 @@
     {
       "id": "history-2026-04-16-14",
       "title": "增强 WebSocket 专题中的 STOMP 规范表述",
-      "content": "归档 2026-04-16 的问题修复摘要：把 WebSocket 专题从“项目经验口吻”进一步收紧到“项目级实现 + 明确规范边界”的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
-      "summary": "把 WebSocket 专题从“项目经验口吻”进一步收紧到“项目级实现 + 明确规范边界”的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
+      "content": "归档 2026-04-16 的问题修复摘要：把 WebSocket 专题从\"项目经验口吻\"进一步收紧到\"项目级实现 + 明确规范边界\"的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
+      "summary": "把 WebSocket 专题从\"项目经验口吻\"进一步收紧到\"项目级实现 + 明确规范边界\"的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
       "date": "2026-04-16T21:22:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
@@ -1064,8 +1221,8 @@
     {
       "id": "history-2026-04-16-12",
       "title": "将 WebSocket 专题改成跨端通用写法",
-      "content": "归档 2026-04-16 的问题修复摘要：把 WebSocket 专题从“偏 uni-app 视角”继续收敛成“跨端核心 + 运行时适配”的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
-      "summary": "把 WebSocket 专题从“偏 uni-app 视角”继续收敛成“跨端核心 + 运行时适配”的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
+      "content": "归档 2026-04-16 的问题修复摘要：把 WebSocket 专题从\"偏 uni-app 视角\"继续收敛成\"跨端核心 + 运行时适配\"的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
+      "summary": "把 WebSocket 专题从\"偏 uni-app 视角\"继续收敛成\"跨端核心 + 运行时适配\"的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
       "date": "2026-04-16T13:49:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
@@ -1228,9 +1385,9 @@
     },
     {
       "id": "history-2026-04-16-1",
-      "title": "新增“项目复用技术”分类并迁移首篇文章",
-      "content": "归档 2026-04-16 的内容上新摘要：博客新增独立的“项目复用技术”文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
-      "summary": "博客新增独立的“项目复用技术”文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
+      "title": "新增\"项目复用技术\"分类并迁移首篇文章",
+      "content": "归档 2026-04-16 的内容上新摘要：博客新增独立的\"项目复用技术\"文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
+      "summary": "博客新增独立的\"项目复用技术\"文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
       "date": "2026-04-16T10:12:00+08:00",
       "tag": "历史消息",
       "category": "历史消息",
@@ -2537,6 +2694,71 @@
   ],
   "historyGroups": [
     {
+      "date": "2026-04-29",
+      "items": [
+        {
+          "title": "HTML 分类新增 SVG 入门笔记",
+          "summary": "新增第七篇《SVG入门——看懂图标代码不再懵》，从 viewBox 坐标系、常用元素到 path 的 d 属性命令全解，配合真实图标代码拆解，帮助看懂别人写的 SVG。",
+          "time": "09:55",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "ElementPlus 专题新增第七至第十篇",
+          "summary": "基于 2026-04-29 查阅的 Element Plus 官方文档（v2.13.7），补全导航体系、表单进阶、数据展示扩展、反馈与浮层补全四篇，ElementPlus 专题正式扩展为十篇完整系列，同步更新目录文件与笔记索引。",
+          "time": "09:30",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "ElementPlus 第一篇纠错与完善",
+          "summary": "对第一篇《快速认识 Element Plus》进行核实与修正：修复代码示例错误、补充 zIndex 默认值说明、完善按需导入配置说明、补充 TypeScript Volar 支持、优化暗黑模式覆盖写法。",
+          "time": "11:55",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "CSS 第三篇补齐现代布局实战缺口",
+          "summary": "对《第三篇 现代布局：从弹性到网格》补强 Flex 和 Grid 的关键桥接知识，新增 gap/auto margin/order、Grid 项目对齐、自动放置与防撑爆内容，并压缩重复示例段落。",
+          "time": "16:51",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "ElementPlus 专题核对官方文档并修正文案覆盖声明",
+          "summary": "深度复核 Element Plus 专题后，修正第三篇对 Button text/link 的表述偏差，补充 Space 与 Text 的常用能力，并把目录页的组件覆盖清单改为与实际文章范围一致。",
+          "time": "20:53",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "WebSocket 专题补上零基础前置入门篇",
+          "summary": "在项目复用技术 / WebSocket 专题前新增并继续补强一篇真正面向小白的前置知识文章，重点改成\"协议无关的底层 WebSocket 通识版\"，从 WebSocket 是什么、HTTP Upgrade 握手、底层通道和上层协议的边界，到浏览器与 uni-app 的最小写法、心跳、重连、关闭码、换协议时怎么拆，一次讲清。",
+          "time": "22:06",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "CSS 第三篇改写为更适合小白的 Grid 学习路径",
+          "summary": "结合\"从 0 到吃透 Grid\"的学习顺序，重写《第三篇 现代布局：从弹性到网格》的 Grid 章节，补上 frontmatter，并把对齐、合并单元格、响应式、自适应列数和常见坑点改成更口语化、更好记的讲法。",
+          "time": "22:36",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "文章详情页支持 HTML 示例附件弹窗预览",
+          "summary": "为笔记详情页接入 HTML 附件识别与弹窗预览能力，文章现在可以像挂附件一样挂学习型 demo，并在站内直接打开预览。",
+          "time": "23:15",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "AGENTS 补充文章 HTML 示例预览约定",
+          "summary": "在仓库规则文档中补充\"文章配套 HTML 学习示例\"的统一实现约定，后续再做同类需求时会优先复用现有附件预览体系。",
+          "time": "23:21",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "新增 Node 运行时预检与失败回退约定",
+          "summary": "定位出 Codex 终端里的 Node 失败与加密提供程序初始化异常有关后，补充了可复用的预检脚本和 AGENTS 规则，并明确区分\"Codex 环境问题\"和\"主人自己终端正常\"的场景。",
+          "time": "23:37",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
+    {
       "date": "2026-04-28",
       "items": [
         {
@@ -2805,8 +3027,8 @@
       "date": "2026-04-16",
       "items": [
         {
-          "title": "新增“项目复用技术”分类并迁移首篇文章",
-          "summary": "博客新增独立的“项目复用技术”文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
+          "title": "新增\"项目复用技术\"分类并迁移首篇文章",
+          "summary": "博客新增独立的\"项目复用技术\"文件夹，用来专门沉淀那些可以从项目中抽出来、后续继续封装复用的技术文章，首篇已迁移为 uni-app 人脸摄像机封装专题。",
           "time": "10:12",
           "itemCategory": "内容上新"
         },
@@ -2872,7 +3094,7 @@
         },
         {
           "title": "将 WebSocket 专题改成跨端通用写法",
-          "summary": "把 WebSocket 专题从“偏 uni-app 视角”继续收敛成“跨端核心 + 运行时适配”的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
+          "summary": "把 WebSocket 专题从\"偏 uni-app 视角\"继续收敛成\"跨端核心 + 运行时适配\"的写法，并补充字段映射可配置、PC Vue 挂载方式和运行时差异说明。",
           "time": "13:49",
           "itemCategory": "问题修复"
         },
@@ -2884,7 +3106,7 @@
         },
         {
           "title": "增强 WebSocket 专题中的 STOMP 规范表述",
-          "summary": "把 WebSocket 专题从“项目经验口吻”进一步收紧到“项目级实现 + 明确规范边界”的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
+          "summary": "把 WebSocket 专题从\"项目经验口吻\"进一步收紧到\"项目级实现 + 明确规范边界\"的写法，补齐 heart-beat 协商、header 转义、content-length 和 WebSocket message 边界说明。",
           "time": "21:22",
           "itemCategory": "问题修复"
         },

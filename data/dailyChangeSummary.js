@@ -25,5 +25,12 @@ export const dailyChangeSummary = {
       summary: '保留 Node问题 下的对比报告目录结构，删除不再需要的对比入口模板文件，并重新生成笔记索引。',
       content: '第一点：保留 `public/notes/Node问题/对比报告/公司电脑/` 与 `public/notes/Node问题/对比报告/个人电脑/` 两个归档子目录，继续作为公司电脑基准报告和个人电脑报告的固定存放位置；第二点：删除 `public/notes/Node问题/对比入口模板_公司电脑_vs_个人电脑.md`，避免 Node问题 目录里多一份重复性的说明文档；第三点：同步更新 `public/notes/Node问题/目录.md`，移除已删除模板的入口，保持目录页只展示真正需要保留的内容；第四点：执行 `npm run generate:index`，确认删除模板后索引已刷新，当前总站笔记数更新为 338 篇。',
     },
+    {
+      category: '问题修复',
+      time: '15:18',
+      title: '清理 AGENTS 重复规则并修复历史消息 id 格式',
+      summary: '针对规则执行口径混乱问题，移除 AGENTS.md 中重复的 Global Engineering Rules 段；同时修复 history 分片里不符合 id 规范的 2026-04-18 归档条目。',
+      content: '第一点：删除 AGENTS.md 末尾重复的 Global Engineering Rules 块，避免同一规则出现两份导致后续执行标准不一致；第二点：将 `data/history/2026-04-11_20.js` 中 `history-2026-04-18-early` 更正为合规 `history-2026-04-18`；第三点：把同日拆分的两个 2026-04-18 归档对象合并为一个对象，保留全部 items，避免同日重复节点和结构歧义。',
+    },
   ],
 }

@@ -209,7 +209,7 @@ export const history_2026_04_11_20 = [
     ],
   },
   {
-    id: 'history-2026-04-18-early',
+    id: 'history-2026-04-18',
     date: '2026-04-18',
     items: [
       {
@@ -230,12 +230,6 @@ export const history_2026_04_11_20 = [
         title: '同步刷新笔记索引与通知数据',
         summary: '根据新的笔记结构重建 notes 索引和通知数据，确保首页、搜索、分类页与通知中心都反映这次网络专题重构。',
       },
-    ],
-  },
-  {
-    id: 'history-2026-04-18',
-    date: '2026-04-18',
-    items: [
       {
         category: '内容上新',
         time: '18:00',
