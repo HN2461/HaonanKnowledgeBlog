@@ -1,6 +1,6 @@
 <template>
-  <div class='file-tree'>
-    <div v-for='item in tree' :key='item.path' class='tree-item'>
+  <div class='file-tree' :class="{ 'wrap-labels': props.wrapLabels }">
+    <div v-for='item in props.tree' :key='item.path' class='tree-item'>
       <div v-if="item.type === 'directory'" class='tree-directory-row'>
         <button
           type='button'
@@ -51,20 +51,24 @@
       </router-link>
 
       <div v-if="item.type === 'directory' && isExpanded(item.path)" class='tree-children'>
-        <FileTree :tree='item.children' @select="$emit('select', $event)" />
+        <FileTree :tree='item.children' :wrap-labels='props.wrapLabels' @select="$emit('select', $event)" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, provide, inject, watch, nextTick, onMounted } from 'vue'
+import { inject, nextTick, onMounted, provide, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
-defineProps({
+const props = defineProps({
   tree: {
     type: Array,
     default: () => []
+  },
+  wrapLabels: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -234,6 +238,7 @@ if (isRoot) {
   display: flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
 }
 
 .tree-expand-btn {
@@ -313,5 +318,22 @@ if (isRoot) {
   margin-left: 16px;
   padding-left: 10px;
   border-left: 1px solid rgba(var(--primary-color-rgb), 0.1);
+}
+
+.file-tree.wrap-labels .tree-directory-row,
+.file-tree.wrap-labels .tree-node {
+  align-items: flex-start;
+}
+
+.file-tree.wrap-labels .tree-expand-btn {
+  margin-top: 4px;
+}
+
+.file-tree.wrap-labels .node-label {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.45;
 }
 </style>

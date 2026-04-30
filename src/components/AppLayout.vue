@@ -1,9 +1,14 @@
 <template>
-  <div class="app-layout">
-    <AppHeader @toggle-sidebar="toggleSidebar" :sidebar-visible="sidebarVisible" />
-    <div class="layout-container">
-      <AppSidebar :visible="sidebarVisible" @close="closeSidebar" />
-      <main class="main-content">
+  <div class='app-layout' :style='layoutStyleVars'>
+    <AppHeader @toggle-sidebar='toggleSidebar' :sidebar-visible='sidebarVisible' />
+    <div class='layout-container'>
+      <AppSidebar
+        :visible='sidebarVisible'
+        :expanded='isDesktopSidebarExpanded'
+        @close='closeSidebar'
+        @toggle-expand='toggleDesktopSidebarExpanded'
+      />
+      <main class='main-content'>
         <slot />
       </main>
     </div>
@@ -11,11 +16,46 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import AppHeader from './AppHeader.vue'
 import AppSidebar from './AppSidebar.vue'
 
+const MOBILE_BREAKPOINT = 768
+
 const sidebarVisible = ref(true)
+const isMobileViewport = ref(false)
+const isDesktopSidebarExpanded = ref(false)
+const mobileHeaderOffset = ref(72)
+
+let resizeHandler = null
+let headerResizeObserver = null
+
+const layoutStyleVars = computed(() => ({
+  '--mobile-header-offset': `${mobileHeaderOffset.value}px`
+}))
+
+const updateMobileHeaderOffset = () => {
+  const headerEl = document.querySelector('.app-header')
+  if (!headerEl) {
+    return
+  }
+
+  mobileHeaderOffset.value = Math.round(headerEl.getBoundingClientRect().height)
+}
+
+const syncSidebarViewportState = () => {
+  const nextIsMobile = window.innerWidth < MOBILE_BREAKPOINT
+  const viewportModeChanged = nextIsMobile !== isMobileViewport.value
+
+  isMobileViewport.value = nextIsMobile
+
+  if (nextIsMobile) {
+    sidebarVisible.value = false
+    isDesktopSidebarExpanded.value = false
+  } else if (viewportModeChanged) {
+    sidebarVisible.value = true
+  }
+}
 
 const toggleSidebar = () => {
   sidebarVisible.value = !sidebarVisible.value
@@ -25,20 +65,45 @@ const closeSidebar = () => {
   sidebarVisible.value = false
 }
 
-onMounted(() => {
-  // 移动端默认隐藏侧边栏
-  if (window.innerWidth < 768) {
-    sidebarVisible.value = false
+const toggleDesktopSidebarExpanded = () => {
+  if (isMobileViewport.value) {
+    return
   }
-  
-  // 监听窗口大小变化
-  window.addEventListener('resize', () => {
-    if (window.innerWidth < 768) {
-      sidebarVisible.value = false
-    } else {
-      sidebarVisible.value = true
+
+  isDesktopSidebarExpanded.value = !isDesktopSidebarExpanded.value
+}
+
+onMounted(() => {
+  syncSidebarViewportState()
+
+  resizeHandler = () => {
+    syncSidebarViewportState()
+    updateMobileHeaderOffset()
+  }
+
+  window.addEventListener('resize', resizeHandler)
+
+  nextTick(() => {
+    updateMobileHeaderOffset()
+
+    const headerEl = document.querySelector('.app-header')
+    if (headerEl && typeof window.ResizeObserver !== 'undefined') {
+      headerResizeObserver = new window.ResizeObserver(() => {
+        updateMobileHeaderOffset()
+      })
+      headerResizeObserver.observe(headerEl)
     }
   })
+})
+
+onBeforeUnmount(() => {
+  if (resizeHandler) {
+    window.removeEventListener('resize', resizeHandler)
+  }
+
+  if (headerResizeObserver) {
+    headerResizeObserver.disconnect()
+  }
 })
 </script>
 
@@ -69,7 +134,6 @@ onMounted(() => {
   height: 100%;
 }
 
-/* 美化滚动条 */
 .main-content::-webkit-scrollbar {
   width: 8px;
 }

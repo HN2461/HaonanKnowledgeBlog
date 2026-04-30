@@ -1,10 +1,40 @@
 <template>
-  <div class='sidebar-overlay' @click="$emit('close')" v-if='isMobile && visible'></div>
-  <aside class='app-sidebar' :class="{ 'sidebar-visible': visible }">
+  <div class='sidebar-overlay' @click="emit('close')" v-if='isMobile && props.visible'></div>
+
+  <aside
+    class='app-sidebar'
+    :class="{
+      'sidebar-visible': props.visible,
+      'has-wrap-labels': shouldWrapLabels
+    }"
+  >
     <div class='sidebar-content'>
       <div class='sidebar-header'>
         <h3>知识目录</h3>
+
         <div class='sidebar-header-actions'>
+          <button
+            class='width-toggle-btn'
+            type='button'
+            :class="{ active: props.expanded }"
+            :aria-pressed="String(props.expanded)"
+            :aria-label="props.expanded ? '恢复单行标题显示' : '展开完整标题模式'"
+            :title="props.expanded ? '恢复单行标题显示' : '展开完整标题模式'"
+            @click="emit('toggle-expand')"
+          >
+            <svg width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
+              <path d='M4 9V5h4'></path>
+              <path d='M20 9V5h-4'></path>
+              <path d='M4 15v4h4'></path>
+              <path d='M20 15v4h-4'></path>
+              <path d='m9 5-5 5'></path>
+              <path d='m15 5 5 5'></path>
+              <path d='m9 19-5-5'></path>
+              <path d='m15 19 5-5'></path>
+            </svg>
+            <span>{{ props.expanded ? '恢复' : '展开' }}</span>
+          </button>
+
           <div class='sidebar-actions' ref='actionsRef'>
             <button
               class='actions-btn'
@@ -70,7 +100,7 @@
             </Transition>
           </div>
 
-          <button class='close-btn' @click="$emit('close')" v-if='isMobile' aria-label='关闭侧边栏'>
+          <button class='close-btn' @click="emit('close')" v-if='isMobile' aria-label='关闭侧边栏'>
             <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'>
               <line x1='18' y1='6' x2='6' y2='18'></line>
               <line x1='6' y1='6' x2='18' y2='18'></line>
@@ -80,7 +110,7 @@
       </div>
 
       <div class='sidebar-body'>
-        <FileTree :tree='notesTree' @select='handleSelect' />
+        <FileTree :tree='notesTree' :wrap-labels='shouldWrapLabels' @select='handleSelect' />
       </div>
     </div>
   </aside>
@@ -97,7 +127,7 @@
 </template>
 
 <script setup>
-import { computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import FileTree from './FileTree.vue'
 import SidebarExportModal from './SidebarExportModal.vue'
@@ -110,14 +140,18 @@ import {
 } from '@/utils/noteExport'
 import { loadNotesIndex } from '@/utils/indexData'
 
-defineProps({
+const props = defineProps({
   visible: {
     type: Boolean,
     default: true
+  },
+  expanded: {
+    type: Boolean,
+    default: false
   }
 })
 
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'toggle-expand'])
 
 const route = useRoute()
 const notesTree = ref([])
@@ -139,6 +173,7 @@ let sidebarToastTimer = null
 
 const allNotes = computed(() => flattenExportNotes(notesTree.value))
 const allDirectories = computed(() => flattenExportDirectories(notesTree.value))
+const shouldWrapLabels = computed(() => props.expanded)
 
 const currentNotePath = computed(() => {
   return route.name === 'NoteDetail' && route.params.path
@@ -371,10 +406,15 @@ onBeforeUnmount(() => {
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
-  transition: margin-left 0.25s ease;
+  position: relative;
+  transition: margin-left 0.25s ease, box-shadow 0.2s ease;
   flex-shrink: 0;
   height: 100%;
   overflow: hidden;
+}
+
+.app-sidebar.has-wrap-labels {
+  box-shadow: 8px 0 28px rgba(15, 23, 42, 0.06);
 }
 
 .app-sidebar:not(.sidebar-visible) {
@@ -392,9 +432,6 @@ onBeforeUnmount(() => {
   padding: 18px;
   background: var(--bg-primary);
   flex-shrink: 0;
-}
-
-.sidebar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -419,16 +456,39 @@ onBeforeUnmount(() => {
   position: relative;
 }
 
+.width-toggle-btn,
 .actions-btn,
 .close-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
   height: 36px;
   border: 1px solid transparent;
   border-radius: 10px;
   color: var(--text-secondary);
+}
+
+.width-toggle-btn {
+  gap: 6px;
+  padding: 0 12px;
+  border-color: rgba(var(--primary-color-rgb), 0.12);
+  background:
+    linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.08), rgba(var(--primary-color-rgb), 0.03));
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.width-toggle-btn.active {
+  color: var(--primary-color);
+  border-color: rgba(var(--primary-color-rgb), 0.24);
+  background:
+    linear-gradient(135deg, rgba(var(--primary-color-rgb), 0.12), rgba(var(--primary-color-rgb), 0.06));
+}
+
+.actions-btn,
+.close-btn {
+  width: 36px;
 }
 
 .actions-btn:disabled {
@@ -436,6 +496,7 @@ onBeforeUnmount(() => {
   cursor: not-allowed;
 }
 
+.width-toggle-btn:hover,
 .actions-btn:not(:disabled):hover,
 .close-btn:hover {
   color: var(--primary-color);
@@ -574,23 +635,73 @@ onBeforeUnmount(() => {
   .app-sidebar {
     position: fixed;
     left: 0;
-    top: 68px;
-    bottom: 0;
+    top: var(--mobile-header-offset, 68px);
+    bottom: 12px;
     z-index: 99;
-    margin-left: -312px;
+    --sidebar-mobile-width: min(86vw, 320px);
+    width: var(--sidebar-mobile-width);
+    margin-left: 0;
+    transform: translateX(calc(-100% - 18px));
+    border-right: none;
+    border-radius: 0 22px 22px 0;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(253, 253, 251, 0.98)),
+      var(--bg-primary);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.22);
+    transition: transform 0.26s ease, box-shadow 0.2s ease;
   }
 
   .app-sidebar.sidebar-visible {
-    margin-left: 0;
+    transform: translateX(0);
+  }
+
+  .app-sidebar:not(.sidebar-visible) {
+    box-shadow: none;
+  }
+
+  .dark-theme .app-sidebar {
+    background:
+      linear-gradient(180deg, rgba(15, 23, 37, 0.98), rgba(15, 23, 37, 0.95)),
+      var(--bg-primary);
+    box-shadow: 0 22px 52px rgba(2, 6, 23, 0.42);
+  }
+
+  .sidebar-header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 14px 14px 12px;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .sidebar-header h3 {
+    font-size: 15px;
+  }
+
+  .sidebar-header-actions {
+    gap: 6px;
+  }
+
+  .width-toggle-btn {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .sidebar-body {
+    padding: 8px 10px 18px;
   }
 
   .sidebar-overlay {
     position: fixed;
-    top: 68px;
+    top: var(--mobile-header-offset, 68px);
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.34);
+    background:
+      linear-gradient(90deg, rgba(15, 23, 42, 0.46), rgba(15, 23, 42, 0.3));
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     z-index: 98;
   }
 
