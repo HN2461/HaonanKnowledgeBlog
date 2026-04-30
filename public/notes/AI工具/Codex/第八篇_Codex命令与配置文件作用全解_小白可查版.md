@@ -1,3 +1,16 @@
+---
+title: 第八篇：Codex 命令与配置文件作用全解（小白可查版）
+date: 2026-03-08
+category: AI工具
+tags:
+  - Codex
+  - 命令
+  - 配置文件
+  - AGENTS
+  - 速查
+description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。
+---
+
 # 第八篇：Codex 命令与配置文件作用全解（小白可查版）
 
 > 更新时间：2026-03-08  
