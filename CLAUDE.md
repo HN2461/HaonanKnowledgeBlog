@@ -4,13 +4,14 @@
 
 ## 常用命令
 
-- `npm run dev` - 启动开发服务器（端口 3000）
-- `npm run build` - 生成笔记索引并构建生产版本
-- `npm run generate:index` - 从 public/notes/ 重新生成 notes-index.json
+- `npm run dev` - 启动开发服务器（端口 3000），同时自动生成通知数据
+- `npm run build` - 生成笔记索引 + 通知数据，然后构建生产版本
+- `npm run generate:index` - 从 public/notes/ 重新生成 notes-index.json 和 search-index.json
+- `npm run generate:notifications` - 汇总通知数据（手动消息、历史消息、每日摘要、Git 提交）写入 public/notifications.json
 - `npm run test` - 运行测试套件
 - `npm run test:watch` - 以监视模式运行测试
 
-**重要提示**：`npm run build` 命令会在构建前自动运行 `npm run generate:index`。在 public/notes/ 中添加或修改笔记后，务必重新生成索引。
+**重要提示**：`npm run build` 和 `npm run dev` 都会自动运行 `npm run generate:index` 和 `npm run generate:notifications`。在 public/notes/ 中添加或修改笔记后，务必重新生成索引。
 
 ## 项目架构
 
@@ -23,9 +24,21 @@
 2. 解析每个文件的 frontmatter（使用 gray-matter）
 3. 生成带有分类的层级树结构
 4. 创建扁平化列表用于搜索
-5. 写入 [public/notes-index.json](public/notes-index.json)
+5. 写入 [public/notes-index.json](public/notes-index.json) 和 [public/search-index.json](public/search-index.json)
 
 **智能排序**：笔记会智能排序以处理阿拉伯数字（"第1章"、"第10章"）和中文数字（"第一篇"、"第二篇"）。命名为"目录"、"补充"或"番外"的文件会被放在最后。
+
+**Frontmatter 排序字段**：支持 `order`、`sort`、`sequence`、`index`、`排序`、`顺序`、`序号` 等字段显式指定笔记顺序。未指定时回退到文件名智能排序。
+
+### 通知系统
+
+[generateNotifications.js](scripts/generateNotifications.js) 汇总多个来源生成 [public/notifications.json](public/notifications.json)：
+- [data/manualNotifications.js](data/manualNotifications.js) - 手动维护的通知消息
+- [data/historyNotifications.js](data/historyNotifications.js) - 历史消息（按日期分组，支持分类：内容上新、功能更新、问题修复、系统公告）
+- [data/dailyChangeSummary.js](data/dailyChangeSummary.js) - 每日变更摘要
+- Git 提交记录 - 自动从 git log 提取
+
+通知的编写和修改应在 `data/` 目录下的源文件中进行，而非直接编辑 `public/notifications.json`。
 
 ### Markdown 渲染流水线
 
@@ -47,13 +60,15 @@
 
 ### 路由
 
-[router/index.js](src/router/index.js) 使用基于 hash 的路由：
+[router/index.js](src/router/index.js) 使用基于 hash 的路由（`createWebHashHistory`）：
 - `/` - 首页
-- `/category/:category` - 笔记列表页
-- `/note/:path(*)` - 笔记详情页（捕获嵌套路径）
+- `/category/:category(.*)` - 笔记列表页（捕获嵌套分类路径）
+- `/note/:path(.*)` - 笔记详情页（捕获嵌套路径）
 - `/search` - 搜索页
 - `/editor` - 编辑器页
 - `/relaxation` - 休闲模式页
+
+**路由守卫**：访问以"目录"结尾的笔记路径时，会自动重定向到对应的分类列表页。例如 `/note/前端/CSS/目录` → `/category/前端/CSS`。
 
 ### 主题系统
 
@@ -78,11 +93,14 @@ Z-index 层级（定义在 [modal-guidelines.css](src/styles/modal-guidelines.cs
 ## 重要目录
 
 - `public/notes/` - 按分类文件夹组织的 Markdown 源文件
-- `public/notes-index.json` - 自动生成的索引（请勿手动编辑）
+- `public/notes-index.json` - 自动生成的笔记索引（请勿手动编辑）
+- `public/search-index.json` - 自动生成的搜索索引（请勿手动编辑）
+- `public/notifications.json` - 自动生成的通知数据（请勿手动编辑）
+- `data/` - 通知系统的源数据文件（手动维护）
 - `src/components/` - Vue 组件（BaseModal、MarkdownRenderer 等）
 - `src/views/` - 页面级组件
 - `src/utils/` - 工具函数（markdown、search、theme 等）
-- `scripts/` - 构建脚本
+- `scripts/` - 构建脚本（generateNotesIndex.js、generateNotifications.js、notificationTransforms.js）
 
 ## 配置
 

@@ -9193,6 +9193,31 @@
         },
         {
           "type": "file",
+          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
+          "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+          "path": "AI工具/CC Switch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+          "date": "2026-05-01T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "Claude Code",
+            "MiMo",
+            "Token Plan",
+            "中转配置",
+            "Provider"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
+          "size": "10KB",
+          "lastModified": "2026-05-01T06:25:59.144Z",
+          "wordCount": 5858
+        },
+        {
+          "type": "file",
           "title": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
           "frontmatterTitle": "第三篇：Codex 文档地图与配置逐项详解（小白版）",
           "fileTitle": "第三篇_Codex文档地图与配置逐项详解_小白版",
@@ -9308,6 +9333,31 @@
           "size": "12KB",
           "lastModified": "2026-04-11T13:11:47.078Z",
           "wordCount": 8581
+        },
+        {
+          "type": "file",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
+          "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+          "path": "AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+          "date": "2026-05-01T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "配置迁移",
+            "云同步",
+            "WebDAV",
+            "Provider",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "size": "12KB",
+          "lastModified": "2026-05-01T07:03:59.370Z",
+          "wordCount": 5764
         },
         {
           "type": "file",
@@ -10075,6 +10125,56 @@
           "size": "9KB",
           "lastModified": "2026-04-28T11:18:24.339Z",
           "wordCount": 4674
+        },
+        {
+          "type": "file",
+          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
+          "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+          "path": "AI工具/CC Switch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+          "date": "2026-05-01T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "Claude Code",
+            "MiMo",
+            "Token Plan",
+            "中转配置",
+            "Provider"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
+          "size": "10KB",
+          "lastModified": "2026-05-01T06:25:59.144Z",
+          "wordCount": 5858
+        },
+        {
+          "type": "file",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
+          "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+          "path": "AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+          "date": "2026-05-01T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "配置迁移",
+            "云同步",
+            "WebDAV",
+            "Provider",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "size": "12KB",
+          "lastModified": "2026-05-01T07:03:59.370Z",
+          "wordCount": 5764
         }
       ],
       "children": []
@@ -17092,6 +17192,56 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+      "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+      "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
+      "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+      "path": "AI工具/CC Switch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+      "date": "2026-05-01T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CC Switch",
+        "Claude Code",
+        "MiMo",
+        "Token Plan",
+        "中转配置",
+        "Provider"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
+      "size": "10KB",
+      "lastModified": "2026-05-01T06:25:59.144Z",
+      "wordCount": 5858
+    },
+    {
+      "type": "file",
+      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+      "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
+      "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+      "path": "AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+      "date": "2026-05-01T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CC Switch",
+        "配置迁移",
+        "云同步",
+        "WebDAV",
+        "Provider",
+        "Claude Code"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+      "size": "12KB",
+      "lastModified": "2026-05-01T07:03:59.370Z",
+      "wordCount": 5764
+    },
     {
       "type": "file",
       "title": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
@@ -27914,6 +28064,56 @@
               "size": "9KB",
               "lastModified": "2026-04-28T11:18:24.339Z",
               "wordCount": 4674
+            },
+            {
+              "type": "file",
+              "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+              "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+              "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
+              "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+              "path": "AI工具/CC Switch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
+              "date": "2026-05-01T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "CC Switch",
+                "Claude Code",
+                "MiMo",
+                "Token Plan",
+                "中转配置",
+                "Provider"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
+              "size": "10KB",
+              "lastModified": "2026-05-01T06:25:59.144Z",
+              "wordCount": 5858
+            },
+            {
+              "type": "file",
+              "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+              "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+              "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
+              "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+              "path": "AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
+              "date": "2026-05-01T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "CC Switch",
+                "配置迁移",
+                "云同步",
+                "WebDAV",
+                "Provider",
+                "Claude Code"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+              "size": "12KB",
+              "lastModified": "2026-05-01T07:03:59.370Z",
+              "wordCount": 5764
             }
           ]
         },
@@ -32812,7 +33012,7 @@
       ]
     }
   ],
-  "totalNotes": 340,
+  "totalNotes": 342,
   "totalCategories": 80,
-  "lastUpdated": "2026-04-30T15:16:57.781Z"
+  "lastUpdated": "2026-05-01T07:04:19.061Z"
 }

@@ -112,8 +112,9 @@ attachments:
 - 主人说"汇总消息"时，Codex 应优先查看当天的 git 变动与 `data/dailyChangeSummary.js`，刷新当日分类摘要内容，再执行 `npm run generate:notifications`，让头部通知抽屉展示最新汇总。
 - 长期保留的公告、置顶通知继续写在 `data/manualNotifications.js`；当日开发汇总不要写进长期公告文件。
 - `Git 提交` 为固定独立分类，由脚本自动从 git 历史生成；不要把 git 提交手动写进 `data/dailyChangeSummary.js`。
-- 清空 `data/dailyChangeSummary.js` 前，必须先将当天所有改动**归并为一条**追加到 `data/history/` 目录下对应的分片文件（`id` 格式为 `history-YYYY-MM-DD`，`date` 写实际日期）；分片文件按"每 10 天一个文件"命名，例如 `2026-04-21_30.js` 覆盖 4 月 21 日至 30 日，归档前先确认日期落在哪个分片，若分片不存在则新建并在 `data/historyNotifications.js` 的 import 列表与展开数组中同步添加；归档条目的 `content` 字段须按"第一点：…；第二点：…"格式逐条列出当天每项改动，不得精简省略；追加后再执行 `npm run generate:notifications`。
-- 归档条目的每个要点都必须保留 `time`（取该改动实际发生时间）、`title`、`summary` 信息，合并写入 `content` 时不得丢失任何一条的核心内容。
+- 清空 `data/dailyChangeSummary.js` 前，必须先将该日期的消息迁移到 `data/history/` 目录下对应的分片文件；分片文件按"每 10 天一个文件"命名，例如 `2026-04-21_30.js` 覆盖 4 月 21 日至 30 日。归档前先确认日期落在哪个分片，若分片不存在则新建，并在 `data/historyNotifications.js` 的 import 列表与展开数组中同步添加。
+- 历史分片中每一天只保留 1 个日期对象：`id` 格式为 `history-YYYY-MM-DD`，`date` 写实际日期；当天在 `data/dailyChangeSummary.js` 里的 `items` 要按明细逐条迁移到这个日期对象的 `items` 数组中，**不得把多条消息压缩、改写或汇总成 1 条总括性消息**，除非主人明确要求这样做。
+- 迁移到历史分片后的每条明细都必须继续保留原有 `category`、`time`、`title`、`summary`、`content` 字段；如果当天已经在历史分片里存在同日期对象，应合并到同一个 `items` 数组里，而不是重复新增多个同日期对象。
 - `data/historyNotifications.js` 中每个 `items` 条目必须包含 `category` 字段，值从以下四项中选一个：`内容上新`、`功能更新`、`问题修复`、`系统公告`；缺少 `category` 时前端时间轴将回退显示"历史消息"标签，无法按类型分色。该规则同样适用于 `data/history/` 下的所有分片文件。
 
 ## 运行与截图（实测可用）
