@@ -18,5 +18,12 @@ export const dailyChangeSummary = {
       summary: '新增 CC Switch 第四篇笔记，基于官方 README、Settings 手册与 Configuration Files FAQ 核对导出/导入、设备级设置边界、自动备份与 WebDAV/云盘同步能力，整理出适合多电脑多中转用户的迁移流程。',
       content: '第一点：新增 `public/notes/AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md`，明确回答“CC Switch 是否支持一键导出导入完整配置”；第二点：把官方已明确写出的关键边界单独拆出来说明，包括“导入会覆盖现有配置，不是自动合并”“`~/.cc-switch/settings.json` 属于设备级设置，不跨设备同步”“导入前会自动创建安全备份并默认保留最近 10 个”；第三点：结合 README 中的 Cloud Sync、Custom config directory、WebDAV 与 Shared Config Snippet 说明，给出手动主版本分发、云盘目录同步、WebDAV 自动同步三种适用场景；第四点：同步更新 `public/notes/AI工具/CC Switch/目录.md`，把跨电脑迁移主题纳入现有学习目录。',
     },
+    {
+      category: '问题修复',
+      time: '20:32',
+      title: 'Claude Code 六篇专题已按 2026-05 官方文档整体校订',
+      summary: '重写 Claude Code 专题目录与六篇笔记，按 Anthropic 官方文档和智谱最新接入页修正过时命令、模式、Skill 路径、Hook 事件、1M 上下文和 GLM 模型映射等信息，并在第二到第六篇补回更适合小白阅读的白话解释层。',
+      content: '第一点：为 `public/notes/AI工具/Claude Code/` 下的目录页与六篇正文统一补上 frontmatter，并把标题统一更新为“2026-05复核/校订”口径；第二点：第一篇和第五篇重点修正权限模式、`acceptEdits` 的当前行为、`--dangerously-skip-permissions` 写法、设置优先级、`/effort` 与 1M 上下文说明；第三点：第二篇和第四篇重点修正 `SKILL.md` 目录结构、`CLAUDE.local.md`、Auto memory 的 `200 行或 25KB` 加载边界、Hook 事件扩展、`/reload-plugins`、`Ctrl+O` transcript viewer 等旧教程已过时信息；第四点：第三篇补入 `/loop`、`/schedule`、`/autofix-pr`、后台任务与代理协作的新工作流；第五点：第六篇按智谱当前官方文档把 GLM 接入口径更新为 `GLM-5.1` / `glm-5-turbo`，并重新解释 IDE 登录提示与版本兼容变量的适用边界；第六点：根据阅读反馈，把第二篇到第六篇额外补上“小白先记一句话”“小白版理解”“翻译成人话”等解释层，尽量保留原有信息量，同时降低新手第一次阅读时的生涩感。',
+    },
   ],
 }
