@@ -2,28 +2,14 @@
 // 主人说"汇总消息"时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-05-01',
+  date: '2026-05-02',
   items: [
     {
-      category: '内容上新',
-      time: '14:22',
-      title: 'MiMo Token Plan 接入说明已归档到 CC Switch 知识库',
-      summary: '将根目录草稿整理为 CC Switch 第三篇正式笔记，按 MiMo 官方 Claude Code 与 Token Plan 文档核对 tp/sk 区分、区域 Base URL、模型映射、使用边界与 CC Switch 同步排查要点，并同步更新目录与通知归档。',
-      content: '第一点：新增 `public/notes/AI工具/CC Switch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md`，将原始草稿整理成带 frontmatter 的正式知识库文章；第二点：补入 MiMo 官方文档明确写到、但原稿里未完整覆盖的边界条件，包括 `sgp/ams` 区域地址、`tp-` 与 `sk-` 不能混用、Token Plan 仅限编程工具场景、Key 仅在订阅有效期内可用；第三点：把“模型映射四项都配齐”的结论改写为“官方示例 + 实战推断”口径，避免把一次性经验误写成无条件官方定论；第四点：同步更新 `public/notes/AI工具/CC Switch/目录.md`，将这篇文章挂入现有 CC Switch 学习目录；第五点：按仓库规则将 2026-04-30 的旧日摘要归档到 `data/history/2026-04-21_30.js`，并刷新当天摘要内容。',
-    },
-    {
-      category: '内容上新',
-      time: '15:01',
-      title: 'CC Switch 跨电脑导出导入与云同步教程已补入专题',
-      summary: '新增 CC Switch 第四篇笔记，基于官方 README、Settings 手册与 Configuration Files FAQ 核对导出/导入、设备级设置边界、自动备份与 WebDAV/云盘同步能力，整理出适合多电脑多中转用户的迁移流程。',
-      content: '第一点：新增 `public/notes/AI工具/CC Switch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md`，明确回答“CC Switch 是否支持一键导出导入完整配置”；第二点：把官方已明确写出的关键边界单独拆出来说明，包括“导入会覆盖现有配置，不是自动合并”“`~/.cc-switch/settings.json` 属于设备级设置，不跨设备同步”“导入前会自动创建安全备份并默认保留最近 10 个”；第三点：结合 README 中的 Cloud Sync、Custom config directory、WebDAV 与 Shared Config Snippet 说明，给出手动主版本分发、云盘目录同步、WebDAV 自动同步三种适用场景；第四点：同步更新 `public/notes/AI工具/CC Switch/目录.md`，把跨电脑迁移主题纳入现有学习目录。',
-    },
-    {
-      category: '问题修复',
-      time: '20:32',
-      title: 'Claude Code 六篇专题已按 2026-05 官方文档整体校订',
-      summary: '重写 Claude Code 专题目录与六篇笔记，按 Anthropic 官方文档和智谱最新接入页修正过时命令、模式、Skill 路径、Hook 事件、1M 上下文和 GLM 模型映射等信息，并在第二到第六篇补回更适合小白阅读的白话解释层。',
-      content: '第一点：为 `public/notes/AI工具/Claude Code/` 下的目录页与六篇正文统一补上 frontmatter，并把标题统一更新为“2026-05复核/校订”口径；第二点：第一篇和第五篇重点修正权限模式、`acceptEdits` 的当前行为、`--dangerously-skip-permissions` 写法、设置优先级、`/effort` 与 1M 上下文说明；第三点：第二篇和第四篇重点修正 `SKILL.md` 目录结构、`CLAUDE.local.md`、Auto memory 的 `200 行或 25KB` 加载边界、Hook 事件扩展、`/reload-plugins`、`Ctrl+O` transcript viewer 等旧教程已过时信息；第四点：第三篇补入 `/loop`、`/schedule`、`/autofix-pr`、后台任务与代理协作的新工作流；第五点：第六篇按智谱当前官方文档把 GLM 接入口径更新为 `GLM-5.1` / `glm-5-turbo`，并重新解释 IDE 登录提示与版本兼容变量的适用边界；第六点：根据阅读反馈，把第二篇到第六篇额外补上“小白先记一句话”“小白版理解”“翻译成人话”等解释层，尽量保留原有信息量，同时降低新手第一次阅读时的生涩感。',
+      category: '功能更新',
+      time: '15:40',
+      title: '组件库专题目录已统一收口',
+      summary: '将 ElementPlus 和 uvui 统一迁入 `public/notes/组件库/`，新增组件库总目录，为后续继续扩充 ECharts 图表专题预留同层结构。',
+      content: '第一点：新建 `public/notes/组件库/` 一级目录，并把原来的 `public/notes/ElementPlus/` 与 `public/notes/uvui/` 整体迁入其中，避免 PC 端组件库和移动端组件库继续分散在根层；第二点：补充 `public/notes/组件库/目录.md`，把 `ElementPlus`、`uvui` 与未来可继续扩展的 `ECharts` 放在同一专题入口下，方便后续按组件库主题持续补文；第三点：后续重新生成 notes 索引后，站内分类页会自动跟随新的目录结构收口，便于统一浏览与维护。',
     },
   ],
 }
