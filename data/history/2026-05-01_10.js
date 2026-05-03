@@ -28,4 +28,17 @@ export const history_2026_05_01_10 = [
       },
     ],
   },
+  {
+    id: 'history-2026-05-02',
+    date: '2026-05-02',
+    items: [
+      {
+        category: '内容上新',
+        time: '16:22',
+        title: 'ECharts 专题继续扩写到项目落地与交互联动',
+        summary: '在前四篇基础上，继续补出第五篇交互与联动手册，把 Vue 3 + Vite 项目里最常用的 tooltip、legend、dataZoom、事件监听、dispatchAction、双轴交互和移动端指针优化系统讲清，让前端能更快把图表做成真正可分析的业务页面。',
+        content: '第一点：更新 `public/notes/组件库/ECharts/目录.md`，把第一篇到第五篇和推荐阅读顺序补完整；第二点：新增 `public/notes/组件库/ECharts/第四篇_Vue3_Vite_项目落地_把ECharts封成能直接上项目的图表组件.md`，基于 Apache ECharts 官方 chart size、dynamic data、canvas vs svg、安全与 Aria 文档，以及 vue-echarts 官方 README 和 Releases，整理 Vue 3 + Vite 项目里最稳的图表封装方式；第三点：新增 `public/notes/组件库/ECharts/第五篇_交互与联动_tooltip_legend_dataZoom_dispatchAction怎么配合.md`，基于 Apache ECharts 官方 Event and Action、Legend、Axis、Intelligent Pointer Snapping 与 Feature 文档，系统讲清 `tooltip`、`legend`、`dataZoom`、`chart.on(...)`、`dispatchAction(...)`、双轴图交互和移动端 coarse pointer 优化；第四点：第四篇重点收口 `vue-echarts` 的 `autoresize`、`manual-update`、`THEME_KEY`、`loading`、事件绑定、`native:` 原生事件、`setOption`、`resize`、`dispatchAction` 与 `dispose`，第五篇则重点收口后台分析页里最常用的交互组合和图表联动思路；第五点：后续重新生成索引和通知后，ECharts 专题第一到第五篇都能立刻进入站内检索，更适合前端按“认识 -> 选图 -> 数据组织 -> 项目落地 -> 交互联动”的顺序快速上手。',
+      },
+    ],
+  },
 ]

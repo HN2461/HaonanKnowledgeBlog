@@ -1,19 +1,59 @@
 {
-  "generatedAt": "2026-05-02T07:44:39.471Z",
-  "total": 213,
+  "generatedAt": "2026-05-03T12:36:46.731Z",
+  "total": 216,
   "notifications": [
     {
-      "id": "daily-2026-05-02-1",
-      "title": "组件库专题目录已统一收口",
-      "content": "第一点：新建 `public/notes/组件库/` 一级目录，并把原来的 `public/notes/ElementPlus/` 与 `public/notes/uvui/` 整体迁入其中，避免 PC 端组件库和移动端组件库继续分散在根层；第二点：补充 `public/notes/组件库/目录.md`，把 `ElementPlus`、`uvui` 与未来可继续扩展的 `ECharts` 放在同一专题入口下，方便后续按组件库主题持续补文；第三点：后续重新生成 notes 索引后，站内分类页会自动跟随新的目录结构收口，便于统一浏览与维护。",
-      "summary": "将 ElementPlus 和 uvui 统一迁入 `public/notes/组件库/`，新增组件库总目录，为后续继续扩充 ECharts 图表专题预留同层结构。",
-      "date": "2026-05-02T15:40:00+08:00",
-      "tag": "功能更新",
-      "category": "功能更新",
+      "id": "daily-2026-05-03-2",
+      "title": "uv-ui 专题补充总览目录与项目开发路线",
+      "content": "第一点：新增 `public/notes/组件库/uvui/目录.md`，整理 `uv-ui` 专题的阅读顺序、组件学习优先级和后续扩写方向；第二点：新增 `public/notes/组件库/uvui/第一篇_快速认识uv-ui_安装_扩展配置_组件地图与项目开发路线.md`，集中讲清 `uv-ui` 的定位、公开版本状态、推荐安装路径、扩展配置、组件地图、项目起手顺序与多端兼容坑位；第三点：把原有两篇文章统一更名为 `第二篇_uv-ui入门安装与小程序配置.md` 与 `第三篇_uv-ui请求封装与使用指南.md`，并同步更新 frontmatter 标题、正文 H1、目录页入口文案和文内交叉引用；第四点：更新 `public/notes/组件库/目录.md` 中的专题显示名称，从 `uvui` 调整为更易读的 `uv-ui`；第五点：按仓库规则重新执行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "基于 2026-05-03 核对的 uv-ui 官方介绍、安装、扩展配置、Http、常见问题、更新日志、GitHub 与 npm 资料，为 `组件库/uvui` 专题补出目录页和总览型研究笔记，并统一调整成“目录 + 第一篇 + 第二篇 + 第三篇”的阅读型命名，帮助读完后更快进入 uni-app 项目开发。",
+      "date": "2026-05-03T20:32:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
       "source": "daily-summary",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
+    },
+    {
+      "id": "daily-2026-05-03-1",
+      "title": "ECharts 专题补充选图模板与项目开发速查清单",
+      "content": "第一点：更新 `public/notes/组件库/ECharts/第二篇_常见四类图表_折线图_柱状图_饼图_散点图怎么选.md`，把原有四类图选择说明扩展为“业务需求 -> 图表类型 -> 关键配置 -> 注意点”的项目速查表，并补入 `dataset.source + encode` 的组合图模板和开发前 30 秒检查清单；第二点：新增 `public/notes/组件库/ECharts/第六篇_项目开发速查清单_从安装到上线排查的ECharts实战路线.md`，按官方资料串起 Vue 3 + Vite 项目里从 `echarts + vue-echarts` 安装、按需注册、`BaseChart` 封装、接口数据映射、交互联动、性能选择、安全无障碍到上线排错的完整路线；第三点：更新 `public/notes/组件库/ECharts/目录.md`，把第六篇纳入专题目录与推荐阅读顺序；第四点：校准第四篇 `vue-echarts` 版本表述，明确 Release 页顶部存在 `8.1.0-beta` 预发布，而普通业务项目优先使用标记为 Latest 的稳定版 `v8.0.1`；第五点：按仓库规则将 2026-05-02 的旧日摘要归档到 `data/history/2026-05-01_10.js`，并重新生成笔记索引和通知数据。",
+      "summary": "基于 2026-05-03 核对的 Apache ECharts 官方 Handbook、Release 与 vue-echarts 官方资料，补强 ECharts 第二篇选图文章并新增第六篇项目开发速查清单，让读者能按安装、封装、dataset、交互、性能、安全和排错流程快速落地业务图表。",
+      "date": "2026-05-03T19:59:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-02-1",
+      "title": "ECharts 专题继续扩写到项目落地与交互联动",
+      "content": "第一点：更新 `public/notes/组件库/ECharts/目录.md`，把第一篇到第五篇和推荐阅读顺序补完整；第二点：新增 `public/notes/组件库/ECharts/第四篇_Vue3_Vite_项目落地_把ECharts封成能直接上项目的图表组件.md`，基于 Apache ECharts 官方 chart size、dynamic data、canvas vs svg、安全与 Aria 文档，以及 vue-echarts 官方 README 和 Releases，整理 Vue 3 + Vite 项目里最稳的图表封装方式；第三点：新增 `public/notes/组件库/ECharts/第五篇_交互与联动_tooltip_legend_dataZoom_dispatchAction怎么配合.md`，基于 Apache ECharts 官方 Event and Action、Legend、Axis、Intelligent Pointer Snapping 与 Feature 文档，系统讲清 `tooltip`、`legend`、`dataZoom`、`chart.on(...)`、`dispatchAction(...)`、双轴图交互和移动端 coarse pointer 优化；第四点：第四篇重点收口 `vue-echarts` 的 `autoresize`、`manual-update`、`THEME_KEY`、`loading`、事件绑定、`native:` 原生事件、`setOption`、`resize`、`dispatchAction` 与 `dispose`，第五篇则重点收口后台分析页里最常用的交互组合和图表联动思路；第五点：后续重新生成索引和通知后，ECharts 专题第一到第五篇都能立刻进入站内检索，更适合前端按“认识 -> 选图 -> 数据组织 -> 项目落地 -> 交互联动”的顺序快速上手。",
+      "summary": "在前四篇基础上，继续补出第五篇交互与联动手册，把 Vue 3 + Vite 项目里最常用的 tooltip、legend、dataZoom、事件监听、dispatchAction、双轴交互和移动端指针优化系统讲清，让前端能更快把图表做成真正可分析的业务页面。",
+      "date": "2026-05-02T16:22:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-02",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-53aa9cbdce6cb2c6aa5d12f77f2950711f62c7af",
+      "title": "迁移组件库分类",
+      "content": "提交说明：迁移组件库分类",
+      "summary": "迁移组件库分类",
+      "date": "2026-05-02T15:55:57+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "53aa9cb",
+      "fullHash": "53aa9cbdce6cb2c6aa5d12f77f2950711f62c7af"
     },
     {
       "id": "git-81a5a9d7afb9f3cf169aa818c1e982259ba0ae3c",
@@ -2849,6 +2889,17 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-05-02",
+      "items": [
+        {
+          "title": "ECharts 专题继续扩写到项目落地与交互联动",
+          "summary": "在前四篇基础上，继续补出第五篇交互与联动手册，把 Vue 3 + Vite 项目里最常用的 tooltip、legend、dataZoom、事件监听、dispatchAction、双轴交互和移动端指针优化系统讲清，让前端能更快把图表做成真正可分析的业务页面。",
+          "time": "16:22",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
     {
       "date": "2026-05-01",
       "items": [
