@@ -5,6 +5,48 @@ export const dailyChangeSummary = {
   date: '2026-05-06',
   items: [
     {
+      category: '内容上新',
+      time: '18:15',
+      title: '重写 JavaScript 数组笔记并修正关键概念错误',
+      summary: '重构 `09_JavaScript数组.md` 为“纠错 + 深入版”，系统修正数组 `length`、空位、`splice()` 返回值、`map()` 对稀疏数组行为、`copyWithin()` 示例等高频误区，并补上现代不可变数组方法与权威参考链接。',
+      content: '第一点：为 `public/notes/我的总结/JS/辅助资料/09_JavaScript数组.md` 补齐 frontmatter，统一标题、日期、分类、标签与摘要，保证文章元信息可被列表页与搜索正确读取；第二点：重写数组本质与 `length` 章节，明确数组是特殊对象、合法索引如何与 `length` 联动、`length` 更接近“最大索引 + 1”而非真实元素个数，并强调空位不等于 `undefined`；第三点：集中修正原文中的关键错误，包括“`length` 是访问器属性”的误导性说法、`splice()` 返回值错误、`push/unshift` 参数规则错误、`map()` 对空位的处理错误，以及 `copyWithin()` 第二个示例串用前一个执行结果导致的结论偏差；第四点：新增稀疏数组专节，系统解释 `delete`、空位、`forEach`、`map`、`filter`、`reduce`、`flat` 对空位的不同处理，降低初学者后续学习迭代方法时的理解断层；第五点：补充 `toSorted()`、`toSpliced()`、`toReversed()`、`with()` 等现代复制型方法，帮助区分“改原数组”和“不改原数组”的两套思维；第六点：按仓库要求完成 UTF-8 无 BOM 校验，执行运行时预检与 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。'
+    },
+    {
+      category: '内容上新',
+      time: '17:59',
+      title: '补充 Class 与构造函数双链继承的开场总述',
+      summary: '在 `07_es5构造函数与es6语法糖Class.md` 开头新增一段“快速理解”分点总结，先整体串起实例成员链与静态成员链，方便进入正文前快速建立全局图。 ',
+      content: '第一点：按主人的原文表述把总结拆成 4 个分点，完整保留“函数 `prototype`、构造函数 `__proto__`、实例查找链、静态查找链、两链互不交叉”的核心描述；第二点：将该总结放到笔记最开头，作为正文前的快速理解入口，减少后文阅读时来回拼接概念的成本；第三点：不改动原有正文结构，仅在顶部新增概览，保持后续详细讲解与示例代码可继续顺序阅读。'
+    },
+    {
+      category: '问题修复',
+      time: '15:19',
+      title: '纠正 Class 与构造函数笔记中的关键错误并清理 HTML 标记',
+      summary: '修订 `07_es5构造函数与es6语法糖Class.md` 的高风险错误示例，并把残留的 `<font>` 富文本标记清理成纯 Markdown，提升可读性与可维护性。',
+      content: '第一点：修正 `super` 章节的规则描述，明确“`super()` 仅用于子类 constructor 调父类构造函数”，并补充 `super.method()` / `super.prop` 可在实例方法或静态方法中访问父类成员，避免两种语义混淆；第二点：修正私有字段示例，移除类外直接写 `obj.#field` 的误导性 try/catch 写法，改为注释说明其属于解析期 `SyntaxError`，并用 `eval` 演示可捕获错误；第三点：修复用户示例中的密码校验逻辑，去掉哈希函数里的 `Date.now()`，改为确定性结果，确保 `verifyPassword` 示例具备可验证一致性；第四点：补充“易错点速记（纠错版）”，集中解释 `super`、私有字段、`instanceof` 与运行环境差异；第五点：清理 `instanceof` 小节里残留的 `<font>` 富文本标记，统一改成纯 Markdown 强调与列表，避免正文混杂 HTML；第六点：按规范执行运行时预检与 `npm run generate:index`，同步更新笔记索引文件。'
+    },
+    {
+      category: '内容上新',
+      time: '14:50',
+      title: '原型链笔记补回图解并升级为小白详细版',
+      summary: '按“先图后文”重写 `06_JavaScript原型链.md`，新增 Mermaid + ASCII 双图解，补充属性查找流程图与 new 执行图，并把每个核心概念改成白话解释 + 可运行示例。',
+      content: '第一点：在 `public/notes/我的总结/JS/辅助资料/06_JavaScript原型链.md` 增加三张图（关系图、属性查找流程图、new 执行流程图），并保留 ASCII 兜底图，避免渲染器不支持 Mermaid 时无法阅读；第二点：正文改为小白路径，按“关键词拆分 -> 最小例子 -> 查找流程 -> 易错点 -> 自测题”展开，重点区分 `prototype`、`[[Prototype]]`、`__proto__`、`constructor`；第三点：新增 `constructor` 的“小三角关系图”，单独解释“构造函数 -> prototype -> constructor 回指 -> 实例内部原型”这一圈关系，并补充它为什么会失真、为什么不适合单独拿来做类型判断；第四点：新增高频误区纠正（如 constructor 失真、instanceof 本质、class 语法糖关系）和可直接复制执行的验证代码，降低记忆负担；第五点：修复 Mermaid 兼容性问题，移除图 1 与图 3 节点文字中会触发解析器误判的 `[[Prototype]]`、括号与引号，改为“内部原型”等普通文本并在图下补解释；第六点：完成 UTF-8 无 BOM 校验，并执行运行时预检与 `npm run generate:index` 同步更新索引文件。'
+    },
+    {
+      category: '内容上新',
+      time: '14:40',
+      title: '重写 JavaScript 原型链笔记并完成概念纠错',
+      summary: '重构 `06_JavaScript原型链.md` 为“纠错 + 完整版”，补齐 frontmatter，统一 `prototype`、`[[Prototype]]`、`__proto__`、`constructor`、`instanceof` 与 `new` 流程的准确表述，新增可运行自测代码与复习口诀。',
+      content: '第一点：重写 `public/notes/我的总结/JS/辅助资料/06_JavaScript原型链.md` 全文结构，改为“核心概念 -> 查找机制 -> 误区纠正 -> 代码自测”的学习路径，降低阅读跳跃；第二点：修正“prototype 是每个对象都有”“实例通过 prototype 找原型”“constructor 恒等可靠”等常见误解，明确函数属性与对象内部原型的边界；第三点：新增 `instanceof` 本质说明与简化实现，补充 `new` 五步流程、原型方法节省内存原因和 class 语法糖关系；第四点：补充可直接运行的断言示例与复习口诀，便于主人快速自检是否真正掌握原型链；第五点：按仓库规范完成 UTF-8 无 BOM 写入校验，并执行 Node 运行时预检与 `npm run generate:index`，同步刷新索引文件。'
+    },
+    {
+      category: '内容上新',
+      time: '14:34',
+      title: '补全 JS this 规则并完善箭头函数小白说明',
+      summary: '重写并扩充 `05_this.md`，将“this 永远是 window”等不严谨表述修正为严格模式/调用方式区分，新增“箭头函数小白版”与 `setTimeout`/事件监听丢 this 的并排对照拆解，并附 MDN 权威参考链接。',
+      content: '第一点：重构 `public/notes/我的总结/JS/辅助资料/05_this.md` 的整体结构，保留原有学习主线但改为“规则 + 反例 + 修复”方式，降低理解门槛；第二点：明确普通函数、对象方法、构造调用、call/apply/bind 在严格模式与非严格模式下的 this 差异，修正“默认就是 window”的过度简化；第三点：新增回调 this 误区章节，区分“接收回调的方法 this”和“回调函数 this”两套独立规则，并补充 `forEach(thisArg)`、`setTimeout`、`addEventListener` 的可执行示例；第四点：新增“箭头函数小白版（最通俗）”章节，并把 `setTimeout(this.fn)` 与 `addEventListener("click", this.fn)` 按“等价拆解 -> this 指向 -> 直接后果 -> 共同点/区别”并排讲解，帮助快速建立场景判断；第五点：补充终极防丢模板与一步判断法，文末保留 MDN 参考资料链接便于持续核验。'
+    },
+    {
       category: '问题修复',
       time: '11:11',
       title: 'JS 与 Vue 目录页顺序化改造完成',

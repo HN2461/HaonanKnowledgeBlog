@@ -1,3 +1,23 @@
+## 快速理解
+
+- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 `prototype`，它是一个对象，里面默认有一个 `constructor` 属性指回函数自身。构造函数也是对象，所以也有隐式原型 `__proto__`：普通函数的 `__proto__` 指向 `Function.prototype`；在 `class extends` 继承中，子类构造函数的 `__proto__` 会直接指向父类构造函数本身，这样才能继承父类的静态属性和方法，因为静态成员是挂在构造函数自己身上，而不是放在构造函数的 `prototype` 上。  
+- 当用 `new` 调用构造函数创建实例时，实例是普通对象，没有显式原型 `prototype`，但它有隐式原型 `__proto__`，这个 `__proto__` 会被赋值为构造函数的 `prototype`。实例查找属性时，会先看自身有没有，没有就沿着自己的 `__proto__` 向上找：先去子类构造函数的 `prototype`，如果还没找到，再看子类 `prototype` 的 `__proto__`，也就是父类的 `prototype`，接着再往上是 `Object.prototype`，最后到 `null`。这条链完全只跟 `prototype` 的 `__proto__` 有关，和构造函数自身的 `__proto__` 无关。  
+- 当用“类.属性”的方式调用静态方法或属性时，查找的则是另一条平行的链：先在子类构造函数自身上找，找不到就沿着子类的 `__proto__` 向上找，也就是父类构造函数本身，再往上依次是 `Function.prototype`、`Object.prototype`。因为类也是对象，它查找属性时同样只沿着自己的 `__proto__` 走，绝不会拐到自己的 `prototype` 上去，`prototype` 是专门给实例对象继承用的。  
+- 所以，整个体系遵守一条统一规则：任何对象查找属性，都是先自身，再沿自身 `__proto__` 链向上。实例走的是由 `prototype` 串联起来的实例成员链，构造函数走的是由类自身 `__proto__` 串联起来的静态成员链，两链互不交叉，共同完成完整的面向对象继承。
+
+## 核心概念速记（原型与继承关键点）
+
+- 每个构造函数（实际上所有函数）都有一个显式的原型属性 `prototype`，它的值是一个对象，这个对象里默认包含一个 `constructor` 属性，它的值指向这个原型对象所在的构造函数自身。
+- 构造函数本身也是对象，因此它也拥有隐式原型 `__proto__`。不过，这个隐式原型的指向需要分两种情况：
+  - 对于普通的构造函数（如 `function Foo(){}`），它的 `__proto__` 指向的是 `Function.prototype`，因为构造函数本质上是由 `Function` 构造出来的实例；
+  - 而在使用 `class extends` 实现继承时，子类构造函数的 `__proto__` 却直接指向父类构造函数本身，而不是父类的 `prototype`，这样才能让子类继承到父类的静态属性和方法。
+- 同时，构造函数的 `prototype` 对象本身也是对象，所以它同样有隐式原型 `__proto__`：
+  - 默认情况下它指向 `Object.prototype`；
+  - 如果在继承链里，子类的 `prototype` 对象的 `__proto__` 会指向父类的 `prototype`，从而形成实例属性和方法的继承链。
+- 当用 `new` 调用构造函数时，会创建出一个实例对象，实例对象是普通对象，没有显式原型 `prototype`，但它有隐式原型 `__proto__`，这个隐式原型的值被设为构造函数的 `prototype`，也就是父级（构造函数的原型对象），于是实例就可以通过 `__proto__` 链找到构造函数原型上定义的共享方法和属性。
+
+---
+
 ## 一、构造函数的本质
 ### 1.1 构造函数的定义：普通函数的特殊用法
 ```javascript
@@ -82,14 +102,14 @@ console.log(myCar instanceof Object); // true，所有对象都是 Object 的实
 ```
 
 ### 1.4 instanceof 运算符的工作原理
-`<font style="color:rgb(0, 0, 0);">instanceof</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">是 JavaScript 中用于判断</font>**<font style="color:rgb(0, 0, 0);">对象与构造函数 / 类之间原型链关系</font>**<font style="color:rgb(0, 0, 0);">的运算符，核心作用是验证 “某个对象是否是某个构造函数（或类）的实例”，本质是沿原型链查找匹配。</font>
+`instanceof` 是 JavaScript 中用于判断**对象与构造函数 / 类之间原型链关系**的运算符，核心作用是验证“某个对象是否是某个构造函数（或类）的实例”，本质是沿原型链查找匹配。
 
-<font style="color:rgb(0, 0, 0);">核心逻辑：</font>
+核心逻辑：
 
-1. <font style="color:rgb(0, 0, 0);">语法：</font>`<font style="color:rgb(0, 0, 0);">对象 instanceof 构造函数/类</font>`
-2. <font style="color:rgb(0, 0, 0);">工作原理：</font><font style="color:rgb(0, 0, 0);">检查对象的原型链（</font>`<font style="color:rgb(0, 0, 0);">__proto__</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">链路）上，是否存在目标构造函数 / 类的</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">prototype</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">属性。</font>
-    - <font style="color:rgb(0, 0, 0);">若找到匹配的</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">prototype</font>`<font style="color:rgb(0, 0, 0);">，返回</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">true</font>`<font style="color:rgb(0, 0, 0);">；</font>
-    - <font style="color:rgb(0, 0, 0);">若遍历到原型链尽头（</font>`<font style="color:rgb(0, 0, 0);">null</font>`<font style="color:rgb(0, 0, 0);">）仍未找到，返回 </font>`<font style="color:rgb(0, 0, 0);">false</font>`<font style="color:rgb(0, 0, 0);">。</font>
+1. 语法：`对象 instanceof 构造函数/类`
+2. 工作原理：检查对象的原型链（`__proto__` 链路）上，是否存在目标构造函数 / 类的 `prototype` 属性。
+    - 若找到匹配的 `prototype`，返回 `true`；
+    - 若遍历到原型链尽头（`null`）仍未找到，返回 `false`。
 
 ```javascript
 function Vehicle(type) {
@@ -242,7 +262,8 @@ console.log('=== 情况2：直接调用 ===');
 Example('直接调用');
 // 在非严格模式浏览器中，this 指向 window
 // 相当于 window.value = '直接调用'
-// 在严格模式或Node.js中，this 为 undefined
+// 在严格模式下，this 为 undefined
+// 在 Node.js 中是否为 undefined 取决于运行上下文（CJS/ESM、是否显式 strict）
 
 // 情况 3：作为对象的方法调用
 console.log('=== 情况3：方法调用 ===');
@@ -535,7 +556,8 @@ constructor(name, breed) {
 + 规则2：**子类有 **`constructor`** 就必须调用 **`super()`  
 原因：子类的 `this` 无法自己初始化，必须通过 `super()` 借用父类的构造函数来初始化（这是 ES6 继承的设计规则）。若子类写了 `constructor` 却不调用 `super()`，会报错「Must call super constructor in derived class before accessing 'this' or returning from derived constructor」。
 + 规则3：`super()`** 只能在子类构造函数中调用**  
-不能在子类的原型方法、静态方法中调用 `super()`（会报错），它的唯一作用域是子类的 `constructor`。
+这里特指 `super()` 这种“调用父类构造函数”的形式。  
+补充：`super.method()` / `super.prop` 可以在子类实例方法或静态方法中使用，用于访问父类原型/父类本身上的成员。
 
 （3）`super()` 的参数传递逻辑
 
@@ -1899,8 +1921,9 @@ class User {
   
   // 私有方法：密码哈希
   #hashPassword(password) {
-    // 实际应用中应该使用 bcrypt 等安全哈希
-    return `hashed_${password}_${Date.now()}`;
+    // 教学示例：使用确定性哈希，便于演示“存储后可校验”
+    // 实际应用中应该使用 bcrypt/argon2 等带盐且抗暴力破解的算法
+    return `hashed_${password}`;
   }
   
   // 验证密码
@@ -2027,7 +2050,7 @@ console.log('在浏览器中，直接调用会使 this.value 成为全局变量'
 console.log('\n区别2：this 指向不同');
 console.log('普通函数调用时，this 指向：');
 console.log('  - 非严格模式：全局对象（window/global）');
-console.log('  - 严格模式：undefined');
+console.log('  - 严格模式：undefined（Node.js 还受模块类型与运行方式影响）');
 
 const obj = { method: demoFunction };
 obj.method('方法调用');
@@ -2338,10 +2361,13 @@ class HashExample {
 const hashInstance = new HashExample();
 console.log('  # 语法私有数据:', hashInstance.getPrivateVar());
 console.log('  # 语法私有方法:', hashInstance.callPrivateMethod());
+// 注意：下面这种写法会在“解析阶段”直接抛出 SyntaxError，try/catch 也拦不住：
+// hashInstance.#privateVar
+// 若想演示“错误可被捕获”，可以放进动态求值：
 try {
-  console.log('  直接访问:', hashInstance.#privateVar);
+  eval('hashInstance.#privateVar');
 } catch (e) {
-  console.log('  直接访问错误:', e.message);
+  console.log('  直接访问错误:', e.name, e.message);
 }
 console.log('  # 语法优点：语言原生支持，真正的私有');
 console.log('  # 语法缺点：需要现代环境支持');
@@ -2479,6 +2505,13 @@ Object.freeze(obj3);
 obj3.name = '尝试修改'; // 静默失败（严格模式下报错）
 console.log('  freeze 后修改属性:', obj3.name); // '冻结对象'
 ```
+
+### 7.6 易错点速记（纠错版）
+1. `super()` 只能在派生类 `constructor` 里调用；但 `super.xxx()` 可以在实例方法/静态方法中调用父类成员。  
+2. `obj.#field` 写在类外是语法错误（`SyntaxError`），属于“解析阶段报错”，不是普通运行时异常。  
+3. 直接调用构造函数的 `this` 行为依赖是否严格模式与运行环境，不要简单写成“在 Node.js 一定是 undefined”。  
+4. `instanceof` 判断的是“原型链关系”，不是“结构相同就算同类”；跨 iframe/realm 时结果可能与预期不同。  
+5. 教学示例里的“哈希函数”若包含时间戳/随机数，会导致同一密码每次结果不同，无法直接做 `===` 校验（除非同时保存 salt 并用正确校验流程）。
 
 ---
 

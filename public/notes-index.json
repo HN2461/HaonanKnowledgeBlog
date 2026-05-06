@@ -1843,10 +1843,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：每次",
+          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：",
           "size": "12KB",
-          "lastModified": "2026-05-06T03:09:55.024Z",
-          "wordCount": 8142
+          "lastModified": "2026-05-06T03:22:49.894Z",
+          "wordCount": 8317
         },
         {
           "type": "file",
@@ -1908,8 +1908,8 @@
           "attachments": [],
           "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
           "size": "3KB",
-          "lastModified": "2026-05-06T02:46:22.481Z",
-          "wordCount": 1202
+          "lastModified": "2026-05-06T03:33:32.351Z",
+          "wordCount": 1209
         },
         {
           "type": "file",
@@ -1948,10 +1948,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是伪数组对象，也可通过索引操作数据，通过 arguments.length 获取实参数量。伪数组并",
-          "size": "1KB",
-          "lastModified": "2026-05-06T02:46:34.900Z",
-          "wordCount": 416
+          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是类数组对象（Array-like Object），不是真正的数组：\n\n- 具有数组的 lengt",
+          "size": "2KB",
+          "lastModified": "2026-05-06T03:40:03.615Z",
+          "wordCount": 1287
         },
         {
           "type": "file",
@@ -2011,10 +2011,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "你总结的这3条是基础骨架，只是实际场景中会有「<font style=\"color:DF2A3F;\">调用者是谁</font>」的特殊情况（比如DOM/定时器的隐式调用），才会让你觉得和实际代码对不上，咱们先把你的结论补全成精准规则，再对应到之前的场景，瞬间就能对上！\r\n\r\n\r\n\r\n✅ 你的原理解：普通函数指向window  \r\n🔴 补充：这只是<font style=\"color:FF0000",
-          "size": "13KB",
-          "lastModified": "2026-05-06T02:33:54.042Z",
-          "wordCount": 8926
+          "description": "你原来的 4 条结论抓住了主干，但有两处容易误导：\n\n1. this 不是“永远是 window”，而是取决于调用方式与是否严格模式。\n2. call/apply 的第一个参数不总是“默认 window”，严格模式与箭头函数要单独看。\n\n下面给你一版可直接记忆、能覆盖绝大多数面试和实战场景的规则。\n\n\n\nthis 在普通函数里由“调用方式”决定，不由“定义位置”决定。\n\n\n\n\n\n\n\n原结论“以函数",
+          "size": "9KB",
+          "lastModified": "2026-05-06T06:35:02.364Z",
+          "wordCount": 6216
         },
         {
           "type": "file",
@@ -2039,24 +2039,26 @@
         },
         {
           "type": "file",
-          "title": "06_JavaScript原型链",
-          "frontmatterTitle": "06_JavaScript原型链",
+          "title": "第06篇：JavaScript 原型链",
+          "frontmatterTitle": "第06篇：JavaScript 原型链",
           "fileTitle": "06_JavaScript原型链",
           "filename": "06_JavaScript原型链.md",
           "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "原型链",
+            "prototype",
+            "面向对象"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象(<font style=\"color:FF0000;\">prototype是属性名，它的值是一个对象，这个对象叫原型对象</font>),<font style=\"color:FF0000;\">默认</font>情况下，它是一个<font style=\"color:FF",
-          "size": "9KB",
-          "lastModified": "2026-05-06T02:33:54.038Z",
-          "wordCount": 7577
+          "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
+          "size": "11KB",
+          "lastModified": "2026-05-06T07:11:03.437Z",
+          "wordCount": 7945
         },
         {
           "type": "file",
@@ -2095,10 +2097,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">instanceof</font><font style=\"color:rgb(0, 0, 0);\"> </font><font style=\"color:rgb(0, 0, 0);\">是 JavaScript 中用于判断</font><font style=\"color:rgb(0, 0, 0);\">对象与构造函数 / 类之间原",
-          "size": "77KB",
-          "lastModified": "2026-05-06T02:33:54.041Z",
-          "wordCount": 61414
+          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "size": "81KB",
+          "lastModified": "2026-05-06T10:00:21.158Z",
+          "wordCount": 62598
         },
         {
           "type": "file",
@@ -2116,10 +2118,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "| 值/对象 | Object.prototype.toString.call() |\r\n| --- | --- |\r\n| {} | \"[object Object]\" |\r\n| [] | \"[object Array]\" |\r\n| null | \"[object Null]\" |\r\n| undefined | \"[object Undefined]\" |\r\n| function(){} | \"[",
-          "size": "7KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 5692
+          "description": "如果你现在被 prototype / proto / constructor 绕晕，先记这一句：\n\n\n\n\n\n\nASCII 兜底图（Mermaid 不显示时看这个）：\n\n\n3 句话理解这张图：\n1. prototype 是“函数专属属性”，普通对象默认没有这个属性。  \n2. proto（或 [[Prototype]]）是“对象内部原型引用”，实例靠它连到原型对象。  \n3. constructor",
+          "size": "10KB",
+          "lastModified": "2026-05-06T08:14:15.383Z",
+          "wordCount": 8027
         },
         {
           "type": "file",
@@ -2165,24 +2167,27 @@
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "第09篇：JavaScript 数组",
+          "frontmatterTitle": "第09篇：JavaScript 数组",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "前端基础"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
+          "description": "从数组本质、length、空位、常用方法、副作用与现代不可变写法出发，系统讲清 JavaScript 数组最容易混淆的知识点。",
           "size": "21KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 16144
+          "lastModified": "2026-05-06T10:18:36.201Z",
+          "wordCount": 15397
         },
         {
           "type": "file",
@@ -2610,10 +2615,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：每次",
+          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：",
           "size": "12KB",
-          "lastModified": "2026-05-06T03:09:55.024Z",
-          "wordCount": 8142
+          "lastModified": "2026-05-06T03:22:49.894Z",
+          "wordCount": 8317
         },
         {
           "type": "file",
@@ -2654,8 +2659,8 @@
           "attachments": [],
           "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
           "size": "3KB",
-          "lastModified": "2026-05-06T02:46:22.481Z",
-          "wordCount": 1202
+          "lastModified": "2026-05-06T03:33:32.351Z",
+          "wordCount": 1209
         },
         {
           "type": "file",
@@ -2673,10 +2678,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是伪数组对象，也可通过索引操作数据，通过 arguments.length 获取实参数量。伪数组并",
-          "size": "1KB",
-          "lastModified": "2026-05-06T02:46:34.900Z",
-          "wordCount": 416
+          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是类数组对象（Array-like Object），不是真正的数组：\n\n- 具有数组的 lengt",
+          "size": "2KB",
+          "lastModified": "2026-05-06T03:40:03.615Z",
+          "wordCount": 1287
         },
         {
           "type": "file",
@@ -2694,31 +2699,33 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "你总结的这3条是基础骨架，只是实际场景中会有「<font style=\"color:DF2A3F;\">调用者是谁</font>」的特殊情况（比如DOM/定时器的隐式调用），才会让你觉得和实际代码对不上，咱们先把你的结论补全成精准规则，再对应到之前的场景，瞬间就能对上！\r\n\r\n\r\n\r\n✅ 你的原理解：普通函数指向window  \r\n🔴 补充：这只是<font style=\"color:FF0000",
-          "size": "13KB",
-          "lastModified": "2026-05-06T02:33:54.042Z",
-          "wordCount": 8926
+          "description": "你原来的 4 条结论抓住了主干，但有两处容易误导：\n\n1. this 不是“永远是 window”，而是取决于调用方式与是否严格模式。\n2. call/apply 的第一个参数不总是“默认 window”，严格模式与箭头函数要单独看。\n\n下面给你一版可直接记忆、能覆盖绝大多数面试和实战场景的规则。\n\n\n\nthis 在普通函数里由“调用方式”决定，不由“定义位置”决定。\n\n\n\n\n\n\n\n原结论“以函数",
+          "size": "9KB",
+          "lastModified": "2026-05-06T06:35:02.364Z",
+          "wordCount": 6216
         },
         {
           "type": "file",
-          "title": "06_JavaScript原型链",
-          "frontmatterTitle": "06_JavaScript原型链",
+          "title": "第06篇：JavaScript 原型链",
+          "frontmatterTitle": "第06篇：JavaScript 原型链",
           "fileTitle": "06_JavaScript原型链",
           "filename": "06_JavaScript原型链.md",
           "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "原型链",
+            "prototype",
+            "面向对象"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象(<font style=\"color:FF0000;\">prototype是属性名，它的值是一个对象，这个对象叫原型对象</font>),<font style=\"color:FF0000;\">默认</font>情况下，它是一个<font style=\"color:FF",
-          "size": "9KB",
-          "lastModified": "2026-05-06T02:33:54.038Z",
-          "wordCount": 7577
+          "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
+          "size": "11KB",
+          "lastModified": "2026-05-06T07:11:03.437Z",
+          "wordCount": 7945
         },
         {
           "type": "file",
@@ -2736,10 +2743,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">instanceof</font><font style=\"color:rgb(0, 0, 0);\"> </font><font style=\"color:rgb(0, 0, 0);\">是 JavaScript 中用于判断</font><font style=\"color:rgb(0, 0, 0);\">对象与构造函数 / 类之间原",
-          "size": "77KB",
-          "lastModified": "2026-05-06T02:33:54.041Z",
-          "wordCount": 61414
+          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "size": "81KB",
+          "lastModified": "2026-05-06T10:00:21.158Z",
+          "wordCount": 62598
         },
         {
           "type": "file",
@@ -2757,31 +2764,34 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "| 值/对象 | Object.prototype.toString.call() |\r\n| --- | --- |\r\n| {} | \"[object Object]\" |\r\n| [] | \"[object Array]\" |\r\n| null | \"[object Null]\" |\r\n| undefined | \"[object Undefined]\" |\r\n| function(){} | \"[",
-          "size": "7KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 5692
+          "description": "如果你现在被 prototype / proto / constructor 绕晕，先记这一句：\n\n\n\n\n\n\nASCII 兜底图（Mermaid 不显示时看这个）：\n\n\n3 句话理解这张图：\n1. prototype 是“函数专属属性”，普通对象默认没有这个属性。  \n2. proto（或 [[Prototype]]）是“对象内部原型引用”，实例靠它连到原型对象。  \n3. constructor",
+          "size": "10KB",
+          "lastModified": "2026-05-06T08:14:15.383Z",
+          "wordCount": 8027
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "第09篇：JavaScript 数组",
+          "frontmatterTitle": "第09篇：JavaScript 数组",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "前端基础"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
+          "description": "从数组本质、length、空位、常用方法、副作用与现代不可变写法出发，系统讲清 JavaScript 数组最容易混淆的知识点。",
           "size": "21KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 16144
+          "lastModified": "2026-05-06T10:18:36.201Z",
+          "wordCount": 15397
         },
         {
           "type": "file",
@@ -3079,10 +3089,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：每次",
+          "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：",
           "size": "12KB",
-          "lastModified": "2026-05-06T03:09:55.024Z",
-          "wordCount": 8142
+          "lastModified": "2026-05-06T03:22:49.894Z",
+          "wordCount": 8317
         },
         {
           "type": "file",
@@ -3123,8 +3133,8 @@
           "attachments": [],
           "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
           "size": "3KB",
-          "lastModified": "2026-05-06T02:46:22.481Z",
-          "wordCount": 1202
+          "lastModified": "2026-05-06T03:33:32.351Z",
+          "wordCount": 1209
         },
         {
           "type": "file",
@@ -3142,10 +3152,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是伪数组对象，也可通过索引操作数据，通过 arguments.length 获取实参数量。伪数组并",
-          "size": "1KB",
-          "lastModified": "2026-05-06T02:46:34.900Z",
-          "wordCount": 416
+          "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是类数组对象（Array-like Object），不是真正的数组：\n\n- 具有数组的 lengt",
+          "size": "2KB",
+          "lastModified": "2026-05-06T03:40:03.615Z",
+          "wordCount": 1287
         },
         {
           "type": "file",
@@ -3163,31 +3173,33 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "你总结的这3条是基础骨架，只是实际场景中会有「<font style=\"color:DF2A3F;\">调用者是谁</font>」的特殊情况（比如DOM/定时器的隐式调用），才会让你觉得和实际代码对不上，咱们先把你的结论补全成精准规则，再对应到之前的场景，瞬间就能对上！\r\n\r\n\r\n\r\n✅ 你的原理解：普通函数指向window  \r\n🔴 补充：这只是<font style=\"color:FF0000",
-          "size": "13KB",
-          "lastModified": "2026-05-06T02:33:54.042Z",
-          "wordCount": 8926
+          "description": "你原来的 4 条结论抓住了主干，但有两处容易误导：\n\n1. this 不是“永远是 window”，而是取决于调用方式与是否严格模式。\n2. call/apply 的第一个参数不总是“默认 window”，严格模式与箭头函数要单独看。\n\n下面给你一版可直接记忆、能覆盖绝大多数面试和实战场景的规则。\n\n\n\nthis 在普通函数里由“调用方式”决定，不由“定义位置”决定。\n\n\n\n\n\n\n\n原结论“以函数",
+          "size": "9KB",
+          "lastModified": "2026-05-06T06:35:02.364Z",
+          "wordCount": 6216
         },
         {
           "type": "file",
-          "title": "06_JavaScript原型链",
-          "frontmatterTitle": "06_JavaScript原型链",
+          "title": "第06篇：JavaScript 原型链",
+          "frontmatterTitle": "第06篇：JavaScript 原型链",
           "fileTitle": "06_JavaScript原型链",
           "filename": "06_JavaScript原型链.md",
           "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "原型链",
+            "prototype",
+            "面向对象"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象(<font style=\"color:FF0000;\">prototype是属性名，它的值是一个对象，这个对象叫原型对象</font>),<font style=\"color:FF0000;\">默认</font>情况下，它是一个<font style=\"color:FF",
-          "size": "9KB",
-          "lastModified": "2026-05-06T02:33:54.038Z",
-          "wordCount": 7577
+          "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
+          "size": "11KB",
+          "lastModified": "2026-05-06T07:11:03.437Z",
+          "wordCount": 7945
         },
         {
           "type": "file",
@@ -3205,10 +3217,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">instanceof</font><font style=\"color:rgb(0, 0, 0);\"> </font><font style=\"color:rgb(0, 0, 0);\">是 JavaScript 中用于判断</font><font style=\"color:rgb(0, 0, 0);\">对象与构造函数 / 类之间原",
-          "size": "77KB",
-          "lastModified": "2026-05-06T02:33:54.041Z",
-          "wordCount": 61414
+          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "size": "81KB",
+          "lastModified": "2026-05-06T10:00:21.158Z",
+          "wordCount": 62598
         },
         {
           "type": "file",
@@ -3226,31 +3238,34 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "| 值/对象 | Object.prototype.toString.call() |\r\n| --- | --- |\r\n| {} | \"[object Object]\" |\r\n| [] | \"[object Array]\" |\r\n| null | \"[object Null]\" |\r\n| undefined | \"[object Undefined]\" |\r\n| function(){} | \"[",
-          "size": "7KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 5692
+          "description": "如果你现在被 prototype / proto / constructor 绕晕，先记这一句：\n\n\n\n\n\n\nASCII 兜底图（Mermaid 不显示时看这个）：\n\n\n3 句话理解这张图：\n1. prototype 是“函数专属属性”，普通对象默认没有这个属性。  \n2. proto（或 [[Prototype]]）是“对象内部原型引用”，实例靠它连到原型对象。  \n3. constructor",
+          "size": "10KB",
+          "lastModified": "2026-05-06T08:14:15.383Z",
+          "wordCount": 8027
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "第09篇：JavaScript 数组",
+          "frontmatterTitle": "第09篇：JavaScript 数组",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "前端基础"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
+          "description": "从数组本质、length、空位、常用方法、副作用与现代不可变写法出发，系统讲清 JavaScript 数组最容易混淆的知识点。",
           "size": "21KB",
-          "lastModified": "2026-05-06T02:33:54.037Z",
-          "wordCount": 16144
+          "lastModified": "2026-05-06T10:18:36.201Z",
+          "wordCount": 15397
         },
         {
           "type": "file",
@@ -18151,6 +18166,132 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "07_es5构造函数与es6语法糖Class",
+      "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
+      "fileTitle": "07_es5构造函数与es6语法糖Class",
+      "filename": "07_es5构造函数与es6语法糖Class.md",
+      "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+      "size": "81KB",
+      "lastModified": "2026-05-06T10:00:21.158Z",
+      "wordCount": 62598
+    },
+    {
+      "type": "file",
+      "title": "08_类型检测与原型链深度解析",
+      "frontmatterTitle": "08_类型检测与原型链深度解析",
+      "fileTitle": "08_类型检测与原型链深度解析",
+      "filename": "08_类型检测与原型链深度解析.md",
+      "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "如果你现在被 prototype / proto / constructor 绕晕，先记这一句：\n\n\n\n\n\n\nASCII 兜底图（Mermaid 不显示时看这个）：\n\n\n3 句话理解这张图：\n1. prototype 是“函数专属属性”，普通对象默认没有这个属性。  \n2. proto（或 [[Prototype]]）是“对象内部原型引用”，实例靠它连到原型对象。  \n3. constructor",
+      "size": "10KB",
+      "lastModified": "2026-05-06T08:14:15.383Z",
+      "wordCount": 8027
+    },
+    {
+      "type": "file",
+      "title": "05_this",
+      "frontmatterTitle": "05_this",
+      "fileTitle": "05_this",
+      "filename": "05_this.md",
+      "path": "我的总结/JS/辅助资料/05_this.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "你原来的 4 条结论抓住了主干，但有两处容易误导：\n\n1. this 不是“永远是 window”，而是取决于调用方式与是否严格模式。\n2. call/apply 的第一个参数不总是“默认 window”，严格模式与箭头函数要单独看。\n\n下面给你一版可直接记忆、能覆盖绝大多数面试和实战场景的规则。\n\n\n\nthis 在普通函数里由“调用方式”决定，不由“定义位置”决定。\n\n\n\n\n\n\n\n原结论“以函数",
+      "size": "9KB",
+      "lastModified": "2026-05-06T06:35:02.364Z",
+      "wordCount": 6216
+    },
+    {
+      "type": "file",
+      "title": "04_arguments的使用",
+      "frontmatterTitle": "04_arguments的使用",
+      "fileTitle": "04_arguments的使用",
+      "filename": "04_arguments的使用.md",
+      "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是类数组对象（Array-like Object），不是真正的数组：\n\n- 具有数组的 lengt",
+      "size": "2KB",
+      "lastModified": "2026-05-06T03:40:03.615Z",
+      "wordCount": 1287
+    },
+    {
+      "type": "file",
+      "title": "03_闭包与垃圾回收",
+      "frontmatterTitle": "03_闭包与垃圾回收",
+      "fileTitle": "03_闭包与垃圾回收",
+      "filename": "03_闭包与垃圾回收.md",
+      "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
+      "size": "3KB",
+      "lastModified": "2026-05-06T03:33:32.351Z",
+      "wordCount": 1209
+    },
+    {
+      "type": "file",
+      "title": "01_JavaScript变量与作用域",
+      "frontmatterTitle": "01_JavaScript变量与作用域",
+      "fileTitle": "01_JavaScript变量与作用域",
+      "filename": "01_JavaScript变量与作用域.md",
+      "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
+      "date": null,
+      "hasRealDate": false,
+      "order": null,
+      "tags": [
+        "我的总结",
+        "辅助资料"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：",
+      "size": "12KB",
+      "lastModified": "2026-05-06T03:22:49.894Z",
+      "wordCount": 8317
+    },
+    {
+      "type": "file",
       "title": "Vue",
       "frontmatterTitle": "Vue",
       "fileTitle": "Vue",
@@ -18169,27 +18310,6 @@
       "size": "1KB",
       "lastModified": "2026-05-06T03:11:24.509Z",
       "wordCount": 874
-    },
-    {
-      "type": "file",
-      "title": "01_JavaScript变量与作用域",
-      "frontmatterTitle": "01_JavaScript变量与作用域",
-      "fileTitle": "01_JavaScript变量与作用域",
-      "filename": "01_JavaScript变量与作用域.md",
-      "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：每次",
-      "size": "12KB",
-      "lastModified": "2026-05-06T03:09:55.024Z",
-      "wordCount": 8142
     },
     {
       "type": "file",
@@ -18232,48 +18352,6 @@
       "size": "2KB",
       "lastModified": "2026-05-06T02:47:01.673Z",
       "wordCount": 1226
-    },
-    {
-      "type": "file",
-      "title": "04_arguments的使用",
-      "frontmatterTitle": "04_arguments的使用",
-      "fileTitle": "04_arguments的使用",
-      "filename": "04_arguments的使用.md",
-      "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是伪数组对象，也可通过索引操作数据，通过 arguments.length 获取实参数量。伪数组并",
-      "size": "1KB",
-      "lastModified": "2026-05-06T02:46:34.900Z",
-      "wordCount": 416
-    },
-    {
-      "type": "file",
-      "title": "03_闭包与垃圾回收",
-      "frontmatterTitle": "03_闭包与垃圾回收",
-      "fileTitle": "03_闭包与垃圾回收",
-      "filename": "03_闭包与垃圾回收.md",
-      "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
-      "size": "3KB",
-      "lastModified": "2026-05-06T02:46:22.481Z",
-      "wordCount": 1202
     },
     {
       "type": "file",
@@ -18445,27 +18523,6 @@
     },
     {
       "type": "file",
-      "title": "05_this",
-      "frontmatterTitle": "05_this",
-      "fileTitle": "05_this",
-      "filename": "05_this.md",
-      "path": "我的总结/JS/辅助资料/05_this.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "你总结的这3条是基础骨架，只是实际场景中会有「<font style=\"color:DF2A3F;\">调用者是谁</font>」的特殊情况（比如DOM/定时器的隐式调用），才会让你觉得和实际代码对不上，咱们先把你的结论补全成精准规则，再对应到之前的场景，瞬间就能对上！\r\n\r\n\r\n\r\n✅ 你的原理解：普通函数指向window  \r\n🔴 补充：这只是<font style=\"color:FF0000",
-      "size": "13KB",
-      "lastModified": "2026-05-06T02:33:54.042Z",
-      "wordCount": 8926
-    },
-    {
-      "type": "file",
       "title": "16_前端模块导入与导出",
       "frontmatterTitle": "16_前端模块导入与导出",
       "fileTitle": "16_前端模块导入与导出",
@@ -18484,27 +18541,6 @@
       "size": "9KB",
       "lastModified": "2026-05-06T02:33:54.042Z",
       "wordCount": 6290
-    },
-    {
-      "type": "file",
-      "title": "07_es5构造函数与es6语法糖Class",
-      "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
-      "fileTitle": "07_es5构造函数与es6语法糖Class",
-      "filename": "07_es5构造函数与es6语法糖Class.md",
-      "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "<font style=\"color:rgb(0, 0, 0);\">instanceof</font><font style=\"color:rgb(0, 0, 0);\"> </font><font style=\"color:rgb(0, 0, 0);\">是 JavaScript 中用于判断</font><font style=\"color:rgb(0, 0, 0);\">对象与构造函数 / 类之间原",
-      "size": "77KB",
-      "lastModified": "2026-05-06T02:33:54.041Z",
-      "wordCount": 61414
     },
     {
       "type": "file",
@@ -18550,27 +18586,6 @@
     },
     {
       "type": "file",
-      "title": "06_JavaScript原型链",
-      "frontmatterTitle": "06_JavaScript原型链",
-      "fileTitle": "06_JavaScript原型链",
-      "filename": "06_JavaScript原型链.md",
-      "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象(<font style=\"color:FF0000;\">prototype是属性名，它的值是一个对象，这个对象叫原型对象</font>),<font style=\"color:FF0000;\">默认</font>情况下，它是一个<font style=\"color:FF",
-      "size": "9KB",
-      "lastModified": "2026-05-06T02:33:54.038Z",
-      "wordCount": 7577
-    },
-    {
-      "type": "file",
       "title": "15_Map_Set事件订阅管理",
       "frontmatterTitle": "15_Map_Set事件订阅管理",
       "fileTitle": "15_Map_Set事件订阅管理",
@@ -18589,48 +18604,6 @@
       "size": "6KB",
       "lastModified": "2026-05-06T02:33:54.038Z",
       "wordCount": 3584
-    },
-    {
-      "type": "file",
-      "title": "08_类型检测与原型链深度解析",
-      "frontmatterTitle": "08_类型检测与原型链深度解析",
-      "fileTitle": "08_类型检测与原型链深度解析",
-      "filename": "08_类型检测与原型链深度解析.md",
-      "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "| 值/对象 | Object.prototype.toString.call() |\r\n| --- | --- |\r\n| {} | \"[object Object]\" |\r\n| [] | \"[object Array]\" |\r\n| null | \"[object Null]\" |\r\n| undefined | \"[object Undefined]\" |\r\n| function(){} | \"[",
-      "size": "7KB",
-      "lastModified": "2026-05-06T02:33:54.037Z",
-      "wordCount": 5692
-    },
-    {
-      "type": "file",
-      "title": "09_JavaScript数组",
-      "frontmatterTitle": "09_JavaScript数组",
-      "fileTitle": "09_JavaScript数组",
-      "filename": "09_JavaScript数组.md",
-      "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-      "size": "21KB",
-      "lastModified": "2026-05-06T02:33:54.037Z",
-      "wordCount": 16144
     },
     {
       "type": "file",
@@ -18694,6 +18667,53 @@
       "size": "25KB",
       "lastModified": "2026-05-06T01:07:00.445Z",
       "wordCount": 24920
+    },
+    {
+      "type": "file",
+      "title": "第06篇：JavaScript 原型链",
+      "frontmatterTitle": "第06篇：JavaScript 原型链",
+      "fileTitle": "06_JavaScript原型链",
+      "filename": "06_JavaScript原型链.md",
+      "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
+      "date": "2026-05-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "原型链",
+        "prototype",
+        "面向对象"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
+      "size": "11KB",
+      "lastModified": "2026-05-06T07:11:03.437Z",
+      "wordCount": 7945
+    },
+    {
+      "type": "file",
+      "title": "第09篇：JavaScript 数组",
+      "frontmatterTitle": "第09篇：JavaScript 数组",
+      "fileTitle": "09_JavaScript数组",
+      "filename": "09_JavaScript数组.md",
+      "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
+      "date": "2026-05-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "数组",
+        "Array",
+        "稀疏数组",
+        "前端基础"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从数组本质、length、空位、常用方法、副作用与现代不可变写法出发，系统讲清 JavaScript 数组最容易混淆的知识点。",
+      "size": "21KB",
+      "lastModified": "2026-05-06T10:18:36.201Z",
+      "wordCount": 15397
     },
     {
       "type": "file",
@@ -26975,10 +26995,10 @@
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：每次",
+                  "description": "+ 作用域：函数作用域或全局作用域\r\n+ 提升机制：声明提升到作用域顶部，赋值为 undefined\r\n+ 重复声明：允许在同一作用域重复声明\r\n+ 循环问题：循环变量共享同一个绑定\r\n+ 访问特点：声明前访问返回 undefined\r\n\r\n\r\n\r\n+ 作用域：块级作用域（{} 内有效）\r\n+ 提升机制：有提升但存在暂时性死区（TDZ）\r\n+ 重复声明：不允许在同一作用域重复声明\r\n+ 循环优势：",
                   "size": "12KB",
-                  "lastModified": "2026-05-06T03:09:55.024Z",
-                  "wordCount": 8142
+                  "lastModified": "2026-05-06T03:22:49.894Z",
+                  "wordCount": 8317
                 },
                 {
                   "type": "file",
@@ -27019,8 +27039,8 @@
                   "attachments": [],
                   "description": "1. 垃圾回收机制  \nJavaScript 引擎通过自动垃圾回收机制管理内存，核心目标是识别并释放程序中不再使用的内存。\n\n主要算法：\n\n- 标记清除（主流）\n  - 标记阶段：从根对象（全局变量等）出发，遍历所有可达对象，并标记为“活动”\n  - 清除阶段：回收所有未被标记为“活动”的对象所占用的内存\n- 标记整理  \n在标记清除基础上增加整理阶段，将所有存活对象移动到内存一端，消除碎片，使空",
                   "size": "3KB",
-                  "lastModified": "2026-05-06T02:46:22.481Z",
-                  "wordCount": 1202
+                  "lastModified": "2026-05-06T03:33:32.351Z",
+                  "wordCount": 1209
                 },
                 {
                   "type": "file",
@@ -27038,10 +27058,10 @@
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是伪数组对象，也可通过索引操作数据，通过 arguments.length 获取实参数量。伪数组并",
-                  "size": "1KB",
-                  "lastModified": "2026-05-06T02:46:34.900Z",
-                  "wordCount": 416
+                  "description": "在调用函数时，浏览器每次都会传递两个隐含参数：\n\n1. 函数的上下文对象 this\n2. 封装实参的对象 arguments\n\n当我们不确定有多少参数传递时，可以使用 arguments 获取。在 JS 中，arguments 是当前函数的内置对象，存储了传递的所有实参。\n\n（1）arguments 是类数组对象（Array-like Object），不是真正的数组：\n\n- 具有数组的 lengt",
+                  "size": "2KB",
+                  "lastModified": "2026-05-06T03:40:03.615Z",
+                  "wordCount": 1287
                 },
                 {
                   "type": "file",
@@ -27059,31 +27079,33 @@
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "你总结的这3条是基础骨架，只是实际场景中会有「<font style=\"color:DF2A3F;\">调用者是谁</font>」的特殊情况（比如DOM/定时器的隐式调用），才会让你觉得和实际代码对不上，咱们先把你的结论补全成精准规则，再对应到之前的场景，瞬间就能对上！\r\n\r\n\r\n\r\n✅ 你的原理解：普通函数指向window  \r\n🔴 补充：这只是<font style=\"color:FF0000",
-                  "size": "13KB",
-                  "lastModified": "2026-05-06T02:33:54.042Z",
-                  "wordCount": 8926
+                  "description": "你原来的 4 条结论抓住了主干，但有两处容易误导：\n\n1. this 不是“永远是 window”，而是取决于调用方式与是否严格模式。\n2. call/apply 的第一个参数不总是“默认 window”，严格模式与箭头函数要单独看。\n\n下面给你一版可直接记忆、能覆盖绝大多数面试和实战场景的规则。\n\n\n\nthis 在普通函数里由“调用方式”决定，不由“定义位置”决定。\n\n\n\n\n\n\n\n原结论“以函数",
+                  "size": "9KB",
+                  "lastModified": "2026-05-06T06:35:02.364Z",
+                  "wordCount": 6216
                 },
                 {
                   "type": "file",
-                  "title": "06_JavaScript原型链",
-                  "frontmatterTitle": "06_JavaScript原型链",
+                  "title": "第06篇：JavaScript 原型链",
+                  "frontmatterTitle": "第06篇：JavaScript 原型链",
                   "fileTitle": "06_JavaScript原型链",
                   "filename": "06_JavaScript原型链.md",
                   "path": "我的总结/JS/辅助资料/06_JavaScript原型链.md",
-                  "date": null,
-                  "hasRealDate": false,
+                  "date": "2026-05-06T00:00:00.000Z",
+                  "hasRealDate": true,
                   "order": null,
                   "tags": [
-                    "我的总结",
-                    "辅助资料"
+                    "JavaScript",
+                    "原型链",
+                    "prototype",
+                    "面向对象"
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "我们所创建的每一个函数，解析器都会向函数中添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象(<font style=\"color:FF0000;\">prototype是属性名，它的值是一个对象，这个对象叫原型对象</font>),<font style=\"color:FF0000;\">默认</font>情况下，它是一个<font style=\"color:FF",
-                  "size": "9KB",
-                  "lastModified": "2026-05-06T02:33:54.038Z",
-                  "wordCount": 7577
+                  "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
+                  "size": "11KB",
+                  "lastModified": "2026-05-06T07:11:03.437Z",
+                  "wordCount": 7945
                 },
                 {
                   "type": "file",
@@ -27101,10 +27123,10 @@
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "<font style=\"color:rgb(0, 0, 0);\">instanceof</font><font style=\"color:rgb(0, 0, 0);\"> </font><font style=\"color:rgb(0, 0, 0);\">是 JavaScript 中用于判断</font><font style=\"color:rgb(0, 0, 0);\">对象与构造函数 / 类之间原",
-                  "size": "77KB",
-                  "lastModified": "2026-05-06T02:33:54.041Z",
-                  "wordCount": 61414
+                  "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+                  "size": "81KB",
+                  "lastModified": "2026-05-06T10:00:21.158Z",
+                  "wordCount": 62598
                 },
                 {
                   "type": "file",
@@ -27122,31 +27144,34 @@
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "| 值/对象 | Object.prototype.toString.call() |\r\n| --- | --- |\r\n| {} | \"[object Object]\" |\r\n| [] | \"[object Array]\" |\r\n| null | \"[object Null]\" |\r\n| undefined | \"[object Undefined]\" |\r\n| function(){} | \"[",
-                  "size": "7KB",
-                  "lastModified": "2026-05-06T02:33:54.037Z",
-                  "wordCount": 5692
+                  "description": "如果你现在被 prototype / proto / constructor 绕晕，先记这一句：\n\n\n\n\n\n\nASCII 兜底图（Mermaid 不显示时看这个）：\n\n\n3 句话理解这张图：\n1. prototype 是“函数专属属性”，普通对象默认没有这个属性。  \n2. proto（或 [[Prototype]]）是“对象内部原型引用”，实例靠它连到原型对象。  \n3. constructor",
+                  "size": "10KB",
+                  "lastModified": "2026-05-06T08:14:15.383Z",
+                  "wordCount": 8027
                 },
                 {
                   "type": "file",
-                  "title": "09_JavaScript数组",
-                  "frontmatterTitle": "09_JavaScript数组",
+                  "title": "第09篇：JavaScript 数组",
+                  "frontmatterTitle": "第09篇：JavaScript 数组",
                   "fileTitle": "09_JavaScript数组",
                   "filename": "09_JavaScript数组.md",
                   "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-                  "date": null,
-                  "hasRealDate": false,
+                  "date": "2026-05-06T00:00:00.000Z",
+                  "hasRealDate": true,
                   "order": null,
                   "tags": [
-                    "我的总结",
-                    "辅助资料"
+                    "JavaScript",
+                    "数组",
+                    "Array",
+                    "稀疏数组",
+                    "前端基础"
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
+                  "description": "从数组本质、length、空位、常用方法、副作用与现代不可变写法出发，系统讲清 JavaScript 数组最容易混淆的知识点。",
                   "size": "21KB",
-                  "lastModified": "2026-05-06T02:33:54.037Z",
-                  "wordCount": 16144
+                  "lastModified": "2026-05-06T10:18:36.201Z",
+                  "wordCount": 15397
                 },
                 {
                   "type": "file",
@@ -34536,5 +34561,5 @@
   ],
   "totalNotes": 353,
   "totalCategories": 82,
-  "lastUpdated": "2026-05-06T03:11:31.601Z"
+  "lastUpdated": "2026-05-06T10:19:41.193Z"
 }

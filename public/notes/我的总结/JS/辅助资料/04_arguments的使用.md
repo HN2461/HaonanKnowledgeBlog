@@ -1,4 +1,5 @@
 ## 四：arguments 的使用
+
 在调用函数时，浏览器每次都会传递两个隐含参数：
 
 1. 函数的上下文对象 `this`
@@ -6,11 +7,21 @@
 
 当我们不确定有多少参数传递时，可以使用 `arguments` 获取。在 JS 中，`arguments` 是当前函数的内置对象，存储了传递的所有实参。
 
-（1）`arguments` 是伪数组对象，也可通过索引操作数据，通过 `arguments.length` 获取实参数量。伪数组并不是真正数组：
+（1）`arguments` 是**类数组对象**（Array-like Object），不是真正的数组：
 
 - 具有数组的 `length` 属性
-- 按索引顺序存储
-- 没有真正数组的一些方法
+- 按索引顺序存储数据
+- 没有真正数组的方法（如 `map`、`forEach`、`push` 等）
+- 有一个特殊属性 `callee`，指向当前执行的函数本身
+
+```javascript
+function fn() {
+  console.log(arguments.length)    // 实参数量
+  console.log(arguments[0])        // 第一个实参
+  console.log(arguments.callee === fn)  // true，指向 fn 本身
+}
+fn(1, 2, 3)
+```
 
 （2）在调用函数时，传递的实参都会在 `arguments` 中保存。
 
@@ -18,3 +29,37 @@
 
 - `arguments[0]` 表示第一个实参
 - `arguments[1]` 表示第二个实参
+
+---
+
+### 重要补充
+
+**箭头函数没有 `arguments`**：ES6 箭头函数没有自己的 `arguments` 对象，如果访问，会沿用外层普通函数的 `arguments`。这种情况下应使用 rest parameters（剩余参数）代替。
+
+```javascript
+// 普通函数：有 arguments
+function fn() {
+  console.log(arguments)  // [Arguments] { '0': 1, '1': 2 }
+}
+fn(1, 2)
+
+// 箭头函数：没有 arguments
+const arrowFn = () => {
+  console.log(arguments)  // ReferenceError
+}
+arrowFn(1, 2)
+```
+
+**ES6 推荐替代方案：rest parameters（剩余参数）**
+
+`...args` 是更现代的做法，它创建一个真实数组，可以直接使用数组方法：
+
+```javascript
+function fn(...args) {
+  console.log(args)       // [1, 2, 3]，是真实数组
+  console.log(args.map(x => x * 2))  // [2, 4, 6]
+}
+fn(1, 2, 3)
+```
+
+`arguments` 是历史遗留用法，新代码推荐使用 rest parameters。
