@@ -5,6 +5,34 @@ export const dailyChangeSummary = {
   date: '2026-05-06',
   items: [
     {
+      category: '功能更新',
+      time: '21:15',
+      title: '图片灯箱升级为可缩放拖拽的成熟查看器',
+      summary: '将站内图片与 Mermaid 图预览从“静态弹层”升级为支持滚轮缩放、双击放大、拖拽平移和键盘控制的查看器，放大后可左右上下拖动查看细节。',
+      content: '第一点：重写 `src/components/ImageLightbox.vue`，将原先只做居中展示的简易弹层升级为带顶部工具栏的查看器，支持放大、缩小、重置、Esc 关闭，并实时显示当前缩放比例；第二点：新增滚轮缩放、双击快速放大/还原、按住拖拽平移和方向键平移能力，让图片和 Mermaid 图在放大后可以像成熟产品那样查看局部细节，而不是只能弹出一个固定大小的预览；第三点：新增 `src/utils/lightboxTransform.js`，抽离缩放边界、拖拽边界和以鼠标位置为中心缩放的几何计算，避免复杂交互逻辑全部堆在组件里；第四点：补充 `src/utils/__tests__/lightboxTransform.test.js`，覆盖缩放夹取、边界约束和缩放投影计算，降低后续继续打磨查看器时引入交互回归的风险。'
+    },
+    {
+      category: '功能更新',
+      time: '21:01',
+      title: 'Mermaid 图表现已支持点击放大预览',
+      summary: '把 Markdown 中渲染出的 Mermaid 图接入现有图片灯箱，站内图表现在支持点击放大和键盘触发预览，不再只能原尺寸查看。',
+      content: '第一点：在 `src/components/MarkdownRenderer.vue` 中为 Mermaid 渲染后的 `svg` 绑定点击与键盘事件，直接复用现有 `imageClick` 事件和 `ImageLightbox` 组件，不额外新建一套预览弹层；第二点：新增 `src/utils/mermaidPreview.js`，把渲染后的 SVG 标记安全转成 `data:image/svg+xml` 地址，保证灯箱可以像预览普通图片一样预览站内 Mermaid 图；第三点：补充 `src/utils/__tests__/mermaidPreview.test.js`，覆盖 SVG 预览地址生成逻辑，避免后续修改时把图表放大能力悄悄弄坏；第四点：为 Mermaid SVG 增加 `cursor`、`focus` 和轻微 hover 反馈，让主人更容易意识到“这张图可以点开看大图”。'
+    },
+    {
+      category: '功能更新',
+      time: '20:46',
+      title: 'Markdown 现已支持 Mermaid 图表渲染并重写第八篇类型检测笔记',
+      summary: '为站内 Markdown 渲染器补上 Mermaid 支持，修复 `mermaid` 代码块不显示的问题，同时重写 `08_类型检测与原型链深度解析.md`，补齐各类类型检测方法的适用场景、缺点与面试回答模板。',
+      content: '第一点：在 `src/utils/markdown.js` 中为 `mermaid` fenced code block 增加专门渲染分支，输出独立的 Mermaid 容器与源码兜底结构，不再把图表当普通代码块处理；第二点：在 `src/components/MarkdownRenderer.vue` 中接入 `mermaid` 运行时，采用 `initialize` + `run` 的方式在 DOM 更新后自动把 `.mermaid` 节点渲染为 SVG，并在失败时自动回退到源码展示；第三点：补充 `src/utils/__tests__/markdownCodeBlocks.test.js`，覆盖 Mermaid fenced block 的 HTML 输出，确保后续回归能及时发现图表渲染结构变化；第四点：重写 `public/notes/我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md`，补齐 `typeof`、`instanceof`、`constructor`、`Array.isArray()`、`Object.prototype.toString.call()` 的适用场景与缺点，新增原型链关系图、面试追问版回答模板和自测题，方便主人直接拿来复述；第五点：补齐该笔记的 frontmatter，统一标题、日期、分类、标签和摘要，方便列表页与搜索页稳定读取。'
+    },
+    {
+      category: '功能更新',
+      time: '20:41',
+      title: 'Markdown 代码块新增行号与自动折叠',
+      summary: '给站点 Markdown 代码块补上头部信息、行号 gutter 和超过 10 行自动折叠/展开能力，同时保留原有语法高亮与复制按钮。',
+      content: '第一点：在 `src/utils/markdown.js` 里接管 fenced code block 渲染，统一输出代码块头部、语言标签、总行数、行号 gutter 与折叠按钮，不再依赖后置 DOM 拼装来生成结构；第二点：新增 `src/utils/markdownCodeBlocks.js` 作为代码块辅助工具，集中处理语言名规范化、行数统计、行号生成和折叠阈值，方便后续复用与维护；第三点：重构 `src/components/MarkdownRenderer.vue` 的交互层，保留原有复制按钮能力，并把复制逻辑改成更稳的事件绑定方式，同时为超过 10 行的代码块补上展开/收起交互；第四点：补充 `src/utils/__tests__/markdownCodeBlocks.test.js`，覆盖语言标签、行数统计与渲染输出的关键断言，确保新代码块样式和折叠规则可回归验证。'
+    },
+    {
       category: '内容上新',
       time: '18:15',
       title: '重写 JavaScript 数组笔记并修正关键概念错误',

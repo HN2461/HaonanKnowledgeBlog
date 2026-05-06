@@ -2,23 +2,84 @@ import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-toc-done-right'
 import hljs from 'highlight.js/lib/common'
+import {
+  buildCodeLineNumbers,
+  CODE_BLOCK_COLLAPSE_LINES,
+  countCodeLines,
+  getCodeLanguageLabel,
+  normalizeCodeLanguage
+} from './markdownCodeBlocks'
 
 // 创建 Markdown 实例
 const md = new MarkdownIt({
   html: true,
   linkify: true,
-  typographer: true,
-  highlight: function (str, lang) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return `<pre class="hljs"><code class="language-${lang}">${
-          hljs.highlight(str, { language: lang, ignoreIllegals: true }).value
-        }</code></pre>`
-      } catch (__) {}
-    }
-    return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`
-  }
+  typographer: true
 })
+
+const escapeHtml = (value) => md.utils.escapeHtml(String(value ?? ''))
+
+function highlightCode(str, language) {
+  if (language && hljs.getLanguage(language)) {
+    try {
+      return hljs.highlight(str, { language, ignoreIllegals: true }).value
+    } catch (__) {}
+  }
+
+  return escapeHtml(str)
+}
+
+function renderCodeBlock(str, info = '') {
+  const language = normalizeCodeLanguage(info)
+  const lineCount = countCodeLines(str)
+  const lineNumbers = buildCodeLineNumbers(lineCount)
+  const highlightedCode = highlightCode(str, language)
+  const languageClass = language ? ` language-${escapeHtml(language)}` : ''
+  const languageLabel = escapeHtml(getCodeLanguageLabel(language))
+  const isCollapsible = lineCount > CODE_BLOCK_COLLAPSE_LINES
+  const collapsibleClasses = isCollapsible ? ' is-collapsible is-collapsed' : ''
+  const toggleButton = isCollapsible
+    ? `
+      <div class="code-block__collapse">
+        <button type="button" class="code-block__toggle" aria-expanded="false">展开</button>
+      </div>
+    `
+    : ''
+
+  return `
+    <div class="code-block${collapsibleClasses}" data-line-count="${lineCount}" style="--code-visible-lines: ${CODE_BLOCK_COLLAPSE_LINES};">
+      <div class="code-block__header">
+        <div class="code-block__meta">
+          <span class="code-block__language">${languageLabel}</span>
+          <span class="code-block__line-count">共 ${lineCount} 行</span>
+        </div>
+        <div class="code-block__actions"></div>
+      </div>
+      <div class="code-block__content">
+        <div class="code-block__gutter" aria-hidden="true">${lineNumbers}</div>
+        <div class="code-block__viewport">
+          <pre class="hljs code-block__pre"><code class="code-block__code${languageClass}">${highlightedCode}</code></pre>
+        </div>
+        ${toggleButton}
+      </div>
+    </div>
+  `
+}
+
+function renderMermaidBlock(str = '') {
+  const diagramSource = String(str || '').trim()
+  const escapedSource = escapeHtml(diagramSource)
+
+  return `
+    <figure class="mermaid-diagram">
+      <div class="mermaid-diagram__canvas">
+        <div class="mermaid">${escapedSource}</div>
+      </div>
+      <figcaption class="mermaid-diagram__error">图表渲染失败，已回退为源码展示。</figcaption>
+      <pre class="hljs mermaid-diagram__fallback"><code>${escapedSource}</code></pre>
+    </figure>
+  `
+}
 
 // 统一的 slugify 函数
 const slugify = (s) => {
@@ -43,6 +104,21 @@ md.use(toc, {
   listType: 'ul',
   level: [2, 3, 4]
 })
+
+md.renderer.rules.fence = function (tokens, idx) {
+  const token = tokens[idx]
+  const language = normalizeCodeLanguage(token.info)
+
+  if (language === 'mermaid') {
+    return renderMermaidBlock(token.content)
+  }
+
+  return renderCodeBlock(token.content, token.info)
+}
+
+md.renderer.rules.code_block = function (tokens, idx) {
+  return renderCodeBlock(tokens[idx].content)
+}
 
 // 自定义渲染规则
 const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
