@@ -107,10 +107,6 @@
                   预计 {{ readingTime }} 分钟
                 </span>
               </div>
-              
-              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-                <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
-              </div>
             </header>
 
             <div class="note-attachments" v-if="attachments.length > 0">
@@ -1203,21 +1199,6 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .meta-item svg {
   opacity: 0.6;
-}
-
-.note-tags {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  padding: 4px 10px;
-  border: 1px dashed rgba(var(--primary-color-rgb), 0.24);
-  background-color: transparent;
-  color: var(--text-tertiary);
-  border-radius: 999px;
-  font-size: 12px;
 }
 
 .note-attachments {

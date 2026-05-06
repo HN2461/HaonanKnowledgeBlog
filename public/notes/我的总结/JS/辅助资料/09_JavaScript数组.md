@@ -1,3 +1,16 @@
+---
+title: JavaScript 数组深度解析
+date: 2026-05-06
+category: 我的总结
+tags:
+  - JavaScript
+  - 数组
+  - Array
+  - 稀疏数组
+  - 常用方法
+description: 从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。
+---
+
 # JavaScript 数组深度解析
 ## 一、数组的本质理解
 ### 1.1 数组是特殊的对象
@@ -25,7 +38,7 @@ arr.customProp = "test";
 
 ### 1.2 length属性的魔法
 ```javascript
-// length不是简单的属性，而是有特殊逻辑的访问器
+// length不是访问器属性，但它是一个带特殊规则的数据属性
 const arr = [1, 2, 3];
 
 // 1. 修改length会触发什么？
@@ -36,8 +49,8 @@ console.log(arr[2]); // undefined（属性已被删除）
 
 // 2. 设置更大的length
 arr.length = 5;
-// 不会创建真实属性，只是预留空间
-console.log(1 in arr); // true
+// 不会创建真实属性，只是把数组长度改大，中间位置会变成空位
+console.log(0 in arr); // true（原来第0项还在）
 console.log(3 in arr); // false（空位，不是undefined值）
 
 // 3. 索引赋值会自动更新length
@@ -62,7 +75,7 @@ const arr2 = new Array(5);
 // 验证空位
 const sparse = new Array(3);
 console.log(0 in sparse); // false（空位）
-console.log(sparse[0]); // undefined（但这是访问器返回的，不是真实值）
+console.log(sparse[0]); // undefined（读取结果虽然是undefined，但这个位置并没有真实属性）
 
 const dense = [undefined, undefined, undefined];
 console.log(0 in dense); // true（真实存在undefined值）
@@ -102,6 +115,45 @@ dense.forEach((v, i) => console.log(i, v));
 // 输出 0 1, 1 undefined, 2 3
 ```
 
+### 2.3 空位在不同方法中的表现速查
+```javascript
+const sparse = [1, , 3];
+
+// 1. 这些方法会跳过空位，不执行回调
+sparse.forEach((v, i) => console.log('forEach', i, v)); // 只看见索引 0 和 2
+sparse.map(x => x * 2);      // [2, empty, 6]（保留空位）
+sparse.filter(Boolean);      // [1, 3]（结果变成密集数组）
+sparse.some(x => x === 3);   // true（跳过空位）
+sparse.every(x => x > 0);    // true（跳过空位）
+[1, , 3].reduce((acc, cur) => acc + cur, 0); // 4（跳过空位）
+
+// 2. 这些方法会“访问空位”，读取结果当成 undefined
+sparse.find((v, i) => {
+  console.log('find', i, v);
+  return false;
+});
+// 会输出 0 1、1 undefined、2 3
+
+[...sparse];         // [1, undefined, 3]
+Array.from(sparse);  // [1, undefined, 3]
+
+// 3. 这些方法会保留空位本身
+sparse.slice();      // [1, empty, 3]
+sparse.concat([]);   // [1, empty, 3]
+
+// 4. 这些方法会把空位“抹平”或移除
+[1, , [2]].flat();   // [1, 2]
+
+// 5. 这些方法会把空位按空字符串处理
+sparse.join('-');    // '1--3'
+```
+
+记忆口诀：
+
+- 遍历回调类里，不是所有方法都跳过空位，`find()` / `findIndex()` 是比较容易记错的一组
+- 想判断“这个位置有没有真实元素”，用 `in` 比直接读值更可靠
+- “读出来是 `undefined`” 不等于 “这个位置真的有一个值为 `undefined` 的元素”
+
 
 
 # JavaScript 数组方法完全指南
@@ -126,11 +178,14 @@ arr.unshift(0, 1);        // arr = [0, 1, 2, 3]，返回4
 arr.shift();              // arr = [1, 2, 3]，返回0
 ```
 
-这4个方法，参数多也是直接忽略不计，只看第一个
+注意：
+
+- `push()` 和 `unshift()` 可以一次传多个参数，不会只看第一个
+- `pop()` 和 `shift()` 本身也不是“传多个参数后只看第一个”，而是它们本来就不靠传参来插入元素
 
 ### 3. 通用修改方法
 ```javascript
-// splice() - 万能修改器（核心！），返回：修改后的原数组
+// splice() - 万能修改器（核心！），返回：被删除的元素数组
 let arr = ['a', 'b', 'c', 'd'];
 // 参数：
 // 起始索引（可为负数，从数组末尾倒数，如 -1 指最后一位），
@@ -140,10 +195,10 @@ let arr = ['a', 'b', 'c', 'd'];
 arr.splice(1, 2);         // arr = ['a', 'd']，返回['b', 'c']
 
 // 插入：arr.splice(start, 0, ...items)
-arr.splice(1, 0, 'x', 'y'); // arr = ['a', 'x', 'y', 'd']
+arr.splice(1, 0, 'x', 'y'); // arr = ['a', 'x', 'y', 'd']，返回[]
 
 // 替换：arr.splice(start, deleteCount, ...items)
-arr.splice(1, 2, 'm', 'n'); // arr = ['a', 'm', 'n', 'd']
+arr.splice(1, 2, 'm', 'n'); // arr = ['a', 'm', 'n', 'd']，返回['x', 'y']
 ```
 
 ### 4. 重排序方法
@@ -167,7 +222,7 @@ let users = [
 users.sort((a, b) => a.age - b.age);
 
 // reverse() - 反转
-arr.reverse();            // arr = [10, 3, 2, 1]
+arr.reverse();            // arr = [1, 2, 3, 10]
 ```
 
 ### 5. 填充与复制方法
@@ -186,21 +241,22 @@ arr.fill(1, 1, 3);                     // [0, 1, 1, 0, 0]
 // target：必需，复制到的目标起始索引（从该位置开始覆盖）；
 // start：必需，复制源的起始索引（从该位置开始取元素）；
 // end：可选，复制源的结束索引（不包含该位置，默认到数组末尾）。
-let arr = [1, 2, 3, 4, 5];
-arr.copyWithin(0, 3); // 结果：[4, 5, 3, 4, 5]
+let arrCopy1 = [1, 2, 3, 4, 5];
+arrCopy1.copyWithin(0, 3); // 结果：[4, 5, 3, 4, 5]
 // 解读：从索引3开始取源元素（4、5），复制到目标索引0，覆盖原有元素
 // 覆盖逻辑：索引0→4，索引1→5，索引2及以后保留原内容（3、4、5）
 
-arr.copyWithin(0, 1, 3); // 结果：[5, 3, 3, 4, 5]
-// 解读：从索引1到2（end=3不包含）取源元素（5、3），复制到目标索引0
-// 覆盖逻辑：索引0→5，索引1→3，后续保留原内容
+let arrCopy2 = [1, 2, 3, 4, 5];
+arrCopy2.copyWithin(0, 1, 3); // 结果：[2, 3, 3, 4, 5]
+// 解读：从索引1到2（end=3不包含）取源元素（2、3），复制到目标索引0
+// 覆盖逻辑：索引0→2，索引1→3，后续保留原内容
 ```
 
 ## 二、不改变原数组的方法
 ### 1. 遍历迭代类（高频使用）
 #### **forEach()** - 简单遍历
 ```javascript
-// 遍历数组（无法中途停止），返回underfine
+// 遍历数组（无法中途停止），返回undefined
 [1, 2, 3].forEach((item, index, array) => {
     console.log(`索引${index}: 值${item}`);
     // 注意：return不能中断循环！
@@ -214,7 +270,7 @@ for (let item of [1, 2, 3]) {
 ```
 
 #### **map()** - 映射转换
-**<font style="color:rgb(0, 0, 0);">返回新数组</font>**<font style="color:rgb(0, 0, 0);">：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；不跳过空值返回underfine</font>
+**<font style="color:rgb(0, 0, 0);">返回新数组</font>**<font style="color:rgb(0, 0, 0);">：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；遇到空位会跳过回调，但结果中会保留空位</font>
 
 ```javascript
 // 创建新数组
@@ -230,7 +286,7 @@ let userObjects = users.map((name, index) => ({
 ```
 
 #### **filter()** - 过滤筛选
-**<font style="color:rgb(0, 0, 0);">返回值</font>**<font style="color:rgb(0, 0, 0);">：新数组（仅包含回调返回 </font>`<font style="color:rgb(0, 0, 0);">true</font>`<font style="color:rgb(0, 0, 0);"> 的元素，长度可能小于原数组）；跳过空值</font>
+**<font style="color:rgb(0, 0, 0);">返回值</font>**<font style="color:rgb(0, 0, 0);">：新数组（仅包含回调返回 </font>`<font style="color:rgb(0, 0, 0);">true</font>`<font style="color:rgb(0, 0, 0);"> 的元素，长度可能小于原数组）；跳过空位</font>
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -295,6 +351,22 @@ let grouped = people.reduce((acc, person) => {
 // indexOf() / lastIndexOf() - 索引查找
 ['a', 'b', 'a'].indexOf('a');    // 0
 ['a', 'b', 'a'].lastIndexOf('a'); // 2
+```
+
+#### **includes() 和 indexOf() 的细节差异**
+```javascript
+// 1. includes() 可以正确识别 NaN
+[NaN].includes(NaN);    // true
+[NaN].indexOf(NaN);     // -1
+
+// 2. 空位更能看出二者的底层差异
+const holeArr = new Array(1);
+
+holeArr.includes(undefined); // true
+// 原因：includes() 会去“读取这个位置的值”，空位读取结果是 undefined
+
+holeArr.indexOf(undefined);  // -1
+// 原因：indexOf() 更关心“这个位置有没有真实元素”，空位不算真实元素
 ```
 
 #### **条件查找**
@@ -377,6 +449,22 @@ arr.slice(1, -1);    // [2, 3, 4]（去掉首尾）
 
 // 创建浅拷贝
 let copy = arr.slice();  // 相当于 [...arr]
+```
+
+#### **slice() 和展开运算符的一个细节**
+```javascript
+// 对普通密集数组，两者常常都能拿来做浅拷贝
+const dense = [1, 2, 3];
+const a1 = dense.slice();
+const a2 = [...dense];
+
+// 但对稀疏数组，不完全等价
+const sparse = [1, , 3];
+const copy1 = sparse.slice(); // 保留空位
+const copy2 = [...sparse];    // 空位会被读成 undefined
+
+console.log(1 in copy1); // false
+console.log(1 in copy2); // true
 ```
 
 #### **字符串转换**
@@ -471,6 +559,25 @@ Array.isArray(Array.prototype); // true
 typeof [1, 2];                // 'object'（不够准确）
 ```
 
+#### **toSorted() / toReversed() / toSpliced() / with()** - 现代复制型方法（ES2023）
+```javascript
+let arr = [3, 1, 2];
+
+// 不改原数组，返回新数组
+let sorted = arr.toSorted((a, b) => a - b); // [1, 2, 3]
+console.log(arr); // [3, 1, 2]
+
+let reversed = arr.toReversed(); // [2, 1, 3]
+let spliced = arr.toSpliced(1, 1, 'x'); // [3, 'x', 2]
+let replaced = arr.with(0, 99); // [99, 1, 2]
+
+// 对照记忆：
+// sort()      <-> toSorted()
+// reverse()   <-> toReversed()
+// splice()    <-> toSpliced()
+// arr[i] = x  <-> with()
+```
+
 ## 三、实用技巧与最佳实践
 ### 1. 方法链式调用
 ```javascript
@@ -514,6 +621,17 @@ largeArray.includes(value);
 
 // find() 对于复杂条件
 largeArray.find(item => item.id === targetId);
+```
+
+补充：
+
+- 单次查找时，优先选“语义最贴切”的方法，比死记哪一个绝对更快更重要
+- 如果是同一批数据要反复判断“是否存在”，通常更适合先转成 `Set` 再查
+
+```javascript
+const ids = new Set(largeArray.map(item => item.id));
+
+ids.has(targetId); // 反复查找时通常更合适
 ```
 
 ### 3. 常见问题解决
@@ -576,10 +694,10 @@ function safeArrayOperation(arr) {
 | `unshift()` | 开头添加 | 新长度 |
 | `shift()` | 开头删除 | 删除元素 |
 | `splice()` | 增删改 | 删除的元素数组 |
-| `sort()` | 排序 | 排序后数组 |
-| `reverse()` | 反转 | 反转后数组 |
-| `fill()` | 填充 | 填充后数组 |
-| `copyWithin()` | 内部复制 | 修改后数组 |
+| `sort()` | 排序 | 排序后的原数组 |
+| `reverse()` | 反转 | 反转后的原数组 |
+| `fill()` | 填充 | 修改后的原数组 |
+| `copyWithin()` | 内部复制 | 修改后的原数组 |
 
 
 ### 高频使用的不变方法
@@ -620,4 +738,3 @@ function safeArrayOperation(arr) {
     - 转换 → 嵌套 `map()` + `flat()`
 
 记住：**数组是对象，索引是字符串键**。理解这个本质，就能更好地理解所有数组方法的行为。
-

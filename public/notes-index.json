@@ -2170,24 +2170,27 @@
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "JavaScript 数组深度解析",
+          "frontmatterTitle": "JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "常用方法"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-          "size": "21KB",
-          "lastModified": "2026-05-06T12:18:21.805Z",
-          "wordCount": 16144
+          "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
+          "size": "24KB",
+          "lastModified": "2026-05-06T14:56:16.062Z",
+          "wordCount": 18094
         },
         {
           "type": "file",
@@ -2196,19 +2199,22 @@
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "字符串",
+            "String",
+            "Unicode",
+            "正则表达式"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">若索引超出字符串长度（或为负数），返回空字符串 </font><font style=\"color:rgb(0, 0, 0);\">''</font><font style=\"color:rgb(0, 0, 0);\"></font>\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">若索引超出字符",
-          "size": "32KB",
-          "lastModified": "2026-05-06T12:18:21.806Z",
-          "wordCount": 27522
+          "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
+          "size": "27KB",
+          "lastModified": "2026-05-06T14:47:16.119Z",
+          "wordCount": 20852
         },
         {
           "type": "file",
@@ -2774,24 +2780,27 @@
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "JavaScript 数组深度解析",
+          "frontmatterTitle": "JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "常用方法"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-          "size": "21KB",
-          "lastModified": "2026-05-06T12:18:21.805Z",
-          "wordCount": 16144
+          "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
+          "size": "24KB",
+          "lastModified": "2026-05-06T14:56:16.062Z",
+          "wordCount": 18094
         },
         {
           "type": "file",
@@ -2800,19 +2809,22 @@
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "字符串",
+            "String",
+            "Unicode",
+            "正则表达式"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">若索引超出字符串长度（或为负数），返回空字符串 </font><font style=\"color:rgb(0, 0, 0);\">''</font><font style=\"color:rgb(0, 0, 0);\"></font>\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">若索引超出字符",
-          "size": "32KB",
-          "lastModified": "2026-05-06T12:18:21.806Z",
-          "wordCount": 27522
+          "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
+          "size": "27KB",
+          "lastModified": "2026-05-06T14:47:16.119Z",
+          "wordCount": 20852
         },
         {
           "type": "file",
@@ -3248,24 +3260,27 @@
         },
         {
           "type": "file",
-          "title": "09_JavaScript数组",
-          "frontmatterTitle": "09_JavaScript数组",
+          "title": "JavaScript 数组深度解析",
+          "frontmatterTitle": "JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "数组",
+            "Array",
+            "稀疏数组",
+            "常用方法"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-          "size": "21KB",
-          "lastModified": "2026-05-06T12:18:21.805Z",
-          "wordCount": 16144
+          "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
+          "size": "24KB",
+          "lastModified": "2026-05-06T14:56:16.062Z",
+          "wordCount": 18094
         },
         {
           "type": "file",
@@ -3274,19 +3289,22 @@
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "字符串",
+            "String",
+            "Unicode",
+            "正则表达式"
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "<font style=\"color:rgb(0, 0, 0);\">若索引超出字符串长度（或为负数），返回空字符串 </font><font style=\"color:rgb(0, 0, 0);\">''</font><font style=\"color:rgb(0, 0, 0);\"></font>\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">若索引超出字符",
-          "size": "32KB",
-          "lastModified": "2026-05-06T12:18:21.806Z",
-          "wordCount": 27522
+          "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
+          "size": "27KB",
+          "lastModified": "2026-05-06T14:47:16.119Z",
+          "wordCount": 20852
         },
         {
           "type": "file",
@@ -18691,48 +18709,6 @@
     },
     {
       "type": "file",
-      "title": "10_字符串",
-      "frontmatterTitle": "10_字符串",
-      "fileTitle": "10_字符串",
-      "filename": "10_字符串.md",
-      "path": "我的总结/JS/辅助资料/10_字符串.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "<font style=\"color:rgb(0, 0, 0);\">若索引超出字符串长度（或为负数），返回空字符串 </font><font style=\"color:rgb(0, 0, 0);\">''</font><font style=\"color:rgb(0, 0, 0);\"></font>\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">若索引超出字符",
-      "size": "32KB",
-      "lastModified": "2026-05-06T12:18:21.806Z",
-      "wordCount": 27522
-    },
-    {
-      "type": "file",
-      "title": "09_JavaScript数组",
-      "frontmatterTitle": "09_JavaScript数组",
-      "fileTitle": "09_JavaScript数组",
-      "filename": "09_JavaScript数组.md",
-      "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-      "size": "21KB",
-      "lastModified": "2026-05-06T12:18:21.805Z",
-      "wordCount": 16144
-    },
-    {
-      "type": "file",
       "title": "07_es5构造函数与es6语法糖Class",
       "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
       "fileTitle": "07_es5构造函数与es6语法糖Class",
@@ -18924,6 +18900,54 @@
       "size": "19KB",
       "lastModified": "2026-05-06T12:54:19.213Z",
       "wordCount": 12181
+    },
+    {
+      "type": "file",
+      "title": "JavaScript 数组深度解析",
+      "frontmatterTitle": "JavaScript 数组深度解析",
+      "fileTitle": "09_JavaScript数组",
+      "filename": "09_JavaScript数组.md",
+      "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
+      "date": "2026-05-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "数组",
+        "Array",
+        "稀疏数组",
+        "常用方法"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
+      "size": "24KB",
+      "lastModified": "2026-05-06T14:56:16.062Z",
+      "wordCount": 18094
+    },
+    {
+      "type": "file",
+      "title": "10_字符串",
+      "frontmatterTitle": "10_字符串",
+      "fileTitle": "10_字符串",
+      "filename": "10_字符串.md",
+      "path": "我的总结/JS/辅助资料/10_字符串.md",
+      "date": "2026-05-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "字符串",
+        "String",
+        "Unicode",
+        "正则表达式"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
+      "size": "27KB",
+      "lastModified": "2026-05-06T14:47:16.119Z",
+      "wordCount": 20852
     },
     {
       "type": "file",
@@ -27167,24 +27191,27 @@
                 },
                 {
                   "type": "file",
-                  "title": "09_JavaScript数组",
-                  "frontmatterTitle": "09_JavaScript数组",
+                  "title": "JavaScript 数组深度解析",
+                  "frontmatterTitle": "JavaScript 数组深度解析",
                   "fileTitle": "09_JavaScript数组",
                   "filename": "09_JavaScript数组.md",
                   "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
-                  "date": null,
-                  "hasRealDate": false,
+                  "date": "2026-05-06T00:00:00.000Z",
+                  "hasRealDate": true,
                   "order": null,
                   "tags": [
-                    "我的总结",
-                    "辅助资料"
+                    "JavaScript",
+                    "数组",
+                    "Array",
+                    "稀疏数组",
+                    "常用方法"
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "数组创建区别\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n这4个方法，参数多也是直接忽略不计，只看第一个\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">返回新数组</font><font style=\"color:rgb(0, 0, 0);\">：不会修改原始数组，始终生成全新数组（长度 = 原数组",
-                  "size": "21KB",
-                  "lastModified": "2026-05-06T12:18:21.805Z",
-                  "wordCount": 16144
+                  "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
+                  "size": "24KB",
+                  "lastModified": "2026-05-06T14:56:16.062Z",
+                  "wordCount": 18094
                 },
                 {
                   "type": "file",
@@ -27193,19 +27220,22 @@
                   "fileTitle": "10_字符串",
                   "filename": "10_字符串.md",
                   "path": "我的总结/JS/辅助资料/10_字符串.md",
-                  "date": null,
-                  "hasRealDate": false,
+                  "date": "2026-05-06T00:00:00.000Z",
+                  "hasRealDate": true,
                   "order": null,
                   "tags": [
-                    "我的总结",
-                    "辅助资料"
+                    "JavaScript",
+                    "字符串",
+                    "String",
+                    "Unicode",
+                    "正则表达式"
                   ],
                   "category": "我的总结",
                   "attachments": [],
-                  "description": "<font style=\"color:rgb(0, 0, 0);\">若索引超出字符串长度（或为负数），返回空字符串 </font><font style=\"color:rgb(0, 0, 0);\">''</font><font style=\"color:rgb(0, 0, 0);\"></font>\r\n\r\n\r\n\r\n\r\n<font style=\"color:rgb(0, 0, 0);\">若索引超出字符",
-                  "size": "32KB",
-                  "lastModified": "2026-05-06T12:18:21.806Z",
-                  "wordCount": 27522
+                  "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
+                  "size": "27KB",
+                  "lastModified": "2026-05-06T14:47:16.119Z",
+                  "wordCount": 20852
                 },
                 {
                   "type": "file",
@@ -34574,5 +34604,5 @@
   ],
   "totalNotes": 353,
   "totalCategories": 82,
-  "lastUpdated": "2026-05-06T13:24:01.423Z"
+  "lastUpdated": "2026-05-06T14:59:20.847Z"
 }

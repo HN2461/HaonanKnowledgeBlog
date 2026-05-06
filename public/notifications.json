@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-05-06T13:24:02.177Z",
-  "total": 230,
+  "generatedAt": "2026-05-06T13:49:54.378Z",
+  "total": 231,
   "notifications": [
+    {
+      "id": "git-12b12ae4fc82f2a724c5e4efafb48dc7418e1bb4",
+      "title": "Markdown 渲染: 支持 Mermaid 预览与代码块增强",
+      "content": "提交说明：Markdown 渲染: 支持 Mermaid 预览与代码块增强",
+      "summary": "Markdown 渲染: 支持 Mermaid 预览与代码块增强",
+      "date": "2026-05-06T21:26:21+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "12b12ae",
+      "fullHash": "12b12ae4fc82f2a724c5e4efafb48dc7418e1bb4"
+    },
     {
       "id": "daily-2026-05-06-1",
       "title": "图片灯箱升级为可缩放拖拽的成熟查看器",

@@ -5,6 +5,41 @@ export const dailyChangeSummary = {
   date: '2026-05-06',
   items: [
     {
+      category: '内容上新',
+      time: '22:56',
+      title: '补充数组笔记的空位速查与现代数组方法',
+      summary: '在不改动原有主体内容和注释的前提下，为 `09_JavaScript数组.md` 新增空位行为速查、`includes()`/`indexOf()` 差异、`slice()` 与展开运算符在稀疏数组下的区别、ES2023 复制型数组方法，以及查找场景下的 `Set` 补充说明。',
+      content: '第一点：本次只对 `public/notes/我的总结/JS/辅助资料/09_JavaScript数组.md` 做插入式补充，不覆盖主人已有段落，不删除原注释；第二点：新增“空位在不同方法中的表现速查”，集中对比 `forEach`、`map`、`filter`、`some`、`every`、`reduce`、`find`、`Array.from()`、展开运算符、`slice()`、`concat()`、`flat()`、`join()` 对稀疏数组空位的不同处理；第三点：补充 `includes()` 与 `indexOf()` 在 `NaN` 和空位场景下的行为差异，降低后续学习查找方法时的混淆；第四点：新增 `slice()` 与 `[...arr]` 在稀疏数组下“不完全等价”的提醒，并补充 `toSorted()`、`toReversed()`、`toSpliced()`、`with()` 这组现代不改原数组的方法；第五点：按仓库要求先执行 `scripts/checkNodeRuntime.ps1` 预检，再运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。'
+    },
+    {
+      category: '内容上新',
+      time: '22:27',
+      title: '按原笔记风格回调数组文章并只保留必要纠错',
+      summary: '将 `09_JavaScript数组.md` 从“改写式整理”回调为更接近主人原有讲法和注释风格的版本，仅保留 `length`、`splice()`、`map()`、`copyWithin()` 等确实有误的内容修正。',
+      content: '第一点：保留并恢复 `public/notes/我的总结/JS/辅助资料/09_JavaScript数组.md` 里原本偏“小白解释 + 注释辅助理解”的写法，不再按另一套结构重写整篇；第二点：继续保留 frontmatter，保证列表页、搜索页和详情页标题、日期、分类、标签与摘要可稳定读取；第三点：仅修正几处明确错误，包括把 `length` 误写成访问器属性、把 `splice()` 误写成返回修改后的原数组、把 `push/unshift` 误说成只看第一个参数、把 `map()` 对空位的行为写错，以及 `copyWithin()` 第二个示例沿用上一次执行结果导致的错误结论；第四点：同步把 `forEach` 的 `undefined` 拼写、`filter` 对“空位”的表述，以及总结表里的返回值说明改准，其余原有讲法尽量不碰；第五点：按仓库要求重新执行 Node 运行时预检与 `npm run generate:index`，同步刷新 `public/notes-index.json` 和 `public/search-index.json`。'
+    },
+    {
+      category: '内容上新',
+      time: '22:36',
+      title: '补强 JavaScript 字符串笔记并修正 Unicode 与正则细节',
+      summary: '在尽量保留 `10_字符串.md` 原有结构和内容的前提下，补齐 frontmatter，修正 `slice()`、`replaceAll()`、`matchAll()`、`substr()`、`String.raw()`、字符串反转示例等高频误区，并补充 Unicode 与官方参考资料。',
+      content: '第一点：为 `public/notes/我的总结/JS/辅助资料/10_字符串.md` 补齐 frontmatter，统一标题、日期、分类、标签与摘要，保证详情页、列表页和搜索页后续能稳定读取一致标题；第二点：保留原有“创建、查找、截取、修改、转换、示例、兼容性”的主体结构不动，只对明确错误或容易误导的知识点做增补式修正，包括把字符串 `slice()` 的“返回空数组”纠正为“返回空字符串”，把 `substr()` 的标准状态改为“已废弃、仅为兼容旧网页保留”，把 `replaceAll()` 与 `matchAll()` 对正则的全局标志要求补全为会抛 `TypeError` 的规范行为；第三点：把 `String.raw()` 的 Windows 路径示例改成真正可执行且不自相矛盾的写法，避免正文里出现本身就会被错误转义的字符串字面量；第四点：修复“字符串反转”示例中函数内连续 `return` 导致后两种写法永远不会执行的问题，改成三个独立函数，并补上表情符号场景，顺带说明 `split('')` 会按 UTF-16 代码单元拆分；第五点：新增 `at()`、`isWellFormed()`、`toWellFormed()`、Unicode 代理对与 `Array.from()`/扩展运算符的补充说明，让主人晚上继续扩写时可以直接从“负索引、Unicode、坏字符串、现代 API”几条线往下写；第六点：文末补上 MDN 官方参考链接，便于后续继续查证和扩写。'
+    },
+    {
+      category: '问题修复',
+      time: '22:43',
+      title: '隐藏笔记详情页头部的标签胶囊显示',
+      summary: '移除详情页头部对 `note.tags` 的可视化渲染，避免主人误以为是 Markdown 正文把 `tags` 原文渲染出来。',
+      content: '第一点：排查后确认 `09_JavaScript数组.md` 与 `10_字符串.md` 的 frontmatter 都能被正文剥离，页面上看到的并不是 YAML 原文残留，而是 `src/views/NoteDetailPage.vue` 头部主动把 `note.tags` 渲染成了一排标签胶囊；第二点：本次仅删除详情页模板里的 `note-tags` 展示块以及对应样式，保留 frontmatter 数据本身不变，因此搜索、索引、分类和后续脚本逻辑仍可继续使用 `tags`；第三点：这样处理后，页面不再显示这排标签，但不会影响 `public/notes-index.json` 和 `public/search-index.json` 里基于标签的检索能力。'
+    },
+    {
+      category: '问题修复',
+      time: '22:46',
+      title: '清理字符串笔记正文里的 font HTML 标签',
+      summary: '按主人的反馈清理 `10_字符串.md` 正文里残留的 `<font>` / `</font>` 标签，只保留文本内容与 Markdown 语义，不改动知识点本身。',
+      content: '第一点：重新核对后确认主人说的是 Markdown 正文里的 HTML 标签，而不是页面头部显示的标签胶囊；第二点：本次对 `public/notes/我的总结/JS/辅助资料/10_字符串.md` 做的是纯清洗操作，批量移除所有 `<font ...>` 与 `</font>`，保留原有文字、行内代码、强调和段落结构，不借机改写原有知识点；第三点：复查后该文件里不再有残留 `font` 标签，当前只剩模板字符串代码示例中的 `<strong>`，那属于代码演示内容本身，不是正文污染。'
+    },
+    {
       category: '功能更新',
       time: '21:15',
       title: '图片灯箱升级为可缩放拖拽的成熟查看器',
