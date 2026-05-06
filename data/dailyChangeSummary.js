@@ -23,7 +23,7 @@ export const dailyChangeSummary = {
       time: '22:36',
       title: '补强 JavaScript 字符串笔记并修正 Unicode 与正则细节',
       summary: '在尽量保留 `10_字符串.md` 原有结构和内容的前提下，补齐 frontmatter，修正 `slice()`、`replaceAll()`、`matchAll()`、`substr()`、`String.raw()`、字符串反转示例等高频误区，并补充 Unicode 与官方参考资料。',
-      content: '第一点：为 `public/notes/我的总结/JS/辅助资料/10_字符串.md` 补齐 frontmatter，统一标题、日期、分类、标签与摘要，保证详情页、列表页和搜索页后续能稳定读取一致标题；第二点：保留原有“创建、查找、截取、修改、转换、示例、兼容性”的主体结构不动，只对明确错误或容易误导的知识点做增补式修正，包括把字符串 `slice()` 的“返回空数组”纠正为“返回空字符串”，把 `substr()` 的标准状态改为“已废弃、仅为兼容旧网页保留”，把 `replaceAll()` 与 `matchAll()` 对正则的全局标志要求补全为会抛 `TypeError` 的规范行为；第三点：把 `String.raw()` 的 Windows 路径示例改成真正可执行且不自相矛盾的写法，避免正文里出现本身就会被错误转义的字符串字面量；第四点：修复“字符串反转”示例中函数内连续 `return` 导致后两种写法永远不会执行的问题，改成三个独立函数，并补上表情符号场景，顺带说明 `split('')` 会按 UTF-16 代码单元拆分；第五点：新增 `at()`、`isWellFormed()`、`toWellFormed()`、Unicode 代理对与 `Array.from()`/扩展运算符的补充说明，让主人晚上继续扩写时可以直接从“负索引、Unicode、坏字符串、现代 API”几条线往下写；第六点：文末补上 MDN 官方参考链接，便于后续继续查证和扩写。'
+      content: '第一点：为 `public/notes/我的总结/JS/辅助资料/10_字符串.md` 补齐 frontmatter，统一标题、日期、分类、标签与摘要，保证详情页、列表页和搜索页后续能稳定读取一致标题；第二点：保留原有“创建、查找、截取、修改、转换、示例、兼容性”的主体结构不动，只对明确错误或容易误导的知识点做增补式修正，包括把字符串 `slice()` 的“返回空数组”纠正为“返回空字符串”，把 `substr()` 的标准状态改为“已废弃、仅为兼容旧网页保留”，把 `replaceAll()` 与 `matchAll()` 对正则的全局标志要求补全为会抛 `TypeError` 的规范行为；第三点：把 `String.raw()` 的 Windows 路径示例改成真正可执行且不自相矛盾的写法，避免正文里出现本身就会被错误转义的字符串字面量；第四点：修复“字符串反转”示例中函数内连续 `return` 导致后两种写法永远不会执行的问题，改成三个独立函数，并补上表情符号场景，顺带说明 `split("")` 会按 UTF-16 代码单元拆分；第五点：新增 `at()`、`isWellFormed()`、`toWellFormed()`、Unicode 代理对与 `Array.from()`/扩展运算符的补充说明，让主人晚上继续扩写时可以直接从“负索引、Unicode、坏字符串、现代 API”几条线往下写；第六点：文末补上 MDN 官方参考链接，便于后续继续查证和扩写。'
     },
     {
       category: '问题修复',
@@ -38,6 +38,13 @@ export const dailyChangeSummary = {
       title: '清理字符串笔记正文里的 font HTML 标签',
       summary: '按主人的反馈清理 `10_字符串.md` 正文里残留的 `<font>` / `</font>` 标签，只保留文本内容与 Markdown 语义，不改动知识点本身。',
       content: '第一点：重新核对后确认主人说的是 Markdown 正文里的 HTML 标签，而不是页面头部显示的标签胶囊；第二点：本次对 `public/notes/我的总结/JS/辅助资料/10_字符串.md` 做的是纯清洗操作，批量移除所有 `<font ...>` 与 `</font>`，保留原有文字、行内代码、强调和段落结构，不借机改写原有知识点；第三点：复查后该文件里不再有残留 `font` 标签，当前只剩模板字符串代码示例中的 `<strong>`，那属于代码演示内容本身，不是正文污染。'
+    },
+    {
+      category: '问题修复',
+      time: '23:03',
+      title: '修复当日汇总消息中的字符串转义错误',
+      summary: '修正 `data/dailyChangeSummary.js` 中 `split("")` 示例文本的引号冲突，解决 `generate:notifications` 读取汇总文件时报 `SyntaxError` 导致构建中断的问题。',
+      content: '第一点：排查构建日志后确认失败并非出在 Vite 打包阶段，而是 `npm run generate:notifications` 导入 `data/dailyChangeSummary.js` 时，某条 `content` 单引号字符串里直接写入了 `split(\'\')` 形式的示例文本，导致 JavaScript 字符串被意外截断；第二点：本次仅对该条汇总消息做最小修复，将描述改成不与外层单引号冲突的 `split("")` 写法，不改动其他当日摘要内容；第三点：修复后需要重新执行运行时预检与构建命令，确认通知生成、索引生成和 `vite build` 都能顺利走完。'
     },
     {
       category: '功能更新',
