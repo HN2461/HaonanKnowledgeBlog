@@ -1,4 +1,18 @@
-# 事件对象坐标 vs 元素属性
+---
+title: 第13篇：offset、client、scroll 坐标与尺寸详解
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - DOM
+  - 坐标系统
+  - offset
+  - client
+  - scroll
+description: JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。
+---
+
+# 第13篇：offset、client、scroll 坐标与尺寸详解
 > 适合场景  
 >
 > + 鼠标交互（点击 / 拖拽 / 跟随）  

@@ -1,5 +1,5 @@
 ---
-title: JavaScript 数组深度解析
+title: 第09篇：JavaScript 数组深度解析
 date: 2026-05-06
 category: 我的总结
 tags:
@@ -11,7 +11,7 @@ tags:
 description: 从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。
 ---
 
-# JavaScript 数组深度解析
+# 第09篇：JavaScript 数组深度解析
 ## 一、数组的本质理解
 ### 1.1 数组是特殊的对象
 ```javascript
@@ -198,12 +198,13 @@ arr.splice(1, 2);         // arr = ['a', 'd']，返回['b', 'c']
 arr.splice(1, 0, 'x', 'y'); // arr = ['a', 'x', 'y', 'd']，返回[]
 
 // 替换：arr.splice(start, deleteCount, ...items)
-arr.splice(1, 2, 'm', 'n'); // arr = ['a', 'm', 'n', 'd']，返回['x', 'y']
+let arrReplace = ['a', 'b', 'c', 'd'];
+arrReplace.splice(1, 2, 'm', 'n'); // arrReplace = ['a', 'm', 'n', 'd']，返回['b', 'c']（被删除的元素）
 ```
 
 ### 4. 重排序方法
 ```javascript
-// sort() - 排序（重要细节！）返回：排序后的原数组
+// sort() - 排序（重要细节！）返回值 = 排序后的原数组本身（不是新数组！）
 let arr = [3, 1, 10, 2];
 // 默认按 “字符串 Unicode 编码顺序” 排序，而非数字大小。
 // 即使数组元素是数字，也会先被转为字符串再比较，导致不符合直觉的结果。
@@ -234,22 +235,27 @@ arr.reverse();            // arr = [1, 2, 3, 10]
 let arr = new Array(5).fill(0);        // [0, 0, 0, 0, 0]
 arr.fill(1, 1, 3);                     // [0, 1, 1, 0, 0]
 
+// 负数参数示例
+let arrNeg = [1, 2, 3, 4, 5];
+arrNeg.fill(0, -2, -1);                // [1, 2, 3, 0, 5]（只填充倒数第2个位置）
+arrNeg.fill(9, -3);                    // [1, 2, 9, 9, 9]（从倒数第3个到末尾）
+
 
 // copyWithin()，将数组内部指定范围的元素，复制到数组另一位置（覆盖原有元素）
 // 一次性提取、一次性覆盖
 // arr.copyWithin(target, start[, end])
-// target：必需，复制到的目标起始索引（从该位置开始覆盖）；
-// start：必需，复制源的起始索引（从该位置开始取元素）；
+// target：必需，复制到的目标起始索引（从该位置开始覆盖写入）；
+// start：必需，复制源的起始索引（从该位置开始读取元素）；
 // end：可选，复制源的结束索引（不包含该位置，默认到数组末尾）。
 let arrCopy1 = [1, 2, 3, 4, 5];
 arrCopy1.copyWithin(0, 3); // 结果：[4, 5, 3, 4, 5]
-// 解读：从索引3开始取源元素（4、5），复制到目标索引0，覆盖原有元素
-// 覆盖逻辑：索引0→4，索引1→5，索引2及以后保留原内容（3、4、5）
+// 解读：从索引3开始读取（4、5），写入到目标索引0位置
+// 写入逻辑：索引0←arr[3]=4，索引1←arr[4]=5，索引2保持原值3
 
 let arrCopy2 = [1, 2, 3, 4, 5];
 arrCopy2.copyWithin(0, 1, 3); // 结果：[2, 3, 3, 4, 5]
-// 解读：从索引1到2（end=3不包含）取源元素（2、3），复制到目标索引0
-// 覆盖逻辑：索引0→2，索引1→3，后续保留原内容
+// 解读：从索引1到2（end=3不包含）读取（2、3），写入到目标索引0
+// 写入逻辑：索引0←arr[1]=2，索引1←arr[2]=3
 ```
 
 ## 二、不改变原数组的方法
@@ -270,7 +276,7 @@ for (let item of [1, 2, 3]) {
 ```
 
 #### **map()** - 映射转换
-**<font style="color:rgb(0, 0, 0);">返回新数组</font>**<font style="color:rgb(0, 0, 0);">：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；遇到空位会跳过回调，但结果中会保留空位</font>
+**返回新数组**：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；遇到空位会跳过回调，但结果中会保留空位
 
 ```javascript
 // 创建新数组
@@ -286,7 +292,7 @@ let userObjects = users.map((name, index) => ({
 ```
 
 #### **filter()** - 过滤筛选
-**<font style="color:rgb(0, 0, 0);">返回值</font>**<font style="color:rgb(0, 0, 0);">：新数组（仅包含回调返回 </font>`<font style="color:rgb(0, 0, 0);">true</font>`<font style="color:rgb(0, 0, 0);"> 的元素，长度可能小于原数组）；跳过空位</font>
+**返回值**：新数组（仅包含回调返回 `true` 的元素，长度可能小于原数组）；跳过空位
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -301,7 +307,7 @@ let truthyValues = values.filter(Boolean); // [1, 'hello']
 ```
 
 #### **reduce()** - 归并计算（重点！）
-<font style="color:rgba(0, 0, 0, 0.85);">返回值 = 最后一轮回调函数的返回值，其类型完全由你在回调中 “return 的内容” 决定 —— 可以是数字、字符串、对象、数组等任意类型。</font>
+返回值 = 最后一轮回调函数的返回值，其类型完全由你在回调中 “return 的内容” 决定 —— 可以是数字、字符串、对象、数组等任意类型。
 
 ```javascript
 // 基本累加
@@ -309,9 +315,15 @@ let truthyValues = values.filter(Boolean); // [1, 'hello']
 // 参数 1：回调函数（必选），该回调函数至少接受 2 个必选参数（上次累计的值 accumulator、
 // 当前元素 currentValue），还可可选接收 2 个参数（当前元素索引 currentIndex、原数组 array），
 // 回调函数的返回值会作为下一次的 accumulator；
-// 参数 2：初始值 initialValue（可选），若提供则作为首次累加的起始值，
-// 若不提供则默认取数组第一个元素作为初始累加值（数组为空时必须提供，否则报错）。
+// 参数 2：初始值 initialValue（可选），若提供则作为首次累加的起始值。
+// 若不提供初始值：
+//   - 数组为空时 → 报错 TypeError
+//   - 数组有 2+ 元素时 → 跳过第一个元素，从第二个开始执行回调，accumulator 初始值为第一个元素的值
+//   - 数组仅有 1 个元素时 → 直接返回该元素，不执行回调
 [1, 2, 3].reduce((acc, cur) => acc + cur, 0); // 6
+[1, 2, 3].reduce((acc, cur) => acc + cur);    // 6（无初始值，从第2个开始累加，第1个作为初始值）
+[5].reduce((acc, cur) => acc + cur);          // 5（单元素无初始值，直接返回元素本身）
+try { [].reduce((a,b)=>a+b); } catch(e) { console.log(e.message); } // 报错：Reduce of empty array with no initial value
 
 // 统计元素出现次数
 let fruits = ['apple', 'banana', 'apple', 'orange'];
@@ -510,12 +522,12 @@ Array.from(arr.keys());     // [0, 1, 2]
 
 ### 5. 其他重要方法
 #### **flat()** - 数组扁平化
-**<font style="color:rgb(0, 0, 0);">将多维数组 “拉平” 为低维数组</font>**<font style="color:rgb(0, 0, 0);">，且</font>**<font style="color:rgb(0, 0, 0);">不改变原数组</font>**<font style="color:rgb(0, 0, 0);">，返回新数组。传 </font>`<font style="color:rgb(0, 0, 0);">Infinity</font>`<font style="color:rgb(0, 0, 0);"> （</font><font style="color:rgba(0, 0, 0, 0.85);"> JavaScript 内置的</font>**<font style="color:rgb(0, 0, 0) !important;">数值类型常量</font>**<font style="color:rgba(0, 0, 0, 0.85);">，代表「正无穷大」），</font>**<font style="color:rgb(0, 0, 0) !important;">不管数组嵌套多少层，全部拉平为一维数组</font>**<font style="color:rgba(0, 0, 0, 0.85);">。</font>
+**将多维数组 "拉平" 为低维数组**，且**不改变原数组**，返回新数组。传 `Infinity`（JavaScript 内置的**数值类型常量**，代表"正无穷大"），**不管数组嵌套多少层，全部拉平为一维数组**。
 
-**<font style="color:rgb(0, 0, 0);">特殊处理</font>**<font style="color:rgb(0, 0, 0);">：</font>
+**特殊处理**：
 
-    - <font style="color:rgb(0, 0, 0);">自动跳过数组中的空位（类似</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">forEach</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">对稀疏数组的处理）：</font>`<font style="color:rgb(0, 0, 0);">[1, , [2]].flat()</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">→</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">[1, 2]</font>`
-    - <font style="color:rgb(0, 0, 0);">仅处理数组类型的子元素，非数组元素直接保留：</font>`<font style="color:rgb(0, 0, 0);">[1, 'a', {x:2}, [3]].flat()</font>`<font style="color:rgb(0, 0, 0);"> → </font>`<font style="color:rgb(0, 0, 0);">[1, 'a', {x:2}, 3]</font>`
+    - 自动跳过数组中的空位（类似 `forEach` 对稀疏数组的处理）：`[1, , [2]].flat()` → `[1, 2]`
+    - 仅处理数组类型的子元素，非数组元素直接保留：`[1, 'a', {x:2}, [3]].flat()` → `[1, 'a', {x:2}, 3]`
 
 ```javascript
 // arr.flat(depth)

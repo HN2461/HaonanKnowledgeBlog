@@ -10,7 +10,7 @@ tags:
 description: 用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。
 ---
 
-# 第06篇：JavaScript 原型链（图解 + 小白版）
+# 第06篇：JavaScript 原型链
 
 这版目标很明确：
 
