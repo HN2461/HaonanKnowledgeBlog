@@ -39,5 +39,12 @@ export const dailyChangeSummary = {
       summary: '搜索官方资料验证文档准确性，修正事件修饰符、v-model 本质、v-for key 使用、binding.instance 等关键描述。',
       content: '更新 `public/notes/我的总结/Vue/vue辅助/第02篇_Vue指令与自定义指令.md`：1) 修正 `.passive` 修饰符描述，从"顺从/不抵抗"改为准确的"告诉浏览器不会调用 preventDefault()，可立即执行默认行为提升性能"；2) 补充 v-on 事件处理说明，增加"同时传递自定义参数和事件对象需使用 $event"；3) 完善 v-model 本质说明，明确不同表单元素监听的事件不同（input 监听 input 事件，select/checkbox/radio 监听 change 事件）；4) 强化 v-for key 使用建议，明确"仅在列表仅展示且永不变化时才可用 index，涉及增删改排序时 index 会导致状态错乱"；5) 修正 Vue3 自定义指令 binding.instance 说明，区分选项式 API 和组合式 API 的访问方式。'
     },
+    {
+      category: '功能更新',
+      time: '00:00',
+      title: '新增代码主题切换功能与 Vue SFC 高亮支持',
+      summary: '新增代码主题切换弹窗，支持 GitHub Dark、Atom One Dark、VS2015 等 8 种主题；同时实现 Vue 单文件组件的分区块语法高亮。',
+      content: '1) 新增 `src/components/CodeThemeModal.vue` 代码主题切换弹窗组件，提供 8 种预设主题（GitHub Dark、Atom One Dark、VS2015、Monokai Sublime、Tokyo Night、Dracula、Nord、Solarized Dark）和自定义主题上传功能；2) 新增 `src/utils/codeTheme.js` 主题管理工具，支持动态加载 CSS、localStorage 持久化、自定义主题上传与删除；3) 新增 `src/styles/code-theme-custom.css` 自定义主题样式文件；4) 更新 `src/utils/markdown.js`，实现 Vue 单文件组件的 `<template>`、`<script>`、`<style>` 三区块分别高亮，支持 `lang` 属性识别（如 `<script lang="ts">`、`<style lang="scss">`）；5) 更新 `src/components/MarkdownRenderer.vue`，移除硬编码的 `github-dark.css` 引入，改用动态主题加载机制；6) 更新 `src/components/AppSidebar.vue`，在侧边栏操作菜单中新增"代码主题"入口；7) 更新 `CLAUDE.md` 文档，补充 Vue SFC 高亮支持说明。'
+    },
   ],
 }

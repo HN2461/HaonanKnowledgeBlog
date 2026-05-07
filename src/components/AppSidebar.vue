@@ -96,6 +96,11 @@
                   <span class='actions-menu-title'>导出资料</span>
                   <span class='actions-menu-desc'>选择单篇文档或整个目录下载</span>
                 </button>
+
+                <button type='button' class='actions-menu-item' role='menuitem' @click='openCodeThemeModal'>
+                  <span class='actions-menu-title'>代码主题</span>
+                  <span class='actions-menu-desc'>切换代码块的语法高亮配色</span>
+                </button>
               </div>
             </Transition>
           </div>
@@ -116,6 +121,7 @@
   </aside>
 
   <SidebarExportModal v-model='showExportModal' :tree='notesTree' />
+  <CodeThemeModal v-model='showCodeThemeModal' />
 
   <Teleport to='body'>
     <Transition name='sidebar-toast'>
@@ -131,6 +137,7 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import FileTree from './FileTree.vue'
 import SidebarExportModal from './SidebarExportModal.vue'
+import CodeThemeModal from './CodeThemeModal.vue'
 import {
   encodePathSegments,
   exportDirectoryArchive,
@@ -158,6 +165,7 @@ const notesTree = ref([])
 const isMobile = ref(false)
 const showActionsMenu = ref(false)
 const showExportModal = ref(false)
+const showCodeThemeModal = ref(false)
 const actionsRef = ref(null)
 const runningAction = ref('')
 const sidebarToast = ref({
@@ -220,6 +228,11 @@ const closeActionsMenu = () => {
 const openExportModal = () => {
   showActionsMenu.value = false
   showExportModal.value = true
+}
+
+const openCodeThemeModal = () => {
+  showActionsMenu.value = false
+  showCodeThemeModal.value = true
 }
 
 const showSidebarToast = (message, type = 'success') => {

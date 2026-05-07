@@ -5,11 +5,14 @@
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUpdated, nextTick } from 'vue'
+import { computed, ref, onMounted, onUpdated, onBeforeUnmount, nextTick } from 'vue'
 import mermaid from 'mermaid'
 import { renderMarkdown } from '../utils/markdown'
 import { svgToDataUrl } from '../utils/mermaidPreview'
-import 'highlight.js/styles/github-dark.css'
+import { initCodeTheme } from '../utils/codeTheme'
+
+// 初始化代码主题（会动态加载 CSS）
+initCodeTheme()
 
 const props = defineProps({
   content: {
@@ -263,6 +266,10 @@ const setupInteractions = async () => {
 
 onMounted(setupInteractions)
 onUpdated(setupInteractions)
+
+onBeforeUnmount(() => {
+  // 清理事件监听
+})
 </script>
 
 <style scoped>

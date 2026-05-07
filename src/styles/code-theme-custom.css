@@ -1,0 +1,106 @@
+/* 自定义代码高亮主题 */
+/* 基于 Atom One Dark，可根据需要修改任何颜色 */
+
+.hljs {
+  color: #abb2bf;           /* 普通文本 - 浅灰 */
+  background: #282c34;      /* 背景色 - 深灰 */
+}
+
+/* 注释 - 灰色斜体 */
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* 关键字 - 紫色 */
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: #c678dd;
+}
+
+/* HTML 标签、删除 - 红色 */
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: #e06c75;
+}
+
+/* 字面量 - 青色 */
+.hljs-literal {
+  color: #56b6c2;
+}
+
+/* 字符串 - 绿色 */
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string {
+  color: #98c379;
+}
+
+/* 属性、变量、数字 - 橙色 */
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: #d19a66;
+}
+
+/* 符号、链接、标题 - 蓝色 */
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: #61aeee;
+}
+
+/* 内置函数、类名 - 黄色 */
+.hljs-built_in,
+.hljs-title.class_,
+.hljs-class .hljs-title {
+  color: #e6c07b;
+}
+
+/* 强调 */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+/* 
+  自定义颜色示例：
+  
+  如果您想修改某个颜色，直接改上面对应的色值即可。
+  例如：
+  - 想让关键字变成蓝色：把 .hljs-keyword 的 color 改为 #61aeee
+  - 想让字符串变成黄色：把 .hljs-string 的 color 改为 #e6c07b
+  - 想让背景更黑：把 .hljs 的 background 改为 #1e1e1e
+  
+  常用颜色参考：
+  红色: #e06c75
+  橙色: #d19a66
+  黄色: #e6c07b
+  绿色: #98c379
+  青色: #56b6c2
+  蓝色: #61aeee
+  紫色: #c678dd
+  灰色: #5c6370
+*/

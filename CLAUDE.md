@@ -44,6 +44,9 @@
 
 [utils/markdown.js](src/utils/markdown.js) 配置了 markdown-it 实例，包含：
 - 通过 highlight.js 进行语法高亮
+  - **Vue 单文件组件支持**：自动识别 `<template>`、`<script>`、`<style>` 三个区块并分别高亮
+  - 支持 `lang` 属性（如 `<script lang="ts">`、`<style lang="scss">`）
+  - 支持的语言：JavaScript、TypeScript、HTML、CSS、SCSS、Less、JSON、Bash、PowerShell 等
 - 通过 markdown-it-anchor 自动生成带 ID 的标题
 - 通过 markdown-it-toc-done-right 生成目录
 - 保留中文字符的自定义 slugify

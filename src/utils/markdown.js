@@ -13,7 +13,89 @@ import {
 
 hljs.registerLanguage('powershell', powershell)
 hljs.registerAliases(['ps1', 'pwsh'], { languageName: 'powershell' })
-hljs.registerAliases(['vue'], { languageName: 'xml' })
+
+// Vue 单文件组件高亮处理
+function highlightVue(code) {
+  const sections = []
+  let currentPos = 0
+
+  // 匹配 <template>、<script>、<style> 三个区块
+  const blockRegex = /<(template|script|style)([^>]*)>([\s\S]*?)<\/\1>/gi
+  let match
+
+  while ((match = blockRegex.exec(code)) !== null) {
+    const [fullMatch, tagName, attributes, content] = match
+    const startPos = match.index
+    
+    // 添加标签之前的内容（如果有）
+    if (startPos > currentPos) {
+      sections.push({
+        type: 'text',
+        content: code.slice(currentPos, startPos)
+      })
+    }
+
+    // 根据标签类型选择高亮语言
+    let language = 'xml'
+    if (tagName === 'script') {
+      // 检查是否有 lang 属性
+      const langMatch = attributes.match(/lang=["'](\w+)["']/)
+      language = langMatch ? langMatch[1] : 'javascript'
+    } else if (tagName === 'style') {
+      const langMatch = attributes.match(/lang=["'](\w+)["']/)
+      language = langMatch ? langMatch[1] : 'css'
+    } else if (tagName === 'template') {
+      language = 'xml'
+    }
+
+    // 高亮开始标签（使用 XML 高亮）
+    const openTag = `<${tagName}${attributes}>`
+    const openTagHighlighted = hljs.highlight(openTag, { language: 'xml', ignoreIllegals: true }).value
+    
+    sections.push({
+      type: 'tag',
+      content: openTagHighlighted
+    })
+
+    // 高亮内容
+    if (content.trim()) {
+      const highlightedContent = hljs.getLanguage(language)
+        ? hljs.highlight(content, { language, ignoreIllegals: true }).value
+        : escapeHtml(content)
+      
+      sections.push({
+        type: 'code',
+        content: highlightedContent
+      })
+    }
+
+    // 高亮结束标签（使用 XML 高亮）
+    const closeTag = `</${tagName}>`
+    const closeTagHighlighted = hljs.highlight(closeTag, { language: 'xml', ignoreIllegals: true }).value
+    
+    sections.push({
+      type: 'tag',
+      content: closeTagHighlighted
+    })
+
+    currentPos = startPos + fullMatch.length
+  }
+
+  // 添加剩余内容
+  if (currentPos < code.length) {
+    sections.push({
+      type: 'text',
+      content: escapeHtml(code.slice(currentPos))
+    })
+  }
+
+  // 如果没有匹配到任何区块，回退到 XML 高亮
+  if (sections.length === 0) {
+    return hljs.highlight(code, { language: 'xml', ignoreIllegals: true }).value
+  }
+
+  return sections.map(section => section.content).join('')
+}
 
 // 创建 Markdown 实例
 const md = new MarkdownIt({
@@ -25,6 +107,16 @@ const md = new MarkdownIt({
 const escapeHtml = (value) => md.utils.escapeHtml(String(value ?? ''))
 
 function highlightCode(str, language) {
+  // Vue 单文件组件特殊处理
+  if (language === 'vue') {
+    try {
+      return highlightVue(str)
+    } catch (__) {
+      // 出错时回退到 XML 高亮
+      return hljs.highlight(str, { language: 'xml', ignoreIllegals: true }).value
+    }
+  }
+
   if (language && hljs.getLanguage(language)) {
     try {
       return hljs.highlight(str, { language, ignoreIllegals: true }).value
