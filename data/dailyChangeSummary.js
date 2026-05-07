@@ -81,5 +81,12 @@ export const dailyChangeSummary = {
       summary: '修正关键表述准确性与章节结构，补齐完整EventManager实现并增强工程实践细节。',
       content: '更新`public/notes/我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md`：1) 修正“对象键只能是字符串”为“字符串或Symbol”；2) 统一Set顺序描述，明确“无索引语义但保留插入顺序”；3) 规范章节编号并清理重复标题；4) 补充`SameValueZero`比较规则，增强Map/Set底层认知；5) 将EventManager整理为可直接复制的完整版本，新增`once`、`clear`、`listenerCount`，并在`off`中回收空桶；6) 在`emit`中加入回调快照逻辑，避免回调内增删监听导致当前轮遍历行为不稳定。'
     },
+    {
+      category: '问题修复',
+      time: '21:06',
+      title: '重写 CatPaw 专题为公开资料核实版',
+      summary: '基于 CatPaw 官网、公开用户手册和美团技术团队公开文章，整组重写 AI工具/CatPaw 系列，删除无法公开证实的 CLI 与内网集成想象内容。',
+      content: '更新 `public/notes/AI工具/CatPaw/` 目录下整组专题文档：1) 重写 `目录.md` 与前 3 篇内容，明确 CatPaw 的公开定位是“AI 编程 Agent + IDE”，补充官网可核实的发布时间、内部上线与公测时间线、系统兼容性、额度说明与核心功能主线；2) 将原 `第四篇_CatPaw_CLI工具与自动化.md` 更名并重写为 `第四篇_CatPaw_上下文与预览调试.md`，聚焦上下文、索引、`@Docs`、项目预览、页面元素编辑与 Browser Use；3) 将原 `第五篇_CatPaw美团生态集成.md` 更名并重写为 `第五篇_CatPaw_Rules与MCP扩展.md`，改为公开手册里可验证的 Rules、兼容规则与 MCP 说明；4) 全文删除未能在公开资料中核实的专属 CLI 命令、插件包名、内网平台接入细节，统一改为“只写官网和公开手册能证实的信息”；5) 完成后重新执行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。'
+    },
   ],
 }

@@ -1,457 +1,255 @@
 ---
-title: "第3篇：CatPaw AI助手使用指南"
+title: 第3篇：CatPaw AI助手使用指南
 date: 2026-05-07
 category: AI工具
 tags:
   - CatPaw
-  - AI助手
-  - 编程助手
-  - 智能编程
-description: 详细介绍CatPaw AI助手的各种用法，包括对话编程、代码生成、问题解答等
+  - Ask
+  - Agent
+  - 自定义 Agent
+  - AI 助手
+description: 按公开用户手册梳理 CatPaw 侧边栏 AI 助手的真实用法，重点讲清 Ask、Agent、自定义 Agent、工具列表和对话管理。
 ---
 
 # 第3篇：CatPaw AI助手使用指南
 
-CatPaw的AI助手是其核心功能之一，它不仅仅是一个代码补全工具，更是一个能够理解上下文、协助编程的智能伙伴。本文将详细介绍如何充分利用AI助手提升编程效率。
+CatPaw 的“AI 助手”公开文档里主要指的是侧边栏对话体系。  
+它不是单一模式，而是三套工作方式：
 
-## 🤖 AI助手的基本用法
+- `Ask`
+- `Agent`
+- `自定义 Agent`
 
-### 启动AI助手
+## 1. 先会打开侧边栏
 
-#### 1. 内联对话
-在任何代码文件中，使用快捷键：
-- **Windows**: `Ctrl+Shift+Space`
-- **Mac**: `Cmd+Shift+Space`
+公开手册里最常用的打开方式是：
 
-```javascript
-// 在代码中按快捷键，打开AI对话
-const userData = fetchUserData();
-// [按Ctrl+Shift+Space]
-// 输入：如何用axios实现这个函数？
+- `Cmd + L`
+- 或菜单 `View -> Appearance -> Secondary Side Bar`
 
-// CatPaw会生成：
-const fetchUserData = async (userId) => {
-  try {
-    const response = await axios.get(`/api/users/${userId}`, {
-      headers: {
-        'Authorization': `Bearer ${getToken()}`
-      }
-    });
-    return response.data;
-  } catch (error) {
-    console.error('获取用户数据失败:', error);
-    throw error;
-  }
-};
-```
+另外还支持多标签对话：
 
-#### 2. 侧边栏对话
-使用 `Ctrl+Shift+A` 打开AI助手侧边栏，进行更自由的对话：
+- `Command + Shift + T`
 
-> **用户**: 我想创建一个Vue3的用户管理页面，需要包含用户的增删改查功能
->
-> **CatPaw AI**: 我来帮您创建一个完整的用户管理页面。首先，我会为您生成基础组件结构...
+这个设计挺重要，因为真实开发经常会同时存在几类任务：
 
-```vue
-<template>
-  <div class="user-management">
-    <div class="header">
-      <h2>用户管理</h2>
-      <mtd-button type="primary" @click="showAddDialog = true">
-        添加用户
-      </mtd-button>
-    </div>
-    
-    <!-- 用户表格 -->
-    <mtd-table :data="users" :columns="columns">
-      <template #actions="{ row }">
-        <mtd-button size="small" @click="editUser(row)">编辑</mtd-button>
-        <mtd-button size="small" type="danger" @click="deleteUser(row)">删除</mtd-button>
-      </template>
-    </mtd-table>
-    
-    <!-- 添加/编辑弹窗 -->
-    <mtd-dialog v-model="showDialog" :title="dialogTitle">
-      <user-form v-model="currentUser" @submit="handleSubmit" />
-    </mtd-dialog>
-  </div>
-</template>
+- 一个标签专门问思路
+- 一个标签专门跑 Agent 改代码
+- 一个标签单独调某个 bug
 
-<script setup>
-import { ref, reactive } from 'vue'
-import { mtdService } from '@/services/user'
-import UserForm from './UserForm.vue'
+## 2. Ask、Agent、自定义 Agent 到底差在哪
 
-const users = ref([])
-const showDialog = ref(false)
-const showAddDialog = ref(false)
-const currentUser = reactive({})
+| 模式 | 公开定位 | 适合什么 | 不适合什么 |
+| --- | --- | --- | --- |
+| Ask | 智能问答助手 | 读代码、问思路、做方案、单文件生成 | 需要它主动改很多文件、跑命令 |
+| Agent | 全能执行助手 | 重构、多文件修改、终端执行、端到端任务 | 只想快速问一句时略重 |
+| 自定义 Agent | 个性化工作流 | 限制工具、定制 System Prompt、团队私有流程 | 完全不想配时 |
 
-// 列配置
-const columns = [
-  { prop: 'id', label: 'ID', width: 80 },
-  { prop: 'name', label: '姓名', width: 120 },
-  { prop: 'email', label: '邮箱', width: 200 },
-  { prop: 'department', label: '部门' },
-  { 
-    prop: 'actions', 
-    label: '操作',
-    width: 150,
-    slot: true 
-  }
-]
+一句大白话记忆：
 
-// API 方法
-const loadUsers = async () => {
-  try {
-    users.value = await mtdService.getUserList()
-  } catch (error) {
-    console.error('加载用户列表失败:', error)
-  }
-}
+- `Ask` 像“懂代码的老师傅”
+- `Agent` 像“真下场干活的搭档”
+- `自定义 Agent` 像“你自己定规矩的专属员工”
 
-// 初始化加载
-loadUsers()
-</script>
-```
+## 3. Ask 模式：主打只读探索，先想清楚再动手
 
-## 💬 高级对话技巧
+官方手册把 Ask 模式定义得很明确：
 
-### 1. 提供完整上下文
-```javascript
-// ❌ 不够明确 - AI可能不知道您的需求
-// "帮我优化这段代码"
+- 代码探索与理解
+- 采用“只读”工作方式
+- 不会自动改代码库
 
-// ✅ 提供上下文 - AI能给出更精准的优化建议
-"这是一个用户登录的API调用，经常出现超时问题，帮我优化错误处理和重试逻辑："
+### 适合的场景
 
-// CatPaw生成的优化版本：
-const loginUser = async (credentials, options = {}) => {
-  const defaultOptions = {
-    timeout: 5000,
-    retries: 3,
-    retryDelay: 1000
-  };
-  
-  const config = { ...defaultOptions, ...options };
-  
-  for (let attempt = 0; attempt <= config.retries; attempt++) {
-    try {
-      const response = await axios.post('/api/auth/login', credentials, {
-        timeout: config.timeout
-      });
-      
-      // 登录成功，重置重试计数
-      return response.data;
-    } catch (error) {
-      if (attempt === config.retries) {
-        // 最后一次重试失败
-        throw new Error(`登录失败（${config.retries + 1}次重试）: ${error.message}`);
-      }
-      
-      // 等待后重试，指数退避
-      await new Promise(resolve => 
-        setTimeout(resolve, config.retryDelay * Math.pow(2, attempt))
-      );
-    }
-  }
-};
-```
+- 接手陌生项目，先问架构
+- 定位 bug 思路
+- 让 AI 帮你做方案规划
+- 学某个设计模式或最佳实践
 
-### 2. 分步骤指导
-> **用户**: 我在做一个数据可视化项目，需要从后端API获取数据，然后在前端展示图表，应该怎么做？
->
-> **CatPaw AI**: 我来帮您分步骤实现这个功能。首先，我们需要建立API连接...
+### 代码怎么落地
 
-#### 步骤1: API数据获取
-```javascript
-// CatPaw建议的API服务层
-export const chartDataService = {
-  async fetchChartData(params) {
-    const response = await axios.get('/api/charts/data', { params })
-    return this.transformData(response.data)
-  },
-  
-  transformData(rawData) {
-    return rawData.map(item => ({
-      date: new Date(item.timestamp),
-      value: item.value,
-      category: item.category
-    }))
-  }
-}
-```
+Ask 不是完全不能改代码，它是：
 
-#### 步骤2: 图表组件
-```javascript
-// CatPaw生成的图表组件
-import { useChart } from '@/hooks/useChart'
+- 先生成建议
+- 你手动 `Apply`
+- 再决定 `Accept` 还是 `Reject`
 
-const DataChart = ({ chartType = 'line' }) => {
-  const { data, loading, error } = useChartData()
-  
-  if (loading) return <LoadingSpinner />
-  if (error) return <ErrorDisplay error={error} />
-  
-  return (
-    <ResponsiveChart 
-      data={data}
-      type={chartType}
-      options={{
-        responsive: true,
-        maintainAspectRatio: false
-      }}
-    />
-  )
-}
-```
+公开手册写了几种采纳粒度：
 
-## 🛠️ AI助手实用功能
+- `Accept all`
+- 按文件 `Accept`
+- 按 diff 片段 `Accept`
 
-### 1. 代码解释
-```javascript
-// 选中复杂代码，让AI解释
-const debouncedSearch = useDebounce((query) => {
-  if (query.length > 2) {
-    searchAPI(query).then(results => {
-      setResults(results.filter(r => 
-        r.name.toLowerCase().includes(query.toLowerCase())
-      ))
-    })
-  }
-}, 300)
+还有几个很实用的点：
 
-// 选中后按 Ctrl+Shift+E
-// CatPaw解释：这是一个防抖搜索函数，它会在用户停止输入300ms后才发起搜索请求，
-// 避免频繁的API调用。会过滤结果只显示包含搜索关键词的项目。
-```
+- `ReApply`：重新应用修改
+- `Command + Z`：支持逐步回撤
+- 可打开 `Codebase 检索`
 
-### 2. 生成测试用例
-```javascript
-// 选中函数，使用AI生成测试
-const calculatePrice = (basePrice, discount, taxRate) => {
-  const discountedPrice = basePrice * (1 - discount / 100)
-  return discountedPrice * (1 + taxRate / 100)
-}
+所以 Ask 的气质就是：
 
-// 按Ctrl+Shift+G
-// CatPaw生成测试用例：
-describe('calculatePrice', () => {
-  it('should calculate price with discount and tax', () => {
-    expect(calculatePrice(100, 10, 8)).toBe(97.2)
-  })
-  
-  it('should handle zero discount', () => {
-    expect(calculatePrice(100, 0, 8)).toBe(108)
-  })
-  
-  it('should handle zero tax', () => {
-    expect(calculatePrice(100, 10, 0)).toBe(90)
-  })
-  
-  it('should validate input parameters', () => {
-    expect(() => calculatePrice(-100, 10, 8)).toThrow()
-    expect(() => calculatePrice(100, 150, 8)).toThrow('Invalid discount')
-  })
-})
-```
+> 先讨论，再手动落地，强调可控。
 
-### 3. 代码翻译
-```javascript
-// 将JavaScript代码转换为TypeScript
-const createUser = (userData) => {
-  return api.post('/users', userData)
-}
+## 4. Agent 模式：能读、能写、能搜、能跑
 
-// 选中后让AI转换为TypeScript
-// CatPaw转换结果：
-interface UserData {
-  name: string
-  email: string
-  department: string
-  role: 'admin' | 'user' | 'manager'
-}
+官方手册对 Agent 模式的描述比 Ask 更强：
 
-const createUser = async (userData: UserData): Promise<User> => {
-  const response = await api.post<ApiResponse<User>>('/users', userData)
-  return response.data
-}
-```
+- 自主探索代码库
+- 阅读文档
+- 浏览网页
+- 编辑文件
+- 运行终端命令
 
-## 🎯 智能代码审查
+### 适合的任务
 
-### 1. 自动识别问题
-```javascript
-// CatPaw会自动检测到的问题
-const UserComponent = ({ userId }) => {
-  const [user, setUser] = useState(null)
-  
-  useEffect(() => {
-    // 🐛 CatPaw警告：缺少错误处理
-    fetchUser(userId).then(setUser)
-    
-    // 🔄 CatPaw建议：添加依赖项
-  }, []) // 应该添加userId依赖
-  
-  return user ? <div>{user.name}</div> : <Loading />
-}
+- 新建工程
+- 多文件重构
+- 新功能开发
+- 自动化处理重复任务
 
-// CatPaw建议的修复版本：
-const UserComponent = ({ userId }) => {
-  const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  
-  useEffect(() => {
-    const loadUser = async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const userData = await fetchUser(userId)
-        setUser(userData)
-      } catch (err) {
-        setError(err.message)
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    if (userId) {
-      loadUser()
-    }
-  }, [userId]) // ✅ 正确添加依赖
-  
-  if (loading) return <Loading />
-  if (error) return <Error message={error} />
-  if (!user) return null
-  
-  return <div>{user.name}</div>
-}
-```
+### 官方公开的关键配置
 
-### 2. 安全代码审查
-```javascript
-// CatPaw检测安全漏洞
-const UserProfile = () => {
-  const [userId] = useState(getUserIdFromURL())
-  
-  // 🔒 CatPaw警告：存在XSS漏洞风险
-  return <div>欢迎 {user.name}</div> // 未转义的HTML输出
-  
-  // 🚫 CatPaw警告：不安全的URL处理
-  window.location.href = getURLParam('redirect') // open redirect漏洞
-}
+Agent 模式页面里，比较值得记住的是这些配置：
 
-// CatPaw建议的安全修复：
-const UserProfile = () => {
-  // ✅ 使用URLSearchParams安全解析
-  const params = new URLSearchParams(window.location.search)
-  const userId = params.get('id')
-  
-  // ✅ 使用React的自动转义
-  return <div>欢迎 {user.name}</div> // React默认转义
-  
-  // ✅ 安全的URL跳转
-  const encodedRedirect = encodeURIComponent(safeRedirectUrl)
-  window.location.href = `/safe-redirect?url=${encodedRedirect}`
-}
-```
+- `Default Docs`：默认带入文档上下文
+- `Auto-run`：自动运行终端命令
+- `Auto-fix`：自动修复 Linter Errors
+- `Current File`：自动把当前打开文件带入上下文
+- `传递项目结构`：把简化项目树放进上下文
+- `To-do List`：复杂任务自动拆分待办
 
-## 📚 学习与提示系统
+### Auto-run 要怎么看
 
-### 1. 代码示例库
-```javascript
-// 使用AI助手获取最佳实践示例
-// 在CatPaw中输入：
-// "给我看一个Vue3 Composition API的最佳实践例子"
+公开手册写得很谨慎：
 
-// CatPaw提供的最佳实践：
-export default {
-  setup() {
-    // 💡 使用解构提高可读性
-    const state = reactive({
-      users: [],
-      loading: false,
-      error: null,
-      pagination: {
-        page: 1,
-        pageSize: 10,
-        total: 0
-      }
-    })
-    
-    // 💡 提取可复用逻辑
-    const { fetchUsers, deleteUser } = useUserActions()
-    
-    // 💡 命名清晰的计算属性
-    const hasUsers = computed(() => state.users.length > 0)
-    const isFirstPage = computed(() => state.pagination.page === 1)
-    
-    // 💡 合理的生命周期管理
-    onMounted(loadData)
-    onUnmounted(() => {
-      // 清理副作用
-    })
-    
-    return {
-      // 💡 明确的返回对象
-      users: readonly(state.users), // 防止意外修改
-      loading: toRef(state, 'loading'),
-      pagination: toRef(state, 'pagination'),
-      hasUsers,
-      isFirstPage,
-      loadData,
-      handleDelete: deleteUser
-    }
-  }
-}
-```
+- 并不是所有命令都会自动执行
+- 高风险命令会被拦
+- 还受“允许自动运行的命令”“禁止自动运行的命令”影响
+- 可以开启“删除文件防护”
 
-### 2. 错误诊断助手
-```javascript
-// 当遇到错误时，让AI帮您诊断
-const problematicCode = async () => {
-  const data1 = await apiCall1()
-  const data2 = await apiCall2() // 这里经常超时
-  const result = processData(data1, data2)
-  return result
-}
+这说明 CatPaw 的 Agent 虽然能执行命令，但官方公开策略并不是“无脑全放开”。
 
-// 选中代码，询问："这段代码中的apiCall2经常超时，怎么优化？"
+## 5. 自定义 Agent：把 AI 助手训成你想要的样子
 
-// CatPaw建议的解决方案：
-const optimizedCode = async () => {
-  // 🚀 并行执行无依赖的API调用
-  const [data1, data2] = await Promise.all([
-    apiCall1(),
-    apiCall2().catch(error => {
-      // 🚨 添加详细的错误日志
-      logger.warn('API调用2失败，使用缓存数据', { error })
-      return getCachedData() // 降级策略
-    })
-  ])
-  
-  // ⚡ 增加超时控制
-  const withTimeout = (promise, timeout) => 
-    Promise.race([
-      promise,
-      new Promise((_, reject) => 
-        setTimeout(() => reject(new Error(`操作超时: ${timeout}ms`)), timeout)
-      )
-    ])
-  
-  const data2 = await withTimeout(apiCall2(), 5000)
-  return processData(data1, data2)
-}
-```
+这个功能是当前公开手册里很值得关注的一块。
 
-## 🎮 AI编程工作流
+你可以在模式选择里点 `add mode` 新建自定义模式，然后配置：
 
-### 高效开发流程
-1. **需求分析阶段**: 用自然语言描述功能，让AI生成代码骨架
-2. **编码阶段**: 使用AI补全和生成，减少重复劳动
-3. **审查阶段**: 让AI检查代码质量和潜在问题
-4. **测试阶段**: 使用AI生成测试用例和边界条件
-5. **文档阶段**: 让AI生成注释和API文档
+- 模式名称
+- 唤起快捷键
+- `Default Docs`
+- 启用哪些 `Tools`
+- `Auto-run`
+- `Auto-fix`
+- `System Prompt`
 
-CatPaw的AI助手是一个强大的编程伙伴，合理使用能大幅提升开发效率和代码质量。在下一篇文章中，我们将介绍CatPaw的命令行工具和自动化功能。
+官方手册还专门举了一个很实际的例子：
+
+- 如果你不希望模型联网搜索，可以关掉 `Web Search`
+
+这类配置的价值很大，因为它直接决定：
+
+- 要不要更快
+- 要不要更稳
+- 要不要更少外部噪音
+
+## 6. Agent 到底有哪些公开工具
+
+工具列表页已经把公开能力讲得比较清楚了，可以记成 4 组。
+
+### 文件操作类
+
+- `Edit - Write`
+- `Search - Read File`
+- `Edit - Delete File`
+- `Edit - Multi Edit`
+
+### 搜索类
+
+- `Search - Codebase`
+- `Search - Grep`
+- `Search - Glob File Search`
+- `Search - List Directory`
+
+### 终端类
+
+- `Run - Terminal`
+
+### 其他扩展类
+
+- `Search - Web Search`
+- `Search - Fetch Rules`
+- `MCP Tools`
+- `Ask Question`
+
+这里有个很重要的判断：
+
+- 公开手册强调的是“工具能力”
+- 不是一堆固定 CLI 子命令
+
+所以主人如果看见以前那种“catpaw create:xxx”“catpaw deploy:xxx”式写法，优先怀疑是不是把别的产品想象进来了。
+
+## 7. 对话管理也不是小功能
+
+公开手册还写了几块容易被忽略但非常实用的能力：
+
+- 最近 `30 天` 历史对话
+- 收藏对话
+- 复制对话 ID
+- `Checkpoint` 回退
+- 基于某个节点分叉出新对话
+
+这几项真正值钱的地方不在“花哨”，而在于：
+
+- 好的 prompt 可以沉淀
+- 长对话不会越聊越乱
+- 复杂方案可以分叉比较
+- 改坏代码还能回退
+
+## 8. 快捷菜单怎么用更顺
+
+选中代码后，CatPaw 会弹快捷菜单。  
+公开手册列出的高频按钮有：
+
+- `Edit`
+- `Chat`
+- `重构`
+- `注释`
+- `找 Bug`
+- `解释`
+- `单测`
+
+还有一组 `/` 命令：
+
+- `/ -> Clear`
+- `/ -> New`
+- `/ -> Prompt`
+
+如果主人平时喜欢“选中一段直接处理”，这套入口会比重新组织大段 prompt 更顺手。
+
+## 9. 怎么选模式最省时间
+
+一个很实用的经验是：
+
+- 不确定问题本质时，先 `Ask`
+- 已经明确要落地时，上 `Agent`
+- 团队有固定规则时，做一个 `自定义 Agent`
+
+这样能避免两种浪费：
+
+- 小题大做，动不动开重型 Agent
+- 大题小做，明明要跨文件还一直在 Ask 里聊天
+
+## 10. 这一篇最该背下来的话
+
+> Ask 负责理解和规划，Agent 负责执行和落地，自定义 Agent 负责把团队规范固化成默认工作流。
+
+## 公开资料来源
+
+- 用户手册-侧边栏对话概览：https://catpaw.meituan.com/guides/sidebar-chat/overview
+- 用户手册-Ask 模式：https://catpaw.meituan.com/guides/sidebar-chat/ask-mode
+- 用户手册-Agent 模式：https://catpaw.meituan.com/guides/sidebar-chat/agent-mode
+- 用户手册-自定义 Agent：https://catpaw.meituan.com/guides/sidebar-chat/custom-agent
+- 用户手册-工具列表：https://catpaw.meituan.com/guides/sidebar-chat/toollist
+- 用户手册-对话管理：https://catpaw.meituan.com/guides/sidebar-chat/conversation
+- 用户手册-快捷方式：https://catpaw.meituan.com/guides/sidebar-chat/shortcuts
