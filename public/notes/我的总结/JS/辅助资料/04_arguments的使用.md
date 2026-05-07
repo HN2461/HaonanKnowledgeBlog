@@ -1,3 +1,15 @@
+---
+title: JavaScript arguments 对象详解
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - arguments
+  - 函数参数
+  - rest parameters
+description: JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。
+---
+
 ## 四：arguments 的使用
 
 在调用函数时，浏览器每次都会传递两个隐含参数：

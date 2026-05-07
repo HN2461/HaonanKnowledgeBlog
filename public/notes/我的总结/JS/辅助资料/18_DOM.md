@@ -1,4 +1,15 @@
-**<font style="color:#FF0000;">文档对象模型</font>**（Document Object Model ，简称DOM），它就是一些系列**<font style="color:#FF0000;">编程接口</font>**，有了这些接口，就可以**<font style="color:#FF0000;">改变页面内容，结构和样式</font>**
+---
+title: DOM文档对象模型基础
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - DOM
+  - 文档对象模型
+description: DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。
+---
+
+**文档对象模型**（Document Object Model ，简称DOM），它就是一些系列**编程接口**，有了这些接口，就可以**改变页面内容，结构和样式**
 
 DOM树：
 
@@ -11,7 +22,5 @@ DOM树：
 
 节点：网页中所有内容都是节点（标签、属性、文本、注释等），DOM中使用node表示
 
-**<font style="color:#FF0000;">DOM把以上内容都看作是对象</font>**
-
-**<font style="color:#FF0000;"></font>**
+**DOM把以上内容都看作是对象**
 

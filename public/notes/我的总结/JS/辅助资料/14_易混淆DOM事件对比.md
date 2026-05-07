@@ -1,17 +1,31 @@
+---
+title: 易混淆DOM事件对比指南
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - DOM
+  - 事件处理
+  - input
+  - change
+  - click
+description: 前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。
+---
+
 ## 一、表单交互类事件（以 input/change 为核心）
 ### 1. 基础输入事件：input /change（网页核心内容 + 实战补充）
 **核心区别**：触发时机与条件完全不同，适配 “实时响应” 与 “确认后响应” 两类需求
 
 | 事件 | 触发时机 | 核心特点 | 面试场景举例 |
 | --- | --- | --- | --- |
-| input | <font style="color:#DF2A3F;">输入框内容发生任何变化瞬间（敲键 / 粘贴 / 删改 / 输入法选字上屏）</font> | 实时性，无附加条件，内容变即触发；输入法候选阶段不触发 | 实时搜索联想、输入字数统计、表单内容即时预览 |
-| change | <font style="color:#DF2A3F;">满足双条件：① 元素失去焦点（blur）；② 内容与获焦时相比有变更</font> | 非实时性，依赖 “失焦 + 真变更”；不受输入法阶段影响，只看最终结果 | 表单项失焦校验（如手机号格式验证）、下拉框选值确认、复选框状态变更后提交 |
+| input | 输入框内容发生任何变化瞬间（敲键 / 粘贴 / 删改 / 输入法选字上屏） | 实时性，无附加条件，内容变即触发；输入法候选阶段不触发 | 实时搜索联想、输入字数统计、表单内容即时预览 |
+| change | 满足双条件：① 元素失去焦点（blur）；② 内容与获焦时相比有变更 | 非实时性，依赖 "失焦 + 真变更"；不受输入法阶段影响，只看最终结果 | 表单项失焦校验（如手机号格式验证）、下拉框选值确认、复选框状态变更后提交 |
 
 
 **补充面试考点**：
 
 + 跨元素表现：change 事件并非仅适用于输入框 —— 下拉框（select）选值切换、复选框（checkbox）勾选状态变更时均会触发，而 input 仅针对可输入元素；
-+ 手动触发坑点：通过prop()修改复选框checked属性时，不会自动触发 change 事件，需手动调用.change()或.trigger('change')；`<font style="color:rgba(0, 0, 0, 0.85);">prop()</font>`<font style="color:rgba(0, 0, 0, 0.85);"> 是 </font>**<font style="color:rgb(0, 0, 0) !important;">jQuery 框架提供的核心方法</font>**<font style="color:rgba(0, 0, 0, 0.85);">，作用是「获取或设置 DOM 元素的</font>**<font style="color:rgb(0, 0, 0) !important;">固有属性</font>**<font style="color:rgba(0, 0, 0, 0.85);">（也叫 “DOM 属性”）」</font>
++ 手动触发坑点：通过prop()修改复选框checked属性时，不会自动触发 change 事件，需手动调用.change()或.trigger('change')；prop() 是 jQuery 框架提供的核心方法，作用是「获取或设置 DOM 元素的固有属性（也叫 "DOM 属性"）」
 + 框架差异：在 nicegui 等事件驱动框架中，on_change参数绑定的函数需注意 “不主动调用” 特性，通过sender.value获取最新值可提升函数通用性。
 
 ### 2. 焦点事件：blur /focus/focusin /focusout（与 change 强关联）

@@ -276,7 +276,7 @@ for (let item of [1, 2, 3]) {
 ```
 
 #### **map()** - 映射转换
-**<font style="color:rgb(0, 0, 0);">返回新数组</font>**<font style="color:rgb(0, 0, 0);">：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；遇到空位会跳过回调，但结果中会保留空位</font>
+**返回新数组**：不会修改原始数组，始终生成全新数组（长度 = 原数组长度）；遇到空位会跳过回调，但结果中会保留空位
 
 ```javascript
 // 创建新数组
@@ -292,7 +292,7 @@ let userObjects = users.map((name, index) => ({
 ```
 
 #### **filter()** - 过滤筛选
-**<font style="color:rgb(0, 0, 0);">返回值</font>**<font style="color:rgb(0, 0, 0);">：新数组（仅包含回调返回 </font>`<font style="color:rgb(0, 0, 0);">true</font>`<font style="color:rgb(0, 0, 0);"> 的元素，长度可能小于原数组）；跳过空位</font>
+**返回值**：新数组（仅包含回调返回 `true` 的元素，长度可能小于原数组）；跳过空位
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -307,7 +307,7 @@ let truthyValues = values.filter(Boolean); // [1, 'hello']
 ```
 
 #### **reduce()** - 归并计算（重点！）
-<font style="color:rgba(0, 0, 0, 0.85);">返回值 = 最后一轮回调函数的返回值，其类型完全由你在回调中 “return 的内容” 决定 —— 可以是数字、字符串、对象、数组等任意类型。</font>
+返回值 = 最后一轮回调函数的返回值，其类型完全由你在回调中 “return 的内容” 决定 —— 可以是数字、字符串、对象、数组等任意类型。
 
 ```javascript
 // 基本累加
@@ -522,12 +522,12 @@ Array.from(arr.keys());     // [0, 1, 2]
 
 ### 5. 其他重要方法
 #### **flat()** - 数组扁平化
-**<font style="color:rgb(0, 0, 0);">将多维数组 “拉平” 为低维数组</font>**<font style="color:rgb(0, 0, 0);">，且</font>**<font style="color:rgb(0, 0, 0);">不改变原数组</font>**<font style="color:rgb(0, 0, 0);">，返回新数组。传 </font>`<font style="color:rgb(0, 0, 0);">Infinity</font>`<font style="color:rgb(0, 0, 0);"> （</font><font style="color:rgba(0, 0, 0, 0.85);"> JavaScript 内置的</font>**<font style="color:rgb(0, 0, 0) !important;">数值类型常量</font>**<font style="color:rgba(0, 0, 0, 0.85);">，代表「正无穷大」），</font>**<font style="color:rgb(0, 0, 0) !important;">不管数组嵌套多少层，全部拉平为一维数组</font>**<font style="color:rgba(0, 0, 0, 0.85);">。</font>
+**将多维数组 "拉平" 为低维数组**，且**不改变原数组**，返回新数组。传 `Infinity`（JavaScript 内置的**数值类型常量**，代表"正无穷大"），**不管数组嵌套多少层，全部拉平为一维数组**。
 
-**<font style="color:rgb(0, 0, 0);">特殊处理</font>**<font style="color:rgb(0, 0, 0);">：</font>
+**特殊处理**：
 
-    - <font style="color:rgb(0, 0, 0);">自动跳过数组中的空位（类似</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">forEach</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">对稀疏数组的处理）：</font>`<font style="color:rgb(0, 0, 0);">[1, , [2]].flat()</font>`<font style="color:rgb(0, 0, 0);"> </font><font style="color:rgb(0, 0, 0);">→</font><font style="color:rgb(0, 0, 0);"> </font>`<font style="color:rgb(0, 0, 0);">[1, 2]</font>`
-    - <font style="color:rgb(0, 0, 0);">仅处理数组类型的子元素，非数组元素直接保留：</font>`<font style="color:rgb(0, 0, 0);">[1, 'a', {x:2}, [3]].flat()</font>`<font style="color:rgb(0, 0, 0);"> → </font>`<font style="color:rgb(0, 0, 0);">[1, 'a', {x:2}, 3]</font>`
+    - 自动跳过数组中的空位（类似 `forEach` 对稀疏数组的处理）：`[1, , [2]].flat()` → `[1, 2]`
+    - 仅处理数组类型的子元素，非数组元素直接保留：`[1, 'a', {x:2}, [3]].flat()` → `[1, 'a', {x:2}, 3]`
 
 ```javascript
 // arr.flat(depth)

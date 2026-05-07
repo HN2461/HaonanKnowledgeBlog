@@ -6,6 +6,20 @@ export const dailyChangeSummary = {
   items: [
     {
       category: '问题修复',
+      time: '15:34',
+      title: '纠偏宏任务与微任务笔记并改写为小白版',
+      summary: '把《12_宏任务与微任务》改成更容易理解的入门版，用大白话和短例子讲清宏任务、微任务、Promise、await 和 setTimeout 的顺序。',
+      content: '更新 `public/notes/我的总结/JS/辅助资料/12_宏任务与微任务.md`：1) 把原本偏规范解释的版本改成“小白速懂版”，先给出一轮事件循环的核心结论，再用“大活/小纸条”的比喻帮助理解；2) 保留正确的分类关系，明确 setTimeout、用户事件属于宏任务，Promise.then、await 后续、queueMicrotask、MutationObserver 属于微任务；3) 用两个短例子分别解释普通同步+Promise+定时器的输出顺序，以及 async/await 为什么是 A->C->B；4) 继续保留面试口述版和一句话速记，方便背诵；5) 保留规范/官方参考链接，作为深入复查入口。'
+    },
+    {
+      category: '问题修复',
+      time: '15:15',
+      title: '把字符串数组方法手册改成速背详细版',
+      summary: '在原有速背卡基础上补充参数边界、开发场景、易错点和更多示例，让内容既能快速背诵，也能支撑面试追问。',
+      content: '更新 `public/notes/我的总结/JS/辅助资料/字符串数组方法对比记忆手册.md`：1) 继续保留"速背卡"主线，但把内容扩展成"开发+面试详细版"，补充查找、截取、拼接、参数边界和典型使用场景；2) 新增 `indexOf`、`includes`、`at`、`slice`、`substring`、`split`、`join` 的边界说明和代码示例，便于开发时直接速查；3) 增加"开发场景怎么选""面试常问快答""最容易答错的坑""速练题"几个部分，提升复习效率；4) 保留面试 30 秒口述模板和终极速记口诀，方便快速背诵；5) 通过这次扩充，让文章从单纯对比表升级为更适合直接发布的"速背+详细解释"版本。',
+    },
+    {
+      category: '问题修复',
       time: '09:31',
       title: '修正 JavaScript 数组笔记的关键细节并补充示例',
       summary: '审查 `09_JavaScript数组.md` 并修正 `reduce()` 无初始值行为、`splice()` 替换示例变量冲突、`copyWithin()` 解读说明，补充 `fill()` 负数参数示例和 `sort()` 返回值说明。',
@@ -24,6 +38,27 @@ export const dailyChangeSummary = {
       title: '新增开发必懂网络基础概念文档',
       summary: '创建面向开发者的网络基础知识速查，详解 127.0.0.1、localhost、端口、DNS 域名解析等核心概念，帮助理解"为什么本地服务要这样访问"。',
       content: '在 `public/notes/电脑/电脑网络/网络基础/` 下新增 `开发必懂网络基础概念.md`，内容包括：IP 地址基础（IPv4/IPv6、特殊 IP 地址）、127.0.0.1 与 localhost 的区别与联系、端口分类与常用服务默认端口、DNS 域名解析原理、开发常见场景对照（本地开发服务器、局域网访问、访问排障）、速查表。文章配合大量表格和示例，适合开发者快速理解网络基础概念。',
+    },
+    {
+      category: '内容上新',
+      time: '10:25',
+      title: '创建美团CatPaw AI编辑器文档',
+      summary: '在AI工具分类下新增CatPaw专题文档，包含快速上手指南和核心概念详解',
+      content: '创建AI工具/CatPaw/目录和两篇核心文档：1) 目录.md - 概述CatPaw产品基本信息和主要功能特性；2) 第一篇_CatPaw快速上手与核心概念_2026-05.md - 详细介绍产品定位、核心优势、功能特性、界面交互、快速上手指南和适用场景。文档内容涵盖AI编程助手、智能错误处理、美团技术栈集成等企业级功能。',
+    },
+    {
+      category: '内容上新',
+      time: '11:35',
+      title: '拆分CatPaw文档为多篇章专题指南',
+      summary: '将CatPaw文档从单篇拆分为5个专题文件，涵盖介绍、核心功能、AI助手、CLI工具和美团生态集成的完整学习路径',
+      content: '按照用户要求将CatPaw文档重组为系列专题：1) 第一篇_CatPaw介绍与快速上手 - 基础概念和安装入门；2) 第二篇_CatPaw核心功能详解 - AI编程引擎和智能功能深入解析；3) 第三篇_CatPaw_AI助手使用指南 - 对话编程技巧和高级用法；4) 第四篇_CatPaw_CLI工具与自动化 - 命令行工具和脚手架；5) 第五篇_CatPaw美团生态集成 - 宙斯、Micms、Caiyun、Mtd UI和SSO等深度集成。同时更新目录文件提供完整导航和学习建议。',
+    },
+    {
+      category: '问题修复',
+      time: '16:45',
+      title: '修复宏任务与微任务文档格式',
+      summary: '为该文档添加YAML frontmatter，清理HTML字体标签，规范化Markdown格式',
+      content: '1. 添加必要的frontmatter元信息（title、date、category、tags、description）\n2. 清理所有残留的HTML <font> 标签，转换为标准的Markdown强调语法\n3. 修复文档开头的重复内容，保持结构清晰\n4. 重新生成笔记索引'
     },
   ],
 }

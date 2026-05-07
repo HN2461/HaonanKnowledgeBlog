@@ -1,3 +1,16 @@
+---
+title: Map与Set事件订阅管理器
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - Map
+  - Set
+  - 事件订阅
+  - 设计模式
+description: 从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。
+---
+
 目标：**一次复习，长期可用**。这篇笔记从 ES6 的 Map / Set 概念讲起，再过渡到你写的事件订阅管理器（EventManager），由浅入深，避免以后复习时还要先翻 Map / Set 的资料。
 
 ---

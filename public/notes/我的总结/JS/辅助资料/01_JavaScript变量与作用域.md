@@ -1,3 +1,17 @@
+---
+title: JavaScript 变量与作用域详解
+date: 2026-05-07
+category: 我的总结/JS/辅助资料
+tags:
+  - JavaScript
+  - 变量
+  - 作用域
+  - var
+  - let
+  - const
+description: JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。
+---
+
 ## 一、变量声明方式核心特性
 
 ### 1. var（ES5）
