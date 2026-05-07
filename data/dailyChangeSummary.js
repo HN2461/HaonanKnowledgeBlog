@@ -60,5 +60,26 @@ export const dailyChangeSummary = {
       summary: '为该文档添加YAML frontmatter，清理HTML字体标签，规范化Markdown格式',
       content: '1. 添加必要的frontmatter元信息（title、date、category、tags、description）\n2. 清理所有残留的HTML <font> 标签，转换为标准的Markdown强调语法\n3. 修复文档开头的重复内容，保持结构清晰\n4. 重新生成笔记索引'
     },
+    {
+      category: '内容上新',
+      time: '18:15',
+      title: '全面完善DOM文档对象模型基础文档',
+      summary: '将基础DOM概念文档扩充为完整的开发指南，涵盖节点类型、DOM树结构、操作方法、实际案例和最佳实践',
+      content: '完善`public/notes/我的总结/JS/辅助资料/18_DOM.md`：1) 添加详细的12种DOM节点类型表格和代码示例；2) 补充DOM树形结构详解，包含节点关系属性和操作示例；3) 增加完整的DOM操作API说明，包括元素获取、创建插入、删除替换、内容属性操作；4) 添加3个实际应用案例（动态列表管理、表格数据渲染、表单验证）；5) 补充DOM操作最佳实践和性能优化原则；6) 提供模块化的DOM工具函数封装示例。文档从基础概念介绍升级为全面的DOM开发参考指南。'
+    },
+    {
+      category: '内容上新',
+      time: '19:30',
+      title: '完善Map/Set文档并添加迭代器比喻',
+      summary: '补充Map/Set创建方法和API详细对比，添加生动的糖果罐和班级花名册迭代器比喻',
+      content: '完善`public/notes/我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md`：1) 补充Map和Set的多种创建方法示例；2) 增强API表格，添加返回值和详细说明；3) 添加Map/Set API设计对称性分析；4) 提供实用的记忆口诀；5) 添加"糖果罐"和"班级花名册"双比喻，用生动的生活化场景解释抽象的迭代器概念；6) 补充完整的迭代器概念详解和使用示例。'
+    },
+    {
+      category: '问题修复',
+      time: '18:21',
+      title: '发布级重构Map/Set事件订阅管理文档',
+      summary: '修正关键表述准确性与章节结构，补齐完整EventManager实现并增强工程实践细节。',
+      content: '更新`public/notes/我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md`：1) 修正“对象键只能是字符串”为“字符串或Symbol”；2) 统一Set顺序描述，明确“无索引语义但保留插入顺序”；3) 规范章节编号并清理重复标题；4) 补充`SameValueZero`比较规则，增强Map/Set底层认知；5) 将EventManager整理为可直接复制的完整版本，新增`once`、`clear`、`listenerCount`，并在`off`中回收空桶；6) 在`emit`中加入回调快照逻辑，避免回调内增删监听导致当前轮遍历行为不稳定。'
+    },
   ],
 }

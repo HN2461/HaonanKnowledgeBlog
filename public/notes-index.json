@@ -2431,9 +2431,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
-          "size": "4KB",
-          "lastModified": "2026-05-07T07:39:32.818Z",
-          "wordCount": 2191
+          "size": "7KB",
+          "lastModified": "2026-05-07T07:56:16.647Z",
+          "wordCount": 4054
         },
         {
           "type": "file",
@@ -2504,10 +2504,10 @@
           ],
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。",
-          "size": "6KB",
-          "lastModified": "2026-05-07T07:41:42.486Z",
-          "wordCount": 3586
+          "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
+          "size": "9KB",
+          "lastModified": "2026-05-07T10:20:34.964Z",
+          "wordCount": 6263
         },
         {
           "type": "file",
@@ -2575,9 +2575,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
-          "size": "1KB",
-          "lastModified": "2026-05-07T07:42:08.820Z",
-          "wordCount": 371
+          "size": "23KB",
+          "lastModified": "2026-05-07T08:21:35.858Z",
+          "wordCount": 19730
         },
         {
           "type": "file",
@@ -3061,9 +3061,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
-          "size": "4KB",
-          "lastModified": "2026-05-07T07:39:32.818Z",
-          "wordCount": 2191
+          "size": "7KB",
+          "lastModified": "2026-05-07T07:56:16.647Z",
+          "wordCount": 4054
         },
         {
           "type": "file",
@@ -3134,10 +3134,10 @@
           ],
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。",
-          "size": "6KB",
-          "lastModified": "2026-05-07T07:41:42.486Z",
-          "wordCount": 3586
+          "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
+          "size": "9KB",
+          "lastModified": "2026-05-07T10:20:34.964Z",
+          "wordCount": 6263
         },
         {
           "type": "file",
@@ -3205,9 +3205,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
-          "size": "1KB",
-          "lastModified": "2026-05-07T07:42:08.820Z",
-          "wordCount": 371
+          "size": "23KB",
+          "lastModified": "2026-05-07T08:21:35.858Z",
+          "wordCount": 19730
         },
         {
           "type": "file",
@@ -3607,9 +3607,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
-          "size": "4KB",
-          "lastModified": "2026-05-07T07:39:32.818Z",
-          "wordCount": 2191
+          "size": "7KB",
+          "lastModified": "2026-05-07T07:56:16.647Z",
+          "wordCount": 4054
         },
         {
           "type": "file",
@@ -3680,10 +3680,10 @@
           ],
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。",
-          "size": "6KB",
-          "lastModified": "2026-05-07T07:41:42.486Z",
-          "wordCount": 3586
+          "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
+          "size": "9KB",
+          "lastModified": "2026-05-07T10:20:34.964Z",
+          "wordCount": 6263
         },
         {
           "type": "file",
@@ -3751,9 +3751,9 @@
           "category": "我的总结/JS/辅助资料",
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
-          "size": "1KB",
-          "lastModified": "2026-05-07T07:42:08.820Z",
-          "wordCount": 371
+          "size": "23KB",
+          "lastModified": "2026-05-07T08:21:35.858Z",
+          "wordCount": 19730
         },
         {
           "type": "file",
@@ -19059,10 +19059,10 @@
       ],
       "category": "我的总结/JS/辅助资料",
       "attachments": [],
-      "description": "从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。",
-      "size": "6KB",
-      "lastModified": "2026-05-07T07:41:42.486Z",
-      "wordCount": 3586
+      "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
+      "size": "9KB",
+      "lastModified": "2026-05-07T10:20:34.964Z",
+      "wordCount": 6263
     },
     {
       "type": "file",
@@ -19130,9 +19130,9 @@
       "category": "我的总结/JS/辅助资料",
       "attachments": [],
       "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
-      "size": "1KB",
-      "lastModified": "2026-05-07T07:42:08.820Z",
-      "wordCount": 371
+      "size": "23KB",
+      "lastModified": "2026-05-07T08:21:35.858Z",
+      "wordCount": 19730
     },
     {
       "type": "file",
@@ -25292,9 +25292,9 @@
       "category": "我的总结/JS/辅助资料",
       "attachments": [],
       "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
-      "size": "4KB",
-      "lastModified": "2026-05-07T07:39:32.818Z",
-      "wordCount": 2191
+      "size": "7KB",
+      "lastModified": "2026-05-07T07:56:16.647Z",
+      "wordCount": 4054
     },
     {
       "type": "file",
@@ -28104,9 +28104,9 @@
                   "category": "我的总结/JS/辅助资料",
                   "attachments": [],
                   "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
-                  "size": "4KB",
-                  "lastModified": "2026-05-07T07:39:32.818Z",
-                  "wordCount": 2191
+                  "size": "7KB",
+                  "lastModified": "2026-05-07T07:56:16.647Z",
+                  "wordCount": 4054
                 },
                 {
                   "type": "file",
@@ -28177,10 +28177,10 @@
                   ],
                   "category": "我的总结/JS/辅助资料",
                   "attachments": [],
-                  "description": "从ES6 Map/Set基础概念到事件订阅管理器实战，详解如何使用Map和Set构建高效的事件系统。",
-                  "size": "6KB",
-                  "lastModified": "2026-05-07T07:41:42.486Z",
-                  "wordCount": 3586
+                  "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
+                  "size": "9KB",
+                  "lastModified": "2026-05-07T10:20:34.964Z",
+                  "wordCount": 6263
                 },
                 {
                   "type": "file",
@@ -28248,9 +28248,9 @@
                   "category": "我的总结/JS/辅助资料",
                   "attachments": [],
                   "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
-                  "size": "1KB",
-                  "lastModified": "2026-05-07T07:42:08.820Z",
-                  "wordCount": 371
+                  "size": "23KB",
+                  "lastModified": "2026-05-07T08:21:35.858Z",
+                  "wordCount": 19730
                 },
                 {
                   "type": "file",
@@ -35607,5 +35607,5 @@
   ],
   "totalNotes": 361,
   "totalCategories": 83,
-  "lastUpdated": "2026-05-07T07:46:12.736Z"
+  "lastUpdated": "2026-05-07T10:21:19.445Z"
 }
