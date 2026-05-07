@@ -92,6 +92,7 @@ export default {
 #### 2. v-on（绑定事件）
 + 作用：给元素绑定点击、输入、鼠标移动等事件，触发自定义方法；
 + **绑定的回调函数，如果函数调用时不需要传递任何参数，小括号**`()`**可以省略。默认传递事件对象**`**event**`**；**
++ 如需同时传递自定义参数和事件对象，使用 `$event`：`@click="handleClick(id, $event)"`；
 + 简写：`@`（比如 `@click="handleClick"` 等价于 `v-on:click="handleClick"`）；
 + 扩展：支持事件修饰符（如 `@click.stop` 阻止冒泡、`@input.trim` 自动去空格）。
 + `.prevent`：等同于`event.preventDefault()`，阻止事件的默认行为。
@@ -102,9 +103,8 @@ export default {
         * 一种是从外到内添加（事件捕获模式）。
 + `.self`：这个事件如果是“我自己元素”上发生的事件，这个事件不是别人给我传递过来的事件，则执行对应的程序。
 + `.once`：事件只发生一次。
-+ `.passive`：passive翻译为顺从/不抵抗。无需等待，直接继续（立即）执行事件的默认行为。
-+ `.prevent`：阻止事件的默认行为，
-+ `.passive`：解除阻止，这两种修饰符是对立的。不可以共存（如果一起用，就会报错）。
++ `.passive`：告诉浏览器该事件监听器不会阻止默认行为（不调用 `preventDefault()`），浏览器可立即执行默认行为（如滚动），无需等待 JS 执行完毕，提升滚动性能。常用于 `scroll`、`touchstart` 等事件。
++ **注意**：`.prevent` 与 `.passive` 是对立的，不可以共存（如果一起用，就会报错）。
 
 #### 3. v-if vs v-show（条件控制）
 | 指令 | 实现方式 | 适用场景 | 性能特点 |
@@ -114,14 +114,18 @@ export default {
 
 
 #### 4. v-for（列表渲染）
-+ 必加 `:key`：必须绑定唯一标识（优先用数据的id，没有则用index），Vue靠key识别元素，避免渲染错误；
++ 必加 `:key`：必须绑定唯一且稳定的标识（优先用数据的 `id` 或其他唯一字段），Vue 靠 key 识别元素，避免渲染错误；
++ **避坑**：仅在"列表仅用于展示且永不变化"时才可用 `index`；涉及增删改排序时，`index` 会导致状态错乱；
 + 遍历对象：`v-for="(value, key, index) in obj"`（value是值，key是属性名，index是索引）；
 + 注意：不要把v-if和v-for写在同一个元素上（性能差），优先用计算属性过滤数据后再循环。
 
 #### 5. v-model（双向绑定）
 + **<font style="color:#DF2A3F;">仅适用于表单元素</font>**：input、textarea、select等； 普通元素（如 div、p）不能用；  
 + v-model:value="表达式" 简写为 v-model="表达式"
-+ `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-model</font>` 本质是 `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-bind</font>`（绑定 value 属性） + `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-on</font>`（监听 input 事件）的语法糖  ；
++ `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-model</font>` 本质是 `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-bind</font>` + `<font style="color:rgb(0, 0, 0);background-color:rgba(0, 0, 0, 0);">v-on</font>` 的语法糖：
+  - `<input>` / `<textarea>`：绑定 `value` 属性 + 监听 `input` 事件
+  - `<select>`：绑定 `value` 属性 + 监听 `change` 事件
+  - `<input type="checkbox">` / `<input type="radio">`：绑定 `checked` 属性 + 监听 `change` 事件
 + v-bind是单向数据绑定：`data ===> 视图`
 + v-model是双向数据绑定：`data <===> 视图`
 + 核心特性：视图（输入框）改 → 数据自动变；数据（this.username）改 → 视图自动变；
@@ -486,7 +490,9 @@ const handleClick = () => {
 
 ### 3. 其他重要差异
 #### （1）`binding` 对象增强
-+ 新增 `binding.instance`：指令所在的组件实例（Vue3 组件实例），可直接访问组件的 `data`/`methods`/`props` 等。
++ 新增 `binding.instance`：指令所在的组件实例。
+  - 选项式 API：可访问 `data`、`methods`、`props` 等
+  - 组合式 API（`<script setup>`）：可访问 `setup` 中定义的响应式变量和函数（需通过 `defineExpose` 暴露）
 
 ```javascript
 app.directive('log', {

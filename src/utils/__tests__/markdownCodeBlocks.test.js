@@ -65,4 +65,19 @@ describe('renderMarkdown code block UI', () => {
     expect(html).toContain('graph TD')
     expect(html).toContain('mermaid-diagram__fallback')
   })
+
+  it('highlights vue fences with template and script tokens', () => {
+    const html = renderMarkdown(`\`\`\`vue
+<template>
+  <div>{{ count }}</div>
+</template>
+<script setup>
+const count = 1
+</script>
+\`\`\``)
+
+    expect(html).toContain('class="code-block__language">Vue</span>')
+    expect(html).toContain('hljs-tag')
+    expect(html).toContain('hljs-keyword')
+  })
 })

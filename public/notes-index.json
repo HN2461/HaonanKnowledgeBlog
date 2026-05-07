@@ -1965,9 +1965,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本章先建立模板语法的基础认知，讲解Vue插值语法的核心用法与应用场景。",
-          "size": "0KB",
-          "lastModified": "2026-05-07T13:54:18.052Z",
-          "wordCount": 116
+          "size": "6KB",
+          "lastModified": "2026-05-07T14:02:37.422Z",
+          "wordCount": 3638
         },
         {
           "type": "file",
@@ -2012,9 +2012,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue指令的本质是给DOM元素绑定特定的行为逻辑，让页面能根据数据动态改变DOM的状态。本文详解Vue核心指令与自定义指令的完整用法。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:54:24.733Z",
-          "wordCount": 14401
+          "size": "22KB",
+          "lastModified": "2026-05-07T14:29:16.072Z",
+          "wordCount": 14843
         },
         {
           "type": "file",
@@ -2059,9 +2059,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "30KB",
-          "lastModified": "2026-05-07T13:54:28.894Z",
-          "wordCount": 22734
+          "size": "31KB",
+          "lastModified": "2026-05-07T14:35:58.527Z",
+          "wordCount": 23133
         },
         {
           "type": "file",
@@ -2660,6 +2660,30 @@
         },
         {
           "type": "file",
+          "title": "第21篇：for 家族完全指南",
+          "frontmatterTitle": "第21篇：for 家族完全指南",
+          "fileTitle": "21_for家族完全指南",
+          "filename": "21_for家族完全指南.md",
+          "path": "我的总结/JS/辅助资料/21_for家族完全指南.md",
+          "date": "2026-05-07T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "for循环",
+            "for...of",
+            "for...in",
+            "遍历"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "一次讲清 JavaScript 里的 for、for...of、for...in、forEach、for await...of 的语法、场景、区别、陷阱和选择方法。",
+          "size": "18KB",
+          "lastModified": "2026-05-07T14:34:30.018Z",
+          "wordCount": 11291
+        },
+        {
+          "type": "file",
           "title": "解构赋值完整指南",
           "frontmatterTitle": "解构赋值完整指南",
           "fileTitle": "附录_解构赋值",
@@ -2795,10 +2819,10 @@
           ],
           "category": "我的总结/JS",
           "attachments": [],
-          "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+          "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
           "size": "3KB",
-          "lastModified": "2026-05-07T13:25:33.675Z",
-          "wordCount": 1416
+          "lastModified": "2026-05-07T14:34:30.019Z",
+          "wordCount": 1473
         },
         {
           "type": "file",
@@ -3304,6 +3328,30 @@
         },
         {
           "type": "file",
+          "title": "第21篇：for 家族完全指南",
+          "frontmatterTitle": "第21篇：for 家族完全指南",
+          "fileTitle": "21_for家族完全指南",
+          "filename": "21_for家族完全指南.md",
+          "path": "我的总结/JS/辅助资料/21_for家族完全指南.md",
+          "date": "2026-05-07T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "for循环",
+            "for...of",
+            "for...in",
+            "遍历"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "一次讲清 JavaScript 里的 for、for...of、for...in、forEach、for await...of 的语法、场景、区别、陷阱和选择方法。",
+          "size": "18KB",
+          "lastModified": "2026-05-07T14:34:30.018Z",
+          "wordCount": 11291
+        },
+        {
+          "type": "file",
           "title": "解构赋值完整指南",
           "frontmatterTitle": "解构赋值完整指南",
           "fileTitle": "附录_解构赋值",
@@ -3367,10 +3415,10 @@
           ],
           "category": "我的总结/JS",
           "attachments": [],
-          "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+          "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
           "size": "3KB",
-          "lastModified": "2026-05-07T13:25:33.675Z",
-          "wordCount": 1416
+          "lastModified": "2026-05-07T14:34:30.019Z",
+          "wordCount": 1473
         }
       ],
       "children": []
@@ -3854,6 +3902,30 @@
         },
         {
           "type": "file",
+          "title": "第21篇：for 家族完全指南",
+          "frontmatterTitle": "第21篇：for 家族完全指南",
+          "fileTitle": "21_for家族完全指南",
+          "filename": "21_for家族完全指南.md",
+          "path": "我的总结/JS/辅助资料/21_for家族完全指南.md",
+          "date": "2026-05-07T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "for循环",
+            "for...of",
+            "for...in",
+            "遍历"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "一次讲清 JavaScript 里的 for、for...of、for...in、forEach、for await...of 的语法、场景、区别、陷阱和选择方法。",
+          "size": "18KB",
+          "lastModified": "2026-05-07T14:34:30.018Z",
+          "wordCount": 11291
+        },
+        {
+          "type": "file",
           "title": "解构赋值完整指南",
           "frontmatterTitle": "解构赋值完整指南",
           "fileTitle": "附录_解构赋值",
@@ -3925,9 +3997,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本章先建立模板语法的基础认知，讲解Vue插值语法的核心用法与应用场景。",
-          "size": "0KB",
-          "lastModified": "2026-05-07T13:54:18.052Z",
-          "wordCount": 116
+          "size": "6KB",
+          "lastModified": "2026-05-07T14:02:37.422Z",
+          "wordCount": 3638
         },
         {
           "type": "file",
@@ -3949,9 +4021,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue指令的本质是给DOM元素绑定特定的行为逻辑，让页面能根据数据动态改变DOM的状态。本文详解Vue核心指令与自定义指令的完整用法。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:54:24.733Z",
-          "wordCount": 14401
+          "size": "22KB",
+          "lastModified": "2026-05-07T14:29:16.072Z",
+          "wordCount": 14843
         },
         {
           "type": "file",
@@ -3973,9 +4045,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "30KB",
-          "lastModified": "2026-05-07T13:54:28.894Z",
-          "wordCount": 22734
+          "size": "31KB",
+          "lastModified": "2026-05-07T14:35:58.527Z",
+          "wordCount": 23133
         },
         {
           "type": "file",
@@ -4289,9 +4361,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本章先建立模板语法的基础认知，讲解Vue插值语法的核心用法与应用场景。",
-          "size": "0KB",
-          "lastModified": "2026-05-07T13:54:18.052Z",
-          "wordCount": 116
+          "size": "6KB",
+          "lastModified": "2026-05-07T14:02:37.422Z",
+          "wordCount": 3638
         },
         {
           "type": "file",
@@ -4313,9 +4385,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue指令的本质是给DOM元素绑定特定的行为逻辑，让页面能根据数据动态改变DOM的状态。本文详解Vue核心指令与自定义指令的完整用法。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:54:24.733Z",
-          "wordCount": 14401
+          "size": "22KB",
+          "lastModified": "2026-05-07T14:29:16.072Z",
+          "wordCount": 14843
         },
         {
           "type": "file",
@@ -4337,9 +4409,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "30KB",
-          "lastModified": "2026-05-07T13:54:28.894Z",
-          "wordCount": 22734
+          "size": "31KB",
+          "lastModified": "2026-05-07T14:35:58.527Z",
+          "wordCount": 23133
         },
         {
           "type": "file",
@@ -19317,6 +19389,30 @@
     },
     {
       "type": "file",
+      "title": "第21篇：for 家族完全指南",
+      "frontmatterTitle": "第21篇：for 家族完全指南",
+      "fileTitle": "21_for家族完全指南",
+      "filename": "21_for家族完全指南.md",
+      "path": "我的总结/JS/辅助资料/21_for家族完全指南.md",
+      "date": "2026-05-07T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "for循环",
+        "for...of",
+        "for...in",
+        "遍历"
+      ],
+      "category": "我的总结/JS/辅助资料",
+      "attachments": [],
+      "description": "一次讲清 JavaScript 里的 for、for...of、for...in、forEach、for await...of 的语法、场景、区别、陷阱和选择方法。",
+      "size": "18KB",
+      "lastModified": "2026-05-07T14:34:30.018Z",
+      "wordCount": 11291
+    },
+    {
+      "type": "file",
       "title": "解构赋值完整指南",
       "frontmatterTitle": "解构赋值完整指南",
       "fileTitle": "附录_解构赋值",
@@ -19402,10 +19498,10 @@
       ],
       "category": "我的总结/JS",
       "attachments": [],
-      "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+      "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
       "size": "3KB",
-      "lastModified": "2026-05-07T13:25:33.675Z",
-      "wordCount": 1416
+      "lastModified": "2026-05-07T14:34:30.019Z",
+      "wordCount": 1473
     },
     {
       "type": "file",
@@ -19425,9 +19521,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "本章先建立模板语法的基础认知，讲解Vue插值语法的核心用法与应用场景。",
-      "size": "0KB",
-      "lastModified": "2026-05-07T13:54:18.052Z",
-      "wordCount": 116
+      "size": "6KB",
+      "lastModified": "2026-05-07T14:02:37.422Z",
+      "wordCount": 3638
     },
     {
       "type": "file",
@@ -19449,9 +19545,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "Vue指令的本质是给DOM元素绑定特定的行为逻辑，让页面能根据数据动态改变DOM的状态。本文详解Vue核心指令与自定义指令的完整用法。",
-      "size": "21KB",
-      "lastModified": "2026-05-07T13:54:24.733Z",
-      "wordCount": 14401
+      "size": "22KB",
+      "lastModified": "2026-05-07T14:29:16.072Z",
+      "wordCount": 14843
     },
     {
       "type": "file",
@@ -19473,9 +19569,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-      "size": "30KB",
-      "lastModified": "2026-05-07T13:54:28.894Z",
-      "wordCount": 22734
+      "size": "31KB",
+      "lastModified": "2026-05-07T14:35:58.527Z",
+      "wordCount": 23133
     },
     {
       "type": "file",
@@ -28493,6 +28589,30 @@
                 },
                 {
                   "type": "file",
+                  "title": "第21篇：for 家族完全指南",
+                  "frontmatterTitle": "第21篇：for 家族完全指南",
+                  "fileTitle": "21_for家族完全指南",
+                  "filename": "21_for家族完全指南.md",
+                  "path": "我的总结/JS/辅助资料/21_for家族完全指南.md",
+                  "date": "2026-05-07T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "JavaScript",
+                    "for循环",
+                    "for...of",
+                    "for...in",
+                    "遍历"
+                  ],
+                  "category": "我的总结/JS/辅助资料",
+                  "attachments": [],
+                  "description": "一次讲清 JavaScript 里的 for、for...of、for...in、forEach、for await...of 的语法、场景、区别、陷阱和选择方法。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-07T14:34:30.018Z",
+                  "wordCount": 11291
+                },
+                {
+                  "type": "file",
                   "title": "解构赋值完整指南",
                   "frontmatterTitle": "解构赋值完整指南",
                   "fileTitle": "附录_解构赋值",
@@ -28558,10 +28678,10 @@
               ],
               "category": "我的总结/JS",
               "attachments": [],
-              "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+              "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
               "size": "3KB",
-              "lastModified": "2026-05-07T13:25:33.675Z",
-              "wordCount": 1416
+              "lastModified": "2026-05-07T14:34:30.019Z",
+              "wordCount": 1473
             }
           ]
         },
@@ -28593,9 +28713,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "本章先建立模板语法的基础认知，讲解Vue插值语法的核心用法与应用场景。",
-                  "size": "0KB",
-                  "lastModified": "2026-05-07T13:54:18.052Z",
-                  "wordCount": 116
+                  "size": "6KB",
+                  "lastModified": "2026-05-07T14:02:37.422Z",
+                  "wordCount": 3638
                 },
                 {
                   "type": "file",
@@ -28617,9 +28737,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "Vue指令的本质是给DOM元素绑定特定的行为逻辑，让页面能根据数据动态改变DOM的状态。本文详解Vue核心指令与自定义指令的完整用法。",
-                  "size": "21KB",
-                  "lastModified": "2026-05-07T13:54:24.733Z",
-                  "wordCount": 14401
+                  "size": "22KB",
+                  "lastModified": "2026-05-07T14:29:16.072Z",
+                  "wordCount": 14843
                 },
                 {
                   "type": "file",
@@ -28641,9 +28761,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-                  "size": "30KB",
-                  "lastModified": "2026-05-07T13:54:28.894Z",
-                  "wordCount": 22734
+                  "size": "31KB",
+                  "lastModified": "2026-05-07T14:35:58.527Z",
+                  "wordCount": 23133
                 },
                 {
                   "type": "file",
@@ -35838,7 +35958,7 @@
       ]
     }
   ],
-  "totalNotes": 361,
+  "totalNotes": 362,
   "totalCategories": 83,
-  "lastUpdated": "2026-05-07T13:58:44.641Z"
+  "lastUpdated": "2026-05-07T14:36:10.618Z"
 }

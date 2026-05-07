@@ -2,6 +2,7 @@ import MarkdownIt from 'markdown-it'
 import anchor from 'markdown-it-anchor'
 import toc from 'markdown-it-toc-done-right'
 import hljs from 'highlight.js/lib/common'
+import powershell from 'highlight.js/lib/languages/powershell'
 import {
   buildCodeLineNumbers,
   CODE_BLOCK_COLLAPSE_LINES,
@@ -9,6 +10,10 @@ import {
   getCodeLanguageLabel,
   normalizeCodeLanguage
 } from './markdownCodeBlocks'
+
+hljs.registerLanguage('powershell', powershell)
+hljs.registerAliases(['ps1', 'pwsh'], { languageName: 'powershell' })
+hljs.registerAliases(['vue'], { languageName: 'xml' })
 
 // 创建 Markdown 实例
 const md = new MarkdownIt({
