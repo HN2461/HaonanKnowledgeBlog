@@ -1,5 +1,5 @@
 ---
-title: JavaScript this 指向规则详解
+title: 第05篇：JavaScript this 指向规则详解
 date: 2026-05-07
 category: 我的总结/JS/辅助资料
 tags:
@@ -10,7 +10,7 @@ tags:
 description: JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。
 ---
 
-# 第05篇：this 的指向规则（纠错 + 完整版）
+# 第05篇：JavaScript this 指向规则详解
 
 你原来的 4 条结论抓住了主干，但有两处容易误导：
 

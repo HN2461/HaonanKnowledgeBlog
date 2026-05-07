@@ -1945,8 +1945,8 @@
         },
         {
           "type": "file",
-          "title": "JavaScript 变量与作用域详解",
-          "frontmatterTitle": "JavaScript 变量与作用域详解",
+          "title": "第01篇：JavaScript 变量与作用域详解",
+          "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
           "fileTitle": "01_JavaScript变量与作用域",
           "filename": "01_JavaScript变量与作用域.md",
           "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
@@ -1965,13 +1965,13 @@
           "attachments": [],
           "description": "JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。",
           "size": "12KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 8319
+          "lastModified": "2026-05-07T13:25:33.654Z",
+          "wordCount": 8345
         },
         {
           "type": "file",
-          "title": "JavaScript 数据访问安全机制",
-          "frontmatterTitle": "JavaScript 数据访问安全机制",
+          "title": "第02篇：JavaScript 数据访问安全机制",
+          "frontmatterTitle": "第02篇：JavaScript 数据访问安全机制",
           "fileTitle": "02_数据访问安全机制",
           "filename": "02_数据访问安全机制.md",
           "path": "我的总结/JS/辅助资料/02_数据访问安全机制.md",
@@ -1988,8 +1988,8 @@
           "attachments": [],
           "description": "JavaScript可选链操作符（?.）和空值合并操作符（??）的使用方法、原理及与相关操作符的区别。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 1113
+          "lastModified": "2026-05-07T13:25:33.655Z",
+          "wordCount": 1124
         },
         {
           "type": "file",
@@ -2014,8 +2014,8 @@
         },
         {
           "type": "file",
-          "title": "JavaScript 闭包与垃圾回收机制",
-          "frontmatterTitle": "JavaScript 闭包与垃圾回收机制",
+          "title": "第03篇：JavaScript 闭包与垃圾回收机制",
+          "frontmatterTitle": "第03篇：JavaScript 闭包与垃圾回收机制",
           "fileTitle": "03_闭包与垃圾回收",
           "filename": "03_闭包与垃圾回收.md",
           "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
@@ -2032,8 +2032,8 @@
           "attachments": [],
           "description": "JavaScript闭包的形成机制、内存泄漏原因及垃圾回收原理，以及如何避免闭包导致的内存问题。",
           "size": "3KB",
-          "lastModified": "2026-05-07T12:40:02.046Z",
-          "wordCount": 1278
+          "lastModified": "2026-05-07T13:25:33.656Z",
+          "wordCount": 1291
         },
         {
           "type": "file",
@@ -2058,8 +2058,8 @@
         },
         {
           "type": "file",
-          "title": "JavaScript arguments 对象详解",
-          "frontmatterTitle": "JavaScript arguments 对象详解",
+          "title": "第04篇：JavaScript arguments 对象详解",
+          "frontmatterTitle": "第04篇：JavaScript arguments 对象详解",
           "fileTitle": "04_arguments的使用",
           "filename": "04_arguments的使用.md",
           "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
@@ -2076,8 +2076,8 @@
           "attachments": [],
           "description": "JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.047Z",
-          "wordCount": 1354
+          "lastModified": "2026-05-07T13:25:33.657Z",
+          "wordCount": 1364
         },
         {
           "type": "file",
@@ -2123,8 +2123,8 @@
         },
         {
           "type": "file",
-          "title": "JavaScript this 指向规则详解",
-          "frontmatterTitle": "JavaScript this 指向规则详解",
+          "title": "第05篇：JavaScript this 指向规则详解",
+          "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
           "fileTitle": "05_this",
           "filename": "05_this.md",
           "path": "我的总结/JS/辅助资料/05_this.md",
@@ -2141,8 +2141,8 @@
           "attachments": [],
           "description": "JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.048Z",
-          "wordCount": 6551
+          "lastModified": "2026-05-07T13:25:33.658Z",
+          "wordCount": 6552
         },
         {
           "type": "file",
@@ -2185,8 +2185,8 @@
           "attachments": [],
           "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
           "size": "11KB",
-          "lastModified": "2026-05-06T12:18:21.788Z",
-          "wordCount": 8364
+          "lastModified": "2026-05-07T13:25:33.659Z",
+          "wordCount": 8353
         },
         {
           "type": "file",
@@ -2211,29 +2211,32 @@
         },
         {
           "type": "file",
-          "title": "07_es5构造函数与es6语法糖Class",
-          "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
+          "title": "第07篇：ES5 构造函数与 ES6 Class 详解",
+          "frontmatterTitle": "第07篇：ES5 构造函数与 ES6 Class 详解",
           "fileTitle": "07_es5构造函数与es6语法糖Class",
           "filename": "07_es5构造函数与es6语法糖Class.md",
           "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "构造函数",
+            "Class",
+            "原型链",
+            "继承"
           ],
-          "category": "我的总结",
+          "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "description": "从原型、实例、静态成员与继承链的关系出发，系统讲清 ES5 构造函数和 ES6 Class 的底层逻辑与实际差异。",
           "size": "81KB",
-          "lastModified": "2026-05-06T12:18:21.796Z",
-          "wordCount": 62606
+          "lastModified": "2026-05-07T13:25:33.660Z",
+          "wordCount": 62637
         },
         {
           "type": "file",
-          "title": "08_类型检测与原型链深度解析",
-          "frontmatterTitle": "08_类型检测与原型链深度解析",
+          "title": "第08篇：类型检测与原型链深度解析",
+          "frontmatterTitle": "第08篇：类型检测与原型链深度解析",
           "fileTitle": "08_类型检测与原型链深度解析",
           "filename": "08_类型检测与原型链深度解析.md",
           "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
@@ -2251,8 +2254,8 @@
           "attachments": [],
           "description": "系统讲清 JavaScript 常见类型检测方案各自能做什么、为什么不够用、真正缺点是什么，并补齐 Object.prototype.toString.call 与原型链关系、面试高频回答模板和实战决策表。",
           "size": "19KB",
-          "lastModified": "2026-05-06T12:54:19.213Z",
-          "wordCount": 12181
+          "lastModified": "2026-05-07T13:25:33.661Z",
+          "wordCount": 12183
         },
         {
           "type": "file",
@@ -2298,8 +2301,8 @@
         },
         {
           "type": "file",
-          "title": "JavaScript 数组深度解析",
-          "frontmatterTitle": "JavaScript 数组深度解析",
+          "title": "第09篇：JavaScript 数组深度解析",
+          "frontmatterTitle": "第09篇：JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
@@ -2317,13 +2320,13 @@
           "attachments": [],
           "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
           "size": "24KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 18003
+          "lastModified": "2026-05-07T13:25:33.663Z",
+          "wordCount": 18007
         },
         {
           "type": "file",
-          "title": "10_字符串",
-          "frontmatterTitle": "10_字符串",
+          "title": "第10篇：JavaScript 字符串详解",
+          "frontmatterTitle": "第10篇：JavaScript 字符串详解",
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
@@ -2341,8 +2344,8 @@
           "attachments": [],
           "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
           "size": "27KB",
-          "lastModified": "2026-05-06T14:47:16.119Z",
-          "wordCount": 20852
+          "lastModified": "2026-05-07T13:25:33.664Z",
+          "wordCount": 20867
         },
         {
           "type": "file",
@@ -2371,8 +2374,8 @@
         },
         {
           "type": "file",
-          "title": "包装类的详细机制",
-          "frontmatterTitle": "包装类的详细机制",
+          "title": "第11篇：JavaScript 包装类的详细机制",
+          "frontmatterTitle": "第11篇：JavaScript 包装类的详细机制",
           "fileTitle": "11_包装类",
           "filename": "11_包装类.md",
           "path": "我的总结/JS/辅助资料/11_包装类.md",
@@ -2388,8 +2391,8 @@
           "attachments": [],
           "description": "JavaScript包装类（String、Number、Boolean）的详细机制和使用指南，包括自动装箱拆箱原理。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4204
+          "lastModified": "2026-05-07T13:25:33.665Z",
+          "wordCount": 4218
         },
         {
           "type": "file",
@@ -2414,8 +2417,8 @@
         },
         {
           "type": "file",
-          "title": "宏任务与微任务",
-          "frontmatterTitle": "宏任务与微任务",
+          "title": "第12篇：宏任务与微任务",
+          "frontmatterTitle": "第12篇：宏任务与微任务",
           "fileTitle": "12_宏任务与微任务",
           "filename": "12_宏任务与微任务.md",
           "path": "我的总结/JS/辅助资料/12_宏任务与微任务.md",
@@ -2432,13 +2435,13 @@
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4252
+          "lastModified": "2026-05-07T13:25:33.666Z",
+          "wordCount": 4250
         },
         {
           "type": "file",
-          "title": "offset、client、scroll 坐标与尺寸详解",
-          "frontmatterTitle": "offset、client、scroll 坐标与尺寸详解",
+          "title": "第13篇：offset、client、scroll 坐标与尺寸详解",
+          "frontmatterTitle": "第13篇：offset、client、scroll 坐标与尺寸详解",
           "fileTitle": "13_offset_client_scroll",
           "filename": "13_offset_client_scroll.md",
           "path": "我的总结/JS/辅助资料/13_offset_client_scroll.md",
@@ -2457,13 +2460,13 @@
           "attachments": [],
           "description": "JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 3696
+          "lastModified": "2026-05-07T13:25:33.667Z",
+          "wordCount": 3714
         },
         {
           "type": "file",
-          "title": "易混淆DOM事件对比指南",
-          "frontmatterTitle": "易混淆DOM事件对比指南",
+          "title": "第14篇：易混淆 DOM 事件对比指南",
+          "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
           "fileTitle": "14_易混淆DOM事件对比",
           "filename": "14_易混淆DOM事件对比.md",
           "path": "我的总结/JS/辅助资料/14_易混淆DOM事件对比.md",
@@ -2482,13 +2485,13 @@
           "attachments": [],
           "description": "前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 3810
+          "lastModified": "2026-05-07T13:25:33.668Z",
+          "wordCount": 3831
         },
         {
           "type": "file",
-          "title": "Map与Set事件订阅管理器",
-          "frontmatterTitle": "Map与Set事件订阅管理器",
+          "title": "第15篇：Map 与 Set 事件订阅管理器",
+          "frontmatterTitle": "第15篇：Map 与 Set 事件订阅管理器",
           "fileTitle": "15_Map_Set事件订阅管理",
           "filename": "15_Map_Set事件订阅管理.md",
           "path": "我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md",
@@ -2506,13 +2509,13 @@
           "attachments": [],
           "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6630
+          "lastModified": "2026-05-07T13:25:33.669Z",
+          "wordCount": 6654
         },
         {
           "type": "file",
-          "title": "前端模块导入与导出完全指南",
-          "frontmatterTitle": "前端模块导入与导出完全指南",
+          "title": "第16篇：前端模块导入与导出完全指南",
+          "frontmatterTitle": "第16篇：前端模块导入与导出完全指南",
           "fileTitle": "16_前端模块导入与导出",
           "filename": "16_前端模块导入与导出.md",
           "path": "我的总结/JS/辅助资料/16_前端模块导入与导出.md",
@@ -2531,13 +2534,13 @@
           "attachments": [],
           "description": "JavaScript模块化编程完整指南，详解ES Module和CommonJS的语法差异、使用场景和最佳实践。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6138
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 6158
         },
         {
           "type": "file",
-          "title": "Promise 完全指南",
-          "frontmatterTitle": "Promise 完全指南",
+          "title": "第17篇：Promise 完全指南",
+          "frontmatterTitle": "第17篇：Promise 完全指南",
           "fileTitle": "17_Promise",
           "filename": "17_Promise.md",
           "path": "我的总结/JS/辅助资料/17_Promise.md",
@@ -2554,13 +2557,13 @@
           "attachments": [],
           "description": "JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。",
           "size": "16KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 10905
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 10924
         },
         {
           "type": "file",
-          "title": "DOM文档对象模型基础",
-          "frontmatterTitle": "DOM文档对象模型基础",
+          "title": "第18篇：DOM 文档对象模型基础",
+          "frontmatterTitle": "第18篇：DOM 文档对象模型基础",
           "fileTitle": "18_DOM",
           "filename": "18_DOM.md",
           "path": "我的总结/JS/辅助资料/18_DOM.md",
@@ -2576,13 +2579,13 @@
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 19730
+          "lastModified": "2026-05-07T13:25:33.671Z",
+          "wordCount": 19749
         },
         {
           "type": "file",
-          "title": "前端深浅拷贝完全指南",
-          "frontmatterTitle": "前端深浅拷贝完全指南",
+          "title": "第19篇：前端深浅拷贝完全指南",
+          "frontmatterTitle": "第19篇：前端深浅拷贝完全指南",
           "fileTitle": "19_深浅拷贝",
           "filename": "19_深浅拷贝.md",
           "path": "我的总结/JS/辅助资料/19_深浅拷贝.md",
@@ -2600,13 +2603,13 @@
           "attachments": [],
           "description": "JavaScript深浅拷贝完整指南，从基础概念到实战应用，涵盖JSON方式、structuredClone、lodash等多种实现方案。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 13006
+          "lastModified": "2026-05-07T13:25:33.672Z",
+          "wordCount": 13004
         },
         {
           "type": "file",
-          "title": "数组创建方法对比指南",
-          "frontmatterTitle": "数组创建方法对比指南",
+          "title": "第20篇：数组创建方法对比指南",
+          "frontmatterTitle": "第20篇：数组创建方法对比指南",
           "fileTitle": "20_数组创建区别",
           "filename": "20_数组创建区别.md",
           "path": "我的总结/JS/辅助资料/20_数组创建区别.md",
@@ -2624,8 +2627,8 @@
           "attachments": [],
           "description": "JavaScript三种数组创建方法的详细对比，包含使用场景、陷阱分析和最佳实践建议。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 3453
+          "lastModified": "2026-05-07T13:25:33.673Z",
+          "wordCount": 3430
         },
         {
           "type": "file",
@@ -2648,8 +2651,8 @@
           "attachments": [],
           "description": "JavaScript解构赋值完整指南，从基础语法到实战应用，包含数组解构、对象解构、嵌套解构等核心内容。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.063Z",
-          "wordCount": 3224
+          "lastModified": "2026-05-07T13:25:33.674Z",
+          "wordCount": 3234
         },
         {
           "type": "file",
@@ -2735,29 +2738,30 @@
           "attachments": [],
           "description": "用速背卡+详细边界说明掌握字符串和数组高频方法，覆盖开发场景、面试话术和易错点。",
           "size": "9KB",
-          "lastModified": "2026-05-07T12:40:02.062Z",
-          "wordCount": 5970
+          "lastModified": "2026-05-07T13:31:33.250Z",
+          "wordCount": 5976
         },
         {
           "type": "file",
-          "title": "JS常识",
-          "frontmatterTitle": "JS常识",
+          "title": "JavaScript 常识目录（建议阅读顺序）",
+          "frontmatterTitle": "JavaScript 常识目录（建议阅读顺序）",
           "fileTitle": "JS常识",
           "filename": "JS常识.md",
           "path": "我的总结/JS/JS常识.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-07T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "JS"
+            "JavaScript",
+            "目录",
+            "学习路线"
           ],
-          "category": "我的总结",
+          "category": "我的总结/JS",
           "attachments": [],
-          "description": "本页仅作为目录使用，按 1 到 20 依次阅读。\r\n\r\n\r\n01JavaScript变量与作用域\r\n\r\n\r\n02数据访问安全机制\r\n\r\n\r\n03闭包与垃圾回收\r\n\r\n\r\n04arguments的使用\r\n\r\n\r\n05this\r\n\r\n\r\n06JavaScript原型链\r\n\r\n\r\n07es5构造函数与es6语法糖Class\r\n\r\n\r\n08类型检测与原型链深度解析\r\n\r\n\r\n09JavaScript数组\r",
-          "size": "2KB",
-          "lastModified": "2026-05-06T12:18:21.745Z",
-          "wordCount": 1291
+          "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+          "size": "3KB",
+          "lastModified": "2026-05-07T13:25:33.675Z",
+          "wordCount": 1416
         },
         {
           "type": "file",
@@ -2789,8 +2793,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "JavaScript 变量与作用域详解",
-          "frontmatterTitle": "JavaScript 变量与作用域详解",
+          "title": "第01篇：JavaScript 变量与作用域详解",
+          "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
           "fileTitle": "01_JavaScript变量与作用域",
           "filename": "01_JavaScript变量与作用域.md",
           "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
@@ -2809,13 +2813,13 @@
           "attachments": [],
           "description": "JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。",
           "size": "12KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 8319
+          "lastModified": "2026-05-07T13:25:33.654Z",
+          "wordCount": 8345
         },
         {
           "type": "file",
-          "title": "JavaScript 数据访问安全机制",
-          "frontmatterTitle": "JavaScript 数据访问安全机制",
+          "title": "第02篇：JavaScript 数据访问安全机制",
+          "frontmatterTitle": "第02篇：JavaScript 数据访问安全机制",
           "fileTitle": "02_数据访问安全机制",
           "filename": "02_数据访问安全机制.md",
           "path": "我的总结/JS/辅助资料/02_数据访问安全机制.md",
@@ -2832,13 +2836,13 @@
           "attachments": [],
           "description": "JavaScript可选链操作符（?.）和空值合并操作符（??）的使用方法、原理及与相关操作符的区别。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 1113
+          "lastModified": "2026-05-07T13:25:33.655Z",
+          "wordCount": 1124
         },
         {
           "type": "file",
-          "title": "JavaScript 闭包与垃圾回收机制",
-          "frontmatterTitle": "JavaScript 闭包与垃圾回收机制",
+          "title": "第03篇：JavaScript 闭包与垃圾回收机制",
+          "frontmatterTitle": "第03篇：JavaScript 闭包与垃圾回收机制",
           "fileTitle": "03_闭包与垃圾回收",
           "filename": "03_闭包与垃圾回收.md",
           "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
@@ -2855,13 +2859,13 @@
           "attachments": [],
           "description": "JavaScript闭包的形成机制、内存泄漏原因及垃圾回收原理，以及如何避免闭包导致的内存问题。",
           "size": "3KB",
-          "lastModified": "2026-05-07T12:40:02.046Z",
-          "wordCount": 1278
+          "lastModified": "2026-05-07T13:25:33.656Z",
+          "wordCount": 1291
         },
         {
           "type": "file",
-          "title": "JavaScript arguments 对象详解",
-          "frontmatterTitle": "JavaScript arguments 对象详解",
+          "title": "第04篇：JavaScript arguments 对象详解",
+          "frontmatterTitle": "第04篇：JavaScript arguments 对象详解",
           "fileTitle": "04_arguments的使用",
           "filename": "04_arguments的使用.md",
           "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
@@ -2878,13 +2882,13 @@
           "attachments": [],
           "description": "JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.047Z",
-          "wordCount": 1354
+          "lastModified": "2026-05-07T13:25:33.657Z",
+          "wordCount": 1364
         },
         {
           "type": "file",
-          "title": "JavaScript this 指向规则详解",
-          "frontmatterTitle": "JavaScript this 指向规则详解",
+          "title": "第05篇：JavaScript this 指向规则详解",
+          "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
           "fileTitle": "05_this",
           "filename": "05_this.md",
           "path": "我的总结/JS/辅助资料/05_this.md",
@@ -2901,8 +2905,8 @@
           "attachments": [],
           "description": "JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.048Z",
-          "wordCount": 6551
+          "lastModified": "2026-05-07T13:25:33.658Z",
+          "wordCount": 6552
         },
         {
           "type": "file",
@@ -2924,34 +2928,37 @@
           "attachments": [],
           "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
           "size": "11KB",
-          "lastModified": "2026-05-06T12:18:21.788Z",
-          "wordCount": 8364
+          "lastModified": "2026-05-07T13:25:33.659Z",
+          "wordCount": 8353
         },
         {
           "type": "file",
-          "title": "07_es5构造函数与es6语法糖Class",
-          "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
+          "title": "第07篇：ES5 构造函数与 ES6 Class 详解",
+          "frontmatterTitle": "第07篇：ES5 构造函数与 ES6 Class 详解",
           "fileTitle": "07_es5构造函数与es6语法糖Class",
           "filename": "07_es5构造函数与es6语法糖Class.md",
           "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "构造函数",
+            "Class",
+            "原型链",
+            "继承"
           ],
-          "category": "我的总结",
+          "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "description": "从原型、实例、静态成员与继承链的关系出发，系统讲清 ES5 构造函数和 ES6 Class 的底层逻辑与实际差异。",
           "size": "81KB",
-          "lastModified": "2026-05-06T12:18:21.796Z",
-          "wordCount": 62606
+          "lastModified": "2026-05-07T13:25:33.660Z",
+          "wordCount": 62637
         },
         {
           "type": "file",
-          "title": "08_类型检测与原型链深度解析",
-          "frontmatterTitle": "08_类型检测与原型链深度解析",
+          "title": "第08篇：类型检测与原型链深度解析",
+          "frontmatterTitle": "第08篇：类型检测与原型链深度解析",
           "fileTitle": "08_类型检测与原型链深度解析",
           "filename": "08_类型检测与原型链深度解析.md",
           "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
@@ -2969,13 +2976,13 @@
           "attachments": [],
           "description": "系统讲清 JavaScript 常见类型检测方案各自能做什么、为什么不够用、真正缺点是什么，并补齐 Object.prototype.toString.call 与原型链关系、面试高频回答模板和实战决策表。",
           "size": "19KB",
-          "lastModified": "2026-05-06T12:54:19.213Z",
-          "wordCount": 12181
+          "lastModified": "2026-05-07T13:25:33.661Z",
+          "wordCount": 12183
         },
         {
           "type": "file",
-          "title": "JavaScript 数组深度解析",
-          "frontmatterTitle": "JavaScript 数组深度解析",
+          "title": "第09篇：JavaScript 数组深度解析",
+          "frontmatterTitle": "第09篇：JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
@@ -2993,13 +3000,13 @@
           "attachments": [],
           "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
           "size": "24KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 18003
+          "lastModified": "2026-05-07T13:25:33.663Z",
+          "wordCount": 18007
         },
         {
           "type": "file",
-          "title": "10_字符串",
-          "frontmatterTitle": "10_字符串",
+          "title": "第10篇：JavaScript 字符串详解",
+          "frontmatterTitle": "第10篇：JavaScript 字符串详解",
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
@@ -3017,13 +3024,13 @@
           "attachments": [],
           "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
           "size": "27KB",
-          "lastModified": "2026-05-06T14:47:16.119Z",
-          "wordCount": 20852
+          "lastModified": "2026-05-07T13:25:33.664Z",
+          "wordCount": 20867
         },
         {
           "type": "file",
-          "title": "包装类的详细机制",
-          "frontmatterTitle": "包装类的详细机制",
+          "title": "第11篇：JavaScript 包装类的详细机制",
+          "frontmatterTitle": "第11篇：JavaScript 包装类的详细机制",
           "fileTitle": "11_包装类",
           "filename": "11_包装类.md",
           "path": "我的总结/JS/辅助资料/11_包装类.md",
@@ -3039,13 +3046,13 @@
           "attachments": [],
           "description": "JavaScript包装类（String、Number、Boolean）的详细机制和使用指南，包括自动装箱拆箱原理。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4204
+          "lastModified": "2026-05-07T13:25:33.665Z",
+          "wordCount": 4218
         },
         {
           "type": "file",
-          "title": "宏任务与微任务",
-          "frontmatterTitle": "宏任务与微任务",
+          "title": "第12篇：宏任务与微任务",
+          "frontmatterTitle": "第12篇：宏任务与微任务",
           "fileTitle": "12_宏任务与微任务",
           "filename": "12_宏任务与微任务.md",
           "path": "我的总结/JS/辅助资料/12_宏任务与微任务.md",
@@ -3062,13 +3069,13 @@
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4252
+          "lastModified": "2026-05-07T13:25:33.666Z",
+          "wordCount": 4250
         },
         {
           "type": "file",
-          "title": "offset、client、scroll 坐标与尺寸详解",
-          "frontmatterTitle": "offset、client、scroll 坐标与尺寸详解",
+          "title": "第13篇：offset、client、scroll 坐标与尺寸详解",
+          "frontmatterTitle": "第13篇：offset、client、scroll 坐标与尺寸详解",
           "fileTitle": "13_offset_client_scroll",
           "filename": "13_offset_client_scroll.md",
           "path": "我的总结/JS/辅助资料/13_offset_client_scroll.md",
@@ -3087,13 +3094,13 @@
           "attachments": [],
           "description": "JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 3696
+          "lastModified": "2026-05-07T13:25:33.667Z",
+          "wordCount": 3714
         },
         {
           "type": "file",
-          "title": "易混淆DOM事件对比指南",
-          "frontmatterTitle": "易混淆DOM事件对比指南",
+          "title": "第14篇：易混淆 DOM 事件对比指南",
+          "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
           "fileTitle": "14_易混淆DOM事件对比",
           "filename": "14_易混淆DOM事件对比.md",
           "path": "我的总结/JS/辅助资料/14_易混淆DOM事件对比.md",
@@ -3112,13 +3119,13 @@
           "attachments": [],
           "description": "前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 3810
+          "lastModified": "2026-05-07T13:25:33.668Z",
+          "wordCount": 3831
         },
         {
           "type": "file",
-          "title": "Map与Set事件订阅管理器",
-          "frontmatterTitle": "Map与Set事件订阅管理器",
+          "title": "第15篇：Map 与 Set 事件订阅管理器",
+          "frontmatterTitle": "第15篇：Map 与 Set 事件订阅管理器",
           "fileTitle": "15_Map_Set事件订阅管理",
           "filename": "15_Map_Set事件订阅管理.md",
           "path": "我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md",
@@ -3136,13 +3143,13 @@
           "attachments": [],
           "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6630
+          "lastModified": "2026-05-07T13:25:33.669Z",
+          "wordCount": 6654
         },
         {
           "type": "file",
-          "title": "前端模块导入与导出完全指南",
-          "frontmatterTitle": "前端模块导入与导出完全指南",
+          "title": "第16篇：前端模块导入与导出完全指南",
+          "frontmatterTitle": "第16篇：前端模块导入与导出完全指南",
           "fileTitle": "16_前端模块导入与导出",
           "filename": "16_前端模块导入与导出.md",
           "path": "我的总结/JS/辅助资料/16_前端模块导入与导出.md",
@@ -3161,13 +3168,13 @@
           "attachments": [],
           "description": "JavaScript模块化编程完整指南，详解ES Module和CommonJS的语法差异、使用场景和最佳实践。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6138
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 6158
         },
         {
           "type": "file",
-          "title": "Promise 完全指南",
-          "frontmatterTitle": "Promise 完全指南",
+          "title": "第17篇：Promise 完全指南",
+          "frontmatterTitle": "第17篇：Promise 完全指南",
           "fileTitle": "17_Promise",
           "filename": "17_Promise.md",
           "path": "我的总结/JS/辅助资料/17_Promise.md",
@@ -3184,13 +3191,13 @@
           "attachments": [],
           "description": "JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。",
           "size": "16KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 10905
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 10924
         },
         {
           "type": "file",
-          "title": "DOM文档对象模型基础",
-          "frontmatterTitle": "DOM文档对象模型基础",
+          "title": "第18篇：DOM 文档对象模型基础",
+          "frontmatterTitle": "第18篇：DOM 文档对象模型基础",
           "fileTitle": "18_DOM",
           "filename": "18_DOM.md",
           "path": "我的总结/JS/辅助资料/18_DOM.md",
@@ -3206,13 +3213,13 @@
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 19730
+          "lastModified": "2026-05-07T13:25:33.671Z",
+          "wordCount": 19749
         },
         {
           "type": "file",
-          "title": "前端深浅拷贝完全指南",
-          "frontmatterTitle": "前端深浅拷贝完全指南",
+          "title": "第19篇：前端深浅拷贝完全指南",
+          "frontmatterTitle": "第19篇：前端深浅拷贝完全指南",
           "fileTitle": "19_深浅拷贝",
           "filename": "19_深浅拷贝.md",
           "path": "我的总结/JS/辅助资料/19_深浅拷贝.md",
@@ -3230,13 +3237,13 @@
           "attachments": [],
           "description": "JavaScript深浅拷贝完整指南，从基础概念到实战应用，涵盖JSON方式、structuredClone、lodash等多种实现方案。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 13006
+          "lastModified": "2026-05-07T13:25:33.672Z",
+          "wordCount": 13004
         },
         {
           "type": "file",
-          "title": "数组创建方法对比指南",
-          "frontmatterTitle": "数组创建方法对比指南",
+          "title": "第20篇：数组创建方法对比指南",
+          "frontmatterTitle": "第20篇：数组创建方法对比指南",
           "fileTitle": "20_数组创建区别",
           "filename": "20_数组创建区别.md",
           "path": "我的总结/JS/辅助资料/20_数组创建区别.md",
@@ -3254,8 +3261,8 @@
           "attachments": [],
           "description": "JavaScript三种数组创建方法的详细对比，包含使用场景、陷阱分析和最佳实践建议。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 3453
+          "lastModified": "2026-05-07T13:25:33.673Z",
+          "wordCount": 3430
         },
         {
           "type": "file",
@@ -3278,8 +3285,8 @@
           "attachments": [],
           "description": "JavaScript解构赋值完整指南，从基础语法到实战应用，包含数组解构、对象解构、嵌套解构等核心内容。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.063Z",
-          "wordCount": 3224
+          "lastModified": "2026-05-07T13:25:33.674Z",
+          "wordCount": 3234
         },
         {
           "type": "file",
@@ -3302,29 +3309,30 @@
           "attachments": [],
           "description": "用速背卡+详细边界说明掌握字符串和数组高频方法，覆盖开发场景、面试话术和易错点。",
           "size": "9KB",
-          "lastModified": "2026-05-07T12:40:02.062Z",
-          "wordCount": 5970
+          "lastModified": "2026-05-07T13:31:33.250Z",
+          "wordCount": 5976
         },
         {
           "type": "file",
-          "title": "JS常识",
-          "frontmatterTitle": "JS常识",
+          "title": "JavaScript 常识目录（建议阅读顺序）",
+          "frontmatterTitle": "JavaScript 常识目录（建议阅读顺序）",
           "fileTitle": "JS常识",
           "filename": "JS常识.md",
           "path": "我的总结/JS/JS常识.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-07T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "JS"
+            "JavaScript",
+            "目录",
+            "学习路线"
           ],
-          "category": "我的总结",
+          "category": "我的总结/JS",
           "attachments": [],
-          "description": "本页仅作为目录使用，按 1 到 20 依次阅读。\r\n\r\n\r\n01JavaScript变量与作用域\r\n\r\n\r\n02数据访问安全机制\r\n\r\n\r\n03闭包与垃圾回收\r\n\r\n\r\n04arguments的使用\r\n\r\n\r\n05this\r\n\r\n\r\n06JavaScript原型链\r\n\r\n\r\n07es5构造函数与es6语法糖Class\r\n\r\n\r\n08类型检测与原型链深度解析\r\n\r\n\r\n09JavaScript数组\r",
-          "size": "2KB",
-          "lastModified": "2026-05-06T12:18:21.745Z",
-          "wordCount": 1291
+          "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+          "size": "3KB",
+          "lastModified": "2026-05-07T13:25:33.675Z",
+          "wordCount": 1416
         }
       ],
       "children": []
@@ -3335,8 +3343,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "JavaScript 变量与作用域详解",
-          "frontmatterTitle": "JavaScript 变量与作用域详解",
+          "title": "第01篇：JavaScript 变量与作用域详解",
+          "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
           "fileTitle": "01_JavaScript变量与作用域",
           "filename": "01_JavaScript变量与作用域.md",
           "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
@@ -3355,13 +3363,13 @@
           "attachments": [],
           "description": "JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。",
           "size": "12KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 8319
+          "lastModified": "2026-05-07T13:25:33.654Z",
+          "wordCount": 8345
         },
         {
           "type": "file",
-          "title": "JavaScript 数据访问安全机制",
-          "frontmatterTitle": "JavaScript 数据访问安全机制",
+          "title": "第02篇：JavaScript 数据访问安全机制",
+          "frontmatterTitle": "第02篇：JavaScript 数据访问安全机制",
           "fileTitle": "02_数据访问安全机制",
           "filename": "02_数据访问安全机制.md",
           "path": "我的总结/JS/辅助资料/02_数据访问安全机制.md",
@@ -3378,13 +3386,13 @@
           "attachments": [],
           "description": "JavaScript可选链操作符（?.）和空值合并操作符（??）的使用方法、原理及与相关操作符的区别。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.044Z",
-          "wordCount": 1113
+          "lastModified": "2026-05-07T13:25:33.655Z",
+          "wordCount": 1124
         },
         {
           "type": "file",
-          "title": "JavaScript 闭包与垃圾回收机制",
-          "frontmatterTitle": "JavaScript 闭包与垃圾回收机制",
+          "title": "第03篇：JavaScript 闭包与垃圾回收机制",
+          "frontmatterTitle": "第03篇：JavaScript 闭包与垃圾回收机制",
           "fileTitle": "03_闭包与垃圾回收",
           "filename": "03_闭包与垃圾回收.md",
           "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
@@ -3401,13 +3409,13 @@
           "attachments": [],
           "description": "JavaScript闭包的形成机制、内存泄漏原因及垃圾回收原理，以及如何避免闭包导致的内存问题。",
           "size": "3KB",
-          "lastModified": "2026-05-07T12:40:02.046Z",
-          "wordCount": 1278
+          "lastModified": "2026-05-07T13:25:33.656Z",
+          "wordCount": 1291
         },
         {
           "type": "file",
-          "title": "JavaScript arguments 对象详解",
-          "frontmatterTitle": "JavaScript arguments 对象详解",
+          "title": "第04篇：JavaScript arguments 对象详解",
+          "frontmatterTitle": "第04篇：JavaScript arguments 对象详解",
           "fileTitle": "04_arguments的使用",
           "filename": "04_arguments的使用.md",
           "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
@@ -3424,13 +3432,13 @@
           "attachments": [],
           "description": "JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。",
           "size": "2KB",
-          "lastModified": "2026-05-07T12:40:02.047Z",
-          "wordCount": 1354
+          "lastModified": "2026-05-07T13:25:33.657Z",
+          "wordCount": 1364
         },
         {
           "type": "file",
-          "title": "JavaScript this 指向规则详解",
-          "frontmatterTitle": "JavaScript this 指向规则详解",
+          "title": "第05篇：JavaScript this 指向规则详解",
+          "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
           "fileTitle": "05_this",
           "filename": "05_this.md",
           "path": "我的总结/JS/辅助资料/05_this.md",
@@ -3447,8 +3455,8 @@
           "attachments": [],
           "description": "JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.048Z",
-          "wordCount": 6551
+          "lastModified": "2026-05-07T13:25:33.658Z",
+          "wordCount": 6552
         },
         {
           "type": "file",
@@ -3470,34 +3478,37 @@
           "attachments": [],
           "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
           "size": "11KB",
-          "lastModified": "2026-05-06T12:18:21.788Z",
-          "wordCount": 8364
+          "lastModified": "2026-05-07T13:25:33.659Z",
+          "wordCount": 8353
         },
         {
           "type": "file",
-          "title": "07_es5构造函数与es6语法糖Class",
-          "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
+          "title": "第07篇：ES5 构造函数与 ES6 Class 详解",
+          "frontmatterTitle": "第07篇：ES5 构造函数与 ES6 Class 详解",
           "fileTitle": "07_es5构造函数与es6语法糖Class",
           "filename": "07_es5构造函数与es6语法糖Class.md",
           "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-          "date": null,
-          "hasRealDate": false,
+          "date": "2026-05-06T00:00:00.000Z",
+          "hasRealDate": true,
           "order": null,
           "tags": [
-            "我的总结",
-            "辅助资料"
+            "JavaScript",
+            "构造函数",
+            "Class",
+            "原型链",
+            "继承"
           ],
-          "category": "我的总结",
+          "category": "我的总结/JS/辅助资料",
           "attachments": [],
-          "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+          "description": "从原型、实例、静态成员与继承链的关系出发，系统讲清 ES5 构造函数和 ES6 Class 的底层逻辑与实际差异。",
           "size": "81KB",
-          "lastModified": "2026-05-06T12:18:21.796Z",
-          "wordCount": 62606
+          "lastModified": "2026-05-07T13:25:33.660Z",
+          "wordCount": 62637
         },
         {
           "type": "file",
-          "title": "08_类型检测与原型链深度解析",
-          "frontmatterTitle": "08_类型检测与原型链深度解析",
+          "title": "第08篇：类型检测与原型链深度解析",
+          "frontmatterTitle": "第08篇：类型检测与原型链深度解析",
           "fileTitle": "08_类型检测与原型链深度解析",
           "filename": "08_类型检测与原型链深度解析.md",
           "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
@@ -3515,13 +3526,13 @@
           "attachments": [],
           "description": "系统讲清 JavaScript 常见类型检测方案各自能做什么、为什么不够用、真正缺点是什么，并补齐 Object.prototype.toString.call 与原型链关系、面试高频回答模板和实战决策表。",
           "size": "19KB",
-          "lastModified": "2026-05-06T12:54:19.213Z",
-          "wordCount": 12181
+          "lastModified": "2026-05-07T13:25:33.661Z",
+          "wordCount": 12183
         },
         {
           "type": "file",
-          "title": "JavaScript 数组深度解析",
-          "frontmatterTitle": "JavaScript 数组深度解析",
+          "title": "第09篇：JavaScript 数组深度解析",
+          "frontmatterTitle": "第09篇：JavaScript 数组深度解析",
           "fileTitle": "09_JavaScript数组",
           "filename": "09_JavaScript数组.md",
           "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
@@ -3539,13 +3550,13 @@
           "attachments": [],
           "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
           "size": "24KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 18003
+          "lastModified": "2026-05-07T13:25:33.663Z",
+          "wordCount": 18007
         },
         {
           "type": "file",
-          "title": "10_字符串",
-          "frontmatterTitle": "10_字符串",
+          "title": "第10篇：JavaScript 字符串详解",
+          "frontmatterTitle": "第10篇：JavaScript 字符串详解",
           "fileTitle": "10_字符串",
           "filename": "10_字符串.md",
           "path": "我的总结/JS/辅助资料/10_字符串.md",
@@ -3563,13 +3574,13 @@
           "attachments": [],
           "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
           "size": "27KB",
-          "lastModified": "2026-05-06T14:47:16.119Z",
-          "wordCount": 20852
+          "lastModified": "2026-05-07T13:25:33.664Z",
+          "wordCount": 20867
         },
         {
           "type": "file",
-          "title": "包装类的详细机制",
-          "frontmatterTitle": "包装类的详细机制",
+          "title": "第11篇：JavaScript 包装类的详细机制",
+          "frontmatterTitle": "第11篇：JavaScript 包装类的详细机制",
           "fileTitle": "11_包装类",
           "filename": "11_包装类.md",
           "path": "我的总结/JS/辅助资料/11_包装类.md",
@@ -3585,13 +3596,13 @@
           "attachments": [],
           "description": "JavaScript包装类（String、Number、Boolean）的详细机制和使用指南，包括自动装箱拆箱原理。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4204
+          "lastModified": "2026-05-07T13:25:33.665Z",
+          "wordCount": 4218
         },
         {
           "type": "file",
-          "title": "宏任务与微任务",
-          "frontmatterTitle": "宏任务与微任务",
+          "title": "第12篇：宏任务与微任务",
+          "frontmatterTitle": "第12篇：宏任务与微任务",
           "fileTitle": "12_宏任务与微任务",
           "filename": "12_宏任务与微任务.md",
           "path": "我的总结/JS/辅助资料/12_宏任务与微任务.md",
@@ -3608,13 +3619,13 @@
           "attachments": [],
           "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 4252
+          "lastModified": "2026-05-07T13:25:33.666Z",
+          "wordCount": 4250
         },
         {
           "type": "file",
-          "title": "offset、client、scroll 坐标与尺寸详解",
-          "frontmatterTitle": "offset、client、scroll 坐标与尺寸详解",
+          "title": "第13篇：offset、client、scroll 坐标与尺寸详解",
+          "frontmatterTitle": "第13篇：offset、client、scroll 坐标与尺寸详解",
           "fileTitle": "13_offset_client_scroll",
           "filename": "13_offset_client_scroll.md",
           "path": "我的总结/JS/辅助资料/13_offset_client_scroll.md",
@@ -3633,13 +3644,13 @@
           "attachments": [],
           "description": "JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。",
           "size": "6KB",
-          "lastModified": "2026-05-07T12:40:02.049Z",
-          "wordCount": 3696
+          "lastModified": "2026-05-07T13:25:33.667Z",
+          "wordCount": 3714
         },
         {
           "type": "file",
-          "title": "易混淆DOM事件对比指南",
-          "frontmatterTitle": "易混淆DOM事件对比指南",
+          "title": "第14篇：易混淆 DOM 事件对比指南",
+          "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
           "fileTitle": "14_易混淆DOM事件对比",
           "filename": "14_易混淆DOM事件对比.md",
           "path": "我的总结/JS/辅助资料/14_易混淆DOM事件对比.md",
@@ -3658,13 +3669,13 @@
           "attachments": [],
           "description": "前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。",
           "size": "8KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 3810
+          "lastModified": "2026-05-07T13:25:33.668Z",
+          "wordCount": 3831
         },
         {
           "type": "file",
-          "title": "Map与Set事件订阅管理器",
-          "frontmatterTitle": "Map与Set事件订阅管理器",
+          "title": "第15篇：Map 与 Set 事件订阅管理器",
+          "frontmatterTitle": "第15篇：Map 与 Set 事件订阅管理器",
           "fileTitle": "15_Map_Set事件订阅管理",
           "filename": "15_Map_Set事件订阅管理.md",
           "path": "我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md",
@@ -3682,13 +3693,13 @@
           "attachments": [],
           "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6630
+          "lastModified": "2026-05-07T13:25:33.669Z",
+          "wordCount": 6654
         },
         {
           "type": "file",
-          "title": "前端模块导入与导出完全指南",
-          "frontmatterTitle": "前端模块导入与导出完全指南",
+          "title": "第16篇：前端模块导入与导出完全指南",
+          "frontmatterTitle": "第16篇：前端模块导入与导出完全指南",
           "fileTitle": "16_前端模块导入与导出",
           "filename": "16_前端模块导入与导出.md",
           "path": "我的总结/JS/辅助资料/16_前端模块导入与导出.md",
@@ -3707,13 +3718,13 @@
           "attachments": [],
           "description": "JavaScript模块化编程完整指南，详解ES Module和CommonJS的语法差异、使用场景和最佳实践。",
           "size": "10KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 6138
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 6158
         },
         {
           "type": "file",
-          "title": "Promise 完全指南",
-          "frontmatterTitle": "Promise 完全指南",
+          "title": "第17篇：Promise 完全指南",
+          "frontmatterTitle": "第17篇：Promise 完全指南",
           "fileTitle": "17_Promise",
           "filename": "17_Promise.md",
           "path": "我的总结/JS/辅助资料/17_Promise.md",
@@ -3730,13 +3741,13 @@
           "attachments": [],
           "description": "JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。",
           "size": "16KB",
-          "lastModified": "2026-05-07T12:40:02.053Z",
-          "wordCount": 10905
+          "lastModified": "2026-05-07T13:25:33.670Z",
+          "wordCount": 10924
         },
         {
           "type": "file",
-          "title": "DOM文档对象模型基础",
-          "frontmatterTitle": "DOM文档对象模型基础",
+          "title": "第18篇：DOM 文档对象模型基础",
+          "frontmatterTitle": "第18篇：DOM 文档对象模型基础",
           "fileTitle": "18_DOM",
           "filename": "18_DOM.md",
           "path": "我的总结/JS/辅助资料/18_DOM.md",
@@ -3752,13 +3763,13 @@
           "attachments": [],
           "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 19730
+          "lastModified": "2026-05-07T13:25:33.671Z",
+          "wordCount": 19749
         },
         {
           "type": "file",
-          "title": "前端深浅拷贝完全指南",
-          "frontmatterTitle": "前端深浅拷贝完全指南",
+          "title": "第19篇：前端深浅拷贝完全指南",
+          "frontmatterTitle": "第19篇：前端深浅拷贝完全指南",
           "fileTitle": "19_深浅拷贝",
           "filename": "19_深浅拷贝.md",
           "path": "我的总结/JS/辅助资料/19_深浅拷贝.md",
@@ -3776,13 +3787,13 @@
           "attachments": [],
           "description": "JavaScript深浅拷贝完整指南，从基础概念到实战应用，涵盖JSON方式、structuredClone、lodash等多种实现方案。",
           "size": "23KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 13006
+          "lastModified": "2026-05-07T13:25:33.672Z",
+          "wordCount": 13004
         },
         {
           "type": "file",
-          "title": "数组创建方法对比指南",
-          "frontmatterTitle": "数组创建方法对比指南",
+          "title": "第20篇：数组创建方法对比指南",
+          "frontmatterTitle": "第20篇：数组创建方法对比指南",
           "fileTitle": "20_数组创建区别",
           "filename": "20_数组创建区别.md",
           "path": "我的总结/JS/辅助资料/20_数组创建区别.md",
@@ -3800,8 +3811,8 @@
           "attachments": [],
           "description": "JavaScript三种数组创建方法的详细对比，包含使用场景、陷阱分析和最佳实践建议。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.058Z",
-          "wordCount": 3453
+          "lastModified": "2026-05-07T13:25:33.673Z",
+          "wordCount": 3430
         },
         {
           "type": "file",
@@ -3824,8 +3835,8 @@
           "attachments": [],
           "description": "JavaScript解构赋值完整指南，从基础语法到实战应用，包含数组解构、对象解构、嵌套解构等核心内容。",
           "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.063Z",
-          "wordCount": 3224
+          "lastModified": "2026-05-07T13:25:33.674Z",
+          "wordCount": 3234
         },
         {
           "type": "file",
@@ -3848,8 +3859,8 @@
           "attachments": [],
           "description": "用速背卡+详细边界说明掌握字符串和数组高频方法，覆盖开发场景、面试话术和易错点。",
           "size": "9KB",
-          "lastModified": "2026-05-07T12:40:02.062Z",
-          "wordCount": 5970
+          "lastModified": "2026-05-07T13:31:33.250Z",
+          "wordCount": 5976
         }
       ],
       "children": []
@@ -18743,8 +18754,8 @@
   "allNotes": [
     {
       "type": "file",
-      "title": "JavaScript 变量与作用域详解",
-      "frontmatterTitle": "JavaScript 变量与作用域详解",
+      "title": "第01篇：JavaScript 变量与作用域详解",
+      "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
       "fileTitle": "01_JavaScript变量与作用域",
       "filename": "01_JavaScript变量与作用域.md",
       "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
@@ -18763,8 +18774,8 @@
       "attachments": [],
       "description": "JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。",
       "size": "12KB",
-      "lastModified": "2026-05-07T12:40:02.044Z",
-      "wordCount": 8319
+      "lastModified": "2026-05-07T13:25:33.654Z",
+      "wordCount": 8345
     },
     {
       "type": "file",
@@ -18791,8 +18802,8 @@
     },
     {
       "type": "file",
-      "title": "JavaScript 数据访问安全机制",
-      "frontmatterTitle": "JavaScript 数据访问安全机制",
+      "title": "第02篇：JavaScript 数据访问安全机制",
+      "frontmatterTitle": "第02篇：JavaScript 数据访问安全机制",
       "fileTitle": "02_数据访问安全机制",
       "filename": "02_数据访问安全机制.md",
       "path": "我的总结/JS/辅助资料/02_数据访问安全机制.md",
@@ -18809,8 +18820,8 @@
       "attachments": [],
       "description": "JavaScript可选链操作符（?.）和空值合并操作符（??）的使用方法、原理及与相关操作符的区别。",
       "size": "2KB",
-      "lastModified": "2026-05-07T12:40:02.044Z",
-      "wordCount": 1113
+      "lastModified": "2026-05-07T13:25:33.655Z",
+      "wordCount": 1124
     },
     {
       "type": "file",
@@ -18838,8 +18849,8 @@
     },
     {
       "type": "file",
-      "title": "JavaScript 闭包与垃圾回收机制",
-      "frontmatterTitle": "JavaScript 闭包与垃圾回收机制",
+      "title": "第03篇：JavaScript 闭包与垃圾回收机制",
+      "frontmatterTitle": "第03篇：JavaScript 闭包与垃圾回收机制",
       "fileTitle": "03_闭包与垃圾回收",
       "filename": "03_闭包与垃圾回收.md",
       "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
@@ -18856,8 +18867,8 @@
       "attachments": [],
       "description": "JavaScript闭包的形成机制、内存泄漏原因及垃圾回收原理，以及如何避免闭包导致的内存问题。",
       "size": "3KB",
-      "lastModified": "2026-05-07T12:40:02.046Z",
-      "wordCount": 1278
+      "lastModified": "2026-05-07T13:25:33.656Z",
+      "wordCount": 1291
     },
     {
       "type": "file",
@@ -18885,8 +18896,8 @@
     },
     {
       "type": "file",
-      "title": "JavaScript arguments 对象详解",
-      "frontmatterTitle": "JavaScript arguments 对象详解",
+      "title": "第04篇：JavaScript arguments 对象详解",
+      "frontmatterTitle": "第04篇：JavaScript arguments 对象详解",
       "fileTitle": "04_arguments的使用",
       "filename": "04_arguments的使用.md",
       "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
@@ -18903,8 +18914,8 @@
       "attachments": [],
       "description": "JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。",
       "size": "2KB",
-      "lastModified": "2026-05-07T12:40:02.047Z",
-      "wordCount": 1354
+      "lastModified": "2026-05-07T13:25:33.657Z",
+      "wordCount": 1364
     },
     {
       "type": "file",
@@ -18932,8 +18943,8 @@
     },
     {
       "type": "file",
-      "title": "JavaScript this 指向规则详解",
-      "frontmatterTitle": "JavaScript this 指向规则详解",
+      "title": "第05篇：JavaScript this 指向规则详解",
+      "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
       "fileTitle": "05_this",
       "filename": "05_this.md",
       "path": "我的总结/JS/辅助资料/05_this.md",
@@ -18950,8 +18961,8 @@
       "attachments": [],
       "description": "JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。",
       "size": "10KB",
-      "lastModified": "2026-05-07T12:40:02.048Z",
-      "wordCount": 6551
+      "lastModified": "2026-05-07T13:25:33.658Z",
+      "wordCount": 6552
     },
     {
       "type": "file",
@@ -18979,8 +18990,8 @@
     },
     {
       "type": "file",
-      "title": "包装类的详细机制",
-      "frontmatterTitle": "包装类的详细机制",
+      "title": "第11篇：JavaScript 包装类的详细机制",
+      "frontmatterTitle": "第11篇：JavaScript 包装类的详细机制",
       "fileTitle": "11_包装类",
       "filename": "11_包装类.md",
       "path": "我的总结/JS/辅助资料/11_包装类.md",
@@ -18996,13 +19007,13 @@
       "attachments": [],
       "description": "JavaScript包装类（String、Number、Boolean）的详细机制和使用指南，包括自动装箱拆箱原理。",
       "size": "6KB",
-      "lastModified": "2026-05-07T12:40:02.049Z",
-      "wordCount": 4204
+      "lastModified": "2026-05-07T13:25:33.665Z",
+      "wordCount": 4218
     },
     {
       "type": "file",
-      "title": "offset、client、scroll 坐标与尺寸详解",
-      "frontmatterTitle": "offset、client、scroll 坐标与尺寸详解",
+      "title": "第13篇：offset、client、scroll 坐标与尺寸详解",
+      "frontmatterTitle": "第13篇：offset、client、scroll 坐标与尺寸详解",
       "fileTitle": "13_offset_client_scroll",
       "filename": "13_offset_client_scroll.md",
       "path": "我的总结/JS/辅助资料/13_offset_client_scroll.md",
@@ -19021,13 +19032,13 @@
       "attachments": [],
       "description": "JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。",
       "size": "6KB",
-      "lastModified": "2026-05-07T12:40:02.049Z",
-      "wordCount": 3696
+      "lastModified": "2026-05-07T13:25:33.667Z",
+      "wordCount": 3714
     },
     {
       "type": "file",
-      "title": "易混淆DOM事件对比指南",
-      "frontmatterTitle": "易混淆DOM事件对比指南",
+      "title": "第14篇：易混淆 DOM 事件对比指南",
+      "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
       "fileTitle": "14_易混淆DOM事件对比",
       "filename": "14_易混淆DOM事件对比.md",
       "path": "我的总结/JS/辅助资料/14_易混淆DOM事件对比.md",
@@ -19046,13 +19057,13 @@
       "attachments": [],
       "description": "前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。",
       "size": "8KB",
-      "lastModified": "2026-05-07T12:40:02.053Z",
-      "wordCount": 3810
+      "lastModified": "2026-05-07T13:25:33.668Z",
+      "wordCount": 3831
     },
     {
       "type": "file",
-      "title": "Map与Set事件订阅管理器",
-      "frontmatterTitle": "Map与Set事件订阅管理器",
+      "title": "第15篇：Map 与 Set 事件订阅管理器",
+      "frontmatterTitle": "第15篇：Map 与 Set 事件订阅管理器",
       "fileTitle": "15_Map_Set事件订阅管理",
       "filename": "15_Map_Set事件订阅管理.md",
       "path": "我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md",
@@ -19070,13 +19081,13 @@
       "attachments": [],
       "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
       "size": "10KB",
-      "lastModified": "2026-05-07T12:40:02.053Z",
-      "wordCount": 6630
+      "lastModified": "2026-05-07T13:25:33.669Z",
+      "wordCount": 6654
     },
     {
       "type": "file",
-      "title": "前端模块导入与导出完全指南",
-      "frontmatterTitle": "前端模块导入与导出完全指南",
+      "title": "第16篇：前端模块导入与导出完全指南",
+      "frontmatterTitle": "第16篇：前端模块导入与导出完全指南",
       "fileTitle": "16_前端模块导入与导出",
       "filename": "16_前端模块导入与导出.md",
       "path": "我的总结/JS/辅助资料/16_前端模块导入与导出.md",
@@ -19095,13 +19106,13 @@
       "attachments": [],
       "description": "JavaScript模块化编程完整指南，详解ES Module和CommonJS的语法差异、使用场景和最佳实践。",
       "size": "10KB",
-      "lastModified": "2026-05-07T12:40:02.053Z",
-      "wordCount": 6138
+      "lastModified": "2026-05-07T13:25:33.670Z",
+      "wordCount": 6158
     },
     {
       "type": "file",
-      "title": "Promise 完全指南",
-      "frontmatterTitle": "Promise 完全指南",
+      "title": "第17篇：Promise 完全指南",
+      "frontmatterTitle": "第17篇：Promise 完全指南",
       "fileTitle": "17_Promise",
       "filename": "17_Promise.md",
       "path": "我的总结/JS/辅助资料/17_Promise.md",
@@ -19118,13 +19129,13 @@
       "attachments": [],
       "description": "JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。",
       "size": "16KB",
-      "lastModified": "2026-05-07T12:40:02.053Z",
-      "wordCount": 10905
+      "lastModified": "2026-05-07T13:25:33.670Z",
+      "wordCount": 10924
     },
     {
       "type": "file",
-      "title": "DOM文档对象模型基础",
-      "frontmatterTitle": "DOM文档对象模型基础",
+      "title": "第18篇：DOM 文档对象模型基础",
+      "frontmatterTitle": "第18篇：DOM 文档对象模型基础",
       "fileTitle": "18_DOM",
       "filename": "18_DOM.md",
       "path": "我的总结/JS/辅助资料/18_DOM.md",
@@ -19140,13 +19151,13 @@
       "attachments": [],
       "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
       "size": "23KB",
-      "lastModified": "2026-05-07T12:40:02.058Z",
-      "wordCount": 19730
+      "lastModified": "2026-05-07T13:25:33.671Z",
+      "wordCount": 19749
     },
     {
       "type": "file",
-      "title": "前端深浅拷贝完全指南",
-      "frontmatterTitle": "前端深浅拷贝完全指南",
+      "title": "第19篇：前端深浅拷贝完全指南",
+      "frontmatterTitle": "第19篇：前端深浅拷贝完全指南",
       "fileTitle": "19_深浅拷贝",
       "filename": "19_深浅拷贝.md",
       "path": "我的总结/JS/辅助资料/19_深浅拷贝.md",
@@ -19164,13 +19175,13 @@
       "attachments": [],
       "description": "JavaScript深浅拷贝完整指南，从基础概念到实战应用，涵盖JSON方式、structuredClone、lodash等多种实现方案。",
       "size": "23KB",
-      "lastModified": "2026-05-07T12:40:02.058Z",
-      "wordCount": 13006
+      "lastModified": "2026-05-07T13:25:33.672Z",
+      "wordCount": 13004
     },
     {
       "type": "file",
-      "title": "数组创建方法对比指南",
-      "frontmatterTitle": "数组创建方法对比指南",
+      "title": "第20篇：数组创建方法对比指南",
+      "frontmatterTitle": "第20篇：数组创建方法对比指南",
       "fileTitle": "20_数组创建区别",
       "filename": "20_数组创建区别.md",
       "path": "我的总结/JS/辅助资料/20_数组创建区别.md",
@@ -19188,8 +19199,8 @@
       "attachments": [],
       "description": "JavaScript三种数组创建方法的详细对比，包含使用场景、陷阱分析和最佳实践建议。",
       "size": "5KB",
-      "lastModified": "2026-05-07T12:40:02.058Z",
-      "wordCount": 3453
+      "lastModified": "2026-05-07T13:25:33.673Z",
+      "wordCount": 3430
     },
     {
       "type": "file",
@@ -19212,8 +19223,8 @@
       "attachments": [],
       "description": "JavaScript解构赋值完整指南，从基础语法到实战应用，包含数组解构、对象解构、嵌套解构等核心内容。",
       "size": "5KB",
-      "lastModified": "2026-05-07T12:40:02.063Z",
-      "wordCount": 3224
+      "lastModified": "2026-05-07T13:25:33.674Z",
+      "wordCount": 3234
     },
     {
       "type": "file",
@@ -19260,6 +19271,28 @@
       "size": "5KB",
       "lastModified": "2026-05-07T12:40:02.067Z",
       "wordCount": 3305
+    },
+    {
+      "type": "file",
+      "title": "JavaScript 常识目录（建议阅读顺序）",
+      "frontmatterTitle": "JavaScript 常识目录（建议阅读顺序）",
+      "fileTitle": "JS常识",
+      "filename": "JS常识.md",
+      "path": "我的总结/JS/JS常识.md",
+      "date": "2026-05-07T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "目录",
+        "学习路线"
+      ],
+      "category": "我的总结/JS",
+      "attachments": [],
+      "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+      "size": "3KB",
+      "lastModified": "2026-05-07T13:25:33.675Z",
+      "wordCount": 1416
     },
     {
       "type": "file",
@@ -19557,48 +19590,6 @@
     },
     {
       "type": "file",
-      "title": "07_es5构造函数与es6语法糖Class",
-      "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
-      "fileTitle": "07_es5构造函数与es6语法糖Class",
-      "filename": "07_es5构造函数与es6语法糖Class.md",
-      "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "辅助资料"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
-      "size": "81KB",
-      "lastModified": "2026-05-06T12:18:21.796Z",
-      "wordCount": 62606
-    },
-    {
-      "type": "file",
-      "title": "JS常识",
-      "frontmatterTitle": "JS常识",
-      "fileTitle": "JS常识",
-      "filename": "JS常识.md",
-      "path": "我的总结/JS/JS常识.md",
-      "date": null,
-      "hasRealDate": false,
-      "order": null,
-      "tags": [
-        "我的总结",
-        "JS"
-      ],
-      "category": "我的总结",
-      "attachments": [],
-      "description": "本页仅作为目录使用，按 1 到 20 依次阅读。\r\n\r\n\r\n01JavaScript变量与作用域\r\n\r\n\r\n02数据访问安全机制\r\n\r\n\r\n03闭包与垃圾回收\r\n\r\n\r\n04arguments的使用\r\n\r\n\r\n05this\r\n\r\n\r\n06JavaScript原型链\r\n\r\n\r\n07es5构造函数与es6语法糖Class\r\n\r\n\r\n08类型检测与原型链深度解析\r\n\r\n\r\n09JavaScript数组\r",
-      "size": "2KB",
-      "lastModified": "2026-05-06T12:18:21.745Z",
-      "wordCount": 1291
-    },
-    {
-      "type": "file",
       "title": "第06篇：JavaScript 原型链",
       "frontmatterTitle": "第06篇：JavaScript 原型链",
       "fileTitle": "06_JavaScript原型链",
@@ -19617,13 +19608,37 @@
       "attachments": [],
       "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
       "size": "11KB",
-      "lastModified": "2026-05-06T12:18:21.788Z",
-      "wordCount": 8364
+      "lastModified": "2026-05-07T13:25:33.659Z",
+      "wordCount": 8353
     },
     {
       "type": "file",
-      "title": "08_类型检测与原型链深度解析",
-      "frontmatterTitle": "08_类型检测与原型链深度解析",
+      "title": "第07篇：ES5 构造函数与 ES6 Class 详解",
+      "frontmatterTitle": "第07篇：ES5 构造函数与 ES6 Class 详解",
+      "fileTitle": "07_es5构造函数与es6语法糖Class",
+      "filename": "07_es5构造函数与es6语法糖Class.md",
+      "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
+      "date": "2026-05-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "构造函数",
+        "Class",
+        "原型链",
+        "继承"
+      ],
+      "category": "我的总结/JS/辅助资料",
+      "attachments": [],
+      "description": "从原型、实例、静态成员与继承链的关系出发，系统讲清 ES5 构造函数和 ES6 Class 的底层逻辑与实际差异。",
+      "size": "81KB",
+      "lastModified": "2026-05-07T13:25:33.660Z",
+      "wordCount": 62637
+    },
+    {
+      "type": "file",
+      "title": "第08篇：类型检测与原型链深度解析",
+      "frontmatterTitle": "第08篇：类型检测与原型链深度解析",
       "fileTitle": "08_类型检测与原型链深度解析",
       "filename": "08_类型检测与原型链深度解析.md",
       "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
@@ -19641,13 +19656,13 @@
       "attachments": [],
       "description": "系统讲清 JavaScript 常见类型检测方案各自能做什么、为什么不够用、真正缺点是什么，并补齐 Object.prototype.toString.call 与原型链关系、面试高频回答模板和实战决策表。",
       "size": "19KB",
-      "lastModified": "2026-05-06T12:54:19.213Z",
-      "wordCount": 12181
+      "lastModified": "2026-05-07T13:25:33.661Z",
+      "wordCount": 12183
     },
     {
       "type": "file",
-      "title": "JavaScript 数组深度解析",
-      "frontmatterTitle": "JavaScript 数组深度解析",
+      "title": "第09篇：JavaScript 数组深度解析",
+      "frontmatterTitle": "第09篇：JavaScript 数组深度解析",
       "fileTitle": "09_JavaScript数组",
       "filename": "09_JavaScript数组.md",
       "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
@@ -19665,13 +19680,13 @@
       "attachments": [],
       "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
       "size": "24KB",
-      "lastModified": "2026-05-07T12:40:02.049Z",
-      "wordCount": 18003
+      "lastModified": "2026-05-07T13:25:33.663Z",
+      "wordCount": 18007
     },
     {
       "type": "file",
-      "title": "10_字符串",
-      "frontmatterTitle": "10_字符串",
+      "title": "第10篇：JavaScript 字符串详解",
+      "frontmatterTitle": "第10篇：JavaScript 字符串详解",
       "fileTitle": "10_字符串",
       "filename": "10_字符串.md",
       "path": "我的总结/JS/辅助资料/10_字符串.md",
@@ -19689,8 +19704,8 @@
       "attachments": [],
       "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
       "size": "27KB",
-      "lastModified": "2026-05-06T14:47:16.119Z",
-      "wordCount": 20852
+      "lastModified": "2026-05-07T13:25:33.664Z",
+      "wordCount": 20867
     },
     {
       "type": "file",
@@ -19713,8 +19728,8 @@
       "attachments": [],
       "description": "用速背卡+详细边界说明掌握字符串和数组高频方法，覆盖开发场景、面试话术和易错点。",
       "size": "9KB",
-      "lastModified": "2026-05-07T12:40:02.062Z",
-      "wordCount": 5970
+      "lastModified": "2026-05-07T13:31:33.250Z",
+      "wordCount": 5976
     },
     {
       "type": "file",
@@ -24969,8 +24984,8 @@
     },
     {
       "type": "file",
-      "title": "宏任务与微任务",
-      "frontmatterTitle": "宏任务与微任务",
+      "title": "第12篇：宏任务与微任务",
+      "frontmatterTitle": "第12篇：宏任务与微任务",
       "fileTitle": "12_宏任务与微任务",
       "filename": "12_宏任务与微任务.md",
       "path": "我的总结/JS/辅助资料/12_宏任务与微任务.md",
@@ -24987,8 +25002,8 @@
       "attachments": [],
       "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
       "size": "8KB",
-      "lastModified": "2026-05-07T12:40:02.049Z",
-      "wordCount": 4252
+      "lastModified": "2026-05-07T13:25:33.666Z",
+      "wordCount": 4250
     },
     {
       "type": "file",
@@ -27854,8 +27869,8 @@
               "children": [
                 {
                   "type": "file",
-                  "title": "JavaScript 变量与作用域详解",
-                  "frontmatterTitle": "JavaScript 变量与作用域详解",
+                  "title": "第01篇：JavaScript 变量与作用域详解",
+                  "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
                   "fileTitle": "01_JavaScript变量与作用域",
                   "filename": "01_JavaScript变量与作用域.md",
                   "path": "我的总结/JS/辅助资料/01_JavaScript变量与作用域.md",
@@ -27874,13 +27889,13 @@
                   "attachments": [],
                   "description": "JavaScript变量声明方式（var/let/const）的核心特性、作用域规则、提升机制及最佳实践。",
                   "size": "12KB",
-                  "lastModified": "2026-05-07T12:40:02.044Z",
-                  "wordCount": 8319
+                  "lastModified": "2026-05-07T13:25:33.654Z",
+                  "wordCount": 8345
                 },
                 {
                   "type": "file",
-                  "title": "JavaScript 数据访问安全机制",
-                  "frontmatterTitle": "JavaScript 数据访问安全机制",
+                  "title": "第02篇：JavaScript 数据访问安全机制",
+                  "frontmatterTitle": "第02篇：JavaScript 数据访问安全机制",
                   "fileTitle": "02_数据访问安全机制",
                   "filename": "02_数据访问安全机制.md",
                   "path": "我的总结/JS/辅助资料/02_数据访问安全机制.md",
@@ -27897,13 +27912,13 @@
                   "attachments": [],
                   "description": "JavaScript可选链操作符（?.）和空值合并操作符（??）的使用方法、原理及与相关操作符的区别。",
                   "size": "2KB",
-                  "lastModified": "2026-05-07T12:40:02.044Z",
-                  "wordCount": 1113
+                  "lastModified": "2026-05-07T13:25:33.655Z",
+                  "wordCount": 1124
                 },
                 {
                   "type": "file",
-                  "title": "JavaScript 闭包与垃圾回收机制",
-                  "frontmatterTitle": "JavaScript 闭包与垃圾回收机制",
+                  "title": "第03篇：JavaScript 闭包与垃圾回收机制",
+                  "frontmatterTitle": "第03篇：JavaScript 闭包与垃圾回收机制",
                   "fileTitle": "03_闭包与垃圾回收",
                   "filename": "03_闭包与垃圾回收.md",
                   "path": "我的总结/JS/辅助资料/03_闭包与垃圾回收.md",
@@ -27920,13 +27935,13 @@
                   "attachments": [],
                   "description": "JavaScript闭包的形成机制、内存泄漏原因及垃圾回收原理，以及如何避免闭包导致的内存问题。",
                   "size": "3KB",
-                  "lastModified": "2026-05-07T12:40:02.046Z",
-                  "wordCount": 1278
+                  "lastModified": "2026-05-07T13:25:33.656Z",
+                  "wordCount": 1291
                 },
                 {
                   "type": "file",
-                  "title": "JavaScript arguments 对象详解",
-                  "frontmatterTitle": "JavaScript arguments 对象详解",
+                  "title": "第04篇：JavaScript arguments 对象详解",
+                  "frontmatterTitle": "第04篇：JavaScript arguments 对象详解",
                   "fileTitle": "04_arguments的使用",
                   "filename": "04_arguments的使用.md",
                   "path": "我的总结/JS/辅助资料/04_arguments的使用.md",
@@ -27943,13 +27958,13 @@
                   "attachments": [],
                   "description": "JavaScript arguments 对象的特性、使用方法和现代替代方案（rest parameters）。",
                   "size": "2KB",
-                  "lastModified": "2026-05-07T12:40:02.047Z",
-                  "wordCount": 1354
+                  "lastModified": "2026-05-07T13:25:33.657Z",
+                  "wordCount": 1364
                 },
                 {
                   "type": "file",
-                  "title": "JavaScript this 指向规则详解",
-                  "frontmatterTitle": "JavaScript this 指向规则详解",
+                  "title": "第05篇：JavaScript this 指向规则详解",
+                  "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
                   "fileTitle": "05_this",
                   "filename": "05_this.md",
                   "path": "我的总结/JS/辅助资料/05_this.md",
@@ -27966,8 +27981,8 @@
                   "attachments": [],
                   "description": "JavaScript this 指向的完整规则，包括普通函数调用、方法调用、构造函数调用和箭头函数特性。",
                   "size": "10KB",
-                  "lastModified": "2026-05-07T12:40:02.048Z",
-                  "wordCount": 6551
+                  "lastModified": "2026-05-07T13:25:33.658Z",
+                  "wordCount": 6552
                 },
                 {
                   "type": "file",
@@ -27989,34 +28004,37 @@
                   "attachments": [],
                   "description": "用小白视角讲透原型链：从三张图入手，理解 prototype、[[Prototype]]、__proto__、constructor、instanceof、new 和 class 的关系。",
                   "size": "11KB",
-                  "lastModified": "2026-05-06T12:18:21.788Z",
-                  "wordCount": 8364
+                  "lastModified": "2026-05-07T13:25:33.659Z",
+                  "wordCount": 8353
                 },
                 {
                   "type": "file",
-                  "title": "07_es5构造函数与es6语法糖Class",
-                  "frontmatterTitle": "07_es5构造函数与es6语法糖Class",
+                  "title": "第07篇：ES5 构造函数与 ES6 Class 详解",
+                  "frontmatterTitle": "第07篇：ES5 构造函数与 ES6 Class 详解",
                   "fileTitle": "07_es5构造函数与es6语法糖Class",
                   "filename": "07_es5构造函数与es6语法糖Class.md",
                   "path": "我的总结/JS/辅助资料/07_es5构造函数与es6语法糖Class.md",
-                  "date": null,
-                  "hasRealDate": false,
+                  "date": "2026-05-06T00:00:00.000Z",
+                  "hasRealDate": true,
                   "order": null,
                   "tags": [
-                    "我的总结",
-                    "辅助资料"
+                    "JavaScript",
+                    "构造函数",
+                    "Class",
+                    "原型链",
+                    "继承"
                   ],
-                  "category": "我的总结",
+                  "category": "我的总结/JS/辅助资料",
                   "attachments": [],
-                  "description": "- 每个函数（包括构造函数）在被创建时，会自动获得一个显式原型属性 prototype，它是一个对象，里面默认有一个 constructor 属性指回函数自身。构造函数也是对象，所以也有隐式原型 proto：普通函数的 proto 指向 Function.prototype；在 class extends 继承中，子类构造函数的 proto 会直接指向父类构造函数本身，这样才能继承父类的静态属性和",
+                  "description": "从原型、实例、静态成员与继承链的关系出发，系统讲清 ES5 构造函数和 ES6 Class 的底层逻辑与实际差异。",
                   "size": "81KB",
-                  "lastModified": "2026-05-06T12:18:21.796Z",
-                  "wordCount": 62606
+                  "lastModified": "2026-05-07T13:25:33.660Z",
+                  "wordCount": 62637
                 },
                 {
                   "type": "file",
-                  "title": "08_类型检测与原型链深度解析",
-                  "frontmatterTitle": "08_类型检测与原型链深度解析",
+                  "title": "第08篇：类型检测与原型链深度解析",
+                  "frontmatterTitle": "第08篇：类型检测与原型链深度解析",
                   "fileTitle": "08_类型检测与原型链深度解析",
                   "filename": "08_类型检测与原型链深度解析.md",
                   "path": "我的总结/JS/辅助资料/08_类型检测与原型链深度解析.md",
@@ -28034,13 +28052,13 @@
                   "attachments": [],
                   "description": "系统讲清 JavaScript 常见类型检测方案各自能做什么、为什么不够用、真正缺点是什么，并补齐 Object.prototype.toString.call 与原型链关系、面试高频回答模板和实战决策表。",
                   "size": "19KB",
-                  "lastModified": "2026-05-06T12:54:19.213Z",
-                  "wordCount": 12181
+                  "lastModified": "2026-05-07T13:25:33.661Z",
+                  "wordCount": 12183
                 },
                 {
                   "type": "file",
-                  "title": "JavaScript 数组深度解析",
-                  "frontmatterTitle": "JavaScript 数组深度解析",
+                  "title": "第09篇：JavaScript 数组深度解析",
+                  "frontmatterTitle": "第09篇：JavaScript 数组深度解析",
                   "fileTitle": "09_JavaScript数组",
                   "filename": "09_JavaScript数组.md",
                   "path": "我的总结/JS/辅助资料/09_JavaScript数组.md",
@@ -28058,13 +28076,13 @@
                   "attachments": [],
                   "description": "从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。",
                   "size": "24KB",
-                  "lastModified": "2026-05-07T12:40:02.049Z",
-                  "wordCount": 18003
+                  "lastModified": "2026-05-07T13:25:33.663Z",
+                  "wordCount": 18007
                 },
                 {
                   "type": "file",
-                  "title": "10_字符串",
-                  "frontmatterTitle": "10_字符串",
+                  "title": "第10篇：JavaScript 字符串详解",
+                  "frontmatterTitle": "第10篇：JavaScript 字符串详解",
                   "fileTitle": "10_字符串",
                   "filename": "10_字符串.md",
                   "path": "我的总结/JS/辅助资料/10_字符串.md",
@@ -28082,13 +28100,13 @@
                   "attachments": [],
                   "description": "系统梳理 JavaScript 字符串的创建、查找、截取、替换、Unicode 处理与常见 API，重点纠正常见误区并补充官方参考资料。",
                   "size": "27KB",
-                  "lastModified": "2026-05-06T14:47:16.119Z",
-                  "wordCount": 20852
+                  "lastModified": "2026-05-07T13:25:33.664Z",
+                  "wordCount": 20867
                 },
                 {
                   "type": "file",
-                  "title": "包装类的详细机制",
-                  "frontmatterTitle": "包装类的详细机制",
+                  "title": "第11篇：JavaScript 包装类的详细机制",
+                  "frontmatterTitle": "第11篇：JavaScript 包装类的详细机制",
                   "fileTitle": "11_包装类",
                   "filename": "11_包装类.md",
                   "path": "我的总结/JS/辅助资料/11_包装类.md",
@@ -28104,13 +28122,13 @@
                   "attachments": [],
                   "description": "JavaScript包装类（String、Number、Boolean）的详细机制和使用指南，包括自动装箱拆箱原理。",
                   "size": "6KB",
-                  "lastModified": "2026-05-07T12:40:02.049Z",
-                  "wordCount": 4204
+                  "lastModified": "2026-05-07T13:25:33.665Z",
+                  "wordCount": 4218
                 },
                 {
                   "type": "file",
-                  "title": "宏任务与微任务",
-                  "frontmatterTitle": "宏任务与微任务",
+                  "title": "第12篇：宏任务与微任务",
+                  "frontmatterTitle": "第12篇：宏任务与微任务",
                   "fileTitle": "12_宏任务与微任务",
                   "filename": "12_宏任务与微任务.md",
                   "path": "我的总结/JS/辅助资料/12_宏任务与微任务.md",
@@ -28127,13 +28145,13 @@
                   "attachments": [],
                   "description": "用更容易理解的方式讲清宏任务与微任务，适合小白快速掌握事件循环、Promise、await 和 setTimeout 的执行顺序。",
                   "size": "8KB",
-                  "lastModified": "2026-05-07T12:40:02.049Z",
-                  "wordCount": 4252
+                  "lastModified": "2026-05-07T13:25:33.666Z",
+                  "wordCount": 4250
                 },
                 {
                   "type": "file",
-                  "title": "offset、client、scroll 坐标与尺寸详解",
-                  "frontmatterTitle": "offset、client、scroll 坐标与尺寸详解",
+                  "title": "第13篇：offset、client、scroll 坐标与尺寸详解",
+                  "frontmatterTitle": "第13篇：offset、client、scroll 坐标与尺寸详解",
                   "fileTitle": "13_offset_client_scroll",
                   "filename": "13_offset_client_scroll.md",
                   "path": "我的总结/JS/辅助资料/13_offset_client_scroll.md",
@@ -28152,13 +28170,13 @@
                   "attachments": [],
                   "description": "JavaScript中事件对象坐标与元素属性的详细对比，涵盖client、offset、scroll三大系列API的使用方法和区别。",
                   "size": "6KB",
-                  "lastModified": "2026-05-07T12:40:02.049Z",
-                  "wordCount": 3696
+                  "lastModified": "2026-05-07T13:25:33.667Z",
+                  "wordCount": 3714
                 },
                 {
                   "type": "file",
-                  "title": "易混淆DOM事件对比指南",
-                  "frontmatterTitle": "易混淆DOM事件对比指南",
+                  "title": "第14篇：易混淆 DOM 事件对比指南",
+                  "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
                   "fileTitle": "14_易混淆DOM事件对比",
                   "filename": "14_易混淆DOM事件对比.md",
                   "path": "我的总结/JS/辅助资料/14_易混淆DOM事件对比.md",
@@ -28177,13 +28195,13 @@
                   "attachments": [],
                   "description": "前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。",
                   "size": "8KB",
-                  "lastModified": "2026-05-07T12:40:02.053Z",
-                  "wordCount": 3810
+                  "lastModified": "2026-05-07T13:25:33.668Z",
+                  "wordCount": 3831
                 },
                 {
                   "type": "file",
-                  "title": "Map与Set事件订阅管理器",
-                  "frontmatterTitle": "Map与Set事件订阅管理器",
+                  "title": "第15篇：Map 与 Set 事件订阅管理器",
+                  "frontmatterTitle": "第15篇：Map 与 Set 事件订阅管理器",
                   "fileTitle": "15_Map_Set事件订阅管理",
                   "filename": "15_Map_Set事件订阅管理.md",
                   "path": "我的总结/JS/辅助资料/15_Map_Set事件订阅管理.md",
@@ -28201,13 +28219,13 @@
                   "attachments": [],
                   "description": "从 ES6 Map/Set 基础概念到事件订阅管理器实战，详解如何使用 Map 和 Set 构建高效、可维护的事件系统。",
                   "size": "10KB",
-                  "lastModified": "2026-05-07T12:40:02.053Z",
-                  "wordCount": 6630
+                  "lastModified": "2026-05-07T13:25:33.669Z",
+                  "wordCount": 6654
                 },
                 {
                   "type": "file",
-                  "title": "前端模块导入与导出完全指南",
-                  "frontmatterTitle": "前端模块导入与导出完全指南",
+                  "title": "第16篇：前端模块导入与导出完全指南",
+                  "frontmatterTitle": "第16篇：前端模块导入与导出完全指南",
                   "fileTitle": "16_前端模块导入与导出",
                   "filename": "16_前端模块导入与导出.md",
                   "path": "我的总结/JS/辅助资料/16_前端模块导入与导出.md",
@@ -28226,13 +28244,13 @@
                   "attachments": [],
                   "description": "JavaScript模块化编程完整指南，详解ES Module和CommonJS的语法差异、使用场景和最佳实践。",
                   "size": "10KB",
-                  "lastModified": "2026-05-07T12:40:02.053Z",
-                  "wordCount": 6138
+                  "lastModified": "2026-05-07T13:25:33.670Z",
+                  "wordCount": 6158
                 },
                 {
                   "type": "file",
-                  "title": "Promise 完全指南",
-                  "frontmatterTitle": "Promise 完全指南",
+                  "title": "第17篇：Promise 完全指南",
+                  "frontmatterTitle": "第17篇：Promise 完全指南",
                   "fileTitle": "17_Promise",
                   "filename": "17_Promise.md",
                   "path": "我的总结/JS/辅助资料/17_Promise.md",
@@ -28249,13 +28267,13 @@
                   "attachments": [],
                   "description": "JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。",
                   "size": "16KB",
-                  "lastModified": "2026-05-07T12:40:02.053Z",
-                  "wordCount": 10905
+                  "lastModified": "2026-05-07T13:25:33.670Z",
+                  "wordCount": 10924
                 },
                 {
                   "type": "file",
-                  "title": "DOM文档对象模型基础",
-                  "frontmatterTitle": "DOM文档对象模型基础",
+                  "title": "第18篇：DOM 文档对象模型基础",
+                  "frontmatterTitle": "第18篇：DOM 文档对象模型基础",
                   "fileTitle": "18_DOM",
                   "filename": "18_DOM.md",
                   "path": "我的总结/JS/辅助资料/18_DOM.md",
@@ -28271,13 +28289,13 @@
                   "attachments": [],
                   "description": "DOM（文档对象模型）基础概念介绍，包含DOM树结构、元素、节点等核心概念的理解。",
                   "size": "23KB",
-                  "lastModified": "2026-05-07T12:40:02.058Z",
-                  "wordCount": 19730
+                  "lastModified": "2026-05-07T13:25:33.671Z",
+                  "wordCount": 19749
                 },
                 {
                   "type": "file",
-                  "title": "前端深浅拷贝完全指南",
-                  "frontmatterTitle": "前端深浅拷贝完全指南",
+                  "title": "第19篇：前端深浅拷贝完全指南",
+                  "frontmatterTitle": "第19篇：前端深浅拷贝完全指南",
                   "fileTitle": "19_深浅拷贝",
                   "filename": "19_深浅拷贝.md",
                   "path": "我的总结/JS/辅助资料/19_深浅拷贝.md",
@@ -28295,13 +28313,13 @@
                   "attachments": [],
                   "description": "JavaScript深浅拷贝完整指南，从基础概念到实战应用，涵盖JSON方式、structuredClone、lodash等多种实现方案。",
                   "size": "23KB",
-                  "lastModified": "2026-05-07T12:40:02.058Z",
-                  "wordCount": 13006
+                  "lastModified": "2026-05-07T13:25:33.672Z",
+                  "wordCount": 13004
                 },
                 {
                   "type": "file",
-                  "title": "数组创建方法对比指南",
-                  "frontmatterTitle": "数组创建方法对比指南",
+                  "title": "第20篇：数组创建方法对比指南",
+                  "frontmatterTitle": "第20篇：数组创建方法对比指南",
                   "fileTitle": "20_数组创建区别",
                   "filename": "20_数组创建区别.md",
                   "path": "我的总结/JS/辅助资料/20_数组创建区别.md",
@@ -28319,8 +28337,8 @@
                   "attachments": [],
                   "description": "JavaScript三种数组创建方法的详细对比，包含使用场景、陷阱分析和最佳实践建议。",
                   "size": "5KB",
-                  "lastModified": "2026-05-07T12:40:02.058Z",
-                  "wordCount": 3453
+                  "lastModified": "2026-05-07T13:25:33.673Z",
+                  "wordCount": 3430
                 },
                 {
                   "type": "file",
@@ -28343,8 +28361,8 @@
                   "attachments": [],
                   "description": "JavaScript解构赋值完整指南，从基础语法到实战应用，包含数组解构、对象解构、嵌套解构等核心内容。",
                   "size": "5KB",
-                  "lastModified": "2026-05-07T12:40:02.063Z",
-                  "wordCount": 3224
+                  "lastModified": "2026-05-07T13:25:33.674Z",
+                  "wordCount": 3234
                 },
                 {
                   "type": "file",
@@ -28367,31 +28385,32 @@
                   "attachments": [],
                   "description": "用速背卡+详细边界说明掌握字符串和数组高频方法，覆盖开发场景、面试话术和易错点。",
                   "size": "9KB",
-                  "lastModified": "2026-05-07T12:40:02.062Z",
-                  "wordCount": 5970
+                  "lastModified": "2026-05-07T13:31:33.250Z",
+                  "wordCount": 5976
                 }
               ]
             },
             {
               "type": "file",
-              "title": "JS常识",
-              "frontmatterTitle": "JS常识",
+              "title": "JavaScript 常识目录（建议阅读顺序）",
+              "frontmatterTitle": "JavaScript 常识目录（建议阅读顺序）",
               "fileTitle": "JS常识",
               "filename": "JS常识.md",
               "path": "我的总结/JS/JS常识.md",
-              "date": null,
-              "hasRealDate": false,
+              "date": "2026-05-07T00:00:00.000Z",
+              "hasRealDate": true,
               "order": null,
               "tags": [
-                "我的总结",
-                "JS"
+                "JavaScript",
+                "目录",
+                "学习路线"
               ],
-              "category": "我的总结",
+              "category": "我的总结/JS",
               "attachments": [],
-              "description": "本页仅作为目录使用，按 1 到 20 依次阅读。\r\n\r\n\r\n01JavaScript变量与作用域\r\n\r\n\r\n02数据访问安全机制\r\n\r\n\r\n03闭包与垃圾回收\r\n\r\n\r\n04arguments的使用\r\n\r\n\r\n05this\r\n\r\n\r\n06JavaScript原型链\r\n\r\n\r\n07es5构造函数与es6语法糖Class\r\n\r\n\r\n08类型检测与原型链深度解析\r\n\r\n\r\n09JavaScript数组\r",
-              "size": "2KB",
-              "lastModified": "2026-05-06T12:18:21.745Z",
-              "wordCount": 1291
+              "description": "按 1 到 20 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
+              "size": "3KB",
+              "lastModified": "2026-05-07T13:25:33.675Z",
+              "wordCount": 1416
             }
           ]
         },
@@ -35632,5 +35651,5 @@
   ],
   "totalNotes": 361,
   "totalCategories": 83,
-  "lastUpdated": "2026-05-07T13:05:54.595Z"
+  "lastUpdated": "2026-05-07T13:32:04.816Z"
 }

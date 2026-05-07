@@ -1,5 +1,5 @@
 ---
-title: 易混淆DOM事件对比指南
+title: 第14篇：易混淆 DOM 事件对比指南
 date: 2026-05-07
 category: 我的总结/JS/辅助资料
 tags:
@@ -11,6 +11,8 @@ tags:
   - click
 description: 前端开发中易混淆的DOM事件详细对比，包含表单事件、鼠标事件、键盘事件等的触发时机和使用场景。
 ---
+
+# 第14篇：易混淆 DOM 事件对比指南
 
 ## 一、表单交互类事件（以 input/change 为核心）
 ### 1. 基础输入事件：input /change（网页核心内容 + 实战补充）

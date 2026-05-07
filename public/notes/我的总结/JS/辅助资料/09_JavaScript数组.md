@@ -1,5 +1,5 @@
 ---
-title: JavaScript 数组深度解析
+title: 第09篇：JavaScript 数组深度解析
 date: 2026-05-06
 category: 我的总结
 tags:
@@ -11,7 +11,7 @@ tags:
 description: 从数组本质、length、空位和常用方法等角度系统梳理 JavaScript 数组，并修正 splice、map、copyWithin 等常见误区。
 ---
 
-# JavaScript 数组深度解析
+# 第09篇：JavaScript 数组深度解析
 ## 一、数组的本质理解
 ### 1.1 数组是特殊的对象
 ```javascript

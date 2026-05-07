@@ -1,5 +1,5 @@
 ---
-title: Promise 完全指南
+title: 第17篇：Promise 完全指南
 date: 2026-05-07
 category: 我的总结/JS/辅助资料
 tags:
@@ -9,6 +9,8 @@ tags:
   - async/await
 description: JavaScript Promise 完整指南，从基础概念到实战应用，包含 async/await 语法糖和常见陷阱。
 ---
+
+# 第17篇：Promise 完全指南
 
 ## 1. Promise 概述
 ### 1.1 诞生背景

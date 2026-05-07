@@ -5,6 +5,20 @@ export const dailyChangeSummary = {
   date: '2026-05-07',
   items: [
     {
+      category: '功能更新',
+      time: '21:32',
+      title: '为字符串数组方法手册加入正文目录',
+      summary: '在字符串数组方法速背卡开头加入自动目录，方便从正文内部快速跳转到参数边界、开发场景、面试快答和自测练习等章节。',
+      content: '更新 `public/notes/我的总结/JS/辅助资料/字符串数组方法对比记忆手册.md`：1) 在文章开头目标说明后加入 `[[toc]]` 自动目录；2) 目录会跟随现有二级、三级标题自动生成，无需后续手工维护锚点；3) 执行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保站点数据与正文内容保持一致。'
+    },
+    {
+      category: '问题修复',
+      time: '21:27',
+      title: '统一 JavaScript 常识专题的标题命名',
+      summary: '批量对齐 JS 常识目录与 01 到 20 篇文章的 frontmatter、正文 H1 和目录入口文案，修复运行后列表标题、详情页标题和正文标题不一致的问题。',
+      content: '更新 `public/notes/我的总结/JS/` 下整组文档：1) 为 `JS常识.md` 补齐 frontmatter 与统一目录页标题，并把目录中的文章入口文案同步改成正式标题；2) 将 01 到 20 篇文章统一收敛为“第XX篇：标题”命名格式，补齐缺失的 H1，修正 `05_this.md`、`13_offset_client_scroll.md`、`20_数组创建区别.md` 等文件中 frontmatter 与正文一级标题不一致的问题；3) 为 `07_es5构造函数与es6语法糖Class.md` 新增完整 frontmatter 与系列标题；4) 为 `附录_解构赋值.md` 补上统一 H1；5) 执行 `npm run generate:index`，重新生成 `public/notes-index.json` 与 `public/search-index.json`，让列表页、搜索页和详情页头部都读取到最新一致的标题。'
+    },
+    {
       category: '问题修复',
       time: '15:34',
       title: '纠偏宏任务与微任务笔记并改写为小白版',
