@@ -1,3 +1,14 @@
+---
+title: Vue目录（建议阅读顺序）
+date: 2026-05-06
+category: 我的总结
+tags:
+  - Vue
+  - 目录
+  - 学习路线
+description: 本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。
+---
+
 ## Vue 目录（建议阅读顺序）
 本页仅作为目录使用，按 1 到 11 依次阅读。
 

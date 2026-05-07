@@ -1,3 +1,16 @@
+---
+title: 附录03：Vue的name属性
+date: 2026-05-06
+category: 我的总结
+tags:
+  - Vue3
+  - name属性
+  - 组件配置
+  - keep-alive
+  - 路由
+description: Vue3中不同场景的name属性本质和作用完全不同，核心分类如下：组件name（Vue组件核心配置属性）、Vuex模块name（自定义属性）、Pinia模块name（Pinia内置必填标识符）、路由name（路由规则唯一标识）、组件文件名name（文件命名规范）。
+---
+
 # Vue 3 中「name」相关属性全梳理笔记
 ## 核心总览
 Vue 3 中不同场景的 `name` 属性**本质和作用完全不同**，核心分类如下：
