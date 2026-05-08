@@ -2059,9 +2059,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "22KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 13930
+          "size": "16KB",
+          "lastModified": "2026-05-08T09:50:33.305Z",
+          "wordCount": 11248
         },
         {
           "type": "file",
@@ -2108,8 +2108,8 @@
           "attachments": [],
           "description": "Vue2组件的五大核心配置项（data、props、methods、computed、watch）是组件开发的基础，本文详解它们的用法、协作关系与最佳实践。",
           "size": "17KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 10712
+          "lastModified": "2026-05-08T08:29:10.767Z",
+          "wordCount": 11024
         },
         {
           "type": "file",
@@ -2465,6 +2465,30 @@
           "size": "8KB",
           "lastModified": "2026-05-08T01:05:54.165Z",
           "wordCount": 4251
+        },
+        {
+          "type": "file",
+          "title": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
+          "filename": "第12篇_Vue2与Vue3核心写法差异.md",
+          "path": "我的总结/Vue/vue辅助/第12篇_Vue2与Vue3核心写法差异.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue2",
+            "Vue3",
+            "Composition API",
+            "setup",
+            "this"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "一篇详细的小白友好笔记，解释了Vue2 Options API和Vue3 Composition API的核心差异，重点说明了this的变化原因、setup()执行时机、以及从\"配置对象\"到\"函数式组合\"的思维转变。",
+          "size": "17KB",
+          "lastModified": "2026-05-08T08:56:41.117Z",
+          "wordCount": 11160
         },
         {
           "type": "file",
@@ -4045,9 +4069,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "22KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 13930
+          "size": "16KB",
+          "lastModified": "2026-05-08T09:50:33.305Z",
+          "wordCount": 11248
         },
         {
           "type": "file",
@@ -4071,8 +4095,8 @@
           "attachments": [],
           "description": "Vue2组件的五大核心配置项（data、props、methods、computed、watch）是组件开发的基础，本文详解它们的用法、协作关系与最佳实践。",
           "size": "17KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 10712
+          "lastModified": "2026-05-08T08:29:10.767Z",
+          "wordCount": 11024
         },
         {
           "type": "file",
@@ -4241,6 +4265,30 @@
           "size": "8KB",
           "lastModified": "2026-05-08T01:05:54.183Z",
           "wordCount": 6032
+        },
+        {
+          "type": "file",
+          "title": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
+          "filename": "第12篇_Vue2与Vue3核心写法差异.md",
+          "path": "我的总结/Vue/vue辅助/第12篇_Vue2与Vue3核心写法差异.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue2",
+            "Vue3",
+            "Composition API",
+            "setup",
+            "this"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "一篇详细的小白友好笔记，解释了Vue2 Options API和Vue3 Composition API的核心差异，重点说明了this的变化原因、setup()执行时机、以及从\"配置对象\"到\"函数式组合\"的思维转变。",
+          "size": "17KB",
+          "lastModified": "2026-05-08T08:56:41.117Z",
+          "wordCount": 11160
         },
         {
           "type": "file",
@@ -4409,9 +4457,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-          "size": "22KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 13930
+          "size": "16KB",
+          "lastModified": "2026-05-08T09:50:33.305Z",
+          "wordCount": 11248
         },
         {
           "type": "file",
@@ -4435,8 +4483,8 @@
           "attachments": [],
           "description": "Vue2组件的五大核心配置项（data、props、methods、computed、watch）是组件开发的基础，本文详解它们的用法、协作关系与最佳实践。",
           "size": "17KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 10712
+          "lastModified": "2026-05-08T08:29:10.767Z",
+          "wordCount": 11024
         },
         {
           "type": "file",
@@ -4605,6 +4653,30 @@
           "size": "8KB",
           "lastModified": "2026-05-08T01:05:54.183Z",
           "wordCount": 6032
+        },
+        {
+          "type": "file",
+          "title": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
+          "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
+          "filename": "第12篇_Vue2与Vue3核心写法差异.md",
+          "path": "我的总结/Vue/vue辅助/第12篇_Vue2与Vue3核心写法差异.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue2",
+            "Vue3",
+            "Composition API",
+            "setup",
+            "this"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "一篇详细的小白友好笔记，解释了Vue2 Options API和Vue3 Composition API的核心差异，重点说明了this的变化原因、setup()执行时机、以及从\"配置对象\"到\"函数式组合\"的思维转变。",
+          "size": "17KB",
+          "lastModified": "2026-05-08T08:56:41.117Z",
+          "wordCount": 11160
         }
       ],
       "children": []
@@ -10693,9 +10765,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 Windsurf 官网、官方文档与官方 changelog 整理，系统介绍 Windsurf 的安装方式、Cascade/Tab/Command 三大入口、Memories 与 Rules、MCP、Workflows、Hooks、Previews/Deploys 以及适合人群，帮助中文开发者快速判断这款 AI IDE 是否值得投入。",
-          "size": "32KB",
-          "lastModified": "2026-05-08T07:11:18.177Z",
-          "wordCount": 17896
+          "size": "33KB",
+          "lastModified": "2026-05-08T07:36:39.411Z",
+          "wordCount": 18172
         },
         {
           "type": "file",
@@ -11530,9 +11602,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 Windsurf 官方 2026-05 最新 changelog 与官方文档，深度拆解 Windsurf 2.0 重大更新、Devin 云代理集成、Adaptive 智能路由、Agent Command Center、Spaces 任务管理等革命性功能，以及它们如何改变 AI 编程工作流。",
-          "size": "16KB",
-          "lastModified": "2026-05-08T02:34:55.227Z",
-          "wordCount": 7972
+          "size": "18KB",
+          "lastModified": "2026-05-08T07:36:14.979Z",
+          "wordCount": 8782
         },
         {
           "type": "file",
@@ -13555,9 +13627,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 Windsurf 官网、官方文档与官方 changelog 整理，系统介绍 Windsurf 的安装方式、Cascade/Tab/Command 三大入口、Memories 与 Rules、MCP、Workflows、Hooks、Previews/Deploys 以及适合人群，帮助中文开发者快速判断这款 AI IDE 是否值得投入。",
-          "size": "32KB",
-          "lastModified": "2026-05-08T07:11:18.177Z",
-          "wordCount": 17896
+          "size": "33KB",
+          "lastModified": "2026-05-08T07:36:39.411Z",
+          "wordCount": 18172
         },
         {
           "type": "file",
@@ -13651,9 +13723,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 Windsurf 官方 2026-05 最新 changelog 与官方文档，深度拆解 Windsurf 2.0 重大更新、Devin 云代理集成、Adaptive 智能路由、Agent Command Center、Spaces 任务管理等革命性功能，以及它们如何改变 AI 编程工作流。",
-          "size": "16KB",
-          "lastModified": "2026-05-08T02:34:55.227Z",
-          "wordCount": 7972
+          "size": "18KB",
+          "lastModified": "2026-05-08T07:36:14.979Z",
+          "wordCount": 8782
         }
       ],
       "children": []
@@ -19005,9 +19077,33 @@
       "category": "AI工具",
       "attachments": [],
       "description": "基于 Windsurf 官方 2026-05 最新 changelog 与官方文档，深度拆解 Windsurf 2.0 重大更新、Devin 云代理集成、Adaptive 智能路由、Agent Command Center、Spaces 任务管理等革命性功能，以及它们如何改变 AI 编程工作流。",
-      "size": "16KB",
-      "lastModified": "2026-05-08T02:34:55.227Z",
-      "wordCount": 7972
+      "size": "18KB",
+      "lastModified": "2026-05-08T07:36:14.979Z",
+      "wordCount": 8782
+    },
+    {
+      "type": "file",
+      "title": "第12篇：Vue2 vs Vue3 核心写法差异",
+      "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
+      "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
+      "filename": "第12篇_Vue2与Vue3核心写法差异.md",
+      "path": "我的总结/Vue/vue辅助/第12篇_Vue2与Vue3核心写法差异.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Vue2",
+        "Vue3",
+        "Composition API",
+        "setup",
+        "this"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "一篇详细的小白友好笔记，解释了Vue2 Options API和Vue3 Composition API的核心差异，重点说明了this的变化原因、setup()执行时机、以及从\"配置对象\"到\"函数式组合\"的思维转变。",
+      "size": "17KB",
+      "lastModified": "2026-05-08T08:56:41.117Z",
+      "wordCount": 11160
     },
     {
       "type": "file",
@@ -19683,9 +19779,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-      "size": "22KB",
-      "lastModified": "2026-05-08T01:05:54.178Z",
-      "wordCount": 13930
+      "size": "16KB",
+      "lastModified": "2026-05-08T09:50:33.305Z",
+      "wordCount": 11248
     },
     {
       "type": "file",
@@ -19709,8 +19805,8 @@
       "attachments": [],
       "description": "Vue2组件的五大核心配置项（data、props、methods、computed、watch）是组件开发的基础，本文详解它们的用法、协作关系与最佳实践。",
       "size": "17KB",
-      "lastModified": "2026-05-08T01:05:54.178Z",
-      "wordCount": 10712
+      "lastModified": "2026-05-08T08:29:10.767Z",
+      "wordCount": 11024
     },
     {
       "type": "file",
@@ -23098,9 +23194,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "基于 Windsurf 官网、官方文档与官方 changelog 整理，系统介绍 Windsurf 的安装方式、Cascade/Tab/Command 三大入口、Memories 与 Rules、MCP、Workflows、Hooks、Previews/Deploys 以及适合人群，帮助中文开发者快速判断这款 AI IDE 是否值得投入。",
-      "size": "32KB",
-      "lastModified": "2026-05-08T07:11:18.177Z",
-      "wordCount": 17896
+      "size": "33KB",
+      "lastModified": "2026-05-08T07:36:39.411Z",
+      "wordCount": 18172
     },
     {
       "type": "file",
@@ -28820,9 +28916,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "简单来说，Vue2的响应式原理基于Object.defineProperty()，Vue3则使用Proxy+Reflect实现。本文详解Vue2/Vue3响应式原理的核心差异与实现机制。",
-                  "size": "22KB",
-                  "lastModified": "2026-05-08T01:05:54.178Z",
-                  "wordCount": 13930
+                  "size": "16KB",
+                  "lastModified": "2026-05-08T09:50:33.305Z",
+                  "wordCount": 11248
                 },
                 {
                   "type": "file",
@@ -28846,8 +28942,8 @@
                   "attachments": [],
                   "description": "Vue2组件的五大核心配置项（data、props、methods、computed、watch）是组件开发的基础，本文详解它们的用法、协作关系与最佳实践。",
                   "size": "17KB",
-                  "lastModified": "2026-05-08T01:05:54.178Z",
-                  "wordCount": 10712
+                  "lastModified": "2026-05-08T08:29:10.767Z",
+                  "wordCount": 11024
                 },
                 {
                   "type": "file",
@@ -29016,6 +29112,30 @@
                   "size": "8KB",
                   "lastModified": "2026-05-08T01:05:54.183Z",
                   "wordCount": 6032
+                },
+                {
+                  "type": "file",
+                  "title": "第12篇：Vue2 vs Vue3 核心写法差异",
+                  "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
+                  "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
+                  "filename": "第12篇_Vue2与Vue3核心写法差异.md",
+                  "path": "我的总结/Vue/vue辅助/第12篇_Vue2与Vue3核心写法差异.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Vue2",
+                    "Vue3",
+                    "Composition API",
+                    "setup",
+                    "this"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "一篇详细的小白友好笔记，解释了Vue2 Options API和Vue3 Composition API的核心差异，重点说明了this的变化原因、setup()执行时机、以及从\"配置对象\"到\"函数式组合\"的思维转变。",
+                  "size": "17KB",
+                  "lastModified": "2026-05-08T08:56:41.117Z",
+                  "wordCount": 11160
                 }
               ]
             },
@@ -32576,9 +32696,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "基于 Windsurf 官网、官方文档与官方 changelog 整理，系统介绍 Windsurf 的安装方式、Cascade/Tab/Command 三大入口、Memories 与 Rules、MCP、Workflows、Hooks、Previews/Deploys 以及适合人群，帮助中文开发者快速判断这款 AI IDE 是否值得投入。",
-              "size": "32KB",
-              "lastModified": "2026-05-08T07:11:18.177Z",
-              "wordCount": 17896
+              "size": "33KB",
+              "lastModified": "2026-05-08T07:36:39.411Z",
+              "wordCount": 18172
             },
             {
               "type": "file",
@@ -32672,9 +32792,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "基于 Windsurf 官方 2026-05 最新 changelog 与官方文档，深度拆解 Windsurf 2.0 重大更新、Devin 云代理集成、Adaptive 智能路由、Agent Command Center、Spaces 任务管理等革命性功能，以及它们如何改变 AI 编程工作流。",
-              "size": "16KB",
-              "lastModified": "2026-05-08T02:34:55.227Z",
-              "wordCount": 7972
+              "size": "18KB",
+              "lastModified": "2026-05-08T07:36:14.979Z",
+              "wordCount": 8782
             }
           ]
         }
@@ -36041,7 +36161,7 @@
       ]
     }
   ],
-  "totalNotes": 363,
+  "totalNotes": 364,
   "totalCategories": 83,
-  "lastUpdated": "2026-05-08T07:12:45.517Z"
+  "lastUpdated": "2026-05-08T09:50:59.297Z"
 }
