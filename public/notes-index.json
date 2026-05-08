@@ -2488,9 +2488,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:56:53.616Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-08T14:07:54.712Z",
+          "wordCount": 20656
         },
         {
           "type": "file",
@@ -2518,8 +2518,8 @@
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -2537,9 +2537,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-06T12:18:21.844Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-08T14:19:51.838Z",
+          "wordCount": 40070
         },
         {
           "type": "file",
@@ -3010,8 +3010,8 @@
           "attachments": [],
           "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-07T13:57:21.659Z",
-          "wordCount": 916
+          "lastModified": "2026-05-08T14:19:51.840Z",
+          "wordCount": 945
         }
       ],
       "children": []
@@ -4681,14 +4681,14 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:56:53.616Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-08T14:07:54.712Z",
+          "wordCount": 20656
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -4706,9 +4706,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-06T12:18:21.844Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-08T14:19:51.838Z",
+          "wordCount": 40070
         },
         {
           "type": "file",
@@ -4825,8 +4825,8 @@
           "attachments": [],
           "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-07T13:57:21.659Z",
-          "wordCount": 916
+          "lastModified": "2026-05-08T14:19:51.840Z",
+          "wordCount": 945
         }
       ],
       "children": []
@@ -5045,14 +5045,14 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-07T13:56:53.616Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-08T14:07:54.712Z",
+          "wordCount": 20656
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -5070,9 +5070,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-06T12:18:21.844Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-08T14:19:51.838Z",
+          "wordCount": 40070
         },
         {
           "type": "file",
@@ -20539,9 +20539,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-      "size": "21KB",
-      "lastModified": "2026-05-07T13:56:53.616Z",
-      "wordCount": 15299
+      "size": "29KB",
+      "lastModified": "2026-05-08T14:07:54.712Z",
+      "wordCount": 20656
     },
     {
       "type": "file",
@@ -20706,8 +20706,8 @@
       "attachments": [],
       "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
       "size": "2KB",
-      "lastModified": "2026-05-07T13:57:21.659Z",
-      "wordCount": 916
+      "lastModified": "2026-05-08T14:19:51.840Z",
+      "wordCount": 945
     },
     {
       "type": "file",
@@ -22677,8 +22677,8 @@
     },
     {
       "type": "file",
-      "title": "Vue Router 超详细总笔记",
-      "frontmatterTitle": "Vue Router 超详细总笔记",
+      "title": "第10篇：Vue Router 超详细总笔记",
+      "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
       "fileTitle": "第10篇_Router",
       "filename": "第10篇_Router.md",
       "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -22696,9 +22696,9 @@
       "category": "Vue",
       "attachments": [],
       "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-      "size": "55KB",
-      "lastModified": "2026-05-06T12:18:21.844Z",
-      "wordCount": 40066
+      "size": "56KB",
+      "lastModified": "2026-05-08T14:19:51.838Z",
+      "wordCount": 40070
     },
     {
       "type": "file",
@@ -29817,14 +29817,14 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-                  "size": "21KB",
-                  "lastModified": "2026-05-07T13:56:53.616Z",
-                  "wordCount": 15299
+                  "size": "29KB",
+                  "lastModified": "2026-05-08T14:07:54.712Z",
+                  "wordCount": 20656
                 },
                 {
                   "type": "file",
-                  "title": "Vue Router 超详细总笔记",
-                  "frontmatterTitle": "Vue Router 超详细总笔记",
+                  "title": "第10篇：Vue Router 超详细总笔记",
+                  "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
                   "fileTitle": "第10篇_Router",
                   "filename": "第10篇_Router.md",
                   "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -29842,9 +29842,9 @@
                   "category": "Vue",
                   "attachments": [],
                   "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-                  "size": "55KB",
-                  "lastModified": "2026-05-06T12:18:21.844Z",
-                  "wordCount": 40066
+                  "size": "56KB",
+                  "lastModified": "2026-05-08T14:19:51.838Z",
+                  "wordCount": 40070
                 },
                 {
                   "type": "file",
@@ -29970,8 +29970,8 @@
               "attachments": [],
               "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
               "size": "2KB",
-              "lastModified": "2026-05-07T13:57:21.659Z",
-              "wordCount": 916
+              "lastModified": "2026-05-08T14:19:51.840Z",
+              "wordCount": 945
             }
           ]
         }
@@ -36896,5 +36896,5 @@
   ],
   "totalNotes": 370,
   "totalCategories": 85,
-  "lastUpdated": "2026-05-08T13:22:40.492Z"
+  "lastUpdated": "2026-05-08T14:20:31.930Z"
 }
