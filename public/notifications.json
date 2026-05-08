@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-05-08T02:56:48.751Z",
-  "total": 256,
+  "generatedAt": "2026-05-08T12:27:43.241Z",
+  "total": 258,
   "notifications": [
+    {
+      "id": "git-3d5cd22bbd016d07a0bbdacdee5bb9c0760ae29b",
+      "title": "docs(Windsurf): 更新文档系列并添加第五篇介绍 Windsurf 2.0",
+      "content": "基于2026-05官方最新资料，全面验证并更新了Windsurf文档系列。新增第五篇文档，深度拆解Windsurf 2.0、Devin云代理集成、Adaptive智能路由、Agent Command Center等重大更新。同步更新目录、索引和通知中心，确保内容与官方资料一致。",
+      "summary": "基于2026-05官方最新资料，全面验证并更新了Windsurf文档系列。新增第五篇文档，深度拆解Windsurf 2.0、Devin云代理集成、Adaptive智能路由、Agent Command Center等重大更新。同步更新目录、索",
+      "date": "2026-05-08T15:15:34+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "3d5cd22",
+      "fullHash": "3d5cd22bbd016d07a0bbdacdee5bb9c0760ae29b"
+    },
+    {
+      "id": "daily-2026-05-08-3",
+      "title": "补充 Windsurf 自动执行命令 FAQ",
+      "content": "第一点：基于官方 Terminal 文档，在“AI 执行中的交互控制”小节补入常见疑问说明，明确 Windsurf 支持自动执行命令，但是否仍需手动确认取决于 Auto-Execution Level、allow/deny list、风险判断、premium model 条件与企业管理员限制；第二点：补充 Disabled、Allowlist Only、Auto、Turbo 的实际使用理解，帮助读者理解为什么有时仍会出现接受/拒绝按钮；第三点：按仓库规则执行 `npm run generate:index`，同步更新 `public/notes-index.json` 与 `public/search-index.json`，保证文档内容调整后站内索引保持一致。",
+      "summary": "在第一篇 Windsurf 入门文档中新增“为什么还要手动确认、如何开启更高自动化”的 FAQ，并按仓库规则重新生成笔记索引。",
+      "date": "2026-05-08T15:11:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
     {
       "id": "daily-2026-05-08-2",
       "title": "完成 Windsurf 文档系列全面更新验证",

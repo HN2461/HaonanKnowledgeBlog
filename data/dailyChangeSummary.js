@@ -24,6 +24,13 @@ export const dailyChangeSummary = {
       title: '补充 Windsurf 自动执行命令 FAQ',
       summary: '在第一篇 Windsurf 入门文档中新增“为什么还要手动确认、如何开启更高自动化”的 FAQ，并按仓库规则重新生成笔记索引。',
       content: '第一点：基于官方 Terminal 文档，在“AI 执行中的交互控制”小节补入常见疑问说明，明确 Windsurf 支持自动执行命令，但是否仍需手动确认取决于 Auto-Execution Level、allow/deny list、风险判断、premium model 条件与企业管理员限制；第二点：补充 Disabled、Allowlist Only、Auto、Turbo 的实际使用理解，帮助读者理解为什么有时仍会出现接受/拒绝按钮；第三点：按仓库规则执行 `npm run generate:index`，同步更新 `public/notes-index.json` 与 `public/search-index.json`，保证文档内容调整后站内索引保持一致。'
+    },
+    {
+      category: '内容上新',
+      time: '21:17',
+      title: '完成 uni-app 系统整理版主体重写',
+      summary: '将 `public/notes/我的总结/uni-app` 下 `02` 到 `06` 全部重写为系统整理风格，使整套内容与第 1 篇保持一致的技术密度。',
+      content: '第一点：将第 2 篇重写为《uni-app生命周期、页面时序与常见页面事件》，系统展开应用生命周期、页面生命周期、下拉刷新、触底加载、页面滚动、页面回流与组件生命周期边界，不再停留在简短答题式内容；第二点：将第 3 篇重写为《uni-app工程结构、配置分层与文件职责边界》，围绕 `main.js`、`App.vue`、`pages.json`、`manifest.json`、`uni.scss`、`static` 的职责和常见配置误区展开，强化工程化视角；第三点：将第 4 篇重写为《uni-app跨端开发方法与微信小程序常见能力接入》，重新梳理通用能力、微信协议能力、平台专属能力、条件编译、登录、支付、`web-view` 等内容，突出“为什么这样组织更稳”；第四点：将第 5 篇重写为《uni-app性能优化、包体治理与稳定性维护》，从包体、初始化、渲染、资源、登录态、本地缓存与权限状态等多个维度系统展开；第五点：将第 6 篇从“速记小抄”调整为《uni-app高频问题补充问答》，定位改为系统整理版的补充回看入口，而不是独立的轻量小册子。'
     }
   ],
 }
