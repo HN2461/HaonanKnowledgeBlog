@@ -1,11 +1,36 @@
 {
-  "generatedAt": "2026-05-08T01:20:49.076Z",
-  "total": 254,
+  "generatedAt": "2026-05-08T02:56:48.751Z",
+  "total": 256,
   "notifications": [
+    {
+      "id": "daily-2026-05-08-2",
+      "title": "完成 Windsurf 文档系列全面更新验证",
+      "content": "第一点：搜索并分析 Windsurf 官方最新 changelog 和文档，发现 2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Adaptive 智能路由、Agent Command Center 等重大更新；第二点：逐一验证第一至第四篇文档与官方资料的一致性，更新过时信息，包括将 Cascade 模式从 Code/Chat 更正为 Code/Plan/Ask，添加 Windsurf 2.0 说明；第三点：创建第五篇全新文档《Windsurf 2.0 与 Devin 集成实战（2026-05）》，深度拆解 Devin 云代理、Adaptive 智能路由、Agent Command Center、Spaces 任务管理、Devin Review 等革命性功能；第四点：更新目录文件，将专题从 4 篇扩展到 5 篇，更新时间戳为 2026-05-08，完善快速查找表；第五点：所有文档内容均经过官方资料验证，确保无过时或错误信息，形成完整的 Windsurf 学习路径。",
+      "summary": "基于 2026-05 官方最新资料，逐一验证并更新了全部 5 篇 Windsurf 文档，新增第五篇涵盖 Windsurf 2.0、Devin 集成等重大更新，确保文档内容与官方资料完全一致。",
+      "date": "2026-05-08T10:56:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-1954993e2fcfe3bc25ea305c31a5e0d15812ba6c",
+      "title": "修复消息显示逻辑问题",
+      "content": "提交说明：修复消息显示逻辑问题",
+      "summary": "修复消息显示逻辑问题",
+      "date": "2026-05-08T09:25:45+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "1954993",
+      "fullHash": "1954993e2fcfe3bc25ea305c31a5e0d15812ba6c"
+    },
     {
       "id": "daily-2026-05-08-1",
       "title": "修复打包后通知中心缺失当日摘要",
-      "content": "第一点：排查 `scripts/notificationTransforms.js` 后确认脚本只会展示“当天日期”的 `dailyChangeSummary`，因此 `data/dailyChangeSummary.js` 仍停留在 `2026-05-07` 时，会在打包后被自动过滤；第二点：按仓库归档规则把 2026-05-07 的 6 条摘要完整迁移到 `data/history/2026-05-01_10.js` 新增的 `history-2026-05-07` 分组，保留 `category/time/title/summary/content` 明细字段；第三点：重置 `data/dailyChangeSummary.js` 为当天日期 `2026-05-08` 并写入本次修复记录，保证通知中心构建产物与“仅展示当天摘要”的规则一致。",
+      "content": "第一点：排查 `scripts/notificationTransforms.js` 后确认脚本只会展示\"当天日期\"的 `dailyChangeSummary`，因此 `data/dailyChangeSummary.js` 仍停留在 `2026-05-07` 时，会在打包后被自动过滤；第二点：按仓库归档规则把 2026-05-07 的 6 条摘要完整迁移到 `data/history/2026-05-01_10.js` 新增的 `history-2026-05-07` 分组，保留 `category/time/title/summary/content` 明细字段；第三点：重置 `data/dailyChangeSummary.js` 为当天日期 `2026-05-08` 并写入本次修复记录，保证通知中心构建产物与\"仅展示当天摘要\"的规则一致。",
       "summary": "将 `2026-05-07` 的当日摘要归档到历史分片，并将 `dailyChangeSummary` 切换到 `2026-05-08`，解决构建后只显示 Git/历史消息导致的异常观感。",
       "date": "2026-05-08T09:18:00+08:00",
       "tag": "问题修复",
