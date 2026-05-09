@@ -50,6 +50,7 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
+          'router-link': true,
           FileTree: true,
           SidebarExportModal: true
         }
@@ -68,6 +69,7 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
+          'router-link': true,
           FileTree: true,
           SidebarExportModal: true
         }
@@ -103,6 +105,7 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
+          'router-link': true,
           FileTree: true,
           SidebarExportModal: {
             props: ['modelValue'],
@@ -165,6 +168,7 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
+          'router-link': true,
           FileTree: true,
           SidebarExportModal: true,
           Teleport: true
@@ -194,6 +198,7 @@ describe('AppSidebar', () => {
       },
       global: {
         stubs: {
+          'router-link': true,
           FileTree: true,
           SidebarExportModal: true,
           Teleport: true

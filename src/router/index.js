@@ -4,6 +4,7 @@ const HomePage = () => import('@/views/HomePage.vue')
 const NoteListPage = () => import('@/views/NoteListPage.vue')
 const NoteDetailPage = () => import('@/views/NoteDetailPage.vue')
 const SearchPage = () => import('@/views/SearchPage.vue')
+const BookmarksPage = () => import('@/views/BookmarksPage.vue')
 const RelaxationMode = () => import('@/views/RelaxationMode.vue')
 const EditorPage = () => import('@/views/EditorPage.vue')
 const NotFoundPage = () => import('@/views/NotFoundPage.vue')
@@ -32,6 +33,12 @@ const routes = [
     name: 'Search',
     component: SearchPage,
     meta: { title: '搜索' }
+  },
+  {
+    path: '/bookmarks',
+    name: 'Bookmarks',
+    component: BookmarksPage,
+    meta: { title: '书签收藏' }
   },
   {
     path: '/editor',

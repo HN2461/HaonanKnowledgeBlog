@@ -200,6 +200,34 @@ description: 面向长期维护公司 uni-app 项目的开发者，专门梳理 
 2. `need-login`：H5 发现当前业务必须先登录
 3. `submit-success`：H5 完成了某个关键业务动作，小程序壳页需要刷新或跳转
 
+### 重要提示：web-view 消息通信的时机限制
+
+在设计消息协议之前，你必须先接受一个现实：
+
+**微信小程序的 `web-view` 组件的 `bindmessage` 事件不是实时触发的。**
+
+根据微信官方文档，H5 通过 `uni.postMessage` 发送的消息，只会在以下特定时机被小程序壳页接收：
+
+1. **小程序后退**：用户点击左上角返回或调用 `navigateBack`
+2. **组件销毁**：`web-view` 组件被卸载
+3. **分享操作**：用户触发分享
+4. **复制链接**：用户复制链接（基础库 2.31.1+）
+
+这意味着：
+
+- H5 发送消息后，小程序壳页**不会立即收到**
+- 如果你在 H5 里调用 `uni.postMessage` 发送登录状态，小程序壳页要等到用户后退或分享时才能收到
+- 如果需要实时通信（比如 H5 提交后立即刷新小程序列表），应该考虑通过后端接口中转，或者让 H5 直接调用小程序的跳转接口
+
+**这是微信小程序 web-view 的底层限制，不是 uni-app 的问题。**
+
+所以你在设计消息协议时，要特别注意：
+
+1. **不要指望实时双向通信**：H5 → 小程序的消息是延迟接收的
+2. **小程序 → H5 的通信**：可以通过 URL 参数传递，这是即时的
+3. **需要实时反馈的场景**：考虑让 H5 直接调用 `wx.miniProgram.navigateBack` 等接口，而不是只发消息
+4. **消息设计要幂等**：因为消息可能在后退时才收到，要确保重复处理不会出问题
+
 如果你打算长期维护，而不是只临时打一条消息，我更建议你把消息体先统一成下面这个形状：
 
 ```json
@@ -260,7 +288,7 @@ const handleWebviewMessage = (event) => {
 H5 侧示意：
 
 ```html
-<script src="https://unpkg.com/@dcloudio/uni-webview-js@0.0.3/index.js"></script>
+<script src="https://unpkg.com/@dcloudio/uni-webview-js@latest/index.js"></script>
 <script>
   document.addEventListener('UniAppJSBridgeReady', function () {
     uni.postMessage({
@@ -276,6 +304,19 @@ H5 侧示意：
         type: 'need-login'
       }
     })
+  }
+
+  // 如果需要立即反馈，不要只发消息，直接调用小程序接口
+  function submitAndGoBack() {
+    // 先发消息（会在后退时被接收）
+    uni.postMessage({
+      data: {
+        type: 'submit-success',
+        payload: { orderId: '123' }
+      }
+    })
+    // 立即触发后退，这样消息会被立即接收
+    wx.miniProgram.navigateBack()
   }
 <\/script>
 ```
@@ -447,3 +488,79 @@ onShareAppMessage() {
 6. 最后再回到第 6 篇：状态治理和稳定性
 
 这样你看 `web-view / 登录 / 分享 / 微信专属能力` 时，不会只盯着某个 API，而是会知道整条链路该怎么拆。
+
+
+## 补充说明：web-view 通信的实战要点
+
+基于上面第五章的内容，这里再强调几个实战中最容易踩坑的点：
+
+### 1. 消息不是实时的，要配合页面动作
+
+很多开发者会写出这样的代码：
+
+```javascript
+// ❌ 错误示例：只发消息，期待立即生效
+function submitForm() {
+  // 提交表单
+  submitToServer()
+  // 发消息通知小程序
+  uni.postMessage({
+    data: { type: 'submit-success' }
+  })
+  // 期待小程序立即刷新列表 ← 这里不会立即触发！
+}
+```
+
+正确的做法是：
+
+```javascript
+// ✅ 正确示例：发消息后立即触发页面动作
+function submitForm() {
+  submitToServer()
+  uni.postMessage({
+    data: { type: 'submit-success', payload: { orderId: '123' } }
+  })
+  // 立即后退，触发消息接收
+  wx.miniProgram.navigateBack()
+}
+```
+
+### 2. 小程序壳页要做好消息幂等处理
+
+因为消息可能在后退时才收到，而用户可能多次进出页面，所以壳页要确保：
+
+```javascript
+const handleWebviewMessage = (event) => {
+  const messageList = event.detail?.data || []
+  const latestMessage = messageList[messageList.length - 1] || {}
+
+  // 使用 traceId 去重，避免重复处理
+  if (processedMessages.has(latestMessage.traceId)) {
+    return
+  }
+  processedMessages.add(latestMessage.traceId)
+
+  // 处理消息...
+}
+```
+
+### 3. 需要实时反馈的场景，考虑其他方案
+
+如果你的业务场景确实需要实时双向通信（比如实时聊天、实时协作），`web-view` 的消息机制可能不适合，可以考虑：
+
+1. **后端轮询**：H5 和小程序都定时向后端查询状态
+2. **WebSocket**：H5 和小程序分别建立 WebSocket 连接，通过后端中转
+3. **改用小程序原生页面**：放弃 `web-view`，直接用小程序页面实现
+
+### 4. 业务域名配置是必须的
+
+`web-view` 加载的 H5 页面域名必须在微信小程序后台配置业务域名，否则真机无法打开。配置路径：
+
+**小程序后台 → 开发 → 开发管理 → 开发设置 → 业务域名**
+
+注意事项：
+- 必须是 HTTPS 域名
+- 需要下载校验文件放到域名根目录
+- 个人类型小程序不支持配置业务域名
+
+这些补充说明希望能帮你在实战中少踩坑。

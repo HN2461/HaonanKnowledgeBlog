@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-05-09T10:14:38.138Z",
-  "total": 275,
+  "generatedAt": "2026-05-09T14:37:11.212Z",
+  "total": 277,
   "notifications": [
+    {
+      "id": "daily-2026-05-09-4",
+      "title": "重构个人书签库入口与高密度检索体验",
+      "content": "新增 scripts/generateBookmarksIndex.js 与 scripts/bookmarkCatalogRules.js，自动解析 bookmarks_*.html 导出文件并生成 public/bookmarks-index.json；将 174 条书签重新整理为 AI 助手、AI 开发工具、前端框架、组件库、地图、移动端、设计灵感、VPN 与网络服务、个人服务入口等用途分类，不再自动隐藏账号、平台或私人入口。前端新增 /bookmarks 路由页面，采用紧凑双列列表展示，支持关键词搜索、高亮命中、按整理分类筛选、按原收藏夹 sourceGroup 筛选、按条目类型筛选；作者头像弹窗新增“书签收藏”按钮作为主入口，并在弹窗统计区显示书签总数，整体更适合主人快速查看、快速定位并立即打开目标网址。",
+      "summary": "把浏览器书签整理成功能型站内书签库，入口放进头像弹窗，保留全部收藏并支持按分类、原收藏夹、类型快速筛找",
+      "date": "2026-05-09T22:36:00+08:00",
+      "tag": "功能更新",
+      "category": "功能更新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-f450c206161e8b5dd79f7403e2a3482c66a89243",
+      "title": "内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "content": "提交说明：内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "summary": "内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "date": "2026-05-09T18:14:45+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "f450c20",
+      "fullHash": "f450c206161e8b5dd79f7403e2a3482c66a89243"
+    },
     {
       "id": "daily-2026-05-09-3",
       "title": "完善 uni-app 通用基础系列 4 篇文章",
