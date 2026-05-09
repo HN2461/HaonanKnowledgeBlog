@@ -1924,6 +1924,30 @@
       "notes": [
         {
           "type": "file",
+          "title": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "frontmatterTitle": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "fileTitle": "01_核心认知与跨端原理",
+          "filename": "01_核心认知与跨端原理.md",
+          "path": "我的总结/uni-app/uni-app辅助/01_核心认知与跨端原理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "跨端",
+            "编译",
+            "运行时",
+            "微信小程序"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从跨端编译、运行宿主、通用能力边界到平台差异收口，系统梳理 uni-app 到底是什么、为什么能跨端、又为什么不可能完全无差异。",
+          "size": "11KB",
+          "lastModified": "2026-05-09T01:17:34.390Z",
+          "wordCount": 5109
+        },
+        {
+          "type": "file",
           "title": "第01篇：JavaScript 变量与作用域详解",
           "frontmatterTitle": "第01篇：JavaScript 变量与作用域详解",
           "fileTitle": "01_JavaScript变量与作用域",
@@ -1968,6 +1992,30 @@
           "size": "6KB",
           "lastModified": "2026-05-08T01:05:54.176Z",
           "wordCount": 3638
+        },
+        {
+          "type": "file",
+          "title": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "frontmatterTitle": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "fileTitle": "02_生命周期与页面时序",
+          "filename": "02_生命周期与页面时序.md",
+          "path": "我的总结/uni-app/uni-app辅助/02_生命周期与页面时序.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "生命周期",
+            "页面时序",
+            "onLoad",
+            "onShow"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从应用生命周期、页面生命周期到下拉刷新、触底加载、页面滚动等常见页面事件出发，系统梳理 uni-app 项目里最核心的时序认知与落点选择。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.391Z",
+          "wordCount": 6019
         },
         {
           "type": "file",
@@ -2041,6 +2089,30 @@
         },
         {
           "type": "file",
+          "title": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "frontmatterTitle": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "fileTitle": "03_工程结构与配置边界",
+          "filename": "03_工程结构与配置边界.md",
+          "path": "我的总结/uni-app/uni-app辅助/03_工程结构与配置边界.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "工程结构",
+            "pages.json",
+            "manifest.json",
+            "uni.scss"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从 App.vue、main.js、pages.json、manifest.json、uni.scss、static 等核心文件出发，系统整理 uni-app 项目的工程结构、配置分层和常见职责边界问题。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4434
+        },
+        {
+          "type": "file",
           "title": "第03篇：Vue响应式原理",
           "frontmatterTitle": "第03篇：Vue响应式原理",
           "fileTitle": "第03篇_Vue响应式原理",
@@ -2062,6 +2134,30 @@
           "size": "16KB",
           "lastModified": "2026-05-08T09:50:33.305Z",
           "wordCount": 11248
+        },
+        {
+          "type": "file",
+          "title": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "frontmatterTitle": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "fileTitle": "04_跨端开发与微信小程序能力接入",
+          "filename": "04_跨端开发与微信小程序能力接入.md",
+          "path": "我的总结/uni-app/uni-app辅助/04_跨端开发与微信小程序能力接入.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "微信小程序",
+            "条件编译",
+            "登录",
+            "支付"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "围绕 uni-app 在微信小程序场景下的真实开发方式，系统整理通用能力、平台协议能力、平台专属能力、条件编译和常见业务能力的接入方法与注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4750
         },
         {
           "type": "file",
@@ -2113,6 +2209,30 @@
         },
         {
           "type": "file",
+          "title": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "frontmatterTitle": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "fileTitle": "05_性能优化与稳定性治理",
+          "filename": "05_性能优化与稳定性治理.md",
+          "path": "我的总结/uni-app/uni-app辅助/05_性能优化与稳定性治理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "性能优化",
+            "分包",
+            "登录态",
+            "稳定性"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从包体、首屏、渲染、资源、登录态、本地缓存和权限状态几个方面系统整理 uni-app 项目的性能优化与稳定性维护思路。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 4068
+        },
+        {
+          "type": "file",
           "title": "第05篇：JavaScript this 指向规则详解",
           "frontmatterTitle": "第05篇：JavaScript this 指向规则详解",
           "fileTitle": "05_this",
@@ -2159,6 +2279,30 @@
         },
         {
           "type": "file",
+          "title": "第06篇：uni-app高频问题补充问答",
+          "frontmatterTitle": "第06篇：uni-app高频问题补充问答",
+          "fileTitle": "06_高频技术短答",
+          "filename": "06_高频技术短答.md",
+          "path": "我的总结/uni-app/uni-app辅助/06_高频技术短答.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "高频问题",
+            "补充问答",
+            "微信小程序",
+            "条件编译"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "作为系统整理版的补充问答，集中梳理 uni-app 学习和复习中最容易反复遇到的高频问题，帮助快速回看关键概念与边界。",
+          "size": "6KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 2229
+        },
+        {
+          "type": "file",
           "title": "第06篇：JavaScript 原型链",
           "frontmatterTitle": "第06篇：JavaScript 原型链",
           "fileTitle": "06_JavaScript原型链",
@@ -2200,9 +2344,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue2组件的生命周期可以理解为组件从创建到销毁的整个\"生命旅程\"，Vue为这个旅程的关键节点提供了专属的\"钩子函数\"。本文详解Vue2/Vue3生命周期的完整流程。",
-          "size": "11KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 7407
+          "size": "16KB",
+          "lastModified": "2026-05-09T01:17:34.385Z",
+          "wordCount": 10492
         },
         {
           "type": "file",
@@ -2248,9 +2392,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "单向数据流：谁的数据谁修改，子组件不能直接修改父组件传入的props。耦合度最小化：优先使用官方推荐方案，避免强耦合方式（如$parent/$children）。场景决定方案：不同层级、不同规模的项目选择最适合的通信方式。",
-          "size": "43KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 33381
+          "size": "40KB",
+          "lastModified": "2026-05-09T01:17:34.386Z",
+          "wordCount": 30172
         },
         {
           "type": "file",
@@ -2344,9 +2488,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 20696
         },
         {
           "type": "file",
@@ -2374,8 +2518,8 @@
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -2393,9 +2537,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-08T01:05:54.183Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 40071
         },
         {
           "type": "file",
@@ -2850,6 +2994,29 @@
         },
         {
           "type": "file",
+          "title": "uni-app目录（系统整理版）",
+          "frontmatterTitle": "uni-app目录（系统整理版）",
+          "fileTitle": "uni-app",
+          "filename": "uni-app.md",
+          "path": "我的总结/uni-app/uni-app.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "目录",
+            "系统整理",
+            "小程序"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "本页用于整理 uni-app 系统整理版笔记，按从底层认知到项目落地的顺序阅读，兼顾原理、代码、边界、常见坑和项目实践。",
+          "size": "1KB",
+          "lastModified": "2026-05-09T01:17:34.389Z",
+          "wordCount": 431
+        },
+        {
+          "type": "file",
           "title": "Vue目录（建议阅读顺序）",
           "frontmatterTitle": "Vue目录（建议阅读顺序）",
           "fileTitle": "Vue",
@@ -2867,8 +3034,8 @@
           "attachments": [],
           "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-08T01:05:54.170Z",
-          "wordCount": 916
+          "lastModified": "2026-05-09T01:17:34.383Z",
+          "wordCount": 947
         }
       ],
       "children": []
@@ -4000,6 +4167,331 @@
       "children": []
     },
     {
+      "name": "uni-app",
+      "path": "我的总结/uni-app",
+      "notes": [
+        {
+          "type": "file",
+          "title": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "frontmatterTitle": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "fileTitle": "01_核心认知与跨端原理",
+          "filename": "01_核心认知与跨端原理.md",
+          "path": "我的总结/uni-app/uni-app辅助/01_核心认知与跨端原理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "跨端",
+            "编译",
+            "运行时",
+            "微信小程序"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从跨端编译、运行宿主、通用能力边界到平台差异收口，系统梳理 uni-app 到底是什么、为什么能跨端、又为什么不可能完全无差异。",
+          "size": "11KB",
+          "lastModified": "2026-05-09T01:17:34.390Z",
+          "wordCount": 5109
+        },
+        {
+          "type": "file",
+          "title": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "frontmatterTitle": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "fileTitle": "02_生命周期与页面时序",
+          "filename": "02_生命周期与页面时序.md",
+          "path": "我的总结/uni-app/uni-app辅助/02_生命周期与页面时序.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "生命周期",
+            "页面时序",
+            "onLoad",
+            "onShow"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从应用生命周期、页面生命周期到下拉刷新、触底加载、页面滚动等常见页面事件出发，系统梳理 uni-app 项目里最核心的时序认知与落点选择。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.391Z",
+          "wordCount": 6019
+        },
+        {
+          "type": "file",
+          "title": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "frontmatterTitle": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "fileTitle": "03_工程结构与配置边界",
+          "filename": "03_工程结构与配置边界.md",
+          "path": "我的总结/uni-app/uni-app辅助/03_工程结构与配置边界.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "工程结构",
+            "pages.json",
+            "manifest.json",
+            "uni.scss"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从 App.vue、main.js、pages.json、manifest.json、uni.scss、static 等核心文件出发，系统整理 uni-app 项目的工程结构、配置分层和常见职责边界问题。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4434
+        },
+        {
+          "type": "file",
+          "title": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "frontmatterTitle": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "fileTitle": "04_跨端开发与微信小程序能力接入",
+          "filename": "04_跨端开发与微信小程序能力接入.md",
+          "path": "我的总结/uni-app/uni-app辅助/04_跨端开发与微信小程序能力接入.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "微信小程序",
+            "条件编译",
+            "登录",
+            "支付"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "围绕 uni-app 在微信小程序场景下的真实开发方式，系统整理通用能力、平台协议能力、平台专属能力、条件编译和常见业务能力的接入方法与注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4750
+        },
+        {
+          "type": "file",
+          "title": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "frontmatterTitle": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "fileTitle": "05_性能优化与稳定性治理",
+          "filename": "05_性能优化与稳定性治理.md",
+          "path": "我的总结/uni-app/uni-app辅助/05_性能优化与稳定性治理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "性能优化",
+            "分包",
+            "登录态",
+            "稳定性"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从包体、首屏、渲染、资源、登录态、本地缓存和权限状态几个方面系统整理 uni-app 项目的性能优化与稳定性维护思路。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 4068
+        },
+        {
+          "type": "file",
+          "title": "第06篇：uni-app高频问题补充问答",
+          "frontmatterTitle": "第06篇：uni-app高频问题补充问答",
+          "fileTitle": "06_高频技术短答",
+          "filename": "06_高频技术短答.md",
+          "path": "我的总结/uni-app/uni-app辅助/06_高频技术短答.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "高频问题",
+            "补充问答",
+            "微信小程序",
+            "条件编译"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "作为系统整理版的补充问答，集中梳理 uni-app 学习和复习中最容易反复遇到的高频问题，帮助快速回看关键概念与边界。",
+          "size": "6KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 2229
+        },
+        {
+          "type": "file",
+          "title": "uni-app目录（系统整理版）",
+          "frontmatterTitle": "uni-app目录（系统整理版）",
+          "fileTitle": "uni-app",
+          "filename": "uni-app.md",
+          "path": "我的总结/uni-app/uni-app.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "目录",
+            "系统整理",
+            "小程序"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "本页用于整理 uni-app 系统整理版笔记，按从底层认知到项目落地的顺序阅读，兼顾原理、代码、边界、常见坑和项目实践。",
+          "size": "1KB",
+          "lastModified": "2026-05-09T01:17:34.389Z",
+          "wordCount": 431
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "uni-app辅助",
+      "path": "我的总结/uni-app/uni-app辅助",
+      "notes": [
+        {
+          "type": "file",
+          "title": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "frontmatterTitle": "第01篇：uni-app核心认知、跨端编译与平台边界",
+          "fileTitle": "01_核心认知与跨端原理",
+          "filename": "01_核心认知与跨端原理.md",
+          "path": "我的总结/uni-app/uni-app辅助/01_核心认知与跨端原理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "跨端",
+            "编译",
+            "运行时",
+            "微信小程序"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从跨端编译、运行宿主、通用能力边界到平台差异收口，系统梳理 uni-app 到底是什么、为什么能跨端、又为什么不可能完全无差异。",
+          "size": "11KB",
+          "lastModified": "2026-05-09T01:17:34.390Z",
+          "wordCount": 5109
+        },
+        {
+          "type": "file",
+          "title": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "frontmatterTitle": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+          "fileTitle": "02_生命周期与页面时序",
+          "filename": "02_生命周期与页面时序.md",
+          "path": "我的总结/uni-app/uni-app辅助/02_生命周期与页面时序.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "生命周期",
+            "页面时序",
+            "onLoad",
+            "onShow"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从应用生命周期、页面生命周期到下拉刷新、触底加载、页面滚动等常见页面事件出发，系统梳理 uni-app 项目里最核心的时序认知与落点选择。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.391Z",
+          "wordCount": 6019
+        },
+        {
+          "type": "file",
+          "title": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "frontmatterTitle": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+          "fileTitle": "03_工程结构与配置边界",
+          "filename": "03_工程结构与配置边界.md",
+          "path": "我的总结/uni-app/uni-app辅助/03_工程结构与配置边界.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "工程结构",
+            "pages.json",
+            "manifest.json",
+            "uni.scss"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从 App.vue、main.js、pages.json、manifest.json、uni.scss、static 等核心文件出发，系统整理 uni-app 项目的工程结构、配置分层和常见职责边界问题。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4434
+        },
+        {
+          "type": "file",
+          "title": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "frontmatterTitle": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+          "fileTitle": "04_跨端开发与微信小程序能力接入",
+          "filename": "04_跨端开发与微信小程序能力接入.md",
+          "path": "我的总结/uni-app/uni-app辅助/04_跨端开发与微信小程序能力接入.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "微信小程序",
+            "条件编译",
+            "登录",
+            "支付"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "围绕 uni-app 在微信小程序场景下的真实开发方式，系统整理通用能力、平台协议能力、平台专属能力、条件编译和常见业务能力的接入方法与注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-09T01:17:34.392Z",
+          "wordCount": 4750
+        },
+        {
+          "type": "file",
+          "title": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "frontmatterTitle": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+          "fileTitle": "05_性能优化与稳定性治理",
+          "filename": "05_性能优化与稳定性治理.md",
+          "path": "我的总结/uni-app/uni-app辅助/05_性能优化与稳定性治理.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "性能优化",
+            "分包",
+            "登录态",
+            "稳定性"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "从包体、首屏、渲染、资源、登录态、本地缓存和权限状态几个方面系统整理 uni-app 项目的性能优化与稳定性维护思路。",
+          "size": "9KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 4068
+        },
+        {
+          "type": "file",
+          "title": "第06篇：uni-app高频问题补充问答",
+          "frontmatterTitle": "第06篇：uni-app高频问题补充问答",
+          "fileTitle": "06_高频技术短答",
+          "filename": "06_高频技术短答.md",
+          "path": "我的总结/uni-app/uni-app辅助/06_高频技术短答.md",
+          "date": "2026-05-08T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "uni-app",
+            "高频问题",
+            "补充问答",
+            "微信小程序",
+            "条件编译"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "作为系统整理版的补充问答，集中梳理 uni-app 学习和复习中最容易反复遇到的高频问题，帮助快速回看关键概念与边界。",
+          "size": "6KB",
+          "lastModified": "2026-05-09T01:17:34.394Z",
+          "wordCount": 2229
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "Vue",
       "path": "我的总结/Vue",
       "notes": [
@@ -4141,9 +4633,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue2组件的生命周期可以理解为组件从创建到销毁的整个\"生命旅程\"，Vue为这个旅程的关键节点提供了专属的\"钩子函数\"。本文详解Vue2/Vue3生命周期的完整流程。",
-          "size": "11KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 7407
+          "size": "16KB",
+          "lastModified": "2026-05-09T01:17:34.385Z",
+          "wordCount": 10492
         },
         {
           "type": "file",
@@ -4165,9 +4657,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "单向数据流：谁的数据谁修改，子组件不能直接修改父组件传入的props。耦合度最小化：优先使用官方推荐方案，避免强耦合方式（如$parent/$children）。场景决定方案：不同层级、不同规模的项目选择最适合的通信方式。",
-          "size": "43KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 33381
+          "size": "40KB",
+          "lastModified": "2026-05-09T01:17:34.386Z",
+          "wordCount": 30172
         },
         {
           "type": "file",
@@ -4213,14 +4705,14 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 20696
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -4238,9 +4730,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-08T01:05:54.183Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 40071
         },
         {
           "type": "file",
@@ -4381,8 +4873,8 @@
           "attachments": [],
           "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-08T01:05:54.170Z",
-          "wordCount": 916
+          "lastModified": "2026-05-09T01:17:34.383Z",
+          "wordCount": 947
         }
       ],
       "children": []
@@ -4529,9 +5021,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "Vue2组件的生命周期可以理解为组件从创建到销毁的整个\"生命旅程\"，Vue为这个旅程的关键节点提供了专属的\"钩子函数\"。本文详解Vue2/Vue3生命周期的完整流程。",
-          "size": "11KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 7407
+          "size": "16KB",
+          "lastModified": "2026-05-09T01:17:34.385Z",
+          "wordCount": 10492
         },
         {
           "type": "file",
@@ -4553,9 +5045,9 @@
           "category": "我的总结",
           "attachments": [],
           "description": "单向数据流：谁的数据谁修改，子组件不能直接修改父组件传入的props。耦合度最小化：优先使用官方推荐方案，避免强耦合方式（如$parent/$children）。场景决定方案：不同层级、不同规模的项目选择最适合的通信方式。",
-          "size": "43KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 33381
+          "size": "40KB",
+          "lastModified": "2026-05-09T01:17:34.386Z",
+          "wordCount": 30172
         },
         {
           "type": "file",
@@ -4601,14 +5093,14 @@
           "category": "我的总结",
           "attachments": [],
           "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-          "size": "21KB",
-          "lastModified": "2026-05-08T01:05:54.178Z",
-          "wordCount": 15299
+          "size": "29KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 20696
         },
         {
           "type": "file",
-          "title": "Vue Router 超详细总笔记",
-          "frontmatterTitle": "Vue Router 超详细总笔记",
+          "title": "第10篇：Vue Router 超详细总笔记",
+          "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
           "fileTitle": "第10篇_Router",
           "filename": "第10篇_Router.md",
           "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -4626,9 +5118,9 @@
           "category": "Vue",
           "attachments": [],
           "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-          "size": "55KB",
-          "lastModified": "2026-05-08T01:05:54.183Z",
-          "wordCount": 40066
+          "size": "56KB",
+          "lastModified": "2026-05-09T01:17:34.387Z",
+          "wordCount": 40071
         },
         {
           "type": "file",
@@ -19059,6 +19551,126 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第01篇：uni-app核心认知、跨端编译与平台边界",
+      "frontmatterTitle": "第01篇：uni-app核心认知、跨端编译与平台边界",
+      "fileTitle": "01_核心认知与跨端原理",
+      "filename": "01_核心认知与跨端原理.md",
+      "path": "我的总结/uni-app/uni-app辅助/01_核心认知与跨端原理.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "跨端",
+        "编译",
+        "运行时",
+        "微信小程序"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从跨端编译、运行宿主、通用能力边界到平台差异收口，系统梳理 uni-app 到底是什么、为什么能跨端、又为什么不可能完全无差异。",
+      "size": "11KB",
+      "lastModified": "2026-05-09T01:17:34.390Z",
+      "wordCount": 5109
+    },
+    {
+      "type": "file",
+      "title": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+      "frontmatterTitle": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+      "fileTitle": "02_生命周期与页面时序",
+      "filename": "02_生命周期与页面时序.md",
+      "path": "我的总结/uni-app/uni-app辅助/02_生命周期与页面时序.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "生命周期",
+        "页面时序",
+        "onLoad",
+        "onShow"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从应用生命周期、页面生命周期到下拉刷新、触底加载、页面滚动等常见页面事件出发，系统梳理 uni-app 项目里最核心的时序认知与落点选择。",
+      "size": "10KB",
+      "lastModified": "2026-05-09T01:17:34.391Z",
+      "wordCount": 6019
+    },
+    {
+      "type": "file",
+      "title": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+      "frontmatterTitle": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+      "fileTitle": "03_工程结构与配置边界",
+      "filename": "03_工程结构与配置边界.md",
+      "path": "我的总结/uni-app/uni-app辅助/03_工程结构与配置边界.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "工程结构",
+        "pages.json",
+        "manifest.json",
+        "uni.scss"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从 App.vue、main.js、pages.json、manifest.json、uni.scss、static 等核心文件出发，系统整理 uni-app 项目的工程结构、配置分层和常见职责边界问题。",
+      "size": "9KB",
+      "lastModified": "2026-05-09T01:17:34.392Z",
+      "wordCount": 4434
+    },
+    {
+      "type": "file",
+      "title": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+      "frontmatterTitle": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+      "fileTitle": "04_跨端开发与微信小程序能力接入",
+      "filename": "04_跨端开发与微信小程序能力接入.md",
+      "path": "我的总结/uni-app/uni-app辅助/04_跨端开发与微信小程序能力接入.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "微信小程序",
+        "条件编译",
+        "登录",
+        "支付"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "围绕 uni-app 在微信小程序场景下的真实开发方式，系统整理通用能力、平台协议能力、平台专属能力、条件编译和常见业务能力的接入方法与注意事项。",
+      "size": "10KB",
+      "lastModified": "2026-05-09T01:17:34.392Z",
+      "wordCount": 4750
+    },
+    {
+      "type": "file",
+      "title": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+      "frontmatterTitle": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+      "fileTitle": "05_性能优化与稳定性治理",
+      "filename": "05_性能优化与稳定性治理.md",
+      "path": "我的总结/uni-app/uni-app辅助/05_性能优化与稳定性治理.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "性能优化",
+        "分包",
+        "登录态",
+        "稳定性"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "从包体、首屏、渲染、资源、登录态、本地缓存和权限状态几个方面系统整理 uni-app 项目的性能优化与稳定性维护思路。",
+      "size": "9KB",
+      "lastModified": "2026-05-09T01:17:34.394Z",
+      "wordCount": 4068
+    },
+    {
+      "type": "file",
       "title": "第五篇：Windsurf 2.0 与 Devin 集成实战（2026-05）",
       "frontmatterTitle": "第五篇：Windsurf 2.0 与 Devin 集成实战（2026-05）",
       "fileTitle": "第五篇_Windsurf_2.0与Devin集成实战_2026-05",
@@ -19083,6 +19695,30 @@
     },
     {
       "type": "file",
+      "title": "第06篇：uni-app高频问题补充问答",
+      "frontmatterTitle": "第06篇：uni-app高频问题补充问答",
+      "fileTitle": "06_高频技术短答",
+      "filename": "06_高频技术短答.md",
+      "path": "我的总结/uni-app/uni-app辅助/06_高频技术短答.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "高频问题",
+        "补充问答",
+        "微信小程序",
+        "条件编译"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "作为系统整理版的补充问答，集中梳理 uni-app 学习和复习中最容易反复遇到的高频问题，帮助快速回看关键概念与边界。",
+      "size": "6KB",
+      "lastModified": "2026-05-09T01:17:34.394Z",
+      "wordCount": 2229
+    },
+    {
+      "type": "file",
       "title": "第12篇：Vue2 vs Vue3 核心写法差异",
       "frontmatterTitle": "第12篇：Vue2 vs Vue3 核心写法差异",
       "fileTitle": "第12篇_Vue2与Vue3核心写法差异",
@@ -19104,6 +19740,29 @@
       "size": "17KB",
       "lastModified": "2026-05-08T08:56:41.117Z",
       "wordCount": 11160
+    },
+    {
+      "type": "file",
+      "title": "uni-app目录（系统整理版）",
+      "frontmatterTitle": "uni-app目录（系统整理版）",
+      "fileTitle": "uni-app",
+      "filename": "uni-app.md",
+      "path": "我的总结/uni-app/uni-app.md",
+      "date": "2026-05-08T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "uni-app",
+        "目录",
+        "系统整理",
+        "小程序"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "本页用于整理 uni-app 系统整理版笔记，按从底层认知到项目落地的顺序阅读，兼顾原理、代码、边界、常见坑和项目实践。",
+      "size": "1KB",
+      "lastModified": "2026-05-09T01:17:34.389Z",
+      "wordCount": 431
     },
     {
       "type": "file",
@@ -19874,9 +20533,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "Vue2组件的生命周期可以理解为组件从创建到销毁的整个\"生命旅程\"，Vue为这个旅程的关键节点提供了专属的\"钩子函数\"。本文详解Vue2/Vue3生命周期的完整流程。",
-      "size": "11KB",
-      "lastModified": "2026-05-08T01:05:54.178Z",
-      "wordCount": 7407
+      "size": "16KB",
+      "lastModified": "2026-05-09T01:17:34.385Z",
+      "wordCount": 10492
     },
     {
       "type": "file",
@@ -19922,9 +20581,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "单向数据流：谁的数据谁修改，子组件不能直接修改父组件传入的props。耦合度最小化：优先使用官方推荐方案，避免强耦合方式（如$parent/$children）。场景决定方案：不同层级、不同规模的项目选择最适合的通信方式。",
-      "size": "43KB",
-      "lastModified": "2026-05-08T01:05:54.178Z",
-      "wordCount": 33381
+      "size": "40KB",
+      "lastModified": "2026-05-09T01:17:34.386Z",
+      "wordCount": 30172
     },
     {
       "type": "file",
@@ -20018,9 +20677,9 @@
       "category": "我的总结",
       "attachments": [],
       "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-      "size": "21KB",
-      "lastModified": "2026-05-08T01:05:54.178Z",
-      "wordCount": 15299
+      "size": "29KB",
+      "lastModified": "2026-05-09T01:17:34.387Z",
+      "wordCount": 20696
     },
     {
       "type": "file",
@@ -20185,8 +20844,8 @@
       "attachments": [],
       "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
       "size": "2KB",
-      "lastModified": "2026-05-08T01:05:54.170Z",
-      "wordCount": 916
+      "lastModified": "2026-05-09T01:17:34.383Z",
+      "wordCount": 947
     },
     {
       "type": "file",
@@ -21190,8 +21849,8 @@
     },
     {
       "type": "file",
-      "title": "Vue Router 超详细总笔记",
-      "frontmatterTitle": "Vue Router 超详细总笔记",
+      "title": "第10篇：Vue Router 超详细总笔记",
+      "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
       "fileTitle": "第10篇_Router",
       "filename": "第10篇_Router.md",
       "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -21209,9 +21868,9 @@
       "category": "Vue",
       "attachments": [],
       "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-      "size": "55KB",
-      "lastModified": "2026-05-08T01:05:54.183Z",
-      "wordCount": 40066
+      "size": "56KB",
+      "lastModified": "2026-05-09T01:17:34.387Z",
+      "wordCount": 40071
     },
     {
       "type": "file",
@@ -28842,6 +29501,187 @@
         },
         {
           "type": "directory",
+          "name": "uni-app",
+          "path": "我的总结/uni-app",
+          "children": [
+            {
+              "type": "directory",
+              "name": "uni-app辅助",
+              "path": "我的总结/uni-app/uni-app辅助",
+              "children": [
+                {
+                  "type": "file",
+                  "title": "第01篇：uni-app核心认知、跨端编译与平台边界",
+                  "frontmatterTitle": "第01篇：uni-app核心认知、跨端编译与平台边界",
+                  "fileTitle": "01_核心认知与跨端原理",
+                  "filename": "01_核心认知与跨端原理.md",
+                  "path": "我的总结/uni-app/uni-app辅助/01_核心认知与跨端原理.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "跨端",
+                    "编译",
+                    "运行时",
+                    "微信小程序"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "从跨端编译、运行宿主、通用能力边界到平台差异收口，系统梳理 uni-app 到底是什么、为什么能跨端、又为什么不可能完全无差异。",
+                  "size": "11KB",
+                  "lastModified": "2026-05-09T01:17:34.390Z",
+                  "wordCount": 5109
+                },
+                {
+                  "type": "file",
+                  "title": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+                  "frontmatterTitle": "第02篇：uni-app生命周期、页面时序与常见页面事件",
+                  "fileTitle": "02_生命周期与页面时序",
+                  "filename": "02_生命周期与页面时序.md",
+                  "path": "我的总结/uni-app/uni-app辅助/02_生命周期与页面时序.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "生命周期",
+                    "页面时序",
+                    "onLoad",
+                    "onShow"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "从应用生命周期、页面生命周期到下拉刷新、触底加载、页面滚动等常见页面事件出发，系统梳理 uni-app 项目里最核心的时序认知与落点选择。",
+                  "size": "10KB",
+                  "lastModified": "2026-05-09T01:17:34.391Z",
+                  "wordCount": 6019
+                },
+                {
+                  "type": "file",
+                  "title": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+                  "frontmatterTitle": "第03篇：uni-app工程结构、配置分层与文件职责边界",
+                  "fileTitle": "03_工程结构与配置边界",
+                  "filename": "03_工程结构与配置边界.md",
+                  "path": "我的总结/uni-app/uni-app辅助/03_工程结构与配置边界.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "工程结构",
+                    "pages.json",
+                    "manifest.json",
+                    "uni.scss"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "从 App.vue、main.js、pages.json、manifest.json、uni.scss、static 等核心文件出发，系统整理 uni-app 项目的工程结构、配置分层和常见职责边界问题。",
+                  "size": "9KB",
+                  "lastModified": "2026-05-09T01:17:34.392Z",
+                  "wordCount": 4434
+                },
+                {
+                  "type": "file",
+                  "title": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+                  "frontmatterTitle": "第04篇：uni-app跨端开发方法与微信小程序常见能力接入",
+                  "fileTitle": "04_跨端开发与微信小程序能力接入",
+                  "filename": "04_跨端开发与微信小程序能力接入.md",
+                  "path": "我的总结/uni-app/uni-app辅助/04_跨端开发与微信小程序能力接入.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "微信小程序",
+                    "条件编译",
+                    "登录",
+                    "支付"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "围绕 uni-app 在微信小程序场景下的真实开发方式，系统整理通用能力、平台协议能力、平台专属能力、条件编译和常见业务能力的接入方法与注意事项。",
+                  "size": "10KB",
+                  "lastModified": "2026-05-09T01:17:34.392Z",
+                  "wordCount": 4750
+                },
+                {
+                  "type": "file",
+                  "title": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+                  "frontmatterTitle": "第05篇：uni-app性能优化、包体治理与稳定性维护",
+                  "fileTitle": "05_性能优化与稳定性治理",
+                  "filename": "05_性能优化与稳定性治理.md",
+                  "path": "我的总结/uni-app/uni-app辅助/05_性能优化与稳定性治理.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "性能优化",
+                    "分包",
+                    "登录态",
+                    "稳定性"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "从包体、首屏、渲染、资源、登录态、本地缓存和权限状态几个方面系统整理 uni-app 项目的性能优化与稳定性维护思路。",
+                  "size": "9KB",
+                  "lastModified": "2026-05-09T01:17:34.394Z",
+                  "wordCount": 4068
+                },
+                {
+                  "type": "file",
+                  "title": "第06篇：uni-app高频问题补充问答",
+                  "frontmatterTitle": "第06篇：uni-app高频问题补充问答",
+                  "fileTitle": "06_高频技术短答",
+                  "filename": "06_高频技术短答.md",
+                  "path": "我的总结/uni-app/uni-app辅助/06_高频技术短答.md",
+                  "date": "2026-05-08T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "uni-app",
+                    "高频问题",
+                    "补充问答",
+                    "微信小程序",
+                    "条件编译"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "作为系统整理版的补充问答，集中梳理 uni-app 学习和复习中最容易反复遇到的高频问题，帮助快速回看关键概念与边界。",
+                  "size": "6KB",
+                  "lastModified": "2026-05-09T01:17:34.394Z",
+                  "wordCount": 2229
+                }
+              ]
+            },
+            {
+              "type": "file",
+              "title": "uni-app目录（系统整理版）",
+              "frontmatterTitle": "uni-app目录（系统整理版）",
+              "fileTitle": "uni-app",
+              "filename": "uni-app.md",
+              "path": "我的总结/uni-app/uni-app.md",
+              "date": "2026-05-08T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "uni-app",
+                "目录",
+                "系统整理",
+                "小程序"
+              ],
+              "category": "我的总结",
+              "attachments": [],
+              "description": "本页用于整理 uni-app 系统整理版笔记，按从底层认知到项目落地的顺序阅读，兼顾原理、代码、边界、常见坑和项目实践。",
+              "size": "1KB",
+              "lastModified": "2026-05-09T01:17:34.389Z",
+              "wordCount": 431
+            }
+          ]
+        },
+        {
+          "type": "directory",
           "name": "Vue",
           "path": "我的总结/Vue",
           "children": [
@@ -28988,9 +29828,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "Vue2组件的生命周期可以理解为组件从创建到销毁的整个\"生命旅程\"，Vue为这个旅程的关键节点提供了专属的\"钩子函数\"。本文详解Vue2/Vue3生命周期的完整流程。",
-                  "size": "11KB",
-                  "lastModified": "2026-05-08T01:05:54.178Z",
-                  "wordCount": 7407
+                  "size": "16KB",
+                  "lastModified": "2026-05-09T01:17:34.385Z",
+                  "wordCount": 10492
                 },
                 {
                   "type": "file",
@@ -29012,9 +29852,9 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "单向数据流：谁的数据谁修改，子组件不能直接修改父组件传入的props。耦合度最小化：优先使用官方推荐方案，避免强耦合方式（如$parent/$children）。场景决定方案：不同层级、不同规模的项目选择最适合的通信方式。",
-                  "size": "43KB",
-                  "lastModified": "2026-05-08T01:05:54.178Z",
-                  "wordCount": 33381
+                  "size": "40KB",
+                  "lastModified": "2026-05-09T01:17:34.386Z",
+                  "wordCount": 30172
                 },
                 {
                   "type": "file",
@@ -29060,14 +29900,14 @@
                   "category": "我的总结",
                   "attachments": [],
                   "description": "本文档基于Vue开发场景，从入门原理到企业级封装，涵盖所有核心细节。Axios是一个基于Promise的HTTP网络请求库，可运行于浏览器端和Node.js服务端。",
-                  "size": "21KB",
-                  "lastModified": "2026-05-08T01:05:54.178Z",
-                  "wordCount": 15299
+                  "size": "29KB",
+                  "lastModified": "2026-05-09T01:17:34.387Z",
+                  "wordCount": 20696
                 },
                 {
                   "type": "file",
-                  "title": "Vue Router 超详细总笔记",
-                  "frontmatterTitle": "Vue Router 超详细总笔记",
+                  "title": "第10篇：Vue Router 超详细总笔记",
+                  "frontmatterTitle": "第10篇：Vue Router 超详细总笔记",
                   "fileTitle": "第10篇_Router",
                   "filename": "第10篇_Router.md",
                   "path": "我的总结/Vue/vue辅助/第10篇_Router.md",
@@ -29085,9 +29925,9 @@
                   "category": "Vue",
                   "attachments": [],
                   "description": "面向长期复习的一站式 Vue Router 总笔记，系统整理基础概念、Vue2/Vue3 差异、路由配置项、每种传参形式、导航方式、嵌套与命名视图、守卫、历史模式、动态添加路由、滚动行为、懒加载与高频踩坑。",
-                  "size": "55KB",
-                  "lastModified": "2026-05-08T01:05:54.183Z",
-                  "wordCount": 40066
+                  "size": "56KB",
+                  "lastModified": "2026-05-09T01:17:34.387Z",
+                  "wordCount": 40071
                 },
                 {
                   "type": "file",
@@ -29237,8 +30077,8 @@
               "attachments": [],
               "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
               "size": "2KB",
-              "lastModified": "2026-05-08T01:05:54.170Z",
-              "wordCount": 916
+              "lastModified": "2026-05-09T01:17:34.383Z",
+              "wordCount": 947
             }
           ]
         }
@@ -36161,7 +37001,7 @@
       ]
     }
   ],
-  "totalNotes": 364,
-  "totalCategories": 83,
-  "lastUpdated": "2026-05-08T09:50:59.297Z"
+  "totalNotes": 371,
+  "totalCategories": 85,
+  "lastUpdated": "2026-05-09T02:13:00.518Z"
 }
