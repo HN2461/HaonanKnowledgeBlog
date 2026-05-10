@@ -1,277 +1,277 @@
 const CATEGORY_DEFINITIONS = [
   {
-    name: 'API 面板与服务商',
-    description: '中转、配额、监控、购买和服务商后台入口统一收在这里',
-    keywords: [
-      'api中转',
-      'api gateway',
-      'new api',
-      '云驿',
-      '监控',
-      'codexusage',
-      'proxyhub',
-      'lumioapi',
-      'purchase',
-      '小店',
-      '发卡',
-      'rdzhvip',
-      'rpcod',
-      'jiexi6'
-    ]
+    name: 'AI 模型与对话',
+    description: '直接开聊、切模型、看开放平台能力时先回这一组'
   },
   {
-    name: 'VPN 与网络服务',
-    description: '机场、加速器、云服务和外网辅助入口集中放这里',
-    keywords: [
-      'vpn',
-      '机场',
-      '加速',
-      'cloud',
-      '优信云',
-      'ikuuu',
-      'cutecloud',
-      'dg5.biz',
-      '狗狗加速',
-      'language reactor'
-    ]
+    name: 'AI 编程与 Agent',
+    description: 'Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里'
   },
   {
-    name: '工作与机构入口',
-    description: '公司、学校、机构和认证系统相关入口统一归档',
-    keywords: [
-      '智慧校园',
-      '统一身份认证',
-      '政务',
-      '公司',
-      '学校',
-      '格子达',
-      '毕业论文',
-      '助学贷款',
-      '安徽政务',
-      '机构'
-    ]
-  },
-  {
-    name: '个人服务入口',
-    description: '个人博客、写作、邮箱、文档和私人常用站点放这里',
-    keywords: [
-      '语雀',
-      '番茄',
-      '作家专区',
-      '邮箱',
-      '简历',
-      '个人网站',
-      '小说',
-      '个人中心'
-    ]
-  },
-  {
-    name: 'AI 助手与模型',
-    description: '切模型、查能力边界、直接开聊时回到这一组',
-    keywords: [
-      'chatgpt',
-      'deepseek',
-      'grok',
-      'gemini',
-      'kimi',
-      'minimax',
-      '智谱',
-      'bigmodel',
-      'mimo',
-      'longcat',
-      'agent.minimaxi'
-    ]
-  },
-  {
-    name: 'AI 开发工具',
-    description: '和 Codex、Claude Code、智能代理工作流相关的工具与资料',
-    keywords: [
-      'claude code',
-      'codex',
-      'openclaw',
-      'agent skills',
-      'skillsmp',
-      'packyapi',
-      'orchids',
-      'ai 编辑器',
-      'ai开发工具',
-      'clawd',
-      '编程ai'
-    ]
+    name: 'AI API 与服务商',
+    description: '中转、监控、续费、小店和服务商后台入口统一收在这里'
   },
   {
     name: '前端框架与工程化',
-    description: '查框架语法、构建配置、工程实践时最常回来的入口',
-    keywords: [
-      'vue.js',
-      'cn.vuejs.org',
-      'vite',
-      'react',
-      'vueuse',
-      'luch-request',
-      'lodash',
-      'mdn',
-      'w3cschool',
-      'runoob',
-      'pure admin',
-      'vben',
-      'naive ui admin',
-      'nvm',
-      '单文件组件',
-      '前端'
-    ]
+    description: 'Vue、Vite、React、工程脚手架和构建配置资料'
   },
   {
-    name: '组件库与样式资源',
-    description: '写界面、查组件 API、补动效和图表时回这里',
-    keywords: [
-      'element plus',
-      'element -',
-      'uview',
-      'uv-ui',
-      'vant',
-      'windicss',
-      'animate.css',
-      'echarts',
-      'iconfont',
-      'naive ui',
-      '组件库',
-      'tailwind css',
-      'logicflow'
-    ]
+    name: 'UI 组件与样式',
+    description: '组件库、图表库、样式方案和交互引擎相关入口'
   },
   {
     name: '地图与地理服务',
-    description: '做定位、地图展示、地理编码与轨迹能力时回这里',
-    keywords: [
-      '高德',
-      'amap',
-      'lbs.qq.com',
-      '腾讯位置服务',
-      '天地图',
-      'openlayers',
-      '地理',
-      '地图'
-    ]
+    description: '地图展示、地理编码、轨迹和控制台相关资料'
   },
   {
-    name: '可视化与 3D',
-    description: '大屏、图形效果、Three.js 和三维交互相关入口',
-    keywords: [
-      'three.js',
-      'threejs',
-      'webgl',
-      '3d',
-      '数字孪生',
-      'tvt.js',
-      '可视化'
-    ]
+    name: '可视化 / 3D / 动画',
+    description: 'Three.js、数字孪生、3D 素材和动画资源'
   },
   {
     name: '移动端与开放平台',
-    description: '做 uni-app、小程序、微信、企微、钉钉这类接入时回这里',
-    keywords: [
-      'uni-app',
-      'uniapp',
-      '小程序',
-      '微信',
-      'wecom',
-      '企业微信',
-      '钉钉',
-      'flutter',
-      '开放平台',
-      '移动端'
-    ]
+    description: 'uni-app、小程序、企业微信、钉钉、Flutter 相关入口'
   },
   {
-    name: '后端与数据库',
-    description: 'Node 服务、Koa、Mongoose 这类后端资料集中在这里',
-    keywords: [
-      'koa',
-      'mongoose',
-      'mongodb',
-      '后端',
-      '数据库'
-    ]
+    name: '后端 / 数据库 / 接口',
+    description: 'Koa、Mongoose、MQTT、接口文档和服务端资料'
+  },
+  {
+    name: '开发文档与教程',
+    description: 'MDN、教程站、博客文章和实战讲解集中放这里'
+  },
+  {
+    name: '开发社区与代码托管',
+    description: 'GitHub、Gitee、CSDN、LinuxDo 和导航社区入口'
   },
   {
     name: '设计灵感与案例',
-    description: '找后台、可视化、小程序和 UI 风格参考时最有用',
-    keywords: [
-      'zcool',
-      'uiverse',
-      'stitch',
-      'prompt 模板',
-      '设计',
-      '项目分享',
-      '案例',
-      '后台管理',
-      '驾驶舱'
-    ]
+    description: '后台、小程序、数字孪生、UI 风格案例与灵感收集'
   },
   {
-    name: '开发社区与工具平台',
-    description: '逛社区、找仓库、进平台和翻资料入口的杂而有用集合',
-    keywords: [
-      'github',
-      'gitee',
-      'linux do',
-      '开发者',
-      'ai工具集',
-      'aigc',
-      'open vsx',
-      'csdn',
-      '工具集',
-      'registry',
-      '平台'
-    ]
+    name: '在线工具与效率',
+    description: '二维码、JSON、流程图、转换工具和日常效率网站'
   },
   {
-    name: '效率工具与通用网站',
-    description: '不专属于某个技术栈，但日常开发经常顺手会用到',
-    keywords: [
-      'processon',
-      'pdf',
-      'ifixit',
-      'webcams',
-      'youtube',
-      'what\'s my ip',
-      'downforeveryoneorjustme',
-      '二维码',
-      'json',
-      '效率',
-      '工具箱'
-    ]
+    name: '网络 / VPN / 云服务',
+    description: '机场、代理客户端、云服务和网络辅助工具'
+  },
+  {
+    name: '个人 / 工作 / 校园入口',
+    description: '个人站点、账号后台、校园政务和日常登录入口'
   }
 ]
 
-const TOPIC_TAG_DEFINITIONS = [
+const CATEGORY_ORDER = CATEGORY_DEFINITIONS.map((item) => item.name)
+const CATEGORY_BY_NAME = new Map(CATEGORY_DEFINITIONS.map((item) => [item.name, item]))
+
+const SHELF_ORDER = ['学习资料', '工作平台', '灵感收藏']
+const TYPE_ORDER = ['官方文档', '教程 / 文章', '社区 / 导航', '控制台 / 服务', '账号 / 平台入口', '案例 / 灵感', '工具 / 素材']
+
+const AI_MODEL_DOMAINS = new Set([
+  'chatgpt.com',
+  'chat.deepseek.com',
+  'gemini.google.com',
+  'grok.com',
+  'kimi.com',
+  'longcat.chat',
+  'minimax.io',
+  'agent.minimaxi.com',
+  'open.bigmodel.cn',
+  'platform.xiaomimimo.com'
+])
+
+const AI_CODING_DOMAINS = new Set([
+  'code.claude.com',
+  'claudecode.tangshuang.net',
+  'developers.openai.com',
+  'docs.packyapi.com',
+  'openclaw101.dev',
+  'clawd.org.cn',
+  'orchids.app',
+  'skillsmp.com'
+])
+
+const AI_SERVICE_DOMAINS = new Set([
+  'pay.ldxp.cn',
+  'pay.qxvx.cn',
+  'fe.dtyuedan.cn',
+  'ai.rpcod.com',
+  'proxyhub.jzzcg.com',
+  'yfy.zhouyang168.top',
+  'yunyi.rdzhvip.com',
+  'yfy-status.5imh.xyz',
+  'api.lumio.games',
+  'ai.jiexi6.cn',
+  'deepl.micosoft.icu'
+])
+
+const FRONTEND_DOMAINS = new Set([
+  'cn.vuejs.org',
+  'cn.vite.dev',
+  'cn.vitejs.dev',
+  'vueuse.org',
+  'vueuse.nodejs.cn',
+  'pure-admin.cn',
+  'doc.vben.pro',
+  'docs.naiveadmin.com',
+  'zh-hans.react.dev',
+  'quanzhan.co',
+  'lodashjs.com',
+  'nvm.uihtm.com'
+])
+
+const UI_DOMAINS = new Set([
+  'element-plus.org',
+  'element.eleme.cn',
+  'antdv.com',
+  'vant-ui.github.io',
+  'uviewui.com',
+  'uvui.cn',
+  'cn.windicss.org',
+  'tailwindcss.com',
+  'iconfont.cn',
+  'echarts.apache.org',
+  'isqqw.com',
+  '07.logic-flow.cn',
+  'x6.antv.vision',
+  'animate.style',
+  'limeui.qcoon.cn',
+  'naiveui.com',
+  'sortablejs.com'
+])
+
+const MAP_DOMAINS = new Set([
+  'lbs.amap.com',
+  'console.amap.com',
+  'lbs.qq.com',
+  'lbs.tianditu.gov.cn',
+  'openlayers.org'
+])
+
+const VISUAL_DOMAINS = new Set([
+  'threejs.org',
+  'yanhuangxueyuan.com',
+  'webgl3d.cn',
+  'docs.icegl.cn',
+  'mixamo.com'
+])
+
+const MOBILE_DOMAINS = new Set([
+  'developer.work.weixin.qq.com',
+  'developers.weixin.qq.com',
+  'mp.weixin.qq.com',
+  'work.weixin.qq.com',
+  'open.dingtalk.com',
+  'docs.flutter.cn',
+  'dev.dcloud.net.cn',
+  'ext.dcloud.net.cn',
+  'uniapp.dcloud.net.cn',
+  'developer.huawei.com',
+  'qiyeweixin.apifox.cn',
+  'foooor.com'
+])
+
+const BACKEND_DOMAINS = new Set([
+  'mongoosejs.com',
+  'itying.com',
+  'api.qingnian8.com',
+  'emqx.com'
+])
+
+const DOC_DOMAINS = new Set([
+  'developer.mozilla.org',
+  'm.w3cschool.cn',
+  'runoob.com',
+  'muyiy.cn',
+  'cnblogs.com',
+  'jb51.net',
+  'bilibili.com'
+])
+
+const COMMUNITY_DOMAINS = new Set([
+  'github.com',
+  'gitee.com',
+  'linux.do',
+  'csdn.net',
+  'open-vsx.org',
+  'ai-bot.cn',
+  'aigc.izzi.cn'
+])
+
+const DESIGN_DOMAINS = new Set([
+  'zcool.com.cn',
+  'uiverse.io',
+  'stitch.withgoogle.com',
+  'evolink.ai'
+])
+
+const TOOL_DOMAINS = new Set([
+  'cli.im',
+  'downforeveryoneorjustme.com',
+  'bejson.com',
+  'fly63.com',
+  'colordrop.io',
+  'quicklypdf.com',
+  'processon.com',
+  'whatsmyip.com',
+  'zh.ifixit.com',
+  'sayodevice.com',
+  'camscape.com',
+  'youtube.com'
+])
+
+const NETWORK_DOMAINS = new Set([
+  'clash-verge.org',
+  'youxin55.net',
+  'user.dg5.biz',
+  'jichang.pro',
+  'xn--mes358aby2apfg.com',
+  'ikuuu.nl',
+  'ikuuu.win',
+  'ikuuu.li',
+  'xn--4gq62f.org',
+  '13.212.175.5',
+  'main.cute-cloud.de',
+  'secure.shadowsocks.au'
+])
+
+const PERSONAL_DOMAINS = new Set([
+  'eloans.ahrcu.com',
+  'ahzwfw.gov.cn',
+  'admin.runlan.ltd',
+  'runlan.coding.net',
+  'co.gocheck.cn',
+  '2925.com',
+  'ai.92xx.vip',
+  'hn2461.github.io',
+  'yuque.com',
+  'qmjianli.com',
+  'fanqienovel.com',
+  'stu.tlu.edu.cn',
+  'zhipin.com',
+  'secure.rezserver.com'
+])
+
+const TAG_DEFINITIONS = [
   { tag: 'ChatGPT', keywords: ['chatgpt', 'openai'] },
   { tag: 'DeepSeek', keywords: ['deepseek'] },
   { tag: 'Gemini', keywords: ['gemini'] },
   { tag: 'Kimi', keywords: ['kimi'] },
   { tag: 'MiniMax', keywords: ['minimax'] },
-  { tag: 'Claude Code', keywords: ['claude code'] },
   { tag: 'Codex', keywords: ['codex'] },
+  { tag: 'Claude Code', keywords: ['claude code'] },
   { tag: 'OpenClaw', keywords: ['openclaw', 'clawd'] },
-  { tag: 'Vue', keywords: ['vue.js', 'vue '] },
+  { tag: 'Vue', keywords: ['vue'] },
   { tag: 'Vite', keywords: ['vite'] },
   { tag: 'React', keywords: ['react'] },
-  { tag: 'VueUse', keywords: ['vueuse'] },
+  { tag: 'Tailwind', keywords: ['tailwind'] },
   { tag: 'Element Plus', keywords: ['element plus'] },
-  { tag: 'uView', keywords: ['uview', 'uv-ui'] },
-  { tag: 'Vant', keywords: ['vant'] },
-  { tag: 'Naive UI', keywords: ['naive ui'] },
   { tag: 'ECharts', keywords: ['echarts'] },
   { tag: 'Three.js', keywords: ['three.js', 'threejs'] },
-  { tag: '地图', keywords: ['高德', '腾讯位置服务', '天地图', '地图'] },
   { tag: 'uni-app', keywords: ['uni-app', 'uniapp'] },
-  { tag: '微信生态', keywords: ['微信', 'wecom', '企业微信'] },
-  { tag: '钉钉', keywords: ['钉钉'] },
+  { tag: '微信生态', keywords: ['微信', '企业微信', 'weixin', 'wecom'] },
   { tag: 'Flutter', keywords: ['flutter'] },
-  { tag: 'Mongoose', keywords: ['mongoose'] },
-  { tag: 'Koa', keywords: ['koa'] },
-  { tag: '设计灵感', keywords: ['zcool', 'uiverse', 'stitch', '设计'] }
+  { tag: 'VPN', keywords: ['vpn', '机场', '代理'] }
 ]
 
 const GENERIC_FOLDER_TAGS = new Set([
@@ -286,29 +286,9 @@ const GENERIC_FOLDER_TAGS = new Set([
   '项目',
   'ui',
   'ai',
-  '框架'
+  '框架',
+  '移动端'
 ])
-
-const CATEGORY_ORDER = [
-  'AI 助手与模型',
-  'AI 开发工具',
-  'API 面板与服务商',
-  '前端框架与工程化',
-  '组件库与样式资源',
-  '地图与地理服务',
-  '可视化与 3D',
-  '移动端与开放平台',
-  '后端与数据库',
-  '设计灵感与案例',
-  '开发社区与工具平台',
-  'VPN 与网络服务',
-  '工作与机构入口',
-  '个人服务入口',
-  '效率工具与通用网站'
-]
-
-const SHELF_ORDER = ['学习资料', '工作平台', '灵感收藏']
-const TYPE_ORDER = ['官方文档', '教程 / 文章', '控制台 / 平台', '账号 / 平台入口', '社区 / 导航', '案例 / 灵感', '工具网站']
 
 function normalizeText(value = '') {
   return String(value || '')
@@ -329,108 +309,286 @@ function pushUnique(list, value) {
   list.push(normalizedValue)
 }
 
+function orderIndex(list = [], value = '') {
+  const index = list.indexOf(value)
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index
+}
+
+function getFolderTrail(entry = {}) {
+  return Array.isArray(entry.folderTrail) ? entry.folderTrail.filter(Boolean) : []
+}
+
 function buildMatchText(entry = {}) {
   return normalizeText([
     entry.title,
     entry.url,
     entry.domain,
     entry.originalPath,
-    ...(Array.isArray(entry.folderTrail) ? entry.folderTrail : [])
+    ...getFolderTrail(entry)
   ].join(' '))
 }
 
-function resolveCategory(matchText) {
-  const designCategory = CATEGORY_DEFINITIONS.find((definition) => definition.name === '设计灵感与案例')
-  if (designCategory && includesAny(matchText, ['zcool', 'uiverse', 'stitch'])) {
-    return designCategory
-  }
-
-  const foundDefinition = CATEGORY_DEFINITIONS.find((definition) => includesAny(matchText, definition.keywords))
-  return foundDefinition || CATEGORY_DEFINITIONS[CATEGORY_DEFINITIONS.length - 1]
+function getCategoryDefinition(name = '') {
+  return CATEGORY_BY_NAME.get(name) || CATEGORY_DEFINITIONS[CATEGORY_DEFINITIONS.length - 1]
 }
 
-function resolveType(categoryName, matchText) {
-  if (categoryName === 'API 面板与服务商' || categoryName === 'VPN 与网络服务') {
-    return '控制台 / 平台'
+function trailIncludes(folderTrail = [], keywords = []) {
+  const normalizedTrail = folderTrail.map((segment) => normalizeText(segment))
+  return normalizedTrail.some((segment) => includesAny(segment, keywords))
+}
+
+function getDomain(entry = {}) {
+  return normalizeText(entry.domain)
+}
+
+function isOfficialDoc(entry = {}, matchText = '') {
+  const domain = getDomain(entry)
+
+  if (
+    domain === 'developers.openai.com' ||
+    domain === 'code.claude.com' ||
+    domain === 'docs.packyapi.com' ||
+    domain === 'uniapp.dcloud.net.cn' ||
+    domain === 'dev.dcloud.net.cn' ||
+    domain === 'developers.weixin.qq.com' ||
+    domain === 'developer.work.weixin.qq.com' ||
+    domain === 'open.dingtalk.com' ||
+    domain === 'docs.flutter.cn'
+  ) {
+    return true
   }
 
-  if (categoryName === '工作与机构入口' || categoryName === '个人服务入口') {
+  if (
+    FRONTEND_DOMAINS.has(domain) ||
+    UI_DOMAINS.has(domain) ||
+    MAP_DOMAINS.has(domain) ||
+    MOBILE_DOMAINS.has(domain) ||
+    BACKEND_DOMAINS.has(domain) ||
+    VISUAL_DOMAINS.has(domain)
+  ) {
+    return includesAny(matchText, [
+      '官方',
+      'docs',
+      'guide',
+      '开发者中心',
+      '开发',
+      'overview',
+      '介绍',
+      '开始',
+      '开放文档',
+      '概述',
+      '文档'
+    ])
+  }
+
+  return includesAny(matchText, ['官方', 'docs', 'guide', 'overview', 'quickstart', '开发者中心', '开放文档'])
+}
+
+function resolveCategory(entry = {}, matchText = '') {
+  const folderTrail = getFolderTrail(entry)
+  const domain = getDomain(entry)
+
+  if (domain === 'csdn.net') {
+    return getCategoryDefinition('开发社区与代码托管')
+  }
+
+  if (domain === 'languagereactor.com') {
+    return getCategoryDefinition('在线工具与效率')
+  }
+
+  if (domain === 'my.feishu.cn') {
+    return getCategoryDefinition('AI 编程与 Agent')
+  }
+
+  if (domain === 'skillsmp.com') {
+    return getCategoryDefinition('AI 编程与 Agent')
+  }
+
+  if (AI_SERVICE_DOMAINS.has(domain) || trailIncludes(folderTrail, ['api中转', '商家店铺'])) {
+    return getCategoryDefinition('AI API 与服务商')
+  }
+
+  if (AI_CODING_DOMAINS.has(domain) || trailIncludes(folderTrail, ['ai编辑器', 'claude code', 'codex', 'openclaw', '卖家文档'])) {
+    return getCategoryDefinition('AI 编程与 Agent')
+  }
+
+  if (AI_MODEL_DOMAINS.has(domain) || trailIncludes(folderTrail, ['国内ai', '国外ai'])) {
+    return getCategoryDefinition('AI 模型与对话')
+  }
+
+  if (DESIGN_DOMAINS.has(domain) || trailIncludes(folderTrail, ['ui'])) {
+    return getCategoryDefinition('设计灵感与案例')
+  }
+
+  if (MAP_DOMAINS.has(domain) || trailIncludes(folderTrail, ['地图'])) {
+    return getCategoryDefinition('地图与地理服务')
+  }
+
+  if (VISUAL_DOMAINS.has(domain) || trailIncludes(folderTrail, ['3d'])) {
+    return getCategoryDefinition('可视化 / 3D / 动画')
+  }
+
+  if (MOBILE_DOMAINS.has(domain) || trailIncludes(folderTrail, ['企业微信', '微信', 'flutter'])) {
+    return getCategoryDefinition('移动端与开放平台')
+  }
+
+  if (BACKEND_DOMAINS.has(domain) || trailIncludes(folderTrail, ['后端'])) {
+    return getCategoryDefinition('后端 / 数据库 / 接口')
+  }
+
+  if (FRONTEND_DOMAINS.has(domain) || trailIncludes(folderTrail, ['框架'])) {
+    return getCategoryDefinition('前端框架与工程化')
+  }
+
+  if (UI_DOMAINS.has(domain) || trailIncludes(folderTrail, ['组件库'])) {
+    return getCategoryDefinition('UI 组件与样式')
+  }
+
+  if (DOC_DOMAINS.has(domain) || trailIncludes(folderTrail, ['开发知识文档', '技术文档'])) {
+    return getCategoryDefinition('开发文档与教程')
+  }
+
+  if (COMMUNITY_DOMAINS.has(domain)) {
+    return getCategoryDefinition('开发社区与代码托管')
+  }
+
+  if (TOOL_DOMAINS.has(domain) || trailIncludes(folderTrail, ['辅助工具', '其他小工具'])) {
+    return getCategoryDefinition('在线工具与效率')
+  }
+
+  if (NETWORK_DOMAINS.has(domain) || trailIncludes(folderTrail, ['vpn'])) {
+    return getCategoryDefinition('网络 / VPN / 云服务')
+  }
+
+  if (
+    PERSONAL_DOMAINS.has(domain) ||
+    trailIncludes(folderTrail, ['个人网站', '公司']) ||
+    normalizeText(folderTrail[0]) === 'hp'
+  ) {
+    return getCategoryDefinition('个人 / 工作 / 校园入口')
+  }
+
+  if (includesAny(matchText, ['github', 'gitee', 'linux do', 'open vsx', 'csdn'])) {
+    return getCategoryDefinition('开发社区与代码托管')
+  }
+
+  if (includesAny(matchText, ['二维码', 'json', 'processon', 'webcams', 'youtube', 'ip address'])) {
+    return getCategoryDefinition('在线工具与效率')
+  }
+
+  return getCategoryDefinition('个人 / 工作 / 校园入口')
+}
+
+function resolveType(entry = {}, categoryName = '', matchText = '') {
+  const domain = getDomain(entry)
+
+  if (categoryName === 'AI API 与服务商') {
+    return '控制台 / 服务'
+  }
+
+  if (categoryName === '个人 / 工作 / 校园入口') {
     return '账号 / 平台入口'
   }
 
+  if (categoryName === '开发社区与代码托管') {
+    return '社区 / 导航'
+  }
+
+  if (categoryName === '在线工具与效率') {
+    return '工具 / 素材'
+  }
+
   if (categoryName === '设计灵感与案例') {
-    return includesAny(matchText, ['stitch', 'prompt 模板', 'uiverse']) ? '工具网站' : '案例 / 灵感'
+    return includesAny(matchText, ['uiverse', 'stitch', 'prompt', '模板']) ? '工具 / 素材' : '案例 / 灵感'
   }
 
-  if (categoryName === '效率工具与通用网站') {
-    return '工具网站'
+  if (categoryName === 'AI 模型与对话') {
+    return includesAny(matchText, ['开放平台', 'docs', '文档']) ? '官方文档' : '控制台 / 服务'
   }
 
-  if (categoryName === '开发社区与工具平台') {
-    return includesAny(matchText, ['github', 'gitee', 'linux do']) ? '社区 / 导航' : '控制台 / 平台'
-  }
+  if (categoryName === 'AI 编程与 Agent') {
+    if (domain === 'skillsmp.com') {
+      return '社区 / 导航'
+    }
 
-  if (categoryName === '地图与地理服务') {
-    return includesAny(matchText, ['console.', '控制台', 'developer']) ? '控制台 / 平台' : '官方文档'
-  }
+    if (
+      domain === 'developers.openai.com' ||
+      domain === 'code.claude.com' ||
+      domain === 'docs.packyapi.com'
+    ) {
+      return includesAny(matchText, ['教程', 'wiki', '指南', 'quickstart', '入门']) ? '教程 / 文章' : '官方文档'
+    }
 
-  if (categoryName === 'AI 助手与模型') {
-    return includesAny(matchText, ['开放平台', 'docs', '文档']) ? '官方文档' : '控制台 / 平台'
-  }
-
-  if (categoryName === 'AI 开发工具') {
-    if (includesAny(matchText, ['教程', '文档', 'docs', 'quickstart', '深度教程'])) {
+    if (includesAny(matchText, ['教程', '文档', 'wiki', '指南', 'quickstart', '入门', '使用全攻略', '深度教程'])) {
       return '教程 / 文章'
     }
 
-    return '控制台 / 平台'
+    return '控制台 / 服务'
+  }
+
+  if (categoryName === '网络 / VPN / 云服务') {
+    return includesAny(matchText, ['介绍', '最新域名']) ? '教程 / 文章' : '控制台 / 服务'
+  }
+
+  if (categoryName === '地图与地理服务' && domain === 'console.amap.com') {
+    return '控制台 / 服务'
+  }
+
+  if (categoryName === '移动端与开放平台' && ['mp.weixin.qq.com', 'work.weixin.qq.com', 'ext.dcloud.net.cn'].includes(domain)) {
+    return '控制台 / 服务'
+  }
+
+  if (categoryName === '可视化 / 3D / 动画' && domain === 'mixamo.com') {
+    return '工具 / 素材'
   }
 
   if (
     categoryName === '前端框架与工程化' ||
-    categoryName === '组件库与样式资源' ||
+    categoryName === 'UI 组件与样式' ||
+    categoryName === '地图与地理服务' ||
+    categoryName === '可视化 / 3D / 动画' ||
     categoryName === '移动端与开放平台' ||
-    categoryName === '后端与数据库' ||
-    categoryName === '可视化与 3D'
+    categoryName === '后端 / 数据库 / 接口'
   ) {
-    return includesAny(matchText, ['官方', 'docs', 'guide', '开始', '介绍', 'overview', 'quickstart', '开发者中心', '开放文档'])
-      ? '官方文档'
-      : '教程 / 文章'
+    return isOfficialDoc(entry, matchText) ? '官方文档' : '教程 / 文章'
   }
 
-  return '控制台 / 平台'
+  if (categoryName === '开发文档与教程') {
+    return includesAny(matchText, ['官网', 'docs', '文档']) ? '官方文档' : '教程 / 文章'
+  }
+
+  return '控制台 / 服务'
 }
 
-function resolveShelf(categoryName, typeName) {
+function resolveShelf(categoryName = '', typeName = '') {
   if (categoryName === '设计灵感与案例') {
     return '灵感收藏'
   }
 
-  if (typeName === '官方文档' || typeName === '教程 / 文章') {
+  if (typeName === '官方文档' || typeName === '教程 / 文章' || typeName === '社区 / 导航') {
     return '学习资料'
   }
 
   return '工作平台'
 }
 
-function extractTopicTags(matchText, entry, categoryName, typeName) {
+function extractTopicTags(matchText = '', entry = {}, categoryName = '', typeName = '') {
   const tags = []
 
-  TOPIC_TAG_DEFINITIONS.forEach((definition) => {
+  TAG_DEFINITIONS.forEach((definition) => {
     if (includesAny(matchText, definition.keywords)) {
       pushUnique(tags, definition.tag)
     }
   })
 
-  const folderTrail = Array.isArray(entry.folderTrail) ? entry.folderTrail : []
-  folderTrail.forEach((segment) => {
-    const normalizedSegment = String(segment || '').trim()
-    if (!normalizedSegment || GENERIC_FOLDER_TAGS.has(normalizedSegment.toLowerCase())) {
+  getFolderTrail(entry).forEach((segment) => {
+    const normalizedSegment = normalizeText(segment)
+    if (!normalizedSegment || GENERIC_FOLDER_TAGS.has(normalizedSegment)) {
       return
     }
 
-    if (normalizedSegment.length <= 12) {
-      pushUnique(tags, normalizedSegment)
+    if (segment.length <= 12) {
+      pushUnique(tags, segment)
     }
   })
 
@@ -440,46 +598,58 @@ function extractTopicTags(matchText, entry, categoryName, typeName) {
   return tags.slice(0, 6)
 }
 
-function buildReason(categoryName, typeName, tags = []) {
+function buildReason(categoryName = '', typeName = '', tags = []) {
   const focusTag = tags.find((tag) => !CATEGORY_ORDER.includes(tag) && tag !== typeName) || ''
 
-  if (categoryName === 'API 面板与服务商') {
-    return '这类链接偏后台和配额管理，找监控、购买或控制台时最省事'
+  if (categoryName === 'AI 模型与对话') {
+    return focusTag ? `要切到 ${focusTag} 或回到模型平台时，直接来这一组最快` : '开聊、切模型或查看模型平台能力时，直接回这一组'
   }
 
-  if (categoryName === 'VPN 与网络服务') {
-    return '切网络、查套餐或处理外网访问时，通常先回这一组'
+  if (categoryName === 'AI 编程与 Agent') {
+    return focusTag ? `和 ${focusTag} 工作流相关，查教程、配置或入口时更顺手` : 'AI 编程代理相关资料已经单独归拢，找入口和文档更快'
   }
 
-  if (categoryName === '工作与机构入口' || categoryName === '个人服务入口') {
-    return '这类入口不需要记太多，只要下次能快速点开就够了'
+  if (categoryName === 'AI API 与服务商') {
+    return '中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录'
   }
 
-  if (categoryName === 'AI 助手与模型') {
-    return focusTag ? `需要切到 ${focusTag} 或对比模型能力时，直接回这一条` : '需要切模型、开聊或查能力边界时，直接回这一条'
+  if (categoryName === '开发文档与教程') {
+    return '这组更偏学习资料，查语法、原理和实战文章时最省时间'
   }
 
-  if (categoryName === 'AI 开发工具') {
-    return focusTag ? `和 ${focusTag} 工作流相关，查配置或文档时会更顺手` : '和 AI 编程代理工作流相关，适合查配置、权限和使用姿势'
+  if (categoryName === '开发社区与代码托管') {
+    return '需要继续扩展资料、找仓库或看社区讨论时，先回这里'
   }
 
   if (categoryName === '设计灵感与案例') {
-    return '做后台、可视化或移动端界面时，用它来找方向和细节参考'
+    return '做后台、小程序或可视化页面时，用它来找风格和参考最合适'
+  }
+
+  if (categoryName === '在线工具与效率') {
+    return '它偏即时可用型工具，适合临时处理任务时快速打开'
+  }
+
+  if (categoryName === '网络 / VPN / 云服务') {
+    return '和外网访问、代理、加速有关的入口都收进来了，切换时更好找'
+  }
+
+  if (categoryName === '个人 / 工作 / 校园入口') {
+    return '这类入口不需要解释太多，重点就是以后能一下子点回去'
   }
 
   if (typeName === '官方文档') {
-    return focusTag ? `查 ${focusTag} 的 API、配置或官方示例时优先回这里` : '它更像稳定基准线，查 API、配置和官方示例时优先回这里'
+    return '它更像稳定基准线，查 API、配置和官方示例时优先回这里'
   }
 
   if (typeName === '教程 / 文章') {
-    return focusTag ? `当官方文档不够直白时，用这条补 ${focusTag} 的细节理解` : '当官方文档不够直白时，用这条补充理解会更快'
+    return '当官方文档不够直白时，这一条通常更适合补理解'
   }
 
-  if (typeName === '社区 / 导航') {
-    return '需要继续往外扩展资料、找社区讨论或切换入口时，这条最省时间'
+  if (typeName === '工具 / 素材') {
+    return '它更偏直接可用的工具或素材，适合动手时快速回找'
   }
 
-  return '它偏工具或平台入口，适合需要直接动手时迅速返回'
+  return '这条链接已经按实际用途归好，回找时会比原始收藏夹更顺手'
 }
 
 export function slugifyBookmarkText(value = '') {
@@ -507,8 +677,8 @@ export function buildBookmarkId(entry, usedIds = new Set()) {
 
 export function classifyBookmark(entry = {}) {
   const matchText = buildMatchText(entry)
-  const categoryDefinition = resolveCategory(matchText)
-  const type = resolveType(categoryDefinition.name, matchText)
+  const categoryDefinition = resolveCategory(entry, matchText)
+  const type = resolveType(entry, categoryDefinition.name, matchText)
   const shelf = resolveShelf(categoryDefinition.name, type)
   const tags = extractTopicTags(matchText, entry, categoryDefinition.name, type)
 
@@ -523,18 +693,17 @@ export function classifyBookmark(entry = {}) {
 }
 
 export function sortBookmarks(bookmarkA = {}, bookmarkB = {}) {
-  const categoryDiff =
-    CATEGORY_ORDER.indexOf(bookmarkA.category) - CATEGORY_ORDER.indexOf(bookmarkB.category)
+  const categoryDiff = orderIndex(CATEGORY_ORDER, bookmarkA.category) - orderIndex(CATEGORY_ORDER, bookmarkB.category)
   if (categoryDiff !== 0) {
     return categoryDiff
   }
 
-  const typeDiff = TYPE_ORDER.indexOf(bookmarkA.type) - TYPE_ORDER.indexOf(bookmarkB.type)
+  const typeDiff = orderIndex(TYPE_ORDER, bookmarkA.type) - orderIndex(TYPE_ORDER, bookmarkB.type)
   if (typeDiff !== 0) {
     return typeDiff
   }
 
-  const shelfDiff = SHELF_ORDER.indexOf(bookmarkA.shelf) - SHELF_ORDER.indexOf(bookmarkB.shelf)
+  const shelfDiff = orderIndex(SHELF_ORDER, bookmarkA.shelf) - orderIndex(SHELF_ORDER, bookmarkB.shelf)
   if (shelfDiff !== 0) {
     return shelfDiff
   }
@@ -553,7 +722,7 @@ export function buildCategorySummary(entries = []) {
       return {
         name,
         count: matchedItems.length,
-        description: CATEGORY_DEFINITIONS.find((item) => item.name === name)?.description || ''
+        description: getCategoryDefinition(name).description
       }
     })
     .filter(Boolean)

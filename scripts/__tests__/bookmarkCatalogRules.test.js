@@ -32,7 +32,7 @@ describe('bookmarkCatalogRules', () => {
     expect(result.shelf).toBe('灵感收藏')
   })
 
-  test('将服务面板归入 API 面板与服务商', () => {
+  test('将服务面板归入 AI API 与服务商', () => {
     const result = classifyBookmark({
       title: '云驿 - API 使用监控',
       url: 'https://yunyi.rdzhvip.com/user/dashboard',
@@ -41,12 +41,12 @@ describe('bookmarkCatalogRules', () => {
       folderTrail: ['书签栏', 'Ai', 'API中转']
     })
 
-    expect(result.category).toBe('API 面板与服务商')
-    expect(result.type).toBe('控制台 / 平台')
+    expect(result.category).toBe('AI API 与服务商')
+    expect(result.type).toBe('控制台 / 服务')
     expect(result.shelf).toBe('工作平台')
   })
 
-  test('将机构登录类入口归入工作与机构入口', () => {
+  test('将机构登录类入口归入个人 / 工作 / 校园入口', () => {
     const result = classifyBookmark({
       title: '登录团队 - CODING',
       url: 'https://runlan.coding.net/login?redirect=%2Fvcs%2Fdepots',
@@ -55,8 +55,34 @@ describe('bookmarkCatalogRules', () => {
       folderTrail: ['书签栏', '公司']
     })
 
-    expect(result.category).toBe('工作与机构入口')
+    expect(result.category).toBe('个人 / 工作 / 校园入口')
     expect(result.type).toBe('账号 / 平台入口')
+  })
+
+  test('将 CSDN 社区入口归入开发社区与代码托管', () => {
+    const result = classifyBookmark({
+      title: 'CSDN_专业开发者社区_已接入DeepSeekR1满血版',
+      url: 'https://www.csdn.net/',
+      domain: 'csdn.net',
+      originalPath: '书签栏',
+      folderTrail: ['书签栏']
+    })
+
+    expect(result.category).toBe('开发社区与代码托管')
+    expect(result.type).toBe('社区 / 导航')
+  })
+
+  test('将 DCloud 文档归入移动端与开放平台', () => {
+    const result = classifyBookmark({
+      title: 'uni-app快速上手 | uni-app官网',
+      url: 'https://uniapp.dcloud.net.cn/',
+      domain: 'uniapp.dcloud.net.cn',
+      originalPath: '书签栏 / 移动端',
+      folderTrail: ['书签栏', '移动端']
+    })
+
+    expect(result.category).toBe('移动端与开放平台')
+    expect(result.type).toBe('官方文档')
   })
 
   test('生成稳定且不重复的书签 id', () => {
