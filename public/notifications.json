@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-05-10T10:45:37.232Z",
-  "total": 281,
+  "generatedAt": "2026-05-10T11:41:26.750Z",
+  "total": 282,
   "notifications": [
+    {
+      "id": "git-d0360bd7b2b6138110cc593e6d68800c6c1ba734",
+      "title": "优化书签",
+      "content": "提交说明：优化书签",
+      "summary": "优化书签",
+      "date": "2026-05-10T18:46:42+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "d0360bd",
+      "fullHash": "d0360bd7b2b6138110cc593e6d68800c6c1ba734"
+    },
     {
       "id": "daily-2026-05-10-1",
       "title": "重做书签分类规则并核对 174 条链接完整性",

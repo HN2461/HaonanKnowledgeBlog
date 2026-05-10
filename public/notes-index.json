@@ -2661,6 +2661,34 @@
         },
         {
           "type": "file",
+          "title": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "frontmatterTitle": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "fileTitle": "第13篇_虚拟DOM_Diff_编译优化与面试补充",
+          "filename": "第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "path": "我的总结/Vue/vue辅助/第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue",
+            "虚拟DOM",
+            "Diff算法",
+            "编译优化",
+            "nextTick",
+            "性能优化",
+            "Teleport",
+            "Suspense",
+            "MVVM"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "补全前12篇之外的面试高频空白：虚拟DOM与VNode、Vue2双端Diff与Vue3快速Diff、key的本质作用、Vue3编译期优化（静态提升/PatchFlag/Block Tree/cacheHandlers）、nextTick原理、Vue性能优化清单、Teleport/Suspense/Fragment、MVVM与SPA概念。",
+          "size": "20KB",
+          "lastModified": "2026-05-10T11:48:57.152Z",
+          "wordCount": 12661
+        },
+        {
+          "type": "file",
           "title": "第14篇：易混淆 DOM 事件对比指南",
           "frontmatterTitle": "第14篇：易混淆 DOM 事件对比指南",
           "fileTitle": "14_易混淆DOM事件对比",
@@ -2874,6 +2902,78 @@
         },
         {
           "type": "file",
+          "title": "第23篇：执行上下文、作用域链与调用栈",
+          "frontmatterTitle": "第23篇：执行上下文、作用域链与调用栈",
+          "fileTitle": "23_执行上下文作用域链与调用栈",
+          "filename": "23_执行上下文作用域链与调用栈.md",
+          "path": "我的总结/JS/辅助资料/23_执行上下文作用域链与调用栈.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "执行上下文",
+            "作用域链",
+            "调用栈",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "从执行上下文、词法环境、作用域链到调用栈，一次补齐能把变量提升、闭包、this 和异步题串起来的底层总纲。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.089Z",
+          "wordCount": 3230
+        },
+        {
+          "type": "file",
+          "title": "第24篇：JavaScript 对象系统与属性描述符",
+          "frontmatterTitle": "第24篇：JavaScript 对象系统与属性描述符",
+          "fileTitle": "24_对象系统与属性描述符",
+          "filename": "24_对象系统与属性描述符.md",
+          "path": "我的总结/JS/辅助资料/24_对象系统与属性描述符.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "对象",
+            "属性描述符",
+            "Object.defineProperty",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "系统补齐对象创建、原型关联、属性描述符、可枚举性和冻结封印等高频对象题，避免只会讲原型链不会讲对象本身。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 3968
+        },
+        {
+          "type": "file",
+          "title": "第25篇：JavaScript 高频手写题思路总纲",
+          "frontmatterTitle": "第25篇：JavaScript 高频手写题思路总纲",
+          "fileTitle": "25_高频手写题思路总纲",
+          "filename": "25_高频手写题思路总纲.md",
+          "path": "我的总结/JS/辅助资料/25_高频手写题思路总纲.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "手写题",
+            "防抖节流",
+            "bind",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "先建立 JavaScript 高频手写题的知识地图与拆题方法，再逐个补写 bind、new、防抖、节流、柯里化、并发控制等专题实现。",
+          "size": "6KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 2505
+        },
+        {
+          "type": "file",
           "title": "解构赋值完整指南",
           "frontmatterTitle": "解构赋值完整指南",
           "fileTitle": "附录_解构赋值",
@@ -3009,10 +3109,10 @@
           ],
           "category": "我的总结/JS",
           "attachments": [],
-          "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
-          "size": "3KB",
-          "lastModified": "2026-05-07T14:34:30.019Z",
-          "wordCount": 1473
+          "description": "按 1 到 25 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与面试补强专题。",
+          "size": "4KB",
+          "lastModified": "2026-05-10T11:51:43.087Z",
+          "wordCount": 1743
         },
         {
           "type": "file",
@@ -3054,10 +3154,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
+          "description": "本页仅作为目录使用，按1到13依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-08T14:19:51.840Z",
-          "wordCount": 945
+          "lastModified": "2026-05-10T11:49:15.106Z",
+          "wordCount": 1129
         }
       ],
       "children": []
@@ -3587,6 +3687,78 @@
         },
         {
           "type": "file",
+          "title": "第23篇：执行上下文、作用域链与调用栈",
+          "frontmatterTitle": "第23篇：执行上下文、作用域链与调用栈",
+          "fileTitle": "23_执行上下文作用域链与调用栈",
+          "filename": "23_执行上下文作用域链与调用栈.md",
+          "path": "我的总结/JS/辅助资料/23_执行上下文作用域链与调用栈.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "执行上下文",
+            "作用域链",
+            "调用栈",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "从执行上下文、词法环境、作用域链到调用栈，一次补齐能把变量提升、闭包、this 和异步题串起来的底层总纲。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.089Z",
+          "wordCount": 3230
+        },
+        {
+          "type": "file",
+          "title": "第24篇：JavaScript 对象系统与属性描述符",
+          "frontmatterTitle": "第24篇：JavaScript 对象系统与属性描述符",
+          "fileTitle": "24_对象系统与属性描述符",
+          "filename": "24_对象系统与属性描述符.md",
+          "path": "我的总结/JS/辅助资料/24_对象系统与属性描述符.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "对象",
+            "属性描述符",
+            "Object.defineProperty",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "系统补齐对象创建、原型关联、属性描述符、可枚举性和冻结封印等高频对象题，避免只会讲原型链不会讲对象本身。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 3968
+        },
+        {
+          "type": "file",
+          "title": "第25篇：JavaScript 高频手写题思路总纲",
+          "frontmatterTitle": "第25篇：JavaScript 高频手写题思路总纲",
+          "fileTitle": "25_高频手写题思路总纲",
+          "filename": "25_高频手写题思路总纲.md",
+          "path": "我的总结/JS/辅助资料/25_高频手写题思路总纲.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "手写题",
+            "防抖节流",
+            "bind",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "先建立 JavaScript 高频手写题的知识地图与拆题方法，再逐个补写 bind、new、防抖、节流、柯里化、并发控制等专题实现。",
+          "size": "6KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 2505
+        },
+        {
+          "type": "file",
           "title": "解构赋值完整指南",
           "frontmatterTitle": "解构赋值完整指南",
           "fileTitle": "附录_解构赋值",
@@ -3650,10 +3822,10 @@
           ],
           "category": "我的总结/JS",
           "attachments": [],
-          "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
-          "size": "3KB",
-          "lastModified": "2026-05-07T14:34:30.019Z",
-          "wordCount": 1473
+          "description": "按 1 到 25 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与面试补强专题。",
+          "size": "4KB",
+          "lastModified": "2026-05-10T11:51:43.087Z",
+          "wordCount": 1743
         }
       ],
       "children": []
@@ -4180,6 +4352,78 @@
           "size": "26KB",
           "lastModified": "2026-05-09T12:50:17.705Z",
           "wordCount": 19420
+        },
+        {
+          "type": "file",
+          "title": "第23篇：执行上下文、作用域链与调用栈",
+          "frontmatterTitle": "第23篇：执行上下文、作用域链与调用栈",
+          "fileTitle": "23_执行上下文作用域链与调用栈",
+          "filename": "23_执行上下文作用域链与调用栈.md",
+          "path": "我的总结/JS/辅助资料/23_执行上下文作用域链与调用栈.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "执行上下文",
+            "作用域链",
+            "调用栈",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "从执行上下文、词法环境、作用域链到调用栈，一次补齐能把变量提升、闭包、this 和异步题串起来的底层总纲。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.089Z",
+          "wordCount": 3230
+        },
+        {
+          "type": "file",
+          "title": "第24篇：JavaScript 对象系统与属性描述符",
+          "frontmatterTitle": "第24篇：JavaScript 对象系统与属性描述符",
+          "fileTitle": "24_对象系统与属性描述符",
+          "filename": "24_对象系统与属性描述符.md",
+          "path": "我的总结/JS/辅助资料/24_对象系统与属性描述符.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "对象",
+            "属性描述符",
+            "Object.defineProperty",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "系统补齐对象创建、原型关联、属性描述符、可枚举性和冻结封印等高频对象题，避免只会讲原型链不会讲对象本身。",
+          "size": "7KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 3968
+        },
+        {
+          "type": "file",
+          "title": "第25篇：JavaScript 高频手写题思路总纲",
+          "frontmatterTitle": "第25篇：JavaScript 高频手写题思路总纲",
+          "fileTitle": "25_高频手写题思路总纲",
+          "filename": "25_高频手写题思路总纲.md",
+          "path": "我的总结/JS/辅助资料/25_高频手写题思路总纲.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "手写题",
+            "防抖节流",
+            "bind",
+            "面试题"
+          ],
+          "category": "我的总结/JS/辅助资料",
+          "attachments": [],
+          "description": "先建立 JavaScript 高频手写题的知识地图与拆题方法，再逐个补写 bind、new、防抖、节流、柯里化、并发控制等专题实现。",
+          "size": "6KB",
+          "lastModified": "2026-05-10T11:51:43.091Z",
+          "wordCount": 2505
         },
         {
           "type": "file",
@@ -4850,6 +5094,34 @@
         },
         {
           "type": "file",
+          "title": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "frontmatterTitle": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "fileTitle": "第13篇_虚拟DOM_Diff_编译优化与面试补充",
+          "filename": "第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "path": "我的总结/Vue/vue辅助/第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue",
+            "虚拟DOM",
+            "Diff算法",
+            "编译优化",
+            "nextTick",
+            "性能优化",
+            "Teleport",
+            "Suspense",
+            "MVVM"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "补全前12篇之外的面试高频空白：虚拟DOM与VNode、Vue2双端Diff与Vue3快速Diff、key的本质作用、Vue3编译期优化（静态提升/PatchFlag/Block Tree/cacheHandlers）、nextTick原理、Vue性能优化清单、Teleport/Suspense/Fragment、MVVM与SPA概念。",
+          "size": "20KB",
+          "lastModified": "2026-05-10T11:48:57.152Z",
+          "wordCount": 12661
+        },
+        {
+          "type": "file",
           "title": "附录01：Vue2的Webpack工程化详解",
           "frontmatterTitle": "附录01：Vue2的Webpack工程化详解",
           "fileTitle": "附录01_Vue2的Webpack工程化详解",
@@ -4937,10 +5209,10 @@
           ],
           "category": "我的总结",
           "attachments": [],
-          "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
+          "description": "本页仅作为目录使用，按1到13依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
           "size": "2KB",
-          "lastModified": "2026-05-08T14:19:51.840Z",
-          "wordCount": 945
+          "lastModified": "2026-05-10T11:49:15.106Z",
+          "wordCount": 1129
         }
       ],
       "children": []
@@ -5235,6 +5507,34 @@
           "size": "17KB",
           "lastModified": "2026-05-09T12:50:17.712Z",
           "wordCount": 11160
+        },
+        {
+          "type": "file",
+          "title": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "frontmatterTitle": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+          "fileTitle": "第13篇_虚拟DOM_Diff_编译优化与面试补充",
+          "filename": "第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "path": "我的总结/Vue/vue辅助/第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+          "date": "2026-05-10T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue",
+            "虚拟DOM",
+            "Diff算法",
+            "编译优化",
+            "nextTick",
+            "性能优化",
+            "Teleport",
+            "Suspense",
+            "MVVM"
+          ],
+          "category": "我的总结",
+          "attachments": [],
+          "description": "补全前12篇之外的面试高频空白：虚拟DOM与VNode、Vue2双端Diff与Vue3快速Diff、key的本质作用、Vue3编译期优化（静态提升/PatchFlag/Block Tree/cacheHandlers）、nextTick原理、Vue性能优化清单、Teleport/Suspense/Fragment、MVVM与SPA概念。",
+          "size": "20KB",
+          "lastModified": "2026-05-10T11:48:57.152Z",
+          "wordCount": 12661
         }
       ],
       "children": []
@@ -19617,6 +19917,106 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+      "frontmatterTitle": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+      "fileTitle": "第13篇_虚拟DOM_Diff_编译优化与面试补充",
+      "filename": "第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+      "path": "我的总结/Vue/vue辅助/第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+      "date": "2026-05-10T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Vue",
+        "虚拟DOM",
+        "Diff算法",
+        "编译优化",
+        "nextTick",
+        "性能优化",
+        "Teleport",
+        "Suspense",
+        "MVVM"
+      ],
+      "category": "我的总结",
+      "attachments": [],
+      "description": "补全前12篇之外的面试高频空白：虚拟DOM与VNode、Vue2双端Diff与Vue3快速Diff、key的本质作用、Vue3编译期优化（静态提升/PatchFlag/Block Tree/cacheHandlers）、nextTick原理、Vue性能优化清单、Teleport/Suspense/Fragment、MVVM与SPA概念。",
+      "size": "20KB",
+      "lastModified": "2026-05-10T11:48:57.152Z",
+      "wordCount": 12661
+    },
+    {
+      "type": "file",
+      "title": "第23篇：执行上下文、作用域链与调用栈",
+      "frontmatterTitle": "第23篇：执行上下文、作用域链与调用栈",
+      "fileTitle": "23_执行上下文作用域链与调用栈",
+      "filename": "23_执行上下文作用域链与调用栈.md",
+      "path": "我的总结/JS/辅助资料/23_执行上下文作用域链与调用栈.md",
+      "date": "2026-05-10T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "执行上下文",
+        "作用域链",
+        "调用栈",
+        "面试题"
+      ],
+      "category": "我的总结/JS/辅助资料",
+      "attachments": [],
+      "description": "从执行上下文、词法环境、作用域链到调用栈，一次补齐能把变量提升、闭包、this 和异步题串起来的底层总纲。",
+      "size": "7KB",
+      "lastModified": "2026-05-10T11:51:43.089Z",
+      "wordCount": 3230
+    },
+    {
+      "type": "file",
+      "title": "第24篇：JavaScript 对象系统与属性描述符",
+      "frontmatterTitle": "第24篇：JavaScript 对象系统与属性描述符",
+      "fileTitle": "24_对象系统与属性描述符",
+      "filename": "24_对象系统与属性描述符.md",
+      "path": "我的总结/JS/辅助资料/24_对象系统与属性描述符.md",
+      "date": "2026-05-10T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "对象",
+        "属性描述符",
+        "Object.defineProperty",
+        "面试题"
+      ],
+      "category": "我的总结/JS/辅助资料",
+      "attachments": [],
+      "description": "系统补齐对象创建、原型关联、属性描述符、可枚举性和冻结封印等高频对象题，避免只会讲原型链不会讲对象本身。",
+      "size": "7KB",
+      "lastModified": "2026-05-10T11:51:43.091Z",
+      "wordCount": 3968
+    },
+    {
+      "type": "file",
+      "title": "第25篇：JavaScript 高频手写题思路总纲",
+      "frontmatterTitle": "第25篇：JavaScript 高频手写题思路总纲",
+      "fileTitle": "25_高频手写题思路总纲",
+      "filename": "25_高频手写题思路总纲.md",
+      "path": "我的总结/JS/辅助资料/25_高频手写题思路总纲.md",
+      "date": "2026-05-10T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "手写题",
+        "防抖节流",
+        "bind",
+        "面试题"
+      ],
+      "category": "我的总结/JS/辅助资料",
+      "attachments": [],
+      "description": "先建立 JavaScript 高频手写题的知识地图与拆题方法，再逐个补写 bind、new、防抖、节流、柯里化、并发控制等专题实现。",
+      "size": "6KB",
+      "lastModified": "2026-05-10T11:51:43.091Z",
+      "wordCount": 2505
+    },
+    {
+      "type": "file",
       "title": "绝对路径与相对路径详解",
       "frontmatterTitle": "绝对路径与相对路径详解",
       "fileTitle": "22_绝对路径与相对路径详解",
@@ -20413,10 +20813,10 @@
       ],
       "category": "我的总结/JS",
       "attachments": [],
-      "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
-      "size": "3KB",
-      "lastModified": "2026-05-07T14:34:30.019Z",
-      "wordCount": 1473
+      "description": "按 1 到 25 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与面试补强专题。",
+      "size": "4KB",
+      "lastModified": "2026-05-10T11:51:43.087Z",
+      "wordCount": 1743
     },
     {
       "type": "file",
@@ -20888,10 +21288,10 @@
       ],
       "category": "我的总结",
       "attachments": [],
-      "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
+      "description": "本页仅作为目录使用，按1到13依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
       "size": "2KB",
-      "lastModified": "2026-05-08T14:19:51.840Z",
-      "wordCount": 945
+      "lastModified": "2026-05-10T11:49:15.106Z",
+      "wordCount": 1129
     },
     {
       "type": "file",
@@ -29550,6 +29950,78 @@
                 },
                 {
                   "type": "file",
+                  "title": "第23篇：执行上下文、作用域链与调用栈",
+                  "frontmatterTitle": "第23篇：执行上下文、作用域链与调用栈",
+                  "fileTitle": "23_执行上下文作用域链与调用栈",
+                  "filename": "23_执行上下文作用域链与调用栈.md",
+                  "path": "我的总结/JS/辅助资料/23_执行上下文作用域链与调用栈.md",
+                  "date": "2026-05-10T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "JavaScript",
+                    "执行上下文",
+                    "作用域链",
+                    "调用栈",
+                    "面试题"
+                  ],
+                  "category": "我的总结/JS/辅助资料",
+                  "attachments": [],
+                  "description": "从执行上下文、词法环境、作用域链到调用栈，一次补齐能把变量提升、闭包、this 和异步题串起来的底层总纲。",
+                  "size": "7KB",
+                  "lastModified": "2026-05-10T11:51:43.089Z",
+                  "wordCount": 3230
+                },
+                {
+                  "type": "file",
+                  "title": "第24篇：JavaScript 对象系统与属性描述符",
+                  "frontmatterTitle": "第24篇：JavaScript 对象系统与属性描述符",
+                  "fileTitle": "24_对象系统与属性描述符",
+                  "filename": "24_对象系统与属性描述符.md",
+                  "path": "我的总结/JS/辅助资料/24_对象系统与属性描述符.md",
+                  "date": "2026-05-10T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "JavaScript",
+                    "对象",
+                    "属性描述符",
+                    "Object.defineProperty",
+                    "面试题"
+                  ],
+                  "category": "我的总结/JS/辅助资料",
+                  "attachments": [],
+                  "description": "系统补齐对象创建、原型关联、属性描述符、可枚举性和冻结封印等高频对象题，避免只会讲原型链不会讲对象本身。",
+                  "size": "7KB",
+                  "lastModified": "2026-05-10T11:51:43.091Z",
+                  "wordCount": 3968
+                },
+                {
+                  "type": "file",
+                  "title": "第25篇：JavaScript 高频手写题思路总纲",
+                  "frontmatterTitle": "第25篇：JavaScript 高频手写题思路总纲",
+                  "fileTitle": "25_高频手写题思路总纲",
+                  "filename": "25_高频手写题思路总纲.md",
+                  "path": "我的总结/JS/辅助资料/25_高频手写题思路总纲.md",
+                  "date": "2026-05-10T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "JavaScript",
+                    "手写题",
+                    "防抖节流",
+                    "bind",
+                    "面试题"
+                  ],
+                  "category": "我的总结/JS/辅助资料",
+                  "attachments": [],
+                  "description": "先建立 JavaScript 高频手写题的知识地图与拆题方法，再逐个补写 bind、new、防抖、节流、柯里化、并发控制等专题实现。",
+                  "size": "6KB",
+                  "lastModified": "2026-05-10T11:51:43.091Z",
+                  "wordCount": 2505
+                },
+                {
+                  "type": "file",
                   "title": "解构赋值完整指南",
                   "frontmatterTitle": "解构赋值完整指南",
                   "fileTitle": "附录_解构赋值",
@@ -29615,10 +30087,10 @@
               ],
               "category": "我的总结/JS",
               "attachments": [],
-              "description": "按 1 到 21 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与扩展阅读。",
-              "size": "3KB",
-              "lastModified": "2026-05-07T14:34:30.019Z",
-              "wordCount": 1473
+              "description": "按 1 到 25 的顺序整理 JavaScript 常识专题入口，方便从基础概念一路串到进阶专题与面试补强专题。",
+              "size": "4KB",
+              "lastModified": "2026-05-10T11:51:43.087Z",
+              "wordCount": 1743
             }
           ]
         },
@@ -30099,6 +30571,34 @@
                   "size": "17KB",
                   "lastModified": "2026-05-09T12:50:17.712Z",
                   "wordCount": 11160
+                },
+                {
+                  "type": "file",
+                  "title": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+                  "frontmatterTitle": "第13篇：虚拟DOM、Diff算法、编译优化与面试高频补充",
+                  "fileTitle": "第13篇_虚拟DOM_Diff_编译优化与面试补充",
+                  "filename": "第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+                  "path": "我的总结/Vue/vue辅助/第13篇_虚拟DOM_Diff_编译优化与面试补充.md",
+                  "date": "2026-05-10T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Vue",
+                    "虚拟DOM",
+                    "Diff算法",
+                    "编译优化",
+                    "nextTick",
+                    "性能优化",
+                    "Teleport",
+                    "Suspense",
+                    "MVVM"
+                  ],
+                  "category": "我的总结",
+                  "attachments": [],
+                  "description": "补全前12篇之外的面试高频空白：虚拟DOM与VNode、Vue2双端Diff与Vue3快速Diff、key的本质作用、Vue3编译期优化（静态提升/PatchFlag/Block Tree/cacheHandlers）、nextTick原理、Vue性能优化清单、Teleport/Suspense/Fragment、MVVM与SPA概念。",
+                  "size": "20KB",
+                  "lastModified": "2026-05-10T11:48:57.152Z",
+                  "wordCount": 12661
                 }
               ]
             },
@@ -30198,10 +30698,10 @@
               ],
               "category": "我的总结",
               "attachments": [],
-              "description": "本页仅作为目录使用，按1到11依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
+              "description": "本页仅作为目录使用，按1到13依次阅读。包含插值语法、指令、响应式原理、组件配置项、class与style绑定、生命周期、组件通讯、mixins/plugins/scoped、Axios、Router、Vue3 Composition API等核心内容。",
               "size": "2KB",
-              "lastModified": "2026-05-08T14:19:51.840Z",
-              "wordCount": 945
+              "lastModified": "2026-05-10T11:49:15.106Z",
+              "wordCount": 1129
             }
           ]
         }
@@ -37124,7 +37624,7 @@
       ]
     }
   ],
-  "totalNotes": 372,
+  "totalNotes": 376,
   "totalCategories": 85,
-  "lastUpdated": "2026-05-09T14:34:07.414Z"
+  "lastUpdated": "2026-05-10T11:52:10.537Z"
 }
