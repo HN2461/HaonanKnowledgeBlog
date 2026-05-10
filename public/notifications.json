@@ -1,7 +1,58 @@
 {
-  "generatedAt": "2026-05-10T11:57:54.387Z",
-  "total": 285,
+  "generatedAt": "2026-05-10T14:40:07.251Z",
+  "total": 289,
   "notifications": [
+    {
+      "id": "daily-2026-05-10-6",
+      "title": "校订并扩写面试笔记《WebSocket 协议详解》",
+      "content": "第一点：把\"HTTP 是半双工\"改写为\"HTTP/1.1 采用请求—响应模型，应用语义上为半双工\"，并补充 keep-alive 仅复用 TCP、最小帧头 2 字节、原生二进制等准确表述，避免被面试官就 TCP 全双工反问；第二点：将 Node.js `ws` 库示例改为 `function(message, isBinary)` 并补 `message.toString()`，对齐 `ws@8+` 默认 `nodebuffer` 行为；第三点：删除\"老旧浏览器不支持\"等 2026 年已过时的兼容说法，改写为代理/网关穿透与应用层消息可靠性两个真正的工程局限；第四点：新增\"WebSocket 握手过程\"章节，给出 `Sec-WebSocket-Key/Accept` 计算所用固定 GUID `258EAFA5-E914-47DA-95CA-C5AB0DC85B11`、状态码 `101 Switching Protocols` 与完整请求/响应示例；第五点：新增\"数据帧结构\"章节，覆盖 FIN、opcode（0x1/0x2/0x8/0x9/0xA）、客户端帧必须掩码、Payload length 三档变长字段；第六点：新增\"心跳保活与断线重连\"章节，区分协议层 ping/pong 与浏览器侧应用层心跳，给出指数退避 + 抖动重连策略；第七点：新增\"与轮询/长轮询/SSE 对比\"章节，明确各自适用边界与 Nginx `proxy_http_version 1.1` + `Upgrade` 头转发要点；第八点：扩充安全章节，列出 URL token、子协议、Cookie/Session 三种鉴权方式，并强调握手阶段必须校验 `Origin` 头以防 CSWSH 跨站 WebSocket 劫持。",
+      "summary": "审阅 `public/notes/面试/WebSocket.md` 后修订 HTTP 半双工措辞、`ws@8+` 库示例与过时浏览器兼容描述，并新增握手过程、数据帧结构、心跳保活与断线重连、与轮询/SSE 对比、鉴权与 CSWSH 防护等面试加分章节。",
+      "date": "2026-05-10T22:38:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-05-10-5",
+      "title": "合并两篇面试笔记并收拢为一篇总复习稿",
+      "content": "第一点：以 `public/notes/面试/零碎知识.md` 作为最终承载文件，重写 frontmatter、H1 与章节结构，把 Vue2/Vue3 区别、响应式、虚拟 DOM、Diff、组件通讯、Vuex/Pinia、生命周期、路由、小程序、WebSocket、JavaScript 基础、CSS/ECharts、Three.js、工程化与项目经验等内容统一收口；第二点：对两篇里重复出现的 getters、Diff、ECharts 柱状图倒置、小程序跳 web-view、互跳小程序与公众号等内容做了合并，优先保留信息量更完整的版本，并把原文件中断裂的虚拟 DOM 代码示例单独补成完整章节；第三点：删除 `public/notes/面试/郭齐龙面试题.md`，让目录里最终只保留一篇主笔记，避免后续继续出现重复维护；第四点：按仓库规范在变更 `public/notes/` 后重新生成索引，确保列表页与搜索页只展示合并后的单篇内容。",
+      "summary": "将 `public/notes/面试/郭齐龙面试题.md` 与 `public/notes/面试/零碎知识.md` 合并为一篇新的《前端面试知识点整理》，尽量保留两篇原有内容，仅对重复知识点做去重和归并，并删除旧的独立文件。",
+      "date": "2026-05-10T22:29:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-05-10-4",
+      "title": "整理面试笔记《前端零碎知识点》的结构与排版",
+      "content": "第一点：保留主人原本收集的 Vuex getters、ECharts 柱状图倒置、Vue Diff、uni-app/web-view、小程序互跳、公众号跳转、Flex 布局、2D/3D 技术、长轮询、插槽和退款流程等内容，不删核心知识点；第二点：将原先连续堆叠的段落拆成统一编号主题，补上总标题与过渡说明，清理混用的 `+`、`1、`、口语化说明和多余空行，让整篇更像可复习的正式笔记；第三点：同步把示例代码块语言标记整理为 `javascript`、`vue`、`json`、`html`，方便后续站内渲染与阅读；第四点：按仓库规则在修改 `public/notes/` 后重新生成索引，确保列表页与搜索页能同步读取整理后的内容。",
+      "summary": "将 `public/notes/面试/零碎知识.md` 按主题重新编排为 12 个清晰章节，统一 frontmatter、H1、标题层级、列表样式与代码块格式，保留原有知识点但显著提升可读性和后续补充体验。",
+      "date": "2026-05-10T22:18:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-31c8063a9755c7f11252c59f3406be0e2b72fe1e",
+      "title": "新增面试文件",
+      "content": "提交说明：新增面试文件",
+      "summary": "新增面试文件",
+      "date": "2026-05-10T19:59:15+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "31c8063",
+      "fullHash": "31c8063a9755c7f11252c59f3406be0e2b72fe1e"
+    },
     {
       "id": "git-91188f818b9ad1e9881785ffd5af8ad85af56e26",
       "title": "新增JS和vue辅助",
