@@ -1,0 +1,4120 @@
+{
+  "generatedAt": "2026-05-11T15:14:23.682Z",
+  "sourceFile": "bookmarks_2026_5_9.html",
+  "totalCount": 174,
+  "note": "当前书签页保留全部收藏，不再自动隐藏账号或平台入口，重点是按用途整理并方便你自己快速回找",
+  "categories": [
+    {
+      "name": "AI 模型与对话",
+      "count": 10,
+      "description": "直接开聊、切模型、看开放平台能力时先回这一组"
+    },
+    {
+      "name": "AI 编程与 Agent",
+      "count": 12,
+      "description": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里"
+    },
+    {
+      "name": "AI API 与服务商",
+      "count": 14,
+      "description": "中转、监控、续费、小店和服务商后台入口统一收在这里"
+    },
+    {
+      "name": "前端框架与工程化",
+      "count": 16,
+      "description": "Vue、Vite、React、工程脚手架和构建配置资料"
+    },
+    {
+      "name": "UI 组件与样式",
+      "count": 19,
+      "description": "组件库、图表库、样式方案和交互引擎相关入口"
+    },
+    {
+      "name": "地图与地理服务",
+      "count": 9,
+      "description": "地图展示、地理编码、轨迹和控制台相关资料"
+    },
+    {
+      "name": "可视化 / 3D / 动画",
+      "count": 5,
+      "description": "Three.js、数字孪生、3D 素材和动画资源"
+    },
+    {
+      "name": "移动端与开放平台",
+      "count": 12,
+      "description": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口"
+    },
+    {
+      "name": "后端 / 数据库 / 接口",
+      "count": 4,
+      "description": "Koa、Mongoose、MQTT、接口文档和服务端资料"
+    },
+    {
+      "name": "开发文档与教程",
+      "count": 15,
+      "description": "MDN、教程站、博客文章和实战讲解集中放这里"
+    },
+    {
+      "name": "开发社区与代码托管",
+      "count": 7,
+      "description": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口"
+    },
+    {
+      "name": "设计灵感与案例",
+      "count": 15,
+      "description": "后台、小程序、数字孪生、UI 风格案例与灵感收集"
+    },
+    {
+      "name": "在线工具与效率",
+      "count": 11,
+      "description": "二维码、JSON、流程图、转换工具和日常效率网站"
+    },
+    {
+      "name": "网络 / VPN / 云服务",
+      "count": 12,
+      "description": "机场、代理客户端、云服务和网络辅助工具"
+    },
+    {
+      "name": "个人 / 工作 / 校园入口",
+      "count": 13,
+      "description": "个人站点、账号后台、校园政务和日常登录入口"
+    }
+  ],
+  "shelves": [
+    {
+      "name": "学习资料",
+      "count": 95
+    },
+    {
+      "name": "工作平台",
+      "count": 64
+    },
+    {
+      "name": "灵感收藏",
+      "count": 15
+    }
+  ],
+  "types": [
+    {
+      "name": "官方文档",
+      "count": 64
+    },
+    {
+      "name": "教程 / 文章",
+      "count": 23
+    },
+    {
+      "name": "社区 / 导航",
+      "count": 8
+    },
+    {
+      "name": "控制台 / 服务",
+      "count": 39
+    },
+    {
+      "name": "账号 / 平台入口",
+      "count": 13
+    },
+    {
+      "name": "案例 / 灵感",
+      "count": 12
+    },
+    {
+      "name": "工具 / 素材",
+      "count": 15
+    }
+  ],
+  "sourceGroups": [
+    {
+      "name": "程序网站",
+      "count": 60
+    },
+    {
+      "name": "Ai",
+      "count": 37
+    },
+    {
+      "name": "工具库",
+      "count": 22
+    },
+    {
+      "name": "开发",
+      "count": 19
+    },
+    {
+      "name": "VPN",
+      "count": 13
+    },
+    {
+      "name": "移动端",
+      "count": 6
+    },
+    {
+      "name": "根入口",
+      "count": 5
+    },
+    {
+      "name": "UI",
+      "count": 4
+    },
+    {
+      "name": "个人网站",
+      "count": 3
+    },
+    {
+      "name": "HP",
+      "count": 3
+    },
+    {
+      "name": "公司",
+      "count": 2
+    }
+  ],
+  "entries": [
+    {
+      "id": "open-bigmodel-cn-智谱ai开放平台",
+      "title": "智谱AI开放平台",
+      "url": "https://open.bigmodel.cn/usercenter/glm-coding/usage",
+      "domain": "open.bigmodel.cn",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "国内AI",
+        "AI 模型与对话",
+        "官方文档"
+      ],
+      "reason": "要切到 国内AI 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "platform-xiaomimimo-com-xiaomi-mimo-开放平台",
+      "title": "Xiaomi MiMo 开放平台",
+      "url": "https://platform.xiaomimimo.com/docs/zh-CN/welcome",
+      "domain": "platform.xiaomimimo.com",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "国内AI",
+        "AI 模型与对话",
+        "官方文档"
+      ],
+      "reason": "要切到 国内AI 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "chatgpt-com-chatgpt",
+      "title": "ChatGPT",
+      "url": "https://chatgpt.com/",
+      "domain": "chatgpt.com",
+      "originalPath": "书签栏 / Ai / 国外AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国外AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "ChatGPT",
+        "国外AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 ChatGPT 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "chat-deepseek-com-deepseek-探索未至之境",
+      "title": "DeepSeek - 探索未至之境",
+      "url": "https://chat.deepseek.com/a/chat/s/15df326e-2507-4d74-9b9e-09d0fd8eb8bc",
+      "domain": "chat.deepseek.com",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "DeepSeek",
+        "国内AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 DeepSeek 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "gemini-google-com-google-gemini",
+      "title": "Google Gemini",
+      "url": "https://gemini.google.com/app",
+      "domain": "gemini.google.com",
+      "originalPath": "书签栏 / Ai / 国外AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国外AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "Gemini",
+        "国外AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 Gemini 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "grok-com-grok",
+      "title": "Grok",
+      "url": "https://grok.com/",
+      "domain": "grok.com",
+      "originalPath": "书签栏 / Ai / 国外AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国外AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "国外AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 国外AI 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "kimi-com-kimi-ai-官网",
+      "title": "Kimi AI 官网",
+      "url": "https://www.kimi.com/?chat_enter_method=new_chat",
+      "domain": "kimi.com",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "Kimi",
+        "国内AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 Kimi 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "longcat-chat-longcat-ai",
+      "title": "LongCat AI",
+      "url": "https://longcat.chat/platform/usage",
+      "domain": "longcat.chat",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "国内AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 国内AI 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "minimax-io-minimax",
+      "title": "MiniMax",
+      "url": "https://www.minimax.io/news/minimax-m21",
+      "domain": "minimax.io",
+      "originalPath": "书签栏 / Ai / 国内AI",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "国内AI"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "MiniMax",
+        "国内AI",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 MiniMax 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "agent-minimaxi-com-minimax-agent-简单指令-无限可能",
+      "title": "MiniMax Agent: 简单指令, 无限可能",
+      "url": "https://agent.minimaxi.com/chat?id=389583017984198",
+      "domain": "agent.minimaxi.com",
+      "originalPath": "书签栏",
+      "folderTrail": [
+        "书签栏"
+      ],
+      "sourceGroup": "根入口",
+      "category": "AI 模型与对话",
+      "categoryDescription": "直接开聊、切模型、看开放平台能力时先回这一组",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "MiniMax",
+        "AI 模型与对话",
+        "控制台 / 服务"
+      ],
+      "reason": "要切到 MiniMax 或回到模型平台时，直接来这一组最快"
+    },
+    {
+      "id": "developers-openai-com-codex-app",
+      "title": "Codex app",
+      "url": "https://developers.openai.com/codex/app",
+      "domain": "developers.openai.com",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / codex",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "codex"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "ChatGPT",
+        "Codex",
+        "Ai编辑器",
+        "codex",
+        "AI 编程与 Agent",
+        "官方文档"
+      ],
+      "reason": "和 ChatGPT 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "my-feishu-cn-ca-cursor-pro使用指南-飞书云文档版",
+      "title": "《ca - cursor pro使用指南（飞书云文档版）》",
+      "url": "https://my.feishu.cn/wiki/GcjlwlQZOinKrXkNnyPcwRSrnVg",
+      "domain": "my.feishu.cn",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / 卖家文档",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "卖家文档"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Ai编辑器",
+        "卖家文档",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Ai编辑器 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "claudecode-tangshuang-net-claude-code免费深度教程-从入门到精通的百万字秘籍",
+      "title": "《Claude Code免费深度教程：从入门到精通的百万字秘籍》",
+      "url": "https://claudecode.tangshuang.net/",
+      "domain": "claudecode.tangshuang.net",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / claude code",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "claude code"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Claude Code",
+        "Ai编辑器",
+        "claude code",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Claude Code 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "ncnnujysujcj-feishu-cn-飞书云文档codex使用全攻略",
+      "title": "飞书云文档Codex使用全攻略",
+      "url": "https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf",
+      "domain": "ncnnujysujcj.feishu.cn",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / 卖家文档",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "卖家文档"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Codex",
+        "Ai编辑器",
+        "卖家文档",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Codex 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "code-claude-com-快速入门-claude-code-docs",
+      "title": "快速入门 - Claude Code Docs",
+      "url": "https://code.claude.com/docs/zh-CN/quickstart",
+      "domain": "code.claude.com",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / claude code",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "claude code"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Claude Code",
+        "Ai编辑器",
+        "claude code",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Claude Code 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "my-feishu-cn-ai随风",
+      "title": "AI随风",
+      "url": "https://my.feishu.cn/wiki/IQN1wMxixivvaKkqELlc1lmrnec",
+      "domain": "my.feishu.cn",
+      "originalPath": "书签栏 / Ai / Ai编辑器",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Ai编辑器",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Ai编辑器 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "dcnp82fx8qqw-feishu-cn-codex-cli-vscode-扬芳鱼",
+      "title": "Codex Cli/VSCode~扬芳鱼",
+      "url": "https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc",
+      "domain": "dcnp82fx8qqw.feishu.cn",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / 卖家文档",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "卖家文档"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Codex",
+        "Ai编辑器",
+        "卖家文档",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Codex 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "docs-packyapi-com-codex与packyapi配置及使用指南",
+      "title": "Codex与PackyAPI配置及使用指南",
+      "url": "https://docs.packyapi.com/docs/cli/3-codex.html",
+      "domain": "docs.packyapi.com",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / codex",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "codex"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Codex",
+        "Ai编辑器",
+        "codex",
+        "AI 编程与 Agent",
+        "教程 / 文章"
+      ],
+      "reason": "和 Codex 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "skillsmp-com-agent-skills市场-claude-codex与chatgpt的技能盘点",
+      "title": "Agent Skills市场：Claude、Codex与ChatGPT的技能盘点",
+      "url": "https://skillsmp.com/zh",
+      "domain": "skillsmp.com",
+      "originalPath": "书签栏 / Ai",
+      "folderTrail": [
+        "书签栏",
+        "Ai"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "ChatGPT",
+        "Codex",
+        "AI 编程与 Agent",
+        "社区 / 导航"
+      ],
+      "reason": "和 ChatGPT 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "orchids-app-兰花-ai应用搭建工具",
+      "title": "《兰花 - AI应用搭建工具》",
+      "url": "https://www.orchids.app/",
+      "domain": "orchids.app",
+      "originalPath": "书签栏 / Ai",
+      "folderTrail": [
+        "书签栏",
+        "Ai"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "AI 编程与 Agent",
+        "控制台 / 服务"
+      ],
+      "reason": "AI 编程代理相关资料已经单独归拢，找入口和文档更快"
+    },
+    {
+      "id": "openclaw101-dev-openclaw101",
+      "title": "OpenClaw101",
+      "url": "https://openclaw101.dev/zh",
+      "domain": "openclaw101.dev",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / OpenClaw",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "OpenClaw"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "OpenClaw",
+        "Ai编辑器",
+        "AI 编程与 Agent",
+        "控制台 / 服务"
+      ],
+      "reason": "和 OpenClaw 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "clawd-org-cn-openclaw中文社区-开源免费ai助手与多平台自动化服务",
+      "title": "OpenClaw中文社区：开源免费AI助手与多平台自动化服务",
+      "url": "https://clawd.org.cn/",
+      "domain": "clawd.org.cn",
+      "originalPath": "书签栏 / Ai / Ai编辑器 / OpenClaw",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "Ai编辑器",
+        "OpenClaw"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI 编程与 Agent",
+      "categoryDescription": "Codex、Claude Code、OpenClaw、AI 工作流资料集中放这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "OpenClaw",
+        "Ai编辑器",
+        "AI 编程与 Agent",
+        "控制台 / 服务"
+      ],
+      "reason": "和 OpenClaw 工作流相关，查教程、配置或入口时更顺手"
+    },
+    {
+      "id": "pay-ldxp-cn-里诺奇cursor续杯的小店-链动小铺",
+      "title": "里诺奇cursor续杯的小店 - 链动小铺",
+      "url": "https://pay.ldxp.cn/shop/NX2BIOAR",
+      "domain": "pay.ldxp.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "ai-rpcod-com-蓉漂码农的dashboard世界",
+      "title": "蓉漂码农的Dashboard世界",
+      "url": "https://ai.rpcod.com/dashboard",
+      "domain": "ai.rpcod.com",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "pay-ldxp-cn-四合一无限续杯助手",
+      "title": "四合一无限续杯助手",
+      "url": "https://pay.ldxp.cn/shop/KH17RYBP",
+      "domain": "pay.ldxp.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "proxyhub-jzzcg-com-小助手的codex",
+      "title": "小助手的Codex",
+      "url": "https://proxyhub.jzzcg.com/purchase",
+      "domain": "proxyhub.jzzcg.com",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "Codex",
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "pay-ldxp-cn-扬芳瑜小铺的小店-链动小铺",
+      "title": "扬芳瑜小铺的小店 - 链动小铺",
+      "url": "https://pay.ldxp.cn/shop/3SR85P50",
+      "domain": "pay.ldxp.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "yfy-zhouyang168-top-杨芳鱼new-api",
+      "title": "杨芳鱼New API",
+      "url": "https://yfy.zhouyang168.top/console",
+      "domain": "yfy.zhouyang168.top",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "yunyi-rdzhvip-com-云驿-api-使用监控",
+      "title": "云驿 - API 使用监控",
+      "url": "https://yunyi.rdzhvip.com/user/dashboard",
+      "domain": "yunyi.rdzhvip.com",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "yfy-status-5imh-xyz-状态历史",
+      "title": "状态历史",
+      "url": "http://yfy-status.5imh.xyz/history.html",
+      "domain": "yfy-status.5imh.xyz",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "pay-ldxp-cn-ai小店的小店-链动小铺",
+      "title": "ai小店的小店 - 链动小铺",
+      "url": "https://pay.ldxp.cn/shop/GM1MDHOP",
+      "domain": "pay.ldxp.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "pay-qxvx-cn-gemini-gpt源头批发的小店-qxvx-pay",
+      "title": "Gemini gpt源头批发的小店 - QXVX Pay",
+      "url": "https://pay.qxvx.cn/shop/QZ4D2MNJ",
+      "domain": "pay.qxvx.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "Gemini",
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "fe-dtyuedan-cn-gpt-plus的小店-秋风自助发卡站",
+      "title": "gpt_plus的小店 - 秋风自助发卡站",
+      "url": "https://fe.dtyuedan.cn/shop/gpt_plus",
+      "domain": "fe.dtyuedan.cn",
+      "originalPath": "书签栏 / Ai / 商家店铺",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "商家店铺"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "商家店铺",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "api-lumio-games-lumioapi",
+      "title": "LumioAPI",
+      "url": "https://api.lumio.games/dashboard",
+      "domain": "api.lumio.games",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "deepl-micosoft-icu-old-codex",
+      "title": "old—Codex",
+      "url": "https://deepl.micosoft.icu/api/codexusage/",
+      "domain": "deepl.micosoft.icu",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "Codex",
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "ai-jiexi6-cn-profile-ai偕修",
+      "title": "Profile - AI偕修",
+      "url": "https://ai.jiexi6.cn/profile",
+      "domain": "ai.jiexi6.cn",
+      "originalPath": "书签栏 / Ai / API中转",
+      "folderTrail": [
+        "书签栏",
+        "Ai",
+        "API中转"
+      ],
+      "sourceGroup": "Ai",
+      "category": "AI API 与服务商",
+      "categoryDescription": "中转、监控、续费、小店和服务商后台入口统一收在这里",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "API中转",
+        "AI API 与服务商",
+        "控制台 / 服务"
+      ],
+      "reason": "中转、续费、监控和商家后台都放到了一起，回找时不用再翻目录"
+    },
+    {
+      "id": "quanzhan-co-3-x文档-luch-request",
+      "title": "3.x文档 | luch-request",
+      "url": "https://www.quanzhan.co/luch-request/guide/3.x/#%E4%BB%8B%E7%BB%8D",
+      "domain": "quanzhan.co",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "quanzhan-co-3-x文档-luch-request-2",
+      "title": "3.x文档 | luch-request",
+      "url": "https://www.quanzhan.co/luch-request/guide/3.x/#%E5%9C%A8%E8%AF%B7%E6%B1%82%E4%B9%8B%E5%90%8E%E6%8B%A6%E6%88%AA",
+      "domain": "quanzhan.co",
+      "originalPath": "书签栏 / 程序网站 / 框架 / uniApp小程序",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架",
+        "uniApp小程序"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "uni-app",
+        "uniApp小程序",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "cn-vuejs-org-单文件组件-vue-js",
+      "title": "单文件组件 | Vue.js",
+      "url": "https://cn.vuejs.org/guide/scaling-up/sfc.html",
+      "domain": "cn.vuejs.org",
+      "originalPath": "书签栏 / 开发",
+      "folderTrail": [
+        "书签栏",
+        "开发"
+      ],
+      "sourceGroup": "开发",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "pure-admin-cn-介绍-pure-admin-保姆级文档",
+      "title": "介绍 | Pure Admin 保姆级文档",
+      "url": "https://pure-admin.cn/pages/introduction/",
+      "domain": "pure-admin.cn",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "cn-vite-dev-开始-vite-官方中文文档",
+      "title": "开始 | Vite 官方中文文档",
+      "url": "https://cn.vite.dev/guide/",
+      "domain": "cn.vite.dev",
+      "originalPath": "书签栏 / 程序网站 / 官方资料库 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "官方资料库",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vite",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "cn-vitejs-dev-开始-vite-官方中文文档",
+      "title": "开始 | Vite 官方中文文档",
+      "url": "https://cn.vitejs.dev/guide/",
+      "domain": "cn.vitejs.dev",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vite",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "vueuse-nodejs-cn-开始使用-vueuse-中文网",
+      "title": "开始使用 | VueUse 中文网",
+      "url": "https://vueuse.nodejs.cn/guide/",
+      "domain": "vueuse.nodejs.cn",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "组件库",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "quanzhan-co-指南-luch-request",
+      "title": "指南 | luch-request",
+      "url": "https://www.quanzhan.co/luch-request/handbook/",
+      "domain": "quanzhan.co",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "vueuse-org-get-started-vueuse",
+      "title": "Get Started | VueUse",
+      "url": "https://vueuse.org/guide/",
+      "domain": "vueuse.org",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lodashjs-com-lodash-简介-lodash中文文档-lodash中文网",
+      "title": "Lodash 简介 | Lodash中文文档 | Lodash中文网",
+      "url": "https://www.lodashjs.com/",
+      "domain": "lodashjs.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "docs-naiveadmin-com-naive-ui-admin-开箱即用中台前端框架-naive-ui-admin-开箱即用中台前端框架",
+      "title": "Naive Ui Admin 开箱即用中台前端框架 | Naive Ui Admin 开箱即用中台前端框架",
+      "url": "https://docs.naiveadmin.com/",
+      "domain": "docs.naiveadmin.com",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "nvm-uihtm-com-nvm文档手册-nvm是一个nodejs版本管理工具-nvm中文网",
+      "title": "nvm文档手册 - nvm是一个nodejs版本管理工具 - nvm中文网",
+      "url": "https://nvm.uihtm.com/",
+      "domain": "nvm.uihtm.com",
+      "originalPath": "书签栏 / 程序网站 / 官方资料库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "官方资料库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "zh-hans-react-dev-react-中文文档快速上手指南",
+      "title": "React 中文文档快速上手指南",
+      "url": "https://zh-hans.react.dev/learn",
+      "domain": "zh-hans.react.dev",
+      "originalPath": "书签栏 / 开发 / 开发知识文档",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "开发知识文档"
+      ],
+      "sourceGroup": "开发",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "React",
+        "开发知识文档",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "cn-vuejs-org-vue-js-渐进式-javascript-框架-vue-js",
+      "title": "Vue.js - 渐进式 JavaScript 框架 | Vue.js",
+      "url": "https://cn.vuejs.org/",
+      "domain": "cn.vuejs.org",
+      "originalPath": "书签栏 / 程序网站 / 官方资料库 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "官方资料库",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "前端框架与工程化",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "naiveui-com-naive-ui-一个-vue-3-组件库",
+      "title": "Naive UI: 一个 Vue 3 组件库",
+      "url": "https://www.naiveui.com/zh-CN/os-theme",
+      "domain": "naiveui.com",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "前端框架与工程化",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "doc-vben-pro-vben-admin",
+      "title": "Vben Admin",
+      "url": "https://doc.vben.pro/",
+      "domain": "doc.vben.pro",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "前端框架与工程化",
+      "categoryDescription": "Vue、Vite、React、工程脚手架和构建配置资料",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "前端框架与工程化",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "vant-ui-github-io-介绍-vant-4",
+      "title": "介绍 - Vant 4",
+      "url": "https://vant-ui.github.io/vant/#/zh-CN/home",
+      "domain": "vant-ui.github.io",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "uviewui-com-介绍-uview-2-0",
+      "title": "介绍 | uView 2.0",
+      "url": "https://uviewui.com/js/intro",
+      "domain": "uviewui.com",
+      "originalPath": "书签栏 / 移动端",
+      "folderTrail": [
+        "书签栏",
+        "移动端"
+      ],
+      "sourceGroup": "移动端",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "uviewui-com-介绍-uview-2-0-全面兼容-nvue-的-uni-app-生态框架-uni-app-ui-框架",
+      "title": "介绍 | uView 2.0 - 全面兼容 nvue 的 uni-app 生态框架 - uni-app UI 框架",
+      "url": "https://uviewui.com/components/intro.html",
+      "domain": "uviewui.com",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "uni-app",
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "cn-windicss-org-开始-windi-css",
+      "title": "开始 | Windi CSS",
+      "url": "https://cn.windicss.org/guide/",
+      "domain": "cn.windicss.org",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "isqqw-com-首页-echarts图表集-echarts-demo集-echarts-gallery社区-make-a-pie-分享你的可视化作品isqq",
+      "title": "首页 - ECharts图表集,ECharts demo集,echarts gallery社区,Make A Pie,分享你的可视化作品isqqw.com",
+      "url": "https://www.isqqw.com/?t=map",
+      "domain": "isqqw.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "ECharts",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "antdv-com-ant-design-of-vue-ant-design-vue",
+      "title": "Ant Design of Vue - Ant Design Vue",
+      "url": "https://www.antdv.com/docs/vue/introduce-cn",
+      "domain": "antdv.com",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "iconfont-cn-iconfont-阿里巴巴矢量图标库",
+      "title": "iconfont-阿里巴巴矢量图标库",
+      "url": "https://www.iconfont.cn/",
+      "domain": "iconfont.cn",
+      "originalPath": "书签栏 / 程序网站 / 官方资料库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "官方资料库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "tailwindcss-com-installing-tailwind-css-with-vite-tailwind-css",
+      "title": "Installing Tailwind CSS with Vite - Tailwind CSS",
+      "url": "https://tailwindcss.com/docs/installation/using-vite",
+      "domain": "tailwindcss.com",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vite",
+        "Tailwind",
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "element-plus-org-overview-组件总览-element-plus",
+      "title": "Overview 组件总览 | Element Plus",
+      "url": "https://element-plus.org/zh-CN/component/overview.html",
+      "domain": "element-plus.org",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Element Plus",
+        "组件库",
+        "UI 组件与样式",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "element-plus-org-一个-vue-3-ui-框架-element-plus",
+      "title": "一个 Vue 3 UI 框架 | Element Plus",
+      "url": "https://element-plus.org/zh-CN/#/zh-CN",
+      "domain": "element-plus.org",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "Element Plus",
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "element-eleme-cn-组件-element",
+      "title": "组件 | Element",
+      "url": "https://element.eleme.cn/#/zh-CN/component/container",
+      "domain": "element.eleme.cn",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "animate-style-animate-css-跨浏览器的-css-动画库",
+      "title": "Animate.css |跨浏览器的 CSS 动画库。",
+      "url": "https://animate.style/",
+      "domain": "animate.style",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "echarts-apache-org-apache-echarts",
+      "title": "Apache ECharts",
+      "url": "https://echarts.apache.org/zh/index.html",
+      "domain": "echarts.apache.org",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "ECharts",
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "07-logic-flow-cn-bpmn-logicflow",
+      "title": "BPMN | LogicFlow",
+      "url": "https://07.logic-flow.cn/usage/bpmn.html",
+      "domain": "07.logic-flow.cn",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "element-eleme-cn-element-网站快速成型工具",
+      "title": "Element - 网站快速成型工具",
+      "url": "https://element.eleme.cn/#/zh-CN",
+      "domain": "element.eleme.cn",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "limeui-qcoon-cn-limeui-多端uniapp组件库",
+      "title": "LimeUi - 多端uniapp组件库",
+      "url": "https://limeui.qcoon.cn/#/echart",
+      "domain": "limeui.qcoon.cn",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "uni-app",
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "sortablejs-com-sortable-js中文网",
+      "title": "Sortable.js中文网",
+      "url": "https://sortablejs.com/",
+      "domain": "sortablejs.com",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "uvui-cn-uv-ui-兼容vue3-2-nvue-app-h5-小程序等多端的uni-app生态框架",
+      "title": "uv-ui：兼容vue3+2、nvue、app、h5、小程序等多端的uni-app生态框架",
+      "url": "https://www.uvui.cn/components/intro.html",
+      "domain": "uvui.cn",
+      "originalPath": "书签栏 / 移动端",
+      "folderTrail": [
+        "书签栏",
+        "移动端"
+      ],
+      "sourceGroup": "移动端",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "uni-app",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "x6-antv-vision-x6-图编辑引擎-antv",
+      "title": "X6 图编辑引擎 | AntV",
+      "url": "https://x6.antv.vision/zh/",
+      "domain": "x6.antv.vision",
+      "originalPath": "书签栏 / 程序网站 / 组件库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "组件库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "UI 组件与样式",
+      "categoryDescription": "组件库、图表库、样式方案和交互引擎相关入口",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "组件库",
+        "UI 组件与样式",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "lbs-amap-com-概述-地图-js-api-2-0-高德地图api",
+      "title": "概述-地图 JS API 2.0 | 高德地图API",
+      "url": "https://lbs.amap.com/api/javascript-api-v2/summary",
+      "domain": "lbs.amap.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-amap-com-入门指南-微信小程序插件-高德地图api",
+      "title": "入门指南-微信小程序插件|高德地图API",
+      "url": "https://lbs.amap.com/api/wx/gettingstarted",
+      "domain": "lbs.amap.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "微信生态",
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-qq-com-腾讯位置服务-立足生态-连接未来",
+      "title": "腾讯位置服务 - 立足生态，连接未来",
+      "url": "https://lbs.qq.com/sem/authorization/?bingrefer=4177&msclkid=5d571ae69d701abcf7d27d19f1d37415",
+      "domain": "lbs.qq.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-tianditu-gov-cn-天地图api",
+      "title": "天地图API",
+      "url": "http://lbs.tianditu.gov.cn/",
+      "domain": "lbs.tianditu.gov.cn",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-qq-com-微信小程序示例中心-腾讯位置服务",
+      "title": "微信小程序示例中心 | 腾讯位置服务",
+      "url": "https://lbs.qq.com/miniProgram/demoCenter/wxGuide/map/cover",
+      "domain": "lbs.qq.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "微信生态",
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-amap-com-信息窗体内的事件交互-信息窗体-示例中心-js-api-2-0-示例-高德地图api",
+      "title": "信息窗体内的事件交互-信息窗体-示例中心-JS API 2.0 示例 | 高德地图API",
+      "url": "https://lbs.amap.com/demo/javascript-api-v2/example/infowindow/infowindow-event",
+      "domain": "lbs.amap.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "openlayers-org-openlayers-欢迎",
+      "title": "OpenLayers - 欢迎",
+      "url": "https://openlayers.org/",
+      "domain": "openlayers.org",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "lbs-qq-com-webservice-api-腾讯位置服务",
+      "title": "WebService API | 腾讯位置服务",
+      "url": "https://lbs.qq.com/service/webService/webServiceGuide/miniprogram?ref=miniprogram_component_map",
+      "domain": "lbs.qq.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "console-amap-com-首页-高德控制台",
+      "title": "首页 | 高德控制台",
+      "url": "https://console.amap.com/dev/index",
+      "domain": "console.amap.com",
+      "originalPath": "书签栏 / 开发 / 地图",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "地图"
+      ],
+      "sourceGroup": "开发",
+      "category": "地图与地理服务",
+      "categoryDescription": "地图展示、地理编码、轨迹和控制台相关资料",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "地图",
+        "地图与地理服务",
+        "控制台 / 服务"
+      ],
+      "reason": "这条链接已经按实际用途归好，回找时会比原始收藏夹更顺手"
+    },
+    {
+      "id": "yanhuangxueyuan-com-创建一个场景-three-js中文网",
+      "title": "创建一个场景 – three.js中文网",
+      "url": "http://www.yanhuangxueyuan.com/threejs/docs/#manual/zh/introduction/Creating-a-scene",
+      "domain": "yanhuangxueyuan.com",
+      "originalPath": "书签栏 / 程序网站 / 3D",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "3D"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "可视化 / 3D / 动画",
+      "categoryDescription": "Three.js、数字孪生、3D 素材和动画资源",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Three.js",
+        "3D",
+        "可视化 / 3D / 动画",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "docs-icegl-cn-tvt-js",
+      "title": "TvT.js",
+      "url": "https://docs.icegl.cn/",
+      "domain": "docs.icegl.cn",
+      "originalPath": "书签栏 / 程序网站 / 框架",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "框架"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "可视化 / 3D / 动画",
+      "categoryDescription": "Three.js、数字孪生、3D 素材和动画资源",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "可视化 / 3D / 动画",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "webgl3d-cn-b站three-js",
+      "title": "B站Three.js",
+      "url": "http://www.webgl3d.cn/",
+      "domain": "webgl3d.cn",
+      "originalPath": "书签栏 / 程序网站 / 3D",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "3D"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "可视化 / 3D / 动画",
+      "categoryDescription": "Three.js、数字孪生、3D 素材和动画资源",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Three.js",
+        "3D",
+        "可视化 / 3D / 动画",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "threejs-org-three-js-javascript-3d-library",
+      "title": "Three.js – JavaScript 3D Library",
+      "url": "https://threejs.org/",
+      "domain": "threejs.org",
+      "originalPath": "书签栏 / 程序网站 / 3D",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "3D"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "可视化 / 3D / 动画",
+      "categoryDescription": "Three.js、数字孪生、3D 素材和动画资源",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "Three.js",
+        "3D",
+        "可视化 / 3D / 动画",
+        "教程 / 文章"
+      ],
+      "reason": "当官方文档不够直白时，这一条通常更适合补理解"
+    },
+    {
+      "id": "mixamo-com-mixamo",
+      "title": "Mixamo",
+      "url": "https://www.mixamo.com/#/",
+      "domain": "mixamo.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "可视化 / 3D / 动画",
+      "categoryDescription": "Three.js、数字孪生、3D 素材和动画资源",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "可视化 / 3D / 动画",
+        "工具 / 素材"
+      ],
+      "reason": "它更偏直接可用的工具或素材，适合动手时快速回找"
+    },
+    {
+      "id": "open-dingtalk-com-钉钉开放平台能力中心",
+      "title": "钉钉开放平台能力中心",
+      "url": "https://open.dingtalk.com/",
+      "domain": "open.dingtalk.com",
+      "originalPath": "书签栏 / 开发",
+      "folderTrail": [
+        "书签栏",
+        "开发"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "qiyeweixin-apifox-cn-简易教程-企业微信-api",
+      "title": "简易教程 - 企业微信 API",
+      "url": "https://qiyeweixin.apifox.cn/doc-447209",
+      "domain": "qiyeweixin.apifox.cn",
+      "originalPath": "书签栏 / 开发 / 企业微信",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "企业微信"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "微信生态",
+        "企业微信",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "developer-huawei-com-开发者能力认证-职业认证-鸿蒙能力认证-华为开发者学堂",
+      "title": "开发者能力认证-职业认证-鸿蒙能力认证-华为开发者学堂",
+      "url": "https://developer.huawei.com/consumer/cn/training/certifications/harmonyos",
+      "domain": "developer.huawei.com",
+      "originalPath": "书签栏 / 程序网站 / 官方资料库",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "官方资料库"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "developer-work-weixin-qq-com-开始开发-文档-企业微信开发者中心",
+      "title": "开始开发 - 文档 - 企业微信开发者中心",
+      "url": "https://developer.work.weixin.qq.com/document/path/98151",
+      "domain": "developer.work.weixin.qq.com",
+      "originalPath": "书签栏 / 开发 / 企业微信",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "企业微信"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "微信生态",
+        "企业微信",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "foooor-com-首页-for技术栈",
+      "title": "首页 - For技术栈",
+      "url": "https://www.foooor.com/",
+      "domain": "foooor.com",
+      "originalPath": "书签栏 / 开发 / Flutter",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "Flutter"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Flutter",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "developers-weixin-qq-com-微信开放文档-开发",
+      "title": "微信开放文档 / 开发",
+      "url": "https://developers.weixin.qq.com/miniprogram/dev/framework/",
+      "domain": "developers.weixin.qq.com",
+      "originalPath": "书签栏 / 移动端 / 微信",
+      "folderTrail": [
+        "书签栏",
+        "移动端",
+        "微信"
+      ],
+      "sourceGroup": "移动端",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "微信生态",
+        "微信",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "dev-dcloud-net-cn-dcloud开发者中心",
+      "title": "DCLoud开发者中心",
+      "url": "https://dev.dcloud.net.cn/pages/app/list",
+      "domain": "dev.dcloud.net.cn",
+      "originalPath": "书签栏 / 移动端",
+      "folderTrail": [
+        "书签栏",
+        "移动端"
+      ],
+      "sourceGroup": "移动端",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "docs-flutter-cn-install-flutter-using-vs-code",
+      "title": "Install Flutter using VS Code",
+      "url": "https://docs.flutter.cn/install/with-vs-code",
+      "domain": "docs.flutter.cn",
+      "originalPath": "书签栏 / 开发 / Flutter",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "Flutter"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Flutter",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "uniapp-dcloud-net-cn-uni-app快速上手-uni-app官网",
+      "title": "uni-app快速上手 | uni-app官网",
+      "url": "https://uniapp.dcloud.net.cn/quickstart.html",
+      "domain": "uniapp.dcloud.net.cn",
+      "originalPath": "书签栏 / 移动端",
+      "folderTrail": [
+        "书签栏",
+        "移动端"
+      ],
+      "sourceGroup": "移动端",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "uni-app",
+        "移动端与开放平台",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "work-weixin-qq-com-企业微信",
+      "title": "企业微信",
+      "url": "https://work.weixin.qq.com/wework_admin/frame#/apps/modApiApp/5629501074738936",
+      "domain": "work.weixin.qq.com",
+      "originalPath": "书签栏 / 开发 / 企业微信",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "企业微信"
+      ],
+      "sourceGroup": "开发",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "微信生态",
+        "企业微信",
+        "移动端与开放平台",
+        "控制台 / 服务"
+      ],
+      "reason": "这条链接已经按实际用途归好，回找时会比原始收藏夹更顺手"
+    },
+    {
+      "id": "mp-weixin-qq-com-微信公众平台",
+      "title": "微信公众平台",
+      "url": "https://mp.weixin.qq.com/",
+      "domain": "mp.weixin.qq.com",
+      "originalPath": "书签栏 / 移动端 / 微信",
+      "folderTrail": [
+        "书签栏",
+        "移动端",
+        "微信"
+      ],
+      "sourceGroup": "移动端",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "微信生态",
+        "微信",
+        "移动端与开放平台",
+        "控制台 / 服务"
+      ],
+      "reason": "这条链接已经按实际用途归好，回找时会比原始收藏夹更顺手"
+    },
+    {
+      "id": "ext-dcloud-net-cn-haschat聊天应用-dcloud-插件市场",
+      "title": "HasChat聊天应用 - DCloud 插件市场",
+      "url": "https://ext.dcloud.net.cn/plugin?id=8432",
+      "domain": "ext.dcloud.net.cn",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "移动端与开放平台",
+      "categoryDescription": "uni-app、小程序、企业微信、钉钉、Flutter 相关入口",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "移动端与开放平台",
+        "控制台 / 服务"
+      ],
+      "reason": "这条链接已经按实际用途归好，回找时会比原始收藏夹更顺手"
+    },
+    {
+      "id": "api-qingnian8-com-咸虾米api接口使用方式-咸虾米api接口库",
+      "title": "咸虾米api接口使用方式 | 咸虾米API接口库",
+      "url": "https://api.qingnian8.com/apis/",
+      "domain": "api.qingnian8.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "后端 / 数据库 / 接口",
+      "categoryDescription": "Koa、Mongoose、MQTT、接口文档和服务端资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "后端 / 数据库 / 接口",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "itying-com-koa2中文文档-koa2教程",
+      "title": "Koa2中文文档_Koa2教程",
+      "url": "https://www.itying.com/koa/article-index-id-90.html",
+      "domain": "itying.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档 / 后端",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档",
+        "后端"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "后端 / 数据库 / 接口",
+      "categoryDescription": "Koa、Mongoose、MQTT、接口文档和服务端资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "后端",
+        "后端 / 数据库 / 接口",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "mongoosejs-com-mongoose-odm-v8-13-2",
+      "title": "Mongoose ODM v8.13.2",
+      "url": "https://mongoosejs.com/",
+      "domain": "mongoosejs.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档 / 后端",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档",
+        "后端"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "后端 / 数据库 / 接口",
+      "categoryDescription": "Koa、Mongoose、MQTT、接口文档和服务端资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "后端",
+        "后端 / 数据库 / 接口",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "emqx-com-mqtt-js-入门教程-emq",
+      "title": "MQTT.js 入门教程 | EMQ",
+      "url": "https://www.emqx.com/zh/blog/mqtt-js-tutorial",
+      "domain": "emqx.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "后端 / 数据库 / 接口",
+      "categoryDescription": "Koa、Mongoose、MQTT、接口文档和服务端资料",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "后端 / 数据库 / 接口",
+        "官方文档"
+      ],
+      "reason": "它更像稳定基准线，查 API、配置和官方示例时优先回这里"
+    },
+    {
+      "id": "m-w3cschool-cn-w3cschool官网-超千本编程教程免费畅学",
+      "title": "《w3cschool官网：超千本编程教程免费畅学》",
+      "url": "https://m.w3cschool.cn/",
+      "domain": "m.w3cschool.cn",
+      "originalPath": "书签栏 / 开发 / 开发知识文档",
+      "folderTrail": [
+        "书签栏",
+        "开发",
+        "开发知识文档"
+      ],
+      "sourceGroup": "开发",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发知识文档",
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "cli-im-草料二维码生成器",
+      "title": "草料二维码生成器",
+      "url": "https://cli.im/",
+      "domain": "cli.im",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "muyiy-cn-高级前端进阶博文-木易杨前端进阶",
+      "title": "高级前端进阶博文 | 木易杨前端进阶",
+      "url": "https://www.muyiy.cn/blog/",
+      "domain": "muyiy.cn",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "cnblogs-com-详细讲解js中的深拷贝与浅拷贝-pwindy-博客园",
+      "title": "详细讲解js中的深拷贝与浅拷贝 - pwindy - 博客园",
+      "url": "https://www.cnblogs.com/pwindy/p/17524018.html",
+      "domain": "cnblogs.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "fly63-com-在线工具箱-好用的在线工具都在这里",
+      "title": "在线工具箱_好用的在线工具都在这里!",
+      "url": "https://fly63.com/tool/home.html",
+      "domain": "fly63.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "bejson-com-在线json校验格式化工具-be-json",
+      "title": "在线JSON校验格式化工具（Be JSON）",
+      "url": "https://www.bejson.com/",
+      "domain": "bejson.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "colordrop-io-color-palette-generator-colordrop",
+      "title": "Color Palette Generator - ColorDrop",
+      "url": "https://colordrop.io/",
+      "domain": "colordrop.io",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "fly63-com-css-loading-超炫的loading-加载-动画效果",
+      "title": "Css Loading - 超炫的Loading(加载)动画效果",
+      "url": "https://fly63.com/tool/loading/",
+      "domain": "fly63.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "jb51-net-echarts图表移动端横屏进入退出的实现-javascript技巧-脚本之家",
+      "title": "Echarts图表移动端横屏进入退出的实现_javascript技巧_脚本之家",
+      "url": "https://www.jb51.net/article/283718.htm",
+      "domain": "jb51.net",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "ECharts",
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "bilibili-com-haschat本地构建项目-哔哩哔哩-bilibili",
+      "title": "HasChat本地构建项目_哔哩哔哩_bilibili",
+      "url": "https://www.bilibili.com/video/BV1iY411K7La/?vd_source=d99ecccc208a7ff49ab2d0124e60d425",
+      "domain": "bilibili.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "runoob-com-html-画布-菜鸟教程",
+      "title": "HTML 画布 | 菜鸟教程",
+      "url": "https://www.runoob.com/tags/ref-canvas.html",
+      "domain": "runoob.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "runoob-com-javascript-array-对象-菜鸟教程",
+      "title": "JavaScript Array 对象 | 菜鸟教程",
+      "url": "https://www.runoob.com/jsref/jsref-obj-array.html",
+      "domain": "runoob.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "developer-mozilla-org-math-javascript-mdn",
+      "title": "Math - JavaScript | MDN",
+      "url": "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math",
+      "domain": "developer.mozilla.org",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "developer-mozilla-org-mdn-web-docs",
+      "title": "MDN Web Docs",
+      "url": "https://developer.mozilla.org/zh-CN/",
+      "domain": "developer.mozilla.org",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "github-com-studynotes-vue-24-补充-彻底理解js中this的指向-md-at-master-liwencai-studynotes-",
+      "title": "StudyNotes/Vue/24.补充：彻底理解js中this的指向.md at master · liwencai/StudyNotes · GitHub",
+      "url": "https://github.com/liwencai/StudyNotes/blob/master/Vue/24.%E8%A1%A5%E5%85%85%EF%BC%9A%E5%BD%BB%E5%BA%95%E7%90%86%E8%A7%A3js%E4%B8%ADthis%E7%9A%84%E6%8C%87%E5%90%91.md",
+      "domain": "github.com",
+      "originalPath": "书签栏 / 程序网站 / 技术文档",
+      "folderTrail": [
+        "书签栏",
+        "程序网站",
+        "技术文档"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发文档与教程",
+      "categoryDescription": "MDN、教程站、博客文章和实战讲解集中放这里",
+      "type": "官方文档",
+      "shelf": "学习资料",
+      "tags": [
+        "Vue",
+        "开发文档与教程",
+        "官方文档"
+      ],
+      "reason": "这组更偏学习资料，查语法、原理和实战文章时最省时间"
+    },
+    {
+      "id": "ai-bot-cn-ai工具集官网-1000-ai工具集合与国内外导航大全",
+      "title": "AI工具集官网 | 1000+ AI工具集合与国内外导航大全",
+      "url": "https://ai-bot.cn/#term-13",
+      "domain": "ai-bot.cn",
+      "originalPath": "书签栏 / Ai",
+      "folderTrail": [
+        "书签栏",
+        "Ai"
+      ],
+      "sourceGroup": "Ai",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "aigc-izzi-cn-aigc官网-aigc创作平台-aigc软件",
+      "title": "AIGC官网 - AIGC创作平台 AIGC软件",
+      "url": "https://aigc.izzi.cn/",
+      "domain": "aigc.izzi.cn",
+      "originalPath": "书签栏 / Ai",
+      "folderTrail": [
+        "书签栏",
+        "Ai"
+      ],
+      "sourceGroup": "Ai",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "csdn-net-csdn-专业开发者社区-已接入deepseekr1满血版",
+      "title": "CSDN_专业开发者社区_已接入DeepSeekR1满血版",
+      "url": "https://www.csdn.net/",
+      "domain": "csdn.net",
+      "originalPath": "书签栏",
+      "folderTrail": [
+        "书签栏"
+      ],
+      "sourceGroup": "根入口",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "DeepSeek",
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "gitee-com-gitee-基于-git-的代码托管和研发协作平台",
+      "title": "Gitee - 基于 Git 的代码托管和研发协作平台",
+      "url": "https://gitee.com/?utm_source=baidu&utm_medium=sem&utm_term=%C3%E2%B7%D1%20%B4%FA%C2%EB%CD%D0%B9%DC&utm_campaign=enterprise&utm_content=competition&wl_kwid=123195355439&wl_creativeid=29768789472&wl_groupid=4029849462&wl_planid=105214342&wl_kw=%E5%85%8D%E8%B4%B9+%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1&wl_userid=25441451&wl_crowdid=0&wl_src=baidu&bd_vid=9362161374979626662",
+      "domain": "gitee.com",
+      "originalPath": "书签栏 / 程序网站",
+      "folderTrail": [
+        "书签栏",
+        "程序网站"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "github-com-github的",
+      "title": "GitHub的",
+      "url": "https://github.com/",
+      "domain": "github.com",
+      "originalPath": "书签栏 / 程序网站",
+      "folderTrail": [
+        "书签栏",
+        "程序网站"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "linux-do-linux-do",
+      "title": "LINUX DO",
+      "url": "https://linux.do/latest",
+      "domain": "linux.do",
+      "originalPath": "书签栏 / 程序网站",
+      "folderTrail": [
+        "书签栏",
+        "程序网站"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "open-vsx-org-open-vsx-registry",
+      "title": "Open VSX Registry",
+      "url": "https://open-vsx.org/extension/MS-CEINTL/vscode-language-pack-zh-hans",
+      "domain": "open-vsx.org",
+      "originalPath": "书签栏 / 工具库 / 其他小工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "其他小工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "开发社区与代码托管",
+      "categoryDescription": "GitHub、Gitee、CSDN、LinuxDo 和导航社区入口",
+      "type": "社区 / 导航",
+      "shelf": "学习资料",
+      "tags": [
+        "开发社区与代码托管",
+        "社区 / 导航"
+      ],
+      "reason": "需要继续扩展资料、找仓库或看社区讨论时，先回这里"
+    },
+    {
+      "id": "zcool-com-cn-可视化智慧水厂-数字孪生平台-kay-小凯-站酷zcool",
+      "title": "可视化智慧水厂- 数字孪生平台_Kay_小凯-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNzA4ODk3MDA=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-数字智慧供水资源管线管网驾驶舱平台数据可视化大屏-易扬视觉设计-站酷zcool",
+      "title": "数字智慧供水资源管线管网驾驶舱平台数据可视化大屏_易扬视觉设计-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjkwOTE5MDg=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-物联网水质监测设备小程序-野括kat-站酷zcool",
+      "title": "物联网水质监测设备小程序_野括Kat-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjI4NzgxODg=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-相城区水利系统-app-沁柠檬-站酷zcool",
+      "title": "相城区水利系统 app_沁柠檬-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZMjU5ODQ2NTY=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-医疗设备管理系统-a旺旺-站酷zcool",
+      "title": "医疗设备管理系统_A旺旺-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjg0MTUxMDQ=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-医美b端",
+      "title": "医美B端-",
+      "url": "https://www.zcool.com.cn/work/ZNjc5MDM1MTI=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-易知微智慧工厂-车间生产线数字孪生管理系统项目分享-easyv数字孪生-站酷zcool",
+      "title": "易知微智慧工厂｜车间生产线数字孪生管理系统项目分享_EasyV数字孪生-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNzA0NDc3NTI=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-站酷zcool-设计师互动平台-打开站酷-发现更好的设计",
+      "title": "站酷ZCOOL-设计师互动平台-打开站酷,发现更好的设计!",
+      "url": "https://www.zcool.com.cn/",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / UI",
+      "folderTrail": [
+        "书签栏",
+        "UI"
+      ],
+      "sourceGroup": "UI",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-制造业生产物联小程序-dk-moon-站酷zcool",
+      "title": "制造业生产物联小程序_Dk_moon-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNTU1MTIxOTY=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-智慧雨水系统-b端后台管理系统设计-华团子-站酷zcool",
+      "title": "智慧雨水系统——B端后台管理系统设计_华团子-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjI2MzYzODQ=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-b端-医疗管理系统-小郭想吃胖-站酷zcool",
+      "title": "B端-医疗管理系统_小郭想吃胖-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjg4NDIxNjg=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "zcool-com-cn-ui-芯超生物小程序-李大黑-站酷zcool",
+      "title": "UI _ 芯超生物小程序_李大黑-站酷ZCOOL",
+      "url": "https://www.zcool.com.cn/work/ZNjc2NjU2MTI=.html",
+      "domain": "zcool.com.cn",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "案例 / 灵感",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "案例 / 灵感"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "uiverse-io-4161-ui-elements-css-tailwind",
+      "title": "4161 UI elements: CSS & Tailwind",
+      "url": "https://uiverse.io/elements",
+      "domain": "uiverse.io",
+      "originalPath": "书签栏 / UI",
+      "folderTrail": [
+        "书签栏",
+        "UI"
+      ],
+      "sourceGroup": "UI",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "工具 / 素材",
+      "shelf": "灵感收藏",
+      "tags": [
+        "Tailwind",
+        "设计灵感与案例",
+        "工具 / 素材"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "evolink-ai-gpt-image-2-提示词大全-ai-图片生成-prompt-模板与案例-2026-evolink",
+      "title": "GPT Image 2 提示词大全 | AI 图片生成 Prompt 模板与案例 2026 | EvoLink",
+      "url": "https://evolink.ai/zh/gpt-image-2-prompts?utm_source=github&utm_medium=readme&utm_campaign=awesome-gpt-image-2-prompts",
+      "domain": "evolink.ai",
+      "originalPath": "书签栏 / UI",
+      "folderTrail": [
+        "书签栏",
+        "UI"
+      ],
+      "sourceGroup": "UI",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "工具 / 素材",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "工具 / 素材"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "stitch-withgoogle-com-stitch-design-with-ai",
+      "title": "Stitch - Design with AI",
+      "url": "https://stitch.withgoogle.com/?utm_source=ai-bot.cn",
+      "domain": "stitch.withgoogle.com",
+      "originalPath": "书签栏 / UI",
+      "folderTrail": [
+        "书签栏",
+        "UI"
+      ],
+      "sourceGroup": "UI",
+      "category": "设计灵感与案例",
+      "categoryDescription": "后台、小程序、数字孪生、UI 风格案例与灵感收集",
+      "type": "工具 / 素材",
+      "shelf": "灵感收藏",
+      "tags": [
+        "设计灵感与案例",
+        "工具 / 素材"
+      ],
+      "reason": "做后台、小程序或可视化页面时，用它来找风格和参考最合适"
+    },
+    {
+      "id": "2925-com-2925邮箱-海量邮",
+      "title": "2925邮箱-海量邮",
+      "url": "https://2925.com/login/",
+      "domain": "2925.com",
+      "originalPath": "书签栏 / 工具库 / 辅助工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "辅助工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "downforeveryoneorjustme-com-检查网站是否瘫痪",
+      "title": "检查网站是否瘫痪",
+      "url": "https://downforeveryoneorjustme.com/jzzcg.com?www=1",
+      "domain": "downforeveryoneorjustme.com",
+      "originalPath": "书签栏 / 工具库 / 辅助工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "辅助工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "qmjianli-com-账户信息-个人中心-全民简历",
+      "title": "账户信息_个人中心_全民简历",
+      "url": "https://www.qmjianli.com/my/",
+      "domain": "qmjianli.com",
+      "originalPath": "书签栏 / 工具库 / 辅助工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "辅助工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "zh-ifixit-com-ifixit-免费修理手册",
+      "title": "iFixit：免费修理手册",
+      "url": "https://zh.ifixit.com/",
+      "domain": "zh.ifixit.com",
+      "originalPath": "书签栏 / 工具库 / 其他小工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "其他小工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "languagereactor-com-language-reactor",
+      "title": "Language Reactor",
+      "url": "https://www.languagereactor.com/c/en/pd/t_pd_all_en/it_d0bbcf841f10",
+      "domain": "languagereactor.com",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "React",
+        "VPN",
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "quicklypdf-com-pdf-转-word-转换器-免费在线工具",
+      "title": "PDF 转 Word 转换器 | 免费在线工具",
+      "url": "https://quicklypdf.com/zh/convert-pdf-to-word",
+      "domain": "quicklypdf.com",
+      "originalPath": "书签栏 / 工具库 / 辅助工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "辅助工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "processon-com-processon-我的文件",
+      "title": "ProcessOn - 我的文件",
+      "url": "https://www.processon.com/template_create",
+      "domain": "processon.com",
+      "originalPath": "书签栏 / 工具库 / 辅助工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "辅助工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "sayodevice-com-sayodevice-for-web",
+      "title": "SayoDevice for Web",
+      "url": "https://sayodevice.com/home",
+      "domain": "sayodevice.com",
+      "originalPath": "HP",
+      "folderTrail": [
+        "HP"
+      ],
+      "sourceGroup": "HP",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "HP",
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "camscape-com-skyline-webcams",
+      "title": "Skyline Webcams",
+      "url": "https://www.camscape.com/showing/cityscapes/",
+      "domain": "camscape.com",
+      "originalPath": "书签栏 / 工具库 / 其他小工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "其他小工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "whatsmyip-com-what-s-my-ip-free-network-tools-ip-address-lookup",
+      "title": "What's My IP - Free Network Tools & IP Address Lookup",
+      "url": "https://whatsmyip.com/#google_vignette",
+      "domain": "whatsmyip.com",
+      "originalPath": "书签栏 / 工具库",
+      "folderTrail": [
+        "书签栏",
+        "工具库"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "youtube-com-youtube",
+      "title": "YouTube",
+      "url": "https://www.youtube.com/",
+      "domain": "youtube.com",
+      "originalPath": "书签栏 / 工具库 / 其他小工具",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "其他小工具"
+      ],
+      "sourceGroup": "工具库",
+      "category": "在线工具与效率",
+      "categoryDescription": "二维码、JSON、流程图、转换工具和日常效率网站",
+      "type": "工具 / 素材",
+      "shelf": "工作平台",
+      "tags": [
+        "在线工具与效率",
+        "工具 / 素材"
+      ],
+      "reason": "它偏即时可用型工具，适合临时处理任务时快速打开"
+    },
+    {
+      "id": "ikuuu-li-ikuuuvpn最新域名-2026-04-14",
+      "title": "iKuuuVPN最新域名 2026-04-14",
+      "url": "https://ikuuu.li/",
+      "domain": "ikuuu.li",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "教程 / 文章"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "secure-shadowsocks-au-shadowsocks网站首页介绍",
+      "title": "Shadowsocks网站首页介绍",
+      "url": "https://secure.shadowsocks.au/",
+      "domain": "secure.shadowsocks.au",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "教程 / 文章",
+      "shelf": "学习资料",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "教程 / 文章"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "clash-verge-org-clash-verge-开源免费的现代化跨平台多协议代理客户端",
+      "title": "《Clash Verge：开源免费的现代化跨平台多协议代理客户端》",
+      "url": "https://clash-verge.org/zh-CN",
+      "domain": "clash-verge.org",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "youxin55-net-登录-优信云",
+      "title": "登录 - 优信云",
+      "url": "https://www.youxin55.net/#/login",
+      "domain": "youxin55.net",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "user-dg5-biz-狗狗加速-com",
+      "title": "狗狗加速.com",
+      "url": "https://user.dg5.biz/#/register?code=ROXYEpnJ",
+      "domain": "user.dg5.biz",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "jichang-pro-机场pro",
+      "title": "机场PRo",
+      "url": "https://www.jichang.pro/#/login",
+      "domain": "jichang.pro",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "xn-mes358aby2apfg-com-赔钱机场-超低价高速机场",
+      "title": "赔钱机场 - 超低价高速机场",
+      "url": "https://xn--mes358aby2apfg.com/login",
+      "domain": "xn--mes358aby2apfg.com",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "ikuuu-nl-首页-ikuuu-vpn",
+      "title": "首页 — iKuuu VPN",
+      "url": "https://ikuuu.nl/user##",
+      "domain": "ikuuu.nl",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "ikuuu-win-首页-ikuuu-vpn",
+      "title": "首页 — iKuuu VPN",
+      "url": "https://ikuuu.win/user#",
+      "domain": "ikuuu.win",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "xn-4gq62f-org-一元机场",
+      "title": "一元机场",
+      "url": "https://xn--4gq62f.org/#/plan",
+      "domain": "xn--4gq62f.org",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "13-212-175-5-一元机场-vip",
+      "title": "一元机场.VIP",
+      "url": "https://13.212.175.5:4433/public-Q/#/plan",
+      "domain": "13.212.175.5",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "main-cute-cloud-de-cutecloud-最萌-云",
+      "title": "CuteCloud - 最萌の云",
+      "url": "https://main.cute-cloud.de/console",
+      "domain": "main.cute-cloud.de",
+      "originalPath": "书签栏 / VPN",
+      "folderTrail": [
+        "书签栏",
+        "VPN"
+      ],
+      "sourceGroup": "VPN",
+      "category": "网络 / VPN / 云服务",
+      "categoryDescription": "机场、代理客户端、云服务和网络辅助工具",
+      "type": "控制台 / 服务",
+      "shelf": "工作平台",
+      "tags": [
+        "VPN",
+        "网络 / VPN / 云服务",
+        "控制台 / 服务"
+      ],
+      "reason": "和外网访问、代理、加速有关的入口都收进来了，切换时更好找"
+    },
+    {
+      "id": "eloans-ahrcu-com-安徽农村信用合作联社助学贷款在线服务系统",
+      "title": "安徽农村信用合作联社助学贷款在线服务系统",
+      "url": "https://eloans.ahrcu.com/stu/login_stuLogin.action",
+      "domain": "eloans.ahrcu.com",
+      "originalPath": "",
+      "folderTrail": [],
+      "sourceGroup": "根入口",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "ahzwfw-gov-cn-安徽政务服务网",
+      "title": "安徽政务服务网",
+      "url": "https://www.ahzwfw.gov.cn/",
+      "domain": "ahzwfw.gov.cn",
+      "originalPath": "书签栏",
+      "folderTrail": [
+        "书签栏"
+      ],
+      "sourceGroup": "根入口",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "yuyuanweb-feishu-cn-编程ai学习全覆盖-实战项目助力求职拿offer",
+      "title": "编程AI学习全覆盖，实战项目助力求职拿offer",
+      "url": "https://yuyuanweb.feishu.cn/wiki/BEJRwt351ixC3dkrjIbc0quanFe",
+      "domain": "yuyuanweb.feishu.cn",
+      "originalPath": "书签栏 / 开发",
+      "folderTrail": [
+        "书签栏",
+        "开发"
+      ],
+      "sourceGroup": "开发",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "admin-runlan-ltd-登录-智慧校园",
+      "title": "登录 - 智慧校园",
+      "url": "https://admin.runlan.ltd/#/login",
+      "domain": "admin.runlan.ltd",
+      "originalPath": "书签栏 / 公司",
+      "folderTrail": [
+        "书签栏",
+        "公司"
+      ],
+      "sourceGroup": "公司",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "公司",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "ai-92xx-vip-登录-ca-编程助手",
+      "title": "登录 - CA 编程助手",
+      "url": "https://ai.92xx.vip/auth/login",
+      "domain": "ai.92xx.vip",
+      "originalPath": "书签栏 / 个人网站",
+      "folderTrail": [
+        "书签栏",
+        "个人网站"
+      ],
+      "sourceGroup": "个人网站",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人网站",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "runlan-coding-net-登录团队-coding",
+      "title": "登录团队 - CODING",
+      "url": "https://runlan.coding.net/login?redirect=%2Fvcs%2Fdepots",
+      "domain": "runlan.coding.net",
+      "originalPath": "书签栏 / 公司",
+      "folderTrail": [
+        "书签栏",
+        "公司"
+      ],
+      "sourceGroup": "公司",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "公司",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "hn2461-github-io-个人技术博客",
+      "title": "个人技术博客",
+      "url": "https://hn2461.github.io/HaonanKnowledgeBlog/#/",
+      "domain": "hn2461.github.io",
+      "originalPath": "书签栏 / 个人网站",
+      "folderTrail": [
+        "书签栏",
+        "个人网站"
+      ],
+      "sourceGroup": "个人网站",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人网站",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "yuque-com-工作台-语雀",
+      "title": "工作台 · 语雀",
+      "url": "https://www.yuque.com/dashboard",
+      "domain": "yuque.com",
+      "originalPath": "书签栏",
+      "folderTrail": [
+        "书签栏"
+      ],
+      "sourceGroup": "根入口",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "stu-tlu-edu-cn-困难生",
+      "title": "困难生",
+      "url": "http://stu.tlu.edu.cn/xsfw/sys/knsapp/*default/index.do?EMAP_LANG=zh#/difficulties",
+      "domain": "stu.tlu.edu.cn",
+      "originalPath": "HP",
+      "folderTrail": [
+        "HP"
+      ],
+      "sourceGroup": "HP",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "HP",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "fanqienovel-com-作家专区-番茄小说网",
+      "title": "作家专区-番茄小说网",
+      "url": "https://fanqienovel.com/main/writer/login",
+      "domain": "fanqienovel.com",
+      "originalPath": "书签栏 / 个人网站",
+      "folderTrail": [
+        "书签栏",
+        "个人网站"
+      ],
+      "sourceGroup": "个人网站",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人网站",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "secure-rezserver-com-booking-com",
+      "title": "Booking.com",
+      "url": "http://secure.rezserver.com/sdk/v1/LinkFwd?refid=9006&destination=booking&refclickid=iefav1819",
+      "domain": "secure.rezserver.com",
+      "originalPath": "HP",
+      "folderTrail": [
+        "HP"
+      ],
+      "sourceGroup": "HP",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "HP",
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "zhipin-com-boss直聘-找工作上boss直聘直接谈-招聘求职找工作",
+      "title": "BOSS直聘-找工作上BOSS直聘直接谈！招聘求职找工作！",
+      "url": "https://www.zhipin.com/shanghai/?seoRefer=index",
+      "domain": "zhipin.com",
+      "originalPath": "书签栏 / 工具库 / 项目",
+      "folderTrail": [
+        "书签栏",
+        "工具库",
+        "项目"
+      ],
+      "sourceGroup": "工具库",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    },
+    {
+      "id": "co-gocheck-cn-g-格子达毕业论文-设计-管理系统",
+      "title": "G·格子达毕业论文（设计）管理系统",
+      "url": "https://co.gocheck.cn/user/login?redirect=%2F10383",
+      "domain": "co.gocheck.cn",
+      "originalPath": "书签栏 / 程序网站",
+      "folderTrail": [
+        "书签栏",
+        "程序网站"
+      ],
+      "sourceGroup": "程序网站",
+      "category": "个人 / 工作 / 校园入口",
+      "categoryDescription": "个人站点、账号后台、校园政务和日常登录入口",
+      "type": "账号 / 平台入口",
+      "shelf": "工作平台",
+      "tags": [
+        "个人 / 工作 / 校园入口",
+        "账号 / 平台入口"
+      ],
+      "reason": "这类入口不需要解释太多，重点就是以后能一下子点回去"
+    }
+  ]
+}

@@ -131,13 +131,26 @@ description: 从 App.vue、main.js、pages.json、manifest.json 到 uni.scss、s
 - 音视频资源
 - 需要作为静态文件直接引用的资源
 
-工程简介里还提到，`static` 支持平台子目录，比如：
+**重要特性：**
 
-- `mp-weixin`
-- `app`
-- `web`
+1. **完整打包，不编译**：编译到任何平台时，`static` 目录下的文件会被完整打包，但不会被编译
+2. **JS 文件不编译**：`static` 中的 `.js` 文件不会被编译，如果需要编译处理，应该放在其他目录
+3. **平台子目录支持**：`static` 支持平台子目录，比如：
+   - `static/mp-weixin/` - 微信小程序专属资源
+   - `static/app/` - App 专属资源
+   - `static/h5/` 或 `static/web/` - H5 专属资源
 
-这样可以把平台专属资源和通用资源分开。
+**使用示例：**
+
+```vue
+<template>
+  <image src="/static/logo.png"></image>
+  <!-- 平台专属资源 -->
+  <image src="/static/mp-weixin/icon.png"></image>
+</template>
+```
+
+这样可以把平台专属资源和通用资源分开，避免资源冲突和包体积膨胀。
 
 ## 三、真正高频用到的，是 `pages.json`
 
@@ -153,6 +166,30 @@ description: 从 App.vue、main.js、pages.json、manifest.json 到 uni.scss、s
 
 `哪些页面会被编译进项目，先看 pages。`
 
+**重要规则：**
+
+- `pages` 数组的第一项就是应用的入口页（首页）
+- 新增或删除页面时，必须同步修改 `pages` 数组
+- 文件名不需要写后缀，框架会自动寻找对应的 `.vue` 文件
+
+**配置示例：**
+
+```json
+{
+  "pages": [
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "首页"
+      }
+    },
+    {
+      "path": "pages/user/user"
+    }
+  ]
+}
+```
+
 ### 2. `globalStyle`
 
 定义默认窗口表现，比如导航栏、标题、背景色等默认样式。
@@ -165,7 +202,41 @@ description: 从 App.vue、main.js、pages.json、manifest.json 到 uni.scss、s
 
 `tabBar 页面必须先在 pages 里定义，然后再在 tabBar 里引用。`
 
-代码跳转到 tabBar 页面时，也要用 `uni.switchTab`，不能用 `uni.navigateTo` 或 `uni.redirectTo`。
+**跳转规则（重要）：**
+
+代码跳转到 tabBar 页面时，必须使用专门的 API：
+
+- ✅ **正确**：`uni.switchTab({ url: '/pages/home/home' })`
+- ❌ **错误**：`uni.navigateTo({ url: '/pages/home/home' })` - 会跳转失败
+- ❌ **错误**：`uni.redirectTo({ url: '/pages/home/home' })` - 会跳转失败
+- ❌ **错误**：`uni.reLaunch({ url: '/pages/home/home' })` - 虽然能跳转，但会重启应用，不推荐
+
+**为什么要用 `switchTab`？**
+
+因为 tabBar 页面有特殊的页面栈管理机制：
+
+- `navigateTo` 是压栈操作，会保留当前页面
+- `redirectTo` 是替换操作，会关闭当前页面
+- `switchTab` 是切换 tab 操作，会关闭所有非 tabBar 页面，只保留 tabBar 页面
+
+**配置示例：**
+
+```json
+{
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的"
+      }
+    ]
+  }
+}
+```
 
 ### 4. `easycom`
 
@@ -173,10 +244,34 @@ description: 从 App.vue、main.js、pages.json、manifest.json 到 uni.scss、s
 
 `easycom` 是自动开启的，你可以在 `pages.json` 里做个性化规则配置。
 
+**默认识别规则：**
+
+只要组件符合 `components/组件名称/组件名称.vue` 的目录结构，就会被自动识别。
+
+比如：
+
+- `components/uni-badge/uni-badge.vue` → 可以直接使用 `<uni-badge>`
+- `components/my-header/my-header.vue` → 可以直接使用 `<my-header>`
+
+**自定义规则示例：**
+
+```json
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@/components/uni-$1.vue",
+      "^my-(.*)": "@/components/my-$1/my-$1.vue"
+    }
+  }
+}
+```
+
 它的价值很大：
 
 - 组件不需要每页都手动引入注册
 - 目录规范清楚时，组件使用体验会非常顺
+- 支持正则匹配，可以灵活配置组件路径
 
 但也要注意：
 
@@ -190,11 +285,73 @@ description: 从 App.vue、main.js、pages.json、manifest.json 到 uni.scss、s
 
 它是页面组织问题，不是单纯的性能优化小技巧。
 
+**为什么需要分包？**
+
+- 小程序有主包大小限制（通常 2MB）
+- 分包可以优化首次启动速度，按需加载
+- 多团队协作时可以更好地解耦
+
+**配置示例：**
+
+```json
+{
+  "pages": [
+    {
+      "path": "pages/home/home"
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        {
+          "path": "pages/detail/detail"
+        }
+      ]
+    }
+  ]
+}
+```
+
+跳转分包页面时，路径要包含分包根目录：
+
+```javascript
+uni.navigateTo({
+  url: '/packageA/pages/detail/detail'
+})
+```
+
 ### 6. `preloadRule`
 
 分包预下载规则。
 
 适合在有明确业务流转路径的项目里提前规划，而不是等启动慢了再补。
+
+**配置示例：**
+
+```json
+{
+  "preloadRule": {
+    "pages/home/home": {
+      "network": "all",
+      "packages": ["packageA"]
+    }
+  }
+}
+```
+
+这表示：进入首页时，会预下载 `packageA` 分包，无论什么网络环境。
+
+**network 可选值：**
+
+- `all`：不限网络
+- `wifi`：仅 wifi 下预下载
+
+**使用建议：**
+
+- 只预下载用户大概率会访问的分包
+- 不要一次性预下载太多，会影响主包加载速度
+- 结合用户行为数据来配置预下载规则
 
 ## 四、`manifest.json` 更适合管“应用级”和“平台级”内容
 

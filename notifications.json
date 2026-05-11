@@ -1,7 +1,515 @@
 {
-  "generatedAt": "2026-05-07T16:02:33.139Z",
-  "total": 247,
+  "generatedAt": "2026-05-11T15:14:24.291Z",
+  "total": 291,
   "notifications": [
+    {
+      "id": "git-6ad93209915d64c23aaccf0d2e78e8b40f5a33be",
+      "title": "优化面试题",
+      "content": "提交说明：优化面试题",
+      "summary": "优化面试题",
+      "date": "2026-05-11T23:13:26+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "6ad9320",
+      "fullHash": "6ad93209915d64c23aaccf0d2e78e8b40f5a33be"
+    },
+    {
+      "id": "git-f32e47c668dcfcd9d547e272325667ca2979009e",
+      "title": "优化面试题",
+      "content": "提交说明：优化面试题",
+      "summary": "优化面试题",
+      "date": "2026-05-11T23:04:12+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "f32e47c",
+      "fullHash": "f32e47c668dcfcd9d547e272325667ca2979009e"
+    },
+    {
+      "id": "daily-2026-05-11-4",
+      "title": "前端开发常见面试题详解去重并校正题量",
+      "content": "第一点：将 `public/notes/面试/前端开发常见面试题详解 (60问).md` 重命名并整理为 `public/notes/面试/前端开发常见面试题详解 (35问).md`，同步统一 frontmatter 标题、正文 H1 与摘要描述，修复“实际只有 35 题但标题写成 60 问”的不一致问题；第二点：补充文章开头说明，明确当前内容按专题整理为 35 道高频题，并对重复表述做过合并；第三点：修正多处答案准确性，例如 Promise 状态统一为 `pending/fulfilled/rejected`，Vue 生命周期中移除错误的 `onCreated` 表述，明确选项式 API 与组合式 API 的区别，调整 computed/watch 示例避免冗余字段写法；第四点：优化 Vuex、JWT、Token 存储、Refresh Token、WebSocket、Flex/Grid/绝对定位、clearfix 等章节的边界与表述，减少不同题目之间的内容重复，同时补充更贴近真实项目与面试表达的说明；第五点：执行 `npm run generate:index`，同步更新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "整理《前端开发常见面试题详解》中的重复与不严谨表述，统一题目数量为 35 问，并修正 Vue、Promise、Token、WebSocket、布局方案等章节中的关键说法。",
+      "date": "2026-05-11T22:52:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-05-11-3",
+      "title": "前端面试题题库及答案恢复详细原稿并改为保守整理",
+      "content": "第一点：将 `public/notes/面试/面试题题库及答案.md` 从此前压缩后的结构化短版恢复为原先的详细题库正文，保留大体量内容、原有题号顺序和长篇答案表达；第二点：撤回“将长文重构成高频总表”的处理方式，避免因为去重过度导致文章信息密度和覆盖面下降；第三点：明确后续整理策略改为“保留详细内容为主，只做重复合并、错误修正、空壳题补答案和表述统一”，不再以压缩篇幅为目标；第四点：先对缺失最明显的条目做局部补全，补上第20题以及第194题到第236题之间原本只有标题没有答案的空壳题，内容涵盖动态路由、异步函数、登录权限、发布流程、白名单、大数据可视化、接口封装、微信小程序、支付、Hooks、uni-app、axios、ECharts、ElementUI 树控件、项目表达等高频问题；第五点：继续做第二轮保守去重，不删除正文大段内容，而是在重复题位置补充“合并记忆/补充版”说明，例如把第47题与第164题的 keep-alive、前面的循环遍历与第171题、前面的 map/forEach 与第172题、网络类问题与第174题、Vuex 刷新丢失与第175题做前后呼应，并补充 `v-el / this.$els` 属于早期写法、现代项目优先记 `ref / this.$refs` 的说明；第六点：补全和保守去重后重新生成索引，确保站内目录和搜索描述同步回到详细原稿并收录新增答案内容。",
+      "summary": "恢复《前端面试题题库及答案》的详细长文版本，并按保守整理方式补齐尾部空壳题与缺失答案，避免再以压缩重写方式处理正文。",
+      "date": "2026-05-11T22:47:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "daily-2026-05-11-2",
+      "title": "前端超级面试题汇总去重并合并重复内容",
+      "content": "第一点：将 `public/notes/面试/超级面试.md` 中原本分散重复的 Vue2/Vue3 对比内容合并到“Vue2 和 Vue3 的区别、Vue3 的优势”主段落，保留响应式、Composition API、TypeScript、生命周期、指令、过渡类名、全局 API 等信息；第二点：调整 Vue 数据绑定实现原理一节，统一 Vue2 使用 `Object.defineProperty`、Vue3 使用 `Proxy` 的表述，避免前后内容冲突；第三点：把“定位功能所需字段”的两处重复答案合并，补齐精度、分页、筛选、上下文字段等细节；第四点：将零散的兼容性问题速答内容并入更完整的兼容性章节，删除纯重复版本；第五点：执行 `npm run generate:index`，同步更新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "整理《前端超级面试题汇总》中的重复面试题段落，将 Vue2/Vue3、兼容性问题、定位字段等重复内容合并为更完整的主段落，在尽量不删内容的前提下提升文章连贯性。",
+      "date": "2026-05-11T22:44:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-b1bbab4e9aae995bccadb309d2def0bfc2a4e022",
+      "title": "新增流式请求",
+      "content": "提交说明：新增流式请求",
+      "summary": "新增流式请求",
+      "date": "2026-05-11T13:37:07+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "b1bbab4",
+      "fullHash": "b1bbab4e9aae995bccadb309d2def0bfc2a4e022"
+    },
+    {
+      "id": "daily-2026-05-11-1",
+      "title": "WebSocket 专题新增第9篇：AI流式传输深度解析",
+      "content": "第一点：创建 `public/notes/项目复用技术/WebSocket/09-WebSocket与AI流式传输深度解析_SSE对比_实现方案与最佳实践.md`，包含为什么 AI 需要流式传输、主流 AI 厂商方案（SSE 与 WebSocket 模式）、SSE vs WebSocket 深度对比表、前端实现方案（SSE fetch/EventSource 与 WebSocket 完整代码）、后端实现方案（Node.js + Express 的 SSE 和 WebSocket 服务端）、常见问题与解决方案（Nginx 代理、断线重连、UTF-8 编码、背压处理）、性能优化实践（TTFB、消息体优化、DOM 批处理）、安全考虑（Token 验证、CSWSH 防护、速率限制）等八大章节；第二点：文档基于 OpenAI 官方资料、WebSocket.org、Railway、GetStream 等权威来源，解释了为什么所有主流 AI 提供商都使用 SSE 作为默认流式传输协议，以及 WebSocket 在 Agent 多轮对话、工具调用、用户中断等场景的优势；第三点：提供了完整的前后端代码示例，包括 SSE 的 async generator 实现、WebSocket 的双向通信封装、服务端流式转发、心跳保活、断线重连等生产级代码；第四点：同步更新 `public/notes/项目复用技术/WebSocket/目录.md`，将第9篇加入推荐阅读顺序；第五点：执行 `npm run generate:index`，索引已更新（387篇笔记，86个分类）。",
+      "summary": "在项目复用技术/WebSocket 目录下新增《WebSocket与AI流式传输深度解析》，深度对比 SSE 与 WebSocket 两大方案，讲解 OpenAI、Google、Anthropic 等主流 AI 厂商的流式 API 实现，提供完整的前后端代码示例与最佳实践。",
+      "date": "2026-05-11T09:55:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-afe593d43b130b35904c9d5b9c3f4758cc4f18d2",
+      "title": "feat: 新增面试笔记清理脚本并更新多篇面试文档",
+      "content": "新增 clean_format.py 脚本用于清理面试文档中的 font 标签和规范化标题编号\n更新 WebSocket.md 文档，新增握手过程、数据帧结构等面试重点章节\n合并并整理前端面试零碎知识点文档，删除重复文件\n统一多篇面试文档的 frontmatter 和代码块格式\n更新 notifications.json 和 notes-index.json 以反映内容变更",
+      "summary": "新增 clean_format.py 脚本用于清理面试文档中的 font 标签和规范化标题编号 更新 WebSocket.md 文档，新增握手过程、数据帧结构等面试重点章节 合并并整理前端面试零碎知识点文档，删除重复文件 统一多篇面试文档的",
+      "date": "2026-05-10T23:34:33+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "afe593d",
+      "fullHash": "afe593d43b130b35904c9d5b9c3f4758cc4f18d2"
+    },
+    {
+      "id": "git-31c8063a9755c7f11252c59f3406be0e2b72fe1e",
+      "title": "新增面试文件",
+      "content": "提交说明：新增面试文件",
+      "summary": "新增面试文件",
+      "date": "2026-05-10T19:59:15+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "31c8063",
+      "fullHash": "31c8063a9755c7f11252c59f3406be0e2b72fe1e"
+    },
+    {
+      "id": "git-91188f818b9ad1e9881785ffd5af8ad85af56e26",
+      "title": "新增JS和vue辅助",
+      "content": "提交说明：新增JS和vue辅助",
+      "summary": "新增JS和vue辅助",
+      "date": "2026-05-10T19:57:16+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "91188f8",
+      "fullHash": "91188f818b9ad1e9881785ffd5af8ad85af56e26"
+    },
+    {
+      "id": "git-d0360bd7b2b6138110cc593e6d68800c6c1ba734",
+      "title": "优化书签",
+      "content": "提交说明：优化书签",
+      "summary": "优化书签",
+      "date": "2026-05-10T18:46:42+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "d0360bd",
+      "fullHash": "d0360bd7b2b6138110cc593e6d68800c6c1ba734"
+    },
+    {
+      "id": "git-62a06b3b2b72766f821b87582eb0d12721f75ccb",
+      "title": "feat(bookmarks): 新增书签收藏功能与相关页面",
+      "content": "添加书签收藏功能，包括：\n- 新增 scripts/generateBookmarksIndex.js 解析浏览器导出的书签HTML\n- 新增 /bookmarks 路由页面展示整理后的书签\n- 在作者资料弹窗中添加书签入口和统计\n- 实现书签分类、搜索和筛选功能\n- 更新构建流程自动生成书签索引\n\n书签数据按用途重新分类，支持快速查找和访问常用网址",
+      "summary": "添加书签收藏功能，包括： - 新增 scripts/generateBookmarksIndex.js 解析浏览器导出的书签HTML - 新增 /bookmarks 路由页面展示整理后的书签 - 在作者资料弹窗中添加书签入口和统计 - 实现",
+      "date": "2026-05-09T23:25:54+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "62a06b3",
+      "fullHash": "62a06b3b2b72766f821b87582eb0d12721f75ccb"
+    },
+    {
+      "id": "git-de44f0df3891b0f6357a4b8241d8ea6c8de8844f",
+      "title": "书签分类: 按内容深度重新归档全部 174 条，修正多处分类错误",
+      "content": "提交说明：书签分类: 按内容深度重新归档全部 174 条，修正多处分类错误",
+      "summary": "书签分类: 按内容深度重新归档全部 174 条，修正多处分类错误",
+      "date": "2026-05-09T23:24:30+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "de44f0d",
+      "fullHash": "de44f0df3891b0f6357a4b8241d8ea6c8de8844f"
+    },
+    {
+      "id": "history-2026-05-09-4",
+      "title": "深度整理书签分类：按内容重新归档全部 174 条",
+      "content": "重新整理 public/bookmarks-index.json，17 个新分类：AI 对话工具（11）、AI 开发编辑器（10）、AI API 中转服务（8）、AI 会员购买（6，链动小铺系列独立）、AI 工具导航（4）、前端框架与构建（12）、组件库与样式（14）、可视化与 3D（9）、地图与位置服务（9）、移动端与开放平台（含 Flutter，11）、后端与工具库（7）、学习资料与文档（16）、设计灵感与案例（含站酷 12 个案例，14）、代码托管与职业（5）、VPN 与网络工具（14）、效率工具与通用（8）、个人与机构入口（Language Reactor、政务、助学贷款等，16）。主要修正：CSDN 归入 AI 对话工具；Language Reactor 移出 VPN 归入个人入口；链动小铺等商店归入 AI 会员购买新分类；Flutter 归入移动端与开放平台；Vue SFC 文档页归入前端框架与构建。",
+      "summary": "完全无视原有浏览器文件夹结构，基于每条 URL 的实际内容重新设计 17 个语义分类，修正多处归类错误",
+      "date": "2026-05-09T23:24:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-05-09",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-09-5",
+      "title": "重构个人书签库入口与高密度检索体验",
+      "content": "新增 scripts/generateBookmarksIndex.js 与 scripts/bookmarkCatalogRules.js，自动解析 bookmarks_*.html 导出文件并生成 public/bookmarks-index.json；将 174 条书签重新整理为 AI 助手、AI 开发工具、前端框架、组件库、地图、移动端、设计灵感、VPN 与网络服务、个人服务入口等用途分类，不再自动隐藏账号、平台或私人入口。前端新增 /bookmarks 路由页面，采用紧凑双列列表展示，支持关键词搜索、高亮命中、按整理分类筛选、按原收藏夹 sourceGroup 筛选、按条目类型筛选；作者头像弹窗新增“书签收藏”按钮作为主入口，并在弹窗统计区显示书签总数，整体更适合主人快速查看、快速定位并立即打开目标网址。",
+      "summary": "把浏览器书签整理成功能型站内书签库，入口放进头像弹窗，保留全部收藏并支持按分类、原收藏夹、类型快速筛找",
+      "date": "2026-05-09T22:36:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-05-09",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-f450c206161e8b5dd79f7403e2a3482c66a89243",
+      "title": "内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "content": "提交说明：内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "summary": "内容上新: 完善 uni-app 通用基础系列 4 篇文章",
+      "date": "2026-05-09T18:14:45+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "f450c20",
+      "fullHash": "f450c206161e8b5dd79f7403e2a3482c66a89243"
+    },
+    {
+      "id": "history-2026-05-09-3",
+      "title": "完善 uni-app 通用基础系列 4 篇文章",
+      "content": "第 1 篇补充：扩充跨端编译原理、运行时架构、平台边界等核心概念说明。第 2 篇补充：完善生命周期执行顺序、页面事件处理、常见场景实战示例。第 3 篇补充：扩充工程结构说明、配置文件详解、样式与静态资源管理。第 4 篇补充：新增页面栈层级限制说明、manifest.json 网络超时配置示例、不同平台缓存容量限制详解（微信/支付宝小程序 10MB 限制）、临时文件上传下载完整代码示例、开发规则从 10 条扩展到 13 条。所有补充内容均经过官方文档和社区最佳实践验证，使系列文章更适合作为 uni-app 跨端开发的实用参考指南。",
+      "summary": "对 uni-app 系列前 4 篇文章进行全面补充和完善，新增页面栈管理、网络超时配置、缓存容量限制、临时文件处理等实战内容",
+      "date": "2026-05-09T18:14:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-09",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-552eb64951c8cc1186b074a600cc4be9217dd7f6",
+      "title": "更新部分文档内容",
+      "content": "提交说明：更新部分文档内容",
+      "summary": "更新部分文档内容",
+      "date": "2026-05-09T15:26:57+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "552eb64",
+      "fullHash": "552eb64951c8cc1186b074a600cc4be9217dd7f6"
+    },
+    {
+      "id": "history-2026-05-09-2",
+      "title": "完善《第10篇：Vue Router 超详细总笔记》守卫章节",
+      "content": "补充内容包括：完整的 12 步导航解析流程、Vue Router 3/4 中 next 的进化对比表、beforeRouteEnter 在组合式 API 中的写法、afterEach 的 failure 参数详解、8 个守卫实战示例（登录权限、动态权限、保存草稿、数据刷新、Loading 控制、埋点统计等）、嵌套路由 meta 检查注意事项、高频面试问答补充（守卫执行顺序、next 区别、meta 合并等）、踩坑清单扩充（新增 7 个守卫相关常见错误）。使文档更适合长期复习和实战参考。",
+      "summary": "大幅扩充路由守卫相关内容，新增完整导航解析流程、next 进化对比、守卫实战示例等核心知识点",
+      "date": "2026-05-09T11:17:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-09",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-09-1",
+      "title": "新增《绝对路径与相对路径详解》",
+      "content": "文章包含：路径基础概念、Windows/Linux/URL 路径格式、相对路径符号详解、HTML/CSS/JS/Node.js 中的路径使用、常见陷阱（Node.js 相对路径、Windows 分隔符等）、实战练习题、最佳实践建议。适合前端初学者系统学习路径知识。",
+      "summary": "在 JS 辅助资料中新增第 22 篇文章，系统讲解绝对路径与相对路径的概念、区别、使用场景及常见陷阱",
+      "date": "2026-05-09T10:49:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-09",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-8dba8d4c775656de281bf936200762a2bba91a53",
+      "title": "修复消息显示",
+      "content": "提交说明：修复消息显示",
+      "summary": "修复消息显示",
+      "date": "2026-05-09T10:13:21+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "8dba8d4",
+      "fullHash": "8dba8d4c775656de281bf936200762a2bba91a53"
+    },
+    {
+      "id": "git-9fe31a67a39b0584a5cb817a686d642e60902da9",
+      "title": "Merge branch 'main' of https://github.com/HN2461/HaonanKnowledgeBlog",
+      "content": "提交说明：Merge branch 'main' of https://github.com/HN2461/HaonanKnowledgeBlog",
+      "summary": "Merge branch 'main' of https://github.com/HN2461/HaonanKnowledgeBlog",
+      "date": "2026-05-09T09:20:02+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "9fe31a6",
+      "fullHash": "9fe31a67a39b0584a5cb817a686d642e60902da9"
+    },
+    {
+      "id": "git-25e3cf0d8afc85ab1638690ad3e3d5b36de162b4",
+      "title": "优化文档",
+      "content": "提交说明：优化文档",
+      "summary": "优化文档",
+      "date": "2026-05-08T22:22:02+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "25e3cf0",
+      "fullHash": "25e3cf0d8afc85ab1638690ad3e3d5b36de162b4"
+    },
+    {
+      "id": "history-2026-05-08-11",
+      "title": "统一 Vue Router 第十篇的站内标题显示",
+      "content": "第一点：将 `public/notes/我的总结/Vue/vue辅助/第10篇_Router.md` 的 frontmatter `title` 与正文 H1 统一改为 `第10篇：Vue Router 超详细总笔记`；第二点：同步更新 `public/notes/我的总结/Vue/Vue.md` 中第十篇目录入口文案和链接路径，避免目录页仍显示旧的 `10_Router` 文案；第三点：按仓库规则执行 Node 运行时预检与索引重建，让详情页、目录页、搜索页与站内系列导航统一显示新标题。",
+      "summary": "将 Router 笔记的 frontmatter、正文 H1 与 Vue 目录入口统一为同一系列标题，解决运行后页面标题与文件名语义不一致的问题。",
+      "date": "2026-05-08T22:19:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-10",
+      "title": "修正 Axios 笔记中的不严谨与示例冲突",
+      "content": "第一点：将 Promise 与 `async/await` 相关表述改得更严谨，避免\"不会无限等待\"\"必须配合 try...catch\"这类容易误导初学者的绝对化说法；第二点：更新 `data` 与 `paramsSerializer` 配置说明，使其更贴近 Axios 1.x 官方文档和当前工程实践；第三点：修正企业级封装示例，在响应拦截器中补充 `blob` / `arraybuffer` 直返逻辑，解决统一业务码判断与文件下载示例互相冲突的问题；第四点：细化开发代理与生产 Nginx 说明，避免把 `changeOrigin` 误写成\"允许跨域\"，并提示生产环境仍需处理 `OPTIONS` 预检等细节；第五点：修正 Vue Router `params` 刷新是否保留的描述，明确只有体现在最终 URL 中的路径参数才会稳定保留。",
+      "summary": "修订 Axios 学习笔记中的绝对化表述、代理注释与 Router 参数说明，并补齐文件下载和响应拦截器之间的真实项目兼容点。",
+      "date": "2026-05-08T22:07:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-bb74fb92fd06cf0dbdf49410e20ffaddd30864d7",
+      "title": "功能：新增uni-app项目结构、跨平台开发、性能优化及常见问题解答的综合指南",
+      "content": "- 编写了关于uni-app项目结构、配置层级以及各文件职责的详细文档。\n- 新增跨平台开发方式以及微信小程序能力接入相关指南。\n- 补充了uni-app项目的性能优化与稳定性维护指南。\n- 整理了高频常见问题板块，涵盖uni-app开发中的常见问题与基础概念。",
+      "summary": "- 编写了关于uni-app项目结构、配置层级以及各文件职责的详细文档。 - 新增跨平台开发方式以及微信小程序能力接入相关指南。 - 补充了uni-app项目的性能优化与稳定性维护指南。 - 整理了高频常见问题板块，涵盖uni-app开发中",
+      "date": "2026-05-08T21:36:50+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "bb74fb9",
+      "fullHash": "bb74fb92fd06cf0dbdf49410e20ffaddd30864d7"
+    },
+    {
+      "id": "history-2026-05-08-9",
+      "title": "完成 uni-app 系统整理版主体重写",
+      "content": "第一点：将第 2 篇重写为《uni-app生命周期、页面时序与常见页面事件》，系统展开应用生命周期、页面生命周期、下拉刷新、触底加载、页面滚动、页面回流与组件生命周期边界，不再停留在简短答题式内容；第二点：将第 3 篇重写为《uni-app工程结构、配置分层与文件职责边界》，围绕 `main.js`、`App.vue`、`pages.json`、`manifest.json`、`uni.scss`、`static` 的职责和常见配置误区展开，强化工程化视角；第三点：将第 4 篇重写为《uni-app跨端开发方法与微信小程序常见能力接入》，重新梳理通用能力、微信协议能力、平台专属能力、条件编译、登录、支付、`web-view` 等内容，突出\"为什么这样组织更稳\"；第四点：将第 5 篇重写为《uni-app性能优化、包体治理与稳定性维护》，从包体、初始化、渲染、资源、登录态、本地缓存与权限状态等多个维度系统展开；第五点：将第 6 篇从\"速记小抄\"调整为《uni-app高频问题补充问答》，定位改为系统整理版的补充回看入口，而不是独立的轻量小册子。",
+      "summary": "将 `public/notes/我的总结/uni-app` 下 `02` 到 `06` 全部重写为系统整理风格，使整套内容与第 1 篇保持一致的技术密度。",
+      "date": "2026-05-08T21:17:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-4613c7ad7d2660df31dd8dc8c5433a2f362ef18e",
+      "title": "更新文档内容并同步索引和通知数据",
+      "content": "- 更新日常变更摘要\n- 更新笔记索引和搜索索引\n- 更新Windsurf系列文档\n- 更新Vue辅助文档\n- 添加新的Vue2与Vue3核心写法差异文档\n- 更新通知数据\n\nCo-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>",
+      "summary": "- 更新日常变更摘要 - 更新笔记索引和搜索索引 - 更新Windsurf系列文档 - 更新Vue辅助文档 - 添加新的Vue2与Vue3核心写法差异文档 - 更新通知数据 Co-Authored-By: Claude Opus 4.7 <",
+      "date": "2026-05-08T18:15:22+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "4613c7a",
+      "fullHash": "4613c7ad7d2660df31dd8dc8c5433a2f362ef18e"
+    },
+    {
+      "id": "history-2026-05-08-8",
+      "title": "压缩 Vue3 响应式笔记中的重复段落",
+      "content": "第一点：保留前文对 Vue3 响应式、Proxy 与 Reflect 的主体讲解，只修改了\"Reflect.get 返回布尔结果\"这类不准确表述；第二点：将后半段重复较重的 `Proxy & Reflect 核心笔记` 改为复习速记，减少和前文大段示例、语法解释的重叠；第三点：保留 `reactive` 与 `ref` 的整体替换边界说明，不动原有详细讲解结构。",
+      "summary": "对《第03篇：Vue响应式原理》做最小整理，修正 Reflect.get 的错误说明，并将重复的 Proxy/Reflect 展开内容压缩为速记版。",
+      "date": "2026-05-08T17:17:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-7",
+      "title": "精简并重构 Vue 响应式原理笔记",
+      "content": "第一点：将原本堆叠的多个版本内容合并为统一的逻辑流，从 Vue 2 的 Object.defineProperty 局限性平滑过渡到 Vue 3 的 Proxy + Reflect 优势；第二点：保留并优化了 Mermaid 流程图与核心角色对比表，新增了 reactive 丢失响应式、原始对象 vs 代理对象等实战避坑小节；第三点：同步修正了 Frontmatter 中的 title 与正文 H1 的一致性，确保详情页展示规范。",
+      "summary": "对《第03篇：Vue 响应式原理》进行了深度重组，消除了冗余内容，并按 Vue 2 与 Vue 3 的演进逻辑重新梳理了核心架构与避坑指南。",
+      "date": "2026-05-08T17:09:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-6",
+      "title": "新增 Vue2 vs Vue3 核心写法差异笔记",
+      "content": "第一点：根据主人提供的详细草案，创建了第12篇 Vue 辅助笔记《Vue2 vs Vue3 核心写法差异：从 this 魔法到函数式组合》；第二点：文章采用\"餐厅点菜\"与\"自己下厨\"的生动类比，拆解了 setup() 中 this = undefined 的根本原因，以及如何通过闭包 and 控制反转实现逻辑复用；第三点：同步更新了 YAML frontmatter 规范，包含 title、date、category、tags 和 description 字段，确保详情页标题显示与目录一致；第四点：按仓库规则执行了 npm run generate:index，完成了笔记索引的同步刷新。",
+      "summary": "整理并发布了《Vue2 vs Vue3 核心写法差异》详细学习笔记，深度对比了 Options API 与 Composition API 的心智模型、this 枢纽的变化及生命周期执行顺序。",
+      "date": "2026-05-08T16:53:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-5",
+      "title": "修订 Vue2 组件五大核心配置项笔记",
+      "content": "第一点：重写 `data` 章节中的响应式说明，明确只有初始化声明过的属性会被转为响应式，并补充对象新增属性与数组下标变更的常见限制；第二点：调整 `props` 示例，拆开默认值与必传校验的演示，避免把 `required` 与 `default` 混写成教学歧义；第三点：修正 `methods` 示例中直接给未声明字段赋值的问题，改为先在 `data` 中声明 `remoteData` 与 `loading`；第四点：整体重写 `computed` 关键特点，改正通过实例访问、依赖来源、getter/setter 触发时机与副作用边界等表述；第五点：更新 `watch` 核心说明与 `$watch` 示例，使其与前文范围和实际代码保持一致。",
+      "summary": "纠正 `data`、`methods`、`computed`、`watch` 章节中的多处 Vue 2 概念误差，并同步修正示例代码与排版细节。",
+      "date": "2026-05-08T16:07:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-4",
+      "title": "收紧 Windsurf 2.0 文档中的不稳口径",
+      "content": "第一点：重写第五篇中\"Devin 在 Windsurf 中的具体形态\"部分，改为以官方正式页明确写出的\"本地 Cascade + 云端 Devin\"协作为主，不再把 `Devin Local` 与 `Devin Cloud` 并列写成 Windsurf 2.0 主文档里的两种正式形态；第二点：将代码审查部分改写为\"先按 Quick Review 正式功能页理解\"，明确其当前只支持 Devin Local agent，并移除自动触发、批量审查、完整 Devin Review 分层等证据不足的写法；第三点：收紧 Agent Command Center 与 Spaces 段落中过度推断的 UI/协作细节，只保留 Kanban 视图、Space 上下文继承、编辑器内协同等已在正式页确认的能力；第四点：在第一篇补充输入框与 slash command 的来源说明，提示读者这部分主要参考总览页与较早文档，若与当前界面存在差异，应优先以更细分的新功能页和实际版本为准；第五点：按仓库规则重新执行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "修正第五篇中 Devin、Quick Review、Agent Command Center 等表述过满的问题，并在第一篇补充旧版总览页口径提示，避免把滚动发布内容误写成稳定版定论。",
+      "date": "2026-05-08T15:39:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-3d5cd22bbd016d07a0bbdacdee5bb9c0760ae29b",
+      "title": "docs(Windsurf): 更新文档系列并添加第五篇介绍 Windsurf 2.0",
+      "content": "基于2026-05官方最新资料，全面验证并更新了Windsurf文档系列。新增第五篇文档，深度拆解Windsurf 2.0、Devin云代理集成、Adaptive智能路由、Agent Command Center等重大更新。同步更新目录、索引和通知中心，确保内容与官方资料一致。",
+      "summary": "基于2026-05官方最新资料，全面验证并更新了Windsurf文档系列。新增第五篇文档，深度拆解Windsurf 2.0、Devin云代理集成、Adaptive智能路由、Agent Command Center等重大更新。同步更新目录、索",
+      "date": "2026-05-08T15:15:34+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "3d5cd22",
+      "fullHash": "3d5cd22bbd016d07a0bbdacdee5bb9c0760ae29b"
+    },
+    {
+      "id": "history-2026-05-08-3",
+      "title": "补充 Windsurf 自动执行命令 FAQ",
+      "content": "第一点：基于官方 Terminal 文档，在\"AI 执行中的交互控制\"小节补入常见疑问说明，明确 Windsurf 支持自动执行命令，但是否仍需手动确认取决于 Auto-Execution Level、allow/deny list、风险判断、premium model 条件与企业管理员限制；第二点：补充 Disabled、Allowlist Only、Auto、Turbo 的实际使用理解，帮助读者理解为什么有时仍会出现接受/拒绝按钮；第三点：按仓库规则执行 `npm run generate:index`，同步更新 `public/notes-index.json` 与 `public/search-index.json`，保证文档内容调整后站内索引保持一致。",
+      "summary": "在第一篇 Windsurf 入门文档中新增\"为什么还要手动确认、如何开启更高自动化\"的 FAQ，并按仓库规则重新生成笔记索引。",
+      "date": "2026-05-08T15:11:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-08-2",
+      "title": "完成 Windsurf 文档系列全面更新验证",
+      "content": "第一点：搜索并分析 Windsurf 官方最新 changelog 和文档，发现 2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Adaptive 智能路由、Agent Command Center 等重大更新；第二点：逐一验证第一至第四篇文档与官方资料的一致性，更新过时信息，包括将 Cascade 模式从 Code/Chat 更正为 Code/Plan/Ask，添加 Windsurf 2.0 说明；第三点：创建第五篇全新文档《Windsurf 2.0 与 Devin 集成实战（2026-05）》，深度拆解 Devin 云代理、Adaptive 智能路由、Agent Command Center、Spaces 任务管理、Devin Review 等革命性功能；第四点：更新目录文件，将专题从 4 篇扩展到 5 篇，更新时间戳为 2026-05-08，完善快速查找表；第五点：所有文档内容均经过官方资料验证，确保无过时或错误信息，形成完整的 Windsurf 学习路径。",
+      "summary": "基于 2026-05 官方最新资料，逐一验证并更新了全部 5 篇 Windsurf 文档，新增第五篇涵盖 Windsurf 2.0、Devin 集成等重大更新，确保文档内容与官方资料完全一致。",
+      "date": "2026-05-08T10:56:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-1954993e2fcfe3bc25ea305c31a5e0d15812ba6c",
+      "title": "修复消息显示逻辑问题",
+      "content": "提交说明：修复消息显示逻辑问题",
+      "summary": "修复消息显示逻辑问题",
+      "date": "2026-05-08T09:25:45+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "1954993",
+      "fullHash": "1954993e2fcfe3bc25ea305c31a5e0d15812ba6c"
+    },
+    {
+      "id": "history-2026-05-08-1",
+      "title": "修复打包后通知中心缺失当日摘要",
+      "content": "第一点：排查 `scripts/notificationTransforms.js` 后确认脚本只会展示\"当天日期\"的 `dailyChangeSummary`，因此 `data/dailyChangeSummary.js` 仍停留在 `2026-05-07` 时，会在打包后被自动过滤；第二点：按仓库归档规则把 2026-05-07 的 6 条摘要完整迁移到 `data/history/2026-05-01_10.js` 新增的 `history-2026-05-07` 分组，保留 `category/time/title/summary/content` 明细字段；第三点：重置 `data/dailyChangeSummary.js` 为当天日期 `2026-05-08` 并写入本次修复记录，保证通知中心构建产物与\"仅展示当天摘要\"的规则一致。",
+      "summary": "将 `2026-05-07` 的当日摘要归档到历史分片，并将 `dailyChangeSummary` 切换到 `2026-05-08`，解决构建后只显示 Git/历史消息导致的异常观感。",
+      "date": "2026-05-08T09:18:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-08",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
     {
       "id": "git-7fc4dc6e34fb1504737895b7f8874f0aad28913e",
       "title": "新增代码主题颜色识别",
@@ -15,6 +523,21 @@
       "fullHash": "7fc4dc6e34fb1504737895b7f8874f0aad28913e"
     },
     {
+      "id": "history-2026-05-07-6",
+      "title": "新增代码主题切换功能与 Vue SFC 高亮支持",
+      "content": "1) 新增 `src/components/CodeThemeModal.vue` 代码主题切换弹窗组件，提供 8 种预设主题（GitHub Dark、Atom One Dark、VS2015、Monokai Sublime、Tokyo Night、Dracula、Nord、Solarized Dark）和自定义主题上传功能；2) 新增 `src/utils/codeTheme.js` 主题管理工具，支持动态加载 CSS、localStorage 持久化、自定义主题上传与删除；3) 新增 `src/styles/code-theme-custom.css` 自定义主题样式文件；4) 更新 `src/utils/markdown.js`，实现 Vue 单文件组件的 `<template>`、`<script>`、`<style>` 三区块分别高亮，支持 `lang` 属性识别（如 `<script lang=\"ts\">`、`<style lang=\"scss\">`）；5) 更新 `src/components/MarkdownRenderer.vue`，移除硬编码的 `github-dark.css` 引入，改用动态主题加载机制；6) 更新 `src/components/AppSidebar.vue`，在侧边栏操作菜单中新增\"代码主题\"入口；7) 更新 `CLAUDE.md` 文档，补充 Vue SFC 高亮支持说明。",
+      "summary": "新增代码主题切换弹窗，支持 GitHub Dark、Atom One Dark、VS2015 等 8 种主题；同时实现 Vue 单文件组件的分区块语法高亮。",
+      "date": "2026-05-07T23:59:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
       "id": "git-5a5087ac7d0ab02998acaf4bf0aca25c6a8ebe97",
       "title": "新增for家族文档和优化部分vue辅助文档",
       "content": "提交说明：新增for家族文档和优化部分vue辅助文档",
@@ -25,6 +548,51 @@
       "pinned": false,
       "shortHash": "5a5087a",
       "fullHash": "5a5087ac7d0ab02998acaf4bf0aca25c6a8ebe97"
+    },
+    {
+      "id": "history-2026-05-07-1",
+      "title": "修复 Vue 代码块高亮识别",
+      "content": "更新 `src/utils/markdown.js`，为 `vue` 代码块补充高亮别名映射，并顺手兼容 `ps1` / `pwsh` 等常见脚本语言别名；同步补充 `src/utils/__tests__/markdownCodeBlocks.test.js`，确保 ` ```vue ` 代码块会产出带主题色的高亮标记，方便前端文章里的 Vue SFC 示例正常阅读。",
+      "summary": "为 `vue` fenced code block 补上高亮别名映射，让前端文章里的 Vue 代码块恢复主题色，不再显示成纯黑白文本。",
+      "date": "2026-05-07T22:52:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-07-2",
+      "title": "新增 JavaScript for 家族完全指南",
+      "content": "更新 `public/notes/我的总结/JS/辅助资料/21_for家族完全指南.md`，系统讲解普通 `for`、`for...of`、`for...in`、`forEach`、`for...of + await`、`for await...of` 的语法、适用场景、常见坑和选择口诀；同步更新 `public/notes/我的总结/JS/JS常识.md`，把 JavaScript 常识目录扩展到第 21 篇；随后执行 `npm run generate:index`，刷新站点笔记索引与搜索索引，让新文章能在列表页和搜索页正常显示。",
+      "summary": "新增一篇专门讲解 for、for...of、for...in、forEach 和异步循环的 JS 专题文章，重点帮初学者建立“索引、值、键、异步结果”四种判断框架。",
+      "date": "2026-05-07T22:35:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-07-5",
+      "title": "审核并修正 Vue 指令与自定义指令文档",
+      "content": "更新 `public/notes/我的总结/Vue/vue辅助/第02篇_Vue指令与自定义指令.md`：1) 修正 `.passive` 修饰符描述，从\"顺从/不抵抗\"改为准确的\"告诉浏览器不会调用 preventDefault()，可立即执行默认行为提升性能\"；2) 补充 v-on 事件处理说明，增加\"同时传递自定义参数和事件对象需使用 $event\"；3) 完善 v-model 本质说明，明确不同表单元素监听的事件不同（input 监听 input 事件，select/checkbox/radio 监听 change 事件）；4) 强化 v-for key 使用建议，明确\"仅在列表仅展示且永不变化时才可用 index，涉及增删改排序时 index 会导致状态错乱\"；5) 修正 Vue3 自定义指令 binding.instance 说明，区分选项式 API 和组合式 API 的访问方式。",
+      "summary": "搜索官方资料验证文档准确性，修正事件修饰符、v-model 本质、v-for key 使用、binding.instance 等关键描述。",
+      "date": "2026-05-07T22:29:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
     },
     {
       "id": "git-4d7c01970fc43bdff2a78d1e3ffbfbf9977987d7",
@@ -49,6 +617,36 @@
       "pinned": false,
       "shortHash": "28978a0",
       "fullHash": "28978a019bf33866a7ebff0dea5abe9764139474"
+    },
+    {
+      "id": "history-2026-05-07-3",
+      "title": "为字符串数组方法手册加入正文目录",
+      "content": "更新 `public/notes/我的总结/JS/辅助资料/字符串数组方法对比记忆手册.md`：1) 在文章开头目标说明后加入 `[[toc]]` 自动目录；2) 目录会跟随现有二级、三级标题自动生成，无需后续手工维护锚点；3) 执行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保站点数据与正文内容保持一致。",
+      "summary": "在字符串数组方法速背卡开头加入自动目录，方便从正文内部快速跳转到参数边界、开发场景、面试快答和自测练习等章节。",
+      "date": "2026-05-07T21:32:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "功能更新",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-05-07-4",
+      "title": "统一 JavaScript 常识专题的标题命名",
+      "content": "更新 `public/notes/我的总结/JS/` 下整组文档：1) 为 `JS常识.md` 补齐 frontmatter 与统一目录页标题，并把目录中的文章入口文案同步改成正式标题；2) 将 01 到 20 篇文章统一收敛为\"第XX篇：标题\"命名格式，补齐缺失的 H1，修正 `05_this.md`、`13_offset_client_scroll.md`、`20_数组创建区别.md` 等文件中 frontmatter 与正文一级标题不一致的问题；3) 为 `07_es5构造函数与es6语法糖Class.md` 新增完整 frontmatter 与系列标题；4) 为 `附录_解构赋值.md` 补上统一 H1；5) 执行 `npm run generate:index`，重新生成 `public/notes-index.json` 与 `public/search-index.json`，让列表页、搜索页和详情页头部都读取到最新一致的标题。",
+      "summary": "批量对齐 JS 常识目录与 01 到 20 篇文章的 frontmatter、正文 H1 和目录入口文案，修复运行后列表标题、详情页标题和正文标题不一致的问题。",
+      "date": "2026-05-07T21:27:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-05-07",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
     },
     {
       "id": "git-4cbd47bef57ae6149480a6872d2e673409772621",
@@ -3316,6 +3914,153 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-05-09",
+      "items": [
+        {
+          "title": "新增《绝对路径与相对路径详解》",
+          "summary": "在 JS 辅助资料中新增第 22 篇文章，系统讲解绝对路径与相对路径的概念、区别、使用场景及常见陷阱",
+          "time": "10:49",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "完善《第10篇：Vue Router 超详细总笔记》守卫章节",
+          "summary": "大幅扩充路由守卫相关内容，新增完整导航解析流程、next 进化对比、守卫实战示例等核心知识点",
+          "time": "11:17",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "完善 uni-app 通用基础系列 4 篇文章",
+          "summary": "对 uni-app 系列前 4 篇文章进行全面补充和完善，新增页面栈管理、网络超时配置、缓存容量限制、临时文件处理等实战内容",
+          "time": "18:14",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "深度整理书签分类：按内容重新归档全部 174 条",
+          "summary": "完全无视原有浏览器文件夹结构，基于每条 URL 的实际内容重新设计 17 个语义分类，修正多处归类错误",
+          "time": "23:24",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "重构个人书签库入口与高密度检索体验",
+          "summary": "把浏览器书签整理成功能型站内书签库，入口放进头像弹窗，保留全部收藏并支持按分类、原收藏夹、类型快速筛找",
+          "time": "22:36",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "items": [
+        {
+          "title": "修复打包后通知中心缺失当日摘要",
+          "summary": "将 `2026-05-07` 的当日摘要归档到历史分片，并将 `dailyChangeSummary` 切换到 `2026-05-08`，解决构建后只显示 Git/历史消息导致的异常观感。",
+          "time": "09:18",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "完成 Windsurf 文档系列全面更新验证",
+          "summary": "基于 2026-05 官方最新资料，逐一验证并更新了全部 5 篇 Windsurf 文档，新增第五篇涵盖 Windsurf 2.0、Devin 集成等重大更新，确保文档内容与官方资料完全一致。",
+          "time": "10:56",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补充 Windsurf 自动执行命令 FAQ",
+          "summary": "在第一篇 Windsurf 入门文档中新增\"为什么还要手动确认、如何开启更高自动化\"的 FAQ，并按仓库规则重新生成笔记索引。",
+          "time": "15:11",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "收紧 Windsurf 2.0 文档中的不稳口径",
+          "summary": "修正第五篇中 Devin、Quick Review、Agent Command Center 等表述过满的问题，并在第一篇补充旧版总览页口径提示，避免把滚动发布内容误写成稳定版定论。",
+          "time": "15:39",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "修订 Vue2 组件五大核心配置项笔记",
+          "summary": "纠正 `data`、`methods`、`computed`、`watch` 章节中的多处 Vue 2 概念误差，并同步修正示例代码与排版细节。",
+          "time": "16:07",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "新增 Vue2 vs Vue3 核心写法差异笔记",
+          "summary": "整理并发布了《Vue2 vs Vue3 核心写法差异》详细学习笔记，深度对比了 Options API 与 Composition API 的心智模型、this 枢纽的变化及生命周期执行顺序。",
+          "time": "16:53",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "精简并重构 Vue 响应式原理笔记",
+          "summary": "对《第03篇：Vue 响应式原理》进行了深度重组，消除了冗余内容，并按 Vue 2 与 Vue 3 的演进逻辑重新梳理了核心架构与避坑指南。",
+          "time": "17:09",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "压缩 Vue3 响应式笔记中的重复段落",
+          "summary": "对《第03篇：Vue响应式原理》做最小整理，修正 Reflect.get 的错误说明，并将重复的 Proxy/Reflect 展开内容压缩为速记版。",
+          "time": "17:17",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "完成 uni-app 系统整理版主体重写",
+          "summary": "将 `public/notes/我的总结/uni-app` 下 `02` 到 `06` 全部重写为系统整理风格，使整套内容与第 1 篇保持一致的技术密度。",
+          "time": "21:17",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "修正 Axios 笔记中的不严谨与示例冲突",
+          "summary": "修订 Axios 学习笔记中的绝对化表述、代理注释与 Router 参数说明，并补齐文件下载和响应拦截器之间的真实项目兼容点。",
+          "time": "22:07",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "统一 Vue Router 第十篇的站内标题显示",
+          "summary": "将 Router 笔记的 frontmatter、正文 H1 与 Vue 目录入口统一为同一系列标题，解决运行后页面标题与文件名语义不一致的问题。",
+          "time": "22:19",
+          "itemCategory": "问题修复"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-07",
+      "items": [
+        {
+          "title": "修复 Vue 代码块高亮识别",
+          "summary": "为 `vue` fenced code block 补上高亮别名映射，让前端文章里的 Vue 代码块恢复主题色，不再显示成纯黑白文本。",
+          "time": "22:52",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "新增 JavaScript for 家族完全指南",
+          "summary": "新增一篇专门讲解 for、for...of、for...in、forEach 和异步循环的 JS 专题文章，重点帮初学者建立“索引、值、键、异步结果”四种判断框架。",
+          "time": "22:35",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "为字符串数组方法手册加入正文目录",
+          "summary": "在字符串数组方法速背卡开头加入自动目录，方便从正文内部快速跳转到参数边界、开发场景、面试快答和自测练习等章节。",
+          "time": "21:32",
+          "itemCategory": "功能更新"
+        },
+        {
+          "title": "统一 JavaScript 常识专题的标题命名",
+          "summary": "批量对齐 JS 常识目录与 01 到 20 篇文章的 frontmatter、正文 H1 和目录入口文案，修复运行后列表标题、详情页标题和正文标题不一致的问题。",
+          "time": "21:27",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "审核并修正 Vue 指令与自定义指令文档",
+          "summary": "搜索官方资料验证文档准确性，修正事件修饰符、v-model 本质、v-for key 使用、binding.instance 等关键描述。",
+          "time": "22:29",
+          "itemCategory": "问题修复"
+        },
+        {
+          "title": "新增代码主题切换功能与 Vue SFC 高亮支持",
+          "summary": "新增代码主题切换弹窗，支持 GitHub Dark、Atom One Dark、VS2015 等 8 种主题；同时实现 Vue 单文件组件的分区块语法高亮。",
+          "time": "23:59",
+          "itemCategory": "功能更新"
+        }
+      ]
+    },
     {
       "date": "2026-05-06",
       "items": [
