@@ -1398,10 +1398,10 @@
           ],
           "category": "系统与文件",
           "attachments": [],
-          "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-          "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.067Z",
-          "wordCount": 3305
+          "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+          "size": "13KB",
+          "lastModified": "2026-05-12T14:26:21.409Z",
+          "wordCount": 7933
         }
       ],
       "children": []
@@ -1910,10 +1910,10 @@
           ],
           "category": "系统与文件",
           "attachments": [],
-          "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-          "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.067Z",
-          "wordCount": 3305
+          "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+          "size": "13KB",
+          "lastModified": "2026-05-12T14:26:21.409Z",
+          "wordCount": 7933
         }
       ],
       "children": []
@@ -2080,10 +2080,10 @@
           ],
           "category": "面试",
           "attachments": [],
-          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-          "size": "25KB",
-          "lastModified": "2026-05-10T15:11:58.993Z",
-          "wordCount": 14185
+          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+          "size": "34KB",
+          "lastModified": "2026-05-12T14:26:37.718Z",
+          "wordCount": 22780
         },
         {
           "type": "file",
@@ -20566,10 +20566,10 @@
       ],
       "category": "面试",
       "attachments": [],
-      "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-      "size": "25KB",
-      "lastModified": "2026-05-10T15:11:58.993Z",
-      "wordCount": 14185
+      "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+      "size": "34KB",
+      "lastModified": "2026-05-12T14:26:37.718Z",
+      "wordCount": 22780
     },
     {
       "type": "file",
@@ -21416,10 +21416,10 @@
       ],
       "category": "系统与文件",
       "attachments": [],
-      "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-      "size": "5KB",
-      "lastModified": "2026-05-07T12:40:02.067Z",
-      "wordCount": 3305
+      "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+      "size": "13KB",
+      "lastModified": "2026-05-12T14:26:21.409Z",
+      "wordCount": 7933
     },
     {
       "type": "file",
@@ -30030,10 +30030,10 @@
               ],
               "category": "系统与文件",
               "attachments": [],
-              "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-              "size": "5KB",
-              "lastModified": "2026-05-07T12:40:02.067Z",
-              "wordCount": 3305
+              "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+              "size": "13KB",
+              "lastModified": "2026-05-12T14:26:21.409Z",
+              "wordCount": 7933
             }
           ]
         }
@@ -30202,10 +30202,10 @@
           ],
           "category": "面试",
           "attachments": [],
-          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-          "size": "25KB",
-          "lastModified": "2026-05-10T15:11:58.993Z",
-          "wordCount": 14185
+          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+          "size": "34KB",
+          "lastModified": "2026-05-12T14:26:37.718Z",
+          "wordCount": 22780
         },
         {
           "type": "file",
@@ -38546,5 +38546,5 @@
   ],
   "totalNotes": 388,
   "totalCategories": 87,
-  "lastUpdated": "2026-05-12T13:11:11.300Z"
+  "lastUpdated": "2026-05-12T14:28:54.631Z"
 }
