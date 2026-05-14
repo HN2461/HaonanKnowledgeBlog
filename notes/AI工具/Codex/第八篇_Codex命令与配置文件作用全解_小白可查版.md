@@ -13,7 +13,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 
 # 第八篇：Codex 命令与配置文件作用全解（小白可查版）
 
-> 更新时间：2026-03-08  
+> 更新时间：2026-05-14（已按官方当前文档校准）  
 > 定位：工具底座（全系列命令与配置文件统一说明）。  
 > 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。
 
@@ -72,7 +72,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 | `codex login status` | 查看登录状态 | 鉴权报错时 | 先排查它最快 |
 | `codex --model <name>` | 临时切模型 | 单次任务 | 不改动配置文件 |
 | `codex --profile <name>` | 用指定 profile 运行 | 场景切换（开发/审计） | profile 来自 `config.toml` |
-| `codex --full-auto` | 常用自动模式 | 想提高效率但仍可控 | 等价 `workspace-write + on-request` |
+| `codex --full-auto` | 旧资料常见兼容写法 | 看到老教程时用于对照理解 | 当前更建议直接显式写 `--sandbox workspace-write --ask-for-approval on-request` |
 | `codex --yolo` | 跳过审批与沙箱 | 隔离环境专项任务 | 风险高，日常不建议 |
 | `codex exec "..."` | 非交互执行单任务 | CI/批处理 | 默认只读沙箱 |
 | `codex exec --json "..."` | 输出机器可读事件流 | 脚本集成 | 便于日志与自动解析 |
@@ -97,6 +97,9 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 | `/init` | 生成 `AGENTS.md` 模板 | 新项目初始化 |
 | `/mcp` | 查看工具接入状态 | MCP 排错 |
 | `/plan` | 先规划再执行 | 大任务拆解 |
+| `/goal` | 给线程设置持续目标 | 长任务管理 |
+| `/personality` | 切换回复风格 | 团队协作偏好调整 |
+| `/fast` | 查看或切换 fast 模式 | 节奏控制 |
 | `/feedback` | 反馈问题并附日志 | 诊断异常 |
 
 提示：不同端（CLI/插件/App）可用命令略有差异，先用 `/status` 或帮助文档确认。
@@ -107,7 +110,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 
 | 字段 | 作用 | 新手默认建议 | 专业补充 |
 |---|---|---|---|
-| `model` | 默认模型 | `gpt-5.4` | 与 provider 可用模型保持一致 |
+| `model` | 默认模型 | `gpt-5.3-codex` | 与 provider 可用模型保持一致，不要机械照抄旧资料里的 `gpt-5.4` |
 | `model_provider` | 选择后端提供方 | `openai` | 与 `[model_providers.<id>]` 名称必须一致 |
 | `[model_providers.<id>].base_url` | API 地址 | 官方默认地址或服务商地址 | 路线切换最常错字段 |
 | `approval_policy` | 是否弹确认 | `on-request` | 自动化可用 `never`，但要配安全边界 |
@@ -126,7 +129,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -136,7 +139,7 @@ web_search = "cached"
 persistence = "save-all"
 
 [profiles.audit]
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "never"
 sandbox_mode = "read-only"
 web_search = "disabled"
@@ -156,7 +159,7 @@ web_search = "disabled"
 | 先确认安装是否正常 | `node -v`、`npm -v`、`codex --version` |
 | 登录异常排查 | `codex login status` |
 | 改了配置没生效 | `/debug-config` + 检查优先级链 |
-| 只想快速让它改代码 | `codex --full-auto`（先在测试仓库） |
+| 只想快速让它改代码 | `codex --sandbox workspace-write --ask-for-approval on-request`（先在测试仓库） |
 | 需要脚本化跑批 | `codex exec --json "..."` |
 | 要接外部工具 | `codex mcp add ...` + `codex mcp list` |
 | 团队统一规范 | 仓库根维护 `AGENTS.md` + profiles |
@@ -169,5 +172,5 @@ web_search = "disabled"
 1. 命令是“临时动作”
 2. `config.toml` 是“默认策略”
 3. `AGENTS.md` 是“团队规则”
-4. `auth.json` 是“敏感凭据”
+4. `auth.json` 或系统凭据库中的登录缓存都属于“敏感凭据”
 5. 看不懂时，先回到“优先级链”判断谁覆盖了谁

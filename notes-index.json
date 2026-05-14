@@ -107,14 +107,15 @@
             "动画",
             "性能",
             "JavaScript",
-            "CSS"
+            "CSS",
+            "WebSocket"
           ],
           "category": "浏览器与网络",
           "attachments": [],
-          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
-          "size": "11KB",
-          "lastModified": "2026-04-30T12:10:43.527Z",
-          "wordCount": 6570
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中高频出现的各种\"帧\"，包括渲染帧、关键帧、动画帧、调用栈帧、视频帧、iframe、WebSocket 数据帧等，一次搞清楚。",
+          "size": "14KB",
+          "lastModified": "2026-05-14T13:16:10.454Z",
+          "wordCount": 8184
         },
         {
           "type": "file",
@@ -699,14 +700,15 @@
             "动画",
             "性能",
             "JavaScript",
-            "CSS"
+            "CSS",
+            "WebSocket"
           ],
           "category": "浏览器与网络",
           "attachments": [],
-          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
-          "size": "11KB",
-          "lastModified": "2026-04-30T12:10:43.527Z",
-          "wordCount": 6570
+          "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中高频出现的各种\"帧\"，包括渲染帧、关键帧、动画帧、调用栈帧、视频帧、iframe、WebSocket 数据帧等，一次搞清楚。",
+          "size": "14KB",
+          "lastModified": "2026-05-14T13:16:10.454Z",
+          "wordCount": 8184
         },
         {
           "type": "file",
@@ -1398,10 +1400,10 @@
           ],
           "category": "系统与文件",
           "attachments": [],
-          "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-          "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.067Z",
-          "wordCount": 3305
+          "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+          "size": "13KB",
+          "lastModified": "2026-05-12T14:26:21.409Z",
+          "wordCount": 7933
         }
       ],
       "children": []
@@ -1910,10 +1912,10 @@
           ],
           "category": "系统与文件",
           "attachments": [],
-          "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-          "size": "5KB",
-          "lastModified": "2026-05-07T12:40:02.067Z",
-          "wordCount": 3305
+          "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+          "size": "13KB",
+          "lastModified": "2026-05-12T14:26:21.409Z",
+          "wordCount": 7933
         }
       ],
       "children": []
@@ -1966,9 +1968,9 @@
           "category": "面试",
           "attachments": [],
           "description": "合并整理前端面试零碎知识与补充题库，涵盖 Vue2/Vue3、Vuex/Pinia、Diff、ECharts、小程序、WebSocket、Three.js、工程化与常见基础题。",
-          "size": "23KB",
-          "lastModified": "2026-05-10T14:33:29.464Z",
-          "wordCount": 15315
+          "size": "27KB",
+          "lastModified": "2026-05-12T12:40:11.852Z",
+          "wordCount": 18223
         },
         {
           "type": "file",
@@ -2058,9 +2060,9 @@
           "category": "面试",
           "attachments": [],
           "description": "HTML 和 CSS 基础面试题，包括浏览器内核、DOCTYPE、布局模式等核心概念。",
-          "size": "26KB",
-          "lastModified": "2026-05-10T15:16:45.406Z",
-          "wordCount": 13666
+          "size": "50KB",
+          "lastModified": "2026-05-12T13:10:54.706Z",
+          "wordCount": 25697
         },
         {
           "type": "file",
@@ -2080,10 +2082,10 @@
           ],
           "category": "面试",
           "attachments": [],
-          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-          "size": "25KB",
-          "lastModified": "2026-05-10T15:11:58.993Z",
-          "wordCount": 14185
+          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+          "size": "34KB",
+          "lastModified": "2026-05-12T14:26:37.718Z",
+          "wordCount": 22780
         },
         {
           "type": "file",
@@ -6378,8 +6380,8 @@
           "attachments": [],
           "description": "这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、STOMP 帧缓冲、heart-beat 协商、订阅表、回调分发和基础生命周期管理。",
           "size": "12KB",
-          "lastModified": "2026-04-16T13:18:19.748Z",
-          "wordCount": 9105
+          "lastModified": "2026-05-14T13:01:59.598Z",
+          "wordCount": 9115
         },
         {
           "type": "file",
@@ -6718,6 +6720,57 @@
         },
         {
           "type": "file",
+          "title": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+          "frontmatterTitle": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+          "fileTitle": "10-STOMP协议速查手册_帧结构命令心跳与调试清单",
+          "filename": "10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+          "path": "项目复用技术/WebSocket/10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "STOMP",
+            "WebSocket",
+            "速查手册",
+            "协议规范",
+            "心跳",
+            "帧结构"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 10 篇，一份面向 STOMP 协议的快速参考手册，用类比和最小记忆量把帧结构、核心命令、心跳协商、常见错误和调试清单讲清楚，适合长时间没碰 STOMP 后快速回忆。",
+          "size": "9KB",
+          "lastModified": "2026-05-14T13:07:41.593Z",
+          "wordCount": 5865
+        },
+        {
+          "type": "file",
+          "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+          "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "性能优化",
+            "高并发",
+            "消息节流",
+            "内存泄漏",
+            "permessage-deflate",
+            "Vue"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+          "size": "35KB",
+          "lastModified": "2026-05-14T13:07:57.248Z",
+          "wordCount": 25303
+        },
+        {
+          "type": "file",
           "title": "单可信域名跨域OAuth解决方案",
           "frontmatterTitle": "单可信域名跨域OAuth解决方案",
           "fileTitle": "单可信域名跨域OAuth解决方案",
@@ -6907,6 +6960,30 @@
           "size": "2KB",
           "lastModified": "2026-04-28T11:18:24.449Z",
           "wordCount": 1799
+        },
+        {
+          "type": "file",
+          "title": "Git分支追踪与VSCode发布提示-排障指南",
+          "frontmatterTitle": "Git分支追踪与VSCode发布提示-排障指南",
+          "fileTitle": "Git分支追踪与VSCode发布提示-排障指南",
+          "filename": "Git分支追踪与VSCode发布提示-排障指南.md",
+          "path": "项目复用技术/Git/Git分支追踪与VSCode发布提示-排障指南.md",
+          "date": "2026-05-12T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Git",
+            "VSCode",
+            "分支管理",
+            "排障指南",
+            "upstream"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "针对VSCode中\"发布分支\"提示问题的完整排障指南，涵盖分支追踪、upstream配置和fetch配置等常见问题的解决方案。",
+          "size": "4KB",
+          "lastModified": "2026-05-12T12:40:11.854Z",
+          "wordCount": 2123
         },
         {
           "type": "file",
@@ -10101,6 +10178,37 @@
       "children": []
     },
     {
+      "name": "Git",
+      "path": "项目复用技术/Git",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Git分支追踪与VSCode发布提示-排障指南",
+          "frontmatterTitle": "Git分支追踪与VSCode发布提示-排障指南",
+          "fileTitle": "Git分支追踪与VSCode发布提示-排障指南",
+          "filename": "Git分支追踪与VSCode发布提示-排障指南.md",
+          "path": "项目复用技术/Git/Git分支追踪与VSCode发布提示-排障指南.md",
+          "date": "2026-05-12T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Git",
+            "VSCode",
+            "分支管理",
+            "排障指南",
+            "upstream"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "针对VSCode中\"发布分支\"提示问题的完整排障指南，涵盖分支追踪、upstream配置和fetch配置等常见问题的解决方案。",
+          "size": "4KB",
+          "lastModified": "2026-05-12T12:40:11.854Z",
+          "wordCount": 2123
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "uni-app",
       "path": "项目复用技术/uni-app",
       "notes": [
@@ -10331,8 +10439,8 @@
           "attachments": [],
           "description": "这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、STOMP 帧缓冲、heart-beat 协商、订阅表、回调分发和基础生命周期管理。",
           "size": "12KB",
-          "lastModified": "2026-04-16T13:18:19.748Z",
-          "wordCount": 9105
+          "lastModified": "2026-05-14T13:01:59.598Z",
+          "wordCount": 9115
         },
         {
           "type": "file",
@@ -10483,6 +10591,57 @@
           "size": "20KB",
           "lastModified": "2026-05-11T12:52:42.846Z",
           "wordCount": 15539
+        },
+        {
+          "type": "file",
+          "title": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+          "frontmatterTitle": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+          "fileTitle": "10-STOMP协议速查手册_帧结构命令心跳与调试清单",
+          "filename": "10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+          "path": "项目复用技术/WebSocket/10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "STOMP",
+            "WebSocket",
+            "速查手册",
+            "协议规范",
+            "心跳",
+            "帧结构"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 10 篇，一份面向 STOMP 协议的快速参考手册，用类比和最小记忆量把帧结构、核心命令、心跳协商、常见错误和调试清单讲清楚，适合长时间没碰 STOMP 后快速回忆。",
+          "size": "9KB",
+          "lastModified": "2026-05-14T13:07:41.593Z",
+          "wordCount": 5865
+        },
+        {
+          "type": "file",
+          "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+          "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "性能优化",
+            "高并发",
+            "消息节流",
+            "内存泄漏",
+            "permessage-deflate",
+            "Vue"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+          "size": "35KB",
+          "lastModified": "2026-05-14T13:07:57.248Z",
+          "wordCount": 25303
         }
       ],
       "children": []
@@ -11786,8 +11945,8 @@
           "attachments": [],
           "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
           "size": "6KB",
-          "lastModified": "2026-04-30T13:43:30.307Z",
-          "wordCount": 3607
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 3641
         },
         {
           "type": "file",
@@ -12066,8 +12225,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -12084,9 +12243,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "8KB",
-          "lastModified": "2026-04-30T13:43:30.308Z",
-          "wordCount": 5043
+          "size": "9KB",
+          "lastModified": "2026-05-14T13:39:11.881Z",
+          "wordCount": 5448
         },
         {
           "type": "file",
@@ -12301,8 +12460,8 @@
           "attachments": [],
           "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
           "size": "13KB",
-          "lastModified": "2026-04-30T13:43:30.312Z",
-          "wordCount": 8715
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 8956
         },
         {
           "type": "file",
@@ -12493,8 +12652,8 @@
           "attachments": [],
           "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
           "size": "13KB",
-          "lastModified": "2026-04-30T13:43:30.314Z",
-          "wordCount": 8338
+          "lastModified": "2026-05-14T13:39:11.891Z",
+          "wordCount": 8446
         },
         {
           "type": "file",
@@ -12657,9 +12816,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-          "size": "12KB",
-          "lastModified": "2026-04-30T13:43:30.324Z",
-          "wordCount": 9267
+          "size": "13KB",
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 9358
         },
         {
           "type": "file",
@@ -12820,8 +12979,8 @@
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
           "size": "14KB",
-          "lastModified": "2026-04-30T13:43:30.325Z",
-          "wordCount": 9278
+          "lastModified": "2026-05-14T13:43:38.381Z",
+          "wordCount": 9405
         },
         {
           "type": "file",
@@ -12867,8 +13026,8 @@
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
           "size": "12KB",
-          "lastModified": "2026-04-30T13:43:30.328Z",
-          "wordCount": 8054
+          "lastModified": "2026-05-14T13:39:11.894Z",
+          "wordCount": 8121
         },
         {
           "type": "file",
@@ -12890,9 +13049,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-          "size": "7KB",
-          "lastModified": "2026-04-30T13:43:30.329Z",
-          "wordCount": 4520
+          "size": "8KB",
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 4777
         },
         {
           "type": "file",
@@ -12915,8 +13074,8 @@
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
           "size": "14KB",
-          "lastModified": "2026-04-30T13:43:30.331Z",
-          "wordCount": 9126
+          "lastModified": "2026-05-14T13:39:11.895Z",
+          "wordCount": 9042
         },
         {
           "type": "file",
@@ -13634,8 +13793,8 @@
           "attachments": [],
           "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
           "size": "6KB",
-          "lastModified": "2026-04-30T13:43:30.307Z",
-          "wordCount": 3607
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 3641
         },
         {
           "type": "file",
@@ -13673,8 +13832,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -13691,9 +13850,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "8KB",
-          "lastModified": "2026-04-30T13:43:30.308Z",
-          "wordCount": 5043
+          "size": "9KB",
+          "lastModified": "2026-05-14T13:39:11.881Z",
+          "wordCount": 5448
         },
         {
           "type": "file",
@@ -13716,8 +13875,8 @@
           "attachments": [],
           "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
           "size": "13KB",
-          "lastModified": "2026-04-30T13:43:30.312Z",
-          "wordCount": 8715
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 8956
         },
         {
           "type": "file",
@@ -13740,8 +13899,8 @@
           "attachments": [],
           "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
           "size": "13KB",
-          "lastModified": "2026-04-30T13:43:30.314Z",
-          "wordCount": 8338
+          "lastModified": "2026-05-14T13:39:11.891Z",
+          "wordCount": 8446
         },
         {
           "type": "file",
@@ -13763,9 +13922,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-          "size": "12KB",
-          "lastModified": "2026-04-30T13:43:30.324Z",
-          "wordCount": 9267
+          "size": "13KB",
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 9358
         },
         {
           "type": "file",
@@ -13788,8 +13947,8 @@
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
           "size": "14KB",
-          "lastModified": "2026-04-30T13:43:30.325Z",
-          "wordCount": 9278
+          "lastModified": "2026-05-14T13:43:38.381Z",
+          "wordCount": 9405
         },
         {
           "type": "file",
@@ -13812,8 +13971,8 @@
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
           "size": "12KB",
-          "lastModified": "2026-04-30T13:43:30.328Z",
-          "wordCount": 8054
+          "lastModified": "2026-05-14T13:39:11.894Z",
+          "wordCount": 8121
         },
         {
           "type": "file",
@@ -13835,9 +13994,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-          "size": "7KB",
-          "lastModified": "2026-04-30T13:43:30.329Z",
-          "wordCount": 4520
+          "size": "8KB",
+          "lastModified": "2026-05-14T13:39:11.887Z",
+          "wordCount": 4777
         },
         {
           "type": "file",
@@ -13860,8 +14019,8 @@
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
           "size": "14KB",
-          "lastModified": "2026-04-30T13:43:30.331Z",
-          "wordCount": 9126
+          "lastModified": "2026-05-14T13:39:11.895Z",
+          "wordCount": 9042
         },
         {
           "type": "file",
@@ -20206,6 +20365,81 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+      "frontmatterTitle": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+      "fileTitle": "10-STOMP协议速查手册_帧结构命令心跳与调试清单",
+      "filename": "10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+      "path": "项目复用技术/WebSocket/10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+      "date": "2026-05-14T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "STOMP",
+        "WebSocket",
+        "速查手册",
+        "协议规范",
+        "心跳",
+        "帧结构"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "这是 WebSocket 专题的第 10 篇，一份面向 STOMP 协议的快速参考手册，用类比和最小记忆量把帧结构、核心命令、心跳协商、常见错误和调试清单讲清楚，适合长时间没碰 STOMP 后快速回忆。",
+      "size": "9KB",
+      "lastModified": "2026-05-14T13:07:41.593Z",
+      "wordCount": 5865
+    },
+    {
+      "type": "file",
+      "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+      "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+      "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+      "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+      "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+      "date": "2026-05-14T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "WebSocket",
+        "性能优化",
+        "高并发",
+        "消息节流",
+        "内存泄漏",
+        "permessage-deflate",
+        "Vue"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+      "size": "35KB",
+      "lastModified": "2026-05-14T13:07:57.248Z",
+      "wordCount": 25303
+    },
+    {
+      "type": "file",
+      "title": "Git分支追踪与VSCode发布提示-排障指南",
+      "frontmatterTitle": "Git分支追踪与VSCode发布提示-排障指南",
+      "fileTitle": "Git分支追踪与VSCode发布提示-排障指南",
+      "filename": "Git分支追踪与VSCode发布提示-排障指南.md",
+      "path": "项目复用技术/Git/Git分支追踪与VSCode发布提示-排障指南.md",
+      "date": "2026-05-12T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Git",
+        "VSCode",
+        "分支管理",
+        "排障指南",
+        "upstream"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "针对VSCode中\"发布分支\"提示问题的完整排障指南，涵盖分支追踪、upstream配置和fetch配置等常见问题的解决方案。",
+      "size": "4KB",
+      "lastModified": "2026-05-12T12:40:11.854Z",
+      "wordCount": 2123
+    },
+    {
+      "type": "file",
       "title": "WebSocket与AI流式传输深度解析_SSE对比_实现方案与最佳实践",
       "frontmatterTitle": "WebSocket与AI流式传输深度解析_SSE对比_实现方案与最佳实践",
       "fileTitle": "09-WebSocket与AI流式传输深度解析_SSE对比_实现方案与最佳实践",
@@ -20373,9 +20607,9 @@
       "category": "面试",
       "attachments": [],
       "description": "合并整理前端面试零碎知识与补充题库，涵盖 Vue2/Vue3、Vuex/Pinia、Diff、ECharts、小程序、WebSocket、Three.js、工程化与常见基础题。",
-      "size": "23KB",
-      "lastModified": "2026-05-10T14:33:29.464Z",
-      "wordCount": 15315
+      "size": "27KB",
+      "lastModified": "2026-05-12T12:40:11.852Z",
+      "wordCount": 18223
     },
     {
       "type": "file",
@@ -20465,9 +20699,9 @@
       "category": "面试",
       "attachments": [],
       "description": "HTML 和 CSS 基础面试题，包括浏览器内核、DOCTYPE、布局模式等核心概念。",
-      "size": "26KB",
-      "lastModified": "2026-05-10T15:16:45.406Z",
-      "wordCount": 13666
+      "size": "50KB",
+      "lastModified": "2026-05-12T13:10:54.706Z",
+      "wordCount": 25697
     },
     {
       "type": "file",
@@ -20487,10 +20721,10 @@
       ],
       "category": "面试",
       "attachments": [],
-      "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-      "size": "25KB",
-      "lastModified": "2026-05-10T15:11:58.993Z",
-      "wordCount": 14185
+      "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+      "size": "34KB",
+      "lastModified": "2026-05-12T14:26:37.718Z",
+      "wordCount": 22780
     },
     {
       "type": "file",
@@ -21337,10 +21571,10 @@
       ],
       "category": "系统与文件",
       "attachments": [],
-      "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-      "size": "5KB",
-      "lastModified": "2026-05-07T12:40:02.067Z",
-      "wordCount": 3305
+      "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+      "size": "13KB",
+      "lastModified": "2026-05-12T14:26:21.409Z",
+      "wordCount": 7933
     },
     {
       "type": "file",
@@ -22305,14 +22539,15 @@
         "动画",
         "性能",
         "JavaScript",
-        "CSS"
+        "CSS",
+        "WebSocket"
       ],
       "category": "浏览器与网络",
       "attachments": [],
-      "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
-      "size": "11KB",
-      "lastModified": "2026-04-30T12:10:43.527Z",
-      "wordCount": 6570
+      "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中高频出现的各种\"帧\"，包括渲染帧、关键帧、动画帧、调用栈帧、视频帧、iframe、WebSocket 数据帧等，一次搞清楚。",
+      "size": "14KB",
+      "lastModified": "2026-05-14T13:16:10.454Z",
+      "wordCount": 8184
     },
     {
       "type": "file",
@@ -24774,8 +25009,8 @@
       "attachments": [],
       "description": "这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、STOMP 帧缓冲、heart-beat 协商、订阅表、回调分发和基础生命周期管理。",
       "size": "12KB",
-      "lastModified": "2026-04-16T13:18:19.748Z",
-      "wordCount": 9105
+      "lastModified": "2026-05-14T13:01:59.598Z",
+      "wordCount": 9115
     },
     {
       "type": "file",
@@ -27134,8 +27369,8 @@
       "attachments": [],
       "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
       "size": "14KB",
-      "lastModified": "2026-04-30T13:43:30.331Z",
-      "wordCount": 9126
+      "lastModified": "2026-05-14T13:39:11.895Z",
+      "wordCount": 9042
     },
     {
       "type": "file",
@@ -27284,13 +27519,13 @@
       "attachments": [],
       "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
       "size": "6KB",
-      "lastModified": "2026-04-30T13:43:30.307Z",
-      "wordCount": 3607
+      "lastModified": "2026-05-14T13:39:11.887Z",
+      "wordCount": 3641
     },
     {
       "type": "file",
-      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
-      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
       "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
       "filename": "第二篇_Codex官方资料补充与进阶实践.md",
       "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -27307,9 +27542,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-      "size": "8KB",
-      "lastModified": "2026-04-30T13:43:30.308Z",
-      "wordCount": 5043
+      "size": "9KB",
+      "lastModified": "2026-05-14T13:39:11.881Z",
+      "wordCount": 5448
     },
     {
       "type": "file",
@@ -27332,8 +27567,8 @@
       "attachments": [],
       "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
       "size": "13KB",
-      "lastModified": "2026-04-30T13:43:30.312Z",
-      "wordCount": 8715
+      "lastModified": "2026-05-14T13:39:11.887Z",
+      "wordCount": 8956
     },
     {
       "type": "file",
@@ -27356,8 +27591,8 @@
       "attachments": [],
       "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
       "size": "13KB",
-      "lastModified": "2026-04-30T13:43:30.314Z",
-      "wordCount": 8338
+      "lastModified": "2026-05-14T13:39:11.891Z",
+      "wordCount": 8446
     },
     {
       "type": "file",
@@ -27379,9 +27614,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-      "size": "12KB",
-      "lastModified": "2026-04-30T13:43:30.324Z",
-      "wordCount": 9267
+      "size": "13KB",
+      "lastModified": "2026-05-14T13:39:11.887Z",
+      "wordCount": 9358
     },
     {
       "type": "file",
@@ -27404,8 +27639,8 @@
       "attachments": [],
       "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
       "size": "14KB",
-      "lastModified": "2026-04-30T13:43:30.325Z",
-      "wordCount": 9278
+      "lastModified": "2026-05-14T13:43:38.381Z",
+      "wordCount": 9405
     },
     {
       "type": "file",
@@ -27428,8 +27663,8 @@
       "attachments": [],
       "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
       "size": "12KB",
-      "lastModified": "2026-04-30T13:43:30.328Z",
-      "wordCount": 8054
+      "lastModified": "2026-05-14T13:39:11.894Z",
+      "wordCount": 8121
     },
     {
       "type": "file",
@@ -27451,9 +27686,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-      "size": "7KB",
-      "lastModified": "2026-04-30T13:43:30.329Z",
-      "wordCount": 4520
+      "size": "8KB",
+      "lastModified": "2026-05-14T13:39:11.887Z",
+      "wordCount": 4777
     },
     {
       "type": "file",
@@ -29210,14 +29445,15 @@
                 "动画",
                 "性能",
                 "JavaScript",
-                "CSS"
+                "CSS",
+                "WebSocket"
               ],
               "category": "浏览器与网络",
               "attachments": [],
-              "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中所有\"帧\"的概念，包括渲染帧、关键帧、调用栈帧、视频帧、iframe 等，一次搞清楚。",
-              "size": "11KB",
-              "lastModified": "2026-04-30T12:10:43.527Z",
-              "wordCount": 6570
+              "description": "前端学习中会反复遇到\"帧\"这个词，但它在不同场景含义完全不同。本文系统梳理前端开发中高频出现的各种\"帧\"，包括渲染帧、关键帧、动画帧、调用栈帧、视频帧、iframe、WebSocket 数据帧等，一次搞清楚。",
+              "size": "14KB",
+              "lastModified": "2026-05-14T13:16:10.454Z",
+              "wordCount": 8184
             },
             {
               "type": "file",
@@ -29951,10 +30187,10 @@
               ],
               "category": "系统与文件",
               "attachments": [],
-              "description": "开发人员常用的 Windows 电脑快捷键和浏览器快捷键速查表，覆盖窗口管理、文本编辑、浏览器调试等高频场景。",
-              "size": "5KB",
-              "lastModified": "2026-05-07T12:40:02.067Z",
-              "wordCount": 3305
+              "description": "开发人员常用的 Windows、浏览器、代码编辑器与 AI 编程工具快捷键速查表，覆盖 VS Code、Cursor、Windsurf、Kiro、Codex、Claude Code 等高频场景。",
+              "size": "13KB",
+              "lastModified": "2026-05-12T14:26:21.409Z",
+              "wordCount": 7933
             }
           ]
         }
@@ -30009,9 +30245,9 @@
           "category": "面试",
           "attachments": [],
           "description": "合并整理前端面试零碎知识与补充题库，涵盖 Vue2/Vue3、Vuex/Pinia、Diff、ECharts、小程序、WebSocket、Three.js、工程化与常见基础题。",
-          "size": "23KB",
-          "lastModified": "2026-05-10T14:33:29.464Z",
-          "wordCount": 15315
+          "size": "27KB",
+          "lastModified": "2026-05-12T12:40:11.852Z",
+          "wordCount": 18223
         },
         {
           "type": "file",
@@ -30101,9 +30337,9 @@
           "category": "面试",
           "attachments": [],
           "description": "HTML 和 CSS 基础面试题，包括浏览器内核、DOCTYPE、布局模式等核心概念。",
-          "size": "26KB",
-          "lastModified": "2026-05-10T15:16:45.406Z",
-          "wordCount": 13666
+          "size": "50KB",
+          "lastModified": "2026-05-12T13:10:54.706Z",
+          "wordCount": 25697
         },
         {
           "type": "file",
@@ -30123,10 +30359,10 @@
           ],
           "category": "面试",
           "attachments": [],
-          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换等核心概念。",
-          "size": "25KB",
-          "lastModified": "2026-05-10T15:11:58.993Z",
-          "wordCount": 14185
+          "description": "JavaScript 基础面试题，包括数据类型、作用域、事件循环、类型转换、原型链、闭包、Promise 和 ES 新特性等核心概念。",
+          "size": "34KB",
+          "lastModified": "2026-05-12T14:26:37.718Z",
+          "wordCount": 22780
         },
         {
           "type": "file",
@@ -32488,6 +32724,37 @@
         },
         {
           "type": "directory",
+          "name": "Git",
+          "path": "项目复用技术/Git",
+          "children": [
+            {
+              "type": "file",
+              "title": "Git分支追踪与VSCode发布提示-排障指南",
+              "frontmatterTitle": "Git分支追踪与VSCode发布提示-排障指南",
+              "fileTitle": "Git分支追踪与VSCode发布提示-排障指南",
+              "filename": "Git分支追踪与VSCode发布提示-排障指南.md",
+              "path": "项目复用技术/Git/Git分支追踪与VSCode发布提示-排障指南.md",
+              "date": "2026-05-12T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Git",
+                "VSCode",
+                "分支管理",
+                "排障指南",
+                "upstream"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "针对VSCode中\"发布分支\"提示问题的完整排障指南，涵盖分支追踪、upstream配置和fetch配置等常见问题的解决方案。",
+              "size": "4KB",
+              "lastModified": "2026-05-12T12:40:11.854Z",
+              "wordCount": 2123
+            }
+          ]
+        },
+        {
+          "type": "directory",
           "name": "uni-app",
           "path": "项目复用技术/uni-app",
           "children": [
@@ -32718,8 +32985,8 @@
               "attachments": [],
               "description": "这是 WebSocket 专题的第 3 篇，专门讲 StompClient 这一层该怎么封，包括 socket 建立、CONNECT 握手、STOMP 帧缓冲、heart-beat 协商、订阅表、回调分发和基础生命周期管理。",
               "size": "12KB",
-              "lastModified": "2026-04-16T13:18:19.748Z",
-              "wordCount": 9105
+              "lastModified": "2026-05-14T13:01:59.598Z",
+              "wordCount": 9115
             },
             {
               "type": "file",
@@ -32870,6 +33137,57 @@
               "size": "20KB",
               "lastModified": "2026-05-11T12:52:42.846Z",
               "wordCount": 15539
+            },
+            {
+              "type": "file",
+              "title": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+              "frontmatterTitle": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
+              "fileTitle": "10-STOMP协议速查手册_帧结构命令心跳与调试清单",
+              "filename": "10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+              "path": "项目复用技术/WebSocket/10-STOMP协议速查手册_帧结构命令心跳与调试清单.md",
+              "date": "2026-05-14T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "STOMP",
+                "WebSocket",
+                "速查手册",
+                "协议规范",
+                "心跳",
+                "帧结构"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "这是 WebSocket 专题的第 10 篇，一份面向 STOMP 协议的快速参考手册，用类比和最小记忆量把帧结构、核心命令、心跳协商、常见错误和调试清单讲清楚，适合长时间没碰 STOMP 后快速回忆。",
+              "size": "9KB",
+              "lastModified": "2026-05-14T13:07:41.593Z",
+              "wordCount": 5865
+            },
+            {
+              "type": "file",
+              "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+              "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+              "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+              "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+              "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+              "date": "2026-05-14T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "WebSocket",
+                "性能优化",
+                "高并发",
+                "消息节流",
+                "内存泄漏",
+                "permessage-deflate",
+                "Vue"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+              "size": "35KB",
+              "lastModified": "2026-05-14T13:07:57.248Z",
+              "wordCount": 25303
             }
           ]
         }
@@ -34087,13 +34405,13 @@
               "attachments": [],
               "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
               "size": "6KB",
-              "lastModified": "2026-04-30T13:43:30.307Z",
-              "wordCount": 3607
+              "lastModified": "2026-05-14T13:39:11.887Z",
+              "wordCount": 3641
             },
             {
               "type": "file",
-              "title": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
-              "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-03）",
+              "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+              "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
               "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
               "filename": "第二篇_Codex官方资料补充与进阶实践.md",
               "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -34110,9 +34428,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-              "size": "8KB",
-              "lastModified": "2026-04-30T13:43:30.308Z",
-              "wordCount": 5043
+              "size": "9KB",
+              "lastModified": "2026-05-14T13:39:11.881Z",
+              "wordCount": 5448
             },
             {
               "type": "file",
@@ -34135,8 +34453,8 @@
               "attachments": [],
               "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
               "size": "13KB",
-              "lastModified": "2026-04-30T13:43:30.312Z",
-              "wordCount": 8715
+              "lastModified": "2026-05-14T13:39:11.887Z",
+              "wordCount": 8956
             },
             {
               "type": "file",
@@ -34159,8 +34477,8 @@
               "attachments": [],
               "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
               "size": "13KB",
-              "lastModified": "2026-04-30T13:43:30.314Z",
-              "wordCount": 8338
+              "lastModified": "2026-05-14T13:39:11.891Z",
+              "wordCount": 8446
             },
             {
               "type": "file",
@@ -34182,9 +34500,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-              "size": "12KB",
-              "lastModified": "2026-04-30T13:43:30.324Z",
-              "wordCount": 9267
+              "size": "13KB",
+              "lastModified": "2026-05-14T13:39:11.887Z",
+              "wordCount": 9358
             },
             {
               "type": "file",
@@ -34207,8 +34525,8 @@
               "attachments": [],
               "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
               "size": "14KB",
-              "lastModified": "2026-04-30T13:43:30.325Z",
-              "wordCount": 9278
+              "lastModified": "2026-05-14T13:43:38.381Z",
+              "wordCount": 9405
             },
             {
               "type": "file",
@@ -34231,8 +34549,8 @@
               "attachments": [],
               "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
               "size": "12KB",
-              "lastModified": "2026-04-30T13:43:30.328Z",
-              "wordCount": 8054
+              "lastModified": "2026-05-14T13:39:11.894Z",
+              "wordCount": 8121
             },
             {
               "type": "file",
@@ -34254,9 +34572,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-              "size": "7KB",
-              "lastModified": "2026-04-30T13:43:30.329Z",
-              "wordCount": 4520
+              "size": "8KB",
+              "lastModified": "2026-05-14T13:39:11.887Z",
+              "wordCount": 4777
             },
             {
               "type": "file",
@@ -34279,8 +34597,8 @@
               "attachments": [],
               "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
               "size": "14KB",
-              "lastModified": "2026-04-30T13:43:30.331Z",
-              "wordCount": 9126
+              "lastModified": "2026-05-14T13:39:11.895Z",
+              "wordCount": 9042
             },
             {
               "type": "file",
@@ -38434,7 +38752,7 @@
       ]
     }
   ],
-  "totalNotes": 387,
-  "totalCategories": 86,
-  "lastUpdated": "2026-05-11T15:14:23.168Z"
+  "totalNotes": 390,
+  "totalCategories": 87,
+  "lastUpdated": "2026-05-14T13:49:54.184Z"
 }

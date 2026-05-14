@@ -13,7 +13,7 @@ description: 面向小白系统梳理 Codex 的认证方式、权限控制、配
 
 # 第三篇：Codex 文档地图与配置逐项详解（小白版）
 
-> 更新时间：2026-03-08  
+> 更新时间：2026-05-14（已按官方当前文档校准）  
 > 定位：主线 01（先建立配置心智模型）。  
 > 前置：无。  
 > 下一篇建议：第五篇（字段字典）。  
@@ -87,7 +87,7 @@ description: 面向小白系统梳理 Codex 的认证方式、权限控制、配
 ## 5. 先给一份“能用且稳”的基础配置（建议起步）
 
 ```toml
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model_reasoning_effort = "medium"
@@ -107,7 +107,7 @@ sandbox = "elevated"
 
 这套配置的含义是：
 
-1. 模型默认用 `gpt-5.4`
+1. 模型默认先用当前线路明确可用的编码模型示例 `gpt-5.3-codex`
 2. 可改当前工作区文件，但高风险动作会提示你确认
 3. Web 搜索默认走缓存索引，风险低于直接 live 抓网
 4. 会保存历史会话，便于 `resume`
@@ -119,7 +119,12 @@ sandbox = "elevated"
 ### 6.1 `model`
 
 默认模型。  
-官方 CLI 文档当前推荐多数任务用 `gpt-5.4`。
+不要再把 `gpt-5.4` 当成固定官方默认答案。  
+截至 `2026-05-14`，更稳妥的做法是：
+
+1. 通用模型选择先看 OpenAI 最新模型指南
+2. 编码场景先看 Codex 当前可用模型
+3. 第三方网关环境先以 `/status` 和网关后台实际返回为准
 
 ### 6.2 `model_reasoning_effort`
 
@@ -237,7 +242,7 @@ Codex 的指令发现顺序（官方）：
 注意点：
 
 1. Codex CLI/IDE 会缓存登录信息
-2. 缓存在 `~/.codex/auth.json` 或系统 keyring
+2. 凭据可能缓存在 `~/.codex/auth.json` 或系统 keyring
 3. `auth.json` 是明文敏感信息，等同密码，严禁提交仓库
 
 可配置凭据存储策略：
@@ -419,20 +424,20 @@ sandbox = "unelevated" # 或 elevated
 
 ```toml
 [profiles.dev_safe]
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "cached"
 model_reasoning_effort = "medium"
 
 [profiles.readonly_audit]
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "never"
 sandbox_mode = "read-only"
 web_search = "disabled"
 
 [profiles.ci_guarded]
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "never"
 sandbox_mode = "read-only"
 model_reasoning_effort = "high"
@@ -480,3 +485,4 @@ codex exec --profile ci_guarded "..."
 - IDE Extension：<https://developers.openai.com/codex/ide>
 - IDE Features：<https://developers.openai.com/codex/ide/features>
 - Windows：<https://developers.openai.com/codex/windows>
+- 最新模型指南：<https://developers.openai.com/api/docs/guides/latest-model>

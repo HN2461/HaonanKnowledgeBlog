@@ -228,7 +228,7 @@ connect(headers) {
 实际服务端可能这样发：
 
 1. 一条 WebSocket message 里放多条 STOMP frame
-2. 一条 STOMP frame 分两条 WebSocket message 发
+2. 一条 WebSocket message 里只放半个 STOMP frame，下一条消息继续补完
 3. 心跳和正常 frame 在应用层缓冲后一起到达
 
 所以这里必须有：

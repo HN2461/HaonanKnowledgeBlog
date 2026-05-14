@@ -13,7 +13,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 
 # 第五篇：Codex 配置字段字典与文档对照（完整版）
 
-> 更新时间：2026-03-08  
+> 更新时间：2026-05-14（已按官方当前文档校准）  
 > 定位：主线 02（字段查询手册 + 场景模板）。  
 > 前置：第三篇（看完配置层级再看字段会更顺）。  
 > 下一篇建议：第六篇（三端联动实战）。  
@@ -75,7 +75,8 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 ### `model`
 
 作用：默认模型名。  
-示例：`gpt-5.4`、`gpt-5.3-codex`。
+示例：`gpt-5.3-codex`。  
+补充：`gpt-5.4` 这类旧示例曾在早期资料里大量出现，但不建议再当成“默认推荐口径”照抄。
 
 ### `model_provider`
 
@@ -281,7 +282,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -342,7 +343,7 @@ model_provider = "yunyi"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 preferred_auth_method = "apikey"
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 
 [model_providers.yunyi]
 name = "yunyi"
@@ -431,7 +432,7 @@ codex exec resume --last "continue"
 
 官方说明：
 
-1. `--full-auto` 等价 `--sandbox workspace-write --ask-for-approval on-request`
+1. `--full-auto` 常被当作 `--sandbox workspace-write --ask-for-approval on-request` 的旧快捷写法，但当前更建议把这两个参数显式写全
 2. `--yolo` 是危险别名，不建议日常环境使用
 
 ---
