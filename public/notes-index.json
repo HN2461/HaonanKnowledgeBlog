@@ -6743,6 +6743,32 @@
         },
         {
           "type": "file",
+          "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+          "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "性能优化",
+            "高并发",
+            "消息节流",
+            "内存泄漏",
+            "permessage-deflate",
+            "Vue"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+          "size": "35KB",
+          "lastModified": "2026-05-14T08:02:57.392Z",
+          "wordCount": 25211
+        },
+        {
+          "type": "file",
           "title": "单可信域名跨域OAuth解决方案",
           "frontmatterTitle": "单可信域名跨域OAuth解决方案",
           "fileTitle": "单可信域名跨域OAuth解决方案",
@@ -10588,6 +10614,32 @@
           "size": "9KB",
           "lastModified": "2026-05-14T03:21:37.453Z",
           "wordCount": 5696
+        },
+        {
+          "type": "file",
+          "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+          "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+          "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+          "date": "2026-05-14T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "WebSocket",
+            "性能优化",
+            "高并发",
+            "消息节流",
+            "内存泄漏",
+            "permessage-deflate",
+            "Vue"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+          "size": "35KB",
+          "lastModified": "2026-05-14T08:02:57.392Z",
+          "wordCount": 25211
         }
       ],
       "children": []
@@ -20333,6 +20385,32 @@
       "size": "9KB",
       "lastModified": "2026-05-14T03:21:37.453Z",
       "wordCount": 5696
+    },
+    {
+      "type": "file",
+      "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+      "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+      "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+      "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+      "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+      "date": "2026-05-14T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "WebSocket",
+        "性能优化",
+        "高并发",
+        "消息节流",
+        "内存泄漏",
+        "permessage-deflate",
+        "Vue"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+      "size": "35KB",
+      "lastModified": "2026-05-14T08:02:57.392Z",
+      "wordCount": 25211
     },
     {
       "type": "file",
@@ -33067,6 +33145,32 @@
               "size": "9KB",
               "lastModified": "2026-05-14T03:21:37.453Z",
               "wordCount": 5696
+            },
+            {
+              "type": "file",
+              "title": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+              "frontmatterTitle": "WebSocket 性能优化与高并发实战：单连接拆分、压缩、节流、内存泄漏与组件生命周期",
+              "fileTitle": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期",
+              "filename": "11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+              "path": "项目复用技术/WebSocket/11-WebSocket性能优化与高并发实战_单连接拆分_压缩_节流_内存泄漏与组件生命周期.md",
+              "date": "2026-05-14T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "WebSocket",
+                "性能优化",
+                "高并发",
+                "消息节流",
+                "内存泄漏",
+                "permessage-deflate",
+                "Vue"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "这是 WebSocket 专题的第 11 篇，专门讲 WebSocket 在真实项目中的性能优化，包括单连接 vs 多连接的拆分时机、消息压缩、二进制帧与文本帧的选择、大消息分片、前端消息队列与节流渲染、内存泄漏排查，以及 Vue/uni-app 组件频繁挂载卸载时的连接管理策略。",
+              "size": "35KB",
+              "lastModified": "2026-05-14T08:02:57.392Z",
+              "wordCount": 25211
             }
           ]
         }
@@ -38631,7 +38735,7 @@
       ]
     }
   ],
-  "totalNotes": 389,
+  "totalNotes": 390,
   "totalCategories": 87,
-  "lastUpdated": "2026-05-14T03:24:39.423Z"
+  "lastUpdated": "2026-05-14T08:04:24.943Z"
 }
