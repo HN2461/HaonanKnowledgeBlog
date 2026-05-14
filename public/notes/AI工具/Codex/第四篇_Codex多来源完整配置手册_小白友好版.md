@@ -85,7 +85,7 @@ description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线
 
 为避免和第五篇重复，这里压缩成“路线切换必看 5 字段”：
 
-1. `model`：默认模型名（如 `gpt-5.4`）
+1. `model`：默认模型名（如 `gpt-5.3-codex`，不要机械沿用旧资料里的 `gpt-5.4`）
 2. `model_provider`：使用哪个提供方（如 `openai`/`packycode`/`yunyi`/`codex`）
 3. `[model_providers.<id>].base_url`：服务地址
 4. 凭据字段：`env_key` 或 `experimental_bearer_token` 或 `auth.json`
@@ -102,7 +102,7 @@ description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -112,7 +112,7 @@ web_search = "cached"
 逐行解释：
 
 1. `model_provider = "openai"`：走官方 OpenAI 提供方。
-2. `model = "gpt-5.4"`：默认模型设为 `gpt-5.4`。
+2. `model = "gpt-5.3-codex"`：默认模型先设为当前更稳妥的编码模型示例。
 3. `model_reasoning_effort = "medium"`：推理强度中档，速度和质量较平衡。
 4. `approval_policy = "on-request"`：敏感动作由你确认后执行。
 5. `sandbox_mode = "workspace-write"`：仅允许修改当前项目目录。
@@ -171,7 +171,7 @@ model_provider = "yunyi"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 preferred_auth_method = "apikey"
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 
 [model_providers.yunyi]
 name = "yunyi"
@@ -187,7 +187,7 @@ requires_openai_auth = true
 2. `model_reasoning_effort = "medium"`：推理强度中档。
 3. `disable_response_storage = true`：减少响应落盘，偏隐私场景。
 4. `preferred_auth_method = "apikey"`：优先使用 API key 认证方式。
-5. `model = "gpt-5.4"`：默认模型名。
+5. `model = "gpt-5.3-codex"`：默认模型名。
 6. `[model_providers.yunyi]`：定义 yunyi 提供方细节。
 7. `base_url`：yunyi 的网关地址。
 8. `experimental_bearer_token`：直接写令牌，方便但安全性低于环境变量。
@@ -342,7 +342,9 @@ npm run build
 - `/status`：看线程 ID、上下文、限额
 - `/review`：进入审查模式
 - `/mcp`：看 MCP 服务状态
-- `/plan-mode`：启用计划模式
+- `/plan`：启用计划模式
+- `/goal`：给线程设置持续目标
+- `/personality`：切换回复风格
 - `/feedback`：反馈问题并附日志
 
 ---
@@ -376,7 +378,7 @@ npm run build
 如果你不想冒险，先用这套：
 
 ```toml
-model = "gpt-5.4"
+model = "gpt-5.3-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model_reasoning_effort = "medium"
@@ -385,7 +387,7 @@ web_search = "cached"
 
 逐行解释：
 
-1. `model = "gpt-5.4"`：默认模型使用 `gpt-5.4`。
+1. `model = "gpt-5.3-codex"`：默认模型先用当前更稳妥的编码模型示例。
 2. `approval_policy = "on-request"`：敏感动作需你确认。
 3. `sandbox_mode = "workspace-write"`：只允许改当前项目目录。
 4. `model_reasoning_effort = "medium"`：推理深度适中。

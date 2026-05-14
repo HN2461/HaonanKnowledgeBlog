@@ -87,7 +87,8 @@ npm i -g @openai/codex
 - Mac/Linux：`~/.codex/config.toml`
 - Windows：`C:\Users\你的用户名\.codex\config.toml`
 
-如果全局配置不生效，可在当前项目目录新建 `.codex/config.toml` 与 `.codex/auth.json` 做工作区覆盖。
+如果全局配置不生效，可在当前项目目录新建 `.codex/config.toml` 做工作区覆盖。  
+`auth.json` 属于敏感凭据缓存，除非你非常清楚风险，否则不要把它作为项目内常规文件来管理。
 
 ### 3.1 `config.toml` 示例（按原文关键项整理）
 
@@ -134,7 +135,7 @@ requires_openai_auth = true
 10. `wire_api = "responses"`：使用 responses 协议与后端通信。
 11. `requires_openai_auth = true`：要求 OpenAI 认证链路（配合 `auth.json` 或登录态）。
 
-### 3.2 `auth.json` 示例
+### 3.2 `auth.json` 示例（仅用户目录，不建议放项目目录）
 
 ```json
 {
@@ -168,11 +169,11 @@ codex
 1. 安装失败：先切 `npmmirror`，再执行安装
 2. 模型显示不全：手动检查 `config.toml` 的 `model` 与 `model_provider`
 3. 改了配置不生效：确认路径是否正确，并重启终端 / Codex
-4. KEY 报错：确认 `auth.json` 为有效 `sk-` 密钥，且没有多余空格
+4. KEY 报错：确认登录缓存或 API key 配置有效，且没有多余空格
 
 ## 6. 实操结论（第一篇）
 
-1. 真正影响成败的是三件事：`Node 20+`、`config.toml`、`auth.json`
+1. 真正影响成败的是三件事：`Node 20+`、`config.toml`、有效认证
 2. 网络环境不稳定时，先切镜像，能省大量排错时间
 3. 配置不生效时，优先用项目内 `.codex/` 覆盖，定位最快
 

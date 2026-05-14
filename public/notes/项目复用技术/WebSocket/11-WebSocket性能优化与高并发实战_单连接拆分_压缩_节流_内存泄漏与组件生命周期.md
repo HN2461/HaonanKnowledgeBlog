@@ -213,7 +213,7 @@ HTTP/1.1 101 Switching Protocols
 Sec-WebSocket-Extensions: permessage-deflate
 ```
 
-之后每条 WebSocket 帧都会自动用 deflate 压缩和解压。
+之后每个 WebSocket message 都可以按协商结果进行 deflate 压缩和解压。
 
 ### 2.3 前端要不要做额外工作
 
@@ -224,7 +224,7 @@ Sec-WebSocket-Extensions: permessage-deflate
 1. 服务端开启了 `permessage-deflate`
 2. 握手时协商成功
 
-在 Chrome DevTools 的 Network 面板里，如果看到响应头里有 `Sec-WebSocket-Extensions: permessage-deflate`，就说明压缩已生效。
+在 Chrome DevTools 的 Network 面板里，如果握手响应里出现 `Sec-WebSocket-Extensions: permessage-deflate`，就说明压缩已协商成功。
 
 ### 2.4 服务端配置示例
 
@@ -262,14 +262,9 @@ const wss = new WebSocket.Server({
 })
 ```
 
-#### Java (Spring Boot)
+#### Java（Spring 生态）
 
-```yaml
-# application.yml
-spring:
-  websocket:
-    compression: true
-```
+Spring 本身不提供一个统一的 `spring.websocket.compression: true` 开关，是否支持 `permessage-deflate` 取决于你使用的容器和 WebSocket 服务端实现。落地时要先查具体框架 / 容器文档。
 
 ### 2.5 注意事项
 
@@ -363,7 +358,7 @@ socket.binaryType = 'arraybuffer' // 收到 ArrayBuffer，性能更好
 
 1. 不可读，调试需要额外工具
 2. 需要前后端共享 schema
-3. STOMP 不支持二进制 body（除非走自定义扩展）
+3. STOMP 本身支持二进制 body，但如果你当前的客户端封装只按文本解析，就不要直接把二进制当文本发
 
 ### 3.4 实际性能对比
 
@@ -1304,7 +1299,7 @@ onDeactivated(() => {
 如果只记住 5 句话：
 
 1. **默认一条连接**：除非频率差 > 10 倍或延迟差 > 4 倍，否则不拆
-2. **压缩交给协议**：`permessage-deflate` 零代码开销；应用层可用 Protobuf 换体积
+2. **压缩优先走协商**：服务端支持时优先用 `permessage-deflate`；应用层也可以用 Protobuf 或额外压缩换体积
 3. **快速消息要节流**：缓冲 + 定时批量渲染，不要每条都碰 DOM
 4. **定时器和回调必须配对清理**：用 `useAutoCleanup` 或手动 `onUnmounted`
 5. **连接跟着应用走，不跟着页面走**：页面只绑定/解绑回调，不建/断连接
