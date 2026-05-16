@@ -6987,6 +6987,31 @@
         },
         {
           "type": "file",
+          "title": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+          "frontmatterTitle": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+          "fileTitle": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解",
+          "filename": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+          "path": "项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+          "date": "2026-05-16T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Git",
+            "GitHub",
+            "Gitee",
+            "SSH",
+            "Token",
+            "认证"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "面向刚接触代码托管平台的开发者，系统讲清 Git 本身、GitHub/Gitee/公司代码平台账号、HTTPS 与 SSH、Token、提交署名之间的区别，解决“拉代码时到底在验证谁”的常见困惑。",
+          "size": "21KB",
+          "lastModified": "2026-05-16T15:32:12.565Z",
+          "wordCount": 10479
+        },
+        {
+          "type": "file",
           "title": "README",
           "frontmatterTitle": "README",
           "fileTitle": "README",
@@ -10204,6 +10229,31 @@
           "size": "4KB",
           "lastModified": "2026-05-12T12:40:11.854Z",
           "wordCount": 2123
+        },
+        {
+          "type": "file",
+          "title": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+          "frontmatterTitle": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+          "fileTitle": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解",
+          "filename": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+          "path": "项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+          "date": "2026-05-16T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Git",
+            "GitHub",
+            "Gitee",
+            "SSH",
+            "Token",
+            "认证"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "面向刚接触代码托管平台的开发者，系统讲清 Git 本身、GitHub/Gitee/公司代码平台账号、HTTPS 与 SSH、Token、提交署名之间的区别，解决“拉代码时到底在验证谁”的常见困惑。",
+          "size": "21KB",
+          "lastModified": "2026-05-16T15:32:12.565Z",
+          "wordCount": 10479
         }
       ],
       "children": []
@@ -12979,8 +13029,8 @@
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
           "size": "14KB",
-          "lastModified": "2026-05-14T13:39:11.892Z",
-          "wordCount": 9410
+          "lastModified": "2026-05-14T13:43:38.381Z",
+          "wordCount": 9405
         },
         {
           "type": "file",
@@ -13947,8 +13997,8 @@
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
           "size": "14KB",
-          "lastModified": "2026-05-14T13:39:11.892Z",
-          "wordCount": 9410
+          "lastModified": "2026-05-14T13:43:38.381Z",
+          "wordCount": 9405
         },
         {
           "type": "file",
@@ -20363,6 +20413,31 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+      "frontmatterTitle": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+      "fileTitle": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解",
+      "filename": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+      "path": "项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+      "date": "2026-05-16T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Git",
+        "GitHub",
+        "Gitee",
+        "SSH",
+        "Token",
+        "认证"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "面向刚接触代码托管平台的开发者，系统讲清 Git 本身、GitHub/Gitee/公司代码平台账号、HTTPS 与 SSH、Token、提交署名之间的区别，解决“拉代码时到底在验证谁”的常见困惑。",
+      "size": "21KB",
+      "lastModified": "2026-05-16T15:32:12.565Z",
+      "wordCount": 10479
+    },
     {
       "type": "file",
       "title": "STOMP 协议速查手册：帧结构、命令、心跳与调试清单",
@@ -27639,8 +27714,8 @@
       "attachments": [],
       "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
       "size": "14KB",
-      "lastModified": "2026-05-14T13:39:11.892Z",
-      "wordCount": 9410
+      "lastModified": "2026-05-14T13:43:38.381Z",
+      "wordCount": 9405
     },
     {
       "type": "file",
@@ -32750,6 +32825,31 @@
               "size": "4KB",
               "lastModified": "2026-05-12T12:40:11.854Z",
               "wordCount": 2123
+            },
+            {
+              "type": "file",
+              "title": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+              "frontmatterTitle": "Git账号密码到底是什么：Git、平台认证、HTTPS、SSH、Token 全解",
+              "fileTitle": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解",
+              "filename": "Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+              "path": "项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md",
+              "date": "2026-05-16T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Git",
+                "GitHub",
+                "Gitee",
+                "SSH",
+                "Token",
+                "认证"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "面向刚接触代码托管平台的开发者，系统讲清 Git 本身、GitHub/Gitee/公司代码平台账号、HTTPS 与 SSH、Token、提交署名之间的区别，解决“拉代码时到底在验证谁”的常见困惑。",
+              "size": "21KB",
+              "lastModified": "2026-05-16T15:32:12.565Z",
+              "wordCount": 10479
             }
           ]
         },
@@ -34525,8 +34625,8 @@
               "attachments": [],
               "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
               "size": "14KB",
-              "lastModified": "2026-05-14T13:39:11.892Z",
-              "wordCount": 9410
+              "lastModified": "2026-05-14T13:43:38.381Z",
+              "wordCount": 9405
             },
             {
               "type": "file",
@@ -38752,7 +38852,7 @@
       ]
     }
   ],
-  "totalNotes": 390,
+  "totalNotes": 391,
   "totalCategories": 87,
-  "lastUpdated": "2026-05-14T13:43:00.798Z"
+  "lastUpdated": "2026-05-16T15:33:08.293Z"
 }
