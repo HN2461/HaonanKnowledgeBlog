@@ -2,14 +2,14 @@
 // 主人说"汇总消息"时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-05-16',
+  date: '2026-05-19',
   items: [
     {
       category: '内容上新',
-      time: '23:20',
-      title: '新增Git认证与账号密码辨析文档',
-      summary: '在项目复用技术/Git 目录下新增一篇面向初学者的 Git 认证说明文，系统讲清 Git 本身、GitHub/Gitee/公司平台账号、HTTPS、SSH、Token 与 user.name/user.email 的边界，并补充 Git 专题目录页。',
-      content: '第一点：新增 `public/notes/项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md`，围绕“拉代码时到底在验证谁”展开，系统拆解 Git 工具、代码托管平台、HTTPS 与 SSH 两种协议、平台密码与 Token、SSH key、本地提交署名 `user.name`/`user.email` 之间的区别；第二点：文章重点解释“Git 本身没有统一账号密码”“拉个人仓库和公司仓库为何要用不同身份”“QQ 邮箱可能只是平台注册邮箱或提交署名邮箱”“为什么同一台电脑会对不同仓库弹出不同认证方式”，并给出 `git remote -v`、`git config --global user.name`、`git config --show-origin --get-all credential.helper`、`ssh -T` 等排查命令；第三点：补充 `public/notes/项目复用技术/Git/目录.md`，将 Git 专题整理成可浏览的目录页，明确先看认证辨析再看分支追踪排障的阅读顺序；第四点：按协作规则将旧的 `data/dailyChangeSummary.js` 中 2026-05-14 摘要迁移归档到 `data/history/2026-05-11_20.js`，并将当日摘要重置为 2026-05-16 的本次内容。'
+      time: '17:07',
+      title: '补充模块导入路径解析专题并解释 index.js 命中逻辑',
+      summary: '更新前端模块化笔记，新增“为什么 import 目录路径不会自动命中 index.vue”的专题说明，按 Node、Webpack、Vite 三种环境拆分解析规则，并给出快速排查清单。',
+      content: '第一点：更新 `public/notes/我的总结/JS/辅助资料/16_前端模块导入与导出.md`，新增“十二、为什么 `import componentsMap from \'./widgets/components\'` 不是 `index.vue`”章节，围绕“目录导入由工具链解析规则决定，不是靠直觉”展开讲解；第二点：章节中补充 Node ESM、Webpack、Vite 三种环境的解析差异，说明为何常见情况下会优先命中 `index.js`，并解释 `require.context` 场景下的组件映射输出与动态组件渲染关系；第三点：新增一套可执行排查清单（路径省略检查、同目录入口文件检查、resolve 配置检查、Webpack/Vite 动态导入机制检查），帮助快速定位类似“以为走 index.vue 实际走 index.js”的问题；第四点：执行 `npm run generate:index` 重新生成笔记与搜索索引，当前索引统计为 392 篇笔记、87 个分类。'
     }
   ],
 }

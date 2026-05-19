@@ -116,5 +116,18 @@ export const history_2026_05_11_20 = [
         content: '第一点：更新 `public/notes/AI工具/Codex/第二篇`、`第三篇`、`第五篇`、`第八篇` 等主线文档，把旧的 `gpt-5.4` 默认推荐口径统一收紧为“先看官方最新模型指南与当前线路实际可用模型”，并将示例默认模型改为 `gpt-5.3-codex`，避免继续把历史示例当成固定结论；第二点：同步修正文档中的旧命令表述，将 `--full-auto` 改为“旧资料常见兼容写法，当前更建议显式写 `--sandbox workspace-write --ask-for-approval on-request`”，并补充当前官方 slash commands 中更常见的 `/goal`、`/personality`、`/fast` 等命令，替换 `plan-mode` 这类过时写法；第三点：更新多篇关于认证的说明，明确登录缓存可能落在 `~/.codex/auth.json` 或系统 keyring，收紧“把 `auth.json` 放进项目目录覆盖”的不安全表述；第四点：清理 `第九篇_Codex本地数据目录详解` 里直接暴露的真实 key 与 bearer token，全部改为脱敏示例，并把模型迁移示例从 `gpt-5.2-codex -> gpt-5.3-codex -> gpt-5.4` 收紧为更稳妥的历史迁移说明；第五点：更新 `public/notes/AI工具/Codex/目录.md`，把总目录标题改为 2026-05 校准版，并补充“涉及默认模型、slash commands、认证方式时优先核对 OpenAI 官方当前页面”的维护约定。'
       }
     ]
+  },
+  {
+    id: 'history-2026-05-16',
+    date: '2026-05-16',
+    items: [
+      {
+        category: '内容上新',
+        time: '23:20',
+        title: '新增Git认证与账号密码辨析文档',
+        summary: '在项目复用技术/Git 目录下新增一篇面向初学者的 Git 认证说明文，系统讲清 Git 本身、GitHub/Gitee/公司平台账号、HTTPS、SSH、Token 与 user.name/user.email 的边界，并补充 Git 专题目录页。',
+        content: '第一点：新增 `public/notes/项目复用技术/Git/Git账号密码到底是什么_Git平台认证_HTTPS_SSH_Token全解.md`，围绕“拉代码时到底在验证谁”展开，系统拆解 Git 工具、代码托管平台、HTTPS 与 SSH 两种协议、平台密码与 Token、SSH key、本地提交署名 `user.name`/`user.email` 之间的区别；第二点：文章重点解释“Git 本身没有统一账号密码”“拉个人仓库和公司仓库为何要用不同身份”“QQ 邮箱可能只是平台注册邮箱或提交署名邮箱”“为什么同一台电脑会对不同仓库弹出不同认证方式”，并给出 `git remote -v`、`git config --global user.name`、`git config --show-origin --get-all credential.helper`、`ssh -T` 等排查命令；第三点：补充 `public/notes/项目复用技术/Git/目录.md`，将 Git 专题整理成可浏览的目录页，明确先看认证辨析再看分支追踪排障的阅读顺序；第四点：按协作规则将旧的 `data/dailyChangeSummary.js` 中 2026-05-14 摘要迁移归档到 `data/history/2026-05-11_20.js`，并将当日摘要重置为 2026-05-16 的本次内容。'
+      }
+    ]
   }
 ]
