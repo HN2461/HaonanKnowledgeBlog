@@ -6065,6 +6065,30 @@
         },
         {
           "type": "file",
+          "title": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+          "frontmatterTitle": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+          "fileTitle": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入",
+          "filename": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+          "path": "项目复用技术/JS库/01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "SortableJS",
+            "Vue",
+            "拖拽排序"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 SortableJS 这类成熟拖拽排序库，整理它适合解决什么问题、为什么比自己手搓更稳、最小接入方式、常用配置项、Vue 项目里的数据同步方式，以及标签栏拖拽场景下最容易踩到的坑。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:04:46.568Z",
+          "wordCount": 6004
+        },
+        {
+          "type": "file",
           "title": "uni-app 人脸摄像机封装实战：从能力边界到可复用模板",
           "frontmatterTitle": "uni-app 人脸摄像机封装实战：从能力边界到可复用模板",
           "fileTitle": "01-uni-app人脸摄像机封装实战_从能力边界到可复用模板",
@@ -6087,6 +6111,30 @@
           "size": "40KB",
           "lastModified": "2026-04-16T12:41:50.147Z",
           "wordCount": 25806
+        },
+        {
+          "type": "file",
+          "title": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "frontmatterTitle": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "fileTitle": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "filename": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+          "path": "项目复用技术/Vue后台管理/01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue",
+            "Vue Router",
+            "TagsView",
+            "后台管理",
+            "路由"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "从后台管理项目的 tags.vue 源码出发，梳理 $route 监听、menu 补首页标签、fullPath 作为标签唯一标识、href 新窗口兜底等关键知识点，适合第一次系统接触 Vue Router 运行时路由对象时快速建立整体理解。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T11:42:25.935Z",
+          "wordCount": 5041
         },
         {
           "type": "file",
@@ -6175,6 +6223,30 @@
           "size": "12KB",
           "lastModified": "2026-04-28T11:18:24.457Z",
           "wordCount": 9929
+        },
+        {
+          "type": "file",
+          "title": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+          "frontmatterTitle": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+          "fileTitle": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入",
+          "filename": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+          "path": "项目复用技术/JS库/02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "Cropper.js",
+            "Vue",
+            "图片裁剪"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 Cropper.js 这类成熟图片裁剪库，整理它适合解决什么问题、为什么算成熟方案、1.x 与 2.x 应该怎么区分、项目里的上传前裁剪流程，以及在 Vue 里最常见的接入方式和注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-21T13:15:16.022Z",
+          "wordCount": 5238
         },
         {
           "type": "file",
@@ -6360,6 +6432,30 @@
         },
         {
           "type": "file",
+          "title": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+          "frontmatterTitle": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+          "fileTitle": "03-Axios请求库实战说明_请求封装拦截器与文件上传",
+          "filename": "03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+          "path": "项目复用技术/JS库/03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "Axios",
+            "Vue",
+            "HTTP请求"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 Axios 这类前端常用请求库，整理它适合解决什么问题、为什么项目里几乎都会封装一层、实例与拦截器怎么理解、文件上传怎么接，以及在 Vue 项目里最常见的使用方式和注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-21T13:22:10.960Z",
+          "wordCount": 5971
+        },
+        {
+          "type": "file",
           "title": "StompClient 封装实战：connect、订阅、心跳与回调分发",
           "frontmatterTitle": "StompClient 封装实战：connect、订阅、心跳与回调分发",
           "fileTitle": "03-StompClient封装实战_连接订阅心跳与回调分发",
@@ -6474,6 +6570,30 @@
           "size": "9KB",
           "lastModified": "2026-04-28T11:18:24.431Z",
           "wordCount": 5653
+        },
+        {
+          "type": "file",
+          "title": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+          "frontmatterTitle": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+          "fileTitle": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入",
+          "filename": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+          "path": "项目复用技术/JS库/04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "qrcode",
+            "Vue",
+            "二维码"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 qrcode 这类前端常用二维码生成库，整理它适合解决什么问题、为什么项目里常直接借成熟库、toCanvas 与 toDataURL 怎么选、在 Vue 项目里怎么接，以及登录码、分享码、下载码等场景下最常见的注意事项。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:25:34.886Z",
+          "wordCount": 5210
         },
         {
           "type": "file",
@@ -6593,6 +6713,30 @@
           "size": "15KB",
           "lastModified": "2026-04-16T13:19:38.077Z",
           "wordCount": 10394
+        },
+        {
+          "type": "file",
+          "title": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+          "frontmatterTitle": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+          "fileTitle": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理",
+          "filename": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+          "path": "项目复用技术/JS库/05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "CryptoJS",
+            "前端安全",
+            "参数签名"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 CryptoJS 这类前端常见加密处理库，整理它适合解决什么问题、MD5、SHA256、HMAC、AES 在项目里分别常见于哪些场景、前端加密最容易出现的误区，以及为什么现在要同时关注原生 Web Crypto。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:28:44.993Z",
+          "wordCount": 5485
         },
         {
           "type": "file",
@@ -10331,6 +10475,133 @@
       "children": []
     },
     {
+      "name": "JS库",
+      "path": "项目复用技术/JS库",
+      "notes": [
+        {
+          "type": "file",
+          "title": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+          "frontmatterTitle": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+          "fileTitle": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入",
+          "filename": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+          "path": "项目复用技术/JS库/01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "SortableJS",
+            "Vue",
+            "拖拽排序"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 SortableJS 这类成熟拖拽排序库，整理它适合解决什么问题、为什么比自己手搓更稳、最小接入方式、常用配置项、Vue 项目里的数据同步方式，以及标签栏拖拽场景下最容易踩到的坑。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:04:46.568Z",
+          "wordCount": 6004
+        },
+        {
+          "type": "file",
+          "title": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+          "frontmatterTitle": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+          "fileTitle": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入",
+          "filename": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+          "path": "项目复用技术/JS库/02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "Cropper.js",
+            "Vue",
+            "图片裁剪"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 Cropper.js 这类成熟图片裁剪库，整理它适合解决什么问题、为什么算成熟方案、1.x 与 2.x 应该怎么区分、项目里的上传前裁剪流程，以及在 Vue 里最常见的接入方式和注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-21T13:15:16.022Z",
+          "wordCount": 5238
+        },
+        {
+          "type": "file",
+          "title": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+          "frontmatterTitle": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+          "fileTitle": "03-Axios请求库实战说明_请求封装拦截器与文件上传",
+          "filename": "03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+          "path": "项目复用技术/JS库/03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "Axios",
+            "Vue",
+            "HTTP请求"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 Axios 这类前端常用请求库，整理它适合解决什么问题、为什么项目里几乎都会封装一层、实例与拦截器怎么理解、文件上传怎么接，以及在 Vue 项目里最常见的使用方式和注意事项。",
+          "size": "10KB",
+          "lastModified": "2026-05-21T13:22:10.960Z",
+          "wordCount": 5971
+        },
+        {
+          "type": "file",
+          "title": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+          "frontmatterTitle": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+          "fileTitle": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入",
+          "filename": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+          "path": "项目复用技术/JS库/04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "qrcode",
+            "Vue",
+            "二维码"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 qrcode 这类前端常用二维码生成库，整理它适合解决什么问题、为什么项目里常直接借成熟库、toCanvas 与 toDataURL 怎么选、在 Vue 项目里怎么接，以及登录码、分享码、下载码等场景下最常见的注意事项。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:25:34.886Z",
+          "wordCount": 5210
+        },
+        {
+          "type": "file",
+          "title": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+          "frontmatterTitle": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+          "fileTitle": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理",
+          "filename": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+          "path": "项目复用技术/JS库/05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "JavaScript",
+            "JS库",
+            "CryptoJS",
+            "前端安全",
+            "参数签名"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "围绕 CryptoJS 这类前端常见加密处理库，整理它适合解决什么问题、MD5、SHA256、HMAC、AES 在项目里分别常见于哪些场景、前端加密最容易出现的误区，以及为什么现在要同时关注原生 Web Crypto。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T13:28:44.993Z",
+          "wordCount": 5485
+        }
+      ],
+      "children": []
+    },
+    {
       "name": "uni-app",
       "path": "项目复用技术/uni-app",
       "notes": [
@@ -10457,6 +10728,37 @@
           "size": "26KB",
           "lastModified": "2026-04-17T12:49:16.572Z",
           "wordCount": 18466
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "Vue后台管理",
+      "path": "项目复用技术/Vue后台管理",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "frontmatterTitle": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "fileTitle": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+          "filename": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+          "path": "项目复用技术/Vue后台管理/01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+          "date": "2026-05-21T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Vue",
+            "Vue Router",
+            "TagsView",
+            "后台管理",
+            "路由"
+          ],
+          "category": "项目复用技术",
+          "attachments": [],
+          "description": "从后台管理项目的 tags.vue 源码出发，梳理 $route 监听、menu 补首页标签、fullPath 作为标签唯一标识、href 新窗口兜底等关键知识点，适合第一次系统接触 Vue Router 运行时路由对象时快速建立整体理解。",
+          "size": "11KB",
+          "lastModified": "2026-05-21T11:42:25.935Z",
+          "wordCount": 5041
         }
       ],
       "children": []
@@ -20535,6 +20837,150 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+      "frontmatterTitle": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+      "fileTitle": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入",
+      "filename": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+      "path": "项目复用技术/JS库/01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "JS库",
+        "SortableJS",
+        "Vue",
+        "拖拽排序"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "围绕 SortableJS 这类成熟拖拽排序库，整理它适合解决什么问题、为什么比自己手搓更稳、最小接入方式、常用配置项、Vue 项目里的数据同步方式，以及标签栏拖拽场景下最容易踩到的坑。",
+      "size": "11KB",
+      "lastModified": "2026-05-21T13:04:46.568Z",
+      "wordCount": 6004
+    },
+    {
+      "type": "file",
+      "title": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+      "frontmatterTitle": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+      "fileTitle": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+      "filename": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+      "path": "项目复用技术/Vue后台管理/01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Vue",
+        "Vue Router",
+        "TagsView",
+        "后台管理",
+        "路由"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "从后台管理项目的 tags.vue 源码出发，梳理 $route 监听、menu 补首页标签、fullPath 作为标签唯一标识、href 新窗口兜底等关键知识点，适合第一次系统接触 Vue Router 运行时路由对象时快速建立整体理解。",
+      "size": "11KB",
+      "lastModified": "2026-05-21T11:42:25.935Z",
+      "wordCount": 5041
+    },
+    {
+      "type": "file",
+      "title": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+      "frontmatterTitle": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+      "fileTitle": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入",
+      "filename": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+      "path": "项目复用技术/JS库/02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "JS库",
+        "Cropper.js",
+        "Vue",
+        "图片裁剪"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "围绕 Cropper.js 这类成熟图片裁剪库，整理它适合解决什么问题、为什么算成熟方案、1.x 与 2.x 应该怎么区分、项目里的上传前裁剪流程，以及在 Vue 里最常见的接入方式和注意事项。",
+      "size": "10KB",
+      "lastModified": "2026-05-21T13:15:16.022Z",
+      "wordCount": 5238
+    },
+    {
+      "type": "file",
+      "title": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+      "frontmatterTitle": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+      "fileTitle": "03-Axios请求库实战说明_请求封装拦截器与文件上传",
+      "filename": "03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+      "path": "项目复用技术/JS库/03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "JS库",
+        "Axios",
+        "Vue",
+        "HTTP请求"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "围绕 Axios 这类前端常用请求库，整理它适合解决什么问题、为什么项目里几乎都会封装一层、实例与拦截器怎么理解、文件上传怎么接，以及在 Vue 项目里最常见的使用方式和注意事项。",
+      "size": "10KB",
+      "lastModified": "2026-05-21T13:22:10.960Z",
+      "wordCount": 5971
+    },
+    {
+      "type": "file",
+      "title": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+      "frontmatterTitle": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+      "fileTitle": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入",
+      "filename": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+      "path": "项目复用技术/JS库/04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "JS库",
+        "qrcode",
+        "Vue",
+        "二维码"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "围绕 qrcode 这类前端常用二维码生成库，整理它适合解决什么问题、为什么项目里常直接借成熟库、toCanvas 与 toDataURL 怎么选、在 Vue 项目里怎么接，以及登录码、分享码、下载码等场景下最常见的注意事项。",
+      "size": "11KB",
+      "lastModified": "2026-05-21T13:25:34.886Z",
+      "wordCount": 5210
+    },
+    {
+      "type": "file",
+      "title": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+      "frontmatterTitle": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+      "fileTitle": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理",
+      "filename": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+      "path": "项目复用技术/JS库/05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+      "date": "2026-05-21T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "JavaScript",
+        "JS库",
+        "CryptoJS",
+        "前端安全",
+        "参数签名"
+      ],
+      "category": "项目复用技术",
+      "attachments": [],
+      "description": "围绕 CryptoJS 这类前端常见加密处理库，整理它适合解决什么问题、MD5、SHA256、HMAC、AES 在项目里分别常见于哪些场景、前端加密最容易出现的误区，以及为什么现在要同时关注原生 Web Crypto。",
+      "size": "11KB",
+      "lastModified": "2026-05-21T13:28:44.993Z",
+      "wordCount": 5485
+    },
     {
       "type": "file",
       "title": "README",
@@ -33050,6 +33496,133 @@
         },
         {
           "type": "directory",
+          "name": "JS库",
+          "path": "项目复用技术/JS库",
+          "children": [
+            {
+              "type": "file",
+              "title": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+              "frontmatterTitle": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
+              "fileTitle": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入",
+              "filename": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+              "path": "项目复用技术/JS库/01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "JavaScript",
+                "JS库",
+                "SortableJS",
+                "Vue",
+                "拖拽排序"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "围绕 SortableJS 这类成熟拖拽排序库，整理它适合解决什么问题、为什么比自己手搓更稳、最小接入方式、常用配置项、Vue 项目里的数据同步方式，以及标签栏拖拽场景下最容易踩到的坑。",
+              "size": "11KB",
+              "lastModified": "2026-05-21T13:04:46.568Z",
+              "wordCount": 6004
+            },
+            {
+              "type": "file",
+              "title": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+              "frontmatterTitle": "Cropper.js图片裁剪库实战说明：上传前裁剪与Vue接入",
+              "fileTitle": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入",
+              "filename": "02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+              "path": "项目复用技术/JS库/02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "JavaScript",
+                "JS库",
+                "Cropper.js",
+                "Vue",
+                "图片裁剪"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "围绕 Cropper.js 这类成熟图片裁剪库，整理它适合解决什么问题、为什么算成熟方案、1.x 与 2.x 应该怎么区分、项目里的上传前裁剪流程，以及在 Vue 里最常见的接入方式和注意事项。",
+              "size": "10KB",
+              "lastModified": "2026-05-21T13:15:16.022Z",
+              "wordCount": 5238
+            },
+            {
+              "type": "file",
+              "title": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+              "frontmatterTitle": "Axios请求库实战说明：请求封装、拦截器与文件上传",
+              "fileTitle": "03-Axios请求库实战说明_请求封装拦截器与文件上传",
+              "filename": "03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+              "path": "项目复用技术/JS库/03-Axios请求库实战说明_请求封装拦截器与文件上传.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "JavaScript",
+                "JS库",
+                "Axios",
+                "Vue",
+                "HTTP请求"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "围绕 Axios 这类前端常用请求库，整理它适合解决什么问题、为什么项目里几乎都会封装一层、实例与拦截器怎么理解、文件上传怎么接，以及在 Vue 项目里最常见的使用方式和注意事项。",
+              "size": "10KB",
+              "lastModified": "2026-05-21T13:22:10.960Z",
+              "wordCount": 5971
+            },
+            {
+              "type": "file",
+              "title": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+              "frontmatterTitle": "qrcode二维码生成库实战说明：登录码、分享码与Vue接入",
+              "fileTitle": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入",
+              "filename": "04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+              "path": "项目复用技术/JS库/04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "JavaScript",
+                "JS库",
+                "qrcode",
+                "Vue",
+                "二维码"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "围绕 qrcode 这类前端常用二维码生成库，整理它适合解决什么问题、为什么项目里常直接借成熟库、toCanvas 与 toDataURL 怎么选、在 Vue 项目里怎么接，以及登录码、分享码、下载码等场景下最常见的注意事项。",
+              "size": "11KB",
+              "lastModified": "2026-05-21T13:25:34.886Z",
+              "wordCount": 5210
+            },
+            {
+              "type": "file",
+              "title": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+              "frontmatterTitle": "CryptoJS前端加密库实战说明：参数签名、摘要与AES处理",
+              "fileTitle": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理",
+              "filename": "05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+              "path": "项目复用技术/JS库/05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "JavaScript",
+                "JS库",
+                "CryptoJS",
+                "前端安全",
+                "参数签名"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "围绕 CryptoJS 这类前端常见加密处理库，整理它适合解决什么问题、MD5、SHA256、HMAC、AES 在项目里分别常见于哪些场景、前端加密最容易出现的误区，以及为什么现在要同时关注原生 Web Crypto。",
+              "size": "11KB",
+              "lastModified": "2026-05-21T13:28:44.993Z",
+              "wordCount": 5485
+            }
+          ]
+        },
+        {
+          "type": "directory",
           "name": "uni-app",
           "path": "项目复用技术/uni-app",
           "children": [
@@ -33176,6 +33749,37 @@
               "size": "26KB",
               "lastModified": "2026-04-17T12:49:16.572Z",
               "wordCount": 18466
+            }
+          ]
+        },
+        {
+          "type": "directory",
+          "name": "Vue后台管理",
+          "path": "项目复用技术/Vue后台管理",
+          "children": [
+            {
+              "type": "file",
+              "title": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+              "frontmatterTitle": "Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+              "fileTitle": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解",
+              "filename": "01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+              "path": "项目复用技术/Vue后台管理/01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md",
+              "date": "2026-05-21T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Vue",
+                "Vue Router",
+                "TagsView",
+                "后台管理",
+                "路由"
+              ],
+              "category": "项目复用技术",
+              "attachments": [],
+              "description": "从后台管理项目的 tags.vue 源码出发，梳理 $route 监听、menu 补首页标签、fullPath 作为标签唯一标识、href 新窗口兜底等关键知识点，适合第一次系统接触 Vue Router 运行时路由对象时快速建立整体理解。",
+              "size": "11KB",
+              "lastModified": "2026-05-21T11:42:25.935Z",
+              "wordCount": 5041
             }
           ]
         },
@@ -39072,7 +39676,7 @@
       ]
     }
   ],
-  "totalNotes": 393,
-  "totalCategories": 87,
-  "lastUpdated": "2026-05-19T13:52:34.770Z"
+  "totalNotes": 399,
+  "totalCategories": 89,
+  "lastUpdated": "2026-05-21T13:33:10.487Z"
 }

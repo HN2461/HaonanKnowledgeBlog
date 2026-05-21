@@ -2,21 +2,14 @@
 // 主人说"汇总消息"时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-05-19',
+  date: '2026-05-21',
   items: [
     {
       category: '内容上新',
-      time: '20:52',
-      title: '补充统一登录中心与内外部系统跳转说明',
-      summary: '新增并持续打磨一篇第三方登录对比笔记，用更容易理解的语言解释公司统一登录页如何既支持进入自己项目内的子系统，也支持跳转并登录公司对接的外部第三方系统。',
-      content: '第一点：新增 `public/notes/项目复用技术/第三方登录对接/99-对比笔记/统一登录中心与子系统切换实战说明.md`，把“登录页选子系统，登录后当前标签页直接进入目标系统”的场景拆解为统一登录中心、一次性票据和子系统回跳换票三层；第二点：在原有 SSO 说明基础上补充“更白的话”版本，明确区分两类目标系统：一类是你们自己项目里的子系统或公司内部业务站点，另一类是公司对接的外部第三方系统，并解释二者在用户体验上看起来一样、但技术链路上一个可能是内部路由跳转、另一个通常是先换授权码再跳转；第三点：继续优化文档阅读体验，新增“零、先记最短版”“它和企业微信、微信、QQ 官方登录其实很像”“把几个名词翻译成人话”“钥匙/临时通行证”的类比解释，以及“第一次做这类功能最容易绕的三句话”，降低第一次阅读时的理解门槛；第四点：按“遗忘后快速复习”的场景再补一层复习入口，新增“先看哪里”“零点五、3 分钟回想卡片”和文末“复习时最该记住的 4 个关键词”，让后续回看时不用从头读完整篇也能迅速捡回主线；第五点：结合 `wisdomCampusClient` 现有登录代码补充实战说明，说明登录页应用下拉如何决定跳转目标、如何识别带 `secretID + redirectUrl` 的单点中转链接，以及如何通过 `thirdpartyapp.authorize` 获取一次性 `code` 后再交给目标系统建立自己的登录态；第六点：同步更新 `public/notes/项目复用技术/第三方登录对接/README.md` 的目录入口，并重新生成 `notes-index.json` 与 `search-index.json`，当前索引统计为 393 篇笔记、87 个分类。'
-    },
-    {
-      category: '内容上新',
-      time: '17:07',
-      title: '补充模块导入路径解析专题并解释 index.js 命中逻辑',
-      summary: '更新前端模块化笔记，新增“为什么 import 目录路径不会自动命中 index.vue”的专题说明，按 Node、Webpack、Vite 三种环境拆分解析规则，并给出快速排查清单。',
-      content: '第一点：更新 `public/notes/我的总结/JS/辅助资料/16_前端模块导入与导出.md`，新增“十二、为什么 `import componentsMap from \'./widgets/components\'` 不是 `index.vue`”章节，围绕“目录导入由工具链解析规则决定，不是靠直觉”展开讲解；第二点：章节中补充 Node ESM、Webpack、Vite 三种环境的解析差异，说明为何常见情况下会优先命中 `index.js`，并解释 `require.context` 场景下的组件映射输出与动态组件渲染关系；第三点：新增一套可执行排查清单（路径省略检查、同目录入口文件检查、resolve 配置检查、Webpack/Vite 动态导入机制检查），帮助快速定位类似“以为走 index.vue 实际走 index.js”的问题；第四点：执行 `npm run generate:index` 重新生成笔记与搜索索引，当前索引统计为 392 篇笔记、87 个分类。'
+      time: '21:30',
+      title: '补充 Vue 后台管理与 JS 库专题笔记',
+      summary: '继续围绕项目源码阅读补强专题内容：在既有 Vue 后台标签栏、SortableJS、Cropper.js、Axios 与 qrcode 笔记基础上，再新增 CryptoJS 前端加密处理实战说明，并同步扩充 JS库 专题目录与站内索引。',
+      content: '第一点：保留并延续今天同一轮专题沉淀方向，继续围绕“项目里优先借成熟库解决通用功能，而不是反复手搓底层交互”补强 `项目复用技术` 资料；第二点：保留今天已新增的 `public/notes/项目复用技术/Vue后台管理/01-Vue后台标签栏TagsView中$route、fullPath、href与监听路由的理解.md`、`public/notes/项目复用技术/JS库/01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入.md`、`public/notes/项目复用技术/JS库/02-CropperJS图片裁剪库实战说明_上传前裁剪与Vue接入.md`、`public/notes/项目复用技术/JS库/03-Axios请求库实战说明_请求封装拦截器与文件上传.md` 与 `public/notes/项目复用技术/JS库/04-qrcode二维码生成库实战说明_登录码分享码与Vue接入.md`，分别沉淀标签栏路由驱动理解、拖拽排序库接入、图片上传前裁剪、请求封装统一鉴权与二维码生成功能；第三点：新增 `public/notes/项目复用技术/JS库/05-CryptoJS前端加密库实战说明_参数签名摘要与AES处理.md`，基于官方仓库 README、官方文档与 npm 页面，系统整理 `MD5`、`SHA256`、`HMAC`、`AES`、`PBKDF2` 等常见能力分别适合什么场景，并明确指出 `crypto-js` 虽然老项目中依然常见，但官方已停止维护，新项目需要同时评估原生 `Web Crypto API`；第四点：更新 `public/notes/项目复用技术/JS库/目录.md`，补上第 5 篇 CryptoJS 文章入口，同时保留 `dayjs`、`lodash`、`mitt`、`xlsx`、`viewerjs`、`ECharts` 等后续选题清单，方便专题持续扩展；第五点：分别执行 `pwsh -File scripts/checkNodeRuntime.ps1`、`npm run generate:index` 与 `npm run generate:notifications`，确认 Node 运行时预检通过，并重新生成 `public/notes-index.json`、`public/search-index.json` 与 `public/notifications.json`，当前索引统计更新为 399 篇笔记、89 个分类；第六点：今天较早时已按归档规则将旧的 `data/dailyChangeSummary.js` 中 2026-05-19 摘要迁移到 `data/history/2026-05-11_20.js`，避免覆盖丢失。'
     }
   ],
 }
