@@ -16,6 +16,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 > 更新时间：2026-05-14（已按官方当前文档校准）  
 > 定位：工具底座（全系列命令与配置文件统一说明）。  
 > 使用方式：读任何一篇时，遇到“这条命令是干嘛的”就回查本篇。
+> 小白读完目标：你应该能分清“命令层 / 配置层 / 项目规则层”，并且看到一个命令或字段名时，知道它属于哪一层。
 
 章节导航（点击跳转）：
 
@@ -110,7 +111,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 
 | 字段 | 作用 | 新手默认建议 | 专业补充 |
 |---|---|---|---|
-| `model` | 默认模型 | `gpt-5.3-codex` | 与 provider 可用模型保持一致，不要机械照抄旧资料里的 `gpt-5.4` |
+| `model` | 默认模型 | `gpt-5.5` | 与 provider 可用模型保持一致；`gpt-5.3-codex` 仍可用，但不要机械照抄旧资料里的 `gpt-5.4` |
 | `model_provider` | 选择后端提供方 | `openai` | 与 `[model_providers.<id>]` 名称必须一致 |
 | `[model_providers.<id>].base_url` | API 地址 | 官方默认地址或服务商地址 | 路线切换最常错字段 |
 | `approval_policy` | 是否弹确认 | `on-request` | 自动化可用 `never`，但要配安全边界 |
@@ -129,7 +130,7 @@ description: 统一说明 Codex 常用命令、config.toml、auth.json 与 AGENT
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -139,7 +140,7 @@ web_search = "cached"
 persistence = "save-all"
 
 [profiles.audit]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "never"
 sandbox_mode = "read-only"
 web_search = "disabled"

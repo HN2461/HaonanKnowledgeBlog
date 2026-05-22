@@ -19,6 +19,8 @@ description: 详细讲解 Codex CLI、插件和 App 三端共用配置、认证�
 > 下一篇建议：第七篇（逐字段截图对照）。  
 > 本篇不展开：各字段逐格截图（看第七篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 如果主人要查“Worktrees / Handoff / Review pane / IDE 云任务 / Windows-native 到底在今天怎么用”，请优先再看第十二篇；本篇负责讲三端关系，不再承担所有常用功能的细讲。
+> 小白读完目标：你应该能解释为什么 CLI、IDE 扩展、App 会共用一部分能力、又表现得不完全一样，并能排查“CLI 能用但插件或 App 不同步”的高频问题。
 
 章节导航（点击跳转）：
 
@@ -32,10 +34,11 @@ description: 详细讲解 Codex CLI、插件和 App 三端共用配置、认证�
 
 它们的核心关系是：
 
-1. 你改的是同一套核心配置：`~/.codex/config.toml`
-2. 你用的是同一套认证信息：`~/.codex/auth.json`（或 keyring）
-3. 你写的是同一套项目规则：`AGENTS.md`
-4. 所以“CLI 能用，插件/App 不能用”的本质通常是：
+1. CLI 和 IDE 扩展明确共用同一套核心配置：`~/.codex/config.toml`
+2. 认证状态通常仍落在同一个 Codex home 下（`auth.json` 或 keyring）
+3. `AGENTS.md` 这类项目规则会跨入口一起生效
+4. 但 App 现在不只是“读配置的壳”，它还有 `Local / Worktree / Cloud`、Git、Terminal、Browser 等自己的工作流层
+5. 所以“CLI 能用，插件/App 不能用”的本质通常是：
    - 登录态不一致
    - 项目层配置覆盖了用户层
    - provider 名字和 `[model_providers.<id>]` 不一致
@@ -140,7 +143,7 @@ codex login status
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -153,7 +156,7 @@ persistence = "save-all"
 逐字段解释：
 
 1. `model_provider = "openai"`：默认走官方 OpenAI 提供方。
-2. `model = "gpt-5.3-codex"`：默认模型先设为当前更稳妥的编码模型示例。
+2. `model = "gpt-5.5"`：默认模型先对齐官方当前推荐的本地默认示例。
 3. `model_reasoning_effort = "medium"`：推理强度中档，平衡速度与质量。
 4. `approval_policy = "on-request"`：风险动作需人工确认。
 5. `sandbox_mode = "workspace-write"`：只允许改当前工作区。
@@ -315,6 +318,7 @@ OpenAI 官方文档给出的主要设置包括：
 2. 默认 agent：Windows-native（PowerShell）
 3. 可切 WSL agent，但切换后要重启 App
 4. 集成终端可选 PowerShell / CMD / Git Bash / WSL
+5. 如果 CLI 跑在 WSL，默认不会自动和 Windows App 共用 `~/.codex`，需要显式同步或设置 `CODEX_HOME`
 
 ---
 

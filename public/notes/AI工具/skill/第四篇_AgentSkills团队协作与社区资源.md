@@ -7,277 +7,347 @@ tags:
   - SKILL.md
   - 团队协作
   - 社区资源
-  - 分发
-  - LobeHub
-  - Codex Skills Catalog
-description: 讲解如何通过 Git 在团队中共享和管理 skills，如何从社区导入现成 skill，以及企业级分发方案。附主流社区资源导航。
+  - Codex
+  - Kiro
+  - Cursor
+  - Claude Code
+description: 按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。
 ---
 
 # Agent Skills 团队协作与社区资源
 
+## 一、团队协作先别急着问“放哪”，先问“用什么载体”
+
+很多团队共享失败，不是因为 skill 写得不好，而是因为一开始就选错了载体。
+
+到 2026-05-22 这次复核为止，更实用的划分是：
+
+| 目标 | 更推荐的载体 |
+| ---- | ------------ |
+| Codex 的可复用工作流 | `SKILL.md` 技能目录 |
+| Kiro 的可复用工作流 | `.kiro/skills/` |
+| Cursor 的项目长期规范 | `.cursor/rules` 或根目录 `AGENTS.md` |
+| Claude Code 的快捷工作流 | `.claude/commands/` |
+| 长期始终生效的团队背景知识 | `AGENTS.md` / `CLAUDE.md` / rules / memory |
+
+一句话总结：
+
+- **任务型流程** 更适合 skills 或 commands
+- **长期型约束** 更适合 rules / memory / `AGENTS.md`
+
 ---
 
-## 一、为什么要共享 Skills
+## 二、Codex 团队共享：现在是最清晰的一类
 
-Skills 的最大价值不是个人使用，而是**把团队的隐性知识变成可复用的显性资产**：
+## 2.1 本地现状已经说明它可行
 
-- 新人入职，直接用 `deploy` skill 就能按规范部署，不用问老人
-- 代码审查标准写进 `code-review` skill，每次审查结果一致
-- 项目规范放在 `frontend-conventions` skill，不用反复在 PR 里纠正同样的问题
-- 一个人写好的 skill，整个团队都能用
+当前本机真实可见：
 
----
-
-## 二、通过 Git 共享 Skills
-
-### 2.1 项目级 skills（推荐）
-
-把 `.kiro/skills/`（或 `.claude/skills/`）目录提交到 git，所有人 clone 后自动获得：
-
+```text
+~/.codex/skills/
 ```
+
+并且里面已经有：
+
+- `.system` 预装层
+- 自定义 skills
+- `agents/`、`scripts/`、`references/`、`assets/` 等常见资源目录
+
+这意味着 Codex 团队共享 skills 不是纸上谈兵，而是可以直接围绕已有目录结构来做。
+
+## 2.2 团队推荐做法
+
+如果主人团队准备在 Codex 里沉淀一套能力包，现在更推荐：
+
+### 方式 A：单独 skill 仓库
+
+```text
+team-codex-skills/
+├── code-review/
+│   ├── SKILL.md
+│   └── references/
+├── release-audit/
+│   ├── SKILL.md
+│   └── scripts/
+└── frontend-design/
+    └── SKILL.md
+```
+
+优点：
+
+- 可以单独 review
+- 可以单独发版本
+- 不和业务代码混在一起
+
+### 方式 B：放在主仓库并配项目说明
+
+```text
+my-project/
+├── .codex/
+│   └── skills/
+├── AGENTS.md
+└── src/
+```
+
+适合：
+
+- 这个 skill 只服务当前项目
+- 技能内容和项目规范强耦合
+
+## 2.3 安装与来源
+
+当前能明确确认的来源，是 OpenAI 官方 `openai/skills` 仓库。
+
+它里面区分了：
+
+- `.system`
+- `.curated`
+- `.experimental`
+
+并且官方仓库说明：
+
+- `.system` 随新版 Codex 自动安装
+- curated / experimental 可通过 `skill-installer` 安装
+
+所以如果主人问“Codex 团队从哪里拿基础 skill 最稳”，答案优先是：
+
+**先看 `openai/skills`，再考虑其他社区来源。**
+
+---
+
+## 三、Kiro 团队共享：官方路径同样很清晰
+
+## 3.1 当前官方路径
+
+Kiro 当前官方文档明确写了两层：
+
+- workspace：`.kiro/skills/`
+- global：`~/.kiro/skills/`
+
+并且同名时 workspace 优先。
+
+## 3.2 团队最推荐的方式
+
+把 `.kiro/skills/` 跟项目一起进 Git，是最直接的办法：
+
+```text
 my-project/
 ├── .kiro/
 │   └── skills/
 │       ├── code-review/
-│       │   └── SKILL.md
-│       ├── deploy/
-│       │   ├── SKILL.md
-│       │   └── scripts/
-│       │       └── pre-deploy-check.sh
-│       └── frontend-conventions/
-│           └── SKILL.md
-├── src/
-└── package.json
+│       ├── deploy-check/
+│       └── docs-refresh/
+└── src/
 ```
 
-`.gitignore` 里**不要**忽略 `.kiro/skills/`，确保它被追踪。
+这样做的好处：
 
-### 2.2 独立 skills 仓库
+- clone 下来就能共用
+- skill 版本跟着项目版本走
+- review 流程清晰
 
-适合跨项目共享，或者想开源给社区：
+## 3.3 自定义 agent 的额外注意点
 
-```
-team-skills/
-├── README.md
-├── code-review/
-│   └── SKILL.md
-├── deploy/
-│   ├── SKILL.md
-│   └── scripts/
-│       └── check.sh
-└── api-conventions/
-    └── SKILL.md
-```
+如果团队不用默认 agent，而是大量自定义 agent，那么要补这一层：
 
-各工具从 GitHub 导入的方式：
-
-| 工具        | 导入方式                                                                          |
-| ----------- | --------------------------------------------------------------------------------- |
-| Kiro IDE    | Kiro 面板 → Agent Steering & Skills → `+` → Import a skill → GitHub URL           |
-| Cursor      | Settings → Rules → Add Rule → Remote Rule (Github) → 输入 URL                     |
-| Gemini CLI  | `gemini skills install https://github.com/org/repo.git --path skills/code-review` |
-| Claude Code | 手动 clone 后复制到 `~/.claude/skills/` 或 `.claude/skills/`                      |
-
-> URL 要指向 skill 的子目录（包含 SKILL.md 的那一层），不能是仓库根目录。
-
-### 2.3 Skills 的版本管理建议
-
-```bash
-# 修改 skill 时，像改代码一样走 PR 流程
-git checkout -b update/code-review-skill
-# 修改 .kiro/skills/code-review/SKILL.md
-git add .kiro/skills/
-git commit -m "code-review skill: 增加安全审查维度"
-git push origin update/code-review-skill
-# 提 PR，团队 review 后合并
+```json
+{
+  "name": "team-agent",
+  "resources": [
+    "skill://.kiro/skills/*/SKILL.md",
+    "skill://~/.kiro/skills/*/SKILL.md"
+  ]
+}
 ```
 
-**为什么要 review skill 的变更？**
+否则很容易出现：
 
-- skill 影响所有人的 AI 行为，改错了会导致全团队的 AI 输出偏差
-- PR 记录了 skill 的演进历史，方便回溯
+- skill 明明在仓库里
+- 某个 agent 却始终不加载
 
 ---
 
-## 三、全局 Skills（个人跨项目使用）
+## 四、Cursor 团队共享：现在更适合共享 Rules / `AGENTS.md`
 
-放在全局目录的 skill 在所有项目中都可用：
+Cursor 这轮最稳的官方文档重心不是 skill 目录，而是：
 
-| 工具        | 全局路径                                                               |
-| ----------- | ---------------------------------------------------------------------- |
-| Claude Code | `~/.claude/skills/`                                                    |
-| Kiro        | `~/.kiro/skills/`                                                      |
-| Cursor      | `~/.cursor/skills/`                                                    |
-| Codex       | `~/.codex/skills/`                                                     |
-| Gemini CLI  | `~/.gemini/skills/` 或 `~/.agents/skills/`（两者等价，后者跨工具通用） |
+- `.cursor/rules`
+- 用户 Rules
+- 根目录 `AGENTS.md`
 
-适合放全局的 skill：
+所以团队在 Cursor 里做共享时，更推荐：
 
-- 个人代码风格偏好
-- 通用的 commit / changelog 规范
-- 个人常用的调试流程
-- 跨项目通用的文档模板
+## 4.1 共享 `.cursor/rules`
 
-**全局 vs 项目级冲突时**，项目级优先（所有工具一致）。
+适合：
+
+- 按文件范围自动附加
+- 按任务类型控制规则
+- 想把约束结构化管理
+
+## 4.2 共享根目录 `AGENTS.md`
+
+适合：
+
+- 说明统一代码风格
+- 说明架构边界
+- 说明仓库内常见约束
+
+例如：
+
+```markdown
+# Project Instructions
+
+## Code Style
+- Prefer small, reviewable changes
+- Add tests for new logic
+
+## Architecture
+- Keep data access in repository modules
+- Avoid bypassing the service layer
+```
+
+这比硬把所有东西塞进“skill 仓库”更贴近 Cursor 当前官方主路径。
 
 ---
 
-## 四、Gemini CLI 的 skills link 命令
+## 五、Claude Code 团队共享：更偏命令和记忆文件
 
-Gemini CLI 提供了一个特别实用的命令，通过 symlink 链接本地 skills 目录，不需要复制文件：
+Claude Code 当前最稳的官方页面是 slash commands 文档，所以团队协作时更推荐先共享：
 
-```bash
-# 把本地 skills 仓库链接到全局
-gemini skills link /path/to/team-skills-repo
+- `.claude/commands/`
+- `CLAUDE.md`
 
-# 链接到项目级
-gemini skills link /path/to/team-skills-repo --scope workspace
+### 5.1 什么时候共享 `.claude/commands/`
 
-# 查看已链接的 skills
-gemini skills list
+当团队经常重复执行同类流程时，例如：
 
-# 安装特定 skill（复制，不是链接）
-gemini skills install https://github.com/org/repo.git --path skills/code-review
+- PR 复查
+- 提交说明生成
+- 发布检查
 
-# 卸载
-gemini skills uninstall code-review
-```
+### 5.2 什么时候共享 `CLAUDE.md`
 
-symlink 的好处：本地仓库更新后，skill 立即生效，不需要重新导入。
+当团队想长期固定：
 
----
+- 代码风格
+- 目录职责
+- 禁止事项
+- 交付习惯
 
-## 五、社区资源导航
+这一层和 skills 的关系，和 Cursor 里的 `AGENTS.md` 很像：
 
-### 5.1 官方 / 半官方
-
-| 平台                    | 地址                                                             | 说明                                                                         |
-| ----------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| OpenAI Skills Catalog   | [github.com/openai/skills](https://github.com/openai/skills)     | OpenAI 官方维护，分 System / Curated / Experimental 三层，约 35 个精选 skill |
-| Kiro Skills（官方示例） | [github.com/kirodotdev/Kiro](https://github.com/kirodotdev/Kiro) | Kiro 官方仓库，含示例 skills                                                 |
-| Agent Skills 规范       | [agentskills.io](https://agentskills.io)                         | 标准规范官网，含验证工具                                                     |
-
-### 5.2 社区市场
-
-| 平台                       | 地址                                                                                 | 特点                                              |
-| -------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------- |
-| LobeHub Skills Marketplace | [lobehub.com/skills](https://lobehub.com/skills)                                     | 最大的社区市场，数千个 skill，支持按工具/分类筛选 |
-| Playbooks                  | [playbooks.com/skills](https://playbooks.com/skills)                                 | 专注开发工作流，质量较高                          |
-| AgentSkillsHub             | [agentskillshub.dev](https://agentskillshub.dev)                                     | 安全审核过的 skill 市场                           |
-| DataCamp Top Skills        | [datacamp.com/blog/top-agent-skills](https://www.datacamp.com/blog/top-agent-skills) | 精选 100+ 高质量 skill 列表                       |
-
-### 5.3 OpenAI Skills Catalog 分层说明
-
-```
-github.com/openai/skills/
-├── system/          # 内置，随 Codex 自动安装（skill-creator、skill-installer）
-├── curated/         # OpenAI 审核，可按名称安装
-│   ├── git-workflow/
-│   ├── code-review/
-│   ├── deploy-aws/
-│   └── ...（约 35 个）
-└── experimental/    # 社区贡献，需 GitHub URL 安装
-```
-
-在 Codex 里安装 curated skill：
-
-```
-$ codex --enable skills
-> /skills install code-review
-```
-
-### 5.4 LobeHub 使用技巧
-
-LobeHub 是目前最大的 skill 社区，搜索时可以按工具过滤：
-
-- 搜索框输入关键词（如 `deploy`、`review`、`documentation`）
-- 左侧筛选 Compatible Tools（Claude Code / Cursor / Codex 等）
-- 每个 skill 页面有 SKILL.md 预览和 GitHub 链接
-- 可以直接复制 GitHub URL 导入到各工具
+- 一个更像长期项目记忆
+- 一个更像按任务触发的流程包
 
 ---
 
-## 六、企业级分发
+## 六、社区资源现在应该怎么筛
 
-### 6.1 Claude Code 企业管理
+这次复核后，我更建议把资源分成两类：
 
-Claude Code 支持通过 managed settings 向组织内所有用户分发 skills。具体配置格式以官方最新文档为准，大致思路如下：
+## 6.1 第一优先级：官方或直接产品方资源
 
-- 管理员在 managed settings 里指定 skills 来源仓库
-- 可设置强制安装的 skill（用户无法删除）
-- 可禁止特定 skill 被使用
+- [OpenAI Skills 仓库](https://github.com/openai/skills)
+- [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Cursor Rules 文档](https://docs.cursor.com/context/rules-for-ai)
+- [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 
-> 企业管理功能持续更新，建议参考 [Claude Code 官方文档](https://docs.anthropic.com/en/docs/claude-code/settings) 获取最新配置格式。
+这些资源的价值在于：
 
-### 6.2 通过 monorepo 管理
+- 至少能确认“官方当前把什么当主路径”
+- 不会把社区层的玩法误写成产品唯一真相
 
-大型团队可以在 monorepo 里统一管理 skills：
+## 6.2 第二优先级：GitHub 上的具体 skill 仓库
 
-```
-company-monorepo/
-├── packages/
-│   ├── frontend/
-│   │   └── .claude/skills/    # 前端专用 skills
-│   └── backend/
-│       └── .claude/skills/    # 后端专用 skills
-├── .claude/skills/            # 全项目通用 skills
-└── .kiro/skills/              # Kiro 用户的通用 skills
-```
+如果主人要找可直接借鉴的 skill，实现上比“社区市场首页”更靠谱的通常是：
 
-Claude Code 支持从嵌套目录自动发现 skills，编辑 `packages/frontend/` 下的文件时，会自动加载 `packages/frontend/.claude/skills/` 里的 skills。
+- 直接查看 GitHub 仓库里的 `SKILL.md`
+- 看是否带 `scripts/` 和 `references/`
+- 看最近是否还有维护
 
-### 6.3 Cursor 的 Remote Rule 导入
+原因很简单：
 
-Cursor 支持从 GitHub 导入 skill，适合团队统一管理：
-
-1. 把 skills 放在公司 GitHub 仓库
-2. 每个开发者：Settings → Rules → Add Rule → Remote Rule (Github)
-3. 输入 skill 目录的 GitHub URL
-4. Cursor 自动同步更新（仓库更新后重新导入即可）
+- 真正决定能不能用的，是 skill 内容本身
+- 不是某个聚合站首页写得多热闹
 
 ---
 
-## 七、Skills 质量评估标准
+## 七、导入社区 skill 前的检查清单
 
-从社区导入 skill 前，建议按以下标准评估：
+无论是给 Codex、Kiro 还是别的工具导入，至少先看这 7 件事：
 
-| 维度             | 检查点                                                |
-| ---------------- | ----------------------------------------------------- |
-| description 质量 | 是否清晰描述了用途和触发场景？关键词是否充分？        |
-| 正文质量         | 步骤是否清晰？是否有具体示例？                        |
-| 脚本安全         | scripts/ 里的脚本是否有潜在风险？是否会修改系统文件？ |
-| 维护状态         | 最近是否有更新？issues 是否有回应？                   |
-| 兼容性           | compatibility 字段是否说明了环境要求？                |
-| 许可证           | license 字段是否明确？是否允许商业使用？              |
+1. `description` 是否清楚说明触发场景
+2. `SKILL.md` 是否只写流程，而不是堆很多空话
+3. `references/` 是否真的有价值，而不是重复正文
+4. `scripts/` 会不会做危险操作
+5. 是否偷偷依赖某个你本地根本没有的命令或环境变量
+6. 最近是否还有更新或 issue 响应
+7. 这份 skill 是不是本来只适用于某个工具专属语法
 
-**安全提示**：导入社区 skill 前，务必阅读 SKILL.md 和 scripts/ 里的所有内容，特别是包含 shell 脚本的 skill。
-
----
-
-## 八、Skills 与 Steering / Rules 的选择
-
-很多工具同时有 skills 和 steering/rules，容易混淆：
-
-| 特性       | Skills                     | Steering（Kiro）/ Rules（Cursor）/ CLAUDE.md |
-| ---------- | -------------------------- | -------------------------------------------- |
-| 加载时机   | 按需，匹配时才加载         | 始终加载                                     |
-| 适合内容   | 具体工作流、操作步骤       | 项目规范、编码风格、背景信息                 |
-| Token 消耗 | 低（只在需要时）           | 高（每次都在上下文）                         |
-| 可移植性   | 跨工具通用                 | 工具专有                                     |
-| 适合场景   | 部署、审查、生成等具体任务 | 代码风格、命名规范、项目背景                 |
-
-**经验法则**：
-
-- 如果是"每次写代码都需要知道的规范" → Steering / CLAUDE.md
-- 如果是"特定任务才需要的操作指南" → Skills
+尤其是 `scripts/`，一定要当正常代码审查。
 
 ---
 
-## 参考资料
+## 八、团队里怎么分层最省心
 
-- [OpenAI Skills Catalog](https://github.com/openai/skills)
-- [LobeHub Skills Marketplace](https://lobehub.com/skills)
-- [Playbooks Skills](https://playbooks.com/skills)
-- [AgentSkillsHub](https://agentskillshub.dev)
-- [Gemini CLI Skills 管理文档](https://geminicli.com/docs/cli/skills/)
-- [Claude Code 企业管理文档](https://docs.anthropic.com/en/docs/claude-code/settings)
+这是我更推荐的一套分法：
+
+### 第一层：长期规范
+
+放这里：
+
+- `AGENTS.md`
+- `CLAUDE.md`
+- `.cursor/rules`
+
+写：
+
+- 代码风格
+- 架构边界
+- 命名规范
+- 必跑检查
+
+### 第二层：任务流程
+
+放这里：
+
+- `SKILL.md` skills
+- `.claude/commands`
+
+写：
+
+- 代码审查流程
+- 发布检查流程
+- 文档刷新流程
+- 事故排障流程
+
+### 第三层：自动化执行
+
+放这里：
+
+- `scripts/`
+- 项目已有命令
+
+写：
+
+- 真正可执行的检查
+- 真正可重复复用的脚本
+
+这样分层后，团队就不容易出现“所有东西都往一个文件里塞”的混乱。
+
+---
+
+## 九、总结
+
+这次复核后，团队协作最稳的思路不是“所有工具都去共享同一种 skill 仓库”，而是：
+
+- Codex / Kiro：确实适合共享 skills
+- Cursor：优先共享 rules 与 `AGENTS.md`
+- Claude Code：优先共享 commands 与 `CLAUDE.md`
+
+如果主人要给团队定一条最简单的落地规则，我建议直接用这句：
+
+**长期规范进 rules / AGENTS / memory，任务流程进 skills / commands，可执行逻辑进 scripts。**
+
+这样以后就算产品继续演进，迁移成本也会低很多。

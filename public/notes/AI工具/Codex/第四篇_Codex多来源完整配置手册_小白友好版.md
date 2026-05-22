@@ -19,6 +19,7 @@ description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线
 > 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  
 > 本篇不展开：逐字段截图核对（看第七篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 小白读完目标：你应该能判断自己该走官方、Packy 还是第三方线路，并知道“配置没生效”到底是线路问题、字段问题，还是三端同步问题。
 
 章节导航（点击跳转）：
 
@@ -85,7 +86,7 @@ description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线
 
 为避免和第五篇重复，这里压缩成“路线切换必看 5 字段”：
 
-1. `model`：默认模型名（如 `gpt-5.3-codex`，不要机械沿用旧资料里的 `gpt-5.4`）
+1. `model`：默认模型名（官方当前本地默认示例更适合先参考 `gpt-5.5`；不要机械沿用旧资料里的 `gpt-5.4`）
 2. `model_provider`：使用哪个提供方（如 `openai`/`packycode`/`yunyi`/`codex`）
 3. `[model_providers.<id>].base_url`：服务地址
 4. 凭据字段：`env_key` 或 `experimental_bearer_token` 或 `auth.json`
@@ -102,7 +103,7 @@ description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -112,7 +113,7 @@ web_search = "cached"
 逐行解释：
 
 1. `model_provider = "openai"`：走官方 OpenAI 提供方。
-2. `model = "gpt-5.3-codex"`：默认模型先设为当前更稳妥的编码模型示例。
+2. `model = "gpt-5.5"`：官方路线默认模型先对齐当前推荐的本地示例。
 3. `model_reasoning_effort = "medium"`：推理强度中档，速度和质量较平衡。
 4. `approval_policy = "on-request"`：敏感动作由你确认后执行。
 5. `sandbox_mode = "workspace-write"`：仅允许修改当前项目目录。
@@ -126,7 +127,7 @@ web_search = "cached"
 
 ```toml
 model_provider = "packy"
-model = "gpt-5"
+model = "gpt-5.5"
 model_reasoning_effort = "high"
 
 [model_providers.packy]
@@ -138,7 +139,7 @@ env_key = "PACKY_API_KEY"
 逐行解释：
 
 1. `model_provider = "packy"`：默认走你自定义的 `packy` 提供方。
-2. `model = "gpt-5"`：设置默认模型名（最终可用模型以服务商为准）。
+2. `model = "gpt-5.5"`：示例里先按当前官方默认口径写；如果 Packy 后台没开放，就改成你后台当前显示的模型名。
 3. `model_reasoning_effort = "high"`：提升推理深度，通常更慢。
 4. `[model_providers.packy]`：声明一个名为 `packy` 的 provider 配置块。
 5. `name = "packy"`：provider 显示名/标识名，保持和上面一致最稳。
@@ -171,7 +172,7 @@ model_provider = "yunyi"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 preferred_auth_method = "apikey"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 
 [model_providers.yunyi]
 name = "yunyi"
@@ -187,7 +188,7 @@ requires_openai_auth = true
 2. `model_reasoning_effort = "medium"`：推理强度中档。
 3. `disable_response_storage = true`：减少响应落盘，偏隐私场景。
 4. `preferred_auth_method = "apikey"`：优先使用 API key 认证方式。
-5. `model = "gpt-5.3-codex"`：默认模型名。
+5. `model = "gpt-5.5"`：先按当前官方默认示例写；如果 `yunyi` 后台未开放，再换成后台当前提供的模型名。
 6. `[model_providers.yunyi]`：定义 yunyi 提供方细节。
 7. `base_url`：yunyi 的网关地址。
 8. `experimental_bearer_token`：直接写令牌，方便但安全性低于环境变量。
@@ -214,7 +215,7 @@ npx yunyi-activator
 ## 5.4 飞书 rpcod 路线（来自 `KaQ...` 文档）
 
 ```toml
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 disable_response_storage = true
 sandbox_mode = "danger-full-access"
@@ -231,7 +232,7 @@ requires_openai_auth = true
 
 逐行解释：
 
-1. `model = "gpt-5.3-codex"`：使用 rpcod 文档示例模型。
+1. `model = "gpt-5.5"`：先按当前官方默认示例写；如果 `rpcod` 后台还没开放，就用后台当前实际可选模型。
 2. `model_reasoning_effort = "xhigh"`：高强度推理，成本和时延都更高。
 3. `sandbox_mode = "danger-full-access"`：取消沙箱隔离，风险最高。
 4. `approval_policy = "never"`：不弹审批，自动执行风险动作。
@@ -378,7 +379,7 @@ npm run build
 如果你不想冒险，先用这套：
 
 ```toml
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model_reasoning_effort = "medium"
@@ -387,7 +388,7 @@ web_search = "cached"
 
 逐行解释：
 
-1. `model = "gpt-5.3-codex"`：默认模型先用当前更稳妥的编码模型示例。
+1. `model = "gpt-5.5"`：默认模型先按官方当前本地默认示例写；若服务商未开放，再换成该服务商后台当前模型。
 2. `approval_policy = "on-request"`：敏感动作需你确认。
 3. `sandbox_mode = "workspace-write"`：只允许改当前项目目录。
 4. `model_reasoning_effort = "medium"`：推理深度适中。

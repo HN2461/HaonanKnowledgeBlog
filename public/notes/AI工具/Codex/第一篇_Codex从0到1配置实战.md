@@ -20,6 +20,8 @@ description: 以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API 
 > 使用方式：如果你不用 `rpcod`，这篇可跳过，改看第四篇对应线路。  
 > 本篇不展开：三端联动与截图对照（看第六篇、第七篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 小白读完目标：你应该能按第三方 `rpcod` 路线把 Codex CLI 跑通，并知道这篇属于“线路样例”，不是官方通用默认配置模板。
+> `2026-05-22` 校注：这篇属于第三方线路实操篇，不再把文中的模型名视作“官方默认答案”。真正落地前，请先核对 `rpcod` 后台当前开放模型，以及第三篇、第十一篇里的最新官方口径。
 
 章节导航（点击跳转）：
 
@@ -90,29 +92,21 @@ npm i -g @openai/codex
 如果全局配置不生效，可在当前项目目录新建 `.codex/config.toml` 做工作区覆盖。  
 `auth.json` 属于敏感凭据缓存，除非你非常清楚风险，否则不要把它作为项目内常规文件来管理。
 
-### 3.1 `config.toml` 示例（按原文关键项整理）
+### 3.1 `config.toml` 示例（按当前更稳妥写法重整）
 
 ```toml
-model = "gpt-5.3-codex"
+# 先填 rpcod 后台当前实际开放的模型；若已开放 gpt-5.5，优先用它
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 disable_response_storage = true
-sandbox_mode = "danger-full-access"
-windows_wsl_setup_acknowledged = true
-approval_policy = "never"
-profile = "auto-max"
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
 file_opener = "vscode"
 model_provider = "codex"
 web_search = "cached"
-suppress_unstable_features_warning = true
 
 [history]
 persistence = "save-all"
-
-[tui]
-notifications = true
-
-[notice]
-hide_gpt5_1_migration_prompt = true
 
 [model_providers.codex]
 name = "codex"
@@ -121,19 +115,24 @@ wire_api = "responses"
 requires_openai_auth = true
 ```
 
-关键字段逐项解释（这段是高权限示例）：
+关键字段逐项解释（这段改成更适合今天直接上手的安全版）：
 
-1. `model`：默认模型名，决定会话启动时用哪个模型。
+1. `model`：默认模型名，优先填你这条 `rpcod` 线路后台当前真实开放的模型；如果后台已开放 `gpt-5.5`，优先用它。
 2. `model_reasoning_effort`：推理强度，`xhigh` 更深但通常更慢。
 3. `disable_response_storage = true`：减少响应持久化，偏隐私/审慎场景。
-4. `sandbox_mode = "danger-full-access"`：不做文件系统隔离，风险最高。
-5. `approval_policy = "never"`：高风险动作不再弹确认，自动化强但风险高。
+4. `sandbox_mode = "workspace-write"`：只允许修改当前工作区，先保证安全边界。
+5. `approval_policy = "on-request"`：敏感动作先询问你，适合刚接好线路时排错。
 6. `file_opener = "vscode"`：引用文件时默认用 VS Code 打开。
 7. `model_provider = "codex"`：默认走 `codex` 这个 provider 配置块。
 8. `[history] persistence = "save-all"`：保存会话历史，便于后续 `resume`。
 9. `[model_providers.codex].base_url`：该 provider 的后端地址。
 10. `wire_api = "responses"`：使用 responses 协议与后端通信。
 11. `requires_openai_auth = true`：要求 OpenAI 认证链路（配合 `auth.json` 或登录态）。
+
+补一句最重要的边界：
+
+1. 如果 `rpcod` 后台暂时没放出 `gpt-5.5`，不要硬填，直接以后台当前可见模型名为准
+2. 第三方线路的“最新”永远是“官方最新能力 + 你这条网关当前开放集合”的交集
 
 ### 3.2 `auth.json` 示例（仅用户目录，不建议放项目目录）
 

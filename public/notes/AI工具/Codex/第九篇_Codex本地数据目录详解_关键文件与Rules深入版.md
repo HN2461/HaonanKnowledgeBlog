@@ -13,9 +13,12 @@ description: 深入拆解 Codex 本地 .codex 目录中的认证、配置、规�
 
 # 第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版）
 
-> 更新时间：2026-05-14（已去除敏感示例并补官方当前口径）  
+> 更新时间：2026-05-22（已补“历史机器快照 vs 当前推荐口径”边界说明）  
 > 定位：本机 Codex “关键文件与安全边界”讲透。  
 > 适用：你需要排查登录、配置、权限或命令执行问题时。
+> 前置：建议先读第三篇、第八篇（先分清配置层、规则层和命令层）。  
+> 本篇不展开：三端界面操作与截图点位（看第六篇、第七篇）。  
+> 小白读完目标：你应该能分清 `auth.json`、`config.toml`、日志、技能、规则目录分别管什么，并知道哪些只是历史样本，哪些才是今天该照着改的内容。
 
 章节导航（点击跳转）：
 
@@ -25,7 +28,7 @@ description: 深入拆解 Codex 本地 .codex 目录中的认证、配置、规�
 
 ## 0. 先讲清一件事：`.codex` 到底是什么
 
-`C:\Users\Administrator\.codex` 是 Codex 桌面应用的本地数据目录。  
+Codex 的本地数据目录通常写作 `~/.codex`。在 Windows 上，常见形式是 `C:\Users\你的用户名\.codex`。  
 它不是项目代码，也不是缓存垃圾桶，而是 **“账号认证 + 全局配置 + 规则 + 技能库 + 运行日志”** 的落地位置。  
 所以这里的每个关键文件，都会直接影响 Codex 是否能正常用、能不能执行命令、以及是否符合你的团队规范。
 
@@ -35,7 +38,7 @@ description: 深入拆解 Codex 本地 .codex 目录中的认证、配置、规�
 
 ---
 
-## 1. `C:\Users\Administrator\.codex\auth.json`
+## 1. `~/.codex/auth.json`（Windows 例：`C:\Users\你的用户名\.codex\auth.json`）
 
 ### 1.1 作用
 保存 Codex 的认证信息，客户端发起请求时会读取它。
@@ -66,7 +69,7 @@ description: 深入拆解 Codex 本地 .codex 目录中的认证、配置、规�
 
 ---
 
-## 2. `C:\Users\Administrator\.codex\config.toml`
+## 2. `~/.codex/config.toml`（Windows 例：`C:\Users\你的用户名\.codex\config.toml`）
 
 ### 2.1 作用
 Codex 的全局配置文件，决定“模型用哪个、服务端去哪、功能开不开、MCP 怎么启动、工作区信任级别”。
@@ -74,7 +77,10 @@ Codex 的全局配置文件，决定“模型用哪个、服务端去哪、功�
 ### 2.2 文件格式说明
 TOML 是一种人类可读的配置格式，语法简单、结构清晰，非常适合写配置。
 
-### 2.3 本机当前配置（原样）
+### 2.3 某次本机脱敏快照（历史样本，不是当前推荐模板）
+
+下面这段保留的是**采样时机器上的原值**，作用是帮助你理解“本地目录里可能长什么样”，不是让你今天继续把这些值原封不动抄到自己的环境里。  
+尤其是里面出现的旧模型名、旧迁移提示和某些 provider 写法，都应视为“现场记录”，不应自动等于今天的最佳实践。
 ```toml
 model_provider = "yunyi"
 model = "gpt-5.3-codex"
@@ -137,7 +143,7 @@ startup_timeout_ms = 20000
 | 字段 | 作用 | 本机值 | 你能直观感受到的影响 |
 | --- | --- | --- | --- |
 | model_provider | 当前模型提供方标识 | "yunyi" | 决定请求走哪个服务端 |
-| model | 模型名称 | "gpt-5.3-codex" | 影响响应能力与价格策略 |
+| model | 模型名称 | "gpt-5.3-codex"（采样时原值） | 影响响应能力与价格策略；今天不要再把它当成固定默认答案 |
 | model_reasoning_effort | 推理强度/深度配置项 | "xhigh" | 影响推理质量与延迟 |
 | model_context_window | 上下文窗口上限 | 1000000 | 决定能放多长上下文 |
 | model_auto_compact_token_limit | 自动压缩触发阈值 | 900000 | 接近上限会自动压缩 |
@@ -151,7 +157,7 @@ startup_timeout_ms = 20000
 | [features] | 功能开关 | fast_mode, enable_request_compression |
 | [projects.*] | 工作区信任级别 | trust_level |
 | [windows] | Windows 沙箱策略 | sandbox |
-| [notice.model_migrations] | 模型迁移提示 | "gpt-5.2-codex" -> "gpt-5.3-codex" |
+| [notice.model_migrations] | 模型迁移提示 | "gpt-5.2-codex" -> "gpt-5.3-codex"（历史迁移痕迹） |
 | [mcp_servers.chrome-devtools] | MCP 启动配置 | command, args, env, startup_timeout_ms |
 
 ### 2.6 `mcp_servers.chrome-devtools` 分组详解
@@ -170,9 +176,15 @@ startup_timeout_ms = 20000
 | 命令权限不足 | 工作区未被信任 | [projects.*] |
 | MCP 启动失败 | npm 或命令参数异常 | [mcp_servers.chrome-devtools] |
 
+### 2.8 今天再看这段快照，应该怎么理解
+
+1. 如果你自己的 `config.toml` 里还停留在旧模型名，不代表“不能用”，但不能再把它当成官方默认推荐
+2. 看到 `[notice.model_migrations]` 这类旧迁移提示时，优先把它理解成“这台机器曾经走过的升级轨迹”
+3. 真正要写入自己当前环境的默认模型，请先看第三篇、第五篇、第十一篇里已经校准过的最新口径
+
 ---
 
-## 3. `C:\Users\Administrator\.codex\AGENTS.md`
+## 3. `~/.codex/AGENTS.md`（Windows 例：`C:\Users\你的用户名\.codex\AGENTS.md`）
 
 ### 3.1 作用
 这是 Codex 的“团队工作规约”，用于约束编码风格、注释规则、编码格式与提交习惯。
@@ -279,7 +291,7 @@ startup_timeout_ms = 20000
 
 ---
 
-## 4. `C:\Users\Administrator\.codex\rules\default.rules`
+## 4. `~/.codex/rules/default.rules`
 
 ### 4.1 作用
 这是命令执行白名单文件。  
@@ -321,7 +333,7 @@ prefix_rule(pattern=["C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps
 
 ---
 
-## 5. `C:\Users\Administrator\.codex\skills\`
+## 5. `~/.codex/skills/`
 
 ### 5.1 作用
 技能库目录，用于存放 Codex 内置或扩展的技能资源。  
@@ -381,7 +393,7 @@ SQLite 使用 WAL 模式会生成 `-wal` 与 `-shm` 文件用于事务日志与�
 ---
 
 ## 参考资料（外部）
-- [OpenAI Codex App 介绍](https://openai.com/index/introducing-the-codex-app/)
+- [OpenAI Developers: Codex](https://developers.openai.com/codex/overview)
 - [TOML 规范（英文）](https://toml.io/en/v1.1.0)
 - [TOML 规范（中文）](https://toml.io/cn/)
 - [JSON Lines 规范](https://jsonlines.org/)

@@ -1,5 +1,5 @@
 ---
-title: 第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）
+title: 第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）
 date: 2026-03-08
 category: AI工具
 tags:
@@ -11,13 +11,17 @@ tags:
 description: 基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。
 ---
 
-# 第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）
+# 第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）
 
-> 本文基于 OpenAI 官方 Codex 文档整理，并已按 `2026-05-14` 的官方页面做过一轮口径校准。  
+> 本文基于 OpenAI 官方 Codex 文档整理，并已按 `2026-05-22` 的官方页面补过一轮增量校准。  
 > 定位：主线 05（进阶能力：自动化、治理、团队标准化）。  
 > 前置：建议先读第三篇、第五篇、第六篇、第七篇。  
 > 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 小白读完目标：你应该能把官方主线里的 `codex exec`、`profiles`、`MCP`、自动化与团队治理能力接进自己的长期开发流程，而不是只会基础聊天与改代码。
+
+> `2026-05-22` 增补提醒：如果主人主要关心“最近桌面版到底多了什么、IDE 还是不是只是壳子、Windows 有没有继续补强”，请优先串读第十一篇，因为最近最容易过时的是 App / IDE / 云任务 / Windows 这一层，不是基础配置层。
+> 如果主人现在已经进入“真正开发每天都要查功能怎么用”的阶段，请直接把第十二篇当常用手册看，第十一篇负责告诉你哪里升级了，第十二篇负责把高频能力讲细。
 
 章节导航（点击跳转）：
 
@@ -27,28 +31,30 @@ description: 基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理�
 
 ## 1. 先更新一个关键信息：模型建议会变化
 
-截至 `2026-05-14`，OpenAI 官方“最新模型”指南里的通用旗舰默认关注点已经不再停留在早期的 `gpt-5.4` 口径。  
+截至 `2026-05-22`，OpenAI 官方 Codex 模型页已经明确写到：多数 Codex 任务先从 `gpt-5.5` 开始。  
 但在 Codex 场景里，你实际能选到的默认模型、以及第三方网关暴露出来的模型名，仍可能和官方通用模型页不完全一致。  
 
 所以这里更稳妥的结论是：
 
 1. 不要再把 `gpt-5.4` 当成“永远默认推荐”的固定答案
-2. CLI/IDE/App 中先用 `/status`、`/model` 看当前这条线路真实可用的模型集合
-3. 如果你走第三方网关，最终仍以网关后台实际开放的模型名为准
+2. 官方当前默认本地示例优先看 `gpt-5.5`
+3. 如果你更看重专门编码模型，可再对照 `gpt-5.3-codex`
+4. CLI/IDE/App 中先用 `/status`、`/model` 看当前这条线路真实可用的模型集合
+5. 如果你走第三方网关，最终仍以网关后台实际开放的模型名为准
 
 常用切换方式：
 
 ```bash
-codex --model gpt-5.3-codex
+codex --model gpt-5.5
 ```
 
 逐行解释：
 
-1. `codex --model gpt-5.3-codex`：仅对当前这次会话临时切模型，不会修改 `config.toml` 默认值。
+1. `codex --model gpt-5.5`：仅对当前这次会话临时切模型，不会修改 `config.toml` 默认值。
 
 ## 2. 安装与平台策略（官方口径）
 
-这部分和第一篇/第三篇重复，这里只保留“官方差异提醒”：Windows 原生可用，但官方仍建议复杂项目优先在 WSL 工作区运行。
+这部分和第一篇/第三篇重复，这里只保留“官方差异提醒”：复杂 CLI / IDE 工作流依然常建议优先 WSL，但桌面 App 的 Windows-native 路线现在已经补上了原生 PowerShell 与 Windows sandbox。
 
 安装与升级命令（留作速查）：
 
@@ -202,6 +208,28 @@ codex mcp --help
 2. 可用 `@文件名` 在提示词中显式引用代码上下文
 3. 支持把大任务委托到云端运行，再拉回本地续做
 
+补一句最新理解：
+
+1. IDE 现在不能再只写成“编辑器里的 CLI 壳”
+2. 最近该补的重点是云端委托、多模态图片上下文与更完整的工作台能力
+3. 这部分如果要系统补，请直接看第十一篇第 5 节
+
+## 9.1 2026-05-22 增补：桌面版与 IDE 已进入“任务工作台阶段”
+
+如果你是按旧文章理解 Codex，很容易把 App 和 IDE 低估成“共享同一份配置的两个外壳”。  
+但按 OpenAI 官方最近页面，更准确的理解已经变成：
+
+1. CLI 仍是底层能力核心
+2. IDE 已开始强调云端委托、图片拖拽与多模态上下文
+3. 桌面版已经独立长出 `worktrees`、`handoff`、`local environments`、`automations` 这类工作流能力
+4. Windows 路线也已经有独立的 CLI / App 页面与原生沙箱说明
+
+所以这篇的定位要再收紧一下：
+
+1. 本篇负责“通用进阶能力”
+2. 第十一篇负责“最近产品形态升级”
+3. 第七篇负责“把这些变化落实到截图核对和 SOP”
+
 ## 10. 一套实用的双 Profile 模板
 
 ```toml
@@ -251,5 +279,13 @@ codex exec --profile ci "run CI triage and output a short report"
 - MCP：<https://developers.openai.com/codex/mcp>
 - IDE 扩展：<https://developers.openai.com/codex/ide>
 - IDE 功能：<https://developers.openai.com/codex/ide/features>
+- IDE 设置：<https://developers.openai.com/codex/ide/settings>
+- App 功能：<https://developers.openai.com/codex/app/features>
+- App 设置：<https://developers.openai.com/codex/app/settings>
+- App Worktrees：<https://developers.openai.com/codex/app/worktrees>
+- App Local Environments：<https://developers.openai.com/codex/app/local-environments>
+- App Automations：<https://developers.openai.com/codex/app/automations>
+- App In-app Browser：<https://developers.openai.com/codex/app/in-app-browser>
+- App Windows：<https://developers.openai.com/codex/app/windows>
 - Windows 指南：<https://developers.openai.com/codex/windows>
 - Agent approvals & security：<https://developers.openai.com/codex/agent-approvals-security>

@@ -8,12 +8,12 @@ tags:
   - Kiro Steering
   - MDC格式
   - AI规则文档
-description: 深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 格式四种规则类型与 Agent 模式合规率、Windsurf 四种激活模式与 token 预算管理、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。
+description: 深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 四种规则类型、Windsurf 四种激活模式与字符限制、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。
 ---
 
 # 第四篇：Cursor Rules / Windsurf Rules / Kiro Steering 实战
 
-> 资料来源：Cursor 官方文档（docs.cursor.com）、Windsurf 官方文档（docs.windsurf.com）、Kiro 官方文档（kiro.dev/docs/steering/，页面更新时间 2026-02-18）、morphllm.com，整理时间：2026-04。
+> 资料来源：Cursor 官方文档、Windsurf 官方文档、Kiro 官方文档。初稿整理：2026-04；按官方文档复核更新：2026-05-22。
 
 [[toc]]
 
@@ -27,12 +27,12 @@ Cursor 是最早普及"项目级 AI 规则"概念的工具之一，规则系统�
 
 | 版本 | 文件 | 状态 |
 |------|------|------|
-| 第一代 | `.cursorrules`（项目根目录，单文件） | **已废弃**，在 Agent 模式下 0% 合规率 |
-| 第二代 | `.cursor/rules/*.mdc`（目录，多文件） | 当前推荐，Agent 模式 100% 合规 |
+| 第一代 | `.cursorrules`（项目根目录，单文件） | **仍可用，但已是 legacy / deprecated** |
+| 第二代 | `.cursor/rules/*.mdc`（目录，多文件） | 当前官方推荐 |
 
-> **重要**：Cursor 0.45 起，Agent 模式使用全新的上下文组装流程。只要 `.cursor/rules/` 目录中存在任何 `.mdc` 文件，`.cursorrules` 就会被**完全忽略**。社区测试（2025-03）显示：`.cursorrules` 在 Agent 模式下合规率 0%，而 `alwaysApply: true` 的 MDC 文件合规率 100%。
+> **按 2026-05-22 官方文档的稳妥说法**：`.cursorrules` 还在兼容范围内，但已经被明确标为 legacy，官方建议迁移到 `.cursor/rules/`。如果你正在新建规则，不要再围绕 `.cursorrules` 设计。
 
-同时，Cursor 也支持读取 `AGENTS.md`。
+同时，Cursor 也支持读取 `AGENTS.md`，但当前定位是：**把它当成放在项目根目录、全局生效、单文件的简单替代方案**，不是 `.cursor/rules/` 的完整替身。
 
 ### 1.2 MDC 格式
 
@@ -135,11 +135,21 @@ Cursor 组装 prompt 时，规则按以下顺序注入到模型上下文最前�
 
 > **注意**：规则只影响 Chat 和 Agent 模式，**不影响 Cursor Tab 自动补全**。Tab 补全使用独立的低延迟流水线，不注入 MDC 规则。
 
-### 1.4 目录结构
+### 1.5 AGENTS.md 在 Cursor 里的当前边界
+
+Cursor 官方当前文档对 `AGENTS.md` 的定位非常明确：
+
+- 放在**项目根目录**
+- 作为 `.cursor/rules/` 的简单替代
+- 不支持 MDC 那样的 frontmatter、复杂激活逻辑和多文件拆分
+
+如果你的项目已经开始出现"前端一套规则、后端一套规则、测试一套规则"这种需求，就该直接上 `.cursor/rules/`，不要指望单个 `AGENTS.md` 长期扛住。
+
+### 1.6 目录结构
 
 ```
 project/
-├── AGENTS.md                    # 跨工具共享规则
+├── AGENTS.md                    # 跨工具共享规则（Cursor 当前文档要求放根目录）
 └── .cursor/
     └── rules/
         ├── global-style.mdc     # 全局代码风格（alwaysApply: true）
@@ -149,11 +159,11 @@ project/
         └── db-migration.mdc     # 数据库迁移（manual，@db-migration 触发）
 ```
 
-### 1.5 全局规则
+### 1.7 全局规则
 
 全局规则通过 Cursor 设置界面配置（Settings → Rules for AI），对所有项目生效。适合个人偏好（语言、回复风格等）。
 
-### 1.6 实战示例
+### 1.8 实战示例
 
 **全局代码风格规则（alwaysApply）：**
 
@@ -197,7 +207,7 @@ alwaysApply: false
 1. 创建 `.cursor/rules/` 目录
 2. 把 `.cursorrules` 内容按主题拆分成多个 `.mdc` 文件
 3. 为每个文件添加 YAML frontmatter（全局规则用 `alwaysApply: true`，文件特定规则用 `globs` 数组）
-4. MDC 文件存在后，`.cursorrules` 自动被忽略
+4. 迁移完成后，删除旧 `.cursorrules`，避免团队误以为它仍是主配置入口
 
 ---
 
@@ -226,7 +236,7 @@ Windsurf 的上下文管理系统包含四个层次：
 **旧格式 `.windsurfrules`**（仍可用）：
 
 ```
-~/.codeium/windsurf/global_rules.md    # 全局（新格式）
+~/.codeium/windsurf/memories/global_rules.md  # 全局
 .windsurfrules                          # 工作区根目录（旧格式，仍支持）
 .windsurf/rules/*.md                    # 工作区（新格式，推荐）
 ```
@@ -277,7 +287,7 @@ description: 数据库迁移操作规范，包含 Alembic 命令和注意事项
 
 ### 2.4 Token 预算管理
 
-Windsurf 对规则文件有 token 限制：
+Windsurf 对规则文件有**字符限制**：
 
 - 全局规则：**6000 字符**
 - 工作区规则：**12000 字符/文件**
@@ -303,8 +313,8 @@ Windsurf 对规则文件有 token 限制：
 
 ```bash
 # 创建全局规则文件
-mkdir -p ~/.codeium/windsurf
-nano ~/.codeium/windsurf/global_rules.md
+mkdir -p ~/.codeium/windsurf/memories
+nano ~/.codeium/windsurf/memories/global_rules.md
 ```
 
 ```markdown
@@ -518,9 +528,9 @@ project/
 | 团队统一配置 | ❌ | 系统级（企业 IT 部署） | ✅（MDM/GP 推送到 `~/.kiro/steering/`） |
 | Token/字符限制 | 无明确限制（建议单文件 < 100 行） | 6000（全局）/ 12000（工作区） | 无明确限制 |
 | 自动记忆 | ❌ | ✅（Memories） | ❌ |
-| AGENTS.md 支持 | ✅ | ✅（根目录=always，子目录=glob） | ✅ 原生支持（始终 always 模式） |
+| AGENTS.md 支持 | ✅，但当前主线是**根目录单文件的简单替代方案** | ✅（根目录=always，子目录=glob） | ✅ 原生支持（始终包含） |
 | 一键生成 | ❌ | ❌ | ✅（Generate Steering Docs） |
-| .cursorrules 兼容 | ⚠️ Agent 模式 0% 合规，已废弃 | `.windsurfrules` 仍支持 | 不适用 |
+| .cursorrules 兼容 | ⚠️ 仍兼容，但已 deprecated | `.windsurfrules` 仍支持 | 不适用 |
 
 ---
 

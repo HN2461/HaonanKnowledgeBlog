@@ -13,7 +13,7 @@ description: 深度解析 AGENTS.md 开放标准的起源、格式规范、多�
 
 # 第二篇：AGENTS.md 开放标准完全指南
 
-> 资料来源：OpenAI agents.md GitHub 仓库、vibecoding.app、particula.tech、Anthropic 官方文档，整理时间：2026-04。
+> 资料来源：OpenAI / agentsmd 官方仓库、GitHub Copilot / Cursor / Windsurf / Kiro / Gemini CLI 官方文档。初稿整理：2026-04；按官方文档复核更新：2026-05-22。
 
 [[toc]]
 
@@ -44,11 +44,12 @@ description: 深度解析 AGENTS.md 开放标准的起源、格式规范、多�
 
 ### 1.3 移交 Linux 基金会
 
-2025 年 12 月 9 日，`AGENTS.md` 被移交给 **Linux 基金会旗下的 Agentic AI Foundation（AAIF）**，与 Anthropic 的 MCP 协议、Block 的 Goose 并列，成为 AI 编程生态的三大开放标准之一。
+公开资料与 agents.md 社区站点都把 `AGENTS.md` 描述为由 **Linux 基金会旗下的 Agentic AI Foundation（AAIF）** 持续维护的开放格式。  
 
-AAIF 铂金成员包括：AWS、Google、Microsoft、OpenAI、Anthropic、Bloomberg、Cloudflare 等。
+比起死记某个时间点的仓库数量，更值得记住两件事：
 
-截至 2026 年初，GitHub 上已有超过 **6 万个**开源仓库包含 `AGENTS.md`。
+- `AGENTS.md` 已经从 Codex 专属约定，发展成多个 AI 编程工具都愿意兼容的公共入口
+- 兼容的是**文件名和基本思路**，不是完全一致的实现细节
 
 ---
 
@@ -139,7 +140,13 @@ async def get_user(user_id: int, db: AsyncSession = Depends(get_db)):
 
 ### 3.1 基本原则
 
-`AGENTS.md` 支持在任意子目录放置，实现**作用域隔离**。各工具的优先级规则基本一致：**离当前工作目录越近的文件，优先级越高**。
+从开放标准的角度看，`AGENTS.md` 很适合放在不同目录里实现**作用域隔离**。  
+
+但到 2026-05-22 为止，**并不是所有工具都把这件事实现得一模一样**。更准确的理解是：
+
+- 对 Codex、Windsurf、GitHub Copilot 这类工具来说，子目录 `AGENTS.md` 已经是主线能力之一
+- 对 Cursor 来说，当前官方文档仍把 `AGENTS.md` 定位为**项目根目录的简单替代方案**；复杂分层更适合 `.cursor/rules/`
+- 对 Kiro 来说，`AGENTS.md` 能读，但复杂 inclusion / fileMatch 仍建议交给 Steering
 
 ```
 project/
@@ -154,7 +161,7 @@ project/
 
 ### 3.2 多 Agent 协作场景
 
-子目录 `AGENTS.md` 在多 Agent 并行工作时特别有价值：
+所以，下面这个目录结构更适合把它理解为**开放标准层面的理想写法**，而不是“所有工具今天都完全等价支持”的保证：
 
 ```markdown
 # frontend/AGENTS.md
@@ -234,12 +241,14 @@ Copilot 同时支持 `AGENTS.md` 和原有的 `.github/copilot-instructions.md`�
 
 优先级：最近目录的文件优先（与其他工具一致）。
 
-### 4.3 Cursor（支持）
+### 4.3 Cursor（支持，但要注意当前限制）
 
-Cursor 同时支持 `AGENTS.md` 和 `.cursor/rules/` 目录。推荐分工：
+Cursor 同时支持 `AGENTS.md` 和 `.cursor/rules/` 目录，但两者定位不同：
 
-- `AGENTS.md`：跨工具共享的项目规范
-- `.cursor/rules/`：Cursor 专属的 glob 作用域规则
+- `AGENTS.md`：官方当前文档把它当成**放在项目根目录的简单替代方案**
+- `.cursor/rules/`：Cursor 的主力规则系统，支持多文件、`globs`、`alwaysApply`、Agent Requested 等能力
+
+如果你需要路径作用域、手动触发、按描述让模型判断是否加载，优先用 `.cursor/rules/`，不要硬把这些需求塞进单个 `AGENTS.md`。
 
 ### 4.4 Windsurf（支持）
 
@@ -251,9 +260,9 @@ Windsurf 将 `AGENTS.md` 纳入与 `.windsurf/rules/` 相同的规则引擎处�
 
 ### 4.5 Kiro（原生支持）
 
-Kiro 官方 changelog 明确宣布原生支持 `AGENTS.md` 标准：
+Kiro 官方文档明确说明原生支持 `AGENTS.md` 标准：
 
-- 放在工作区根目录：自动识别，始终以 `always` 模式加载
+- 放在工作区根目录：自动识别，始终包含
 - 放在 `~/.kiro/steering/`：作为全局 Steering 对所有工作区生效
 - AGENTS.md 不支持 inclusion 模式 frontmatter，始终全量加载
 
@@ -285,7 +294,7 @@ Gemini CLI 默认读取 `GEMINI.md`，但可以通过 `settings.json` 配置额�
 }
 ```
 
-配置后，Gemini CLI 会在每个目录中依次查找这些文件名，找到的都会加载。
+配置后，Gemini CLI 会把 `AGENTS.md` 视为可选的 context file 名称之一，和 `GEMINI.md` 一起参与层级加载。
 
 ---
 

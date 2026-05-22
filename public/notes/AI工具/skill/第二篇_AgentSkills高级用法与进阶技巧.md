@@ -6,437 +6,358 @@ tags:
   - Agent Skills
   - SKILL.md
   - Claude Code
-  - 参数传递
-  - 子代理
-  - 动态注入
-description: 深入讲解 Agent Skills 的高级特性：参数传递、动态上下文注入、context:fork 子代理隔离、hooks 生命周期、allowed-tools 权限控制，以及 Gemini CLI 的 activate_skill 机制。
+  - Codex
+  - Kiro
+  - 进阶技巧
+  - 版本边界
+description: 按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。
 ---
 
 # Agent Skills 高级用法与进阶技巧
 
-> 本篇以 Claude Code 为主要示例（扩展字段最丰富），Kiro / Cursor / Gemini 的特有机制单独说明。
+> 这一篇不再追求“功能列表越多越好”，而是优先回答一个更重要的问题：**哪些写法今天还稳，哪些写法已经明显带版本风险。**
+
+## 一、先把高级能力分三层
+
+### 第一层：今天仍然稳
+
+这些内容可以继续大胆用：
+
+- `name` + `description`
+- `references/` 拆长文档
+- `scripts/` 放确定性脚本
+- `assets/` 放模板和输出资源
+- Kiro 的 `skill://...` 资源声明
+- Codex 的本地 `~/.codex/skills/` 目录与 `openai/skills` 生态
+
+### 第二层：工具专属，但仍有现实价值
+
+这些能力不是通用标准，但在对应工具里仍很有用：
+
+- Claude Code 自定义命令里的 `$ARGUMENTS`
+- Claude Code 自定义命令里的 `$1`、`$2`
+- Claude Code 的 `!` 命令注入
+- Claude Code frontmatter 里的 `allowed-tools`、`argument-hint`、`model`
+- Codex skill 目录里的 `agents/openai.yaml`
+
+### 第三层：版本敏感，不能再默认通用
+
+这些内容这次不再当作“稳定常识”：
+
+- skill 级 `context: fork`
+- skill 级 `hooks`
+- `paths` 自动触发
+- 固定的上下文压缩 token 配额
+- 某些内部环境变量名一定长期存在
+- “所有工具都支持同样的自动激活与权限语法”
 
 ---
 
-## 一、参数传递
+## 二、description 仍然是技能成败的第一关键
 
-### 1.1 基础用法
+很多人一上来就研究“高级字段”，但实际最影响效果的，仍然是 `description` 写得对不对。
 
-调用 skill 时可以附带参数，在 SKILL.md 里用占位符接收：
-
-```markdown
----
-name: fix-issue
-description: Fix a GitHub issue by number. Use when asked to fix a specific issue.
-disable-model-invocation: true
----
-
-Fix GitHub issue $ARGUMENTS following our coding standards.
-
-1. Read the issue description
-2. Implement the fix
-3. Write tests
-4. Create a commit
-```
-
-调用：`/fix-issue 123` → `$ARGUMENTS` 替换为 `123`
-
-### 1.2 多参数按位置接收
-
-```markdown
----
-name: migrate-component
-description: Migrate a UI component from one framework to another.
----
-
-Migrate the $0 component from $1 to $2.
-Preserve all existing behavior and tests.
-```
-
-调用：`/migrate-component SearchBar React Vue`
-
-- `$0` → `SearchBar`
-- `$1` → `React`
-- `$2` → `Vue`
-
-多词参数用引号包裹：`/migrate-component "Search Bar" React Vue`
-
-`$ARGUMENTS[N]` 与 `$N` 等价，`$ARGUMENTS` 始终展开为完整原始字符串。
-
-### 1.3 参数不存在时的兜底
-
-如果调用时传了参数但 SKILL.md 里没有 `$ARGUMENTS`，Claude Code 会自动在内容末尾追加：
-
-```
-ARGUMENTS: <你输入的内容>
-```
-
-Claude 仍然能看到参数，不会丢失。
-
----
-
-## 二、动态上下文注入（Shell 注入）
-
-> 仅 Claude Code 支持，其他工具不支持此语法。
-
-### 2.1 内联注入 `!`
-
-在 SKILL.md 里用 `` !`command` `` 语法，skill 被激活时先执行命令，把输出插入到内容里，Claude 看到的是执行结果而不是命令本身。
-
-```markdown
----
-name: pr-summary
-description: Summarize a pull request with live data. Use when reviewing or summarizing a PR.
-context: fork
-agent: Explore
-allowed-tools: Bash(gh *)
----
-
-## PR 上下文（实时数据）
-
-- Diff：!`gh pr diff`
-- 评论：!`gh pr view --comments`
-- 变更文件：!`gh pr diff --name-only`
-- 当前分支：!`git branch --show-current`
-
-## 任务
-
-根据以上信息，生成一份简洁的 PR 摘要，包含：变更目的、影响范围、潜在风险。
-```
-
-执行顺序：
-
-1. 所有 `` !`...` `` 命令先执行
-2. 输出替换占位符
-3. 完整内容发给 Claude
-
-### 2.2 多行注入 ` ```! `
-
-````markdown
-## 环境信息
-
-```!
-node --version
-npm --version
-git log --oneline -5
-git status --short
-```
-````
-
-Claude 会看到这四条命令的实际输出。
-
-````
-
-### 2.3 引用 skill 自身目录
-
-`${CLAUDE_SKILL_DIR}` 变量指向当前 SKILL.md 所在目录，适合引用 skill 内的脚本：
-
-```markdown
----
-name: codebase-audit
-description: Run a full codebase audit and generate a report.
-allowed-tools: Bash(python *)
----
-
-运行审计脚本：
-
-```!
-python ${CLAUDE_SKILL_DIR}/scripts/audit.py .
-````
-
-````
-
-### 2.4 Session ID 追踪
-
-`${CLAUDE_SESSION_ID}` 可用于日志、临时文件命名：
-
-```markdown
----
-name: session-logger
-description: Log all activity in this session.
----
-
-将以下内容记录到 logs/${CLAUDE_SESSION_ID}.log：
-
-$ARGUMENTS
-````
-
----
-
-## 三、context: fork — 子代理隔离运行
-
-### 3.1 为什么需要 fork
-
-默认情况下 skill 在当前对话上下文中内联运行，会消耗主会话的 token。对于需要大量读取文件、调用 API、生成报告的 skill，建议用 `context: fork` 在独立子代理中运行：
-
-- 子代理有自己的上下文，不污染主会话
-- 主会话只收到子代理的最终结果摘要
-- 适合研究类、生成类、部署类任务
-
-### 3.2 基本写法
-
-```markdown
----
-name: deep-research
-description: Research a topic thoroughly across the codebase. Use when asked to investigate or analyze.
-context: fork
-agent: Explore
----
-
-深入研究：$ARGUMENTS
-
-1. 用 Glob 和 Grep 找相关文件
-2. 阅读并分析代码
-3. 返回带具体文件引用的分析报告
-```
-
-`agent` 字段可选值：
-
-- `Explore`：只读工具，适合代码库探索
-- `Plan`：规划类任务
-- 省略：使用通用子代理
-- 自定义子代理名（来自 `.claude/agents/`）
-
-### 3.3 fork vs 内联对比
-
-| 维度       | 内联（默认）   | context: fork          |
-| ---------- | -------------- | ---------------------- |
-| 上下文     | 共享主会话     | 独立隔离               |
-| 历史访问   | 能看到对话历史 | 看不到对话历史         |
-| Token 消耗 | 计入主会话     | 独立计算               |
-| 适合场景   | 参考类、规范类 | 研究类、生成类、部署类 |
-| 结果返回   | 直接在对话中   | 摘要注入主会话         |
-
----
-
-## 四、allowed-tools — 预授权工具
-
-### 4.1 作用
-
-skill 激活时，`allowed-tools` 里列出的工具无需每次询问用户确认，直接执行。
-
-```markdown
----
-name: commit
-description: Stage and commit current changes.
-disable-model-invocation: true
-allowed-tools: Bash(git add *) Bash(git commit *) Bash(git status *) Bash(git diff *)
----
-
-提交当前变更：
-
-1. `git status` 查看变更
-2. `git add .` 暂存所有文件
-3. 根据变更内容生成符合规范的 commit message
-4. `git commit -m "..."` 提交
-```
-
-### 4.2 语法格式
+### 2.1 现在仍然推荐的写法
 
 ```yaml
-# 空格分隔字符串
-allowed-tools: Read Grep Bash(git *)
-
-# 或 YAML 列表
-allowed-tools:
-  - Read
-  - Grep
-  - Bash(git add *)
-  - Bash(git commit *)
+---
+name: pr-review
+description: Review pull requests for code quality, security issues, and test coverage. Use when reviewing PRs, checking code before merge, or auditing a risky change.
+---
 ```
 
-`allowed-tools` 只是预授权，不限制其他工具的使用——其他工具仍可调用，只是需要用户确认。
+### 2.2 为什么这依然关键
+
+因为无论是：
+
+- Kiro 的 skills 自动匹配
+- Codex 的技能发现思路
+- 还是其他 agent 工具的相似机制
+
+最先暴露给模型的，往往都是短元信息，而不是整篇正文。
+
+### 2.3 现在更推荐的 description 模板
+
+建议尽量写成：
+
+`做什么 + 什么时候用 + 常见触发说法`
+
+例如：
+
+```text
+Review pull requests for code quality, security issues, and test coverage. Use when reviewing PRs, checking code before merge, or auditing risky changes.
+```
+
+不要只写：
+
+```text
+Help with code review
+```
+
+这种写法太短，触发词不够，也不利于后续迁移到其他工具。
 
 ---
 
-## 五、hooks — skill 生命周期钩子
+## 三、把长内容移到 references，仍然是最实用的进阶技巧
 
-> 仅 Claude Code 支持 skill 级别的 hooks。
+这是这次复核后我最愿意继续保留的“高级实践”。
 
-在 SKILL.md frontmatter 里定义 `hooks`，格式与全局 hooks 完全一致，使用相同的事件名（`PreToolUse`、`PostToolUse`、`Stop` 等），但作用域仅限于该 skill 激活期间。
+### 3.1 推荐结构
+
+```text
+security-review/
+├── SKILL.md
+└── references/
+    ├── checklist.md
+    ├── auth.md
+    └── api-risk-patterns.md
+```
+
+### 3.2 为什么比把所有内容塞进 `SKILL.md` 更好
+
+- 让入口更短，触发更清晰
+- 让正文只保留流程
+- 需要细节时再读取参考文档
+- 对 Codex、Kiro 这类目录化技能尤其友好
+
+### 3.3 一个现在仍然靠谱的正文写法
 
 ```markdown
 ---
-name: code-review
-description: Review code for quality and security issues.
-hooks:
-  PostToolUse:
-    - matcher: "Edit|Write"
-      hooks:
-        - type: command
-          command: "jq -r '.tool_input.file_path' | xargs npx prettier --write"
-  Stop:
-    - hooks:
-        - type: prompt
-          prompt: 'Check if all review tasks are complete. If not, respond with {"ok": false, "reason": "what remains"}.'
+name: security-review
+description: Review application code for auth mistakes, secret leaks, input validation issues, and risky integrations. Use when auditing backend routes, API handlers, or security-sensitive changes.
 ---
 
-## 代码审查流程
+## Workflow
 
-...
+1. Read the changed files and identify trust boundaries
+2. Use `references/checklist.md` as the primary review list
+3. If auth is involved, also read `references/auth.md`
+4. Report findings with file path, risk, and suggested fix
 ```
 
-支持的 hook 事件（与全局 hooks 相同）：
-
-| 事件               | 触发时机               |
-| ------------------ | ---------------------- |
-| `SessionStart`     | 会话开始或恢复时       |
-| `UserPromptSubmit` | 用户提交 prompt 前     |
-| `PreToolUse`       | 工具调用前（可阻止）   |
-| `PostToolUse`      | 工具调用成功后         |
-| `Stop`             | Claude 完成响应时      |
-| `Notification`     | Claude Code 发送通知时 |
-
-hook 类型支持 `command`（shell 命令）、`prompt`（LLM 判断）、`agent`（子代理验证）、`http`（HTTP 请求）。
-
-常见用途：
-
-- `PostToolUse` + `Edit|Write` matcher：每次文件编辑后自动格式化
-- `Stop` + `type: prompt`：验证任务是否真正完成
-- `PreToolUse`：阻止 skill 执行期间的特定危险操作
+这类写法比堆很多魔法字段更抗过时。
 
 ---
 
-## 六、model 与 effort — 按 skill 指定模型
+## 四、scripts 目录的价值比“炫技语法”更稳定
 
-> 仅 Claude Code 支持。
+把重复动作写成脚本，是技能真正能长期复用的原因之一。
+
+### 4.1 什么时候该放脚本
+
+- 每次都要重写的转换逻辑
+- 需要稳定输出格式的操作
+- 需要真实执行、不能只靠模型脑补的流程
+
+### 4.2 示例
+
+```text
+release-helper/
+├── SKILL.md
+└── scripts/
+    └── collect_release_notes.py
+```
+
+正文里写：
+
+```markdown
+1. Run `scripts/collect_release_notes.py`
+2. Group the output into features, fixes, and risks
+3. Draft the release summary in Markdown
+```
+
+这个思路在 Codex 自带 skills 里也很常见，所以它比某些“只存在于一篇老文章里的私有 frontmatter”更值得学。
+
+---
+
+## 五、Codex 这边现在最值得知道的进阶点
+
+### 5.1 `.system` 是真实存在的
+
+本机当前 `~/.codex/skills/` 下能看到：
+
+- `.system/imagegen`
+- `.system/openai-docs`
+- `.system/plugin-creator`
+- `.system/skill-creator`
+- `.system/skill-installer`
+
+这说明对 Codex 来说，skills 已经不是概念页，而是实际在工作。
+
+### 5.2 `skill-creator` 给出的当前建议
+
+本机自带 `skill-creator` 明确强调：
+
+- `SKILL.md` 里最核心的是 `name` 和 `description`
+- `references/` 用来承载大块参考资料
+- `scripts/` 用来放可执行工具
+- `agents/openai.yaml` 是推荐但非必需的 UI 元信息
+
+这也反过来说明：
+
+**如果您想写“更能跟得上 Codex 现状”的 skill，优先学这些，而不是优先学一堆跨工具真假难辨的高级字段。**
+
+### 5.3 `skill-installer` 给出的当前事实
+
+当前 Codex skills 生态可以确认的是：
+
+- `.system` skills 属于预装层
+- curated / experimental skills 在 `openai/skills` 仓库里
+- 通过 `skill-installer` 可以安装
+- 安装后需要重启 Codex 才会被重新发现
+
+---
+
+## 六、Kiro 这边现在最值得记的进阶点
+
+Kiro 当前最实用的进阶点，不是“神秘隐藏字段”，而是：
+
+### 6.1 默认 agent 与自定义 agent 的差别
+
+- 默认 agent：会自动发现 `.kiro/skills/` 和 `~/.kiro/skills/`
+- 自定义 agent：不会自动加载 skills，需要在 `resources` 里声明
+
+### 6.2 这意味着什么
+
+如果主人发现：
+
+- skill 明明写了
+- 但某个自定义 agent 就是不认
+
+第一检查项不应该是怀疑 `SKILL.md` 写坏了，而应该先看这个 agent 有没有把 `skill://...` 配进去。
+
+---
+
+## 七、Claude Code 里，哪些高级能力仍然值得借鉴
+
+虽然这组文章现在不再把 Claude 的高级写法当成“通用 skill 标准”，但其中一部分思路仍然很值得学。
+
+### 7.1 参数占位
+
+Claude Code 当前官方 slash commands 文档明确展示了：
+
+- `$ARGUMENTS`
+- `$1`、`$2`
+
+例如：
+
+```markdown
+Review PR #$1 with priority $2 and assign to $3.
+```
+
+这个思路对于“把一个流程做成可带参数的模板”非常好用。
+
+### 7.2 命令注入
+
+官方文档也明确展示了 `!` 注入命令输出的做法。
+
+这很适合：
+
+- 把 `git status`
+- `git diff`
+- 最近提交
+
+先采集进上下文，再执行后续流程。
+
+### 7.3 但边界要记清
+
+这些是：
+
+- **Claude 自定义命令体系下已文档化的能力**
+
+不是：
+
+- “所有 Agent Skills 实现都天然拥有的标准字段”
+
+---
+
+## 八、现在应当降级处理的旧说法
+
+下面这些以前看起来很酷，但这次已经不建议继续当“默认知识”传播：
+
+### 8.1 固定 token 配额说法
+
+比如：
+
+- “每个 skill 保留前多少 token”
+- “所有 skills 总预算多少”
+
+这类数字非常容易被版本改动打脸。现在更稳妥的写法应该是：
+
+**正文尽量短，把细节拆出去，减少上下文负担。**
+
+### 8.2 skill 级 hooks / paths / fork
+
+这几类能力如果没有当前官方页面再次确认，就不适合继续写成：
+
+- 所有工具都懂
+- 已经稳定多年
+- 可以放心拿来做主设计
+
+主人真要用，最好先以“具体产品、具体版本、具体官方页”再单独复核一次。
+
+### 8.3 “某个目录别名跨工具通用”
+
+像 `.agents/skills/` 这种说法，这次也一律降级处理。原因不是它一定错，而是：
+
+- 一旦没有当前官方页再次确认
+- 把它写成“默认跨工具通用目录”
+
+就非常容易误导后来人。
+
+---
+
+## 九、今天仍然推荐的进阶模板
+
+### 9.1 先写 portable 版
 
 ```markdown
 ---
-name: quick-fix
-description: Apply a quick, simple fix. Use for trivial bugs and typos.
-model: claude-haiku-4
-effort: low
+name: release-audit
+description: Audit release readiness by checking recent changes, risky areas, test status, and deployment notes. Use when preparing a release, cut, or production rollout.
 ---
 
-快速修复：$ARGUMENTS
+## Workflow
+
+1. Read the changed modules and identify risk areas
+2. Read `references/release-checklist.md`
+3. Run the scripts in `scripts/` if needed
+4. Produce a release-readiness report with blockers and follow-ups
 ```
 
-```markdown
----
-name: architecture-review
-description: Deep architectural review of a system design.
-model: claude-opus-4
-effort: max
----
+### 9.2 再写 Codex 增强层
 
-对以下设计进行深度架构审查：$ARGUMENTS
-```
+可以追加：
 
-`effort` 可选值：`low` / `medium` / `high` / `max`（max 仅 Opus 4.6 支持）
+- `agents/openai.yaml`
+- 更细的 references
+- 辅助脚本
 
-实际价值：把简单任务路由到轻量模型节省 token，把复杂任务路由到强力模型保证质量。
+### 9.3 再按其他工具转换
 
----
-
-## 七、paths — 按文件路径自动触发
-
-> 仅 Claude Code 支持。
-
-```markdown
----
-name: react-conventions
-description: React component conventions for this project.
-paths: "src/components/**/*.tsx,src/components/**/*.jsx"
----
-
-## React 组件规范
-
-- 使用函数组件，不用 class 组件
-- Props 用 TypeScript interface 定义
-- 样式用 CSS Modules
-  ...
-```
-
-当你编辑 `src/components/` 下的文件时，这个 skill 自动激活，无需手动调用。
+- Kiro：直接放入 `.kiro/skills/`
+- Cursor：通常改写成 `.cursor/rules` 或根目录 `AGENTS.md`
+- Claude：通常改写成 `.claude/commands/*.md`
 
 ---
 
-## 八、Gemini CLI 的 activate_skill 机制
+## 十、总结
 
-Gemini CLI 的激活流程与其他工具不同，有一个独特的**用户确认步骤**：
+真正能长期抗过时的进阶技巧，其实就三条：
 
-1. Gemini 识别到任务匹配某个 skill 的 description
-2. 调用内部 `activate_skill` 工具
-3. **弹出确认提示**，显示：skill 名称、用途描述、将获得访问权限的目录路径
-4. 用户确认后，SKILL.md 正文和目录结构注入上下文
-5. skill 目录被加入 agent 的允许文件路径，可读取 scripts/、references/ 等
+1. 把触发条件写进 `description`
+2. 把长知识拆进 `references/`
+3. 把重复动作收进 `scripts/`
 
-这个设计的意义：防止恶意 skill 在用户不知情的情况下访问文件系统。
+至于那些看起来很炫的“高级字段”，现在都应该带着一个默认前缀去看：
 
----
+**这是不是某个工具、某个版本、某个页面里的专属能力，而不是所有技能系统共享的稳定真相？**
 
-## 九、Kiro CLI 的 resources 配置
-
-Kiro CLI 里 skill 不是自动扫描，需要在 agent 配置文件（`.kiro/agents/*.json`）里显式声明：
-
-```json
-{
-  "name": "my-agent",
-  "resources": [
-    "skill://.kiro/skills/**/SKILL.md",
-    "skill://~/.kiro/skills/**/SKILL.md"
-  ]
-}
-```
-
-`skill://` URI 与 `file://` 的区别：
-
-- `file://`：启动时全量加载进上下文
-- `skill://`：只加载 name + description，正文按需加载
-
----
-
-## 十、skill 内容生命周期与压缩行为
-
-这是一个容易忽略但很重要的机制：
-
-**激活后**：SKILL.md 内容作为一条消息进入对话，**整个会话期间持续存在**，Claude Code 不会重新读取文件。
-
-**上下文压缩时**：压缩会保留最近调用的 skill，每个 skill 保留前 5000 tokens，所有 skill 共享 25000 tokens 的总预算。从最近调用的 skill 开始填充，旧 skill 可能被完全丢弃。
-
-**实际影响**：
-
-- 如果 skill 在压缩后失效，重新调用 `/skill-name` 即可恢复
-- 多个 skill 同时激活时，越早调用的越容易在压缩后丢失
-- 用 `hooks` 可以在压缩后强制重新注入关键上下文（`SessionStart` + `compact` matcher）
-
-```json
-// 在 .claude/settings.json 里配置，压缩后重新注入上下文
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '重要提醒：使用 Bun 而非 npm，提交前运行测试'"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
----
-
-## 十一、常见问题排查
-
-| 问题                  | 原因                       | 解决                                                    |
-| --------------------- | -------------------------- | ------------------------------------------------------- |
-| skill 不自动触发      | description 关键词不够精准 | 在 description 里加入用户自然会说的词                   |
-| skill 触发太频繁      | description 太宽泛         | 缩窄 description，或加 `disable-model-invocation: true` |
-| 激活后不再生效        | 上下文压缩后 skill 被丢弃  | 重新调用 `/skill-name`，或用 hooks 强制保持             |
-| `$ARGUMENTS` 没有替换 | 调用时没传参数             | 正常，Claude 仍能看到末尾追加的 `ARGUMENTS:`            |
-| shell 注入不执行      | 工具设置禁用了 shell 执行  | 检查 `disableSkillShellExecution` 设置                  |
-| fork 子代理看不到历史 | 这是设计行为               | 在 skill 正文里用 `!` 注入需要的上下文数据              |
-
----
+只要主人先有这个判断，后面不管写 Codex skill、Kiro skill，还是把同样思路迁移到 Cursor / Claude，都不会那么容易踩过时坑。
 
 ## 参考资料
 
-- [Claude Code Skills 官方文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
-- [Gemini CLI Skills 文档](https://geminicli.com/docs/cli/skills/)
-- [Agent Skills 高级实战](https://www.mejba.me/blog/agent-skills-advanced-claude-code)
+- [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
+- [OpenAI Skills 仓库](https://github.com/openai/skills)

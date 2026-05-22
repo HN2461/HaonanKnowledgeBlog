@@ -19,6 +19,7 @@ description: 面向小白系统梳理 Codex 的认证方式、权限控制、配
 > 下一篇建议：第五篇（字段字典）。  
 > 本篇不展开：三端具体点位与截图（看第六篇、第七篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 小白读完目标：你应该能说清 Codex 为什么会“改了不生效”、配置到底分几层、审批和沙箱到底各管什么。
 
 章节导航（点击跳转）：
 
@@ -87,7 +88,7 @@ description: 面向小白系统梳理 Codex 的认证方式、权限控制、配
 ## 5. 先给一份“能用且稳”的基础配置（建议起步）
 
 ```toml
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 model_reasoning_effort = "medium"
@@ -107,7 +108,7 @@ sandbox = "elevated"
 
 这套配置的含义是：
 
-1. 模型默认先用当前线路明确可用的编码模型示例 `gpt-5.3-codex`
+1. 模型默认先用官方当前推荐的本地默认示例 `gpt-5.5`
 2. 可改当前工作区文件，但高风险动作会提示你确认
 3. Web 搜索默认走缓存索引，风险低于直接 live 抓网
 4. 会保存历史会话，便于 `resume`
@@ -120,11 +121,12 @@ sandbox = "elevated"
 
 默认模型。  
 不要再把 `gpt-5.4` 当成固定官方默认答案。  
-截至 `2026-05-14`，更稳妥的做法是：
+截至 `2026-05-22`，更稳妥的做法是：
 
 1. 通用模型选择先看 OpenAI 最新模型指南
-2. 编码场景先看 Codex 当前可用模型
-3. 第三方网关环境先以 `/status` 和网关后台实际返回为准
+2. 本地默认示例优先参考官方当前 Codex 模型页
+3. 如果你更看重专门的编码模型，再对照 `gpt-5.3-codex`
+4. 第三方网关环境先以 `/status` 和网关后台实际返回为准
 
 ### 6.2 `model_reasoning_effort`
 
@@ -387,9 +389,9 @@ codex execpolicy check --pretty --rules ~/.codex/rules/default.rules -- gh pr vi
 
 官方给出的 Windows 指南重点是：
 
-1. Windows 原生可用，但复杂项目更建议 WSL
-2. 仓库尽量放在 WSL Linux 路径（如 `~/code/...`），不要长期放 `/mnt/c/...`
-3. WSL 下安装 Node + Codex CLI，体验更接近 Linux/macOS
+1. 如果你主要跑 CLI / IDE 的复杂开发流程，WSL 仍然是更稳妥的主路线
+2. 这类 WSL 工作流下，仓库尽量放在 Linux 路径（如 `~/code/...`），不要长期放 `/mnt/c/...`
+3. 但桌面 App 的 Windows-native 路线现在也有原生 PowerShell 与 Windows sandbox，不该再简单理解成“只能凑合用”
 
 ### 13.2 如果你坚持原生 Windows
 
@@ -424,20 +426,20 @@ sandbox = "unelevated" # 或 elevated
 
 ```toml
 [profiles.dev_safe]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "cached"
 model_reasoning_effort = "medium"
 
 [profiles.readonly_audit]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "never"
 sandbox_mode = "read-only"
 web_search = "disabled"
 
 [profiles.ci_guarded]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "never"
 sandbox_mode = "read-only"
 model_reasoning_effort = "high"

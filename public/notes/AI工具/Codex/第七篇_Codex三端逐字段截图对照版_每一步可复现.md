@@ -13,12 +13,15 @@ description: 按统一结构逐字段对照 Codex CLI、插件和 App 的界面�
 
 # 第七篇：Codex 三端逐字段截图对照版（每一步可复现）
 
-> 更新时间：2026-03-08  
+> 更新时间：2026-05-22（已补最近桌面版与 IDE 增量能力提醒）  
 > 定位：主线 04（截图核对与SOP落地）。  
 > 前置：第六篇（先懂三端关系，再对照截图效率最高）。  
 > 下一篇建议：第二篇（进阶能力与长期治理）。  
 > 本篇不展开：字段原理深讲（看第三篇、第五篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 如果主人怀疑“桌面版最近改得很大，我这篇截图是不是旧了”，请同时看第十一篇，因为桌面端最近新增的很多点已经不只属于设置页。
+> 如果主人想先知道“这些截图对应的常用功能今天到底各自干什么”，先看第十二篇，再回来按本篇逐页截图核对会更轻松。
+> 小白读完目标：你应该能把抽象配置名词和真实界面点位一一对应，并按截图自己复现或给团队做 SOP 核对。
 
 章节导航（点击跳转）：
 
@@ -68,21 +71,21 @@ description: 按统一结构逐字段对照 Codex CLI、插件和 App 的界面�
 
 ## 2.1 作用
 
-设置默认模型，例如：`gpt-5.3-codex`。  
-旧资料里常见的 `gpt-5.4` 可以作为历史示例理解，但不建议再当默认推荐直接照抄。
+设置默认模型，例如：`gpt-5.5`。  
+旧资料里常见的 `gpt-5.4` 可以作为历史示例理解；`gpt-5.3-codex` 仍是专门编码模型，但官方当前默认本地示例已经更适合先写成 `gpt-5.5`。
 
 ## 2.2 CLI 怎么改
 
 `config.toml`：
 
 ```toml
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 ```
 
 临时覆盖：
 
 ```bash
-codex --model gpt-5.3-codex
+codex --model gpt-5.5
 ```
 
 ## 2.3 插件在哪看
@@ -309,7 +312,7 @@ codex --search
 
 ```toml
 [profiles.dev_safe]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "cached"
@@ -440,13 +443,34 @@ codex mcp add my_tool -- npx -y my-mcp-server
 1. App Settings 总页
 2. 每个分组页
 
+## 10.1 2026-05-22 增补：桌面版现在不止“设置页截图”
+
+如果继续只按上面的设置分组截图，已经不够完整了。  
+最近桌面版应额外补截图核对的点至少包括：
+
+1. `Worktrees`：同一仓库多工作树入口、切换点位、当前线程对应关系
+2. `Handoff`：本地线程交给云端、云端跑完回本地续做的入口
+3. `Local environments`：本地环境选择、准备或复用的入口
+4. `Automations`：自动化任务或持续流程相关页面
+5. `Built-in Git`：分支、改动、提交、PR 相关界面
+6. `Integrated terminal`：终端入口、线程与命令行联动位置
+7. `In-app browser`：文档/网页查看入口
+8. `Integrations & MCP`：不仅看设置页，还要看实际工具列表与可用状态
+9. `Windows` 专页相关能力：如果你在 Windows 下实操，截图 SOP 里要单列一组
+
+换句话说：
+
+1. 老版截图思路偏“字段核对”
+2. 新版桌面端截图思路要升级成“字段核对 + 工作流核对”
+3. 不然你会把最近最重要的增量都漏掉
+
 ---
 
 ## 11. 一份可直接照抄的“统一三端模板”
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -457,7 +481,7 @@ file_opener = "vscode"
 persistence = "save-all"
 
 [profiles.audit]
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 approval_policy = "never"
 sandbox_mode = "read-only"
 web_search = "disabled"
@@ -501,6 +525,14 @@ web_search = "disabled"
 8. `codex-07-08-app-settings-mcp.png`
 9. `codex-07-09-mcp-list-cli.png`
 10. `codex-07-10-debug-config.png`
+11. `codex-07-11-app-worktrees.png`
+12. `codex-07-12-app-handoff.png`
+13. `codex-07-13-app-local-environments.png`
+14. `codex-07-14-app-automations.png`
+15. `codex-07-15-app-built-in-git.png`
+16. `codex-07-16-app-integrated-terminal.png`
+17. `codex-07-17-app-browser.png`
+18. `codex-07-18-app-windows.png`
 
 可直接复制的 Markdown 示例：
 

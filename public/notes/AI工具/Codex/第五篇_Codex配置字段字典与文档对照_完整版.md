@@ -19,6 +19,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 > 下一篇建议：第六篇（三端联动实战）。  
 > 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。
 > 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 小白读完目标：你应该能自己写出一份最小可用 `config.toml`，并在改 `model`、`provider`、审批、沙箱、MCP`、`profile` 时知道各字段分别会影响哪里。
 
 章节导航（点击跳转）：
 
@@ -37,7 +38,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 5. `agent-approvals-security`：审批与沙箱的安全边界  
 6. `rules`：允许/提示/禁止某类命令  
 7. `noninteractive`：`codex exec` 自动化跑批  
-8. `app/*`：桌面端（模式、worktree、automations、windows）
+8. `app/*`：桌面端（模式、worktree、automations、in-app browser、windows）
 
 ## 1.2 你给的第三方文档分工
 
@@ -75,8 +76,8 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 ### `model`
 
 作用：默认模型名。  
-示例：`gpt-5.3-codex`。  
-补充：`gpt-5.4` 这类旧示例曾在早期资料里大量出现，但不建议再当成“默认推荐口径”照抄。
+官方当前本地默认示例可优先参考 `gpt-5.5`。  
+补充：`gpt-5.3-codex` 仍是专门的编码模型，`gpt-5.4` 这类旧示例则不建议再当成“默认推荐口径”照抄。
 
 ### `model_provider`
 
@@ -282,7 +283,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 
 ```toml
 model_provider = "openai"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
@@ -343,7 +344,7 @@ model_provider = "yunyi"
 model_reasoning_effort = "medium"
 disable_response_storage = true
 preferred_auth_method = "apikey"
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 
 [model_providers.yunyi]
 name = "yunyi"
@@ -356,7 +357,7 @@ requires_openai_auth = true
 ## 4.6 飞书 rpcod 模板（来自 `KaQ...`）
 
 ```toml
-model = "gpt-5.3-codex"
+model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
 disable_response_storage = true
 sandbox_mode = "danger-full-access"
@@ -370,6 +371,12 @@ base_url = "https://ai.rpcod.com"
 wire_api = "responses"
 requires_openai_auth = true
 ```
+
+补一句避免直接抄旧值：
+
+1. 这类第三方线路模板里的模型名，只能当“当前示例”
+2. 如果服务商后台还没开放 `gpt-5.5`，就以它后台当前显示的模型名为准
+3. 不要再把 `gpt-5.3-codex` 当成所有网关都长期固定开放的默认答案
 
 ---
 

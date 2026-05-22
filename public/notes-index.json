@@ -12243,14 +12243,14 @@
             "Kiro",
             "Cursor",
             "Codex",
-            "Gemini CLI"
+            "兼容性"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Agent Skills 开放标准的目录结构与 SKILL.md 写法，并逐一对比 Claude Code、Kiro、Cursor、Codex 等主流工具的兼容性与差异点。",
-          "size": "20KB",
-          "lastModified": "2026-04-11T13:11:47.075Z",
-          "wordCount": 15714
+          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
+          "size": "10KB",
+          "lastModified": "2026-05-22T14:28:00.908Z",
+          "wordCount": 5956
         },
         {
           "type": "file",
@@ -12273,8 +12273,8 @@
           "attachments": [],
           "description": "从\"AI 每次都忘了你的项目规范\"这个痛点出发，解释规则文档的本质、解决的核心问题，并横向对比 Claude Code、Codex、Cursor、Windsurf、Kiro、Gemini CLI、GitHub Copilot 七大工具的规则文件名、存放位置与加载方式。",
           "size": "8KB",
-          "lastModified": "2026-04-11T13:53:37.112Z",
-          "wordCount": 4229
+          "lastModified": "2026-05-22T14:29:41.806Z",
+          "wordCount": 4517
         },
         {
           "type": "file",
@@ -12368,9 +12368,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-          "size": "6KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 3641
+          "size": "7KB",
+          "lastModified": "2026-05-22T14:26:36.279Z",
+          "wordCount": 3837
         },
         {
           "type": "file",
@@ -12545,8 +12545,8 @@
           "attachments": [],
           "description": "深度解析 AGENTS.md 开放标准的起源、格式规范、多级目录结构、各工具支持情况与优先级规则，附三套开箱即用的项目模板和高质量写作指南。",
           "size": "14KB",
-          "lastModified": "2026-04-11T13:54:18.844Z",
-          "wordCount": 8893
+          "lastModified": "2026-05-22T14:29:41.808Z",
+          "wordCount": 9274
         },
         {
           "type": "file",
@@ -12562,16 +12562,17 @@
             "Agent Skills",
             "SKILL.md",
             "Claude Code",
-            "参数传递",
-            "子代理",
-            "动态注入"
+            "Codex",
+            "Kiro",
+            "进阶技巧",
+            "版本边界"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入讲解 Agent Skills 的高级特性：参数传递、动态上下文注入、context:fork 子代理隔离、hooks 生命周期、allowed-tools 权限控制，以及 Gemini CLI 的 activate_skill 机制。",
-          "size": "12KB",
-          "lastModified": "2026-04-11T13:11:47.076Z",
-          "wordCount": 8768
+          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "size": "10KB",
+          "lastModified": "2026-05-22T14:28:00.910Z",
+          "wordCount": 5883
         },
         {
           "type": "file",
@@ -12649,8 +12650,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -12667,9 +12668,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "9KB",
-          "lastModified": "2026-05-14T13:39:11.881Z",
-          "wordCount": 5448
+          "size": "11KB",
+          "lastModified": "2026-05-22T14:26:36.280Z",
+          "wordCount": 6882
         },
         {
           "type": "file",
@@ -12754,16 +12755,17 @@
             "Agent Skills",
             "SKILL.md",
             "模板",
-            "代码审查",
-            "部署",
-            "文档生成"
+            "Codex",
+            "Kiro",
+            "Cursor",
+            "Claude Code"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按场景分类整理的 Agent Skills 完整可用模板，涵盖代码审查、提交规范、部署、文档生成、项目规范、调试诊断六大类，每个模板开箱即用。",
-          "size": "15KB",
-          "lastModified": "2026-04-11T13:11:47.075Z",
-          "wordCount": 10884
+          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "size": "9KB",
+          "lastModified": "2026-05-22T14:32:13.981Z",
+          "wordCount": 7035
         },
         {
           "type": "file",
@@ -12810,8 +12812,8 @@
           "attachments": [],
           "description": "深度解析 Claude Code 的完整记忆系统，包括 CLAUDE.md 四层文件层级、@import 语法、.claude/rules/ 路径作用域规则、Auto Memory 自动记忆机制，以及 /memory 命令的使用与调试技巧。",
           "size": "16KB",
-          "lastModified": "2026-04-11T13:57:36.555Z",
-          "wordCount": 9835
+          "lastModified": "2026-05-22T14:29:41.813Z",
+          "wordCount": 9598
         },
         {
           "type": "file",
@@ -12884,8 +12886,8 @@
           "attachments": [],
           "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
           "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 8956
+          "lastModified": "2026-05-22T14:18:15.256Z",
+          "wordCount": 9079
         },
         {
           "type": "file",
@@ -12970,16 +12972,17 @@
             "SKILL.md",
             "团队协作",
             "社区资源",
-            "分发",
-            "LobeHub",
-            "Codex Skills Catalog"
+            "Codex",
+            "Kiro",
+            "Cursor",
+            "Claude Code"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "讲解如何通过 Git 在团队中共享和管理 skills，如何从社区导入现成 skill，以及企业级分发方案。附主流社区资源导航。",
-          "size": "12KB",
-          "lastModified": "2026-04-11T13:11:47.078Z",
-          "wordCount": 8581
+          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
+          "size": "8KB",
+          "lastModified": "2026-05-22T14:28:00.919Z",
+          "wordCount": 4514
         },
         {
           "type": "file",
@@ -13075,9 +13078,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-          "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.891Z",
-          "wordCount": 8446
+          "size": "14KB",
+          "lastModified": "2026-05-22T14:26:36.281Z",
+          "wordCount": 8589
         },
         {
           "type": "file",
@@ -13098,10 +13101,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 格式四种规则类型与 Agent 模式合规率、Windsurf 四种激活模式与 token 预算管理、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
-          "size": "18KB",
-          "lastModified": "2026-04-11T13:57:50.182Z",
-          "wordCount": 11574
+          "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 四种规则类型、Windsurf 四种激活模式与字符限制、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
+          "size": "19KB",
+          "lastModified": "2026-05-22T14:29:41.816Z",
+          "wordCount": 11755
         },
         {
           "type": "file",
@@ -13241,8 +13244,8 @@
           "attachments": [],
           "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
           "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 9358
+          "lastModified": "2026-05-22T14:28:04.648Z",
+          "wordCount": 9599
         },
         {
           "type": "file",
@@ -13265,8 +13268,8 @@
           "attachments": [],
           "description": "详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上下文、/memory 命令族与模块化导入语法，以及 GitHub Copilot 的双格式指令系统（copilot-instructions.md 与 .github/instructions/）和 AGENTS.md 支持情况。",
           "size": "13KB",
-          "lastModified": "2026-04-11T13:57:23.458Z",
-          "wordCount": 8440
+          "lastModified": "2026-05-22T14:29:41.825Z",
+          "wordCount": 8578
         },
         {
           "type": "file",
@@ -13402,9 +13405,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-          "size": "14KB",
-          "lastModified": "2026-05-14T13:43:38.381Z",
-          "wordCount": 9405
+          "size": "15KB",
+          "lastModified": "2026-05-22T14:26:36.285Z",
+          "wordCount": 9770
         },
         {
           "type": "file",
@@ -13449,9 +13452,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
-          "size": "12KB",
-          "lastModified": "2026-05-14T13:39:11.894Z",
-          "wordCount": 8121
+          "size": "14KB",
+          "lastModified": "2026-05-22T14:26:36.286Z",
+          "wordCount": 9142
         },
         {
           "type": "file",
@@ -13474,8 +13477,8 @@
           "attachments": [],
           "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
           "size": "8KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 4777
+          "lastModified": "2026-05-22T14:18:15.257Z",
+          "wordCount": 4839
         },
         {
           "type": "file",
@@ -13497,9 +13500,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
-          "size": "14KB",
-          "lastModified": "2026-05-14T13:39:11.895Z",
-          "wordCount": 9042
+          "size": "15KB",
+          "lastModified": "2026-05-22T14:26:36.288Z",
+          "wordCount": 9613
         },
         {
           "type": "file",
@@ -13522,9 +13525,59 @@
           "category": "AI工具",
           "attachments": [],
           "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
-          "size": "7KB",
-          "lastModified": "2026-04-30T13:43:30.333Z",
-          "wordCount": 3727
+          "size": "9KB",
+          "lastModified": "2026-05-22T14:26:36.290Z",
+          "wordCount": 4335
+        },
+        {
+          "type": "file",
+          "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
+          "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+          "path": "AI工具/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "功能手册",
+            "App",
+            "IDE",
+            "CLI",
+            "OpenAI官方"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
+          "size": "20KB",
+          "lastModified": "2026-05-22T14:18:15.260Z",
+          "wordCount": 10382
+        },
+        {
+          "type": "file",
+          "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "path": "AI工具/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "桌面版",
+            "IDE",
+            "云任务",
+            "Windows",
+            "OpenAI官方"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
+          "size": "17KB",
+          "lastModified": "2026-05-22T14:26:36.291Z",
+          "wordCount": 8252
         },
         {
           "type": "file",
@@ -13567,6 +13620,29 @@
           "size": "4KB",
           "lastModified": "2026-03-01T11:42:22.974Z",
           "wordCount": 3267
+        },
+        {
+          "type": "file",
+          "title": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+          "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+          "path": "AI工具/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "学习路线",
+            "小白入门",
+            "导读"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+          "size": "8KB",
+          "lastModified": "2026-05-22T14:26:36.292Z",
+          "wordCount": 3976
         },
         {
           "type": "file",
@@ -14216,9 +14292,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-          "size": "6KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 3641
+          "size": "7KB",
+          "lastModified": "2026-05-22T14:26:36.279Z",
+          "wordCount": 3837
         },
         {
           "type": "file",
@@ -14256,8 +14332,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -14274,9 +14350,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "9KB",
-          "lastModified": "2026-05-14T13:39:11.881Z",
-          "wordCount": 5448
+          "size": "11KB",
+          "lastModified": "2026-05-22T14:26:36.280Z",
+          "wordCount": 6882
         },
         {
           "type": "file",
@@ -14299,8 +14375,8 @@
           "attachments": [],
           "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
           "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 8956
+          "lastModified": "2026-05-22T14:18:15.256Z",
+          "wordCount": 9079
         },
         {
           "type": "file",
@@ -14322,9 +14398,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-          "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.891Z",
-          "wordCount": 8446
+          "size": "14KB",
+          "lastModified": "2026-05-22T14:26:36.281Z",
+          "wordCount": 8589
         },
         {
           "type": "file",
@@ -14347,8 +14423,8 @@
           "attachments": [],
           "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
           "size": "13KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 9358
+          "lastModified": "2026-05-22T14:28:04.648Z",
+          "wordCount": 9599
         },
         {
           "type": "file",
@@ -14370,9 +14446,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-          "size": "14KB",
-          "lastModified": "2026-05-14T13:43:38.381Z",
-          "wordCount": 9405
+          "size": "15KB",
+          "lastModified": "2026-05-22T14:26:36.285Z",
+          "wordCount": 9770
         },
         {
           "type": "file",
@@ -14394,9 +14470,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
-          "size": "12KB",
-          "lastModified": "2026-05-14T13:39:11.894Z",
-          "wordCount": 8121
+          "size": "14KB",
+          "lastModified": "2026-05-22T14:26:36.286Z",
+          "wordCount": 9142
         },
         {
           "type": "file",
@@ -14419,8 +14495,8 @@
           "attachments": [],
           "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
           "size": "8KB",
-          "lastModified": "2026-05-14T13:39:11.887Z",
-          "wordCount": 4777
+          "lastModified": "2026-05-22T14:18:15.257Z",
+          "wordCount": 4839
         },
         {
           "type": "file",
@@ -14442,9 +14518,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
-          "size": "14KB",
-          "lastModified": "2026-05-14T13:39:11.895Z",
-          "wordCount": 9042
+          "size": "15KB",
+          "lastModified": "2026-05-22T14:26:36.288Z",
+          "wordCount": 9613
         },
         {
           "type": "file",
@@ -14467,9 +14543,82 @@
           "category": "AI工具",
           "attachments": [],
           "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
-          "size": "7KB",
-          "lastModified": "2026-04-30T13:43:30.333Z",
-          "wordCount": 3727
+          "size": "9KB",
+          "lastModified": "2026-05-22T14:26:36.290Z",
+          "wordCount": 4335
+        },
+        {
+          "type": "file",
+          "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
+          "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+          "path": "AI工具/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "功能手册",
+            "App",
+            "IDE",
+            "CLI",
+            "OpenAI官方"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
+          "size": "20KB",
+          "lastModified": "2026-05-22T14:18:15.260Z",
+          "wordCount": 10382
+        },
+        {
+          "type": "file",
+          "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "path": "AI工具/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "桌面版",
+            "IDE",
+            "云任务",
+            "Windows",
+            "OpenAI官方"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
+          "size": "17KB",
+          "lastModified": "2026-05-22T14:26:36.291Z",
+          "wordCount": 8252
+        },
+        {
+          "type": "file",
+          "title": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+          "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+          "path": "AI工具/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+          "date": "2026-05-22T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "学习路线",
+            "小白入门",
+            "导读"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+          "size": "8KB",
+          "lastModified": "2026-05-22T14:26:36.292Z",
+          "wordCount": 3976
         },
         {
           "type": "file",
@@ -15122,8 +15271,8 @@
           "attachments": [],
           "description": "从\"AI 每次都忘了你的项目规范\"这个痛点出发，解释规则文档的本质、解决的核心问题，并横向对比 Claude Code、Codex、Cursor、Windsurf、Kiro、Gemini CLI、GitHub Copilot 七大工具的规则文件名、存放位置与加载方式。",
           "size": "8KB",
-          "lastModified": "2026-04-11T13:53:37.112Z",
-          "wordCount": 4229
+          "lastModified": "2026-05-22T14:29:41.806Z",
+          "wordCount": 4517
         },
         {
           "type": "file",
@@ -15146,8 +15295,8 @@
           "attachments": [],
           "description": "深度解析 AGENTS.md 开放标准的起源、格式规范、多级目录结构、各工具支持情况与优先级规则，附三套开箱即用的项目模板和高质量写作指南。",
           "size": "14KB",
-          "lastModified": "2026-04-11T13:54:18.844Z",
-          "wordCount": 8893
+          "lastModified": "2026-05-22T14:29:41.808Z",
+          "wordCount": 9274
         },
         {
           "type": "file",
@@ -15170,8 +15319,8 @@
           "attachments": [],
           "description": "深度解析 Claude Code 的完整记忆系统，包括 CLAUDE.md 四层文件层级、@import 语法、.claude/rules/ 路径作用域规则、Auto Memory 自动记忆机制，以及 /memory 命令的使用与调试技巧。",
           "size": "16KB",
-          "lastModified": "2026-04-11T13:57:36.555Z",
-          "wordCount": 9835
+          "lastModified": "2026-05-22T14:29:41.813Z",
+          "wordCount": 9598
         },
         {
           "type": "file",
@@ -15192,10 +15341,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 格式四种规则类型与 Agent 模式合规率、Windsurf 四种激活模式与 token 预算管理、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
-          "size": "18KB",
-          "lastModified": "2026-04-11T13:57:50.182Z",
-          "wordCount": 11574
+          "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 四种规则类型、Windsurf 四种激活模式与字符限制、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
+          "size": "19KB",
+          "lastModified": "2026-05-22T14:29:41.816Z",
+          "wordCount": 11755
         },
         {
           "type": "file",
@@ -15218,8 +15367,8 @@
           "attachments": [],
           "description": "详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上下文、/memory 命令族与模块化导入语法，以及 GitHub Copilot 的双格式指令系统（copilot-instructions.md 与 .github/instructions/）和 AGENTS.md 支持情况。",
           "size": "13KB",
-          "lastModified": "2026-04-11T13:57:23.458Z",
-          "wordCount": 8440
+          "lastModified": "2026-05-22T14:29:41.825Z",
+          "wordCount": 8578
         }
       ],
       "children": []
@@ -15245,14 +15394,14 @@
             "Kiro",
             "Cursor",
             "Codex",
-            "Gemini CLI"
+            "兼容性"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Agent Skills 开放标准的目录结构与 SKILL.md 写法，并逐一对比 Claude Code、Kiro、Cursor、Codex 等主流工具的兼容性与差异点。",
-          "size": "20KB",
-          "lastModified": "2026-04-11T13:11:47.075Z",
-          "wordCount": 15714
+          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
+          "size": "10KB",
+          "lastModified": "2026-05-22T14:28:00.908Z",
+          "wordCount": 5956
         },
         {
           "type": "file",
@@ -15268,16 +15417,17 @@
             "Agent Skills",
             "SKILL.md",
             "Claude Code",
-            "参数传递",
-            "子代理",
-            "动态注入"
+            "Codex",
+            "Kiro",
+            "进阶技巧",
+            "版本边界"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入讲解 Agent Skills 的高级特性：参数传递、动态上下文注入、context:fork 子代理隔离、hooks 生命周期、allowed-tools 权限控制，以及 Gemini CLI 的 activate_skill 机制。",
-          "size": "12KB",
-          "lastModified": "2026-04-11T13:11:47.076Z",
-          "wordCount": 8768
+          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "size": "10KB",
+          "lastModified": "2026-05-22T14:28:00.910Z",
+          "wordCount": 5883
         },
         {
           "type": "file",
@@ -15293,16 +15443,17 @@
             "Agent Skills",
             "SKILL.md",
             "模板",
-            "代码审查",
-            "部署",
-            "文档生成"
+            "Codex",
+            "Kiro",
+            "Cursor",
+            "Claude Code"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按场景分类整理的 Agent Skills 完整可用模板，涵盖代码审查、提交规范、部署、文档生成、项目规范、调试诊断六大类，每个模板开箱即用。",
-          "size": "15KB",
-          "lastModified": "2026-04-11T13:11:47.075Z",
-          "wordCount": 10884
+          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "size": "9KB",
+          "lastModified": "2026-05-22T14:32:13.981Z",
+          "wordCount": 7035
         },
         {
           "type": "file",
@@ -15319,16 +15470,17 @@
             "SKILL.md",
             "团队协作",
             "社区资源",
-            "分发",
-            "LobeHub",
-            "Codex Skills Catalog"
+            "Codex",
+            "Kiro",
+            "Cursor",
+            "Claude Code"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "讲解如何通过 Git 在团队中共享和管理 skills，如何从社区导入现成 skill，以及企业级分发方案。附主流社区资源导航。",
-          "size": "12KB",
-          "lastModified": "2026-04-11T13:11:47.078Z",
-          "wordCount": 8581
+          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
+          "size": "8KB",
+          "lastModified": "2026-05-22T14:28:00.919Z",
+          "wordCount": 4514
         }
       ],
       "children": []
@@ -20839,6 +20991,79 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+      "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+      "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
+      "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+      "path": "AI工具/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+      "date": "2026-05-22T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "功能手册",
+        "App",
+        "IDE",
+        "CLI",
+        "OpenAI官方"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
+      "size": "20KB",
+      "lastModified": "2026-05-22T14:18:15.260Z",
+      "wordCount": 10382
+    },
+    {
+      "type": "file",
+      "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+      "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+      "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+      "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "path": "AI工具/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "date": "2026-05-22T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "桌面版",
+        "IDE",
+        "云任务",
+        "Windows",
+        "OpenAI官方"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
+      "size": "17KB",
+      "lastModified": "2026-05-22T14:26:36.291Z",
+      "wordCount": 8252
+    },
+    {
+      "type": "file",
+      "title": "零基础先读：Codex 小白学习路线与读完能力对照",
+      "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+      "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+      "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "path": "AI工具/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "date": "2026-05-22T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "学习路线",
+        "小白入门",
+        "导读"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+      "size": "8KB",
+      "lastModified": "2026-05-22T14:26:36.292Z",
+      "wordCount": 3976
+    },
+    {
+      "type": "file",
       "title": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
       "frontmatterTitle": "SortableJS拖拽排序库实战说明：标签拖拽、列表重排与Vue接入",
       "fileTitle": "01-SortableJS拖拽排序库实战说明_标签拖拽列表重排与Vue接入",
@@ -24778,9 +25003,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
-      "size": "7KB",
-      "lastModified": "2026-04-30T13:43:30.333Z",
-      "wordCount": 3727
+      "size": "9KB",
+      "lastModified": "2026-05-22T14:26:36.290Z",
+      "wordCount": 4335
     },
     {
       "type": "file",
@@ -26421,14 +26646,14 @@
         "Kiro",
         "Cursor",
         "Codex",
-        "Gemini CLI"
+        "兼容性"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "深入解析 Agent Skills 开放标准的目录结构与 SKILL.md 写法，并逐一对比 Claude Code、Kiro、Cursor、Codex 等主流工具的兼容性与差异点。",
-      "size": "20KB",
-      "lastModified": "2026-04-11T13:11:47.075Z",
-      "wordCount": 15714
+      "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
+      "size": "10KB",
+      "lastModified": "2026-05-22T14:28:00.908Z",
+      "wordCount": 5956
     },
     {
       "type": "file",
@@ -26451,8 +26676,8 @@
       "attachments": [],
       "description": "从\"AI 每次都忘了你的项目规范\"这个痛点出发，解释规则文档的本质、解决的核心问题，并横向对比 Claude Code、Codex、Cursor、Windsurf、Kiro、Gemini CLI、GitHub Copilot 七大工具的规则文件名、存放位置与加载方式。",
       "size": "8KB",
-      "lastModified": "2026-04-11T13:53:37.112Z",
-      "wordCount": 4229
+      "lastModified": "2026-05-22T14:29:41.806Z",
+      "wordCount": 4517
     },
     {
       "type": "file",
@@ -26475,8 +26700,8 @@
       "attachments": [],
       "description": "深度解析 AGENTS.md 开放标准的起源、格式规范、多级目录结构、各工具支持情况与优先级规则，附三套开箱即用的项目模板和高质量写作指南。",
       "size": "14KB",
-      "lastModified": "2026-04-11T13:54:18.844Z",
-      "wordCount": 8893
+      "lastModified": "2026-05-22T14:29:41.808Z",
+      "wordCount": 9274
     },
     {
       "type": "file",
@@ -26492,16 +26717,17 @@
         "Agent Skills",
         "SKILL.md",
         "Claude Code",
-        "参数传递",
-        "子代理",
-        "动态注入"
+        "Codex",
+        "Kiro",
+        "进阶技巧",
+        "版本边界"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "深入讲解 Agent Skills 的高级特性：参数传递、动态上下文注入、context:fork 子代理隔离、hooks 生命周期、allowed-tools 权限控制，以及 Gemini CLI 的 activate_skill 机制。",
-      "size": "12KB",
-      "lastModified": "2026-04-11T13:11:47.076Z",
-      "wordCount": 8768
+      "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+      "size": "10KB",
+      "lastModified": "2026-05-22T14:28:00.910Z",
+      "wordCount": 5883
     },
     {
       "type": "file",
@@ -26517,16 +26743,17 @@
         "Agent Skills",
         "SKILL.md",
         "模板",
-        "代码审查",
-        "部署",
-        "文档生成"
+        "Codex",
+        "Kiro",
+        "Cursor",
+        "Claude Code"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "按场景分类整理的 Agent Skills 完整可用模板，涵盖代码审查、提交规范、部署、文档生成、项目规范、调试诊断六大类，每个模板开箱即用。",
-      "size": "15KB",
-      "lastModified": "2026-04-11T13:11:47.075Z",
-      "wordCount": 10884
+      "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+      "size": "9KB",
+      "lastModified": "2026-05-22T14:32:13.981Z",
+      "wordCount": 7035
     },
     {
       "type": "file",
@@ -26549,8 +26776,8 @@
       "attachments": [],
       "description": "深度解析 Claude Code 的完整记忆系统，包括 CLAUDE.md 四层文件层级、@import 语法、.claude/rules/ 路径作用域规则、Auto Memory 自动记忆机制，以及 /memory 命令的使用与调试技巧。",
       "size": "16KB",
-      "lastModified": "2026-04-11T13:57:36.555Z",
-      "wordCount": 9835
+      "lastModified": "2026-05-22T14:29:41.813Z",
+      "wordCount": 9598
     },
     {
       "type": "file",
@@ -26567,16 +26794,17 @@
         "SKILL.md",
         "团队协作",
         "社区资源",
-        "分发",
-        "LobeHub",
-        "Codex Skills Catalog"
+        "Codex",
+        "Kiro",
+        "Cursor",
+        "Claude Code"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "讲解如何通过 Git 在团队中共享和管理 skills，如何从社区导入现成 skill，以及企业级分发方案。附主流社区资源导航。",
-      "size": "12KB",
-      "lastModified": "2026-04-11T13:11:47.078Z",
-      "wordCount": 8581
+      "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
+      "size": "8KB",
+      "lastModified": "2026-05-22T14:28:00.919Z",
+      "wordCount": 4514
     },
     {
       "type": "file",
@@ -26597,10 +26825,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 格式四种规则类型与 Agent 模式合规率、Windsurf 四种激活模式与 token 预算管理、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
-      "size": "18KB",
-      "lastModified": "2026-04-11T13:57:50.182Z",
-      "wordCount": 11574
+      "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 四种规则类型、Windsurf 四种激活模式与字符限制、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
+      "size": "19KB",
+      "lastModified": "2026-05-22T14:29:41.816Z",
+      "wordCount": 11755
     },
     {
       "type": "file",
@@ -26623,8 +26851,8 @@
       "attachments": [],
       "description": "详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上下文、/memory 命令族与模块化导入语法，以及 GitHub Copilot 的双格式指令系统（copilot-instructions.md 与 .github/instructions/）和 AGENTS.md 支持情况。",
       "size": "13KB",
-      "lastModified": "2026-04-11T13:57:23.458Z",
-      "wordCount": 8440
+      "lastModified": "2026-05-22T14:29:41.825Z",
+      "wordCount": 8578
     },
     {
       "type": "file",
@@ -28060,9 +28288,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
-      "size": "14KB",
-      "lastModified": "2026-05-14T13:39:11.895Z",
-      "wordCount": 9042
+      "size": "15KB",
+      "lastModified": "2026-05-22T14:26:36.288Z",
+      "wordCount": 9613
     },
     {
       "type": "file",
@@ -28210,14 +28438,14 @@
       "category": "AI工具",
       "attachments": [],
       "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-      "size": "6KB",
-      "lastModified": "2026-05-14T13:39:11.887Z",
-      "wordCount": 3641
+      "size": "7KB",
+      "lastModified": "2026-05-22T14:26:36.279Z",
+      "wordCount": 3837
     },
     {
       "type": "file",
-      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
-      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
       "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
       "filename": "第二篇_Codex官方资料补充与进阶实践.md",
       "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -28234,9 +28462,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-      "size": "9KB",
-      "lastModified": "2026-05-14T13:39:11.881Z",
-      "wordCount": 5448
+      "size": "11KB",
+      "lastModified": "2026-05-22T14:26:36.280Z",
+      "wordCount": 6882
     },
     {
       "type": "file",
@@ -28259,8 +28487,8 @@
       "attachments": [],
       "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
       "size": "13KB",
-      "lastModified": "2026-05-14T13:39:11.887Z",
-      "wordCount": 8956
+      "lastModified": "2026-05-22T14:18:15.256Z",
+      "wordCount": 9079
     },
     {
       "type": "file",
@@ -28282,9 +28510,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-      "size": "13KB",
-      "lastModified": "2026-05-14T13:39:11.891Z",
-      "wordCount": 8446
+      "size": "14KB",
+      "lastModified": "2026-05-22T14:26:36.281Z",
+      "wordCount": 8589
     },
     {
       "type": "file",
@@ -28307,8 +28535,8 @@
       "attachments": [],
       "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
       "size": "13KB",
-      "lastModified": "2026-05-14T13:39:11.887Z",
-      "wordCount": 9358
+      "lastModified": "2026-05-22T14:28:04.648Z",
+      "wordCount": 9599
     },
     {
       "type": "file",
@@ -28330,9 +28558,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-      "size": "14KB",
-      "lastModified": "2026-05-14T13:43:38.381Z",
-      "wordCount": 9405
+      "size": "15KB",
+      "lastModified": "2026-05-22T14:26:36.285Z",
+      "wordCount": 9770
     },
     {
       "type": "file",
@@ -28354,9 +28582,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
-      "size": "12KB",
-      "lastModified": "2026-05-14T13:39:11.894Z",
-      "wordCount": 8121
+      "size": "14KB",
+      "lastModified": "2026-05-22T14:26:36.286Z",
+      "wordCount": 9142
     },
     {
       "type": "file",
@@ -28379,8 +28607,8 @@
       "attachments": [],
       "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
       "size": "8KB",
-      "lastModified": "2026-05-14T13:39:11.887Z",
-      "wordCount": 4777
+      "lastModified": "2026-05-22T14:18:15.257Z",
+      "wordCount": 4839
     },
     {
       "type": "file",
@@ -35303,14 +35531,14 @@
               "category": "AI工具",
               "attachments": [],
               "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-              "size": "6KB",
-              "lastModified": "2026-05-14T13:39:11.887Z",
-              "wordCount": 3641
+              "size": "7KB",
+              "lastModified": "2026-05-22T14:26:36.279Z",
+              "wordCount": 3837
             },
             {
               "type": "file",
-              "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
-              "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05 校准版）",
+              "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+              "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
               "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
               "filename": "第二篇_Codex官方资料补充与进阶实践.md",
               "path": "AI工具/Codex/第二篇_Codex官方资料补充与进阶实践.md",
@@ -35327,9 +35555,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-              "size": "9KB",
-              "lastModified": "2026-05-14T13:39:11.881Z",
-              "wordCount": 5448
+              "size": "11KB",
+              "lastModified": "2026-05-22T14:26:36.280Z",
+              "wordCount": 6882
             },
             {
               "type": "file",
@@ -35352,8 +35580,8 @@
               "attachments": [],
               "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
               "size": "13KB",
-              "lastModified": "2026-05-14T13:39:11.887Z",
-              "wordCount": 8956
+              "lastModified": "2026-05-22T14:18:15.256Z",
+              "wordCount": 9079
             },
             {
               "type": "file",
@@ -35375,9 +35603,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-              "size": "13KB",
-              "lastModified": "2026-05-14T13:39:11.891Z",
-              "wordCount": 8446
+              "size": "14KB",
+              "lastModified": "2026-05-22T14:26:36.281Z",
+              "wordCount": 8589
             },
             {
               "type": "file",
@@ -35400,8 +35628,8 @@
               "attachments": [],
               "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
               "size": "13KB",
-              "lastModified": "2026-05-14T13:39:11.887Z",
-              "wordCount": 9358
+              "lastModified": "2026-05-22T14:28:04.648Z",
+              "wordCount": 9599
             },
             {
               "type": "file",
@@ -35423,9 +35651,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-              "size": "14KB",
-              "lastModified": "2026-05-14T13:43:38.381Z",
-              "wordCount": 9405
+              "size": "15KB",
+              "lastModified": "2026-05-22T14:26:36.285Z",
+              "wordCount": 9770
             },
             {
               "type": "file",
@@ -35447,9 +35675,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
-              "size": "12KB",
-              "lastModified": "2026-05-14T13:39:11.894Z",
-              "wordCount": 8121
+              "size": "14KB",
+              "lastModified": "2026-05-22T14:26:36.286Z",
+              "wordCount": 9142
             },
             {
               "type": "file",
@@ -35472,8 +35700,8 @@
               "attachments": [],
               "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
               "size": "8KB",
-              "lastModified": "2026-05-14T13:39:11.887Z",
-              "wordCount": 4777
+              "lastModified": "2026-05-22T14:18:15.257Z",
+              "wordCount": 4839
             },
             {
               "type": "file",
@@ -35495,9 +35723,9 @@
               "category": "AI工具",
               "attachments": [],
               "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
-              "size": "14KB",
-              "lastModified": "2026-05-14T13:39:11.895Z",
-              "wordCount": 9042
+              "size": "15KB",
+              "lastModified": "2026-05-22T14:26:36.288Z",
+              "wordCount": 9613
             },
             {
               "type": "file",
@@ -35520,9 +35748,82 @@
               "category": "AI工具",
               "attachments": [],
               "description": "记录一次 Codex 本地命令调用异常的真实排查过程，重点说明 PowerShell 5.1/7 并存、终端选择差异与 CC Switch 写入 MCP 配置可能带来的影响，并给出更稳妥的修复思路。",
-              "size": "7KB",
-              "lastModified": "2026-04-30T13:43:30.333Z",
-              "wordCount": 3727
+              "size": "9KB",
+              "lastModified": "2026-05-22T14:26:36.290Z",
+              "wordCount": 4335
+            },
+            {
+              "type": "file",
+              "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+              "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+              "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
+              "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+              "path": "AI工具/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
+              "date": "2026-05-22T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Codex",
+                "功能手册",
+                "App",
+                "IDE",
+                "CLI",
+                "OpenAI官方"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
+              "size": "20KB",
+              "lastModified": "2026-05-22T14:18:15.260Z",
+              "wordCount": 10382
+            },
+            {
+              "type": "file",
+              "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+              "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
+              "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+              "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+              "path": "AI工具/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+              "date": "2026-05-22T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Codex",
+                "桌面版",
+                "IDE",
+                "云任务",
+                "Windows",
+                "OpenAI官方"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
+              "size": "17KB",
+              "lastModified": "2026-05-22T14:26:36.291Z",
+              "wordCount": 8252
+            },
+            {
+              "type": "file",
+              "title": "零基础先读：Codex 小白学习路线与读完能力对照",
+              "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+              "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+              "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+              "path": "AI工具/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+              "date": "2026-05-22T00:00:00.000Z",
+              "hasRealDate": true,
+              "order": null,
+              "tags": [
+                "Codex",
+                "学习路线",
+                "小白入门",
+                "导读"
+              ],
+              "category": "AI工具",
+              "attachments": [],
+              "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+              "size": "8KB",
+              "lastModified": "2026-05-22T14:26:36.292Z",
+              "wordCount": 3976
             }
           ]
         },
@@ -35945,8 +36246,8 @@
               "attachments": [],
               "description": "从\"AI 每次都忘了你的项目规范\"这个痛点出发，解释规则文档的本质、解决的核心问题，并横向对比 Claude Code、Codex、Cursor、Windsurf、Kiro、Gemini CLI、GitHub Copilot 七大工具的规则文件名、存放位置与加载方式。",
               "size": "8KB",
-              "lastModified": "2026-04-11T13:53:37.112Z",
-              "wordCount": 4229
+              "lastModified": "2026-05-22T14:29:41.806Z",
+              "wordCount": 4517
             },
             {
               "type": "file",
@@ -35969,8 +36270,8 @@
               "attachments": [],
               "description": "深度解析 AGENTS.md 开放标准的起源、格式规范、多级目录结构、各工具支持情况与优先级规则，附三套开箱即用的项目模板和高质量写作指南。",
               "size": "14KB",
-              "lastModified": "2026-04-11T13:54:18.844Z",
-              "wordCount": 8893
+              "lastModified": "2026-05-22T14:29:41.808Z",
+              "wordCount": 9274
             },
             {
               "type": "file",
@@ -35993,8 +36294,8 @@
               "attachments": [],
               "description": "深度解析 Claude Code 的完整记忆系统，包括 CLAUDE.md 四层文件层级、@import 语法、.claude/rules/ 路径作用域规则、Auto Memory 自动记忆机制，以及 /memory 命令的使用与调试技巧。",
               "size": "16KB",
-              "lastModified": "2026-04-11T13:57:36.555Z",
-              "wordCount": 9835
+              "lastModified": "2026-05-22T14:29:41.813Z",
+              "wordCount": 9598
             },
             {
               "type": "file",
@@ -36015,10 +36316,10 @@
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 格式四种规则类型与 Agent 模式合规率、Windsurf 四种激活模式与 token 预算管理、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
-              "size": "18KB",
-              "lastModified": "2026-04-11T13:57:50.182Z",
-              "wordCount": 11574
+              "description": "深度对比 Cursor、Windsurf、Kiro 三大工具的规则文档系统，包括 Cursor MDC 四种规则类型、Windsurf 四种激活模式与字符限制、Kiro Steering 四种 inclusion 模式与全局/团队 Steering，附完整实战配置示例。",
+              "size": "19KB",
+              "lastModified": "2026-05-22T14:29:41.816Z",
+              "wordCount": 11755
             },
             {
               "type": "file",
@@ -36041,8 +36342,8 @@
               "attachments": [],
               "description": "详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上下文、/memory 命令族与模块化导入语法，以及 GitHub Copilot 的双格式指令系统（copilot-instructions.md 与 .github/instructions/）和 AGENTS.md 支持情况。",
               "size": "13KB",
-              "lastModified": "2026-04-11T13:57:23.458Z",
-              "wordCount": 8440
+              "lastModified": "2026-05-22T14:29:41.825Z",
+              "wordCount": 8578
             }
           ]
         },
@@ -36068,14 +36369,14 @@
                 "Kiro",
                 "Cursor",
                 "Codex",
-                "Gemini CLI"
+                "兼容性"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "深入解析 Agent Skills 开放标准的目录结构与 SKILL.md 写法，并逐一对比 Claude Code、Kiro、Cursor、Codex 等主流工具的兼容性与差异点。",
-              "size": "20KB",
-              "lastModified": "2026-04-11T13:11:47.075Z",
-              "wordCount": 15714
+              "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
+              "size": "10KB",
+              "lastModified": "2026-05-22T14:28:00.908Z",
+              "wordCount": 5956
             },
             {
               "type": "file",
@@ -36091,16 +36392,17 @@
                 "Agent Skills",
                 "SKILL.md",
                 "Claude Code",
-                "参数传递",
-                "子代理",
-                "动态注入"
+                "Codex",
+                "Kiro",
+                "进阶技巧",
+                "版本边界"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "深入讲解 Agent Skills 的高级特性：参数传递、动态上下文注入、context:fork 子代理隔离、hooks 生命周期、allowed-tools 权限控制，以及 Gemini CLI 的 activate_skill 机制。",
-              "size": "12KB",
-              "lastModified": "2026-04-11T13:11:47.076Z",
-              "wordCount": 8768
+              "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+              "size": "10KB",
+              "lastModified": "2026-05-22T14:28:00.910Z",
+              "wordCount": 5883
             },
             {
               "type": "file",
@@ -36116,16 +36418,17 @@
                 "Agent Skills",
                 "SKILL.md",
                 "模板",
-                "代码审查",
-                "部署",
-                "文档生成"
+                "Codex",
+                "Kiro",
+                "Cursor",
+                "Claude Code"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "按场景分类整理的 Agent Skills 完整可用模板，涵盖代码审查、提交规范、部署、文档生成、项目规范、调试诊断六大类，每个模板开箱即用。",
-              "size": "15KB",
-              "lastModified": "2026-04-11T13:11:47.075Z",
-              "wordCount": 10884
+              "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+              "size": "9KB",
+              "lastModified": "2026-05-22T14:32:13.981Z",
+              "wordCount": 7035
             },
             {
               "type": "file",
@@ -36142,16 +36445,17 @@
                 "SKILL.md",
                 "团队协作",
                 "社区资源",
-                "分发",
-                "LobeHub",
-                "Codex Skills Catalog"
+                "Codex",
+                "Kiro",
+                "Cursor",
+                "Claude Code"
               ],
               "category": "AI工具",
               "attachments": [],
-              "description": "讲解如何通过 Git 在团队中共享和管理 skills，如何从社区导入现成 skill，以及企业级分发方案。附主流社区资源导航。",
-              "size": "12KB",
-              "lastModified": "2026-04-11T13:11:47.078Z",
-              "wordCount": 8581
+              "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
+              "size": "8KB",
+              "lastModified": "2026-05-22T14:28:00.919Z",
+              "wordCount": 4514
             }
           ]
         },
@@ -39676,7 +39980,7 @@
       ]
     }
   ],
-  "totalNotes": 399,
+  "totalNotes": 402,
   "totalCategories": 89,
-  "lastUpdated": "2026-05-21T13:33:10.487Z"
+  "lastUpdated": "2026-05-22T14:33:12.310Z"
 }

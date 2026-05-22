@@ -13,7 +13,7 @@ description: 详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上�
 
 # 第五篇：Gemini CLI GEMINI.md 与 GitHub Copilot 指令文件
 
-> 资料来源：geminicli.com 官方文档、Windsurf 官方文档、vibecoding.app，整理时间：2026-04。
+> 资料来源：Gemini CLI 官方 GitHub 文档、GitHub Copilot 官方文档。初稿整理：2026-04；按官方文档复核更新：2026-05-22。
 
 [[toc]]
 
@@ -23,7 +23,7 @@ description: 详解 Gemini CLI 的 GEMINI.md 三层加载机制、JIT 即时上�
 
 ### 1.1 Gemini CLI 简介
 
-Gemini CLI 是 Google 推出的开源终端 AI Agent，直接在命令行中运行，底层使用 Gemini 模型。当前最新稳定版为 **v0.37.1**（2026-04-09 发布），支持 Gemini 3 系列模型，免费层每分钟 60 次请求、每天 1000 次请求。
+Gemini CLI 是 Google 推出的开源终端 AI Agent，直接在命令行中运行，底层使用 Gemini 模型。**截至 2026 年 5 月 22 日，公开 release 页面里最近的稳定版是 `v0.41.2`（2026-05-06），同时还有 preview / nightly 渠道持续更快迭代。**
 
 Gemini CLI 的规则文件叫 `GEMINI.md`，有一个独特的**三层加载机制**，与其他工具的"向上遍历"不同。
 
@@ -200,7 +200,7 @@ Gemini CLI 提供一组 `/memory` 命令管理上下文文件：
 
 ### 2.1 三种指令类型
 
-根据 GitHub 官方文档，Copilot 支持**三种**仓库级自定义指令：
+根据 GitHub 官方文档，Copilot 当前可以结合**三种**仓库级 / Agent 级指令来源：
 
 | 类型 | 文件路径 | 作用范围 |
 |------|---------|---------|
@@ -259,6 +259,8 @@ excludeAgent: "code-review"
 
 有效值：`"code-review"` 或 `"cloud-agent"`。
 
+> **注意时效性**：GitHub 官方当前文档明确写到，在 **GitHub.com** 上，路径级指令主要面向 **Copilot cloud agent** 和 **Copilot code review**。如果你在其他入口里测试效果，别默认认为所有 Copilot 交互面板都已经完全等价支持。
+
 **目录结构示例：**
 
 ```
@@ -276,7 +278,7 @@ project/
 
 Copilot Agent 在工作时会查找以下文件（按优先级）：
 
-1. **AGENTS.md**：目录树中最近的文件优先（支持多级目录）
+1. **AGENTS.md**：目录树中最近的文件优先（可在仓库任意位置创建一个或多个）
 2. **CLAUDE.md**：仓库根目录（作为 AGENTS.md 的替代）
 3. **GEMINI.md**：仓库根目录（作为 AGENTS.md 的替代）
 
@@ -286,11 +288,11 @@ Copilot Agent 在工作时会查找以下文件（按优先级）：
 
 不同 IDE 的全局指令路径不同：
 
-| IDE | 全局指令路径 |
-|-----|------------|
-| VS Code | Cursor Settings → Code Generation: Use Instruction Files |
-| JetBrains | `~/.config/github-copilot/intellij/global-copilot-instructions.md`（macOS）<br>`C:\Users\<用户名>\AppData\Local\github-copilot\intellij\global-copilot-instructions.md`（Windows） |
-| Xcode | GitHub Copilot for Xcode 应用 → Settings → Advanced → Global |
+| IDE | 更稳妥的当前理解 |
+|-----|----------------|
+| VS Code | 以仓库级文件和 IDE 设置为主；子目录 `AGENTS.md` 默认需手动启用 |
+| JetBrains | 支持仓库内 `.github/copilot-instructions.md`，也支持本地 `global-copilot-instructions.md` |
+| Xcode | 通过 GitHub Copilot for Xcode 的设置界面管理全局偏好 |
 
 ### 2.6 推荐分工
 
@@ -310,10 +312,10 @@ project/
 | 维度 | Claude Code | Codex | Cursor | Windsurf | Gemini CLI | Copilot |
 |------|------------|-------|--------|----------|-----------|---------|
 | 主规则文件 | `CLAUDE.md` | `AGENTS.md` | `.cursor/rules/*.mdc` | `.windsurf/rules/*.md` | `GEMINI.md` | `copilot-instructions.md` |
-| 全局个人配置 | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` | 设置界面 | `~/.codeium/windsurf/global_rules.md` | `~/.gemini/GEMINI.md` | IDE 专属路径 |
+| 全局个人配置 | `~/.claude/CLAUDE.md` | `~/.codex/AGENTS.md` | 设置界面 | `~/.codeium/windsurf/memories/global_rules.md` | `~/.gemini/GEMINI.md` | IDE 设置 / 本地全局指令文件 |
 | 路径作用域 | `.claude/rules/` paths | 子目录文件 | `globs` 数组 | `globs` 字段 | JIT 自动加载 | `applyTo` frontmatter |
 | 自动记忆 | ✅ Auto Memory | ❌ | ❌ | ✅ Memories | ❌ | ❌ |
-| AGENTS.md 支持 | 间接（@import） | ✅ 原生 | ✅ | ✅（根目录=always，子目录=glob） | 可配置 | ✅（Agent 指令类型） |
+| AGENTS.md 支持 | 间接（@import） | ✅ 原生 | ✅，但当前主线是根目录单文件 | ✅（根目录=always，子目录=glob） | 可配置 | ✅（Agent 指令类型；仓库任意目录可放，但 VS Code 子目录默认需开启） |
 | 额外支持的跨工具文件 | — | — | — | — | — | `CLAUDE.md`、`GEMINI.md`（根目录） |
 | 文件格式 | Markdown + @import | 纯 Markdown | MDC（YAML frontmatter） | Markdown + frontmatter | Markdown + @import | Markdown + frontmatter |
 | 上下文查看命令 | `/memory` | 无 | 无 | 询问 Cascade | `/memory show` | 查看 References 列表 |
@@ -363,8 +365,7 @@ project/
 ---
 
 > 参考资料：
-> - [Gemini CLI GEMINI.md 官方文档 - geminicli.com](https://geminicli.com/docs/cli/gemini-md/)
-> - [Gemini CLI 最新版本 v0.37.1 changelog - geminicli.com](https://geminicli.com/docs/changelogs/latest)
+> - [Gemini CLI GEMINI.md 官方文档 - google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md)
+> - [Gemini CLI 命令参考（含 /memory reload）- google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/cli-reference.md)
+> - [Gemini CLI Releases - google-gemini/gemini-cli](https://github.com/google-gemini/gemini-cli/releases)
 > - [GitHub Copilot 仓库自定义指令官方文档 - docs.github.com](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
-> - [AGENTS.md 完整指南 2026 - vibecoding.app](https://vibecoding.app/blog/agents-md-guide)
-> - [Windsurf AGENTS.md 官方文档 - windsurf.com](https://docs.windsurf.com/windsurf/cascade/agents-md)
