@@ -16,7 +16,7 @@ description: 基于 Windsurf 官方文档、官方定价页与官方 changelog �
 > 资料快照时间：2026-04-14，最新更新：2026-05-08（添加 Windsurf 2.0 说明）
 > 本篇只参考 Windsurf 官方文档、官方定价页和官方 changelog。
 > 由于 Windsurf 官方文档首页明确提示“部分文档可能落后于实际产品”，本文对“容易过时”的内容，优先以更新时间更近的 changelog、pricing 页和更具体的功能页为准。
-> **重要更新**：2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Agent Command Center 等重大更新，详见[第五篇文档](#/note/AI工具/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
+> **重要更新**：2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Agent Command Center 等重大更新，详见[第五篇文档](#/note/AI工具/01_AI编辑器流/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
 
 [[toc]]
 
@@ -26,7 +26,7 @@ description: 基于 Windsurf 官方文档、官方定价页与官方 changelog �
 
 如果主人只想先抓重点，我先把这次深搜后最值得记住的结论放前面。
 
-**重要更新（2026-05）**：Windsurf 2.0 已发布，带来了 Devin 集成、Agent Command Center 等重大更新。详见[第五篇文档](#/note/AI工具/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
+**重要更新（2026-05）**：Windsurf 2.0 已发布，带来了 Devin 集成、Agent Command Center 等重大更新。详见[第五篇文档](#/note/AI工具/01_AI编辑器流/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
 
 ### 1. 截至 2026-04-14 的最新稳定版 changelog
 

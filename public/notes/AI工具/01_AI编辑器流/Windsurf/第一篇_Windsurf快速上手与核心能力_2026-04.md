@@ -15,7 +15,7 @@ description: 基于 Windsurf 官网、官方文档与官方 changelog 整理，�
 
 > 本篇基于 Windsurf 官网、官方文档与官方 changelog 整理，资料快照时间：2026-04-14，最新更新：2026-05-08（添加 Windsurf 2.0 说明）。
 > 涉及模型、定价、额度和可用功能的部分变化较快，开通前请以 Windsurf 账户页与 Pricing 页面实时显示为准。
-> **注意**：2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Adaptive 智能路由等重大更新，详见[第五篇文档](#/note/AI工具/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
+> **注意**：2026-05 发布的 Windsurf 2.0 带来了 Devin 集成、Adaptive 智能路由等重大更新，详见[第五篇文档](#/note/AI工具/01_AI编辑器流/Windsurf/第五篇_Windsurf_2.0与Devin集成实战_2026-05)。
 > 本篇偏入门总览，个别输入框细节引用的是官方总览页或较早说明页；如与更细分的新功能页存在差异，后文优先以第二篇和第三篇中已单独核对的最新模式与功能页为准。
 
 [[toc]]
@@ -75,7 +75,7 @@ description: 基于 Windsurf 官网、官方文档与官方 changelog 整理，�
 - App Deploys
 - 与 `Devin` 云代理的协同能力（2026-05 新增）
 
-**重要更新**：2026-05 起，Cascade 模式已从 `Code` / `Chat` 更新为 `Code` / `Plan` / `Ask` 三种模式，详见[第三篇文档](#/note/AI工具/Windsurf/第三篇_Windsurf_Code_Plan_Ask三种模式分工与切换策略_2026-04)。
+**重要更新**：2026-05 起，Cascade 模式已从 `Code` / `Chat` 更新为 `Code` / `Plan` / `Ask` 三种模式，详见[第三篇文档](#/note/AI工具/01_AI编辑器流/Windsurf/第三篇_Windsurf_Code_Plan_Ask三种模式分工与切换策略_2026-04)。
 
 如果你只是想问"这段代码在干什么"，用 `Ask` 模式就够了；如果你希望它真的去改文件、跑命令、跨文件排查问题，就切到 `Code` 模式；如果是复杂任务需要先规划，用 `Plan` 模式。
 
