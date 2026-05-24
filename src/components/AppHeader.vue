@@ -629,6 +629,9 @@ onUnmounted(() => {
   top: 84px;
   right: 24px;
   width: min(320px, calc(100vw - 24px));
+  max-height: calc(100vh - 98px);
+  overflow-y: auto;
+  z-index: 230;
   padding: 14px;
   border: 1px solid var(--border-color);
   border-radius: 14px;
@@ -958,6 +961,7 @@ onUnmounted(() => {
     right: 14px;
     left: 14px;
     width: auto;
+    max-height: calc(100vh - 140px);
   }
 
   .search-dialog {
