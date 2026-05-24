@@ -1,3 +1,16 @@
+---
+title: Node 环境对比报告（DESKTOP-OAP8VID）
+date: 2026-04-30
+category: AI工具
+tags:
+  - Codex
+  - Node.js
+  - PowerShell
+  - 对比报告
+  - 故障排查
+description: 公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。
+---
+
 # Node 环境对比报告（DESKTOP-OAP8VID）
 
 生成时间：2026-04-30 09:30:55 +08:00
@@ -797,3 +810,4 @@ HKEY_CURRENT_USER\Software\Node.js\Components
     DocumentationShortcuts    REG_DWORD    0x1
     EnvironmentPathNpmModules    REG_DWORD    0x1
 ```
+

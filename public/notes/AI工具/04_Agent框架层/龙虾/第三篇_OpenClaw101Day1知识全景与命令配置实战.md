@@ -1,3 +1,16 @@
+---
+title: 第三篇：OpenClaw101 Day1 知识全景与命令配置实战（认知与灵魂篇）
+date: 2026-03-08
+category: AI工具
+tags:
+  - OpenClaw101
+  - 龙虾
+  - AGENTS
+  - SOUL
+  - Agent框架
+description: 聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。
+---
+
 # 第三篇：OpenClaw101 Day1 知识全景与命令配置实战（认知与灵魂篇）
 
 > 适用版本：`openclaw-cn.cmd 0.1.7`（Windows 实测）  
@@ -144,3 +157,4 @@ openclaw-cn.cmd configure --section workspace --section model
 - OpenClaw101 总入口：<https://openclaw101.dev/zh>
 - OpenClaw CLI：<https://docs.openclaw.ai/cli>
 - OpenClaw 中文 Setup：<https://clawd.org.cn/start/setup.html>
+

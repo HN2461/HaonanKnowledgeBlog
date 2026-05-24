@@ -1,19 +1,30 @@
 {
-  "generatedAt": "2026-05-23T08:51:19.311Z",
-  "total": 323,
+  "generatedAt": "2026-05-24T13:08:43.566Z",
+  "total": 324,
   "notifications": [
     {
-      "id": "daily-2026-05-23-1",
-      "title": "重构 MCP、Agent Skills、Rules 专题为可扩展分类体系",
-      "content": "第一点：在 `public/notes/AI工具/Mcp/` 新增并修订 `00_导航与学习路线.md`，明确“概念与原理 + 常用MCP清单 + 面试题库 + 个人实践”四层维护方案，并将既有 `谷歌MCP_配置手册.md` 作为单个 MCP server 实操资料纳入体系；第二点：将概念首篇重构并更名为 `01_概念与原理/第一篇_MCP是什么与开放标准核心认知.md`，核心改为解释 MCP 的协议定位、角色模型、工作流程、价值边界与常见误区，不再把“浏览器 MCP”当成整体定义；第三点：将清单首篇重构并更名为 `02_常用MCP清单/第一篇_常用MCP分类与选型总览.md`，按能力分类整理浏览器自动化、文件系统、命令执行、数据库、检索、多媒体等常见方向，强调“先按能力分类选型，再选具体工具”；第四点：同步修订 `03_面试题库与回答模板/README.md` 与 `04_个人实践与踩坑记录/README.md` 口径为通用 MCP；第五点：将 `public/notes/AI工具/skill/` 从平铺结构拆分为 `01_概念与原理/`、`02_高级用法与进阶技巧/`、`03_场景模板与案例库/`、`04_团队协作与社区资源/` 四个子目录，并把四篇主文分别归位，同时更新 `skill/目录.md` 内全部相对链接与目录结构说明；第六点：将 `public/notes/AI工具/Rules/` 从平铺结构拆分为 `01_概念与原理/`、`02_AGENTS开放标准/`、`03_CLAUDE记忆系统/`、`04_Cursor_Windsurf_Kiro实战/`、`05_Gemini与Copilot/` 五个子目录，并把五篇主文分别归位，同时更新 `Rules/目录.md` 的推荐阅读链接与目录结构说明；第七点：按仓库规则先将旧 `data/dailyChangeSummary.js`（2026-05-22）的三条明细迁移归档到 `data/history/2026-05-21_30.js`，再重建当天摘要；第八点：执行 `pwsh -File scripts/checkNodeRuntime.ps1` 与 `npm run generate:index`，已更新 `public/notes-index.json` 和 `public/search-index.json`，当前索引统计为 407 篇笔记、102 个分类。",
-      "summary": "将 `public/notes/AI工具/Mcp/`、`public/notes/AI工具/skill/`、`public/notes/AI工具/Rules/` 统一整理为“概念认知 + 分类清单/实战资料”的长期维护结构，便于面试复盘与开发中按场景持续扩展。",
-      "date": "2026-05-23T16:50:00+08:00",
-      "tag": "内容上新",
-      "category": "内容上新",
-      "source": "daily-summary",
+      "id": "git-fb7904038004dca00c1e7f50809943ba6f1b8fa8",
+      "title": "新增 Plugin 插件体系四篇系列文章，AI工具目录重组为五层架构",
+      "content": "提交说明：新增 Plugin 插件体系四篇系列文章，AI工具目录重组为五层架构",
+      "summary": "新增 Plugin 插件体系四篇系列文章，AI工具目录重组为五层架构",
+      "date": "2026-05-23T18:05:03+08:00",
+      "tag": "Git 提交",
+      "source": "git",
       "pinned": false,
-      "shortHash": "",
-      "fullHash": ""
+      "shortHash": "fb79040",
+      "fullHash": "fb7904038004dca00c1e7f50809943ba6f1b8fa8"
+    },
+    {
+      "id": "git-29dc7190cb51c681ef4d8503ffba6b7634577309",
+      "title": "重构 MCP、Agent Skills、Rules 专题为可扩展分类体系",
+      "content": "提交说明：重构 MCP、Agent Skills、Rules 专题为可扩展分类体系",
+      "summary": "重构 MCP、Agent Skills、Rules 专题为可扩展分类体系",
+      "date": "2026-05-23T17:06:41+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "29dc719",
+      "fullHash": "29dc7190cb51c681ef4d8503ffba6b7634577309"
     },
     {
       "id": "git-509b74a2858f2559469c8d697f9c02942ff2a1ae",

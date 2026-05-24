@@ -1,3 +1,15 @@
+---
+title: 第四篇：OpenClaw101 全7天资料总研版（龙虾中文版可执行手册）
+date: 2026-03-08
+category: AI工具
+tags:
+  - OpenClaw101
+  - 龙虾
+  - 学习路线
+  - Agent框架
+description: 按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。
+---
+
 # 第四篇：OpenClaw101 全7天资料总研版（龙虾中文版可执行手册）
 
 > 研究范围：OpenClaw101 Day1~Day7 全部页面  
@@ -213,3 +225,4 @@ openclaw-cn.cmd update status
 - <https://docs.openclaw.ai/tools/skills>
 - <https://docs.openclaw.ai/cli/nodes>
 - <https://docs.openclaw.ai/gateway/security>
+

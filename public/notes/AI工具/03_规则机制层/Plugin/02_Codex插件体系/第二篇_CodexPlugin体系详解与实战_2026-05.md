@@ -15,7 +15,7 @@ description: 深入解析 Codex Plugin 的目录结构、清单格式、Marketpl
 
 # 第二篇：Codex Plugin 体系详解与实战
 
-> 资料来源：OpenAI 2026-03-27 官方公告、Codex v0.117+ 实装、本机 `~/.codex/plugins/` 目录、社区实测文章。初稿整理：2026-05-23。
+> 资料来源：OpenAI 2026-03-26 官方帮助中心更新、OpenAI 官方产品页、本机 `~/.codex/plugins/` 目录、社区实测文章。初稿整理：2026-05-23，2026-05-24 按官方口径补校。
 
 [[toc]]
 
@@ -23,7 +23,7 @@ description: 深入解析 Codex Plugin 的目录结构、清单格式、Marketpl
 
 ## 一、Codex Plugin 的发布背景
 
-2026 年 3 月 27 日，OpenAI 正式为 Codex 推出 **Plugin（插件）服务**，这是 Codex 从"代码生成工具"向"可扩展开发平台"演进的关键一步。
+2026 年 3 月 26 日，OpenAI 在官方帮助中心更新中正式写入 **Plugins in Codex（Codex 插件）**，这是 Codex 从“代码生成工具”继续向“可扩展开发平台”演进的重要标志。
 
 核心定位：
 
@@ -31,11 +31,11 @@ description: 深入解析 Codex Plugin 的目录结构、清单格式、Marketpl
 - **更快地分享统一开发配置**——团队成员一键安装，不再手动复制多个文件
 - **生态共建**——社区开发者可以发布插件到 Marketplace
 
-发布后的关键数据：
+当前更稳妥、且能直接对应官方页面的口径：
 
-- 上月有超过 100 万名开发者使用 Codex
-- 2026-04-17 更新后新增 90+ 插件，覆盖代码管理、CI、项目协作、数据处理
-- 4 月更新还带来了 Chrome 扩展、Computer Use、并行 Agent 等能力
+- OpenAI 官方产品页写明：Codex 已被 **300 万+ 开发者每周使用**
+- OpenAI 官方产品页与帮助中心资料可交叉确认：当前已有 **90+ 插件**
+- 插件能力与 Chrome 扩展、Computer Use、并行 Agent 等演进方向同属 Codex 近阶段扩展路线的一部分
 
 ---
 

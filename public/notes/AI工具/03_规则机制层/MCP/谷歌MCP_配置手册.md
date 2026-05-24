@@ -1,4 +1,17 @@
-# Codex MCP 复刻配置手册（Windows，中文傻瓜版）
+---
+title: 谷歌 MCP 配置手册（Windows，Chrome DevTools MCP 复刻）
+date: 2026-03-01
+category: AI工具
+tags:
+  - MCP
+  - Chrome DevTools
+  - Google
+  - Codex
+  - Windows
+description: 面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。
+---
+
+# 谷歌 MCP 配置手册（Windows，Chrome DevTools MCP 复刻）
 
 > 适用对象：要在另一台 Windows 电脑上快速复刻可用的 Codex + Chrome DevTools MCP。  
 > 更新时间：2026-03-01

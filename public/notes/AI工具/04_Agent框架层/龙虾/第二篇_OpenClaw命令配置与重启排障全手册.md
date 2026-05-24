@@ -1,4 +1,17 @@
-﻿# 第二篇：OpenClaw-CN 0.1.7 命令配置与重启排障全手册（Windows）
+---
+title: 第二篇：OpenClaw-CN 0.1.7 命令配置与重启排障全手册（Windows）
+date: 2026-03-08
+category: AI工具
+tags:
+  - OpenClaw
+  - 龙虾
+  - Windows
+  - 故障排查
+  - Agent框架
+description: 面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。
+---
+
+# 第二篇：OpenClaw-CN 0.1.7 命令配置与重启排障全手册（Windows）
 
 > 适用对象：第一次上手 OpenClaw/龙虾，或已经安装但经常“重启后不工作”的用户  
 > 适用环境：Windows + `openclaw-cn.cmd`（本文以你机器实测版本 `0.1.7` 为基线）  
@@ -421,3 +434,4 @@ schtasks /Query /TN "Openclaw Gateway" /V /FO LIST
 
 1. 第三篇：补齐 Day1 认知与 SOUL/USER/AGENTS
 2. 第五篇：按场景查命令参数与错误串对照
+

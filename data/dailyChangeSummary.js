@@ -2,28 +2,14 @@
 // 主人说'汇总消息'时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-05-23',
+  date: '2026-05-24',
   items: [
     {
-      category: '内容上新',
-      time: '16:50',
-      title: '重构 MCP、Agent Skills、Rules 专题为可扩展分类体系',
-      summary: '将 `public/notes/AI工具/Mcp/`、`public/notes/AI工具/skill/`、`public/notes/AI工具/Rules/` 统一整理为"概念认知 + 分类清单/实战资料"的长期维护结构，便于面试复盘与开发中按场景持续扩展。',
-      content: '第一点：在 `public/notes/AI工具/Mcp/` 新增并修订 `00_导航与学习路线.md`，明确"概念与原理 + 常用MCP清单 + 面试题库 + 个人实践"四层维护方案，并将既有 `谷歌MCP_配置手册.md` 作为单个 MCP server 实操资料纳入体系；第二点：将概念首篇重构并更名为 `01_概念与原理/第一篇_MCP是什么与开放标准核心认知.md`，核心改为解释 MCP 的协议定位、角色模型、工作流程、价值边界与常见误区，不再把"浏览器 MCP"当成整体定义；第三点：将清单首篇重构并更名为 `02_常用MCP清单/第一篇_常用MCP分类与选型总览.md`，按能力分类整理浏览器自动化、文件系统、命令执行、数据库、检索、多媒体等常见方向，强调"先按能力分类选型，再选具体工具"；第四点：同步修订 `03_面试题库与回答模板/README.md` 与 `04_个人实践与踩坑记录/README.md` 口径为通用 MCP；第五点：将 `public/notes/AI工具/skill/` 从平铺结构拆分为 `01_概念与原理/`、`02_高级用法与进阶技巧/`、`03_场景模板与案例库/`、`04_团队协作与社区资源/` 四个子目录，并把四篇主文分别归位，同时更新 `skill/目录.md` 内全部相对链接与目录结构说明；第六点：将 `public/notes/AI工具/Rules/` 从平铺结构拆分为 `01_概念与原理/`、`02_AGENTS开放标准/`、`03_CLAUDE记忆系统/`、`04_Cursor_Windsurf_Kiro实战/`、`05_Gemini与Copilot/` 五个子目录，并把五篇主文分别归位，同时更新 `Rules/目录.md` 的推荐阅读链接与目录结构说明；第七点：按仓库规则先将旧 `data/dailyChangeSummary.js`（2026-05-22）的三条明细迁移归档到 `data/history/2026-05-21_30.js`，再重建当天摘要；第八点：执行 `pwsh -File scripts/checkNodeRuntime.ps1` 与 `npm run generate:index`，已更新 `public/notes-index.json` 和 `public/search-index.json`，当前索引统计为 407 篇笔记、102 个分类。'
-    },
-    {
-      category: '内容上新',
-      time: '17:17',
-      title: '新增 Plugin 插件体系四篇系列文章',
-      summary: '在 `public/notes/AI工具/plugin/` 下新增"概念与原理 + Codex插件体系 + Claude Code插件体系 + 选型指南与团队落地"四篇系列文章，系统介绍 Plugin 作为 AI 工具"第四大扩展机制"的概念、实战与选型策略。',
-      content: '第一点：新增 `plugin/目录.md` 作为系列目录页，覆盖推荐阅读顺序、四大主题概述与快速查找表；第二点：新增 `01_概念与原理/第一篇_Plugin插件是什么与为什么_2026-05.md`，从"功能分散难以共享"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill/MCP/Rules 的区别，速览各工具 Plugin 支持现状；第三点：新增 `02_Codex插件体系/第二篇_CodexPlugin体系详解与实战_2026-05.md`，解析 Codex Plugin 的目录结构、plugin.json 清单格式、Marketplace 三级分发、本机 `~/.codex/plugins/` 实装分析、安装与管理命令；第四点：新增 `03_ClaudeCode插件体系/第三篇_ClaudeCodePlugin体系详解与实战_2026-05.md`，解析 Claude Code 七大扩展组件关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、前端开发者实战场景；第五点：新增 `04_选型指南与团队落地/第四篇_Plugin选型指南与团队落地_2026-05.md`，提供四大机制对比矩阵、选型决策树、按工具选型速查、无 Plugin 工具替代方案、团队协作策略、常见误区与避坑；第六点：执行 `npm run generate:index`，索引统计更新为 415 篇笔记、107 个分类。'
-    },
-    {
       category: '功能更新',
-      time: '18:01',
-      title: 'AI工具目录重组为五层架构',
-      summary: '将 `public/notes/AI工具/` 从扁平结构重组为"主类按本质，子类按工具"的五层架构：01_AI编辑器流、02_终端Agent流、03_规则机制层、04_Agent框架层、05_辅助工具层，并去除目录名空格。',
-      content: '第一点：创建5个分组目录（01_AI编辑器流、02_终端Agent流、03_规则机制层、04_Agent框架层、05_辅助工具层），将原有15个工具目录按本质模式归入对应分组；第二点：Cursor/Windsurf/Trae/CatPaw/Kiro归入01_AI编辑器流，ClaudeCode/Codex/Gemini归入02_终端Agent流，MCP/Rules/Skill/Plugin归入03_规则机制层，龙虾归入04_Agent框架层，CCSwitch/AI开发基础归入05_辅助工具层；第三点：去除目录名空格（Claude Code→ClaudeCode、CC Switch→CCSwitch、Mcp→MCP、skill→Skill、plugin→Plugin）；第四点：新增 `AI工具/00_总导航.md`，按五层架构聚合链接并提供快速定位表；第五点：批量更新所有目录页和正文中引用的旧路径（#/note/AI工具/XX/→#/note/AI工具/0X_分组名/XX/）；第六点：重新生成索引，当前统计 412 篇笔记、112 个分类。'
+      time: '21:09',
+      title: '修正文档 frontmatter、MCP 导航归位与 Codex Plugin 官方口径',
+      summary: '补齐 `AI工具` 目录下多篇缺 frontmatter 的正式文档与目录页，清理 Gemini 目录里重复错位的“谷歌MCP”正文副本，并按 OpenAI 官方资料修正 Codex Plugin 文章中的发布日期与规模口径。',
+      content: '第一点：为 `public/notes/AI工具/01_AI编辑器流/` 下的 Cursor、Kiro、Trae、Windsurf 目录页补齐 frontmatter，为 `public/notes/AI工具/02_终端Agent流/Gemini/目录.md` 补齐 frontmatter，修复这些目录页在索引中只能回退到文件名显示的问题；第二点：将 `public/notes/AI工具/02_终端Agent流/Gemini/谷歌MCP_配置手册.md` 从重复正文改成导览说明页，明确真正的实操正文统一放在 `public/notes/AI工具/03_规则机制层/MCP/谷歌MCP_配置手册.md` 维护，避免搜索与列表出现两篇同内容同文件名文章；第三点：为 MCP 主文补齐 frontmatter，并把标题从“Codex MCP 复刻配置手册”校准为更符合目录语义的“谷歌 MCP 配置手册（Windows，Chrome DevTools MCP 复刻）”；第四点：为 `public/notes/AI工具/04_Agent框架层/龙虾/` 下 6 篇正式文章与 `目录.md` 统一补齐 frontmatter，修复站内索引里出现 `第一篇_OpenClaw...`、`第六篇_龙虾命令与配置文件一页速查图` 这类下划线文件名直出的问题；第五点：为 `public/notes/AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/` 下两份 Node 环境报告补齐 frontmatter，让它们在站内搜索和详情页中显示为人类可读标题；第六点：将 `public/notes/AI工具/03_规则机制层/Plugin/02_Codex插件体系/第二篇_CodexPlugin体系详解与实战_2026-05.md` 中关于 Codex Plugin 的官方口径改为 2026-03-26 官方帮助中心更新，并把“100 万开发者”修正为基于 OpenAI 官方产品页可确认的“300 万+ 开发者每周使用 Codex”和“90+ 插件”；第七点：按仓库规则先把昨日 `data/dailyChangeSummary.js` 的 2026-05-23 三条摘要迁移归档到 `data/history/2026-05-21_30.js`，再重建今天的当日摘要。'
     }
   ],
 }

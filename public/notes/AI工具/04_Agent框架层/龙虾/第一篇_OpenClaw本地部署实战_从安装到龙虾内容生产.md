@@ -1,3 +1,15 @@
+---
+title: 第一篇：OpenClaw 本地部署实战（从安装到龙虾内容生产）
+date: 2026-03-08
+category: AI工具
+tags:
+  - OpenClaw
+  - 龙虾
+  - 本地部署
+  - Agent框架
+description: 面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。
+---
+
 # 第一篇：OpenClaw 本地部署实战（从安装到龙虾内容生产）
 
 > 参考视频：<https://www.douyin.com/video/7609705104823880995>（原短链：<https://v.douyin.com/DqNq2PwNB0g/>）  
@@ -185,3 +197,4 @@ openclaw-cn.cmd pairing approve telegram <配对码>
 - <https://clawd.org.cn/start/clawd.html>
 - <https://clawd.org.cn/install/updating.html>
 - <https://www.douyin.com/video/7609705104823880995>
+

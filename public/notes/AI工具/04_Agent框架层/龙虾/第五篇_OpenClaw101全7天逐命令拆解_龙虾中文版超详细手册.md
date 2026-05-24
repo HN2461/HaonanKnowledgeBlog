@@ -1,3 +1,15 @@
+---
+title: 第五篇：OpenClaw101 全7天逐命令拆解（龙虾中文版超详细手册）
+date: 2026-03-08
+category: AI工具
+tags:
+  - OpenClaw101
+  - 龙虾
+  - 命令速查
+  - Agent框架
+description: 以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。
+---
+
 # 第五篇：OpenClaw101 全7天逐命令拆解（龙虾中文版超详细手册）
 
 > 本篇定位：命令字典。  
@@ -514,3 +526,4 @@ Test-Path C:\Users\HN246\.openclaw\gateway.cmd
 4. <https://clawd.org.cn/start/setup.html>
 5. <https://clawd.org.cn/start/pairing.html>
 6. <https://clawd.org.cn/start/clawd.html>
+
