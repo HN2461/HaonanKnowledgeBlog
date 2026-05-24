@@ -1,5 +1,5 @@
 ---
-title: CC Switch 快速上手与核心概念（v3.14.1）
+title: 第一篇：CC Switch 快速上手与核心概念（v3.15.0）
 date: 2026-04-26
 category: AI工具
 tags:
@@ -9,15 +9,15 @@ tags:
   - 中转服务商
   - Provider
   - MCP
-description: CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。
+description: CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。
 ---
 
-# CC Switch 快速上手与核心概念（v3.14.1）
+# 第一篇：CC Switch 快速上手与核心概念（v3.15.0）
 
 > 官方仓库：[github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)  
-> 当前版本：v3.14.1（2026-04-23）  
-> 技术栈：Tauri 2 + Rust（后端）+ React 18 + TypeScript（前端）  
-> Stars：18.7k+
+> 当前版本：v3.15.0（2026-05-16）  
+> 资料核对时间：2026-05-24  
+> 技术栈：Tauri 2 + Rust（后端）+ React 18 + TypeScript（前端）
 
 ---
 
@@ -25,18 +25,19 @@ description: CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具�
 
 CC Switch 是一款**跨平台桌面工具**，核心定位是"多 AI 编程 CLI 配置中控台"。它把分散在多款 AI 编程 CLI 工具中的配置（尤其是 API 服务商/中转商配置）收敛到统一界面管理，解决手动切换配置易出错、效率低的问题。
 
-### 官方支持的 CLI 工具（当前 6 款）
+### 官方受管 AI CLI（当前 6 款）
 
 | CLI 工具 | 描述 | 配置文件位置 |
 |----------|------|-------------|
 | Claude Code | Anthropic 官方终端 AI 助手 | `~/.claude/settings.json` |
 | Codex CLI | OpenAI 命令行编程工具 | `~/.codex/config.toml` |
 | Gemini CLI | Google 终端 AI 工具 | `~/.gemini/.env` |
-| OpenCode | 开源终端 AI 助手 | `~/.config/opencode/` |
+| OpenCode | 开源终端 AI 助手 | `~/.opencode/` |
 | OpenClaw | 开源本地 AI Agent（龙虾） | `openclaw.json` |
 | Hermes Agent | 新增第六款（v3.14.0 起） | `~/.hermes/config.yaml` |
 
-> 注：v3.14.0 新增了 Hermes Agent 作为第六款受管应用，v3.11.0 新增了 OpenClaw（第五款）。
+> 注：v3.14.0 新增了 Hermes Agent 作为第六款受管应用，v3.11.0 新增了 OpenClaw（第五款）。  
+> 另外，v3.15.0 起新增 **Claude Desktop 一等受管面板**，用来单独管理桌面端配置与切换入口，但它不计入上面这 6 款 CLI 数量。
 
 ### 与手动配置的对比
 
@@ -58,6 +59,7 @@ CC Switch 是一款**跨平台桌面工具**，核心定位是"多 AI 编程 CLI
 
 **顶部工具栏图标（从左到右）：**
 - Claude Code（红色星形图标）
+- Claude Desktop（v3.15.0 起新增独立面板）
 - Codex（OpenAI 图标）
 - Gemini CLI（蓝色星形图标）
 - OpenCode（方块图标）
@@ -137,8 +139,12 @@ Provider 即 API 服务商/中转商配置，是 CC Switch 最核心的功能。
 - 每个 Provider 可配置多个端点，支持 API Key 管理与延迟测试
 - 4 层模型粒度配置：Haiku / Sonnet / Opus / Custom
 - 一键恢复官方登录状态
-- Provider 模型自动获取（OpenAI 兼容 `/v1/models` 接口发现）
+- Provider 模型自动获取（OpenAI 兼容 `/v1/models`，以及部分 Anthropic 兼容 `/models` 自动发现）
 - 通用 Provider（Universal Provider）：一份配置同步到多个应用
+- Provider 卡片显示 Routing Support 标识，方便判断是否能配合本地路由
+- Full URL Endpoint Mode：兼容路径结构不标准的第三方接口
+- Codex OAuth Provider 支持实时拉取模型列表
+- Claude Code 支持按角色映射模型，并可标记 `supports1m`
 
 **新增 Provider 操作步骤：**
 1. 点击右上角橙色「+」按钮
@@ -166,6 +172,7 @@ v3.9.0 引入，v3.14.0 将"Local Proxy Takeover"统一改名为"Local Routing"�
 | 格式转换 | 支持 Anthropic Messages ↔ OpenAI Chat/Responses API 双向转换 |
 
 > ⚠️ 注意：开启本地路由时，系统会阻止切换到官方 Provider（因为将官方 API 流量路由到本地代理存在账号封禁风险）。
+> v3.15.0 起，Provider 卡片会额外显示是否支持 Routing 的标识，排查“为什么这家能切、那家不能切”会更直观。
 
 **请求流转示意：**
 ```
@@ -212,7 +219,7 @@ Claude Code → localhost:端口 → CC Switch 本地路由 → 中转服务商 
 
 - 自动备份，保留最近 10 个版本
 - 支持云同步：Dropbox、OneDrive、iCloud Drive、WebDAV
-- 导入/导出完整配置（SQL 格式）
+- 导入/导出完整配置（JSON 备份文件）
 
 ### 功能九：Deep Link 协议
 
@@ -343,6 +350,7 @@ claude  # 重新登录官方账号
 | v3.13.0 | 2026-04 | 新增轻量模式、Provider 模型自动获取、Codex OAuth 反向代理 |
 | v3.14.0 | 2026-04 | 新增 Hermes Agent（第六款）、Gemini Native API 代理、"Local Proxy Takeover"改名为"Local Routing" |
 | v3.14.1 | 2026-04 | 托盘用量可见性、Codex OAuth 稳定性修复、移除 Hermes 配置健康扫描器 |
+| v3.15.0 | 2026-05 | 新增 Claude Desktop 一等受管面板、Provider Routing Support 标识、Full URL Endpoint Mode、Codex OAuth 实时模型列表、Claude Code `supports1m` 角色映射 |
 
 ---
 

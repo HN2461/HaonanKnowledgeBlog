@@ -10,7 +10,7 @@ tags:
   - Kiro
   - 进阶技巧
   - 版本边界
-description: 按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。
+description: 按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。
 ---
 
 # Agent Skills 高级用法与进阶技巧
@@ -27,29 +27,28 @@ description: 按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点�
 - `references/` 拆长文档
 - `scripts/` 放确定性脚本
 - `assets/` 放模板和输出资源
+- Agent Skills 规范层里的 `metadata`、`license`、`compatibility`
 - Kiro 的 `skill://...` 资源声明
 - Codex 的本地 `~/.codex/skills/` 目录与 `openai/skills` 生态
 
-### 第二层：工具专属，但仍有现实价值
+### 第二层：产品专属，但仍有现实价值
 
-这些能力不是通用标准，但在对应工具里仍很有用：
+这些能力不是所有工具共享的通用基线，但在对应产品里仍很有用：
 
-- Claude Code 自定义命令里的 `$ARGUMENTS`
-- Claude Code 自定义命令里的 `$1`、`$2`
+- Claude Code skills / commands 里的 `$ARGUMENTS`
+- Claude Code skills / commands 里的 `$1`、`$2`
 - Claude Code 的 `!` 命令注入
-- Claude Code frontmatter 里的 `allowed-tools`、`argument-hint`、`model`
+- Claude Code frontmatter 里的 `allowed-tools`、`argument-hint`、`model`、`effort`、`context`、`hooks`
+- Kiro skill 作为 slash command 时的参数占位
 - Codex skill 目录里的 `agents/openai.yaml`
 
 ### 第三层：版本敏感，不能再默认通用
 
 这些内容这次不再当作“稳定常识”：
 
-- skill 级 `context: fork`
-- skill 级 `hooks`
-- `paths` 自动触发
 - 固定的上下文压缩 token 配额
 - 某些内部环境变量名一定长期存在
-- “所有工具都支持同样的自动激活与权限语法”
+- “所有工具都支持同样的自动激活、权限语法、路径匹配和子代理控制”
 
 ---
 
@@ -231,11 +230,11 @@ Kiro 当前最实用的进阶点，不是“神秘隐藏字段”，而是：
 
 ## 七、Claude Code 里，哪些高级能力仍然值得借鉴
 
-虽然这组文章现在不再把 Claude 的高级写法当成“通用 skill 标准”，但其中一部分思路仍然很值得学。
+虽然这组文章现在不把 Claude 的高级写法当成“所有 Agent Skills 实现的统一标准”，但其中一部分思路仍然很值得学。
 
 ### 7.1 参数占位
 
-Claude Code 当前官方 slash commands 文档明确展示了：
+Claude Code 当前官方 skills / slash commands 文档明确展示了：
 
 - `$ARGUMENTS`
 - `$1`、`$2`
@@ -265,6 +264,7 @@ Review PR #$1 with priority $2 and assign to $3.
 这些是：
 
 - **Claude 自定义命令体系下已文档化的能力**
+- 并且现在也已经并入 Claude skills 体系
 
 不是：
 
@@ -289,7 +289,7 @@ Review PR #$1 with priority $2 and assign to $3.
 
 ### 8.2 skill 级 hooks / paths / fork
 
-这几类能力如果没有当前官方页面再次确认，就不适合继续写成：
+这几类能力即使在某些产品当前已有官方文档，也不适合继续写成：
 
 - 所有工具都懂
 - 已经稳定多年
@@ -359,5 +359,6 @@ description: Audit release readiness by checking recent changes, risky areas, te
 ## 参考资料
 
 - [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Claude Code Skills 文档](https://docs.anthropic.com/en/docs/claude-code/skills)
 - [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 - [OpenAI Skills 仓库](https://github.com/openai/skills)

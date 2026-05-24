@@ -1,5 +1,5 @@
 ---
-title: 第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）
+title: 第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）
 date: 2026-05-01
 category: AI工具
 tags:
@@ -9,12 +9,12 @@ tags:
   - Token Plan
   - 中转配置
   - Provider
-description: 基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。
+description: 基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。
 ---
 
-# 第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）
+# 第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）
 
-> 资料核对时间：2026-05-01  
+> 资料核对时间：2026-05-24  
 > 说明：本文以 MiMo 官方 `Claude Code Configuration`、`Quick Access`、`Subscription Instructions` 为准，适合已经购买 `Token Plan`、想让 Claude Code 走 MiMo 线路的人。  
 > 放在 `CC Switch` 专题里，是因为它本质上仍是一份 Provider / 中转配置文；即使你最后不用 CC Switch，只手改 `.claude/settings.json` 也能照着做。
 
@@ -27,6 +27,7 @@ description: 基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文
 - `Token Plan` 必须使用订阅页提供的专属 `Base URL` 和 `tp-` 开头的 Key。
 - 不能拿按量付费 API 的 `sk-` Key 去配 `Token Plan`，也不能反过来混用。
 - Claude Code 这里不要只配 `ANTHROPIC_BASE_URL` 和 `ANTHROPIC_AUTH_TOKEN`，最好把 `ANTHROPIC_MODEL` 与三项默认模型映射一起配齐，统一指向 `mimo-v2.5-pro`。
+- 如果你要开 MiMo 当前支持的 **1M 长上下文**，模型名要写成 `mimo-v2.5-pro[1m]`，不要只写基础版。
 - 如果订阅页显示的是新加坡区或欧洲区地址，要以订阅页实际显示为准，不要死记中国区地址。
 
 ---
@@ -161,7 +162,39 @@ MiMo 官方原文的动作顺序很明确：
 
 ---
 
-## 6. 如果主人还在用 CC Switch
+## 6. 如果主人要开 1M 长上下文
+
+MiMo 当前文档补了一条非常实用的新说明：
+
+- 支持 1M 上下文的模型，需要在模型名后面显式追加 `[1m]`
+- 不追加后缀时，走的是普通上下文版本
+
+如果主人确实要让 Claude Code 全程走 1M 长上下文，最稳的写法是把 4 个模型字段都切到同一个长上下文模型名，例如：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://token-plan-cn.xiaomimimo.com/anthropic",
+    "ANTHROPIC_AUTH_TOKEN": "tp-替换成你的Key",
+    "ANTHROPIC_MODEL": "mimo-v2.5-pro[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "mimo-v2.5-pro[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "mimo-v2.5-pro[1m]",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "mimo-v2.5-pro[1m]"
+  }
+}
+```
+
+配置后建议进 Claude Code 执行：
+
+```text
+/context
+```
+
+如果状态里能看到 1M 相关上下文信息，说明这一层已经切对了。
+
+---
+
+## 7. 如果主人还在用 CC Switch
 
 放到 `CC Switch` 专题里，最关键的一条经验其实是：
 
@@ -186,7 +219,7 @@ MiMo 官方原文的动作顺序很明确：
 
 ---
 
-## 7. VS Code 插件是否要单独配置
+## 8. VS Code 插件是否要单独配置
 
 MiMo 官方文档补了一条很有用的信息：
 
@@ -202,7 +235,7 @@ MiMo 官方文档补了一条很有用的信息：
 
 ---
 
-## 8. 一组更稳的排障顺序
+## 9. 一组更稳的排障顺序
 
 ### 8.1 能启动，但返回模型不支持
 
@@ -244,7 +277,7 @@ MiMo 官方文档补了一条很有用的信息：
 
 ---
 
-## 9. 自检方式，别再写“本机已经 200”这种一次性结论
+## 10. 自检方式，别再写“本机已经 200”这种一次性结论
 
 主人原稿里写了“本机已验证 HTTP 200、返回 OK”，这对当时的机器和真实 Key 当然有参考价值，但它**不是能长期复用的知识库结论**。
 
@@ -258,11 +291,11 @@ MiMo 官方文档补了一条很有用的信息：
 
 ---
 
-## 10. 官方参考
+## 11. 官方参考
 
-- MiMo Claude Code 配置：<https://platform.xiaomimimo.com/#/docs/integration/claudecode>
-- MiMo Token Plan 快速接入：<https://platform.xiaomimimo.com/#/docs/tokenplan/quick-access>
-- MiMo Token Plan 订阅说明：<https://platform.xiaomimimo.com/#/docs/tokenplan/subscription>
+- MiMo Claude Code 配置：<https://platform.xiaomimimo.com/docs/integration/claudecode>
+- MiMo Token Plan 快速接入：<https://platform.xiaomimimo.com/docs/en-US/tokenplan/quick-access>
+- MiMo Token Plan 订阅说明：<https://platform.xiaomimimo.com/docs/en-US/tokenplan/subscription>
 - Anthropic Claude Code 模型配置：<https://docs.anthropic.com/en/docs/claude-code/model-config>
 - Anthropic Claude Code 设置说明：<https://docs.anthropic.com/en/docs/claude-code/settings>
 - Claude Code VS Code 文档：<https://code.claude.com/docs/en/vs-code>

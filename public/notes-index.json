@@ -12292,9 +12292,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.662Z",
-          "wordCount": 1674
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:31:35.923Z",
+          "wordCount": 2105
         },
         {
           "type": "file",
@@ -12317,10 +12317,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.684Z",
-          "wordCount": 6289
+          "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+          "size": "12KB",
+          "lastModified": "2026-05-24T14:29:34.177Z",
+          "wordCount": 7144
         },
         {
           "type": "file",
@@ -12371,8 +12371,8 @@
         },
         {
           "type": "file",
-          "title": "CC Switch 快速上手与核心概念（v3.14.1）",
-          "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -12389,10 +12389,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.762Z",
-          "wordCount": 8874
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "16KB",
+          "lastModified": "2026-05-24T14:09:34.303Z",
+          "wordCount": 9390
         },
         {
           "type": "file",
@@ -12519,9 +12519,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.661Z",
-          "wordCount": 1623
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:08:06.903Z",
+          "wordCount": 2135
         },
         {
           "type": "file",
@@ -12543,8 +12543,8 @@
           "attachments": [],
           "description": "面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:33:26.439Z",
-          "wordCount": 3433
+          "lastModified": "2026-05-24T13:49:15.050Z",
+          "wordCount": 3435
         },
         {
           "type": "file",
@@ -12567,10 +12567,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+          "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.667Z",
-          "wordCount": 5701
+          "lastModified": "2026-05-24T14:18:17.434Z",
+          "wordCount": 5392
         },
         {
           "type": "file",
@@ -12620,6 +12620,30 @@
           "size": "33KB",
           "lastModified": "2026-05-24T12:56:24.605Z",
           "wordCount": 18192
+        },
+        {
+          "type": "file",
+          "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+          "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "搜索资料",
+            "前端开发",
+            "文档检索",
+            "工具选型"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+          "size": "15KB",
+          "lastModified": "2026-05-24T14:31:35.921Z",
+          "wordCount": 8021
         },
         {
           "type": "file",
@@ -12691,10 +12715,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.685Z",
-          "wordCount": 6232
+          "lastModified": "2026-05-24T14:29:34.181Z",
+          "wordCount": 6428
         },
         {
           "type": "file",
@@ -12722,8 +12746,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
-          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
+          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
+          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
           "fileTitle": "第二篇_CCSwitch接入中转站与计费排查_2026-04",
           "filename": "第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
@@ -12740,10 +12764,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 4674
+          "lastModified": "2026-05-24T14:10:38.108Z",
+          "wordCount": 5013
         },
         {
           "type": "file",
@@ -12815,10 +12839,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T13:21:13.690Z",
-          "wordCount": 8271
+          "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+          "size": "13KB",
+          "lastModified": "2026-05-24T14:22:01.415Z",
+          "wordCount": 8563
         },
         {
           "type": "file",
@@ -12865,8 +12889,8 @@
           "attachments": [],
           "description": "面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。",
           "size": "13KB",
-          "lastModified": "2026-05-24T13:37:33.427Z",
-          "wordCount": 9538
+          "lastModified": "2026-05-24T13:49:15.053Z",
+          "wordCount": 9540
         },
         {
           "type": "file",
@@ -12913,10 +12937,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.687Z",
-          "wordCount": 7408
+          "lastModified": "2026-05-24T15:07:50.715Z",
+          "wordCount": 7923
         },
         {
           "type": "file",
@@ -12993,8 +13017,8 @@
         },
         {
           "type": "file",
-          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
-          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
+          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
           "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
           "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
@@ -13011,10 +13035,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 6113
+          "description": "基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T14:10:38.110Z",
+          "wordCount": 6796
         },
         {
           "type": "file",
@@ -13037,10 +13061,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+          "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.670Z",
-          "wordCount": 7235
+          "lastModified": "2026-05-24T14:23:33.381Z",
+          "wordCount": 6761
         },
         {
           "type": "file",
@@ -13110,8 +13134,8 @@
           "attachments": [],
           "description": "聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:38:14.710Z",
-          "wordCount": 2404
+          "lastModified": "2026-05-24T13:49:15.051Z",
+          "wordCount": 2406
         },
         {
           "type": "file",
@@ -13159,10 +13183,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-          "size": "8KB",
-          "lastModified": "2026-05-24T12:56:24.688Z",
-          "wordCount": 4852
+          "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+          "size": "9KB",
+          "lastModified": "2026-05-24T14:29:34.184Z",
+          "wordCount": 5321
         },
         {
           "type": "file",
@@ -13190,8 +13214,8 @@
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -13208,10 +13232,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
           "size": "12KB",
-          "lastModified": "2026-05-24T12:56:24.765Z",
-          "wordCount": 6153
+          "lastModified": "2026-05-24T14:10:38.113Z",
+          "wordCount": 6221
         },
         {
           "type": "file",
@@ -13329,8 +13353,8 @@
           "attachments": [],
           "description": "按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。",
           "size": "6KB",
-          "lastModified": "2026-05-24T13:41:05.898Z",
-          "wordCount": 3474
+          "lastModified": "2026-05-24T13:49:15.057Z",
+          "wordCount": 3476
         },
         {
           "type": "file",
@@ -13354,10 +13378,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.671Z",
-          "wordCount": 6613
+          "lastModified": "2026-05-24T14:25:23.674Z",
+          "wordCount": 6261
         },
         {
           "type": "file",
@@ -13522,9 +13546,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T13:41:06.061Z",
-          "wordCount": 11756
+          "size": "16KB",
+          "lastModified": "2026-05-24T13:49:15.055Z",
+          "wordCount": 11758
         },
         {
           "type": "file",
@@ -13570,8 +13594,8 @@
           "attachments": [],
           "description": "将 OpenClaw-CN 日常使用中最常查的命令、状态判断和配置文件入口压缩成一页速查稿，适合作为开机即用的排查底图。",
           "size": "4KB",
-          "lastModified": "2026-05-24T13:41:06.215Z",
-          "wordCount": 2670
+          "lastModified": "2026-05-24T13:49:15.056Z",
+          "wordCount": 2672
         },
         {
           "type": "file",
@@ -13744,6 +13768,52 @@
         },
         {
           "type": "file",
+          "title": "第二组：MCP 架构与安全边界问题",
+          "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+          "fileTitle": "第二组_架构与安全边界问题",
+          "filename": "第二组_架构与安全边界问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "架构设计",
+            "安全治理"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.565Z",
+          "wordCount": 2430
+        },
+        {
+          "type": "file",
+          "title": "第三组：MCP 项目落地与收益评估问题",
+          "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+          "fileTitle": "第三组_项目落地与收益评估问题",
+          "filename": "第三组_项目落地与收益评估问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "项目落地",
+            "收益评估"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.566Z",
+          "wordCount": 2075
+        },
+        {
+          "type": "file",
           "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
           "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
           "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
@@ -13794,6 +13864,29 @@
         },
         {
           "type": "file",
+          "title": "第一组：MCP 概念与主流度问题",
+          "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+          "fileTitle": "第一组_概念与主流度问题",
+          "filename": "第一组_概念与主流度问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "概念认知",
+            "回答模板"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.563Z",
+          "wordCount": 2536
+        },
+        {
+          "type": "file",
           "title": "Gemini 目录补充说明：谷歌 MCP 配置手册放在哪里看",
           "frontmatterTitle": "Gemini 目录补充说明：谷歌 MCP 配置手册放在哪里看",
           "fileTitle": "谷歌MCP_配置手册",
@@ -13812,8 +13905,8 @@
           "attachments": [],
           "description": "说明为什么“谷歌 MCP”相关实操手册应统一放在 MCP 分类下维护，并从 Gemini 目录给出导览入口，避免同一篇实操文在多个目录重复收录造成搜索与列表混乱。",
           "size": "2KB",
-          "lastModified": "2026-05-24T13:16:08.739Z",
-          "wordCount": 801
+          "lastModified": "2026-05-24T13:49:15.043Z",
+          "wordCount": 841
         },
         {
           "type": "file",
@@ -13836,8 +13929,8 @@
           "attachments": [],
           "description": "面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:16:08.741Z",
-          "wordCount": 3449
+          "lastModified": "2026-05-24T13:49:15.045Z",
+          "wordCount": 3451
         },
         {
           "type": "file",
@@ -13883,8 +13976,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         },
         {
           "type": "file",
@@ -13907,8 +14000,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         },
         {
           "type": "file",
@@ -13929,8 +14022,8 @@
           "attachments": [],
           "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
           "size": "1KB",
-          "lastModified": "2026-05-24T12:56:24.664Z",
-          "wordCount": 204
+          "lastModified": "2026-05-24T14:18:00.562Z",
+          "wordCount": 495
         },
         {
           "type": "file",
@@ -13953,6 +14046,32 @@
           "size": "1KB",
           "lastModified": "2026-05-24T12:56:24.665Z",
           "wordCount": 217
+        },
+        {
+          "type": "file",
+          "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+          "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Agent Skills",
+            "Skills",
+            "前端开发",
+            "Codex",
+            "Cursor",
+            "Kiro",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T15:07:50.713Z",
+          "wordCount": 5708
         }
       ],
       "children": []
@@ -15614,8 +15733,8 @@
           "attachments": [],
           "description": "说明为什么“谷歌 MCP”相关实操手册应统一放在 MCP 分类下维护，并从 Gemini 目录给出导览入口，避免同一篇实操文在多个目录重复收录造成搜索与列表混乱。",
           "size": "2KB",
-          "lastModified": "2026-05-24T13:16:08.739Z",
-          "wordCount": 801
+          "lastModified": "2026-05-24T13:49:15.043Z",
+          "wordCount": 841
         },
         {
           "type": "file",
@@ -15661,8 +15780,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         },
         {
           "type": "file",
@@ -15685,8 +15804,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -16220,8 +16339,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         },
         {
           "type": "file",
@@ -16244,8 +16363,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -16309,8 +16428,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         },
         {
           "type": "file",
@@ -16333,8 +16452,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -16364,8 +16483,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         },
         {
           "type": "file",
@@ -16388,8 +16507,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -16419,8 +16538,8 @@
           "attachments": [],
           "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
           "size": "25KB",
-          "lastModified": "2026-05-24T13:41:06.558Z",
-          "wordCount": 24922
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -16450,8 +16569,8 @@
           "attachments": [],
           "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
           "size": "26KB",
-          "lastModified": "2026-05-24T13:41:06.747Z",
-          "wordCount": 26262
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         }
       ],
       "children": []
@@ -16480,8 +16599,8 @@
           "attachments": [],
           "description": "说明为什么“谷歌 MCP”相关实操手册应统一放在 MCP 分类下维护，并从 Gemini 目录给出导览入口，避免同一篇实操文在多个目录重复收录造成搜索与列表混乱。",
           "size": "2KB",
-          "lastModified": "2026-05-24T13:16:08.739Z",
-          "wordCount": 801
+          "lastModified": "2026-05-24T13:49:15.043Z",
+          "wordCount": 841
         }
       ],
       "children": []
@@ -16534,9 +16653,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.662Z",
-          "wordCount": 1674
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:31:35.923Z",
+          "wordCount": 2105
         },
         {
           "type": "file",
@@ -16559,10 +16678,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.684Z",
-          "wordCount": 6289
+          "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+          "size": "12KB",
+          "lastModified": "2026-05-24T14:29:34.177Z",
+          "wordCount": 7144
         },
         {
           "type": "file",
@@ -16608,9 +16727,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.661Z",
-          "wordCount": 1623
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:08:06.903Z",
+          "wordCount": 2135
         },
         {
           "type": "file",
@@ -16633,10 +16752,34 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+          "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.667Z",
-          "wordCount": 5701
+          "lastModified": "2026-05-24T14:18:17.434Z",
+          "wordCount": 5392
+        },
+        {
+          "type": "file",
+          "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+          "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "搜索资料",
+            "前端开发",
+            "文档检索",
+            "工具选型"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+          "size": "15KB",
+          "lastModified": "2026-05-24T14:31:35.921Z",
+          "wordCount": 8021
         },
         {
           "type": "file",
@@ -16683,10 +16826,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.685Z",
-          "wordCount": 6232
+          "lastModified": "2026-05-24T14:29:34.181Z",
+          "wordCount": 6428
         },
         {
           "type": "file",
@@ -16709,10 +16852,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T13:21:13.690Z",
-          "wordCount": 8271
+          "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+          "size": "13KB",
+          "lastModified": "2026-05-24T14:22:01.415Z",
+          "wordCount": 8563
         },
         {
           "type": "file",
@@ -16735,10 +16878,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.687Z",
-          "wordCount": 7408
+          "lastModified": "2026-05-24T15:07:50.715Z",
+          "wordCount": 7923
         },
         {
           "type": "file",
@@ -16785,10 +16928,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+          "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.670Z",
-          "wordCount": 7235
+          "lastModified": "2026-05-24T14:23:33.381Z",
+          "wordCount": 6761
         },
         {
           "type": "file",
@@ -16812,10 +16955,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-          "size": "8KB",
-          "lastModified": "2026-05-24T12:56:24.688Z",
-          "wordCount": 4852
+          "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+          "size": "9KB",
+          "lastModified": "2026-05-24T14:29:34.184Z",
+          "wordCount": 5321
         },
         {
           "type": "file",
@@ -16863,10 +17006,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.671Z",
-          "wordCount": 6613
+          "lastModified": "2026-05-24T14:25:23.674Z",
+          "wordCount": 6261
         },
         {
           "type": "file",
@@ -16894,6 +17037,75 @@
         },
         {
           "type": "file",
+          "title": "第二组：MCP 架构与安全边界问题",
+          "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+          "fileTitle": "第二组_架构与安全边界问题",
+          "filename": "第二组_架构与安全边界问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "架构设计",
+            "安全治理"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.565Z",
+          "wordCount": 2430
+        },
+        {
+          "type": "file",
+          "title": "第三组：MCP 项目落地与收益评估问题",
+          "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+          "fileTitle": "第三组_项目落地与收益评估问题",
+          "filename": "第三组_项目落地与收益评估问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "项目落地",
+            "收益评估"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.566Z",
+          "wordCount": 2075
+        },
+        {
+          "type": "file",
+          "title": "第一组：MCP 概念与主流度问题",
+          "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+          "fileTitle": "第一组_概念与主流度问题",
+          "filename": "第一组_概念与主流度问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "概念认知",
+            "回答模板"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.563Z",
+          "wordCount": 2536
+        },
+        {
+          "type": "file",
           "title": "谷歌 MCP 配置手册（Windows，Chrome DevTools MCP 复刻）",
           "frontmatterTitle": "谷歌 MCP 配置手册（Windows，Chrome DevTools MCP 复刻）",
           "fileTitle": "谷歌MCP_配置手册",
@@ -16913,8 +17125,8 @@
           "attachments": [],
           "description": "面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:16:08.741Z",
-          "wordCount": 3449
+          "lastModified": "2026-05-24T13:49:15.045Z",
+          "wordCount": 3451
         },
         {
           "type": "file",
@@ -16935,8 +17147,8 @@
           "attachments": [],
           "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
           "size": "1KB",
-          "lastModified": "2026-05-24T12:56:24.664Z",
-          "wordCount": 204
+          "lastModified": "2026-05-24T14:18:00.562Z",
+          "wordCount": 495
         },
         {
           "type": "file",
@@ -16959,6 +17171,32 @@
           "size": "1KB",
           "lastModified": "2026-05-24T12:56:24.665Z",
           "wordCount": 217
+        },
+        {
+          "type": "file",
+          "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+          "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Agent Skills",
+            "Skills",
+            "前端开发",
+            "Codex",
+            "Cursor",
+            "Kiro",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T15:07:50.713Z",
+          "wordCount": 5708
         }
       ],
       "children": []
@@ -17011,9 +17249,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.662Z",
-          "wordCount": 1674
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:31:35.923Z",
+          "wordCount": 2105
         },
         {
           "type": "file",
@@ -17035,9 +17273,102 @@
           "category": "AI工具",
           "attachments": [],
           "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.661Z",
-          "wordCount": 1623
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:08:06.903Z",
+          "wordCount": 2135
+        },
+        {
+          "type": "file",
+          "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+          "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "搜索资料",
+            "前端开发",
+            "文档检索",
+            "工具选型"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+          "size": "15KB",
+          "lastModified": "2026-05-24T14:31:35.921Z",
+          "wordCount": 8021
+        },
+        {
+          "type": "file",
+          "title": "第二组：MCP 架构与安全边界问题",
+          "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+          "fileTitle": "第二组_架构与安全边界问题",
+          "filename": "第二组_架构与安全边界问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "架构设计",
+            "安全治理"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.565Z",
+          "wordCount": 2430
+        },
+        {
+          "type": "file",
+          "title": "第三组：MCP 项目落地与收益评估问题",
+          "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+          "fileTitle": "第三组_项目落地与收益评估问题",
+          "filename": "第三组_项目落地与收益评估问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "项目落地",
+            "收益评估"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.566Z",
+          "wordCount": 2075
+        },
+        {
+          "type": "file",
+          "title": "第一组：MCP 概念与主流度问题",
+          "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+          "fileTitle": "第一组_概念与主流度问题",
+          "filename": "第一组_概念与主流度问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "概念认知",
+            "回答模板"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.563Z",
+          "wordCount": 2536
         },
         {
           "type": "file",
@@ -17060,8 +17391,8 @@
           "attachments": [],
           "description": "面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:16:08.741Z",
-          "wordCount": 3449
+          "lastModified": "2026-05-24T13:49:15.045Z",
+          "wordCount": 3451
         },
         {
           "type": "file",
@@ -17082,8 +17413,8 @@
           "attachments": [],
           "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
           "size": "1KB",
-          "lastModified": "2026-05-24T12:56:24.664Z",
-          "wordCount": 204
+          "lastModified": "2026-05-24T14:18:00.562Z",
+          "wordCount": 495
         },
         {
           "type": "file",
@@ -17134,9 +17465,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.661Z",
-          "wordCount": 1623
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:08:06.903Z",
+          "wordCount": 2135
         }
       ],
       "children": []
@@ -17165,9 +17496,33 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-          "size": "4KB",
-          "lastModified": "2026-05-24T12:56:24.662Z",
-          "wordCount": 1674
+          "size": "5KB",
+          "lastModified": "2026-05-24T14:31:35.923Z",
+          "wordCount": 2105
+        },
+        {
+          "type": "file",
+          "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+          "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+          "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "搜索资料",
+            "前端开发",
+            "文档检索",
+            "工具选型"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+          "size": "15KB",
+          "lastModified": "2026-05-24T14:31:35.921Z",
+          "wordCount": 8021
         }
       ],
       "children": []
@@ -17176,6 +17531,75 @@
       "name": "03_面试题库与回答模板",
       "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板",
       "notes": [
+        {
+          "type": "file",
+          "title": "第二组：MCP 架构与安全边界问题",
+          "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+          "fileTitle": "第二组_架构与安全边界问题",
+          "filename": "第二组_架构与安全边界问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "架构设计",
+            "安全治理"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.565Z",
+          "wordCount": 2430
+        },
+        {
+          "type": "file",
+          "title": "第三组：MCP 项目落地与收益评估问题",
+          "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+          "fileTitle": "第三组_项目落地与收益评估问题",
+          "filename": "第三组_项目落地与收益评估问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "项目落地",
+            "收益评估"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.566Z",
+          "wordCount": 2075
+        },
+        {
+          "type": "file",
+          "title": "第一组：MCP 概念与主流度问题",
+          "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+          "fileTitle": "第一组_概念与主流度问题",
+          "filename": "第一组_概念与主流度问题.md",
+          "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "MCP",
+            "面试题",
+            "概念认知",
+            "回答模板"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+          "size": "6KB",
+          "lastModified": "2026-05-24T14:18:00.563Z",
+          "wordCount": 2536
+        },
         {
           "type": "file",
           "title": "MCP 面试题库与回答模板",
@@ -17195,8 +17619,8 @@
           "attachments": [],
           "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
           "size": "1KB",
-          "lastModified": "2026-05-24T12:56:24.664Z",
-          "wordCount": 204
+          "lastModified": "2026-05-24T14:18:00.562Z",
+          "wordCount": 495
         }
       ],
       "children": []
@@ -17255,10 +17679,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+          "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.667Z",
-          "wordCount": 5701
+          "lastModified": "2026-05-24T14:18:17.434Z",
+          "wordCount": 5392
         },
         {
           "type": "file",
@@ -17281,10 +17705,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T13:21:13.690Z",
-          "wordCount": 8271
+          "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+          "size": "13KB",
+          "lastModified": "2026-05-24T14:22:01.415Z",
+          "wordCount": 8563
         },
         {
           "type": "file",
@@ -17307,10 +17731,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+          "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.670Z",
-          "wordCount": 7235
+          "lastModified": "2026-05-24T14:23:33.381Z",
+          "wordCount": 6761
         },
         {
           "type": "file",
@@ -17334,10 +17758,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.671Z",
-          "wordCount": 6613
+          "lastModified": "2026-05-24T14:25:23.674Z",
+          "wordCount": 6261
         }
       ],
       "children": []
@@ -17367,10 +17791,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+          "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.667Z",
-          "wordCount": 5701
+          "lastModified": "2026-05-24T14:18:17.434Z",
+          "wordCount": 5392
         }
       ],
       "children": []
@@ -17400,10 +17824,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T13:21:13.690Z",
-          "wordCount": 8271
+          "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+          "size": "13KB",
+          "lastModified": "2026-05-24T14:22:01.415Z",
+          "wordCount": 8563
         }
       ],
       "children": []
@@ -17433,10 +17857,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+          "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.670Z",
-          "wordCount": 7235
+          "lastModified": "2026-05-24T14:23:33.381Z",
+          "wordCount": 6761
         }
       ],
       "children": []
@@ -17467,10 +17891,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+          "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
           "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.671Z",
-          "wordCount": 6613
+          "lastModified": "2026-05-24T14:25:23.674Z",
+          "wordCount": 6261
         }
       ],
       "children": []
@@ -17782,10 +18206,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.684Z",
-          "wordCount": 6289
+          "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+          "size": "12KB",
+          "lastModified": "2026-05-24T14:29:34.177Z",
+          "wordCount": 7144
         },
         {
           "type": "file",
@@ -17808,10 +18232,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.685Z",
-          "wordCount": 6232
+          "lastModified": "2026-05-24T14:29:34.181Z",
+          "wordCount": 6428
         },
         {
           "type": "file",
@@ -17834,10 +18258,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.687Z",
-          "wordCount": 7408
+          "lastModified": "2026-05-24T15:07:50.715Z",
+          "wordCount": 7923
         },
         {
           "type": "file",
@@ -17861,10 +18285,36 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-          "size": "8KB",
-          "lastModified": "2026-05-24T12:56:24.688Z",
-          "wordCount": 4852
+          "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+          "size": "9KB",
+          "lastModified": "2026-05-24T14:29:34.184Z",
+          "wordCount": 5321
+        },
+        {
+          "type": "file",
+          "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+          "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Agent Skills",
+            "Skills",
+            "前端开发",
+            "Codex",
+            "Cursor",
+            "Kiro",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T15:07:50.713Z",
+          "wordCount": 5708
         }
       ],
       "children": []
@@ -17894,10 +18344,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.684Z",
-          "wordCount": 6289
+          "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+          "size": "12KB",
+          "lastModified": "2026-05-24T14:29:34.177Z",
+          "wordCount": 7144
         }
       ],
       "children": []
@@ -17927,10 +18377,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+          "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.685Z",
-          "wordCount": 6232
+          "lastModified": "2026-05-24T14:29:34.181Z",
+          "wordCount": 6428
         }
       ],
       "children": []
@@ -17960,10 +18410,36 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+          "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
           "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.687Z",
-          "wordCount": 7408
+          "lastModified": "2026-05-24T15:07:50.715Z",
+          "wordCount": 7923
+        },
+        {
+          "type": "file",
+          "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+          "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+          "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+          "date": "2026-05-24T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Agent Skills",
+            "Skills",
+            "前端开发",
+            "Codex",
+            "Cursor",
+            "Kiro",
+            "Claude Code"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T15:07:50.713Z",
+          "wordCount": 5708
         }
       ],
       "children": []
@@ -17994,10 +18470,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-          "size": "8KB",
-          "lastModified": "2026-05-24T12:56:24.688Z",
-          "wordCount": 4852
+          "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+          "size": "9KB",
+          "lastModified": "2026-05-24T14:29:34.184Z",
+          "wordCount": 5321
         }
       ],
       "children": []
@@ -18026,8 +18502,8 @@
           "attachments": [],
           "description": "面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:33:26.439Z",
-          "wordCount": 3433
+          "lastModified": "2026-05-24T13:49:15.050Z",
+          "wordCount": 3435
         },
         {
           "type": "file",
@@ -18050,8 +18526,8 @@
           "attachments": [],
           "description": "面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。",
           "size": "13KB",
-          "lastModified": "2026-05-24T13:37:33.427Z",
-          "wordCount": 9538
+          "lastModified": "2026-05-24T13:49:15.053Z",
+          "wordCount": 9540
         },
         {
           "type": "file",
@@ -18074,8 +18550,8 @@
           "attachments": [],
           "description": "聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:38:14.710Z",
-          "wordCount": 2404
+          "lastModified": "2026-05-24T13:49:15.051Z",
+          "wordCount": 2406
         },
         {
           "type": "file",
@@ -18097,8 +18573,8 @@
           "attachments": [],
           "description": "按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。",
           "size": "6KB",
-          "lastModified": "2026-05-24T13:41:05.898Z",
-          "wordCount": 3474
+          "lastModified": "2026-05-24T13:49:15.057Z",
+          "wordCount": 3476
         },
         {
           "type": "file",
@@ -18119,9 +18595,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T13:41:06.061Z",
-          "wordCount": 11756
+          "size": "16KB",
+          "lastModified": "2026-05-24T13:49:15.055Z",
+          "wordCount": 11758
         },
         {
           "type": "file",
@@ -18143,8 +18619,8 @@
           "attachments": [],
           "description": "将 OpenClaw-CN 日常使用中最常查的命令、状态判断和配置文件入口压缩成一页速查稿，适合作为开机即用的排查底图。",
           "size": "4KB",
-          "lastModified": "2026-05-24T13:41:06.215Z",
-          "wordCount": 2670
+          "lastModified": "2026-05-24T13:49:15.056Z",
+          "wordCount": 2672
         }
       ],
       "children": []
@@ -18173,8 +18649,8 @@
           "attachments": [],
           "description": "面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:33:26.439Z",
-          "wordCount": 3433
+          "lastModified": "2026-05-24T13:49:15.050Z",
+          "wordCount": 3435
         },
         {
           "type": "file",
@@ -18197,8 +18673,8 @@
           "attachments": [],
           "description": "面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。",
           "size": "13KB",
-          "lastModified": "2026-05-24T13:37:33.427Z",
-          "wordCount": 9538
+          "lastModified": "2026-05-24T13:49:15.053Z",
+          "wordCount": 9540
         },
         {
           "type": "file",
@@ -18221,8 +18697,8 @@
           "attachments": [],
           "description": "聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。",
           "size": "5KB",
-          "lastModified": "2026-05-24T13:38:14.710Z",
-          "wordCount": 2404
+          "lastModified": "2026-05-24T13:49:15.051Z",
+          "wordCount": 2406
         },
         {
           "type": "file",
@@ -18244,8 +18720,8 @@
           "attachments": [],
           "description": "按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。",
           "size": "6KB",
-          "lastModified": "2026-05-24T13:41:05.898Z",
-          "wordCount": 3474
+          "lastModified": "2026-05-24T13:49:15.057Z",
+          "wordCount": 3476
         },
         {
           "type": "file",
@@ -18266,9 +18742,9 @@
           "category": "AI工具",
           "attachments": [],
           "description": "以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T13:41:06.061Z",
-          "wordCount": 11756
+          "size": "16KB",
+          "lastModified": "2026-05-24T13:49:15.055Z",
+          "wordCount": 11758
         },
         {
           "type": "file",
@@ -18290,8 +18766,8 @@
           "attachments": [],
           "description": "将 OpenClaw-CN 日常使用中最常查的命令、状态判断和配置文件入口压缩成一页速查稿，适合作为开机即用的排查底图。",
           "size": "4KB",
-          "lastModified": "2026-05-24T13:41:06.215Z",
-          "wordCount": 2670
+          "lastModified": "2026-05-24T13:49:15.056Z",
+          "wordCount": 2672
         }
       ],
       "children": []
@@ -18302,8 +18778,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "CC Switch 快速上手与核心概念（v3.14.1）",
-          "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -18320,10 +18796,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.762Z",
-          "wordCount": 8874
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "16KB",
+          "lastModified": "2026-05-24T14:09:34.303Z",
+          "wordCount": 9390
         },
         {
           "type": "file",
@@ -18377,8 +18853,8 @@
         },
         {
           "type": "file",
-          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
-          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
+          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
+          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
           "fileTitle": "第二篇_CCSwitch接入中转站与计费排查_2026-04",
           "filename": "第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
@@ -18395,15 +18871,15 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 4674
+          "lastModified": "2026-05-24T14:10:38.108Z",
+          "wordCount": 5013
         },
         {
           "type": "file",
-          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
-          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
+          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
           "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
           "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
@@ -18420,15 +18896,15 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 6113
+          "description": "基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T14:10:38.110Z",
+          "wordCount": 6796
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -18445,10 +18921,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
           "size": "12KB",
-          "lastModified": "2026-05-24T12:56:24.765Z",
-          "wordCount": 6153
+          "lastModified": "2026-05-24T14:10:38.113Z",
+          "wordCount": 6221
         }
       ],
       "children": []
@@ -18516,8 +18992,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "CC Switch 快速上手与核心概念（v3.14.1）",
-          "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -18534,15 +19010,15 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.762Z",
-          "wordCount": 8874
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "16KB",
+          "lastModified": "2026-05-24T14:09:34.303Z",
+          "wordCount": 9390
         },
         {
           "type": "file",
-          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
-          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
+          "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
+          "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
           "fileTitle": "第二篇_CCSwitch接入中转站与计费排查_2026-04",
           "filename": "第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
@@ -18559,15 +19035,15 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 4674
+          "lastModified": "2026-05-24T14:10:38.108Z",
+          "wordCount": 5013
         },
         {
           "type": "file",
-          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
-          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+          "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
+          "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
           "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
           "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
@@ -18584,15 +19060,15 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
-          "size": "10KB",
-          "lastModified": "2026-05-24T12:56:24.764Z",
-          "wordCount": 6113
+          "description": "基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。",
+          "size": "11KB",
+          "lastModified": "2026-05-24T14:10:38.110Z",
+          "wordCount": 6796
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -18609,10 +19085,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
           "size": "12KB",
-          "lastModified": "2026-05-24T12:56:24.765Z",
-          "wordCount": 6153
+          "lastModified": "2026-05-24T14:10:38.113Z",
+          "wordCount": 6221
         }
       ],
       "children": []
@@ -23996,6 +24472,99 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+      "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+      "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+      "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+      "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+      "date": "2026-05-24T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MCP",
+        "搜索资料",
+        "前端开发",
+        "文档检索",
+        "工具选型"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+      "size": "15KB",
+      "lastModified": "2026-05-24T14:31:35.921Z",
+      "wordCount": 8021
+    },
+    {
+      "type": "file",
+      "title": "第二组：MCP 架构与安全边界问题",
+      "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+      "fileTitle": "第二组_架构与安全边界问题",
+      "filename": "第二组_架构与安全边界问题.md",
+      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+      "date": "2026-05-24T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MCP",
+        "面试题",
+        "架构设计",
+        "安全治理"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+      "size": "6KB",
+      "lastModified": "2026-05-24T14:18:00.565Z",
+      "wordCount": 2430
+    },
+    {
+      "type": "file",
+      "title": "第三组：MCP 项目落地与收益评估问题",
+      "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+      "fileTitle": "第三组_项目落地与收益评估问题",
+      "filename": "第三组_项目落地与收益评估问题.md",
+      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+      "date": "2026-05-24T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MCP",
+        "面试题",
+        "项目落地",
+        "收益评估"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+      "size": "6KB",
+      "lastModified": "2026-05-24T14:18:00.566Z",
+      "wordCount": 2075
+    },
+    {
+      "type": "file",
+      "title": "第一组：MCP 概念与主流度问题",
+      "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+      "fileTitle": "第一组_概念与主流度问题",
+      "filename": "第一组_概念与主流度问题.md",
+      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+      "date": "2026-05-24T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MCP",
+        "面试题",
+        "概念认知",
+        "回答模板"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+      "size": "6KB",
+      "lastModified": "2026-05-24T14:18:00.563Z",
+      "wordCount": 2536
+    },
+    {
+      "type": "file",
       "title": "Gemini 目录补充说明：谷歌 MCP 配置手册放在哪里看",
       "frontmatterTitle": "Gemini 目录补充说明：谷歌 MCP 配置手册放在哪里看",
       "fileTitle": "谷歌MCP_配置手册",
@@ -24014,8 +24583,34 @@
       "attachments": [],
       "description": "说明为什么“谷歌 MCP”相关实操手册应统一放在 MCP 分类下维护，并从 Gemini 目录给出导览入口，避免同一篇实操文在多个目录重复收录造成搜索与列表混乱。",
       "size": "2KB",
-      "lastModified": "2026-05-24T13:16:08.739Z",
-      "wordCount": 801
+      "lastModified": "2026-05-24T13:49:15.043Z",
+      "wordCount": 841
+    },
+    {
+      "type": "file",
+      "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+      "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+      "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+      "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+      "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+      "date": "2026-05-24T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Agent Skills",
+        "Skills",
+        "前端开发",
+        "Codex",
+        "Cursor",
+        "Kiro",
+        "Claude Code"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+      "size": "11KB",
+      "lastModified": "2026-05-24T15:07:50.713Z",
+      "wordCount": 5708
     },
     {
       "type": "file",
@@ -24083,9 +24678,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-      "size": "4KB",
-      "lastModified": "2026-05-24T12:56:24.662Z",
-      "wordCount": 1674
+      "size": "5KB",
+      "lastModified": "2026-05-24T14:31:35.923Z",
+      "wordCount": 2105
     },
     {
       "type": "file",
@@ -24107,9 +24702,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-      "size": "4KB",
-      "lastModified": "2026-05-24T12:56:24.661Z",
-      "wordCount": 1623
+      "size": "5KB",
+      "lastModified": "2026-05-24T14:08:06.903Z",
+      "wordCount": 2135
     },
     {
       "type": "file",
@@ -24132,10 +24727,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+      "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
       "size": "10KB",
-      "lastModified": "2026-05-24T12:56:24.667Z",
-      "wordCount": 5701
+      "lastModified": "2026-05-24T14:18:17.434Z",
+      "wordCount": 5392
     },
     {
       "type": "file",
@@ -24158,10 +24753,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-      "size": "12KB",
-      "lastModified": "2026-05-24T13:21:13.690Z",
-      "wordCount": 8271
+      "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+      "size": "13KB",
+      "lastModified": "2026-05-24T14:22:01.415Z",
+      "wordCount": 8563
     },
     {
       "type": "file",
@@ -24184,10 +24779,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+      "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
       "size": "11KB",
-      "lastModified": "2026-05-24T12:56:24.670Z",
-      "wordCount": 7235
+      "lastModified": "2026-05-24T14:23:33.381Z",
+      "wordCount": 6761
     },
     {
       "type": "file",
@@ -24211,10 +24806,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+      "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
       "size": "11KB",
-      "lastModified": "2026-05-24T12:56:24.671Z",
-      "wordCount": 6613
+      "lastModified": "2026-05-24T14:25:23.674Z",
+      "wordCount": 6261
     },
     {
       "type": "file",
@@ -24235,8 +24830,8 @@
       "attachments": [],
       "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
       "size": "1KB",
-      "lastModified": "2026-05-24T12:56:24.664Z",
-      "wordCount": 204
+      "lastModified": "2026-05-24T14:18:00.562Z",
+      "wordCount": 495
     },
     {
       "type": "file",
@@ -26533,8 +27128,8 @@
     },
     {
       "type": "file",
-      "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
-      "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+      "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
+      "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
       "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
       "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
@@ -26551,15 +27146,15 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
-      "size": "10KB",
-      "lastModified": "2026-05-24T12:56:24.764Z",
-      "wordCount": 6113
+      "description": "基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。",
+      "size": "11KB",
+      "lastModified": "2026-05-24T14:10:38.110Z",
+      "wordCount": 6796
     },
     {
       "type": "file",
-      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
-      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
       "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
       "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -26576,10 +27171,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+      "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
       "size": "12KB",
-      "lastModified": "2026-05-24T12:56:24.765Z",
-      "wordCount": 6153
+      "lastModified": "2026-05-24T14:10:38.113Z",
+      "wordCount": 6221
     },
     {
       "type": "file",
@@ -26737,8 +27332,8 @@
       "attachments": [],
       "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
       "size": "26KB",
-      "lastModified": "2026-05-24T13:41:06.747Z",
-      "wordCount": 26262
+      "lastModified": "2026-05-24T13:49:15.040Z",
+      "wordCount": 26264
     },
     {
       "type": "file",
@@ -26761,8 +27356,8 @@
       "attachments": [],
       "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
       "size": "25KB",
-      "lastModified": "2026-05-24T13:41:06.558Z",
-      "wordCount": 24922
+      "lastModified": "2026-05-24T13:49:15.039Z",
+      "wordCount": 24924
     },
     {
       "type": "file",
@@ -28211,8 +28806,8 @@
     },
     {
       "type": "file",
-      "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
-      "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
+      "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
+      "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
       "fileTitle": "第二篇_CCSwitch接入中转站与计费排查_2026-04",
       "filename": "第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
@@ -28229,10 +28824,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+      "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
       "size": "9KB",
-      "lastModified": "2026-05-24T12:56:24.764Z",
-      "wordCount": 4674
+      "lastModified": "2026-05-24T14:10:38.108Z",
+      "wordCount": 5013
     },
     {
       "type": "file",
@@ -28310,8 +28905,8 @@
     },
     {
       "type": "file",
-      "title": "CC Switch 快速上手与核心概念（v3.14.1）",
-      "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+      "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+      "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
       "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
       "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -28328,10 +28923,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-      "size": "15KB",
-      "lastModified": "2026-05-24T12:56:24.762Z",
-      "wordCount": 8874
+      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+      "size": "16KB",
+      "lastModified": "2026-05-24T14:09:34.303Z",
+      "wordCount": 9390
     },
     {
       "type": "file",
@@ -29927,10 +30522,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-      "size": "10KB",
-      "lastModified": "2026-05-24T12:56:24.684Z",
-      "wordCount": 6289
+      "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+      "size": "12KB",
+      "lastModified": "2026-05-24T14:29:34.177Z",
+      "wordCount": 7144
     },
     {
       "type": "file",
@@ -30001,10 +30596,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+      "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
       "size": "10KB",
-      "lastModified": "2026-05-24T12:56:24.685Z",
-      "wordCount": 6232
+      "lastModified": "2026-05-24T14:29:34.181Z",
+      "wordCount": 6428
     },
     {
       "type": "file",
@@ -30027,10 +30622,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+      "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
       "size": "10KB",
-      "lastModified": "2026-05-24T12:56:24.687Z",
-      "wordCount": 7408
+      "lastModified": "2026-05-24T15:07:50.715Z",
+      "wordCount": 7923
     },
     {
       "type": "file",
@@ -30078,10 +30673,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-      "size": "8KB",
-      "lastModified": "2026-05-24T12:56:24.688Z",
-      "wordCount": 4852
+      "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+      "size": "9KB",
+      "lastModified": "2026-05-24T14:29:34.184Z",
+      "wordCount": 5321
     },
     {
       "type": "file",
@@ -31613,8 +32208,8 @@
       "attachments": [],
       "description": "面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。",
       "size": "5KB",
-      "lastModified": "2026-05-24T13:33:26.439Z",
-      "wordCount": 3433
+      "lastModified": "2026-05-24T13:49:15.050Z",
+      "wordCount": 3435
     },
     {
       "type": "file",
@@ -31661,8 +32256,8 @@
       "attachments": [],
       "description": "面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。",
       "size": "13KB",
-      "lastModified": "2026-05-24T13:37:33.427Z",
-      "wordCount": 9538
+      "lastModified": "2026-05-24T13:49:15.053Z",
+      "wordCount": 9540
     },
     {
       "type": "file",
@@ -31709,8 +32304,8 @@
       "attachments": [],
       "description": "聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。",
       "size": "5KB",
-      "lastModified": "2026-05-24T13:38:14.710Z",
-      "wordCount": 2404
+      "lastModified": "2026-05-24T13:49:15.051Z",
+      "wordCount": 2406
     },
     {
       "type": "file",
@@ -31756,8 +32351,8 @@
       "attachments": [],
       "description": "按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。",
       "size": "6KB",
-      "lastModified": "2026-05-24T13:41:05.898Z",
-      "wordCount": 3474
+      "lastModified": "2026-05-24T13:49:15.057Z",
+      "wordCount": 3476
     },
     {
       "type": "file",
@@ -31802,9 +32397,9 @@
       "category": "AI工具",
       "attachments": [],
       "description": "以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。",
-      "size": "15KB",
-      "lastModified": "2026-05-24T13:41:06.061Z",
-      "wordCount": 11756
+      "size": "16KB",
+      "lastModified": "2026-05-24T13:49:15.055Z",
+      "wordCount": 11758
     },
     {
       "type": "file",
@@ -31826,8 +32421,8 @@
       "attachments": [],
       "description": "将 OpenClaw-CN 日常使用中最常查的命令、状态判断和配置文件入口压缩成一页速查稿，适合作为开机即用的排查底图。",
       "size": "4KB",
-      "lastModified": "2026-05-24T13:41:06.215Z",
-      "wordCount": 2670
+      "lastModified": "2026-05-24T13:49:15.056Z",
+      "wordCount": 2672
     },
     {
       "type": "file",
@@ -31922,8 +32517,8 @@
       "attachments": [],
       "description": "面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。",
       "size": "5KB",
-      "lastModified": "2026-05-24T13:16:08.741Z",
-      "wordCount": 3449
+      "lastModified": "2026-05-24T13:49:15.045Z",
+      "wordCount": 3451
     },
     {
       "type": "file",
@@ -38901,8 +39496,8 @@
                               "attachments": [],
                               "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
                               "size": "25KB",
-                              "lastModified": "2026-05-24T13:41:06.558Z",
-                              "wordCount": 24922
+                              "lastModified": "2026-05-24T13:49:15.039Z",
+                              "wordCount": 24924
                             }
                           ]
                         },
@@ -38932,8 +39527,8 @@
                               "attachments": [],
                               "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
                               "size": "26KB",
-                              "lastModified": "2026-05-24T13:41:06.747Z",
-                              "wordCount": 26262
+                              "lastModified": "2026-05-24T13:49:15.040Z",
+                              "wordCount": 26264
                             }
                           ]
                         }
@@ -39316,8 +39911,8 @@
                   "attachments": [],
                   "description": "说明为什么“谷歌 MCP”相关实操手册应统一放在 MCP 分类下维护，并从 Gemini 目录给出导览入口，避免同一篇实操文在多个目录重复收录造成搜索与列表混乱。",
                   "size": "2KB",
-                  "lastModified": "2026-05-24T13:16:08.739Z",
-                  "wordCount": 801
+                  "lastModified": "2026-05-24T13:49:15.043Z",
+                  "wordCount": 841
                 }
               ]
             }
@@ -39358,9 +39953,9 @@
                       "category": "AI工具",
                       "attachments": [],
                       "description": "从零解释 MCP 的定义、组成、工作流程、价值边界与安全治理，建立“协议层认知”而不是“某个单一 MCP 工具教程”的视角。",
-                      "size": "4KB",
-                      "lastModified": "2026-05-24T12:56:24.661Z",
-                      "wordCount": 1623
+                      "size": "5KB",
+                      "lastModified": "2026-05-24T14:08:06.903Z",
+                      "wordCount": 2135
                     }
                   ]
                 },
@@ -39389,9 +39984,33 @@
                       "category": "AI工具",
                       "attachments": [],
                       "description": "以“能力分类”而不是“单个工具”来组织常用 MCP 清单，帮助前端开发者在面试和项目中快速判断该接入哪一类 MCP server。",
-                      "size": "4KB",
-                      "lastModified": "2026-05-24T12:56:24.662Z",
-                      "wordCount": 1674
+                      "size": "5KB",
+                      "lastModified": "2026-05-24T14:31:35.923Z",
+                      "wordCount": 2105
+                    },
+                    {
+                      "type": "file",
+                      "title": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+                      "frontmatterTitle": "第二篇：前端开发常用搜索资料 MCP 推荐（2026-05复核）",
+                      "fileTitle": "第二篇_前端开发常用搜索资料MCP推荐_2026-05",
+                      "filename": "第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+                      "path": "AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md",
+                      "date": "2026-05-24T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "MCP",
+                        "搜索资料",
+                        "前端开发",
+                        "文档检索",
+                        "工具选型"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [],
+                      "description": "面向前端开发者，按“查官方文档、找最新资料、读源码与 Issue、批量抽取页面内容”四类场景，推荐当前更适合的搜索资料型 MCP，并给出组合建议与边界提醒。",
+                      "size": "15KB",
+                      "lastModified": "2026-05-24T14:31:35.921Z",
+                      "wordCount": 8021
                     }
                   ]
                 },
@@ -39400,6 +40019,75 @@
                   "name": "03_面试题库与回答模板",
                   "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板",
                   "children": [
+                    {
+                      "type": "file",
+                      "title": "第二组：MCP 架构与安全边界问题",
+                      "frontmatterTitle": "第二组：MCP 架构与安全边界问题",
+                      "fileTitle": "第二组_架构与安全边界问题",
+                      "filename": "第二组_架构与安全边界问题.md",
+                      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第二组_架构与安全边界问题.md",
+                      "date": "2026-05-24T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "MCP",
+                        "面试题",
+                        "架构设计",
+                        "安全治理"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [],
+                      "description": "围绕 Host、Client、Server、能力原语以及安全治理边界展开，适合二面或追问环节使用。",
+                      "size": "6KB",
+                      "lastModified": "2026-05-24T14:18:00.565Z",
+                      "wordCount": 2430
+                    },
+                    {
+                      "type": "file",
+                      "title": "第三组：MCP 项目落地与收益评估问题",
+                      "frontmatterTitle": "第三组：MCP 项目落地与收益评估问题",
+                      "fileTitle": "第三组_项目落地与收益评估问题",
+                      "filename": "第三组_项目落地与收益评估问题.md",
+                      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第三组_项目落地与收益评估问题.md",
+                      "date": "2026-05-24T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "MCP",
+                        "面试题",
+                        "项目落地",
+                        "收益评估"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [],
+                      "description": "围绕如何选型、如何从 0 到 1 接入、怎样评估收益与推广顺序，适合项目经验和实战追问场景。",
+                      "size": "6KB",
+                      "lastModified": "2026-05-24T14:18:00.566Z",
+                      "wordCount": 2075
+                    },
+                    {
+                      "type": "file",
+                      "title": "第一组：MCP 概念与主流度问题",
+                      "frontmatterTitle": "第一组：MCP 概念与主流度问题",
+                      "fileTitle": "第一组_概念与主流度问题",
+                      "filename": "第一组_概念与主流度问题.md",
+                      "path": "AI工具/03_规则机制层/MCP/03_面试题库与回答模板/第一组_概念与主流度问题.md",
+                      "date": "2026-05-24T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "MCP",
+                        "面试题",
+                        "概念认知",
+                        "回答模板"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [],
+                      "description": "聚焦 MCP 是什么、为什么火、与插件和 function calling 的区别，适合作为第一轮面试的高频基础题库。",
+                      "size": "6KB",
+                      "lastModified": "2026-05-24T14:18:00.563Z",
+                      "wordCount": 2536
+                    },
                     {
                       "type": "file",
                       "title": "MCP 面试题库与回答模板",
@@ -39419,8 +40107,8 @@
                       "attachments": [],
                       "description": "MCP 面试题库入口，后续沉淀高频问答，统一维护 30 秒版与 2 分钟版回答模板。",
                       "size": "1KB",
-                      "lastModified": "2026-05-24T12:56:24.664Z",
-                      "wordCount": 204
+                      "lastModified": "2026-05-24T14:18:00.562Z",
+                      "wordCount": 495
                     }
                   ]
                 },
@@ -39498,8 +40186,8 @@
                   "attachments": [],
                   "description": "面向需要在 Windows 上快速复刻 Chrome DevTools MCP 的开发者，整理 Codex 环境下的配置、验证和排障步骤，并解释为什么这类资料应归在 MCP 分类而不是单一终端工具分类。",
                   "size": "5KB",
-                  "lastModified": "2026-05-24T13:16:08.741Z",
-                  "wordCount": 3449
+                  "lastModified": "2026-05-24T13:49:15.045Z",
+                  "wordCount": 3451
                 }
               ]
             },
@@ -39534,10 +40222,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "从\"功能分散、难以共享\"的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览各工具的 Plugin 支持现状。",
+                      "description": "从“功能分散、难以共享”的痛点出发，解释 Plugin 的本质、解决的核心问题，横向对比 Plugin 与 Skill、MCP、Rules 的区别，并速览主流 AI 编程工具的 Plugin 支持现状。",
                       "size": "10KB",
-                      "lastModified": "2026-05-24T12:56:24.667Z",
-                      "wordCount": 5701
+                      "lastModified": "2026-05-24T14:18:17.434Z",
+                      "wordCount": 5392
                     }
                   ]
                 },
@@ -39567,10 +40255,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "深入解析 Codex Plugin 的目录结构、清单格式、Marketplace 三级分发机制、本机实装分析，以及安装与管理命令实战，帮助开发者在 Codex 生态中高效使用和开发插件。",
-                      "size": "12KB",
-                      "lastModified": "2026-05-24T13:21:13.690Z",
-                      "wordCount": 8271
+                      "description": "深入解析 Codex Plugin 的目录结构、manifest 形态、官方 `openai/plugins` 仓库、本机实装目录，以及 `codex plugin marketplace` 的配置与管理方式，帮助开发者更稳地理解 Codex 插件体系。",
+                      "size": "13KB",
+                      "lastModified": "2026-05-24T14:22:01.415Z",
+                      "wordCount": 8563
                     }
                   ]
                 },
@@ -39600,10 +40288,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "深入解析 Claude Code 七大扩展组件的关系、Plugin 作为最高级扩展的定位、打包机制、/plugin 命令族、Marketplace 与社区生态，以及前端开发者的实战场景。",
+                      "description": "深入解析 Claude Code Plugin 的定位、scope、官方与社区 marketplace、manifest 规则、`/plugin` 命令族，以及前端开发者可以怎样把 Skills、Commands、Hooks、MCP 等能力打包成可安装插件。",
                       "size": "11KB",
-                      "lastModified": "2026-05-24T12:56:24.670Z",
-                      "wordCount": 7235
+                      "lastModified": "2026-05-24T14:23:33.381Z",
+                      "wordCount": 6761
                     }
                   ]
                 },
@@ -39634,10 +40322,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出正确选择，并提供无 Plugin 支持工具的替代方案。",
+                      "description": "通过对比矩阵、选型决策树和团队协作策略，帮助开发者在 Plugin、Skill、MCP、Rules 四大扩展机制中做出更稳妥的选择，并给出 Codex、Claude Code 与无独立 Plugin 体系工具的落地方案。",
                       "size": "11KB",
-                      "lastModified": "2026-05-24T12:56:24.671Z",
-                      "wordCount": 6613
+                      "lastModified": "2026-05-24T14:25:23.674Z",
+                      "wordCount": 6261
                     }
                   ]
                 }
@@ -39836,10 +40524,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。",
-                      "size": "10KB",
-                      "lastModified": "2026-05-24T12:56:24.684Z",
-                      "wordCount": 6289
+                      "description": "按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。",
+                      "size": "12KB",
+                      "lastModified": "2026-05-24T14:29:34.177Z",
+                      "wordCount": 7144
                     }
                   ]
                 },
@@ -39869,10 +40557,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "按 2026-05-22 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些只应视为工具专属扩展，以及哪些旧说法已不适合再当作默认事实。",
+                      "description": "按 2026-05-24 重新整理 Agent Skills 的进阶写法，重点区分哪些能力仍然稳定可用、哪些属于规范层字段、哪些只是工具专属扩展，以及哪些旧说法不应再当作默认事实。",
                       "size": "10KB",
-                      "lastModified": "2026-05-24T12:56:24.685Z",
-                      "wordCount": 6232
+                      "lastModified": "2026-05-24T14:29:34.181Z",
+                      "wordCount": 6428
                     }
                   ]
                 },
@@ -39902,10 +40590,36 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。",
+                      "description": "按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。",
                       "size": "10KB",
-                      "lastModified": "2026-05-24T12:56:24.687Z",
-                      "wordCount": 7408
+                      "lastModified": "2026-05-24T15:07:50.715Z",
+                      "wordCount": 7923
+                    },
+                    {
+                      "type": "file",
+                      "title": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+                      "frontmatterTitle": "补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）",
+                      "fileTitle": "补充篇_前端开发常用Skills清单与选型建议_2026-05",
+                      "filename": "补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+                      "path": "AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md",
+                      "date": "2026-05-24T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "Agent Skills",
+                        "Skills",
+                        "前端开发",
+                        "Codex",
+                        "Cursor",
+                        "Kiro",
+                        "Claude Code"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [],
+                      "description": "面向前端开发者，按“现成可用”和“强烈建议自定义”两类整理常用 Skills 清单，重点说明哪些最值得优先装、哪些更适合团队自己做，以及它们和 MCP、Rules 的边界。",
+                      "size": "11KB",
+                      "lastModified": "2026-05-24T15:07:50.713Z",
+                      "wordCount": 5708
                     }
                   ]
                 },
@@ -39936,10 +40650,10 @@
                       ],
                       "category": "AI工具",
                       "attachments": [],
-                      "description": "按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。",
-                      "size": "8KB",
-                      "lastModified": "2026-05-24T12:56:24.688Z",
-                      "wordCount": 4852
+                      "description": "按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。",
+                      "size": "9KB",
+                      "lastModified": "2026-05-24T14:29:34.184Z",
+                      "wordCount": 5321
                     }
                   ]
                 }
@@ -39977,8 +40691,8 @@
                   "attachments": [],
                   "description": "面向第一次接触 OpenClaw-CN 的读者，按安装、首次启动、健康检查与首轮内容产出的顺序整理本地部署实战，帮助先把环境跑通。",
                   "size": "5KB",
-                  "lastModified": "2026-05-24T13:33:26.439Z",
-                  "wordCount": 3433
+                  "lastModified": "2026-05-24T13:49:15.050Z",
+                  "wordCount": 3435
                 },
                 {
                   "type": "file",
@@ -40001,8 +40715,8 @@
                   "attachments": [],
                   "description": "面向已经安装 OpenClaw-CN 但经常遇到重启后失效、命令不生效或网关不稳定的用户，系统整理 Windows 环境下的命令配置与排障流程。",
                   "size": "13KB",
-                  "lastModified": "2026-05-24T13:37:33.427Z",
-                  "wordCount": 9538
+                  "lastModified": "2026-05-24T13:49:15.053Z",
+                  "wordCount": 9540
                 },
                 {
                   "type": "file",
@@ -40025,8 +40739,8 @@
                   "attachments": [],
                   "description": "聚焦 OpenClaw101 Day1 的认知层与人格层配置，解释 SOUL、USER、AGENTS 等文件为什么会长期影响助手表现，适合作为龙虾体系的心智模型篇。",
                   "size": "5KB",
-                  "lastModified": "2026-05-24T13:38:14.710Z",
-                  "wordCount": 2404
+                  "lastModified": "2026-05-24T13:49:15.051Z",
+                  "wordCount": 2406
                 },
                 {
                   "type": "file",
@@ -40048,8 +40762,8 @@
                   "attachments": [],
                   "description": "按 OpenClaw101 Day1 到 Day7 的顺序整理成可执行路线图，帮助把零散课程资料转成每天可落地的学习与验收清单。",
                   "size": "6KB",
-                  "lastModified": "2026-05-24T13:41:05.898Z",
-                  "wordCount": 3474
+                  "lastModified": "2026-05-24T13:49:15.057Z",
+                  "wordCount": 3476
                 },
                 {
                   "type": "file",
@@ -40070,9 +40784,9 @@
                   "category": "AI工具",
                   "attachments": [],
                   "description": "以命令字典的方式拆解 OpenClaw101 全流程中常见命令、参数与使用场景，适合作为排障和日常操作时的速查手册。",
-                  "size": "15KB",
-                  "lastModified": "2026-05-24T13:41:06.061Z",
-                  "wordCount": 11756
+                  "size": "16KB",
+                  "lastModified": "2026-05-24T13:49:15.055Z",
+                  "wordCount": 11758
                 },
                 {
                   "type": "file",
@@ -40094,8 +40808,8 @@
                   "attachments": [],
                   "description": "将 OpenClaw-CN 日常使用中最常查的命令、状态判断和配置文件入口压缩成一页速查稿，适合作为开机即用的排查底图。",
                   "size": "4KB",
-                  "lastModified": "2026-05-24T13:41:06.215Z",
-                  "wordCount": 2670
+                  "lastModified": "2026-05-24T13:49:15.056Z",
+                  "wordCount": 2672
                 }
               ]
             }
@@ -40170,8 +40884,8 @@
               "children": [
                 {
                   "type": "file",
-                  "title": "CC Switch 快速上手与核心概念（v3.14.1）",
-                  "frontmatterTitle": "CC Switch 快速上手与核心概念（v3.14.1）",
+                  "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+                  "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
                   "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
                   "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -40188,15 +40902,15 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具的 Provider 切换、MCP 管理、系统提示词与 Skills 统一管理，本篇基于 v3.14.1 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-                  "size": "15KB",
-                  "lastModified": "2026-05-24T12:56:24.762Z",
-                  "wordCount": 8874
+                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
+                  "size": "16KB",
+                  "lastModified": "2026-05-24T14:09:34.303Z",
+                  "wordCount": 9390
                 },
                 {
                   "type": "file",
-                  "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
-                  "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）",
+                  "title": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
+                  "frontmatterTitle": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）",
                   "fileTitle": "第二篇_CCSwitch接入中转站与计费排查_2026-04",
                   "filename": "第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第二篇_CCSwitch接入中转站与计费排查_2026-04.md",
@@ -40213,15 +40927,15 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+                  "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
                   "size": "9KB",
-                  "lastModified": "2026-05-24T12:56:24.764Z",
-                  "wordCount": 4674
+                  "lastModified": "2026-05-24T14:10:38.108Z",
+                  "wordCount": 5013
                 },
                 {
                   "type": "file",
-                  "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
-                  "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05核对）",
+                  "title": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
+                  "frontmatterTitle": "第三篇：Claude Code 对接小米 MiMo Token Plan 配置说明（2026-05-24复核）",
                   "fileTitle": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05",
                   "filename": "第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第三篇_ClaudeCode对接小米MiMoTokenPlan配置说明_2026-05.md",
@@ -40238,15 +40952,15 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 2026-05-01 小米 MiMo 官方 Claude Code 与 Token Plan 文档核对，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、使用边界与 CC Switch 同步排查要点。",
-                  "size": "10KB",
-                  "lastModified": "2026-05-24T12:56:24.764Z",
-                  "wordCount": 6113
+                  "description": "基于 2026-05-24 小米 MiMo 官方 Claude Code 与 Token Plan 文档复核，整理 tp/sk 区分、区域 Base URL、模型映射、Windows 配置路径、1M 长上下文启用方式、使用边界与 CC Switch 同步排查要点。",
+                  "size": "11KB",
+                  "lastModified": "2026-05-24T14:10:38.110Z",
+                  "wordCount": 6796
                 },
                 {
                   "type": "file",
-                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
-                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）",
+                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
                   "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
                   "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -40263,10 +40977,10 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+                  "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
                   "size": "12KB",
-                  "lastModified": "2026-05-24T12:56:24.765Z",
-                  "wordCount": 6153
+                  "lastModified": "2026-05-24T14:10:38.113Z",
+                  "wordCount": 6221
                 }
               ]
             }
@@ -43682,7 +44396,7 @@
       ]
     }
   ],
-  "totalNotes": 412,
+  "totalNotes": 417,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-24T13:44:31.867Z"
+  "lastUpdated": "2026-05-24T15:09:22.355Z"
 }

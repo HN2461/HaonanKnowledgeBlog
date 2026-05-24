@@ -1,5 +1,5 @@
 ---
-title: 第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）
+title: 第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）
 date: 2026-04-27
 category: AI工具
 tags:
@@ -9,14 +9,14 @@ tags:
   - OpenRouter
   - Codex
   - Claude
-description: 结合 CC Switch 官方仓库与最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。
+description: 结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。
 ---
 
-# 第二篇：CC Switch 接入中转站与计费排查实战（2026-04核对）
+# 第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）
 
-> 资料核对时间：2026-04-27  
+> 资料核对时间：2026-05-24  
 > 说明：本文是上一节“中转站与计费规则”在 CC Switch 里的落地版本。  
-> 官方资料核对结果：GitHub Releases 当前可见最新版本为 `v3.13.0`，发布日期 `2026-04-10`。
+> 官方资料核对结果：GitHub Releases 当前可见最新版本为 `v3.15.0`，发布日期 `2026-05-16`。
 
 [[toc]]
 
@@ -29,10 +29,12 @@ CC Switch 不是模型服务，也不是中转站本身。
 它更像一个桌面控制台，帮你统一管理：
 
 - Claude Code
+- Claude Desktop
 - Codex
 - Gemini CLI
 - OpenCode
 - OpenClaw
+- Hermes Agent
 
 以及这些工具背后的：
 
@@ -95,7 +97,7 @@ CC Switch 不是模型服务，也不是中转站本身。
 
 ### 3.2 第二步：让模型列表自己说话
 
-CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 `/v1/models` 自动发现模型。
+CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 `/v1/models` 自动发现模型；最新版还补强了**部分 Anthropic 兼容 `/models` 发现**，并加入 **Full URL Endpoint Mode** 来兼容路径结构不标准的第三方接口。
 
 所以最省事的检查法是：
 
@@ -110,6 +112,8 @@ CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 
 - Key 错
 - 代理没通
 - 卖家接口本身不兼容
+- 第三方 Claude Provider 主动禁用了模型探测
+- 这家接口其实更适合改用 Full URL Endpoint Mode 手填
 
 ### 3.3 第三步：把模型映射写清楚
 
@@ -138,7 +142,8 @@ CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 
 - 做本地路由和故障转移
 - 看请求日志、用量和成本趋势
 - 看部分 Provider 的余额 / 配额
-- 自动发现 OpenAI 兼容模型列表
+- 自动发现 OpenAI 兼容模型列表，并在部分 Anthropic 兼容场景补强模型发现
+- 通过 Routing Support 标识快速判断某个 Provider 是否适合配合本地路由
 
 ### 4.2 它不能替你解决的
 
@@ -167,11 +172,12 @@ CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 
 
 它的前提是：**你的 Provider 或官方账号本身提供可查询接口**。
 
-CC Switch 的 `v3.13.0` 发布说明里明确提到，它加入了：
+从 `v3.13.0` 到 `v3.15.0` 的连续更新里，CC Switch 已经明确加入或补强了这些观察能力：
 
 - 官方 Claude / Codex / Gemini 的配额展示
 - 部分第三方 Provider 的余额展示
 - Token 用量与成本追踪
+- Codex OAuth Provider 的实时模型列表
 
 这说明 CC Switch 更像“观察窗口”，而不是“账单裁判”。
 
@@ -269,7 +275,7 @@ CC Switch 的 `v3.13.0` 发布说明里明确提到，它加入了：
 1. 记下真实模型 ID
 2. 确认协议类型
 3. 在 CC Switch 填 `Base URL` 和 `API Key`
-4. 先尝试拉模型列表
+4. 先尝试拉模型列表；如果拉不到，再判断是否该改走 Full URL Endpoint Mode 或手填模型
 5. 做一次最小请求测试
 6. 看是否能查余额 / 配额
 7. 记录限速与套餐说明

@@ -11,7 +11,7 @@ tags:
   - Kiro
   - Cursor
   - Claude Code
-description: 按 2026-05-22 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro 适合如何共享 skills，Cursor / Claude 当前又更适合用什么机制来沉淀团队规范。
+description: 按 2026-05-24 重新整理 Agent Skills 的团队协作方案与资料来源，重点说明 Codex / Kiro / Cursor / Claude 当前如何共享 skills，以及 rules / AGENTS / CLAUDE / commands 分别适合沉淀什么。
 ---
 
 # Agent Skills 团队协作与社区资源
@@ -20,13 +20,15 @@ description: 按 2026-05-22 重新整理 Agent Skills 的团队协作方案与�
 
 很多团队共享失败，不是因为 skill 写得不好，而是因为一开始就选错了载体。
 
-到 2026-05-22 这次复核为止，更实用的划分是：
+到 2026-05-24 这次复核为止，更实用的划分是：
 
 | 目标 | 更推荐的载体 |
 | ---- | ------------ |
 | Codex 的可复用工作流 | `SKILL.md` 技能目录 |
 | Kiro 的可复用工作流 | `.kiro/skills/` |
+| Cursor 的任务流程包 | Cursor skills |
 | Cursor 的项目长期规范 | `.cursor/rules` 或根目录 `AGENTS.md` |
+| Claude Code 的任务流程包 | Claude skills |
 | Claude Code 的快捷工作流 | `.claude/commands/` |
 | 长期始终生效的团队背景知识 | `AGENTS.md` / `CLAUDE.md` / rules / memory |
 
@@ -167,17 +169,27 @@ my-project/
 
 ---
 
-## 四、Cursor 团队共享：现在更适合共享 Rules / `AGENTS.md`
+## 四、Cursor 团队共享：现在应分成 Skills 与 Rules 两层
 
-Cursor 这轮最稳的官方文档重心不是 skill 目录，而是：
+Cursor 当前官方能明确确认的是：
 
+- 2.4 已明确支持 Agent Skills
 - `.cursor/rules`
 - 用户 Rules
 - 根目录 `AGENTS.md`
 
 所以团队在 Cursor 里做共享时，更推荐：
 
-## 4.1 共享 `.cursor/rules`
+## 4.1 共享 Cursor skills
+
+适合：
+
+- PR 审查
+- 发布检查
+- 文档刷新
+- 事故排障这类按任务触发的流程包
+
+## 4.2 共享 `.cursor/rules`
 
 适合：
 
@@ -185,7 +197,7 @@ Cursor 这轮最稳的官方文档重心不是 skill 目录，而是：
 - 按任务类型控制规则
 - 想把约束结构化管理
 
-## 4.2 共享根目录 `AGENTS.md`
+## 4.3 共享根目录 `AGENTS.md`
 
 适合：
 
@@ -207,26 +219,37 @@ Cursor 这轮最稳的官方文档重心不是 skill 目录，而是：
 - Avoid bypassing the service layer
 ```
 
-这比硬把所有东西塞进“skill 仓库”更贴近 Cursor 当前官方主路径。
+这比把长期规则和任务流程混成一层更贴近 Cursor 当前官方能力边界。
 
 ---
 
-## 五、Claude Code 团队共享：更偏命令和记忆文件
+## 五、Claude Code 团队共享：优先 Skills，再配 Commands / `CLAUDE.md`
 
-Claude Code 当前最稳的官方页面是 slash commands 文档，所以团队协作时更推荐先共享：
+Claude Code 当前更稳的官方口径已经是 skills，因此团队协作时更推荐先共享：
 
+- Claude skills
 - `.claude/commands/`
 - `CLAUDE.md`
 
-### 5.1 什么时候共享 `.claude/commands/`
+### 5.1 什么时候共享 Claude skills
+
+当团队经常重复执行同类流程，并且需要目录化资源时，例如：
+
+- PR 复查
+- 提交说明生成
+- 发布检查
+- 附带 `references/`、`scripts/` 的复杂工作流
+
+### 5.2 什么时候共享 `.claude/commands/`
 
 当团队经常重复执行同类流程时，例如：
 
 - PR 复查
 - 提交说明生成
 - 发布检查
+- 想提供一个非常顺手的快捷入口
 
-### 5.2 什么时候共享 `CLAUDE.md`
+### 5.3 什么时候共享 `CLAUDE.md`
 
 当团队想长期固定：
 
@@ -250,7 +273,9 @@ Claude Code 当前最稳的官方页面是 slash commands 文档，所以团队�
 
 - [OpenAI Skills 仓库](https://github.com/openai/skills)
 - [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Cursor 2.4 更新说明](https://cursor.com/changelog/2-4)
 - [Cursor Rules 文档](https://docs.cursor.com/context/rules-for-ai)
+- [Claude Code Skills 文档](https://docs.anthropic.com/en/docs/claude-code/skills)
 - [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 
 这些资源的价值在于：
@@ -343,11 +368,11 @@ Claude Code 当前最稳的官方页面是 slash commands 文档，所以团队�
 这次复核后，团队协作最稳的思路不是“所有工具都去共享同一种 skill 仓库”，而是：
 
 - Codex / Kiro：确实适合共享 skills
-- Cursor：优先共享 rules 与 `AGENTS.md`
-- Claude Code：优先共享 commands 与 `CLAUDE.md`
+- Cursor：skills 负责任务流程，rules / `AGENTS.md` 负责长期规范
+- Claude Code：skills 负责主流程，commands / `CLAUDE.md` 负责快捷入口与长期记忆
 
 如果主人要给团队定一条最简单的落地规则，我建议直接用这句：
 
-**长期规范进 rules / AGENTS / memory，任务流程进 skills / commands，可执行逻辑进 scripts。**
+**长期规范进 rules / AGENTS / CLAUDE / memory，任务流程先进 skills，快捷入口再用 commands，可执行逻辑进 scripts。**
 
 这样以后就算产品继续演进，迁移成本也会低很多。

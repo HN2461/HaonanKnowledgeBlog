@@ -10,7 +10,7 @@ tags:
   - Cursor
   - Codex
   - 兼容性
-description: 按 2026-05-22 重新复核 Agent Skills 的通用层与工具差异，重点说明 Kiro / Codex 当前可确认支持什么、Cursor / Claude Code 现在更推荐什么，以及哪些旧说法不应再当通用真相。
+description: 按 2026-05-24 重新复核 Agent Skills 的通用层与工具差异，重点说明哪些属于可移植基础层、哪些是 Kiro / Codex / Cursor / Claude 当前官方支持的 skills 能力，以及哪些旧说法需要纠正。
 ---
 
 # Agent Skills 开放标准与各工具兼容性全解
@@ -19,19 +19,19 @@ description: 按 2026-05-22 重新复核 Agent Skills 的通用层与工具差�
 
 **不要再把所有工具写成“完全一套玩法”。**
 
-到 2026-05-22 这次复核为止，更稳妥的结论是：
+到 2026-05-24 这次复核为止，更稳妥的结论是：
 
 - `一个目录 + 一个 SKILL.md` 这件事，确实已经形成了可移植的技能包思路。
 - Kiro 官方文档明确写了它遵循开放的 Agent Skills 标准。
 - Codex 这边也已经有成型的 skills 生态，本地实装目录里能直接看到 `~/.codex/skills/`、预装 `.system` skills，以及 OpenAI 官方维护的 `openai/skills` 仓库。
-- 但 Cursor 当前官方文档主轴是 `Rules` 和根目录 `AGENTS.md`，不是把 skills 当成唯一中心。
-- Claude Code 这轮核对到的官方稳定页面，重点也是自定义 slash commands，而不是一份覆盖所有“高级 skill 字段”的单一总规范页。
+- Cursor 当前官方已经明确支持 **Agent Skills in editor and CLI**，同时也继续强调 `Rules` 与根目录 `AGENTS.md`。
+- Claude Code 当前官方已经有完整的 **Skills** 文档，并明确说明自定义 commands 已并入 skills 体系。
 
 所以现在最安全的理解方式是：
 
 - **通用层**：`SKILL.md` 的目录化封装思路
 - **Kiro / Codex 层**：当前可以明确落地的 skills 目录机制
-- **Cursor / Claude 层**：当前官方文档更明确支持的规则与命令机制
+- **Cursor / Claude 层**：当前官方已支持的 skills 机制，以及配套的 rules / commands / project memory
 
 ---
 
@@ -42,8 +42,8 @@ description: 按 2026-05-22 重新复核 Agent Skills 的通用层与工具差�
 - Kiro 官方 `Agent Skills` 文档
 - OpenAI 官方 `openai/skills` 仓库
 - 本机当前真实存在的 `~/.codex/skills/` 目录结构
-- Cursor 官方 `Rules / AGENTS.md` 文档
-- Claude Code 官方 `slash commands` 文档
+- Cursor 官方 `Rules / AGENTS.md` 文档与 2.4 skills 更新
+- Claude Code 官方 `skills` 文档与 `slash commands` 文档
 
 凡是没有在这几类来源里再次确认的细节，这次都不再当成“稳定事实”写死。
 
@@ -95,7 +95,7 @@ description: Review pull requests for code quality, security issues, and test co
 ---
 ```
 
-### 4.1 现在建议只默认依赖这两个字段
+### 4.1 现在建议默认依赖的，仍然是这两个字段
 
 | 字段 | 现在的定位 | 说明 |
 | ---- | ---------- | ---- |
@@ -104,7 +104,15 @@ description: Review pull requests for code quality, security issues, and test co
 
 ### 4.2 其他字段怎么理解
 
-像下面这些字段：
+下面这些字段不能再一把抓地都说成“非标准”：
+
+- `metadata`
+- `license`
+- `compatibility`
+
+根据当前 Agent Skills 官方规范，`metadata`、`license`、`compatibility` 已经属于规范层字段。
+
+而下面这些能力，更适合视为**产品专属字段或版本相关扩展**：
 
 - `allowed-tools`
 - `disable-model-invocation`
@@ -114,13 +122,12 @@ description: Review pull requests for code quality, security issues, and test co
 - `model`
 - `effort`
 - `argument-hint`
-- `metadata`
-- `license`
-- `compatibility`
 
-这次统一降级为：
+所以现在更稳妥的分法是：
 
-**“某些工具、某些版本、某些机制可能支持，但不要默认它们属于所有工具都稳定支持的通用标准。”**
+- `name`、`description`：跨工具最稳的基础字段
+- `metadata`、`license`、`compatibility`：Agent Skills 规范层字段
+- 其余高级字段：先按具体产品、具体版本、具体官方页理解，不要默认跨工具完全通用
 
 如果主人追求跨工具复用，优先只写：
 
@@ -141,6 +148,7 @@ Kiro 官方文档这轮给出的信息相对清楚：
 - 支持 global 级：`~/.kiro/skills/`
 - 默认 agent 会自动发现这些 skills
 - 自定义 agent 不会自动加载，需要在 `resources` 里显式声明 `skill://...`
+- 也支持把 skill 作为 slash command 使用，并传入 `$ARGUMENTS`、`$1`、`$2`
 
 一个当前仍成立的 Kiro 自定义 agent 示例：
 
@@ -192,19 +200,20 @@ OpenAI 官方维护 `openai/skills` 仓库，并明确说明：
 
 ---
 
-## 5.3 Cursor：当前官方主轴是 Rules 和 `AGENTS.md`
+## 5.3 Cursor：现在应理解为 Skills 与 Rules 并存
 
-Cursor 当前官方文档最明确讲的是：
+截至 2026-05-24，Cursor 官方当前能明确确认的是：
 
+- 2.4 已明确宣布支持 Agent Skills，覆盖 editor 和 CLI
 - `.cursor/rules`
 - 用户级 Rules
 - 根目录 `AGENTS.md`
 - `.cursorrules` 是 legacy
 
-所以这轮我们不再把 Cursor 写成“和 Kiro / Codex 完全同形态的 skills 体系”，而改成更稳的结论：
+所以现在对 Cursor 更稳的结论是：
 
-- 如果主人在 Cursor 里要长期沉淀规范，**优先写 `.cursor/rules` 或根目录 `AGENTS.md`**
-- 如果某个版本或社区工作流支持 skill 风格目录，那也应被视为“兼容层或变体”，不要反过来把它当 Cursor 当前官方主轴
+- 如果主人要做**按任务发现的流程包**，可以正面使用 Cursor skills
+- 如果主人要做**长期常驻规范**，仍然优先写 `.cursor/rules` 或根目录 `AGENTS.md`
 
 这一点特别重要，因为很多旧文章会把：
 
@@ -217,9 +226,16 @@ Cursor 当前官方文档最明确讲的是：
 
 ---
 
-## 5.4 Claude Code：这轮能确认的是“自定义命令”能力
+## 5.4 Claude Code：现在应理解为 Skills 为总框架
 
-Claude Code 当前这轮最好核对到的官方页面，是自定义 slash commands 文档。它明确展示了：
+Claude Code 当前这轮能明确核对到的官方资料，已经不只是一页 slash commands，而是完整的 skills 体系。当前可以确认：
+
+- Claude Code 官方已有 `skills` 文档
+- 官方明确说明 custom commands 已并入 skills
+- slash command 形式仍然可用，适合做快捷入口
+- skills / commands 文档里都能看到参数占位与工具控制相关写法
+
+其中 slash command 文档里明确展示了：
 
 - `.claude/commands/`
 - `~/.claude/commands/`
@@ -232,8 +248,9 @@ Claude Code 当前这轮最好核对到的官方页面，是自定义 slash comm
 
 因此现在对 Claude Code 更稳的理解是：
 
-- 如果主人想找**官方稳定文档**，先从自定义命令体系理解
-- 某些“高级 skill 字段”即使在社区资料里常见，也不该直接写成“和 Kiro/Codex 一样的开放标准通用字段”
+- 如果主人想搭一套**任务流程包**，应优先按 Claude skills 理解
+- 如果主人想保留快捷入口，再把其中一部分做成 command 风格入口
+- 某些 Claude 专属高级字段即使已官方文档化，也不该直接外推成“所有 Agent Skills 实现都通用”
 
 换句话说：
 
@@ -247,7 +264,8 @@ Claude Code 当前这轮最好核对到的官方页面，是自定义 slash comm
 下面这些说法，这次都不再按“稳定事实”保留：
 
 - “30+ 工具都完全遵循同一套字段和触发规则”
-- “Cursor 官方就是 `.cursor/skills/` 为主”
+- “Cursor 只有 Rules，没有官方 Skills”
+- “Claude Code 只有 commands，没有官方 Skills”
 - “Claude Code 的高级 frontmatter 可以直接视作开放标准的一部分”
 - “所有工具都支持同样的自动激活、手动触发、权限控制、路径触发和子代理字段”
 - “某个全局别名目录一定跨工具通用”
@@ -292,16 +310,19 @@ description: Review code for bugs, edge cases, security issues, and maintainabil
 
 ### 7.3 如果目标是“在 Cursor 里稳定长期使用”
 
-优先考虑：
+长期规范优先考虑：
 
 - `.cursor/rules`
 - 根目录 `AGENTS.md`
+
+如果是按需触发的流程包，则可以直接做 Cursor skills。
 
 ### 7.4 如果目标是“在 Claude Code 里做强工作流”
 
 优先先确认：
 
-- 这件事是不是更适合做成 `.claude/commands/*.md`
+- 这件事是不是应该先做成 Claude skill
+- 是否还需要补一个 `.claude/commands/*.md` 作为快捷入口
 - 里面是否真的需要 `allowed-tools`、参数占位和 `!` 注入
 
 ---
@@ -314,7 +335,9 @@ description: Review code for bugs, edge cases, security issues, and maintainabil
 | 长期项目规范 | `AGENTS.md` / `CLAUDE.md` / `.cursor/rules` |
 | Codex 的个人能力包 | `~/.codex/skills/` |
 | Kiro 的团队工作流 | `.kiro/skills/` |
+| Cursor 的任务流程包 | Cursor skills |
 | Cursor 的全局/项目指令 | `Rules` 与根目录 `AGENTS.md` |
+| Claude Code 的任务流程包 | Claude skills |
 | Claude Code 的快捷任务入口 | `.claude/commands/` |
 
 一条最实用的判断线是：
@@ -330,11 +353,11 @@ description: Review code for bugs, edge cases, security issues, and maintainabil
 
 1. `SKILL.md` 仍然是一个很有价值的可移植封装思路。
 2. Kiro 和 Codex 现在都能把这套思路落到清晰的官方或实装目录上。
-3. Cursor 和 Claude Code 当前官方主文档的重心并不完全相同，所以别再把它们强行写成同一套产品形态。
+3. Cursor 和 Claude Code 现在都已经把 skills 正式摆上台面，但仍然各自保留了 rules、AGENTS、commands 这类配套机制。
 
 如果主人后面只想记一个“不过时版本”，就记这个：
 
-**跨工具先写最小 `SKILL.md`，落到具体工具时再分别接入 Kiro/Codex 的 skills 机制，或 Cursor/Claude 的 rules / commands 机制。**
+**跨工具先写最小 `SKILL.md`，落到具体工具时再分别接入 Kiro / Codex / Cursor / Claude 的 skills 机制；长期规范再补 rules / AGENTS / CLAUDE / commands。**
 
 ---
 
@@ -342,6 +365,8 @@ description: Review code for bugs, edge cases, security issues, and maintainabil
 
 - [Agent Skills 官方规范](https://agentskills.io/specification)
 - [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Cursor 2.4 更新说明](https://cursor.com/changelog/2-4)
 - [Cursor Rules 文档](https://docs.cursor.com/context/rules-for-ai)
+- [Claude Code Skills 文档](https://docs.anthropic.com/en/docs/claude-code/skills)
 - [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 - [OpenAI Skills 仓库](https://github.com/openai/skills)

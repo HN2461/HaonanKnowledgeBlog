@@ -10,7 +10,7 @@ tags:
   - Kiro
   - Cursor
   - Claude Code
-description: 按 2026-05-22 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor Rules 与 Claude Code 自定义命令中。
+description: 按 2026-05-24 重新整理的 Agent Skills 模板库，优先提供可移植基础模板，再说明如何分别落到 Codex、Kiro、Cursor、Claude Code 当前官方支持的 skills / rules / commands 机制中。
 ---
 
 # Agent Skills 场景模板与案例库
@@ -40,8 +40,8 @@ description: 按 2026-05-22 重新整理的 Agent Skills 模板库，优先提�
 
 - Kiro：直接按 `.kiro/skills/` 收纳
 - Codex：直接按 `~/.codex/skills/` 或项目 skills 收纳，并可补 `agents/openai.yaml`
-- Cursor：通常把同样内容改写成 `.cursor/rules` 或根目录 `AGENTS.md`
-- Claude Code：通常把同样内容改写成 `.claude/commands/*.md`
+- Cursor：任务流程优先保留为 skills，长期规范再改写成 `.cursor/rules` 或根目录 `AGENTS.md`
+- Claude Code：优先做成 skills，需要快捷入口时再补 `.claude/commands/*.md`
 
 ### 1.3 为什么要这样分
 
@@ -221,11 +221,22 @@ description: Audit release readiness by checking recent code changes, tests, rol
 
 ---
 
-## 四、Cursor 当前更推荐的等价改写
+## 四、Cursor：Skills 与 Rules 现在应配合使用
 
-Cursor 当前官方文档主轴是 `.cursor/rules` 与根目录 `AGENTS.md`，所以更实用的不是“硬抄 skill 目录”，而是把同一套工作流改写成 rule。
+Cursor 当前官方不再只是 rules 路线。更稳妥的理解是：
 
-## 4.1 用 `AGENTS.md` 承载项目级审查习惯
+- 任务型流程包可以正面做成 Cursor skills
+- 长期项目规范继续放在 `.cursor/rules` 与根目录 `AGENTS.md`
+
+## 4.1 用 Cursor skills 承载按需触发的流程包
+
+适合：
+
+- 只在某个任务里才会触发的复杂流程包
+- 需要 `references/`、`scripts/` 这类目录化资源
+- 想和 Kiro / Codex / Claude 的 portable skill 母版保持接近
+
+## 4.2 用 `AGENTS.md` 承载项目级审查习惯
 
 ```markdown
 # Project Instructions
@@ -243,26 +254,25 @@ Cursor 当前官方文档主轴是 `.cursor/rules` 与根目录 `AGENTS.md`，�
 - 每次都要生效的长期要求
 - 团队统一口径
 
-不适合：
-
-- 只在某个任务里才会触发的复杂流程包
-
-## 4.2 用 `.cursor/rules` 承载有范围的流程规则
+## 4.3 用 `.cursor/rules` 承载有范围的流程规则
 
 如果主人已经在 Cursor 里用 Project Rules，那么同样的审查模板更适合变成：
 
 - 某条 Agent Requested rule
 - 某条 Auto Attached rule
 
-而不是强行保留成 `SKILL.md` 文件夹。
+而不是强行让所有长期约束都塞进 skill 正文。
 
 ---
 
-## 五、Claude Code 当前更推荐的等价改写
+## 五、Claude Code：优先按 Skills 理解，再视情况补 Commands
 
-Claude Code 这轮最稳的官方能力是自定义 slash commands，所以更实用的做法通常是：
+Claude Code 这轮更稳的官方口径已经是 skills，总体更推荐：
 
-## 5.1 改写成命令文件
+- 主流程做成 Claude skill
+- 需要快捷入口时，再补 command 风格文件
+
+## 5.1 用命令文件做快捷入口
 
 目录：
 
@@ -290,7 +300,7 @@ Target: $ARGUMENTS
 
 - 贴合 Claude 当前官方文档
 - 参数和命令注入都有明确出处
-- 不需要把它伪装成“跨工具通用 skill”
+- 可以作为 skill 的快捷入口，而不需要把它伪装成“跨工具通用字段”
 
 ---
 
@@ -315,8 +325,8 @@ description: Verify release readiness by checking tests, risky changes, rollback
 适配建议：
 
 - Kiro / Codex：保留 skill 目录
-- Cursor：改成 rule
-- Claude：改成自定义命令
+- Cursor：保留成 skill，或按长期约束拆成 rule
+- Claude：先做 skill，需要快捷入口再补 command
 
 ## 6.2 文档生成
 
@@ -379,9 +389,17 @@ description: Review code and configuration for auth mistakes, secret exposure, u
 
 这样写出来的模板，不一定“最炫”，但最抗过时，也最容易真正落地。
 
+## 九、延伸阅读
+
+如果主人想看**更贴近前端开发**的 skills 清单，而不是继续看抽象模板，可以直接接着看：
+
+- [补充篇：前端开发常用 Skills 清单与选型建议（2026-05复核）](补充篇_前端开发常用Skills清单与选型建议_2026-05.md)
+
 ## 参考资料
 
 - [Kiro Agent Skills 文档](https://kiro.dev/docs/cli/skills/)
+- [Cursor 2.4 更新说明](https://cursor.com/changelog/2-4)
 - [Cursor Rules 文档](https://docs.cursor.com/context/rules-for-ai)
+- [Claude Code Skills 文档](https://docs.anthropic.com/en/docs/claude-code/skills)
 - [Claude Code Slash Commands 文档](https://docs.anthropic.com/en/docs/claude-code/slash-commands)
 - [OpenAI Skills 仓库](https://github.com/openai/skills)

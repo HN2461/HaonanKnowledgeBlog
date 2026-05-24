@@ -1,5 +1,5 @@
 ---
-title: 第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）
+title: 第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）
 date: 2026-05-01
 category: AI工具
 tags:
@@ -9,12 +9,12 @@ tags:
   - WebDAV
   - Provider
   - Claude Code
-description: 基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 核对，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。
+description: 基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。
 ---
 
-# 第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05核对）
+# 第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）
 
-> 资料核对时间：2026-05-01  
+> 资料核对时间：2026-05-24  
 > 结论先说：**有这个功能。**CC Switch 官方明确支持 `导出配置`、`导入配置`、`自定义应用配置目录` 以及 `WebDAV 云同步`。  
 > 适合人群：像主人这样会在家里电脑、公司电脑、其他设备之间来回切换，而且手里有多家中转 Provider，不想每次都重新手配的人。
 
@@ -64,6 +64,8 @@ description: 基于 2026-05-01 CC Switch 官方 README、Settings 手册与 Conf
 - MCP 服务器配置
 - Prompts 预设
 - 应用设置
+
+这里说的官方导出路径，是**应用内生成的 JSON 备份文件**，不是让你直接拷贝 SQLite 数据库去赌能不能在另一台机器上原样恢复。
 
 这意味着：
 
