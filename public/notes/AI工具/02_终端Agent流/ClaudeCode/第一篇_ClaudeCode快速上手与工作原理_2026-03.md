@@ -1,309 +1,344 @@
 ---
-title: 第一篇：Claude Code 快速上手与工作原理（2026-05复核）
-date: 2026-05-01
+title: 第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）
+date: 2026-05-30
 category: AI工具
 tags:
   - Claude Code
-  - 快速上手
-  - 权限模式
-  - 上下文
+  - npm
+  - 安装更新
   - CLI
-description: 按 2026-05-01 Claude Code 官方 Quickstart、Interactive Mode、Permission Modes 与 How Claude Code Works 文档复核，更新安装方式、会话恢复、上下文管理与当前权限模式说明。
+  - 权限模式
+  - 程序员上手
+description: 基于 2026-05-30 Claude Code 官方 Getting Started、Installation、Interactive Mode、Commands、Permission Modes 与 How Claude Code Works 文档重写，聚焦程序员真正需要的 npm 安装更新、终端读屏、权限模式与第一轮最小工作流。
 ---
 
-# 第一篇：Claude Code 快速上手与工作原理（2026-05复核）
+# 第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）
 
-> 核对时间：2026-05-01  
-> 适合人群：第一次上手 Claude Code，或者之前只看过 2026-03 左右教程、现在想知道哪些地方已经变了的人。  
-> 结论先说：**快速开始主线没变，但模式、上下文管理和权限细节已经比早期教程丰富很多。**
+> 这篇只解决 4 件事：怎么装、怎么更新、怎么看终端、怎么开始第一轮真实任务。  
+> 如果主人是程序员，先把这 4 件事跑顺，比先学一堆高级能力更重要。
 
 [[toc]]
 
 ---
 
-## 1. 开始前先准备什么
+## 先给结论
 
-准备清单：
+把 Claude Code 理解成一个会读仓库、会调工具、会改文件的终端代码代理就够了。  
+第一天最重要的不是背命令，而是先跑顺这条主线：
 
-- 一个可用终端
-- 一个真实代码仓库
-- 可用账号之一：Claude 订阅、Claude Console 账户，或第三方云提供商接入
-
-现在 Claude Code 不只在 CLI 里可用，也能在：
-
-- Claude Code on the web
-- Desktop
-- VS Code
-- JetBrains
-- Slack
-- CI / 自动化场景
-
-如果主人只想先体验，CLI 仍然是最直接的入口。
+1. 用 `npm` 装好
+2. 知道怎么更新
+3. 看得懂终端提示
+4. 先让它读项目，再做一个小改动
 
 ---
 
-## 2. 安装 Claude Code
+## 1. 程序员最常用的主线：`npm` 安装与更新
 
-Anthropic 官方当前主推的安装方式仍然是安装脚本或原生分发：
+如果面向程序员写 Claude Code，`npm` 不能只是顺带一提。  
+按 2026-05-30 我复核的官方文档，`npm` 现在仍然是官方支持的常用安装方式之一。
+
+### 安装
 
 ```bash
-# macOS / Linux / WSL
-curl -fsSL https://claude.ai/install.sh | bash
+npm install -g @anthropic-ai/claude-code
 ```
+
+官方当前要求是 `Node.js 18+`。  
+另外有个关键点要知道：虽然你是通过 npm 安装，但拉下来的不是“纯 JS 小脚本”，而是对应平台的 Claude Code 二进制。
+
+### 更新
+
+如果你走的是 npm 线路，最稳的更新命令是：
+
+```bash
+npm install -g @anthropic-ai/claude-code@latest
+```
+
+不要默认用：
+
+```bash
+npm update -g @anthropic-ai/claude-code
+```
+
+因为它不一定把你带到最新版本。
+
+### 实战提醒
+
+1. 不要混用多种安装渠道
+2. 更新异常先看 `claude doctor`
+3. 如果版本不对，先查 PATH 里到底哪一份 `claude` 在生效
+
+---
+
+## 2. 装完先确认：当前跑的是哪一份 Claude
+
+这一步很程序员，也很有必要。
+
+Windows：
 
 ```powershell
-# Windows PowerShell
-irm https://claude.ai/install.ps1 | iex
+where.exe claude
 ```
 
-```bat
-:: Windows CMD
-curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd
+macOS / Linux / WSL：
+
+```bash
+which claude
 ```
 
-补充：
+然后进 Claude Code 里看：
 
-- `brew install --cask claude-code`
-- `winget install Anthropic.ClaudeCode`
+```text
+/status
+```
 
-什么时候还会看到 `npm install -g @anthropic-ai/claude-code`？
+这样可以避免后面出现这种错觉：
 
-- 一些第三方接入文档还在用这个流程
-- 比如智谱 GLM 当前官方接入页就还是这么写
-
-但如果主人是走 Anthropic 官方路径，优先按官方安装脚本来。
+- 你以为更新了，其实跑的还是旧版本
+- 你以为自己用的是 npm 安装，结果 PATH 指到了别的渠道
 
 ---
 
-## 3. 登录与启动会话
+## 3. 第一次启动：别在空目录里学
 
-进入项目目录后直接启动：
+Claude Code 真正的价值在真实仓库里。  
+所以别只在桌面空文件夹里敲：
 
 ```bash
-cd /path/to/your/project
 claude
 ```
 
-如果没有自动进入登录流程，可手动运行：
-
-```text
-/login
-```
-
-现在还有几个很实用的入口：
-
-- `/status`：看当前版本、模型、账号和连接状态
-- `/ide`：看 IDE 集成状态
-- `/doctor`：检查安装与设置问题
-
-也可以用 `/login` 手动触发登录。登录后凭证会被保存，下次无需重复登录。
-
----
-
-## 4. 第一轮提问，别急着让它改代码
-
-第一次进入项目，先问高层问题最省心：
-
-```text
-这个项目做什么？
-主入口点在哪里？
-解释一下目录结构
-列出我应该先读的 5 个文件
-```
-
-这样做的目的不是“聊天”，而是先让 Claude 建立正确上下文。  
-如果一上来就让它改，很容易在没读懂仓库时就开始误操作。
-
----
-
-## 5. 第一次改动，建议走“小步可验证”
-
-示例任务：
-
-```text
-在主文件里加一个 hello world 函数，并告诉我你改了什么
-```
-
-更稳的节奏通常是：
-
-1. 先让它说明准备改哪几个文件
-2. 再执行改动
-3. 最后让它给出验证方式
-
-如果主人愿意放宽一步一步确认的成本，可以切到 `acceptEdits`。
-
-### 5.1 在 Claude Code 中使用 Git
-
-示例提示：
-
-```text
-我更改了哪些文件？
-用描述性消息提交我的更改
-创建一个名为 feature/quickstart 的新分支
-显示我最后的 5 次提交
-帮我解决合并冲突
-```
-
-### 5.2 修复错误或添加功能
-
-示例提示：
-
-```text
-向用户注册表单添加输入验证
-有一个错误，用户可以提交空表单 - 修复它
-```
-
-Claude 会定位相关代码、理解上下文、实现修复，并在可用时运行测试。
-
-### 5.3 其他常见工作流示例
-
-```text
-重构身份验证模块以使用 async/await 而不是回调
-为计算器函数编写单元测试
-使用安装说明更新 README
-审查我的更改并建议改进
-```
-
----
-
-## 6. Claude Code 如何工作
-
-核心心智仍然是这一套：
-
-1. 收集上下文
-2. 调工具行动
-3. 检查结果
-4. 再决定下一步
-
-也就是官方常说的 agentic loop。
-
-Claude Code 本身不是单纯“聊天框”，而是：
-
-- 模型
-- 工具系统
-- 上下文装配
-- 权限与执行环境
-
-这四者一起工作，才形成“能读代码、能改文件、能跑命令、能验证结果”的编码代理。
-
----
-
-## 7. 会话、恢复与上下文管理
-
-当前会话管理比旧教程里更重要，建议主人重点记住下面几个命令：
-
-- `claude --continue`：继续当前目录最近一次会话
-- `claude --resume`：打开会话选择器
-- `--fork-session`：从现有历史分叉新会话
-- `/context`：看当前上下文占用
-- `/compact`：压缩上下文但保留主线
-- `/clear`：开一个全新上下文
-- `/recap`：手动生成当前会话一句话总结
-
-几个要点：
-
-- 恢复会话后，之前会话里的权限放行不会自动继承
-- `/compact` 适合“继续同一个任务，但别再带着整个长对话跑”
-- `/clear` 适合“我要做一个全新任务”
-
----
-
-## 8. 当前权限模式，已经不止 3 个
-
-这是 2026-05 和早期教程差异最大的地方之一。
-
-当前常见模式：
-
-1. `default`
-   - 每次关键动作问你
-2. `acceptEdits`
-   - 自动接受工作目录内文件改动
-   - 还会自动放行常见文件系统 Bash 命令，如 `mkdir`、`touch`、`rm`、`mv`、`cp`、`sed`
-3. `plan`
-   - 只分析和出计划，不执行改动
-4. `auto`
-   - 研究预览能力，由分类器替你处理一部分安全权限请求
-   - 是“全手动”和 `--dangerously-skip-permissions` 之间的中间层
-5. `bypassPermissions`
-   - 完全跳过权限提示
-6. `dontAsk`
-   - 默认拒绝工具，除非预先允许
-
-要点：
-
-- `Shift+Tab` 只会循环当前环境里“可见”的模式，不是所有环境都有全部模式
-- `auto` 和 `bypassPermissions` 需要额外条件或设置才会出现
-- `dontAsk` 不会出现在循环里，通常要通过启动参数或配置指定
-
-启动时可直接指定：
+更推荐这样：
 
 ```bash
-claude --permission-mode plan
-claude --permission-mode acceptEdits
-claude --dangerously-skip-permissions
+cd your-project
+claude
+```
+
+### 先认欢迎页，不然第一屏信息白白浪费了
+
+> 下面不用截图，直接用一张 Mermaid 文字图把欢迎页最该看的信息抽出来。  
+> 主人以后复习时，看这几块就能立刻想起官方界面在说什么。
+
+```mermaid
+flowchart LR
+  A["Claude Code 欢迎页"] --> B["左上版本号<br/>先确认是不是你以为的那一版"]
+  A --> C["右侧 Tips for getting started<br/>告诉你下一步最该做什么"]
+  A --> D["What's new<br/>最近新增了什么能力"]
+  A --> E["底部模型 / 计费线路 / 当前目录<br/>确认你现在到底在什么仓库和线路里"]
+```
+
+你以后看到欢迎页，先抓 3 个点：
+
+- 左上：版本号，排查问题和确认更新时先看它
+- 右侧：`Tips for getting started` 和 `What's new`，告诉你下一步做什么、最近刚加了什么
+- 底部：当前模型 / 计费线路 / 当前目录，决定你到底在哪个仓库、哪条线路里工作
+
+第一轮不要让它直接大改，先让它解释项目：
+
+```text
+先不要修改任何文件。
+请先阅读这个仓库，然后告诉我：
+1. 这是个什么项目
+2. 主要目录怎么分工
+3. 入口文件在哪里
+4. 如果我是第一次接手，先看哪几个文件
 ```
 
 ---
 
-## 9. 为什么很多老教程会误导你
+## 4. 终端里常见英文提示，主人至少要看懂这些
 
-如果主人看的是 2026-03 左右的视频或博客，最常见的误导点有这些：
+很多人不是不会用，而是根本没读懂终端在说什么。
 
-- 把模式说成只有默认 / 自动接受编辑 / Plan 三种
-- 把 `acceptEdits` 说成“只自动写文件，不会自动跑命令”
-- 把危险模式命令写成 `claude dangerously-skip-permissions`
-- 把 `Ctrl+O` 说成“展示详细思考”
+先看这一张文字图，先把“过程提示”和“真实动作”分开：
 
-现在更准确的说法是：
+```mermaid
+flowchart TD
+  A["终端状态词"] --> B["过程提示<br/>thinking / reading / searching / tool use"]
+  A --> C["真实动作<br/>permission required / running command / applying edit"]
+  B --> D["说明 Claude 在组织上下文、读代码、准备调用工具"]
+  C --> E["说明它要你确认、已经跑命令，或者已经开始改文件"]
+```
 
-- 模式体系已经扩展
-- `acceptEdits` 已经会自动放行一部分低风险文件系统命令
-- 危险模式应该写成 `claude --dangerously-skip-permissions`
-- `Ctrl+O` 是 transcript viewer，主要看工具调用与执行明细
+### `thinking`
 
----
+表示 Claude 在组织回答或规划，不代表已经执行了动作。
 
-## 10. 新手第一周最值得养成的习惯
+### `reading` / `searching`
 
-我的建议是：
+表示它在读文件、查代码、建上下文。
 
-1. 先问清楚，再让它改
-2. 复杂任务先 `/plan`
-3. 改完就要验证，不要只看“它说改好了”
-4. 长会话适时 `/compact`
-5. 高风险命令别轻易开 `bypassPermissions`
+### `tool use`
 
-这套习惯比记 50 个命令更值钱。
+表示它准备调用工具，比如读文件、搜代码、跑命令、改文件。
 
----
+### `permission required`
 
-## 11. 最小验证清单
+表示这一步需要你确认。  
+这不是“卡你”，而是在告诉你：它要开始做真实动作了。
 
-1. 运行 `claude` 能进入会话
-2. `/help` 能看到命令列表
-3. `/status` 能看到当前版本和模型
-4. 输入“这个项目做什么？”能拿到结构化概览
-5. `Shift+Tab` 或模式选择器能切换到 `plan`
-6. `/context` 能看到上下文占用
-7. `/compact` 能正常工作
+### `running command`
 
----
+表示它正在执行终端命令。
 
-## 12. 排障清单
+### `applying edit`
 
-1. Windows 无法安装或命令缺失：确认已安装 Git for Windows
-2. Homebrew/WinGet 版本过旧：手动执行升级命令
-3. 恢复会话后需要再次授权：这是正常行为，权限不会继承
-4. 多个终端恢复同一会话导致对话混乱：改用 `--fork-session`
-5. 不确定安装是否正常：在会话内运行 `/doctor` 做诊断
-6. 上下文频繁被压缩：把规则写入 `CLAUDE.md` 并用 `/compact` 控制保留
+表示它已经开始改文件。
+
+你真正要养成的习惯是：  
+不要只看它“说了什么”，也要看它“做了什么”。
+
+记忆法可以压成一句话：
+
+- `thinking`、`reading`、`tool use` 更像过程提示
+- `running command`、`applying edit` 才是已经进入真实动作
 
 ---
 
-## 13. 参考资料
+## 5. 权限模式，前期先记这几个就够
 
-- https://code.claude.com/docs/en/quickstart
-- https://code.claude.com/docs/en/how-claude-code-works
+前期不用把所有模式都记全，先知道这 4 个就够：
+
+### `default`
+
+最稳，适合第一次进项目和先分析后改动。
+
+### `acceptEdits`
+
+适合已经愿意让它频繁改文件，但还不想放得太开的时候。
+
+### `plan`
+
+适合大改前只做分析和计划，这个模式很值得长期保留。
+
+### `auto`
+
+更偏效率推进，但不是每个人都会看到。  
+如果主人平时没见过 `auto`，大概率是你的账号或运行场景本来就不显示它。
+
+再补一个非常实用的官方快捷键：
+
+- `Shift+Tab`：循环切换权限模式
+
+按 Claude Code 官方 `permission-modes` 和 `interactive-mode` 文档，CLI 里可以直接用 `Shift+Tab` 在：
+
+- `default`
+- `acceptEdits`
+- `plan`
+- 以及你启用过的 `auto`、`bypassPermissions`
+
+这些模式之间切换。
+
+---
+
+## 6. 第一天最该会的命令
+
+前期先记最有用的几条：
+
+- `/help`：看命令列表
+- `/status`：看当前状态
+- `/resume`：恢复会话
+- `/compact`：压缩上下文
+- `/doctor`：排查安装和环境问题
+- `/skills`：看当前能发现的 skills / commands
+- `/mcp`：看当前 MCP 状态
+
+你不需要第一天把命令背全，但至少要知道遇到问题先去哪看。
+
+### 再记一组最常用快捷键，真的能省很多事
+
+先不要背整本键位表，先记这几类最高频动作：
+
+```mermaid
+flowchart TD
+  A["高频快捷键"] --> B["看过程<br/>Ctrl+O 详细转录<br/>Ctrl+E show all"]
+  A --> C["找历史 / 改长输入<br/>Ctrl+R 历史<br/>Ctrl+G 或 Ctrl+X Ctrl+E 外部编辑器"]
+  A --> D["并行与任务<br/>Ctrl+B 放后台<br/>Ctrl+T 看任务列表"]
+  A --> E["切模式 / 模型<br/>Shift+Tab 权限模式<br/>Alt/Option+P/T/O 切模型和思考强度"]
+```
+
+我建议先记这几组：
+
+- `Ctrl+O`：打开详细转录，专门看工具调用过程、MCP 调用和执行细节
+- `Ctrl+E`：在转录视图里切换 `show all`，把隐藏内容展开
+- `Ctrl+R`：搜索你过去写过的命令和 prompt
+- `Ctrl+B`：把 bash 命令或 agent 放到后台继续跑
+- `Ctrl+T`：显示或隐藏任务列表
+- `Ctrl+G` 或 `Ctrl+X Ctrl+E`：把当前 prompt 打开到外部编辑器里
+- `Alt+P` / `Option+P`：切模型
+- `Alt+T`、`Alt+O` / `Option+T`、`Option+O`：切 extended thinking、切 fast mode
+
+再强调两个边界：
+
+- `Ctrl+E` 不是任何时候都能按，它主要是你已经进入 `Ctrl+O` 的详细转录视图后才有意义
+- macOS 下部分 `Option` 快捷键要先把终端的 `Option` 配成 `Meta`
+
+---
+
+## 7. 第一轮最小任务，怎么练最有手感
+
+第一轮别做大任务，按这个顺序练：
+
+### 先让它解释
+
+```text
+先不要修改文件。
+请解释首页是从哪里渲染出来的，涉及哪些组件、路由和数据来源。
+```
+
+### 再让它定位一个小改动
+
+```text
+请只定位首页标题和副标题的来源，先不要修改。
+告诉我应该改哪几个文件。
+```
+
+### 最后再放权给一个小改动
+
+```text
+现在开始修改：
+1. 只改首页标题文案
+2. 不要顺手改样式
+3. 改完后告诉我如何验证
+```
+
+然后你自己再做一轮验证。  
+这是第一天最值得练的节奏。
+
+---
+
+## 8. 程序员第一周最容易踩的坑
+
+1. 装了多个渠道，自己不知道哪份在生效
+2. 第一轮就让它大改
+3. 没看懂终端提示，就一路确认
+4. 只看回答，不看真实改动和验证
+5. 一上来沉迷 skills、MCP、plugins，却没跑通基础主线
+
+---
+
+## 9. 读完这篇后，主人马上该做什么
+
+1. 先用 `npm install -g @anthropic-ai/claude-code` 跑通安装
+2. 记住更新命令是 `npm install -g @anthropic-ai/claude-code@latest`
+3. 用 `where.exe claude` 或 `which claude` 看当前生效路径
+4. 进一个真实仓库运行 `claude`
+5. 先解释、再小改、再验证，做完第一轮最小任务
+
+如果这一步已经跑顺，下一篇最值得读的是：
+
+- [第三篇：Claude Code 常见工作流、Prompt 模板与最佳实践（程序员深度版）](#/note/AI工具/02_终端Agent流/ClaudeCode/第三篇_ClaudeCode常见工作流与最佳实践_2026-03)
+- [第四篇：Claude Code 设置、CLAUDE.md 与个性化配置（程序员深度版）](#/note/AI工具/02_终端Agent流/ClaudeCode/第四篇_ClaudeCode设置与个性化_2026-03)
+
+---
+
+## 参考资料
+
+- https://docs.anthropic.com/en/docs/claude-code/getting-started
+- https://docs.anthropic.com/en/docs/claude-code/installation
 - https://code.claude.com/docs/en/interactive-mode
-- https://code.claude.com/docs/en/permission-modes
 - https://code.claude.com/docs/en/commands
+- https://code.claude.com/docs/en/permission-modes
+- https://code.claude.com/docs/en/how-claude-code-works

@@ -129,5 +129,33 @@ export const history_2026_05_21_30 = [
         content: '第一点：新增 `public/notes/AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md`，围绕“前端开发最常用哪些 skills”这个问题，按“现成可参考”和“更适合自己做”两类整理前端技能清单，重点解释为什么页面实现应优先看 `frontend-design`、真实验收应优先看 `browser`，以及为什么 `responsive-debug`、`accessibility-audit`、`component-patterns`、`performance-audit` 更适合团队自己沉淀；第二点：更新 `public/notes/AI工具/03_规则机制层/Skill/03_场景模板与案例库/第三篇_AgentSkills场景模板与案例库.md`，补一段“延伸阅读”，把这篇前端补充清单接到主文末尾；第三点：更新 `public/notes/AI工具/03_规则机制层/Skill/目录.md`，让根目录页也能直接把“前端开发常用 skills 清单”引导给主人；第四点：本次整理优先依据 Kiro 官方 Agent Skills 文档、Cursor 官方 Agent Skills 文档与 `2.4` 更新说明、Claude Code 官方 skills 文档，以及本机当前可确认存在的 Codex `frontend-design` 与 `browser` skills，不把“官方支持 skills 机制”和“官方已经自带某个前端 skill”混写；第五点：按仓库规则先执行 `pwsh -File scripts/checkNodeRuntime.ps1` 预检，再运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保站内列表和搜索立即收录这篇补充清单。'
       }
     ]
+  },
+  {
+    id: 'history-2026-05-25',
+    date: '2026-05-25',
+    items: [
+      {
+        category: '内容上新',
+        time: '09:51',
+        title: '聚焦前端 UI 设计搜索补强 MCP 与 Skill 专项方案',
+        summary: '在既有前端常用清单基础上，新增“前端设计/UI 资料搜索”专项内容，补齐 UI 检索组合、关键词模板、筛选标准与从搜索到实现的流程化落地方案。',
+        content: '第一点：更新 `public/notes/AI工具/03_规则机制层/MCP/02_常用MCP清单/第二篇_前端开发常用搜索资料MCP推荐_2026-05.md`，新增“前端 UI 设计资料搜索专项”，明确 `Figma Dev Mode MCP + Context7 + shadcn MCP + Exa MCP` 的组合分工；第二点：在同文补充 UI 检索关键词模板、资料筛选标准与“搜索 -> 设计信息抽取 -> 组件落地 -> 浏览器验收 -> 回归验证”的最短流程；第三点：更新 `public/notes/AI工具/03_规则机制层/Skill/03_场景模板与案例库/补充篇_前端开发常用Skills清单与选型建议_2026-05.md`，新增 `ui-research-to-implementation` 专项 skill，补充输入输出定义、执行流程与触发词示例，让“前端 UI 搜索资料”从概念建议升级为可直接执行的任务模板。'
+      }
+    ]
+  },
+  {
+    id: 'history-2026-05-27',
+    date: '2026-05-27',
+    items: [
+      {
+        category: '内容上新',
+        time: '21:05',
+        title: '重构 Claude Code 系列为更适合小白顺读的小文章',
+        summary:
+          '围绕 `public/notes/AI工具/02_终端Agent流/ClaudeCode/` 整组系列，先按官方资料重构目录与 6 篇正文，再补做一轮官方最新口径复核，修正模式、skills、1M context、`/loop`、`/schedule` 与智谱 GLM 映射等时效性更强的说明。',
+        content:
+          '第一点：重写 `public/notes/AI工具/02_终端Agent流/ClaudeCode/目录.md`，改为“先说结论 + 推荐阅读顺序 + 每篇解决什么问题 + 最适合主人的阅读方式”的新手导向目录页，并补齐 Claude Code 与智谱 GLM 官方参考链接；第二点：重写第一篇到第六篇正文，统一加入“这篇读完能做什么”“先学主线、后学扩展”的节奏，把 `第一篇_ClaudeCode快速上手与工作原理_2026-03.md`、`第二篇_ClaudeCode功能全景与记忆机制_2026-03.md`、`第三篇_ClaudeCode常见工作流与最佳实践_2026-03.md`、`第四篇_ClaudeCode从0到1全攻略_视频笔记_2026-03.md`、`第五篇_ClaudeCode设置与个性化_2026-03.md`、`第六篇_ClaudeCode接入智谱GLM与IDE插件_2026-03.md` 分别改造成更像顺读型教程的小文章；第三点：按 2026-05-27 官方文档补精确口径，明确 Claude Code 当前完整权限模式是 `default / acceptEdits / plan / auto / dontAsk / bypassPermissions`，补充 custom commands 已并入 skills、`AGENTS.md` 需要通过 `CLAUDE.md` 的 `@AGENTS.md` 复用、`/loop` 与 `/schedule` 的当前官方语义，以及 `default` 模型别名和 1M context 的当前订阅规则；第四点：在 GLM 接入篇里显式写出智谱官方文档之间关于 `GLM-5.1` 映射当前仍存在页内不一致，分别列出主指南页、`using5-1` 页面和 FAQ 的三套口径，避免主人误以为是自己配置出错；第五点：按仓库归档规则先将旧 `data/dailyChangeSummary.js` 中 `2026-05-25` 的消息迁移到 `data/history/2026-05-21_30.js`，再重建今天摘要；第六点：后续已按要求执行运行时预检和索引/通知生成，让站内目录、搜索与通知同步更新。'
+      }
+    ]
   }
 ]

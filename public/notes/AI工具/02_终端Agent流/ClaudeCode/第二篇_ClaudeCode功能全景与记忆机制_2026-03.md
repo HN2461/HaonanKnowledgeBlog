@@ -1,490 +1,519 @@
 ---
-title: 第二篇：Claude Code 功能全景与记忆机制（2026-05复核）
-date: 2026-05-01
+title: 第二篇：Claude Code 功能全景、规则、记忆与扩展机制（程序员深度版）
+date: 2026-05-30
 category: AI工具
 tags:
   - Claude Code
   - CLAUDE.md
   - Memory
   - Skills
-  - Hooks
+  - MCP
   - Plugins
-description: 按 2026-05-01 Claude Code 官方 Features、Memory、Skills、Hooks 与 Plugins 文档复核，更新 CLAUDE.local.md、SKILL.md、自动记忆边界、插件命名空间与 hooks 事件体系。
+description: 基于 2026-05-30 Claude Code 官方 Memory、Skills、Hooks、Plugins、MCP 与 Settings 文档重写，重点解释程序员最容易混淆的规则层、权限层、记忆层与扩展层，并补清 CLAUDE.md、rules、skills、hooks、MCP、plugin 的职责边界。
 ---
 
-# 第二篇：Claude Code 功能全景与记忆机制（2026-05复核）
+# 第二篇：Claude Code 功能全景、规则、记忆与扩展机制（程序员深度版）
 
-> 核对时间：2026-05-01  
-> 这一篇的目标不是教命令，而是帮主人建立正确“分层心智”：哪些内容是在教 Claude 怎么做，哪些内容是在限制它能不能做，哪些内容是在帮它下次更快进入状态。
+> 如果第一篇解决的是“先用起来”，这篇解决的就是“别把系统配乱”。  
+> 很多程序员不是不会写 prompt，而是把 `CLAUDE.md`、settings、skills、hooks、MCP、plugins 全混成了一锅，最后自己也不知道该把规则写到哪里、扩展装了为什么没被调用。
 
 [[toc]]
 
 ---
 
-## 0. 小白先记一句话
+## 先给一个总图
 
-如果主人是第一次看这些词，可以先把这一篇理解成：
+从程序员视角，Claude Code 的能力最好拆成 4 层：
 
-1. `CLAUDE.md` / rules / skills：是在教 Claude “应该怎么干活”
-2. permissions / hooks / sandbox：是在限制 Claude “哪些能做，哪些不能做”
-3. Auto memory：是在帮 Claude “下次别再从 0 开始学”
+1. 规则层：告诉 Claude 这个项目该怎么做事
+2. 权限层：告诉 Claude 什么能做、什么不能做
+3. 记忆层：告诉 Claude 哪些长期信息值得保留
+4. 扩展层：告诉 Claude 还能接哪些额外能力
 
-再翻得更白一点：
+如果继续细分，大致可以对应成这样：
 
-- `CLAUDE.md` 像“项目说明书”
-- rules 像“分目录的补充说明”
-- skills 像“常用流程模板”
-- permissions 像“门禁”
-- hooks 像“自动触发的小脚本”
-- memory 像“项目经验本”
+- `CLAUDE.md` / rules / skills / subagents：偏规则层
+- settings / permission modes / sandbox：偏权限层
+- memory / `CLAUDE.local.md` / 会话恢复：偏记忆层
+- hooks / MCP / plugins / IDE integrations：偏扩展层
 
-如果主人现在只想先上手，不想一开始就学全套，记住这个顺序就够了：
+这 4 层一定要分开理解。  
+不然你很容易出现这种情况：
 
-1. 先写 `CLAUDE.md`
-2. 再配 permissions
-3. 规则太多再拆 rules
-4. 重复流程再做 skills
-5. 最后才碰 hooks、plugins、agent teams
-
----
-
-## 1. 先记住现在这三层
-
-可以把 Claude Code 理解成三层：
-
-1. `CLAUDE.md` / `CLAUDE.local.md` / `.claude/rules/*.md`
-   - 告诉 Claude“应该怎么做”
-2. `.claude/settings.json` 里的 permissions / hooks / sandbox
-   - 限制 Claude“能不能做”
-3. Auto memory
-   - 记录 Claude 在当前工作树里学到的经验
-
-这三层的作用完全不同，不要混着用。
-
-小白版理解：
-
-- 前两层是在“管现在”
-- 第三层是在“帮下次”
+- 想写团队规范，却写进本地配置
+- 想限制高风险命令，却只写了一句自然语言规则
+- 装了 MCP 或 plugin，却不知道 Claude 什么时候会发现它
+- 把一次性临时说明塞进长期记忆，越用越脏
 
 ---
 
-## 2. 现在有哪些扩展能力
+## 1. `CLAUDE.md` 才是 Claude Code 的主规则入口
 
-按官方当前体系，常用扩展能力包括：
+很多仓库已经有 `AGENTS.md`、`README.md`、`CONTRIBUTING.md`、内部规范文档。  
+但对 Claude Code 来说，**主线规则入口仍然是 `CLAUDE.md`**。
 
-- `CLAUDE.md`
-- `CLAUDE.local.md`
-- `.claude/rules/*.md`
-- skills
-- subagents
-- agent teams
-- MCP
-- hooks
-- plugins
+也就是说，如果主人希望 Claude 一进仓库就优先读到项目规则，最稳的做法是把规则组织到 `CLAUDE.md`。
 
-一句话速记：
+### `CLAUDE.md` 适合放什么
 
-- 想写长期规则，用 `CLAUDE.md`
-- 想写只给自己看的项目偏好，用 `CLAUDE.local.md`
-- 想把规则按目录和语言拆开，用 rules
-- 想把一段可复用工作流做成“随叫随到”的能力，用 skill
-- 想把任务隔离给独立上下文，用 subagent
-- 想让多个代理协同，用 agent teams
-- 想接外部服务，用 MCP
-- 想做确定性自动化，用 hooks
-- 想把一整套能力打包分发，用 plugin
+最适合放这些“长期、稳定、整个项目都成立”的规则：
 
-如果主人觉得上面一串词很多，可以先只记这一句：
-
-- **Claude.md 管规则，permissions 管边界，skills 管流程，MCP 管外部，hooks 管自动化。**
-
-### 2.1 选型速记（什么时候用什么）
-
-1. 任何“每次都必须遵守”的规则，放到 `CLAUDE.md`
-2. 需要按需调用的固定流程，用 skill
-3. 需要访问外部系统，用 MCP
-4. 需要隔离上下文或并行调查，用 subagent
-5. 需要自动化脚本（非模型），用 hook
-6. 需要把一整套能力分发复用，用 plugin
-7. 需要“硬拦截”的权限控制，用 `.claude/settings.json` 的 permissions
-
-### 2.2 上下文成本与加载时机
-
-不同能力加载时机不同，会影响上下文成本：
-
-- `CLAUDE.md`：会话开始时完整加载
-- `CLAUDE.local.md`：同样属于会话启动时的重要规则上下文
-- rules：无 `paths` 的规则启动加载；有 `paths` 的规则在命中文件时按需加载
-- skills：启动时加载描述，调用时加载完整内容
-- MCP：工具定义加入上下文
-- subagents：独立上下文，不膨胀主对话
-- hooks：外部运行，不占模型上下文
-
-经验法则：
-
-- `CLAUDE.md` 尽量精炼
-- Auto memory 入口 `MEMORY.md` 也别写得过长
-- 参考资料、流程清单、长模板更适合拆去 rules 或 skills
-
----
-
-## 3. `CLAUDE.md`、`CLAUDE.local.md`、rules 到底怎么分工
-
-先翻译成人话：
-
-- `CLAUDE.md`：团队都要遵守的总说明
-- `CLAUDE.local.md`：只有你自己本机想加的私货说明
-- rules：按目录或语言拆开的分说明
-
-### 3.1 `CLAUDE.md`
-
-适合放：
-
+- 项目用途和技术栈
 - 代码风格
-- 测试命令
 - 目录结构说明
-- 高风险禁区
-- 团队通用约定
+- 改动前必须先做什么
+- 改动后如何验证
+- 哪些动作必须先确认
 
-### 3.2 `CLAUDE.local.md`
+例如：
 
-适合放：
+```md
+# 项目规则
 
-- 只属于主人的项目偏好
-- 本机调试地址
-- 私人测试数据路径
-- 不想提交进仓库的个人备注
+## 项目定位
+- 这是一个 Vue 3 技术博客站点
 
-它会和 `CLAUDE.md` 一起加载，但建议加入 `.gitignore`。
+## 编码规范
+- 2 空格缩进
+- 单引号
+- 无行尾分号
 
-### 3.3 `.claude/rules/*.md`
+## 变更要求
+- 修改前先阅读相关文件
+- 涉及多文件改动时先给计划
 
-适合放：
+## 验证要求
+- 改动 public/notes 后重新生成索引
+- 涉及页面改动时至少人工验证一次
+```
 
-- 语言专用规则
-- 目录专用规则
-- 大仓库里的子模块约束
+### 那已有 `AGENTS.md` 怎么办
 
-如果规则只在某些路径生效，用 frontmatter 的 `paths` 来限制加载范围。
-
----
-
-## 4. `AGENTS.md` 和 Claude Code 的关系
-
-这是这次复核里一个很实用的新点。
-
-Claude Code 本身读取的是 `CLAUDE.md`，不是 `AGENTS.md`。  
-但如果仓库已经有 `AGENTS.md`，官方建议可以在 `CLAUDE.md` 里直接复用：
+你当前仓库就有很完整的 `AGENTS.md`。  
+按官方当前 `memory` 文档，Claude Code 主要看的是 `CLAUDE.md`。  
+所以最实用的做法是：
 
 ```md
 @AGENTS.md
-
-## Claude Code
-
-这里补充 Claude Code 专属规则
 ```
 
-这样做的好处是：
+把这行写在 `CLAUDE.md` 顶部，然后在下面补 Claude Code 自己需要的额外规则。
 
-- 其他代理继续读 `AGENTS.md`
-- Claude Code 也不会丢掉仓库已有规范
-- 不用维护两份几乎重复的规则
+这样做有两个好处：
 
----
-
-## 5. Skill 现在的正确结构
-
-这一点是旧笔记里最容易过时的地方之一。
-
-小白版理解：
-
-- skill 本质上就是“把你经常重复说的话，封成一个可复用按钮”
-- 以后你不用每次都重新打一大段提示词
-- Claude 也可以根据 `description` 自动判断什么时候该用它
-
-当前标准写法：
-
-- 个人级：`~/.claude/skills/<skill-name>/SKILL.md`
-- 项目级：`.claude/skills/<skill-name>/SKILL.md`
-- 插件级：`<plugin>/skills/<skill-name>/SKILL.md`
-
-关键点：
-
-- 入口文件名是 **`SKILL.md`**
-- 不是旧写法里的 `skill.md`
-- 目录名会变成 `/skill-name`
-- frontmatter 的 `description` 决定 Claude 什么时候自动调用
-
-另外，Claude Code 现在会监控 skill 目录变化：
-
-- 编辑已有 skill，一般当前会话就能生效
-- 只有“会话启动时不存在的顶层 `skills/` 目录”才通常需要重启
+- 不需要复制两份大规则
+- 可以在同一份共享规范基础上继续加 Claude Code 专属说明
 
 ---
 
-## 6. Skills、Subagents、Plugins 的关系
+## 2. `CLAUDE.local.md`、rules、project rules，到底怎么分工
 
-这三者经常被混在一起，实际上层级不同。
+这是程序员最容易混淆的一层。
 
-先用最白的话说：
+### `CLAUDE.md`
 
-- skill：像“工具卡片”
-- subagent：像“分出去单独干活的小助手”
-- plugin：像“工具包”
+面向整个仓库的共享规则。
 
-### 6.1 Skill
+### `CLAUDE.local.md`
 
-本质是：
+更适合放“只跟你本机、你当前工作方式有关”的内容，比如：
 
-- 一段可复用指令
-- 可直接 `/skill-name`
-- 也可让 Claude 在合适时自动调用
+- 本地调试习惯
+- 个人临时提醒
+- 不适合提交到仓库的个人偏好
 
-### 6.2 Subagent
+它不适合放团队必须遵守的规则。
 
-本质是：
+### `.claude/rules/*.md`
 
-- 独立上下文
-- 独立工具集
-- 独立权限与角色
+当项目开始出现“按目录、按模块、按任务类型区分规范”的时候，再拆成 rules 更合理。
 
-适合：
+例如：
 
-- 让它单独做代码审查
-- 并行调查 bug
-- 让主对话保持干净
+- `10-frontend.md`
+- `20-backend.md`
+- `30-docs.md`
 
-### 6.3 Plugin
+这样做的意义是把规则按关注点拆开，而不是把所有内容继续堆进一个超长的 `CLAUDE.md`。
 
-本质是：
+### 最稳的演进顺序
 
-- 能力打包
+我更推荐主人按这个顺序演进：
 
-一个插件里可以包含：
+1. 先只有一个 `CLAUDE.md`
+2. 规则变多后，再拆 `.claude/rules/*.md`
+3. 个人偏好再考虑 `CLAUDE.local.md`
 
-- `skills/`
-- `agents/`
-- `hooks/`
-- `.mcp.json`
-- `.claude-plugin/plugin.json`
-
-插件 skill 要带命名空间，例如：
-
-```text
-/frontend-design:landing-page
-```
+不要第一天就同时铺开三四套规则体系。
 
 ---
 
-## 7. Auto memory 现在是怎么工作的
+## 3. 规则层和权限层，千万别混写
 
-Auto memory 仍然很有价值，但官方文档现在写得更细了。
+这句话很重要：
 
-小白版理解：
+- **规则是“应该怎么做”**
+- **权限是“允许做到什么程度”**
 
-- 它不是你手写的规则
-- 而是 Claude 在项目里慢慢记下来的“经验”
-- 但它不会无脑把全部经验都塞进上下文，所以要把最重要的规则写回 `CLAUDE.md`
+比如下面这些是规则：
 
-核心要点：
+- 修改前先阅读相关文件
+- 不要顺手重构无关模块
+- 每次改动后要给验证方式
 
-1. Auto memory 以工作树为单位记录
-2. 入口文件是 `MEMORY.md`
-3. 启动时自动加载 `MEMORY.md` 的前 200 行或前 25KB，以先到者为准
-4. 更细的主题文件按需加载，不会在会话开始时全部塞进上下文
+而下面这些是权限问题：
 
-这意味着：
+- 能不能直接修改文件
+- 能不能执行某类命令
+- 某个工具调用要不要确认
+- 是否允许更自动化地推进
 
-- `MEMORY.md` 应该尽量短
-- 细节要拆到 `debugging.md`、`patterns.md` 之类主题文件
-- 真正必须每次都读到的规则，不要放 Auto memory，要放 `CLAUDE.md`
-
----
-
-## 8. 当前加载顺序，怎么理解最稳
-
-这一节如果主人第一次看，会容易觉得抽象。  
-其实你只要抓住一个感觉：
-
-- **总规则先加载**
-- **局部规则按需加载**
-- **流程模板用到时再加载**
-- **自动化脚本不占主要思考上下文**
-
-可以这样理解：
-
-1. 启动会话时，Claude 会沿目录树向上读取 `CLAUDE.md` 和 `CLAUDE.local.md`
-2. 同时载入当前工作树的 Auto memory 入口
-3. 遇到具体文件时，再按需加载命中的 rules
-4. 技能只在被调用或被判定相关时才加载主体
-5. subagent 在自己的隔离上下文里工作
-6. hooks 不直接占用模型上下文，而是在生命周期事件上触发
-
-这也是为什么：
-
-- `CLAUDE.md` 适合“总规则”
-- rules 适合“局部规则”
-- skills 适合“按需流程”
-- memory 适合“下次别再重复学”
-
----
-
-## 9. Hooks 事件已经不止早期教程里的 5 个
-
-旧视频里常见的 5 类只是入门版视角。  
-按当前 hooks 参考，主人需要知道事件体系已经更完整，包括：
-
-- `SessionStart` / `SessionEnd`
-- `UserPromptSubmit`
-- `PreToolUse`
-- `PermissionRequest`
-- `PostToolUse`
-- `PostToolUseFailure`
-- `PostToolBatch`
-- `Notification`
-- `SubagentStart` / `SubagentStop`
-- `PreCompact` / `PostCompact`
-- `ConfigChange`
-- `CwdChanged`
-- `FileChanged`
-- `WorktreeCreate` / `WorktreeRemove`
-
-所以如果主人以后要写自动化，不要再拿“只有 5 种触发器”的旧认知来设计。
-
-但如果主人现在只是刚入门，不用一口气记完全部事件。  
-先记住最常用的这 4 个就够了：
-
-1. `PreToolUse`
-2. `PostToolUse`
-3. `PermissionRequest`
-4. `SessionStart`
-
----
-
-## 10. 推荐目录模板
-
-```text
-.
-├─ CLAUDE.md
-├─ CLAUDE.local.md
-└─ .claude
-   ├─ settings.json
-   ├─ rules
-   │  ├─ 00-general.md
-   │  ├─ 10-backend.md
-   │  └─ 20-frontend.md
-   ├─ skills
-   │  └─ deploy
-   │     └─ SKILL.md
-   └─ agents
-      └─ reviewer.md
-```
-
----
-
-## 11. 可直接复用的最小配置示例
-
-### 11.1 `.claude/settings.json`（硬约束示例）
-
-```json
-{
-  "permissions": {
-    "deny": [
-      "Bash(git reset --hard*)",
-      "Bash(rm -rf *)",
-      "Bash(curl * | sh*)"
-    ],
-    "ask": [
-      "Bash(git push*)",
-      "Bash(npm publish*)"
-    ],
-    "allow": [
-      "Read(*)",
-      "Write(./*)",
-      "Bash(git status)",
-      "Bash(git diff*)"
-    ]
-  }
-}
-```
-
-### 11.2 `.claude/rules/10-backend-java.md`（按路径加载示例）
+如果你只在 `CLAUDE.md` 里写一句：
 
 ```md
----
-paths:
-  - "src/main/java/**"
-  - "src/test/java/**"
-  - "**/*.java"
----
-
-# Java 后端规则
-
-1. 文件编码必须 UTF-8 无 BOM。
-2. 关键逻辑注释说明“为什么这样做”。
-3. 出现 `非法字符: '\ufeff'` 时，仅做去 BOM 和最小修复。
+不要执行危险命令
 ```
 
----
+那更像一个行为约束，不是真正的权限控制。  
+Claude 可能会尽量遵守，但这不等于底层被硬性拦住。
 
-## 12. 新手落地流程（一步一步做）
+程序员要建立这个观念：
 
-1. 用 `/init` 生成项目级 `CLAUDE.md`
-2. 把“永远要遵守”的内容写进 `CLAUDE.md`
-3. 把参考资料、清单、可复用流程放进 skills
-4. 如果上下文太大或规则太多，把部分规则拆分到 `.claude/rules/`
-5. 运行 `/memory` 检查加载情况，必要时关闭自动记忆
-6. 在 `.claude/settings.json` 配置高风险命令的 `deny/ask`
-
-如果主人想走最省脑子的路径，可以直接缩成这 3 步：
-
-1. `/init`
-2. 写 `CLAUDE.md`
-3. 配危险命令拦截
+- 规则在影响决策倾向
+- 权限在影响实际可执行边界
 
 ---
 
-## 13. 主人现在最值得建立的习惯
+## 4. Memory 不是“越多越好”，而是“越稳越值钱”
 
-建议顺序：
+很多人第一次看到记忆，会本能地想“那我把所有经验都存进去”。  
+这通常是错的。
 
-1. 先把团队长期规则写进 `CLAUDE.md`
-2. 只属于主人的偏好写进 `CLAUDE.local.md`
-3. 重复步骤做成 skill
-4. 高风险自动化放 hook，但先从只读和通知开始
-5. 真正需要外部系统时再加 MCP
+从工程协作角度，值得进入长期记忆的内容通常有这几类：
 
-这个顺序最稳，不容易一开始就把体系做复杂。
+- 长期稳定的项目约定
+- 团队反复强调的工作方式
+- 容易反复踩的固定坑
+- 与当前工作树长期绑定的结构性信息
 
----
+不适合沉淀成长期记忆的内容则包括：
 
-## 14. 验证清单
+- 临时调试步骤
+- 一次性需求背景
+- 某个短期分支的特殊做法
+- 很快会过时的状态信息
 
-1. 运行 `/memory` 能看到当前会话加载的 `CLAUDE.md`、`CLAUDE.local.md`、规则或记忆入口
-2. 修改 `CLAUDE.md` 后，新会话能遵循新的规则
-3. `MEMORY.md` 前 200 行或前 25KB 的内容能在会话开始被加载
-4. 关闭自动记忆后不会再写入新记忆
-5. 命中 `deny` 的命令会被直接拦截，命中 `ask` 的命令会弹确认
+### 为什么记忆会让系统越用越乱
 
----
+因为一旦你把“短期信息”也沉进去，后面 Claude 在恢复上下文时就会受到脏信息影响。
 
-## 15. 排障清单
+所以更好的原则是：
 
-1. Claude 不遵循 `CLAUDE.md`：运行 `/memory` 确认文件被加载，检查指令是否模糊或冲突
-2. `CLAUDE.md` 太大：压缩或拆到 skills/rules
-3. 规则不生效：确认规则路径是否匹配当前文件
-4. 自动记忆内容不清楚：用 `/memory` 打开记忆目录查看 `MEMORY.md`
-5. 指令在 `/compact` 后丢失：把关键规则放入 `CLAUDE.md`
-6. 权限配置不生效：检查 permissions 匹配顺序是否被前面的规则提前命中
+- 稳定、长期、重复出现的信息，才值得沉淀
 
 ---
 
-## 16. 参考资料
+## 5. Skills 是什么，它和“命令”到底什么关系
 
-- https://code.claude.com/docs/en/features-overview
+这是你这次最关心的一块之一。  
+因为你已经装了很多 skill 和插件，但不知道怎么调用。
+
+按官方当前 `skills` 文档，Claude Code 现在已经把很多过去单独讲的 custom commands 能力并入了 skills 体系。  
+旧的 `.claude/commands/*.md` 仍然能工作，但新内容官方更推荐使用 skill 目录结构，因为它更适合携带 supporting files。
+
+### Skill 的本质
+
+Skill 不是“换一个更酷的 prompt”。  
+它更像：
+
+- 针对某类任务的可复用工作流模板
+- 带说明文档、辅助脚本、参考文件的一组能力包
+
+一个典型 skill 往往会包含：
+
+- `SKILL.md`
+- `references/`
+- `scripts/`
+- 可能还有额外的模板文件
+
+### Skill 适合解决什么问题
+
+它特别适合下面这些高重复任务：
+
+- 代码 review
+- 前端 UI 实现
+- 浏览器验收
+- 某类固定风格的文档重构
+- 某类固定流程的发布前检查
+
+### Skill 怎么被发现
+
+按官方当前设计，Claude 会根据：
+
+- 你的任务描述
+- skill 的名称和描述
+- 当前上下文
+
+来决定是否自动使用 skill。  
+但这里有个非常重要的现实：
+
+- **装了 skill，不等于它每次都会自动命中**
+
+这是很多人误以为“装了但没生效”的根源。
+
+### Skill 怎么显式调用
+
+最直接的做法通常有两种：
+
+1. 用 `/skills` 先查看当前可发现的 skill / command
+2. 在 prompt 里明确点名 skill 的任务意图
+
+例如你装了前端设计类 skill，直接说：
+
+```text
+请使用前端设计相关 skill，重构这个页面的信息层级、排版和视觉节奏。
+先分析，再给出实施计划。
+```
+
+如果 skill 是通过命令暴露的入口，例如 `/deploy` 这类，那就直接执行相应 slash command。
+
+### 为什么你装了很多 skill 却感觉调用不到
+
+最常见原因是这 5 个：
+
+1. skill 描述写得不够清楚，Claude 很难匹配
+2. 你的 prompt 太泛，没给到足够明确的任务信号
+3. 你期待“自动一定命中”，但当前更适合显式点名
+4. skill 装在了某个作用域，但当前项目 / 会话没有读到
+5. 它本质不是 skill 问题，而是你要的其实是 MCP 或 plugin
+
+---
+
+## 6. Hooks 是什么，它和 Skill 不是一类东西
+
+程序员常常会把 hooks 和 skills 混为“自动化增强”。
+
+但两者职责不同：
+
+### Skill
+
+偏任务模板。  
+解决的是“这类事情应该怎么做”。
+
+### Hook
+
+偏事件触发。  
+解决的是“某个时机到了，自动做一个动作”。
+
+典型 hook 场景：
+
+- 某类工具调用前做检查
+- 某类工具调用后自动格式化或记录
+- 某个用户 prompt 提交后先做预处理
+
+主人可以把 hook 当成“插在工作流节点上的自动小脚本”。  
+它适合做轻量、可预测、明确边界的动作，不适合把整套复杂业务逻辑塞进去。
+
+---
+
+## 7. MCP 是什么，它和 Skill、Plugin 有什么根本区别
+
+这也是程序员特别容易搞混的点。
+
+### MCP 的本质
+
+MCP 不是规则，也不是提示词模板。  
+它是给 Claude Code 增加外部能力入口的协议和接入方式。
+
+最典型的 MCP 能力包括：
+
+- 读外部文档
+- 查数据库
+- 调浏览器
+- 调 GitHub / 搜索 / 文件系统等外部资源
+
+### Skill 和 MCP 的区别
+
+Skill 解决的是：
+
+- “这件事怎么做更好”
+
+MCP 解决的是：
+
+- “Claude 还缺什么外部能力”
+
+一个非常容易记住的类比是：
+
+- skill 像工作方法包
+- MCP 像外接工具接口
+
+### Plugin 和 MCP 的区别
+
+Plugin 更偏“打包、分发和集成管理层”。  
+它可能内含 skill、规则、MCP 配置或辅助文件，但 plugin 本身不等于 MCP。
+
+可以这么理解：
+
+- MCP 是能力接入口
+- Plugin 是分发 / 安装 / 管理容器
+
+---
+
+## 8. Plugin 到底解决什么问题
+
+很多人听到 plugin，会本能地把它理解成“扩展功能总称”。  
+但从实际工程维护角度，它更像：
+
+- 把一组扩展能力打包成可安装、可启停、可管理的单元
+
+它的价值主要体现在：
+
+- 分发更规范
+- 团队共享更方便
+- 依赖和入口更容易管理
+- 某些能力可以通过 marketplace 或约定结构被发现
+
+程序员最该记住的是：
+
+- Plugin 是组织扩展能力的方式
+- 不是所有“装了个东西”的问题都该归到 plugin
+
+你觉得“装了不会调用”的问题，常常真正发生在：
+
+- skill 匹配层
+- MCP 接入层
+- 作用域 / 配置层
+
+而不是 plugin 这一层本身。
+
+---
+
+## 9. 一个程序员真正够用的目录结构长什么样
+
+如果主人现在要把 Claude Code 用得更工程化，我推荐一个最小可维护结构：
+
+```text
+project-root/
+|-- CLAUDE.md
+|-- .claude/
+|   |-- settings.json
+|   |-- rules/
+|   |   |-- 10-frontend.md
+|   |   |-- 20-docs.md
+|   |-- skills/
+|   |   |-- frontend-design/
+|   |   |   |-- SKILL.md
+|   |   |   |-- references/
+|   |   |-- browser-qa/
+|   |       |-- SKILL.md
+```
+
+为什么我推荐先只长这样：
+
+- `CLAUDE.md` 先解决总规则
+- `settings.json` 先解决边界
+- `rules/` 解决分类规则
+- `skills/` 只放你真正高频复用的流程
+
+至于 hooks、plugin、复杂 MCP 编排，应该在主线稳定后再慢慢引入。
+
+---
+
+## 10. 什么时候该写 Skill，什么时候该写 MCP，什么时候该直接写进 `CLAUDE.md`
+
+这部分非常值得你拿来当判断表。
+
+### 该写进 `CLAUDE.md` 的场景
+
+- 全项目通用规则
+- 长期不变的工作方式
+- 改动前后必须遵守的要求
+
+### 该做成 Skill 的场景
+
+- 某类任务经常重复出现
+- 这类任务有固定步骤
+- 你希望 Claude 以后更稳定地照这套流程执行
+
+### 该接成 MCP 的场景
+
+- Claude 需要访问项目外部能力
+- 只靠仓库内容和内置工具不够
+- 你需要真实调用浏览器、文档、数据库、搜索、远程服务
+
+### 该上 Plugin 的场景
+
+- 你需要把一整套扩展能力打包管理
+- 希望安装、分享、启用、升级更标准化
+- 团队中会多次复用同一套扩展能力集合
+
+---
+
+## 11. 为什么“装了很多前端 skill 和插件”却不知道怎么调
+
+主人这句其实击中了实战里的痛点。  
+我把问题拆给你看，会更清楚：
+
+### 第一类：你装的是 skill，但你期待它像命令一样显式出现
+
+有些 skill 的工作方式不是“装完就多一个大按钮”，而是等 Claude 根据任务描述去匹配。
+
+解决办法：
+
+- 先用 `/skills` 看是否被发现
+- prompt 里显式点名任务类型或 skill 意图
+- skill 名称和描述尽量写得具体，不要太抽象
+
+### 第二类：你装的是 MCP，但你期待它像写作规范一样自动生效
+
+MCP 本质上是能力入口，不是行为规范。  
+它需要 Claude 判断“这次有没有必要调用这个外部能力”。
+
+解决办法：
+
+- 先用 `/mcp` 看服务器是否连接成功
+- 明确告诉 Claude 这次需要用哪个能力
+- 比如直接说“请用 Context7 查官方文档，再结合当前仓库给我方案”
+
+### 第三类：你装的是 plugin，但你期待 Claude 一定会主动把内部所有能力都调出来
+
+Plugin 只是容器或分发方式，不代表其中每项能力都会自动命中。
+
+解决办法：
+
+- 先确认 plugin 本身已正确安装
+- 再确认其中的 skill / MCP / command 是否真的已注册并可见
+- 最后再看 prompt 是否给到了正确触发信号
+
+---
+
+## 12. 程序员最值得立刻养成的 5 个系统化习惯
+
+1. 项目规则优先写进 `CLAUDE.md`，不要散落在聊天里
+2. 高频重复流程才做 skill，不要什么都 skill 化
+3. 需要外部能力再接 MCP，不要为了“高级”而乱接
+4. 安装了扩展后先看 `/skills`、`/mcp`、`/plugin` 是否真被发现
+5. 记忆只沉淀长期稳定的信息，不要把临时需求长期化
+
+---
+
+## 13. 读完这篇后，下一步最推荐看什么
+
+如果你现在最关心的是“到底怎么配置才顺手”，下一篇建议读：
+
+- [第四篇：Claude Code 设置、CLAUDE.md 与个性化配置（程序员深度版）](#/note/AI工具/02_终端Agent流/ClaudeCode/第四篇_ClaudeCode设置与个性化_2026-03)
+
+如果你现在最关心的是“skills / MCP / plugin 装了以后到底怎么调用”，建议直接接：
+
+- [第六篇：Claude Code 的 Skills、MCP、Plugin 怎么安装、调用与排错（程序员实战版）](#/note/AI工具/02_终端Agent流/ClaudeCode/第六篇_ClaudeCode的Skills_MCP_Plugin怎么安装调用与排错_2026-05)
+
+---
+
+## 参考资料
+
 - https://code.claude.com/docs/en/memory
 - https://code.claude.com/docs/en/skills
 - https://code.claude.com/docs/en/hooks
+- https://code.claude.com/docs/en/mcp
 - https://code.claude.com/docs/en/plugins
-- https://code.claude.com/docs/en/subagents
-- https://code.claude.com/docs/en/agent-teams
+- https://code.claude.com/docs/en/settings
