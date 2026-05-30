@@ -1,5 +1,5 @@
 ---
-title: 第一篇：CC Switch 快速上手与核心概念（v3.15.0）
+title: 第一篇：CC Switch 快速上手与核心概念（v3.16.0）
 date: 2026-04-26
 category: AI工具
 tags:
@@ -9,15 +9,16 @@ tags:
   - 中转服务商
   - Provider
   - MCP
-description: CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。
+description: CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。
 ---
 
-# 第一篇：CC Switch 快速上手与核心概念（v3.15.0）
+# 第一篇：CC Switch 快速上手与核心概念（v3.16.0）
 
 > 官方仓库：[github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)  
-> 当前版本：v3.15.0（2026-05-16）  
-> 资料核对时间：2026-05-24  
+> 当前版本：v3.16.0（2026-05-29）  
+> 资料核对时间：2026-05-30  
 > 技术栈：Tauri 2 + Rust（后端）+ React 18 + TypeScript（前端）
+> 口径说明：官方 README、Settings 手册与 FAQ 的更新节奏偶尔会有轻微不同步；涉及当前版本、安装方式、同步边界时，本文以 latest release + Settings/FAQ 为准。
 
 ---
 
@@ -37,7 +38,7 @@ CC Switch 是一款**跨平台桌面工具**，核心定位是"多 AI 编程 CLI
 | Hermes Agent | 新增第六款（v3.14.0 起） | `~/.hermes/config.yaml` |
 
 > 注：v3.14.0 新增了 Hermes Agent 作为第六款受管应用，v3.11.0 新增了 OpenClaw（第五款）。  
-> 另外，v3.15.0 起新增 **Claude Desktop 一等受管面板**，用来单独管理桌面端配置与切换入口，但它不计入上面这 6 款 CLI 数量。
+> 另外，v3.15.0 起新增 **Claude Desktop 一等受管面板**，用来单独管理桌面端配置与切换入口，但它不计入上面这 6 款 CLI 数量；v3.16.0 继续把重点放在工具管理、诊断和同步稳定性上。
 
 ### 与手动配置的对比
 
@@ -92,11 +93,12 @@ winget install farion1231.CC-Switch
 
 ### macOS
 
-**方式一：Homebrew（推荐）**
+**方式一：Homebrew（推荐，v3.16.0 起走官方 cask）**
 ```bash
-brew tap farion1231/ccswitch
 brew install --cask cc-switch
 ```
+
+> `v3.16.0` 官方 release notes 已明确：CC Switch 现已进入 Homebrew 官方 cask 仓库，无需再执行 `brew tap farion1231/ccswitch`。
 
 更新：
 ```bash
@@ -127,6 +129,13 @@ brew upgrade --cask cc-switch
 ---
 
 ## 四、核心功能详解
+
+### 功能补充：工具管理与安装升级生命周期（v3.16.0 重点增强）
+
+- 设置里的“关于 / About”页已明显升级成工具管理面板，可以查看已安装版本、最新版本、单工具安装 / 升级以及批量动作
+- 官方 release notes 新增了“受管工具生命周期管理”口径：会优先使用官方原生安装器，必要时再回退到包管理器，并结合检测到的安装来源给出更靠谱的升级命令
+- 诊断能力从“只看有没有这个命令”升级到“按来源感知”：能区分 PATH、Homebrew、npm、pnpm、bun、volta、fnm、nvm、Scoop、WinGet、WSL 等来源，更适合排查“我明明装了，但终端调到的是另一份”这类问题
+- 对程序员最实用的点是：当同一台机器上混有多套 Node / 包管理器 / WSL 环境时，CC Switch 不再只告诉你“有冲突”，而是更接近“哪一份在生效、该升级哪一份”
 
 ### 功能一：Provider 管理（核心功能）
 
@@ -217,9 +226,10 @@ Claude Code → localhost:端口 → CC Switch 本地路由 → 中转服务商 
 
 ### 功能八：云同步与备份
 
-- 自动备份，保留最近 10 个版本
-- 支持云同步：Dropbox、OneDrive、iCloud Drive、WebDAV
-- 导入/导出完整配置（JSON 备份文件）
+- 自动备份，导入配置和 WebDAV 下载覆盖本地前都会先创建安全备份
+- 支持云同步：Dropbox、OneDrive、iCloud Drive、WebDAV；其中 WebDAV 使用 `v2` 协议
+- WebDAV 下载前会展示远程快照信息（协议版本、数据库版本、时间戳、大小），确认后再覆盖本地
+- 导入/导出的是核心配置型 JSON 备份；`settings.json` 这类 device-level settings 不属于跨设备同步范围
 
 ### 功能九：Deep Link 协议
 
@@ -351,6 +361,7 @@ claude  # 重新登录官方账号
 | v3.14.0 | 2026-04 | 新增 Hermes Agent（第六款）、Gemini Native API 代理、"Local Proxy Takeover"改名为"Local Routing" |
 | v3.14.1 | 2026-04 | 托盘用量可见性、Codex OAuth 稳定性修复、移除 Hermes 配置健康扫描器 |
 | v3.15.0 | 2026-05 | 新增 Claude Desktop 一等受管面板、Provider Routing Support 标识、Full URL Endpoint Mode、Codex OAuth 实时模型列表、Claude Code `supports1m` 角色映射 |
+| v3.16.0 | 2026-05 | 新增受管工具生命周期管理、按来源感知的工具诊断、zh-TW 本地化、官方 Homebrew cask 安装路径，以及 Codex 第三方 provider 历史统一到 `custom` 桶 |
 
 ---
 

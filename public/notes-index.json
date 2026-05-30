@@ -12371,8 +12371,8 @@
         },
         {
           "type": "file",
-          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -12389,10 +12389,44 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "16KB",
-          "lastModified": "2026-05-24T14:09:34.303Z",
-          "wordCount": 9390
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:24:47.588Z",
+          "wordCount": 10269
+        },
+        {
+          "type": "file",
+          "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-05-24T12:56:24.619Z"
+            }
+          ],
+          "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+          "size": "27KB",
+          "lastModified": "2026-05-30T10:00:56.019Z",
+          "wordCount": 15999
         },
         {
           "type": "file",
@@ -12442,40 +12476,6 @@
           "size": "7KB",
           "lastModified": "2026-05-24T12:56:24.626Z",
           "wordCount": 4019
-        },
-        {
-          "type": "file",
-          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Node.js",
-            "Codex",
-            "CC Switch",
-            "PowerShell",
-            "Windows",
-            "环境配置",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [
-            {
-              "name": "Node环境一键对比采集脚本.ps1",
-              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-              "ext": "ps1",
-              "size": "6KB",
-              "lastModified": "2026-05-24T12:56:24.619Z"
-            }
-          ],
-          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-          "size": "27KB",
-          "lastModified": "2026-05-24T12:56:24.624Z",
-          "wordCount": 15825
         },
         {
           "type": "file",
@@ -12765,9 +12765,9 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T14:10:38.108Z",
+          "lastModified": "2026-05-30T11:24:47.590Z",
           "wordCount": 5013
         },
         {
@@ -13215,8 +13215,8 @@
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -13233,10 +13233,10 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T14:10:38.113Z",
-          "wordCount": 6221
+          "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "size": "13KB",
+          "lastModified": "2026-05-30T11:24:47.591Z",
+          "wordCount": 6662
         },
         {
           "type": "file",
@@ -13431,6 +13431,31 @@
           "size": "6KB",
           "lastModified": "2026-05-24T12:56:24.576Z",
           "wordCount": 3357
+        },
+        {
+          "type": "file",
+          "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+          "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "date": "2026-05-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "跨机同步",
+            "绝对路径",
+            "MCP",
+            "Codex",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:26:29.663Z",
+          "wordCount": 9883
         },
         {
           "type": "file",
@@ -13977,7 +14002,7 @@
           "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
           "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
           "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
           "date": "2026-04-30T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -14001,7 +14026,7 @@
           "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
           "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
           "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
           "date": "2026-04-30T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -15305,40 +15330,6 @@
         },
         {
           "type": "file",
-          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Node.js",
-            "Codex",
-            "CC Switch",
-            "PowerShell",
-            "Windows",
-            "环境配置",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [
-            {
-              "name": "Node环境一键对比采集脚本.ps1",
-              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-              "ext": "ps1",
-              "size": "6KB",
-              "lastModified": "2026-05-24T12:56:24.619Z"
-            }
-          ],
-          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-          "size": "27KB",
-          "lastModified": "2026-05-24T12:56:24.624Z",
-          "wordCount": 15825
-        },
-        {
-          "type": "file",
           "title": "第二篇：Claude Code 功能全景、规则、记忆与扩展机制（程序员深度版）",
           "frontmatterTitle": "第二篇：Claude Code 功能全景、规则、记忆与扩展机制（程序员深度版）",
           "fileTitle": "第二篇_ClaudeCode功能全景与记忆机制_2026-03",
@@ -15789,54 +15780,6 @@
           "size": "9KB",
           "lastModified": "2026-05-24T12:56:24.637Z",
           "wordCount": 4265
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-          "size": "26KB",
-          "lastModified": "2026-05-24T13:49:15.040Z",
-          "wordCount": 26264
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-          "size": "25KB",
-          "lastModified": "2026-05-24T13:49:15.039Z",
-          "wordCount": 24924
         }
       ],
       "children": []
@@ -16040,40 +15983,6 @@
           "size": "7KB",
           "lastModified": "2026-05-24T12:56:24.626Z",
           "wordCount": 4019
-        },
-        {
-          "type": "file",
-          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Node.js",
-            "Codex",
-            "CC Switch",
-            "PowerShell",
-            "Windows",
-            "环境配置",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [
-            {
-              "name": "Node环境一键对比采集脚本.ps1",
-              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-              "ext": "ps1",
-              "size": "6KB",
-              "lastModified": "2026-05-24T12:56:24.619Z"
-            }
-          ],
-          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-          "size": "27KB",
-          "lastModified": "2026-05-24T12:56:24.624Z",
-          "wordCount": 15825
         },
         {
           "type": "file",
@@ -16364,260 +16273,6 @@
           "size": "9KB",
           "lastModified": "2026-05-24T12:56:24.637Z",
           "wordCount": 4265
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-          "size": "26KB",
-          "lastModified": "2026-05-24T13:49:15.040Z",
-          "wordCount": 26264
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-          "size": "25KB",
-          "lastModified": "2026-05-24T13:49:15.039Z",
-          "wordCount": 24924
-        }
-      ],
-      "children": []
-    },
-    {
-      "name": "中转切换与Node排障",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障",
-      "notes": [
-        {
-          "type": "file",
-          "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-          "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-          "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Node.js",
-            "Codex",
-            "CC Switch",
-            "PowerShell",
-            "Windows",
-            "环境配置",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [
-            {
-              "name": "Node环境一键对比采集脚本.ps1",
-              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-              "ext": "ps1",
-              "size": "6KB",
-              "lastModified": "2026-05-24T12:56:24.619Z"
-            }
-          ],
-          "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-          "size": "27KB",
-          "lastModified": "2026-05-24T12:56:24.624Z",
-          "wordCount": 15825
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-          "size": "26KB",
-          "lastModified": "2026-05-24T13:49:15.040Z",
-          "wordCount": 26264
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-          "size": "25KB",
-          "lastModified": "2026-05-24T13:49:15.039Z",
-          "wordCount": 24924
-        }
-      ],
-      "children": []
-    },
-    {
-      "name": "对比报告",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告",
-      "notes": [
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-          "size": "26KB",
-          "lastModified": "2026-05-24T13:49:15.040Z",
-          "wordCount": 26264
-        },
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-          "size": "25KB",
-          "lastModified": "2026-05-24T13:49:15.039Z",
-          "wordCount": 24924
-        }
-      ],
-      "children": []
-    },
-    {
-      "name": "个人电脑",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑",
-      "notes": [
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-          "size": "25KB",
-          "lastModified": "2026-05-24T13:49:15.039Z",
-          "wordCount": 24924
-        }
-      ],
-      "children": []
-    },
-    {
-      "name": "公司电脑",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑",
-      "notes": [
-        {
-          "type": "file",
-          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-          "date": "2026-04-30T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "Node.js",
-            "PowerShell",
-            "对比报告",
-            "故障排查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-          "size": "26KB",
-          "lastModified": "2026-05-24T13:49:15.040Z",
-          "wordCount": 26264
         }
       ],
       "children": []
@@ -18822,8 +18477,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -18840,10 +18495,44 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "16KB",
-          "lastModified": "2026-05-24T14:09:34.303Z",
-          "wordCount": 9390
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:24:47.588Z",
+          "wordCount": 10269
+        },
+        {
+          "type": "file",
+          "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-05-24T12:56:24.619Z"
+            }
+          ],
+          "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+          "size": "27KB",
+          "lastModified": "2026-05-30T10:00:56.019Z",
+          "wordCount": 15999
         },
         {
           "type": "file",
@@ -18915,9 +18604,9 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T14:10:38.108Z",
+          "lastModified": "2026-05-30T11:24:47.590Z",
           "wordCount": 5013
         },
         {
@@ -18947,8 +18636,8 @@
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -18965,10 +18654,83 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T14:10:38.113Z",
-          "wordCount": 6221
+          "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "size": "13KB",
+          "lastModified": "2026-05-30T11:24:47.591Z",
+          "wordCount": 6662
+        },
+        {
+          "type": "file",
+          "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+          "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "date": "2026-05-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "跨机同步",
+            "绝对路径",
+            "MCP",
+            "Codex",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:26:29.663Z",
+          "wordCount": 9883
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+          "size": "26KB",
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+          "size": "25KB",
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
         }
       ],
       "children": []
@@ -19036,8 +18798,8 @@
       "notes": [
         {
           "type": "file",
-          "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+          "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+          "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
           "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
           "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -19054,10 +18816,44 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-          "size": "16KB",
-          "lastModified": "2026-05-24T14:09:34.303Z",
-          "wordCount": 9390
+          "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:24:47.588Z",
+          "wordCount": 10269
+        },
+        {
+          "type": "file",
+          "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-05-24T12:56:24.619Z"
+            }
+          ],
+          "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+          "size": "27KB",
+          "lastModified": "2026-05-30T10:00:56.019Z",
+          "wordCount": 15999
         },
         {
           "type": "file",
@@ -19079,9 +18875,9 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+          "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
           "size": "9KB",
-          "lastModified": "2026-05-24T14:10:38.108Z",
+          "lastModified": "2026-05-30T11:24:47.590Z",
           "wordCount": 5013
         },
         {
@@ -19111,8 +18907,8 @@
         },
         {
           "type": "file",
-          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+          "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+          "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
           "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
           "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
           "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -19129,10 +18925,289 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-          "size": "12KB",
-          "lastModified": "2026-05-24T14:10:38.113Z",
-          "wordCount": 6221
+          "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+          "size": "13KB",
+          "lastModified": "2026-05-30T11:24:47.591Z",
+          "wordCount": 6662
+        },
+        {
+          "type": "file",
+          "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+          "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+          "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+          "date": "2026-05-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "CC Switch",
+            "跨机同步",
+            "绝对路径",
+            "MCP",
+            "Codex",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+          "size": "18KB",
+          "lastModified": "2026-05-30T11:26:29.663Z",
+          "wordCount": 9883
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+          "size": "26KB",
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+          "size": "25KB",
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "Codex切换后Node排障",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障",
+      "notes": [
+        {
+          "type": "file",
+          "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+          "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+          "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Node.js",
+            "Codex",
+            "CC Switch",
+            "PowerShell",
+            "Windows",
+            "环境配置",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [
+            {
+              "name": "Node环境一键对比采集脚本.ps1",
+              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+              "ext": "ps1",
+              "size": "6KB",
+              "lastModified": "2026-05-24T12:56:24.619Z"
+            }
+          ],
+          "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+          "size": "27KB",
+          "lastModified": "2026-05-30T10:00:56.019Z",
+          "wordCount": 15999
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+          "size": "26KB",
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+          "size": "25KB",
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "对比报告",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+          "size": "26KB",
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
+        },
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+          "size": "25KB",
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "个人电脑",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+          "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+          "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+          "size": "25KB",
+          "lastModified": "2026-05-24T13:49:15.039Z",
+          "wordCount": 24924
+        }
+      ],
+      "children": []
+    },
+    {
+      "name": "公司电脑",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑",
+      "notes": [
+        {
+          "type": "file",
+          "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+          "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+          "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+          "date": "2026-04-30T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "Node.js",
+            "PowerShell",
+            "对比报告",
+            "故障排查"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+          "size": "26KB",
+          "lastModified": "2026-05-24T13:49:15.040Z",
+          "wordCount": 26264
         }
       ],
       "children": []
@@ -24616,6 +24691,31 @@
     },
     {
       "type": "file",
+      "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+      "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+      "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+      "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+      "date": "2026-05-30T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CC Switch",
+        "跨机同步",
+        "绝对路径",
+        "MCP",
+        "Codex",
+        "故障排查"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+      "size": "18KB",
+      "lastModified": "2026-05-30T11:26:29.663Z",
+      "wordCount": 9883
+    },
+    {
+      "type": "file",
       "title": "第五篇：Claude Code 接入中转、LLM Gateway 与多模型线路实战（程序员版）",
       "frontmatterTitle": "第五篇：Claude Code 接入中转、LLM Gateway 与多模型线路实战（程序员版）",
       "fileTitle": "第五篇_ClaudeCode接入中转_LLMGateway与多模型线路实战_2026-03",
@@ -27287,8 +27387,8 @@
     },
     {
       "type": "file",
-      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
       "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
       "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -27305,18 +27405,18 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-      "size": "12KB",
-      "lastModified": "2026-05-24T14:10:38.113Z",
-      "wordCount": 6221
+      "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+      "size": "13KB",
+      "lastModified": "2026-05-30T11:24:47.591Z",
+      "wordCount": 6662
     },
     {
       "type": "file",
-      "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-      "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-      "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-      "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+      "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+      "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+      "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+      "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -27333,16 +27433,16 @@
       "attachments": [
         {
           "name": "Node环境一键对比采集脚本.ps1",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
           "ext": "ps1",
           "size": "6KB",
           "lastModified": "2026-05-24T12:56:24.619Z"
         }
       ],
-      "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+      "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
       "size": "27KB",
-      "lastModified": "2026-05-24T12:56:24.624Z",
-      "wordCount": 15825
+      "lastModified": "2026-05-30T10:00:56.019Z",
+      "wordCount": 15999
     },
     {
       "type": "file",
@@ -27376,7 +27476,7 @@
       "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
       "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
       "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -27400,7 +27500,7 @@
       "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
       "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
       "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -28883,9 +28983,9 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+      "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
       "size": "9KB",
-      "lastModified": "2026-05-24T14:10:38.108Z",
+      "lastModified": "2026-05-30T11:24:47.590Z",
       "wordCount": 5013
     },
     {
@@ -28964,8 +29064,8 @@
     },
     {
       "type": "file",
-      "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-      "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+      "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+      "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
       "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
       "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -28982,10 +29082,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-      "size": "16KB",
-      "lastModified": "2026-05-24T14:09:34.303Z",
-      "wordCount": 9390
+      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+      "size": "18KB",
+      "lastModified": "2026-05-30T11:24:47.588Z",
+      "wordCount": 10269
     },
     {
       "type": "file",
@@ -39536,116 +39636,6 @@
               "path": "AI工具/02_终端Agent流/Codex",
               "children": [
                 {
-                  "type": "directory",
-                  "name": "中转切换与Node排障",
-                  "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障",
-                  "children": [
-                    {
-                      "type": "directory",
-                      "name": "对比报告",
-                      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告",
-                      "children": [
-                        {
-                          "type": "directory",
-                          "name": "个人电脑",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑",
-                          "children": [
-                            {
-                              "type": "file",
-                              "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-                              "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-                              "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-                              "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-                              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-                              "date": "2026-04-30T00:00:00.000Z",
-                              "hasRealDate": true,
-                              "order": null,
-                              "tags": [
-                                "Codex",
-                                "Node.js",
-                                "PowerShell",
-                                "对比报告",
-                                "故障排查"
-                              ],
-                              "category": "AI工具",
-                              "attachments": [],
-                              "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-                              "size": "25KB",
-                              "lastModified": "2026-05-24T13:49:15.039Z",
-                              "wordCount": 24924
-                            }
-                          ]
-                        },
-                        {
-                          "type": "directory",
-                          "name": "公司电脑",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑",
-                          "children": [
-                            {
-                              "type": "file",
-                              "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-                              "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-                              "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-                              "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-                              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-                              "date": "2026-04-30T00:00:00.000Z",
-                              "hasRealDate": true,
-                              "order": null,
-                              "tags": [
-                                "Codex",
-                                "Node.js",
-                                "PowerShell",
-                                "对比报告",
-                                "故障排查"
-                              ],
-                              "category": "AI工具",
-                              "attachments": [],
-                              "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-                              "size": "26KB",
-                              "lastModified": "2026-05-24T13:49:15.040Z",
-                              "wordCount": 26264
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "file",
-                      "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-                      "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-                      "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-                      "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-                      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-                      "date": "2026-04-30T00:00:00.000Z",
-                      "hasRealDate": true,
-                      "order": null,
-                      "tags": [
-                        "Node.js",
-                        "Codex",
-                        "CC Switch",
-                        "PowerShell",
-                        "Windows",
-                        "环境配置",
-                        "故障排查"
-                      ],
-                      "category": "AI工具",
-                      "attachments": [
-                        {
-                          "name": "Node环境一键对比采集脚本.ps1",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-                          "ext": "ps1",
-                          "size": "6KB",
-                          "lastModified": "2026-05-24T12:56:24.619Z"
-                        }
-                      ],
-                      "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-                      "size": "27KB",
-                      "lastModified": "2026-05-24T12:56:24.624Z",
-                      "wordCount": 15825
-                    }
-                  ]
-                },
-                {
                   "type": "file",
                   "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
                   "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
@@ -40957,9 +40947,119 @@
               "path": "AI工具/05_辅助工具层/CCSwitch",
               "children": [
                 {
+                  "type": "directory",
+                  "name": "Codex切换后Node排障",
+                  "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障",
+                  "children": [
+                    {
+                      "type": "directory",
+                      "name": "对比报告",
+                      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告",
+                      "children": [
+                        {
+                          "type": "directory",
+                          "name": "个人电脑",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑",
+                          "children": [
+                            {
+                              "type": "file",
+                              "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+                              "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+                              "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+                              "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                              "date": "2026-04-30T00:00:00.000Z",
+                              "hasRealDate": true,
+                              "order": null,
+                              "tags": [
+                                "Codex",
+                                "Node.js",
+                                "PowerShell",
+                                "对比报告",
+                                "故障排查"
+                              ],
+                              "category": "AI工具",
+                              "attachments": [],
+                              "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+                              "size": "25KB",
+                              "lastModified": "2026-05-24T13:49:15.039Z",
+                              "wordCount": 24924
+                            }
+                          ]
+                        },
+                        {
+                          "type": "directory",
+                          "name": "公司电脑",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑",
+                          "children": [
+                            {
+                              "type": "file",
+                              "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+                              "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+                              "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+                              "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                              "date": "2026-04-30T00:00:00.000Z",
+                              "hasRealDate": true,
+                              "order": null,
+                              "tags": [
+                                "Codex",
+                                "Node.js",
+                                "PowerShell",
+                                "对比报告",
+                                "故障排查"
+                              ],
+                              "category": "AI工具",
+                              "attachments": [],
+                              "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+                              "size": "26KB",
+                              "lastModified": "2026-05-24T13:49:15.040Z",
+                              "wordCount": 26264
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "file",
+                      "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+                      "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+                      "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+                      "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+                      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+                      "date": "2026-04-30T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "Node.js",
+                        "Codex",
+                        "CC Switch",
+                        "PowerShell",
+                        "Windows",
+                        "环境配置",
+                        "故障排查"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [
+                        {
+                          "name": "Node环境一键对比采集脚本.ps1",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+                          "ext": "ps1",
+                          "size": "6KB",
+                          "lastModified": "2026-05-24T12:56:24.619Z"
+                        }
+                      ],
+                      "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+                      "size": "27KB",
+                      "lastModified": "2026-05-30T10:00:56.019Z",
+                      "wordCount": 15999
+                    }
+                  ]
+                },
+                {
                   "type": "file",
-                  "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-                  "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+                  "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+                  "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
                   "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
                   "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -40976,10 +41076,10 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-                  "size": "16KB",
-                  "lastModified": "2026-05-24T14:09:34.303Z",
-                  "wordCount": 9390
+                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-30T11:24:47.588Z",
+                  "wordCount": 10269
                 },
                 {
                   "type": "file",
@@ -41001,9 +41101,9 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+                  "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
                   "size": "9KB",
-                  "lastModified": "2026-05-24T14:10:38.108Z",
+                  "lastModified": "2026-05-30T11:24:47.590Z",
                   "wordCount": 5013
                 },
                 {
@@ -41033,8 +41133,8 @@
                 },
                 {
                   "type": "file",
-                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
                   "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
                   "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -41051,10 +41151,35 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-                  "size": "12KB",
-                  "lastModified": "2026-05-24T14:10:38.113Z",
-                  "wordCount": 6221
+                  "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+                  "size": "13KB",
+                  "lastModified": "2026-05-30T11:24:47.591Z",
+                  "wordCount": 6662
+                },
+                {
+                  "type": "file",
+                  "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+                  "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+                  "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+                  "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+                  "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+                  "date": "2026-05-30T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "CC Switch",
+                    "跨机同步",
+                    "绝对路径",
+                    "MCP",
+                    "Codex",
+                    "故障排查"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-30T11:26:29.663Z",
+                  "wordCount": 9883
                 }
               ]
             }
@@ -44470,7 +44595,7 @@
       ]
     }
   ],
-  "totalNotes": 417,
+  "totalNotes": 418,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-30T09:37:35.018Z"
+  "lastUpdated": "2026-05-30T11:27:43.927Z"
 }

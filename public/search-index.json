@@ -106,6 +106,32 @@
     },
     {
       "type": "file",
+      "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+      "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+      "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+      "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+      "date": "2026-05-30T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "CC Switch",
+        "跨机同步",
+        "绝对路径",
+        "MCP",
+        "Codex",
+        "故障排查"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+      "size": "18KB",
+      "lastModified": "2026-05-30T11:26:29.663Z",
+      "wordCount": 9883,
+      "content": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核） 资料核对时间：2026-05-30 这篇的目标不是泛泛而谈“路径可能有问题”，而是把主人这次已经真实踩到的坑整理成一篇能复用的排障手册。 先给结论：如果你是通过 CC Switch 做跨机导出 / 导入、云同步或 provider 切换，结果目标机器上只有 MCP、npx、浏览器相关工具、Codex / Claude 某些能力异常，那就优先怀疑“旧机器绝对路径污染”。 [[toc]] --- 先说结论：这不是“小概率玄学”，而是 CC Switch 这类配置中控台的自然风险点 主人这次踩中的问题，本质不是： Codex 坏了 Claude 坏了 Chrome DevTools MCP 坏了 Node / npm 本体坏了 而是： 你在 A 机器里通过 CC Switch 管理过 Provider / MCP / 配置片段 又把这套配置导出到 B 机器，或者通过云同步同步到了 B 机器 结果某些配置值里混进了 A 机器的绝对路径 CC Switch 后续再把这些旧路径写回 live 配置文件，于是目标机器开始报错 这类问题的高发位置通常不是“模型 ID 填错”这种浅层配置，而是： npm_config_cache 浏览器路径 本地缓存目录 项目信任路径 某些 CLI 自定义配置目录 --- 先把官方能确认的 5 件事讲清楚 这篇文章里有一部分结论是官方文档可以直接确认的，主人可以放心把它当“文档事实”。 2.1 CC Switch 自己的数据根目录默认就在 ~/.cc-switch/ 官方 FAQ 明确写了： 默认存储目录是 ~/.cc-switch/ 这个目录位置可以在设置里自定义 而且同一页还列出了关键文件结构： 这意味着主人以后排查跨机问题时，不能只盯着 .codex/config.toml、.claude.json 这些“结果文件”，还要回头看 ~/.cc-switch/ 这个“源头目录”。 2.2 cc-switch.db 才是官方定义的 SSOT 官方 FAQ 对配置优先级写得很直白： CC Switch Database 是 Single source of truth (SSOT) Live Configuration Files 是切换 provider 时写出的结果文件 Backfill Mechanism 会在编辑当前 provider 时，从 live 文件读回变化 这条非常关键。 它直接解释了为什么主人这次只修当前 .codex/config.toml 或 .claude.json 不够： 你修的是第 2 层结果文件 真正的源头却可能还停留在第 1 层 cc-switch.db 下一次切 provider、导入配置或做同步时，坏数据又能重新写回来 2.3 官方确实支持跨机迁移，但导入本身就是覆盖动作 官方 Settings 手册明确支持： 导出配置 导入配置 WebDAV 云同步 同时也明确写了： 导出文件包含：Provider、MCP、Prompts、应用设置 导入时会覆盖现有配置 WebDAV 下载覆盖本地数据库前，会先自动创建安全备份 所以“通过 CC Switch 把配置从一台机带到另一台机”这个思路本身没有问题。 真正的问题是：如果导出源里已经混进了机器相关绝对路径，覆盖式导入就会把这类坏数据完整带过去。 2.4 设备级设置本来就不是跨设备同步字段 官方 FAQ 还单独说了： settings.json 里保存的是设备级设置 这些设置 not synced across devices 里面包括： 语言 主题 窗口行为 开机自启 各 CLI 工具的自定义配置目录 这条给主人一个很重要的提醒： 跨设备可迁的是配置体系，不是所有机器相关路径都该被照搬 只要配置里混进了旧机器用户名目录、浏览器绝对路径、缓存目录，目标机器就有机会炸 2.5 导出本来就不包含 usage logs 和 device-level settings 官方 FAQ 还明确给了 export 边界： export file includes：Provider、MCP、Prompts、app settings not included in export：usage logs、device-level settings 这条很适合给主人拿来区分两类情况： 如果是旧机器绝对路径被带过来，那是“坏数据被同步了” 如果只是语言、窗口行为、某些本机偏好没跟过来，那可能只是“官方本来就没打算跨设备同步” --- 这篇里的“绝对路径污染”判断，哪些是官方事实，哪些是这次实战结论 这一步我特意拆开说，因为程序员最怕“把经验话术误当官方规则”。 3.1 官方能直接确认的 CC Switch 使用 cc-switch.db 作为 SSOT 切 provider 时会把配置写到 live 配置文件 手动改 live 文件后，重新编辑当前 provider 时，改动会 backfill 回数据库 导出 / 导入 / WebDAV 都是正式支持能力 3.2 这次排障得出的实战结论 下面这些不是官方手册逐字列出的“固定规则”，而是结合官方配置优先级 + 主人这次真实故障链推出来的结论： 如果导出源或云同步源里已经保存了旧机器绝对路径，目标机器上极容易出现“表面是 MCP / Node / 浏览器报错，实质是路径污染”的问题。 绝对路径污染不一定只在 live 配置文件里，往往会同时存在于 cc-switch.db 的源数据里。 如果你只修了 .codex/config.toml、.claude.json 等结果文件，而没有把数据库源头修干净，后面切换 provider 或再次同步时，旧路径仍然可能复发。 换句话说： “SSOT + 覆盖写回”是官方机制 “旧机器绝对路径因此复发”是这次真实场景下的工程结论 这个结论我认为是稳的，而且很值得主人保留。 --- 这类问题最常见的症状长什么样 如果你看到下面这些现象，优先怀疑是跨机同步后的绝对路径污染： /mcp 里能看到某个 server，但 Tools: (none) 一台电脑上能用的 MCP，另一台电脑不能用 npx、node、浏览器相关 MCP 启动失败 日志里出现 EPERM、ENOENT、operation not permitted、path not found 配置里出现旧电脑用户名路径，比如： C:\\Users\\Administrator\\... C:\\Users\\HN246\\... 其他历史用户名目录 主人这次最典型的真实命中点，就是： chrome-devtools MCP 的 npm_config_cache 被写成了另一台电脑上的目录 结果 npx 尝试往错误用户目录写缓存，最终报 EPERM --- 这次真实踩中的根因，为什么值得单独记一篇 这次问题的直接根因是： chrome-devtools MCP 的 npm_config_cache 被写成了另一台机器上的路径： 而当前机器真实用户目录其实是： 于是结果就是： npx 启动 chrome-devtools-mcp 时，试图写入错误目录 当前机器对那个目录不存在或无权限 MCP 启动失败，或者 tools/list 失败 这件事为什么值得记一篇？ 因为它不只是一个单点字段写错，而是说明了： 机器相关路径一旦进入 CC Switch 的配置体系，后果不会只停留在一个字段 它可能在 provider、MCP、settings、live 配置文件几层之间反复传播 --- 高风险文件到底有哪些 跨机同步后，主人优先检查这几类位置。 6.1 当前 live 配置 C:\\Users\\<当前用户>\\.codex\\config.toml C:\\Users\\<当前用户>\\.claude.json C:\\Users\\<当前用户>\\.gemini\\... 其他 AI 工具自己的主配置文件 6.2 真正的源头目录 C:\\Users\\<当前用户>\\.cc-switch\\cc-switch.db C:\\Users\\<当前用户>\\.cc-switch\\settings.json 这里要注意一个边界： 官方 FAQ 明确写了可以手工编辑：CLI 工具配置文件、CC Switch 的 settings.json 官方 FAQ 也明确写了不推荐手工编辑：cc-switch.db、backup files 但如果你已经确认坏数据就在 SSOT 层，而 UI 又无法把它彻底覆盖掉，那数据库修复就会变成最后兜底手段 我的建议是： 能先通过 CC Switch UI 重填并保存当前 provider，就先走 UI UI 修不掉、坏路径还在、而且复发明显时，再备份后做数据库层修复 6.3 这次最值得优先搜的字段 C:\\Users\\旧用户名\\ npm_config_cache CHROME_PATH PROGRAMFILES SystemRoot TEMP TMP source = '\\\\?\\C:\\Users\\旧用户名\\.codex\\.tmp\\bundled-marketplaces\\...' projects.'c:\\users\\旧用户名\\...' --- 为什么“只修结果文件”往往不够 这部分是很多人第一次遇到时最容易误判的点。 7.1 只修 .codex/config.toml 看起来会暂时恢复 比如你把： 错误的 npm_config_cache 旧用户名项目路径 错误的浏览器缓存路径 都在当前机器 live 文件里改好了，重启之后也许就能临时工作。 7.2 但 SSOT 可能还没变 如果 cc-switch.db 里仍然保留： 旧 provider 快照 旧 MCP server 配置 旧 settings 值 那后面下面这些动作都可能让问题复发： 再切一次 provider 再导入一次备份 从 WebDAV 下载一次 在 UI 里重新保存当前 provider 7.3 更稳的理解方式 把 CC Switch 想成： 所以修复顺序更稳的做法应该是： --- 快速排查清单 下面这套是主人以后自己排查时最省时间的顺序。 8.1 第一步：先确认当前机器真实用户目录 例如： 之后把所有指向旧用户名的路径都视为异常候选。 8.2 第二步：先扫 live 配置 PowerShell 示例： 8.3 第三步：再扫 .cc-switch 目录 如果只是扫文本文件： 8.4 第四步：必要时进数据库层 这一步属于偏程序员手段，不是官方手册教普通用户的常规路径，所以我建议只在下面两种情况下上： live 文件已经修了，但一切换又复发 你已经确认 CC Switch 仍在写回旧值 如果你这次本机数据库结构和主人这次排查到的一样，可以优先查这些表： mcp_servers settings providers 如果对应列名也一致，可以优先检查： mcp_servers.server_config settings.value providers.settings_config 这一层“列名”属于这次实机排障看到的结构，不是我从官方手册里抄出来的公开 schema 文档，所以主人以后如果升级版本、数据库结构不同，要以自己本机实际表结构为准。 --- 最稳的修复顺序是什么 9.1 先备份 先备份： C:\\Users\\<当前用户>\\.cc-switch\\cc-switch.db 当前 .codex/config.toml 当前 .claude.json 9.2 先修源头 优先顺序建议这样理解： 先尝试通过 CC Switch UI 重填当前 provider / MCP / 相关设置并保存 再检查数据库源数据是否已被正确覆盖 UI 无法覆盖时，再考虑数据库层修复 9.3 再修当前机器上已经落地的 live 文件 至少检查这些项目： .codex/config.toml 里的 npm_config_cache .claude.json 里的 npm_config_cache .codex/config.toml 里的旧 projects.'c:\\users\\旧用户名\\...' .codex/config.toml 里的旧 bundled-marketplaces 路径 9.4 最后重启并验证 修完后建议这样验证： 重启 Codex 重启 Claude 在 /mcp 里重连目标 server 验证： MCP 是否不再显示 Tools: (none) npx -y chrome-devtools-mcp@latest --version 是否能正常返回 --- 官方“不推荐手改数据库”，那这类问题该怎么拿捏 这一条我想单独讲，因为程序员看到这里通常会问： 你前面说根因可能在 cc-switch.db，可官方 FAQ 又说不推荐手工编辑数据库，那到底该怎么办？ 我的建议是这样分层： 10.1 优先方案：通过 UI 覆盖 SSOT 如果当前 provider / MCP 在 UI 层可以完整打开、重填、保存，那优先这样做。 因为官方 FAQ 已经说明： live 文件的改动会 backfill 保存后会同步回数据库 这条路径最稳，也最符合产品设计。 10.2 次优方案：删掉明显只属于旧机器的配置片段，再让 UI 重写 比如： 旧项目路径 旧浏览器路径 错误缓存目录 如果这些字段 live 层删掉后，重新编辑当前 provider 能被正确吸收回数据库，这也是比较稳的修法。 10.3 最后兜底：备份后直接修数据库 只有当下面几条同时成立时，我才建议你直接动库： 你已经确认 cc-switch.db 是复发源头 UI 无法覆盖或无法暴露那个坏值 你已经先做了完整备份 你知道自己改的是“路径污染”，不是业务字段 也就是说： 官方推荐的是“不要手改数据库” 工程实践允许的最后兜底是“先备份，再最小改动修库” --- 以后每次跨机同步后的推荐 SOP 我建议主人以后把这套动作当成固定流程。 11.1 导入后先别急着直接开工 先做一次“路径审计”。 11.2 优先查 3 个地方 C:\\Users\\<当前用户>\\.cc-switch\\cc-switch.db C:\\Users\\<当前用户>\\.codex\\config.toml C:\\Users\\<当前用户>\\.claude.json 11.3 重点搜 4 类内容 旧用户名路径 npm_config_cache 浏览器可执行文件路径 项目信任路径 / 本地缓存路径 11.4 修完后优先验证这些能力 chrome-devtools MCP 所有依赖 npx 的 MCP 依赖浏览器路径的 MCP 依赖本地缓存目录的工具 --- 哪些字段天生就该被当成“机器相关风险字段” 这些字段在跨机同步时要特别小心： 用户目录：C:\\Users\\<用户名>\\... 浏览器路径：chrome.exe、msedge.exe npm_config_cache TEMP / TMP CHROME_PATH PROGRAMFILES LOCALAPPDATA APPDATA 工具绝对路径： node.exe python.exe 自定义 CLI 路径 只要它们写死到另一台机器的目录里，目标机器就很容易出问题。 --- 可直接丢给 AI 的标准提示词 下面这段保留得很好，主人以后可以直接复用： --- 相关阅读 第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核） 专题：CC Switch 切换 Codex 后 Node 排障目录 --- 官方参考资料 CC Switch 官方仓库：<https://github.com/farion1231/cc-switch> README（功能总览）：<https://github.com/farion1231/cc-switch/blob/main/README.md> FAQ｜Configuration Files：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/en/5-faq/5.1-config-files.md> 设置手册（中文）｜Settings：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/1-getting-started/1.5-settings.md> --- 最终判断 这次已经确认： 问题确实是跨机同步导致的旧机器绝对路径污染 live 配置和 CC Switch 的源数据层都可能带着旧路径 只修当前配置文件不够，必须同时考虑 SSOT 层是否干净 export 本来就不包含 usage logs 与 device-level settings，所以有些“没同步过来”其实是产品边界，不是故障 以后凡是公司电脑和自己电脑来回同步 CC Switch 配置，都应该先跑一次“旧用户名路径扫描” 如果主人下次再遇到类似问题，这篇就不是“复盘文章”，而是可以直接按步骤执行的排障手册。"
+    },
+    {
+      "type": "file",
       "title": "第五篇：Claude Code 接入中转、LLM Gateway 与多模型线路实战（程序员版）",
       "frontmatterTitle": "第五篇：Claude Code 接入中转、LLM Gateway 与多模型线路实战（程序员版）",
       "fileTitle": "第五篇_ClaudeCode接入中转_LLMGateway与多模型线路实战_2026-03",
@@ -2888,8 +2914,8 @@
     },
     {
       "type": "file",
-      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+      "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+      "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
       "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
       "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -2906,19 +2932,19 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-      "size": "12KB",
-      "lastModified": "2026-05-24T14:10:38.113Z",
-      "wordCount": 6221,
-      "content": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核） 资料核对时间：2026-05-24 结论先说：有这个功能。CC Switch 官方明确支持 导出配置、导入配置、自定义应用配置目录 以及 WebDAV 云同步。 适合人群：像主人这样会在家里电脑、公司电脑、其他设备之间来回切换，而且手里有多家中转 Provider，不想每次都重新手配的人。 [[toc]] --- 先给结论：主人的思路是可行的 如果主人的目标是： 在一台电脑上维护一份最新配置 需要时把这份配置带到其他电脑 尽量避免手改 Claude Code、Codex、Gemini CLI 等工具的配置文件 那 CC Switch 官方提供的 手动导出 / 导入 就是合适方案。 官方手册在 Settings -> Advanced -> Data Management 里明确写了： 可以导出备份 可以从备份文件导入 导入时会覆盖现有配置 所以从产品能力上说，主人的方案不是“曲线救国”，而是 CC Switch 本来就支持的正式用法。 --- 官方到底支持哪些跨设备方式 按官方资料，CC Switch 目前至少有 3 种相关能力： | 方式 | 适合谁 | 特点 | |------|--------|------| | 手动导出 / 导入 | 想保留一份“最新版配置包”的人 | 最稳、最容易理解、最好控风险 | | 自定义应用配置目录 | 想把数据放进 OneDrive / Dropbox / iCloud / NAS 的人 | 更接近“文件夹级同步” | | WebDAV 云同步 | 想让多设备直接同步数据库的人 | 适合长期多设备使用 | 如果只看主人的需求，我更推荐先用 手动导出 / 导入，因为它最贴近“我只保留最新一份，然后其他电脑直接导入”这个思路。 --- 手动导出 / 导入，官方保证能带走什么 根据 CC Switch 中文设置手册，导出备份文件时，官方明确列出的内容包括： 所有 Provider 配置 MCP 服务器配置 Prompts 预设 应用设置 这里说的官方导出路径，是应用内生成的 JSON 备份文件，不是让你直接拷贝 SQLite 数据库去赌能不能在另一台机器上原样恢复。 这意味着： 你配置过的中转站列表 各 Provider 的地址、Key、模型相关配置 MCP 提示词预设 这些核心内容，理论上都可以跟着导出文件一起迁移。 --- 但有两个限制，主人一定要先知道 这两条很关键，很多人以为“导入”就是“自动合并”，或者以为“所有设置都会一模一样跟过去”，实际不是。 4.1 导入是覆盖，不是合并 官方手册明确提示： 导入时会覆盖现有配置 建议导入前先导出当前配置做备份 所以如果主人现在多台电脑上的配置并不完全一样，最稳的做法不是直接选一台覆盖全部，而是： 先把每台电脑都各自导出一份留底 选一台作为“主配置机” 把别的机器里独有的 Provider / MCP / Prompt 补齐到这台主配置机 最后只从这台机器导出一份“最终最新版” 换句话说，CC Switch 导入适合做“统一版本下发”，不适合做“多机自动合并”。 4.2 设备级设置不会跨设备同步 官方 FAQ 明确写了： ~/.cc-switch/settings.json 存的是设备级设置 这些设置 not synced across devices 它举的内容包括： 语言 主题 窗口行为 开机自启 各 CLI 工具的自定义配置目录 所以主人要理解成： 核心 Provider / MCP / Prompt 配置可以迁移 这台电脑自己的界面偏好、目录路径之类，不保证跟着一起过去 如果你在不同电脑上把 Claude / Codex / Gemini 的配置目录改到了非默认位置，那目标机器上仍然要再检查一次。 --- 主人最该用的操作流程 下面这套是我结合官方文档后，给主人的 最稳方案。 5.1 第一次整理时，不要急着只留一份 先在每一台旧电脑上都做一次导出备份，命名可以像这样： cc-switch-home-2026-05-01.json cc-switch-office-2026-05-01.json cc-switch-laptop-2026-05-01.json 这样做的目的很简单： 防止后面发现某台机器上有独有 Provider，却已经被覆盖掉 给自己留回滚空间 5.2 选一台主配置机，整理成最终版本 建议选“配置最全、最新”的那台电脑做主配置机。 如果别的机器上还有它没有的中转，就先补到主配置机里。 等确认无误后，再导出一份最终版，例如： cc-switch-master-2026-05-01.json 以后主人只维护这一个“主版本”就行。 5.3 把主版本放到你常用的同步位置 例如： OneDrive Dropbox iCloud Drive NAS 同步目录 加密 U 盘 这样你到其他电脑时，只要拿到这一个 JSON 就够了。 --- 具体怎么导出 6.1 在主配置机上操作 打开 CC Switch 点击左上角 ⚙️ 进入设置 进入 高级 / Advanced 找到 数据管理 / Data Management 点击 导出 保存生成的 JSON 备份文件 官方说明里还提到，这个备份文件是 JSON 格式，可以直接用文本编辑器查看。 6.2 导出前建议主人多做一步 如果你刚刚改过很多 Provider，建议在导出前快速检查一下： 当前常用 Provider 是否都还在 Base URL、API Key、模型 ID 是否是最新值 MCP / Prompt 是否齐全 因为你之后分发给其他电脑的，其实就是这一份“标准答案”。 --- 具体怎么导入 7.1 在目标电脑上操作 先安装好 CC Switch 打开 CC Switch 进入 设置 -> 高级 -> 数据管理 点击 选择文件 选中你保存的主配置 JSON 点击 导入 确认覆盖现有配置 这一段是官方手册明确给出的导入流程。 7.2 导入后怎么验证 建议主人至少做 3 件事： 看 Provider 列表是否已经完整出现 随机切换一个你常用的中转 Provider 打开对应 CLI 工具做一次最小验证 例如： Claude Code：进项目后看 /status Codex / Gemini CLI / OpenCode：重开终端后跑一次最小请求 官方 README 还特别说明了一条： 大多数 CLI 工具切换 Provider 后需要重启终端或重启该 CLI Claude Code 当前支持热切换，不需要重启 --- 为什么我更推荐主人先用“手动导出 / 导入” 因为主人的核心诉求不是“所有机器永远自动同步”，而是： 我想维护一份最新配置 我去别的电脑时能快速恢复 这类场景下，手动导出 / 导入有 4 个优点： 你永远知道“哪一份是主版本” 不会因为自动同步把错误配置立即传播到所有设备 迁移路径清晰，出问题容易回滚 很适合多中转、多模型、多机器但不一定天天同步的人 所以主人说的“只保留最新的一份，然后其他电脑直接导入”，从方法论上是对的。 --- 如果你后面嫌手动麻烦，可以升级成官方云同步 CC Switch 官方 README 和设置手册都明确提到两类云同步方向。 9.1 方案一：自定义应用配置目录 官方说明里写到，CC Switch 自身数据默认放在： 并且这个应用配置目录可以在设置里自定义。 README 还明确举了这些典型场景： Dropbox OneDrive iCloud NAS 这意味着你可以把 CC Switch 的数据目录放进同步盘，让多台电脑共享同一套应用数据。 不过这里主人要注意： “应用配置目录”本身属于设备级设置 所以每台电脑第一次仍然要手动指向各自本地的同步盘路径 9.2 方案二：WebDAV 云同步 如果你想让 CC Switch 直接通过应用内同步，官方还提供： WebDAV 服务器地址 用户名 / 密码 远程目录 配置名称 自动同步 并支持： 测试连接 上传 下载 自动同步 官方手册也写得很清楚： 上传会覆盖远程数据 下载会覆盖本地数据 下载前会自动创建安全备份 所以 WebDAV 更像“数据库级同步”，适合长期多设备协作使用。 --- 哪种方式更适合主人 我给主人的建议很直接： 如果你只是偶尔换电脑 优先用： 手动导出 / 导入 这是最稳、最不容易误操作的方案。 如果你经常多机切换 可以考虑： 主版本 JSON + 云盘保存 也就是： 仍然用手动导出生成“主版本” 把主版本放在 OneDrive / Dropbox 到别的电脑时直接导入 这样已经能覆盖大部分需求，而且风险比自动同步更低。 如果你几乎每天多设备来回切 再考虑： 自定义应用配置目录 WebDAV 自动同步 但这两种方案更适合你已经把配置体系稳定下来之后再上。 --- 还有一个容易忽略的坑：共享插件配置 官方 FAQ 还提到一个和“完整迁移”很相关的点： 如果你在不同 Provider 之间切换后发现插件类配置没跟过去 可以使用 Shared Config Snippet 路径是： Edit Provider -> Shared Config Panel -> Extract from Current Provider 创建新 Provider 时，官方说明默认还可以勾选： Write Shared Config 这类功能的意义是： 把 API Key、Endpoint 之外的公共配置也一起保存在 Provider 体系里。 所以如果主人不只是配中转地址和 Key，还顺手在某些工具里加了公共扩展配置，那在整理“主配置机”时，最好顺手检查一下这一块。 --- 我给主人的最终推荐方案 如果让我按“稳、简单、少踩坑”来排序，我会建议主人这样做： 先在每台旧电脑各导出一份备份 选一台电脑作为主配置机 把所有常用中转、MCP、Prompts 整理齐 导出一份 cc-switch-master-日期.json 把它放进 OneDrive / Dropbox 之类的位置 在其他电脑安装 CC Switch 后直接导入这份主配置 后续只维护这一份主配置，需要同步时重新导出覆盖旧文件 这套流程最符合主人现在的实际需求。 --- 两个额外提醒 13.1 如果你有自装 Skills，最好额外留意 官方导出清单里明确写了 Provider、MCP、Prompts、应用设置； 而 FAQ 里又说明 skills/ 是独立目录。 所以更稳妥的理解是： 如果主人非常依赖本地安装的 Skills 最好额外备份 ~/.cc-switch/skills/ 或者直接改用“应用配置目录同步” / WebDAV 这条是我根据官方导出清单和存储结构做出的保守建议，目的是避免你以为“所有 Skills 文件一定被装进 JSON 里”。 13.2 导入前，CC Switch 本身会做安全备份 官方 FAQ 写到： 每次配置导入前会自动创建备份 默认保留最近 10 个备份 所以主人即使导错一份，也不是完全没有回头路。 --- 官方参考资料 CC Switch 官方仓库：<https://github.com/farion1231/cc-switch> README（功能总览、Cloud Sync、Shared Config Snippet FAQ）：<https://github.com/farion1231/cc-switch/blob/main/README.md> 用户手册｜设置（中文，导出/导入、WebDAV、目录设置）：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/1-getting-started/1.5-settings.md> FAQ｜Configuration Files（数据目录、device-level settings、导入前自动备份）：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/en/5-faq/5.1-config-files.md>"
+      "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+      "size": "13KB",
+      "lastModified": "2026-05-30T11:24:47.591Z",
+      "wordCount": 6662,
+      "content": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核） 资料核对时间：2026-05-30 结论先说：有这个功能。CC Switch 官方明确支持 导出配置、导入配置、自定义应用配置目录 以及 WebDAV 云同步。 适合人群：像主人这样会在家里电脑、公司电脑、其他设备之间来回切换，而且手里有多家中转 Provider，不想每次都重新手配的人。 [[toc]] --- 先给结论：主人的思路是可行的 如果主人的目标是： 在一台电脑上维护一份最新配置 需要时把这份配置带到其他电脑 尽量避免手改 Claude Code、Codex、Gemini CLI 等工具的配置文件 那 CC Switch 官方提供的 手动导出 / 导入 就是合适方案。 官方手册在 Settings -> Advanced -> Data Management 里明确写了： 可以导出备份 可以从备份文件导入 导入时会覆盖现有配置 所以从产品能力上说，主人的方案不是“曲线救国”，而是 CC Switch 本来就支持的正式用法。 --- 官方到底支持哪些跨设备方式 按官方资料，CC Switch 目前至少有 3 种相关能力： | 方式 | 适合谁 | 特点 | |------|--------|------| | 手动导出 / 导入 | 想保留一份“最新版配置包”的人 | 最稳、最容易理解、最好控风险 | | 自定义应用配置目录 | 想把数据放进 OneDrive / Dropbox / iCloud / NAS 的人 | 更接近“文件夹级同步” | | WebDAV 云同步 | 想让多设备直接同步数据库的人 | 适合长期多设备使用 | 如果只看主人的需求，我更推荐先用 手动导出 / 导入，因为它最贴近“我只保留最新一份，然后其他电脑直接导入”这个思路。 --- 手动导出 / 导入，官方保证能带走什么 根据 CC Switch 中文设置手册，导出备份文件时，官方明确列出的内容包括： 所有 Provider 配置 MCP 服务器配置 Prompts 预设 应用设置 这里说的官方导出路径，是应用内生成的 JSON 备份文件，不是让你直接拷贝 SQLite 数据库去赌能不能在另一台机器上原样恢复。 官方 FAQ 还补了一条很容易忽略的边界： 导出 不包含 usage logs 导出 不包含 device-level settings 这意味着： 你配置过的中转站列表 各 Provider 的地址、Key、模型相关配置 MCP 提示词预设 这些核心内容，理论上都可以跟着导出文件一起迁移。 但如果主人导入后发现“语言、窗口行为、自定义目录、某些本机偏好怎么没跟过来”，不要第一反应就判定成同步失败，因为这本来就是官方区分出来的设备级边界。 --- 但有两个限制，主人一定要先知道 这两条很关键，很多人以为“导入”就是“自动合并”，或者以为“所有设置都会一模一样跟过去”，实际不是。 4.1 导入是覆盖，不是合并 官方手册明确提示： 导入时会覆盖现有配置 建议导入前先导出当前配置做备份 所以如果主人现在多台电脑上的配置并不完全一样，最稳的做法不是直接选一台覆盖全部，而是： 先把每台电脑都各自导出一份留底 选一台作为“主配置机” 把别的机器里独有的 Provider / MCP / Prompt 补齐到这台主配置机 最后只从这台机器导出一份“最终最新版” 换句话说，CC Switch 导入适合做“统一版本下发”，不适合做“多机自动合并”。 4.2 设备级设置不会跨设备同步 官方 FAQ 明确写了： ~/.cc-switch/settings.json 存的是设备级设置 这些设置 not synced across devices 它举的内容包括： 语言 主题 窗口行为 开机自启 各 CLI 工具的自定义配置目录 所以主人要理解成： 核心 Provider / MCP / Prompt 配置可以迁移 这台电脑自己的界面偏好、目录路径之类，不保证跟着一起过去 这里和上面导出的“应用设置”不要机械画等号。更稳的理解是： 导出 JSON 主要面向 Provider / MCP / Prompts / 应用层配置 settings.json 这类明确写进 FAQ 的 device-level settings 仍然按设备各自保存 如果你在不同电脑上把 Claude / Codex / Gemini 的配置目录改到了非默认位置，那目标机器上仍然要再检查一次。 --- 主人最该用的操作流程 下面这套是我结合官方文档后，给主人的 最稳方案。 5.1 第一次整理时，不要急着只留一份 先在每一台旧电脑上都做一次导出备份，命名可以像这样： cc-switch-home-2026-05-01.json cc-switch-office-2026-05-01.json cc-switch-laptop-2026-05-01.json 这样做的目的很简单： 防止后面发现某台机器上有独有 Provider，却已经被覆盖掉 给自己留回滚空间 5.2 选一台主配置机，整理成最终版本 建议选“配置最全、最新”的那台电脑做主配置机。 如果别的机器上还有它没有的中转，就先补到主配置机里。 等确认无误后，再导出一份最终版，例如： cc-switch-master-2026-05-01.json 以后主人只维护这一个“主版本”就行。 5.3 把主版本放到你常用的同步位置 例如： OneDrive Dropbox iCloud Drive NAS 同步目录 加密 U 盘 这样你到其他电脑时，只要拿到这一个 JSON 就够了。 --- 具体怎么导出 6.1 在主配置机上操作 打开 CC Switch 点击左上角 ⚙️ 进入设置 进入 高级 / Advanced 找到 数据管理 / Data Management 点击 导出 保存生成的 JSON 备份文件 官方说明里还提到，这个备份文件是 JSON 格式，可以直接用文本编辑器查看。 6.2 导出前建议主人多做一步 如果你刚刚改过很多 Provider，建议在导出前快速检查一下： 当前常用 Provider 是否都还在 Base URL、API Key、模型 ID 是否是最新值 MCP / Prompt 是否齐全 因为你之后分发给其他电脑的，其实就是这一份“标准答案”。 --- 具体怎么导入 7.1 在目标电脑上操作 先安装好 CC Switch 打开 CC Switch 进入 设置 -> 高级 -> 数据管理 点击 选择文件 选中你保存的主配置 JSON 点击 导入 确认覆盖现有配置 这一段是官方手册明确给出的导入流程。 7.2 导入后怎么验证 建议主人至少做 3 件事： 看 Provider 列表是否已经完整出现 随机切换一个你常用的中转 Provider 打开对应 CLI 工具做一次最小验证 例如： Claude Code：进项目后看 /status Codex / Gemini CLI / OpenCode：重开终端后跑一次最小请求 官方 README 还特别说明了一条： 大多数 CLI 工具切换 Provider 后需要重启终端或重启该 CLI Claude Code 当前支持热切换，不需要重启 --- 为什么我更推荐主人先用“手动导出 / 导入” 因为主人的核心诉求不是“所有机器永远自动同步”，而是： 我想维护一份最新配置 我去别的电脑时能快速恢复 这类场景下，手动导出 / 导入有 4 个优点： 你永远知道“哪一份是主版本” 不会因为自动同步把错误配置立即传播到所有设备 迁移路径清晰，出问题容易回滚 很适合多中转、多模型、多机器但不一定天天同步的人 所以主人说的“只保留最新的一份，然后其他电脑直接导入”，从方法论上是对的。 --- 如果你后面嫌手动麻烦，可以升级成官方云同步 CC Switch 官方 README 和设置手册都明确提到两类云同步方向。 9.1 方案一：自定义应用配置目录 官方说明里写到，CC Switch 自身数据默认放在： 并且这个应用配置目录可以在设置里自定义。 README 还明确举了这些典型场景： Dropbox OneDrive iCloud NAS 这意味着你可以把 CC Switch 的数据目录放进同步盘，让多台电脑共享同一套应用数据。 不过这里主人要注意： “应用配置目录”本身属于设备级设置 所以每台电脑第一次仍然要手动指向各自本地的同步盘路径 9.2 方案二：WebDAV 云同步 如果你想让 CC Switch 直接通过应用内同步，官方还提供： WebDAV 服务器地址 用户名 / 密码 远程目录 配置名称 自动同步 而且按最新 Settings 手册，WebDAV 同步已经明确写成： 使用 v2 协议 带双层版本控制，提高同步可靠性 下载前先展示远程快照信息：协议版本、数据库版本、时间戳、大小 并支持： 测试连接 上传 下载 自动同步 官方手册也写得很清楚： 上传会覆盖远程数据 下载会覆盖本地数据 下载前会自动创建安全备份 自动同步会按你配置的间隔把数据库推到 WebDAV 所以 WebDAV 更像“数据库级同步”，适合长期多设备协作使用。 --- 哪种方式更适合主人 我给主人的建议很直接： 如果你只是偶尔换电脑 优先用： 手动导出 / 导入 这是最稳、最不容易误操作的方案。 如果你经常多机切换 可以考虑： 主版本 JSON + 云盘保存 也就是： 仍然用手动导出生成“主版本” 把主版本放在 OneDrive / Dropbox 到别的电脑时直接导入 这样已经能覆盖大部分需求，而且风险比自动同步更低。 如果你几乎每天多设备来回切 再考虑： 自定义应用配置目录 WebDAV 自动同步 但这两种方案更适合你已经把配置体系稳定下来之后再上。 --- 还有一个容易忽略的坑：共享插件配置 官方 FAQ 还提到一个和“完整迁移”很相关的点： 如果你在不同 Provider 之间切换后发现插件类配置没跟过去 可以使用 Shared Config Snippet 路径是： Edit Provider -> Shared Config Panel -> Extract from Current Provider 创建新 Provider 时，官方说明默认还可以勾选： Write Shared Config 这类功能的意义是： 把 API Key、Endpoint 之外的公共配置也一起保存在 Provider 体系里。 所以如果主人不只是配中转地址和 Key，还顺手在某些工具里加了公共扩展配置，那在整理“主配置机”时，最好顺手检查一下这一块。 --- 我给主人的最终推荐方案 如果让我按“稳、简单、少踩坑”来排序，我会建议主人这样做： 先在每台旧电脑各导出一份备份 选一台电脑作为主配置机 把所有常用中转、MCP、Prompts 整理齐 导出一份 cc-switch-master-日期.json 把它放进 OneDrive / Dropbox 之类的位置 在其他电脑安装 CC Switch 后直接导入这份主配置 后续只维护这一份主配置，需要同步时重新导出覆盖旧文件 这套流程最符合主人现在的实际需求。 --- 两个额外提醒 13.1 如果你有自装 Skills，最好额外留意 官方导出清单里明确写了 Provider、MCP、Prompts、应用设置； 而 FAQ 里又说明 skills/ 是独立目录。 所以更稳妥的理解是： 如果主人非常依赖本地安装的 Skills 最好额外备份 ~/.cc-switch/skills/ 或者直接改用“应用配置目录同步” / WebDAV 这条是我根据官方导出清单和存储结构做出的保守建议，目的是避免你以为“所有 Skills 文件一定被装进 JSON 里”。 13.2 导入前、WebDAV 下载前，CC Switch 本身会做安全备份 官方 FAQ 写到： 每次配置导入前会自动创建备份 WebDAV 下载覆盖本地数据库前也会自动创建安全备份 默认保留最近 10 个备份 所以主人即使导错一份，也不是完全没有回头路。 --- 官方参考资料 CC Switch 官方仓库：<https://github.com/farion1231/cc-switch> README（功能总览、Cloud Sync、Shared Config Snippet FAQ）：<https://github.com/farion1231/cc-switch/blob/main/README.md> 用户手册｜设置（中文，导出/导入、WebDAV、目录设置）：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/zh/1-getting-started/1.5-settings.md> FAQ｜Configuration Files（数据目录、device-level settings、导入前自动备份）：<https://github.com/farion1231/cc-switch/blob/main/docs/user-manual/en/5-faq/5.1-config-files.md>"
     },
     {
       "type": "file",
-      "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-      "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-      "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-      "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
+      "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+      "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+      "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+      "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -2935,17 +2961,17 @@
       "attachments": [
         {
           "name": "Node环境一键对比采集脚本.ps1",
-          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
+          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
           "ext": "ps1",
           "size": "6KB",
           "lastModified": "2026-05-24T12:56:24.619Z"
         }
       ],
-      "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
+      "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
       "size": "27KB",
-      "lastModified": "2026-05-24T12:56:24.624Z",
-      "wordCount": 15825,
-      "content": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录 这篇不是普通的 Node 安装教程，而是一次 Codex + CC Switch + 中转切换 之后，Node 在 Codex 终端里调用失败的真实排障实录。重点不是“怎么装 Node”，而是“为什么系统终端正常、Codex 终端却会崩”。 --- 零、先把样本身份说清楚 为了避免后面对比时把两台机器混掉，这篇笔记固定采用下面的样本命名： 公司电脑基准样本 这次已经采集过的 DESKTOP-OAP8VID 报告，视为“公司电脑基准样本” 个人电脑待排查样本 主人之后在自己电脑上运行同一份脚本生成的新报告，视为“个人电脑待排查样本” 后续无论是我继续帮主人分析，还是主人以后在自己电脑上新开一个没有当前记忆的 Codex，都按这个叫法沟通，不再用“这台 / 那台”这种模糊说法。 以后换电脑、换会话怎么办 Codex 不会自动继承当前这次对话记忆，所以后续接续排查时，要靠仓库文档 + 两份报告恢复上下文。 建议固定保留并传给新会话的材料： 这篇笔记本身 AI工具/Codex/中转切换与Node排障/目录.md 对比报告/公司电脑/ 里的公司电脑基准报告 对比报告/个人电脑/ 里的个人电脑新生成对比报告 如果以后在自己电脑新开 Codex，直接把下面这句提示词发给它最快： --- 一、先说结论 公司电脑基准样本里的 Node 运行正常，而且不是只停留在 node -v 能输出版本号。 本次实际验证通过的点包括： node -v node -e \"console.log('node-runtime-ok')\" npm -v npm doctor crypto.randomBytes() tls.rootCertificates 这说明当前环境的Node 主程序、npm 调用链、底层加密初始化、证书读取能力都没有坏。 所以如果主人自己的另一台电脑“不行”，重点不要只盯着“我明明也装了同版本 Node”，而要去看： 命中的到底是不是同一个 node.exe node -e 能不能跑 用户级 .npmrc 有没有差异 PATH 里是不是混进了多个 Node 目录 当前终端是不是和外部 PowerShell / CMD 用的不是同一套环境 Windows 加密提供程序是不是出了问题 --- 二、公司电脑基准样本的实际环境 版本信息 Node：v24.12.0 npm：11.6.2 corepack：0.34.5 yarn：1.22.22 pnpm：当前未安装 Node 运行时关键信息 平台：win32 架构：x64 可执行文件：D:\\DevEnv\\nodejs\\node.exe LTS：Krypton OpenSSL：3.5.4 crypto.getFips()：0 根证书数量：146 预检结果 仓库里的 scripts/checkNodeRuntime.ps1 在公司电脑基准样本上执行通过： pwsh：7.6.1 node path：D:\\DevEnv\\nodejs\\node.exe node -v：正常 node -e：正常 这一步很重要。很多环境表面看起来“Node 装好了”，但一到 node -e 或 npm 相关命令就崩。公司电脑基准样本没有这个问题。 --- 三、命令到底命中了谁 where 看到的结果 node：D:\\DevEnv\\nodejs\\node.exe npm：D:\\DevEnv\\nodejs\\npm、D:\\DevEnv\\nodejs\\npm.cmd npx：D:\\DevEnv\\nodejs\\npx、D:\\DevEnv\\nodejs\\npx.cmd corepack：D:\\DevEnv\\nodejs\\corepack、D:\\DevEnv\\nodejs\\corepack.cmd PowerShell 实际优先命中 node：D:\\DevEnv\\nodejs\\node.exe npm：D:\\DevEnv\\nodejs\\npm.ps1 npx：D:\\DevEnv\\nodejs\\npx.ps1 corepack：D:\\DevEnv\\nodejs\\corepack.cmd 这里非常关键。 同样是“装了 Node”，不同电脑、不同终端，实际命中的可能不是同一套文件。 比如一台命中 D:\\DevEnv\\nodejs\\node.exe，另一台命中旧版 C:\\Program Files\\nodejs\\node.exe，甚至命中某个工具自带 shim，最后表现当然会不一样。 --- 四、这台电脑的 npm 不是默认配置 当前用户级 .npmrc 在： C:\\Users\\Administrator\\.npmrc 关键配置如下： 另外还有 npm token，但这类敏感信息不应该写进公开笔记里，所以这里只保留结构，不展示真实值。 这意味着什么 当前机器的 npm 全局安装目录不是默认的 AppData\\Roaming\\npm 当前机器的缓存目录也不是默认值 当前机器为了兼容某些网络或证书场景，关闭了 strict-ssl 如果另一台电脑没有这些配置，或者路径、代理、证书设置不同，看起来“也是装了 Node”，结果照样会差很多。 --- 五、这台电脑 PATH 的特点 用户级 PATH 里和 Node 直接相关的项 D:\\DevEnv\\nodejs\\ C:\\Users\\Administrator\\AppData\\Roaming\\npm D:\\DevEnv\\nodejs\\node_global 机器级 PATH 里和 Node 直接相关的项 D:\\DevEnv\\nodejs\\ 当前进程 PATH 的特点 当前进程 PATH 同时包含： 机器级 D:\\DevEnv\\nodejs\\ 用户级 D:\\DevEnv\\nodejs\\ 用户级 D:\\DevEnv\\nodejs\\node_global 用户级 C:\\Users\\Administrator\\AppData\\Roaming\\npm 这说明公司电脑基准样本本身就不是“最干净的默认安装”，而是做过一些定制。 但它现在能正常跑，说明这些定制本身没有造成故障。 主人在另一台电脑排查时，要重点看两件事： 有没有多个 Node 路径混在 PATH 里 PATH 顺序是不是把旧版 Node 或别的 shim 顶到了前面 --- 六、当前环境没有看到的危险变量 这次检查里，下面这些变量都没有被显式设置： NODE_OPTIONS OPENSSL_CONF SSL_CERT_DIR SSL_CERT_FILE npm_config_prefix npm_config_cache 这也是一个重点。 很多“同样版本却表现不同”的问题，不是安装包本身坏了，而是某个终端偷偷带了环境变量，结果把 Node 或 npm 的行为改掉了。 --- 七、注册表信息 当前机器的 Node 安装注册表信息是： HKLM\\Software\\Node.js InstallPath：D:\\DevEnv\\nodejs\\ Version：24.12.0 HKCU\\Software\\Node.js\\Components NodeStartMenuShortcuts：1 DocumentationShortcuts：1 EnvironmentPathNpmModules：1 这说明当前机器不是随手解压一个绿色目录那么简单，而是有完整安装痕迹。 --- 八、为什么一台能跑，另一台不能跑 如果主人另一台电脑表现为： node -v 正常 npm、vite、vitest、node -e 异常 最常见的根因通常是下面几类。 命中的不是同一个 Node 最典型的就是 PATH 里同时存在： C:\\Program Files\\nodejs D:\\DevEnv\\nodejs 某些工具自己的 shim 目录 这样不同终端可能根本没用同一套 Node。 .npmrc 差异 公司电脑基准样本明确改过： prefix cache strict-ssl 如果另一台还是默认值，或者配置了代理、镜像、证书文件，npm 行为就会不同。 PowerShell 和外部终端不是同一套环境 有些问题只在编辑器内置终端、Codex 终端、某个代理终端里出现； 你把命令复制到外部 PowerShell / CMD 里，反而是正常的。 这时优先判断“终端环境不同”，不要先把锅甩给 Node 安装包。 Windows 加密提供程序异常 这一类症状最容易误导人，因为看起来像“Node 能启动”，实际只是最简单的版本命令能跑。 一旦出现下面这些报错，就该往系统加密环境排查，而不是只重复卸载重装 Node： ncrypto::CSPRNG(nullptr, 0) NTE_PROVIDER_DLL_FAIL 0x8009001d --- 九、最快定位差异的检查顺序 主人如果只想最快定位问题，建议按这个顺序在另一台电脑执行： node -v node -e \"console.log('node-runtime-ok')\" node -e \"const crypto=require('crypto'); console.log(crypto.randomBytes(16).toString('hex'))\" where.exe node where.exe npm Get-Command node | Format-List * Get-Command npm | Format-List * npm -v npm config ls -l 查看 %USERPROFILE%\\.npmrc 查看用户级 / 机器级 PATH 查看 NODE_OPTIONS / OPENSSL_CONF / SSL_CERT_FILE --- 十、直接用我附的脚本 为了避免主人手工一条条复制命令，我把一键采集脚本也放成了附件： Node环境一键对比采集脚本.ps1 它会自动采集： Node / npm / corepack / yarn / pnpm 版本 where 与 Get-Command 的命中结果 process.versions .npmrc PATH 关键环境变量 npm config 注册表 加密与证书检查 全局包列表 并生成一份 Markdown 报告，方便直接和本文对照。 建议生成后立刻按下面目录归档： 使用方式 在另一台电脑的 PowerShell 里进入这个脚本所在目录，执行： 如果那台电脑没有 pwsh，也可以试： 执行完成后，脚本会在同目录生成一份类似下面名字的报告： 然后把那份报告和这篇文章对照，看差异就行。 --- 十一、这次排查最值得先看的 8 个差异点 如果不想通读全文，先比这 8 项： node.exe 路径是否一致 node -e 是否成功 crypto.randomBytes() 是否成功 PowerShell 命中的 npm 是否是 npm.ps1 .npmrc 是否都改了 prefix / cache / strict-ssl PATH 是否都包含全局 npm 目录 是否存在 NODE_OPTIONS / OPENSSL_CONF npm doctor 是版本建议，还是直接崩溃 --- 十二、最终判断 公司电脑基准样本的 Node 环境属于： 安装正常 命令解析正常 npm 可运行 加密初始化正常 证书可读取 做过用户级自定义，但整体链路完整 所以如果个人电脑“不行”，更大概率是环境差异问题，而不是“Node 版本号看起来一样，就应该完全等价”。 --- 十三、这次个人电脑上 Codex 的真实根因与完整修复方案 上面前 12 节解决的是“怎么系统化对比两台机器”。 这一节补的是这次主人个人电脑上已经实际查明的那条故障链：为什么外部 PowerShell 正常，但 Codex 终端里一开始就是不行。 先说最终结论 这次真正坏掉的，不是主人电脑上的 Node 安装，也不是仓库代码。 真正的根因是： 主人个人电脑的外部 PowerShell / CMD 里的 Node 是正常的 当前这个 Codex 终端启动子进程时，没有继承完整的 Windows 登录环境 旧配置下 C:\\Users\\HN246\\.codex\\config.toml 使用的是： 在这次实际环境里，Codex 会话里丢失了多项 Windows 基础变量，导致 Node 在初始化随机数与加密能力时失败 把配置改成： 完全关闭并重新打开 Codex 后，Node 恢复正常，问题解决 也就是说，这次故障的本质不是“Node 装坏了”，而是Codex 的 Windows 子进程环境继承不完整。 这次故障最容易误判的地方 最开始最迷惑人的地方是： node -v 能跑 但 node -e 会崩 报错是： 这类现象特别容易让人误以为： Node 版本坏了 OpenSSL 坏了 需要卸载重装 Node 甚至怀疑仓库依赖或项目脚本有问题 但这次实际验证下来，这些都不是根因。 第一步：先用仓库里的预检脚本确认症状 按仓库约定，先执行： 在故障还没修复前，主人个人电脑上的 Codex 终端里表现是： node -v：正常 node -e：失败 关键报错：ncrypto::CSPRNG(nullptr, 0) 这一步的意义是把问题先定性成： 不是“命令找不到 node” 而是“Node 能启动，但运行时初始化阶段失败” 第二步：不要只看 Codex，要和外部终端做对照 后来再看主人自己生成的个人电脑对比报告，会发现一个非常关键的事实： 个人电脑普通 PowerShell 里： node -e \"console.log('node-runtime-ok')\" 成功 crypto.randomBytes() 成功 公司电脑普通 PowerShell 里： 同样成功 也就是说，两份对比报告真正证明的是： 公司电脑系统终端里的 Node 正常 主人个人电脑系统终端里的 Node 其实也正常 所以“主人电脑上的 Node 本体坏了”这个结论当场就站不住了。 问题范围被缩小成： 外部终端正常 Codex 终端异常 这时就要优先怀疑：不是 Node 本身坏了，而是 Codex 当前会话环境和外部终端不一样。 第三步：直接检查 Codex 当前进程环境变量 接着在 Codex 终端里进一步检查环境变量，发现当前会话里丢了很多本应存在的 Windows 基础变量，例如： SystemRoot ProgramData COMSPEC APPDATA LOCALAPPDATA HOME HOMEDRIVE HOMEPATH 而同一个会话里只剩下少量变量，例如： PATH TEMP TMP USERNAME USERPROFILE 这说明 Codex 当前终端拿到的不是“完整用户登录环境”，而是一份被裁剪过的环境变量集合。 第四步：做定向复原实验，验证是不是缺变量导致 为了避免只凭猜测判断，这次做了一个非常关键的实验： 先不改 Node，不改系统，不重装任何东西 只是在当前 Codex 会话里，临时补回那批缺失的基础变量 再立即执行 node -e \"console.log('node-runtime-ok')\" 结果是：立刻恢复正常。 接着再运行： 结果整个预检都通过。 这一步非常关键，因为它等于把因果链钉死了： 不是 Node 文件损坏 不是 npm 配置先导致的 不是仓库脚本导致的 而是 Codex 当前进程环境变量缺失，触发了 Node 运行时初始化异常 第五步：继续追 Codex 配置，定位触发点 既然问题在 Codex 终端环境本身，就继续往 C:\\Users\\HN246\\.codex\\config.toml 查。 最终定位到这一段配置： 这行配置的意思不是“继承全部登录环境”，而是只继承 Codex 认为属于“核心集合”的那部分环境变量。 再结合官方公开资料与源码，可以得出更准确的判断： Codex 在 Windows 上启动命令时，并不是简单原样继承父进程环境 它会先清理子进程环境，再按策略重新构建环境 当前这次主人机器上的这版 Codex，在 inherit = \"core\" 这条路径下，没有把 Node 需要的那组 Windows 基础变量完整带进去 于是就出现了： 外部 PowerShell 正常 Codex 终端缺变量 node -v 正常但 node -e 崩溃 补充：为什么这行配置会突然出现，和 CC Switch 到底是什么关系 这次继续往下深挖后，已经能把“为什么主人明明没手动写这行配置，它却突然出现在 config.toml 里”解释得更清楚。 先说结论： 这行配置大概率不是主人手动写进去的 它和主人最近用 CC Switch 切 Codex 中转有很强关联 真正需要警惕的，不是“所有中转都会出问题”，而是 CC Switch 给某个具体 Codex provider 保存的配置快照里，是否已经带上了 inherit = \"core\" 这次本机进一步查到几个很关键的证据： 证据 1：CC Switch 确实会写 Codex 的 config.toml CC Switch 自己的本地缓存脚本里明确出现了这些文案： config.toml (TOML) Codex config.toml configuration content Edit Codex Common Config Snippet This snippet will be appended to the end of config.toml when 'Write Common Config' is checked 这说明它不是只存个 API Key 或中转地址那么简单，而是确实有能力把配置片段写进 Codex 的 config.toml。 证据 2：CC Switch 本地数据库里保存了每个 provider 对应的 Codex 配置快照 CC Switch 的真实用户数据目录在： 其中最关键的是： 继续查看后发现，数据库里不是只保存“供应商名称 + API 地址”，而是会保存整段 Codex 配置文本。 这次当前机器里就能直接查到一个名为： 的 Codex provider 快照，而它保存的配置内容里，明确包含： 这几乎就把因果链钉死了： 主人最近切过中转 CC Switch 把某个 provider 的完整 Codex 配置保存在数据库里 那份快照里已经带了 inherit = \"core\" 一旦切回这个 provider，CC Switch 就有可能把这段旧配置重新写回 .codex/config.toml 证据 3：修好 live 配置，不代表 CC Switch 数据库里的旧快照也一起修好了 这次还查到了 CC Switch 自己的日志： 这句话很关键。 它说明： 主人后来手动把 C:\\Users\\HN246\\.codex\\config.toml 里的 inherit = \"core\" 改成了 inherit = \"all\" 但 CC Switch 并没有自动把这份“修好的 live 配置”回写进它自己的数据库 也就是说，数据库里那份旧快照可能还保留着坏配置 这也是为什么“当前 Codex 已经修好了”，但以后切换中转后仍然可能复发。 证据 4：这次风险更像是“按 provider 分”，不是“所有中转一刀切全有问题” 进一步抽查数据库后，这次更像是下面这种情况： 当前这个 mycodex-1777115900072 provider 快照里，明确保存了 inherit = \"core\" 其他被抽查到的 Codex provider，例如更早的 sub2api-1772369867941、defaultcodex，保存的是各自的 model_provider、base_url、mcp_servers 等内容，但没有明显看到同样的 shell_environment_policy 块 所以更准确的说法应该是： 不是“以后主人只要切任何一个中转，就必炸” 而是“以后主人切到哪一个 provider，取决于那个 provider 在 CC Switch 数据库里存着什么配置快照” 这也是为什么这次不能简单归纳成“所有中转都有毒”。 这次真正值得记住的排查方向 如果以后主人再用 CC Switch 切换不同中转，结果出现： 外部 PowerShell 正常 Codex 终端里 node -v 正常 但 node -e / npm / vite 崩 优先不要只盯着“是不是这个新中转站坏了”，而要先往下面这个方向看： 当前切到的是哪个 Codex provider 这个 provider 在 C:\\Users\\HN246\\.cc-switch\\cc-switch.db 里保存的配置快照，是否带了： 当前 .codex/config.toml 有没有被重新写回这段内容 以后每次切中转后，最快的自检动作 为了避免下一次又绕一大圈，建议主人以后每次在 CC Switch 里切完 Codex 中转后，立刻做两步： 如果看到： 而且 node -e 又开始失败，就优先按这次的修法处理，而不是先去卸载重装 Node。 最终归纳 这次更接近真实情况的结论是： CC Switch 的确和问题出现强相关 问题不在“换中转”这件事本身 而在 CC Switch 是否把某个 provider 里旧的 Codex 配置快照重新写回了 live 配置 当前这次主人机器上的风险点，已经能明确定位到某个具体 provider 快照里保存了 inherit = \"core\" 为什么这次不是 .npmrc、镜像源或 strict-ssl 的锅 对比报告里确实存在这些差异： 个人电脑用了 https://registry.npmmirror.com 缓存目录在 C:\\Users\\HN246\\.kiro\\npm-cache 公司电脑 strict-ssl=false 个人电脑还有一条可疑的 PATH 项：E:\\Dev;nv\\Dart\\flutter\\bin 这些差异都值得记录，但它们都不是这次 Codex 里 node -e 直接崩溃的根因。 原因很简单： node -e 在加载 npm 配置之前就已经失败了 这次报错发生在 Node 初始化随机数与加密能力的阶段 临时补环境变量后，不改 .npmrc 也能立刻恢复 所以这些配置差异属于“环境不同点”，但不属于这次故障的真正第一根因。 真正的修复步骤 这次最终生效的修复很简单，但顺序不能乱。 第一步：修改 Codex 配置文件 打开： 把： 改成： 第二步：彻底关闭当前 Codex 会话 这一步不能省。 原因是配置文件改完以后，已经启动中的 Codex 进程不会自动把旧环境替换成新环境。 如果只是在原会话里继续试，有可能还拿着旧的残缺环境，于是误以为“改了没用”。 正确做法是： 完全关闭当前 Codex 重新打开一个新会话 再重新执行 Node 预检 第三步：重新运行仓库预检脚本 新开 Codex 后，重新执行： 这次的结果变成： node path：E:\\DevEnv\\nodejs\\node.exe node -v：正常 node -e：成功输出 node-runtime-ok 第四步：继续补做更完整的 Node 实测 为了确认不是“只过了最简单的一个命令”，又额外执行了下面这些检查： 这些命令都成功后，才能把问题视为真正解决。 这次修复成功后的最终验证结果 最终当前 Codex 会话里已经确认通过的点包括： scripts/checkNodeRuntime.ps1 通过 node -v 通过 node -e \"console.log('node-runtime-ok')\" 通过 crypto.randomBytes() 通过 npm -v 通过 npx -v 通过 corepack --version 通过 process.execPath 命中 E:\\DevEnv\\nodejs\\node.exe tls.rootCertificates.length 正常返回 146 where.exe 与 Get-Command 都命中正确的 Node / npm / npx / corepack 这说明现在不仅仅是“Node 版本号能打印”，而是： Node 主程序正常 Node 执行脚本正常 加密能力正常 TLS 证书读取正常 npm 调用链正常 npx / corepack 正常 命令命中路径正常 可以把这次 Codex 里的 Node 故障视为已经修复完成。 如果以后换电脑、换版本，再次遇到同类问题怎么办 如果以后在另一台 Windows 电脑或新的 Codex 版本里，再次出现下面这种现象： 外部 PowerShell 正常 Codex 终端里 node -v 正常 但 node -e、npm、vite、vitest 崩溃 报 ncrypto::CSPRNG(nullptr, 0)、NTE_PROVIDER_DLL_FAIL、0x8009001d 建议直接按下面顺序处理： 先运行 pwsh -File scripts/checkNodeRuntime.ps1 再对比外部 PowerShell 和 Codex 终端是否同样失败 检查 Codex 会话里是否缺失 APPDATA、LOCALAPPDATA、SystemRoot、COMSPEC 查看 C:\\Users\\用户名\\.codex\\config.toml 里的 shell_environment_policy 如果当前是 inherit = \"core\"，优先改成 inherit = \"all\" 完全关闭 Codex 再重开，不要只在旧会话里复测 新会话里重新跑整套 Node 检查命令 这次事件最值得记住的一句话 如果主人以后再看到： node -v 正常 但 node -e 崩 而外部 PowerShell 又是好的 那就先别急着重装 Node。 这次真实经验说明，更值得先怀疑的是： 当前代理终端没有继承完整的 Windows 环境变量。"
+      "lastModified": "2026-05-30T10:00:56.019Z",
+      "wordCount": 15999,
+      "content": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录 这篇不是普通的 Node 安装教程，而是一次 CC Switch 切换 Codex Provider 之后，Node 只在 Codex 终端里调用失败的真实排障实录。重点不是“怎么装 Node”，而是“为什么系统终端正常、Codex 终端却会崩”，以及为什么根因最后会追到 CC Switch 的 provider 快照与数据库源数据。 --- 零、先把样本身份说清楚 为了避免后面对比时把两台机器混掉，这篇笔记固定采用下面的样本命名： 公司电脑基准样本 这次已经采集过的 DESKTOP-OAP8VID 报告，视为“公司电脑基准样本” 个人电脑待排查样本 主人之后在自己电脑上运行同一份脚本生成的新报告，视为“个人电脑待排查样本” 后续无论是我继续帮主人分析，还是主人以后在自己电脑上新开一个没有当前记忆的 Codex，都按这个叫法沟通，不再用“这台 / 那台”这种模糊说法。 以后换电脑、换会话怎么办 Codex 不会自动继承当前这次对话记忆，所以后续接续排查时，要靠仓库文档 + 两份报告恢复上下文。 建议固定保留并传给新会话的材料： 这篇笔记本身 AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/目录.md 对比报告/公司电脑/ 里的公司电脑基准报告 对比报告/个人电脑/ 里的个人电脑新生成对比报告 如果以后在自己电脑新开 Codex，直接把下面这句提示词发给它最快： --- 一、先说结论 公司电脑基准样本里的 Node 运行正常，而且不是只停留在 node -v 能输出版本号。 本次实际验证通过的点包括： node -v node -e \"console.log('node-runtime-ok')\" npm -v npm doctor crypto.randomBytes() tls.rootCertificates 这说明当前环境的Node 主程序、npm 调用链、底层加密初始化、证书读取能力都没有坏。 所以如果主人自己的另一台电脑“不行”，重点不要只盯着“我明明也装了同版本 Node”，而要去看： 命中的到底是不是同一个 node.exe node -e 能不能跑 用户级 .npmrc 有没有差异 PATH 里是不是混进了多个 Node 目录 当前终端是不是和外部 PowerShell / CMD 用的不是同一套环境 Windows 加密提供程序是不是出了问题 --- 二、公司电脑基准样本的实际环境 版本信息 Node：v24.12.0 npm：11.6.2 corepack：0.34.5 yarn：1.22.22 pnpm：当前未安装 Node 运行时关键信息 平台：win32 架构：x64 可执行文件：D:\\DevEnv\\nodejs\\node.exe LTS：Krypton OpenSSL：3.5.4 crypto.getFips()：0 根证书数量：146 预检结果 仓库里的 scripts/checkNodeRuntime.ps1 在公司电脑基准样本上执行通过： pwsh：7.6.1 node path：D:\\DevEnv\\nodejs\\node.exe node -v：正常 node -e：正常 这一步很重要。很多环境表面看起来“Node 装好了”，但一到 node -e 或 npm 相关命令就崩。公司电脑基准样本没有这个问题。 --- 三、命令到底命中了谁 where 看到的结果 node：D:\\DevEnv\\nodejs\\node.exe npm：D:\\DevEnv\\nodejs\\npm、D:\\DevEnv\\nodejs\\npm.cmd npx：D:\\DevEnv\\nodejs\\npx、D:\\DevEnv\\nodejs\\npx.cmd corepack：D:\\DevEnv\\nodejs\\corepack、D:\\DevEnv\\nodejs\\corepack.cmd PowerShell 实际优先命中 node：D:\\DevEnv\\nodejs\\node.exe npm：D:\\DevEnv\\nodejs\\npm.ps1 npx：D:\\DevEnv\\nodejs\\npx.ps1 corepack：D:\\DevEnv\\nodejs\\corepack.cmd 这里非常关键。 同样是“装了 Node”，不同电脑、不同终端，实际命中的可能不是同一套文件。 比如一台命中 D:\\DevEnv\\nodejs\\node.exe，另一台命中旧版 C:\\Program Files\\nodejs\\node.exe，甚至命中某个工具自带 shim，最后表现当然会不一样。 --- 四、这台电脑的 npm 不是默认配置 当前用户级 .npmrc 在： C:\\Users\\Administrator\\.npmrc 关键配置如下： 另外还有 npm token，但这类敏感信息不应该写进公开笔记里，所以这里只保留结构，不展示真实值。 这意味着什么 当前机器的 npm 全局安装目录不是默认的 AppData\\Roaming\\npm 当前机器的缓存目录也不是默认值 当前机器为了兼容某些网络或证书场景，关闭了 strict-ssl 如果另一台电脑没有这些配置，或者路径、代理、证书设置不同，看起来“也是装了 Node”，结果照样会差很多。 --- 五、这台电脑 PATH 的特点 用户级 PATH 里和 Node 直接相关的项 D:\\DevEnv\\nodejs\\ C:\\Users\\Administrator\\AppData\\Roaming\\npm D:\\DevEnv\\nodejs\\node_global 机器级 PATH 里和 Node 直接相关的项 D:\\DevEnv\\nodejs\\ 当前进程 PATH 的特点 当前进程 PATH 同时包含： 机器级 D:\\DevEnv\\nodejs\\ 用户级 D:\\DevEnv\\nodejs\\ 用户级 D:\\DevEnv\\nodejs\\node_global 用户级 C:\\Users\\Administrator\\AppData\\Roaming\\npm 这说明公司电脑基准样本本身就不是“最干净的默认安装”，而是做过一些定制。 但它现在能正常跑，说明这些定制本身没有造成故障。 主人在另一台电脑排查时，要重点看两件事： 有没有多个 Node 路径混在 PATH 里 PATH 顺序是不是把旧版 Node 或别的 shim 顶到了前面 --- 六、当前环境没有看到的危险变量 这次检查里，下面这些变量都没有被显式设置： NODE_OPTIONS OPENSSL_CONF SSL_CERT_DIR SSL_CERT_FILE npm_config_prefix npm_config_cache 这也是一个重点。 很多“同样版本却表现不同”的问题，不是安装包本身坏了，而是某个终端偷偷带了环境变量，结果把 Node 或 npm 的行为改掉了。 --- 七、注册表信息 当前机器的 Node 安装注册表信息是： HKLM\\Software\\Node.js InstallPath：D:\\DevEnv\\nodejs\\ Version：24.12.0 HKCU\\Software\\Node.js\\Components NodeStartMenuShortcuts：1 DocumentationShortcuts：1 EnvironmentPathNpmModules：1 这说明当前机器不是随手解压一个绿色目录那么简单，而是有完整安装痕迹。 --- 八、为什么一台能跑，另一台不能跑 如果主人另一台电脑表现为： node -v 正常 npm、vite、vitest、node -e 异常 最常见的根因通常是下面几类。 命中的不是同一个 Node 最典型的就是 PATH 里同时存在： C:\\Program Files\\nodejs D:\\DevEnv\\nodejs 某些工具自己的 shim 目录 这样不同终端可能根本没用同一套 Node。 .npmrc 差异 公司电脑基准样本明确改过： prefix cache strict-ssl 如果另一台还是默认值，或者配置了代理、镜像、证书文件，npm 行为就会不同。 PowerShell 和外部终端不是同一套环境 有些问题只在编辑器内置终端、Codex 终端、某个代理终端里出现； 你把命令复制到外部 PowerShell / CMD 里，反而是正常的。 这时优先判断“终端环境不同”，不要先把锅甩给 Node 安装包。 Windows 加密提供程序异常 这一类症状最容易误导人，因为看起来像“Node 能启动”，实际只是最简单的版本命令能跑。 一旦出现下面这些报错，就该往系统加密环境排查，而不是只重复卸载重装 Node： ncrypto::CSPRNG(nullptr, 0) NTE_PROVIDER_DLL_FAIL 0x8009001d --- 九、最快定位差异的检查顺序 主人如果只想最快定位问题，建议按这个顺序在另一台电脑执行： node -v node -e \"console.log('node-runtime-ok')\" node -e \"const crypto=require('crypto'); console.log(crypto.randomBytes(16).toString('hex'))\" where.exe node where.exe npm Get-Command node | Format-List * Get-Command npm | Format-List * npm -v npm config ls -l 查看 %USERPROFILE%\\.npmrc 查看用户级 / 机器级 PATH 查看 NODE_OPTIONS / OPENSSL_CONF / SSL_CERT_FILE --- 十、直接用我附的脚本 为了避免主人手工一条条复制命令，我把一键采集脚本也放成了附件： Node环境一键对比采集脚本.ps1 它会自动采集： Node / npm / corepack / yarn / pnpm 版本 where 与 Get-Command 的命中结果 process.versions .npmrc PATH 关键环境变量 npm config 注册表 加密与证书检查 全局包列表 并生成一份 Markdown 报告，方便直接和本文对照。 建议生成后立刻按下面目录归档： 使用方式 在另一台电脑的 PowerShell 里进入这个脚本所在目录，执行： 如果那台电脑没有 pwsh，也可以试： 执行完成后，脚本会在同目录生成一份类似下面名字的报告： 然后把那份报告和这篇文章对照，看差异就行。 --- 十一、这次排查最值得先看的 8 个差异点 如果不想通读全文，先比这 8 项： node.exe 路径是否一致 node -e 是否成功 crypto.randomBytes() 是否成功 PowerShell 命中的 npm 是否是 npm.ps1 .npmrc 是否都改了 prefix / cache / strict-ssl PATH 是否都包含全局 npm 目录 是否存在 NODE_OPTIONS / OPENSSL_CONF npm doctor 是版本建议，还是直接崩溃 --- 十二、最终判断 公司电脑基准样本的 Node 环境属于： 安装正常 命令解析正常 npm 可运行 加密初始化正常 证书可读取 做过用户级自定义，但整体链路完整 所以如果个人电脑“不行”，更大概率是环境差异问题，而不是“Node 版本号看起来一样，就应该完全等价”。 --- 十三、这次个人电脑上 Codex 的真实根因与完整修复方案 上面前 12 节解决的是“怎么系统化对比两台机器”。 这一节补的是这次主人个人电脑上已经实际查明的那条故障链：为什么外部 PowerShell 正常，但 Codex 终端里一开始就是不行。 先说最终结论 这次真正坏掉的，不是主人电脑上的 Node 安装，也不是仓库代码。 真正的根因是： 主人个人电脑的外部 PowerShell / CMD 里的 Node 是正常的 当前这个 Codex 终端启动子进程时，没有继承完整的 Windows 登录环境 旧配置下 C:\\Users\\HN246\\.codex\\config.toml 使用的是： 在这次实际环境里，Codex 会话里丢失了多项 Windows 基础变量，导致 Node 在初始化随机数与加密能力时失败 把配置改成： 完全关闭并重新打开 Codex 后，Node 恢复正常，问题解决 也就是说，这次故障的本质不是“Node 装坏了”，而是Codex 的 Windows 子进程环境继承不完整。 这次故障最容易误判的地方 最开始最迷惑人的地方是： node -v 能跑 但 node -e 会崩 报错是： 这类现象特别容易让人误以为： Node 版本坏了 OpenSSL 坏了 需要卸载重装 Node 甚至怀疑仓库依赖或项目脚本有问题 但这次实际验证下来，这些都不是根因。 第一步：先用仓库里的预检脚本确认症状 按仓库约定，先执行： 在故障还没修复前，主人个人电脑上的 Codex 终端里表现是： node -v：正常 node -e：失败 关键报错：ncrypto::CSPRNG(nullptr, 0) 这一步的意义是把问题先定性成： 不是“命令找不到 node” 而是“Node 能启动，但运行时初始化阶段失败” 第二步：不要只看 Codex，要和外部终端做对照 后来再看主人自己生成的个人电脑对比报告，会发现一个非常关键的事实： 个人电脑普通 PowerShell 里： node -e \"console.log('node-runtime-ok')\" 成功 crypto.randomBytes() 成功 公司电脑普通 PowerShell 里： 同样成功 也就是说，两份对比报告真正证明的是： 公司电脑系统终端里的 Node 正常 主人个人电脑系统终端里的 Node 其实也正常 所以“主人电脑上的 Node 本体坏了”这个结论当场就站不住了。 问题范围被缩小成： 外部终端正常 Codex 终端异常 这时就要优先怀疑：不是 Node 本身坏了，而是 Codex 当前会话环境和外部终端不一样。 第三步：直接检查 Codex 当前进程环境变量 接着在 Codex 终端里进一步检查环境变量，发现当前会话里丢了很多本应存在的 Windows 基础变量，例如： SystemRoot ProgramData COMSPEC APPDATA LOCALAPPDATA HOME HOMEDRIVE HOMEPATH 而同一个会话里只剩下少量变量，例如： PATH TEMP TMP USERNAME USERPROFILE 这说明 Codex 当前终端拿到的不是“完整用户登录环境”，而是一份被裁剪过的环境变量集合。 第四步：做定向复原实验，验证是不是缺变量导致 为了避免只凭猜测判断，这次做了一个非常关键的实验： 先不改 Node，不改系统，不重装任何东西 只是在当前 Codex 会话里，临时补回那批缺失的基础变量 再立即执行 node -e \"console.log('node-runtime-ok')\" 结果是：立刻恢复正常。 接着再运行： 结果整个预检都通过。 这一步非常关键，因为它等于把因果链钉死了： 不是 Node 文件损坏 不是 npm 配置先导致的 不是仓库脚本导致的 而是 Codex 当前进程环境变量缺失，触发了 Node 运行时初始化异常 第五步：继续追 Codex 配置，定位触发点 既然问题在 Codex 终端环境本身，就继续往 C:\\Users\\HN246\\.codex\\config.toml 查。 最终定位到这一段配置： 这行配置的意思不是“继承全部登录环境”，而是只继承 Codex 认为属于“核心集合”的那部分环境变量。 再结合官方公开资料与源码，可以得出更准确的判断： Codex 在 Windows 上启动命令时，并不是简单原样继承父进程环境 它会先清理子进程环境，再按策略重新构建环境 当前这次主人机器上的这版 Codex，在 inherit = \"core\" 这条路径下，没有把 Node 需要的那组 Windows 基础变量完整带进去 于是就出现了： 外部 PowerShell 正常 Codex 终端缺变量 node -v 正常但 node -e 崩溃 补充：为什么这行配置会突然出现，和 CC Switch 到底是什么关系 这次继续往下深挖后，已经能把“为什么主人明明没手动写这行配置，它却突然出现在 config.toml 里”解释得更清楚。 先说结论： 这行配置大概率不是主人手动写进去的 它和主人最近用 CC Switch 切 Codex 中转有很强关联 真正需要警惕的，不是“所有中转都会出问题”，而是 CC Switch 给某个具体 Codex provider 保存的配置快照里，是否已经带上了 inherit = \"core\" 这次本机进一步查到几个很关键的证据： 证据 1：CC Switch 确实会写 Codex 的 config.toml CC Switch 自己的本地缓存脚本里明确出现了这些文案： config.toml (TOML) Codex config.toml configuration content Edit Codex Common Config Snippet This snippet will be appended to the end of config.toml when 'Write Common Config' is checked 这说明它不是只存个 API Key 或中转地址那么简单，而是确实有能力把配置片段写进 Codex 的 config.toml。 证据 2：CC Switch 本地数据库里保存了每个 provider 对应的 Codex 配置快照 CC Switch 的真实用户数据目录在： 其中最关键的是： 继续查看后发现，数据库里不是只保存“供应商名称 + API 地址”，而是会保存整段 Codex 配置文本。 这次当前机器里就能直接查到一个名为： 的 Codex provider 快照，而它保存的配置内容里，明确包含： 这几乎就把因果链钉死了： 主人最近切过中转 CC Switch 把某个 provider 的完整 Codex 配置保存在数据库里 那份快照里已经带了 inherit = \"core\" 一旦切回这个 provider，CC Switch 就有可能把这段旧配置重新写回 .codex/config.toml 证据 3：修好 live 配置，不代表 CC Switch 数据库里的旧快照也一起修好了 这次还查到了 CC Switch 自己的日志： 这句话很关键。 它说明： 主人后来手动把 C:\\Users\\HN246\\.codex\\config.toml 里的 inherit = \"core\" 改成了 inherit = \"all\" 但 CC Switch 并没有自动把这份“修好的 live 配置”回写进它自己的数据库 也就是说，数据库里那份旧快照可能还保留着坏配置 这也是为什么“当前 Codex 已经修好了”，但以后切换中转后仍然可能复发。 证据 4：这次风险更像是“按 provider 分”，不是“所有中转一刀切全有问题” 进一步抽查数据库后，这次更像是下面这种情况： 当前这个 mycodex-1777115900072 provider 快照里，明确保存了 inherit = \"core\" 其他被抽查到的 Codex provider，例如更早的 sub2api-1772369867941、defaultcodex，保存的是各自的 model_provider、base_url、mcp_servers 等内容，但没有明显看到同样的 shell_environment_policy 块 所以更准确的说法应该是： 不是“以后主人只要切任何一个中转，就必炸” 而是“以后主人切到哪一个 provider，取决于那个 provider 在 CC Switch 数据库里存着什么配置快照” 这也是为什么这次不能简单归纳成“所有中转都有毒”。 这次真正值得记住的排查方向 如果以后主人再用 CC Switch 切换不同中转，结果出现： 外部 PowerShell 正常 Codex 终端里 node -v 正常 但 node -e / npm / vite 崩 优先不要只盯着“是不是这个新中转站坏了”，而要先往下面这个方向看： 当前切到的是哪个 Codex provider 这个 provider 在 C:\\Users\\HN246\\.cc-switch\\cc-switch.db 里保存的配置快照，是否带了： 当前 .codex/config.toml 有没有被重新写回这段内容 以后每次切中转后，最快的自检动作 为了避免下一次又绕一大圈，建议主人以后每次在 CC Switch 里切完 Codex 中转后，立刻做两步： 如果看到： 而且 node -e 又开始失败，就优先按这次的修法处理，而不是先去卸载重装 Node。 最终归纳 这次更接近真实情况的结论是： CC Switch 的确和问题出现强相关 问题不在“换中转”这件事本身 而在 CC Switch 是否把某个 provider 里旧的 Codex 配置快照重新写回了 live 配置 当前这次主人机器上的风险点，已经能明确定位到某个具体 provider 快照里保存了 inherit = \"core\" 为什么这次不是 .npmrc、镜像源或 strict-ssl 的锅 对比报告里确实存在这些差异： 个人电脑用了 https://registry.npmmirror.com 缓存目录在 C:\\Users\\HN246\\.kiro\\npm-cache 公司电脑 strict-ssl=false 个人电脑还有一条可疑的 PATH 项：E:\\Dev;nv\\Dart\\flutter\\bin 这些差异都值得记录，但它们都不是这次 Codex 里 node -e 直接崩溃的根因。 原因很简单： node -e 在加载 npm 配置之前就已经失败了 这次报错发生在 Node 初始化随机数与加密能力的阶段 临时补环境变量后，不改 .npmrc 也能立刻恢复 所以这些配置差异属于“环境不同点”，但不属于这次故障的真正第一根因。 真正的修复步骤 这次最终生效的修复很简单，但顺序不能乱。 第一步：修改 Codex 配置文件 打开： 把： 改成： 第二步：彻底关闭当前 Codex 会话 这一步不能省。 原因是配置文件改完以后，已经启动中的 Codex 进程不会自动把旧环境替换成新环境。 如果只是在原会话里继续试，有可能还拿着旧的残缺环境，于是误以为“改了没用”。 正确做法是： 完全关闭当前 Codex 重新打开一个新会话 再重新执行 Node 预检 第三步：重新运行仓库预检脚本 新开 Codex 后，重新执行： 这次的结果变成： node path：E:\\DevEnv\\nodejs\\node.exe node -v：正常 node -e：成功输出 node-runtime-ok 第四步：继续补做更完整的 Node 实测 为了确认不是“只过了最简单的一个命令”，又额外执行了下面这些检查： 这些命令都成功后，才能把问题视为真正解决。 这次修复成功后的最终验证结果 最终当前 Codex 会话里已经确认通过的点包括： scripts/checkNodeRuntime.ps1 通过 node -v 通过 node -e \"console.log('node-runtime-ok')\" 通过 crypto.randomBytes() 通过 npm -v 通过 npx -v 通过 corepack --version 通过 process.execPath 命中 E:\\DevEnv\\nodejs\\node.exe tls.rootCertificates.length 正常返回 146 where.exe 与 Get-Command 都命中正确的 Node / npm / npx / corepack 这说明现在不仅仅是“Node 版本号能打印”，而是： Node 主程序正常 Node 执行脚本正常 加密能力正常 TLS 证书读取正常 npm 调用链正常 npx / corepack 正常 命令命中路径正常 可以把这次 Codex 里的 Node 故障视为已经修复完成。 如果以后换电脑、换版本，再次遇到同类问题怎么办 如果以后在另一台 Windows 电脑或新的 Codex 版本里，再次出现下面这种现象： 外部 PowerShell 正常 Codex 终端里 node -v 正常 但 node -e、npm、vite、vitest 崩溃 报 ncrypto::CSPRNG(nullptr, 0)、NTE_PROVIDER_DLL_FAIL、0x8009001d 建议直接按下面顺序处理： 先运行 pwsh -File scripts/checkNodeRuntime.ps1 再对比外部 PowerShell 和 Codex 终端是否同样失败 检查 Codex 会话里是否缺失 APPDATA、LOCALAPPDATA、SystemRoot、COMSPEC 查看 C:\\Users\\用户名\\.codex\\config.toml 里的 shell_environment_policy 如果当前是 inherit = \"core\"，优先改成 inherit = \"all\" 完全关闭 Codex 再重开，不要只在旧会话里复测 新会话里重新跑整套 Node 检查命令 这次事件最值得记住的一句话 如果主人以后再看到： node -v 正常 但 node -e 崩 而外部 PowerShell 又是好的 那就先别急着重装 Node。 这次真实经验说明，更值得先怀疑的是： 当前代理终端没有继承完整的 Windows 环境变量。"
     },
     {
       "type": "file",
@@ -2980,7 +3006,7 @@
       "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
       "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
       "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -3005,7 +3031,7 @@
       "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
       "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
       "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
       "date": "2026-04-30T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -4555,11 +4581,11 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+      "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
       "size": "9KB",
-      "lastModified": "2026-05-24T14:10:38.108Z",
+      "lastModified": "2026-05-30T11:24:47.590Z",
       "wordCount": 5013,
-      "content": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核） 资料核对时间：2026-05-24 说明：本文是上一节“中转站与计费规则”在 CC Switch 里的落地版本。 官方资料核对结果：GitHub Releases 当前可见最新版本为 v3.15.0，发布日期 2026-05-16。 [[toc]] --- 先把 CC Switch 的角色摆正 CC Switch 不是模型服务，也不是中转站本身。 它更像一个桌面控制台，帮你统一管理： Claude Code Claude Desktop Codex Gemini CLI OpenCode OpenClaw Hermes Agent 以及这些工具背后的： Provider MCP Prompts Skills Sessions 用量与费用观察 所以主人在 CC Switch 里填的每一个 Provider，本质上都是一条“怎么连到某个上游接口”的配置记录。 --- 把卖家手册翻译成 CC Switch 里的字段 中转站卖家通常会给你这些信息： 把它翻译到 CC Switch 里，通常对应下面这些概念： | 卖家手册里的说法 | CC Switch 里要看的位置 | 你真正要确认的事 | |------------------|----------------------|------------------| | API 地址 / 接口地址 / 域名 | Base URL | 是 OpenAI 兼容，还是别的协议 | | Key / Token / 密钥 | API Key | 是否有前缀要求，是否会过期 | | 支持的模型 | 模型选择 / 模型映射 | 是真实模型 ID 还是卖家别名 | | 余额 / 套餐 | Provider 卡片余额、卖家后台 | 能不能自助查，不要只靠客服 | | 速率限制 | 高级设置 / 卖家文档 | 高峰限速、并发、RPM、TPM | 如果卖家文档写得很花，但没法稳定回答这三件事： Base URL 到底是什么协议 模型 ID 到底是什么 钱到底按什么单位扣 那这家中转接进 CC Switch 后，迟早还是会排障。 --- 主人第一次新增 Provider，建议按这个顺序 3.1 第一步：先确认协议，不要直接套模板 很多中转站都会自称“兼容官方”，但“兼容哪一家官方”是关键。 常见情况： OpenAI 兼容 Anthropic 兼容 Gemini 原生或 Gemini 转 OpenAI 兼容 如果它只是 OpenAI 兼容接口，那它能不能稳定承载所有 Codex / Claude / Gemini 相关能力，要看兼容层做得完整不完整。 3.2 第二步：让模型列表自己说话 CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 /v1/models 自动发现模型；最新版还补强了部分 Anthropic 兼容 /models 发现，并加入 Full URL Endpoint Mode 来兼容路径结构不标准的第三方接口。 所以最省事的检查法是： 填好 Base URL 填好 API Key 先试模型自动拉取 如果能拉到模型列表，说明这条线至少有基础可用性。 如果连模型都拉不回来，先别急着怪工具，优先怀疑： 地址写错 Key 错 代理没通 卖家接口本身不兼容 第三方 Claude Provider 主动禁用了模型探测 这家接口其实更适合改用 Full URL Endpoint Mode 手填 3.3 第三步：把模型映射写清楚 中转站最容易坑人的地方之一，是把“营销名”和“真实模型名”混用。 最稳妥的做法是给自己留一份映射表： | 卖家显示名 | 实际模型 ID | 用途 | |-----------|-------------|------| | Claude 主力 | claude-sonnet-4 | 日常代码主力 | | GPT 编程旗舰 | gpt-5.4 或 gpt-5.5 | 复杂编码 | | Gemini 长上下文 | gemini-2.5-pro | 超长仓库阅读 | 这样后面看账单、看错误日志、换 Provider 都不会乱。 --- CC Switch 能帮你解决什么，不能帮你解决什么 4.1 它能解决的 根据 CC Switch 官方 README 和 Releases，当前它比较适合做这些事： 在多家 Provider 之间切换 统一管理多个 CLI 工具的配置 做本地路由和故障转移 看请求日志、用量和成本趋势 看部分 Provider 的余额 / 配额 自动发现 OpenAI 兼容模型列表，并在部分 Anthropic 兼容场景补强模型发现 通过 Routing Support 标识快速判断某个 Provider 是否适合配合本地路由 4.2 它不能替你解决的 下面这些不是 CC Switch 自身能“修”出来的： 卖家把模型名写假了 卖家接口兼容层不完整 卖家高峰偷偷降级模型 卖家把缓存优惠吞掉 卖家没有稳定的余额查询 所以如果出现“能连上，但总是不对劲”的情况，判断顺序应该是： 先查 Provider 配置是否正确 再查卖家协议是否完整 再查是否是上游模型或配额问题 最后才怀疑 CC Switch 本身 --- 用量、余额、计费，到底看哪一层 这也是最容易混的地方。 5.1 CC Switch 里看到的“余额 / 配额” 它的前提是：你的 Provider 或官方账号本身提供可查询接口。 从 v3.13.0 到 v3.15.0 的连续更新里，CC Switch 已经明确加入或补强了这些观察能力： 官方 Claude / Codex / Gemini 的配额展示 部分第三方 Provider 的余额展示 Token 用量与成本追踪 Codex OAuth Provider 的实时模型列表 这说明 CC Switch 更像“观察窗口”，而不是“账单裁判”。 5.2 真正的钱在哪儿扣 仍然是在下面几层之一： 官方平台账单 中转站余额 中转站月套餐 OpenRouter 这类 credits 系统 比如 OpenRouter 官方 FAQ 和定价页当前写得比较清楚： 先充值 credits 调用时从 credits 扣款 推理价格不加价 但购买 credits 时有 5.5% 手续费，最低 $0.80 如果用 BYOK，超过免费额度后会收 5% 费用 这就说明： “模型推理不加价”不等于“整个付费链路完全没额外费用”。 --- 开发场景下最实用的 Provider 组织方式 如果主人同时在用 Codex、Claude、Gemini，建议不要把所有能力塞进一个 Provider 里。 更稳妥的方式是按用途分组： | Provider | 主要模型 | 主要用途 | |----------|---------|---------| | Claude-Main | claude-sonnet-4 | 日常代码主力 | | GPT-Main | gpt-5.4 / gpt-5.5 | 复杂推理和修复杂 bug | | Gemini-LongCtx | gemini-2.5-pro | 长仓库、长文档 | | Cheap-Batch | gemini-2.5-flash-lite 或小模型 | 低成本批量任务 | 这样做的好处： 账单归因清楚 故障切换清楚 哪条线路贵一眼看出来 更容易在 CC Switch 里观察差异 --- 几个常见异常，怎么判断到底是谁的问题 7.1 能连上，但回复明显不像目标模型 优先怀疑： 卖家做了模型别名映射 卖家高峰切了备用模型 你自己填错了模型 ID 7.2 余额看起来很多，但总是报限速 优先怀疑： 套餐是“有钱但限速” 卖家给的是共享池 官方上游对该模型限流 余额和吞吐量不是一回事。 7.3 平时便宜，某些大任务突然很贵 优先看： 是否触发长上下文档位 是否大量输出 是否开启缓存写入 是否使用搜索、工具、图片 这类涨价很多时候不是“被乱扣”，而是请求结构真的变了。 7.4 基础聊天能用，开发工具却经常异常 这通常说明： 基础文本请求兼容 但开发工具需要的协议细节、工具调用、流式返回、错误码或模型映射不完整 换句话说： “能聊”不等于“能稳定做开发”。 --- 主人实际接入时的最短检查清单 每加一个新中转 Provider，按这 8 步走： 记下真实模型 ID 确认协议类型 在 CC Switch 填 Base URL 和 API Key 先尝试拉模型列表；如果拉不到，再判断是否该改走 Full URL Endpoint Mode 或手填模型 做一次最小请求测试 看是否能查余额 / 配额 记录限速与套餐说明 再把它接到 Codex、Claude 或 Gemini 主工作流 别反过来一上来就拿主工作流硬跑，否则一出问题你不知道是工具错、配置错，还是卖家错。 --- 相关阅读 AI开发基础：中转站、官转与计费规则到底怎么回事 --- 资料来源 CC Switch GitHub 仓库：<https://github.com/farion1231/cc-switch> CC Switch Releases：<https://github.com/farion1231/cc-switch/releases> OpenRouter 定价页：<https://openrouter.ai/pricing> OpenRouter FAQ：<https://openrouter.ai/docs/faq> OpenAI API 定价页：<https://openai.com/api/pricing/> Anthropic 定价文档：<https://docs.anthropic.com/en/docs/about-claude/pricing> Gemini Developer API 定价页：<https://ai.google.dev/pricing>"
+      "content": "第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核） 资料核对时间：2026-05-30 说明：本文是上一节“中转站与计费规则”在 CC Switch 里的落地版本。 官方资料核对结果：GitHub Releases 当前可见最新版本为 v3.16.0，发布日期 2026-05-29。 [[toc]] --- 先把 CC Switch 的角色摆正 CC Switch 不是模型服务，也不是中转站本身。 它更像一个桌面控制台，帮你统一管理： Claude Code Claude Desktop Codex Gemini CLI OpenCode OpenClaw Hermes Agent 以及这些工具背后的： Provider MCP Prompts Skills Sessions 用量与费用观察 所以主人在 CC Switch 里填的每一个 Provider，本质上都是一条“怎么连到某个上游接口”的配置记录。 --- 把卖家手册翻译成 CC Switch 里的字段 中转站卖家通常会给你这些信息： 把它翻译到 CC Switch 里，通常对应下面这些概念： | 卖家手册里的说法 | CC Switch 里要看的位置 | 你真正要确认的事 | |------------------|----------------------|------------------| | API 地址 / 接口地址 / 域名 | Base URL | 是 OpenAI 兼容，还是别的协议 | | Key / Token / 密钥 | API Key | 是否有前缀要求，是否会过期 | | 支持的模型 | 模型选择 / 模型映射 | 是真实模型 ID 还是卖家别名 | | 余额 / 套餐 | Provider 卡片余额、卖家后台 | 能不能自助查，不要只靠客服 | | 速率限制 | 高级设置 / 卖家文档 | 高峰限速、并发、RPM、TPM | 如果卖家文档写得很花，但没法稳定回答这三件事： Base URL 到底是什么协议 模型 ID 到底是什么 钱到底按什么单位扣 那这家中转接进 CC Switch 后，迟早还是会排障。 --- 主人第一次新增 Provider，建议按这个顺序 3.1 第一步：先确认协议，不要直接套模板 很多中转站都会自称“兼容官方”，但“兼容哪一家官方”是关键。 常见情况： OpenAI 兼容 Anthropic 兼容 Gemini 原生或 Gemini 转 OpenAI 兼容 如果它只是 OpenAI 兼容接口，那它能不能稳定承载所有 Codex / Claude / Gemini 相关能力，要看兼容层做得完整不完整。 3.2 第二步：让模型列表自己说话 CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 /v1/models 自动发现模型；最新版还补强了部分 Anthropic 兼容 /models 发现，并加入 Full URL Endpoint Mode 来兼容路径结构不标准的第三方接口。 所以最省事的检查法是： 填好 Base URL 填好 API Key 先试模型自动拉取 如果能拉到模型列表，说明这条线至少有基础可用性。 如果连模型都拉不回来，先别急着怪工具，优先怀疑： 地址写错 Key 错 代理没通 卖家接口本身不兼容 第三方 Claude Provider 主动禁用了模型探测 这家接口其实更适合改用 Full URL Endpoint Mode 手填 3.3 第三步：把模型映射写清楚 中转站最容易坑人的地方之一，是把“营销名”和“真实模型名”混用。 最稳妥的做法是给自己留一份映射表： | 卖家显示名 | 实际模型 ID | 用途 | |-----------|-------------|------| | Claude 主力 | claude-sonnet-4 | 日常代码主力 | | GPT 编程旗舰 | gpt-5.4 或 gpt-5.5 | 复杂编码 | | Gemini 长上下文 | gemini-2.5-pro | 超长仓库阅读 | 这样后面看账单、看错误日志、换 Provider 都不会乱。 --- CC Switch 能帮你解决什么，不能帮你解决什么 4.1 它能解决的 根据 CC Switch 官方 README 和 Releases，当前它比较适合做这些事： 在多家 Provider 之间切换 统一管理多个 CLI 工具的配置 做本地路由和故障转移 看请求日志、用量和成本趋势 看部分 Provider 的余额 / 配额 自动发现 OpenAI 兼容模型列表，并在部分 Anthropic 兼容场景补强模型发现 通过 Routing Support 标识快速判断某个 Provider 是否适合配合本地路由 4.2 它不能替你解决的 下面这些不是 CC Switch 自身能“修”出来的： 卖家把模型名写假了 卖家接口兼容层不完整 卖家高峰偷偷降级模型 卖家把缓存优惠吞掉 卖家没有稳定的余额查询 所以如果出现“能连上，但总是不对劲”的情况，判断顺序应该是： 先查 Provider 配置是否正确 再查卖家协议是否完整 再查是否是上游模型或配额问题 最后才怀疑 CC Switch 本身 --- 用量、余额、计费，到底看哪一层 这也是最容易混的地方。 5.1 CC Switch 里看到的“余额 / 配额” 它的前提是：你的 Provider 或官方账号本身提供可查询接口。 从 v3.13.0 到 v3.16.0 的连续更新里，CC Switch 已经明确加入或补强了这些观察能力： 官方 Claude / Codex / Gemini 的配额展示 部分第三方 Provider 的余额展示 Token 用量与成本追踪 Codex OAuth Provider 的实时模型列表 这说明 CC Switch 更像“观察窗口”，而不是“账单裁判”。 5.2 真正的钱在哪儿扣 仍然是在下面几层之一： 官方平台账单 中转站余额 中转站月套餐 OpenRouter 这类 credits 系统 比如 OpenRouter 官方 FAQ 和定价页当前写得比较清楚： 先充值 credits 调用时从 credits 扣款 推理价格不加价 但购买 credits 时有 5.5% 手续费，最低 $0.80 如果用 BYOK，超过免费额度后会收 5% 费用 这就说明： “模型推理不加价”不等于“整个付费链路完全没额外费用”。 --- 开发场景下最实用的 Provider 组织方式 如果主人同时在用 Codex、Claude、Gemini，建议不要把所有能力塞进一个 Provider 里。 更稳妥的方式是按用途分组： | Provider | 主要模型 | 主要用途 | |----------|---------|---------| | Claude-Main | claude-sonnet-4 | 日常代码主力 | | GPT-Main | gpt-5.4 / gpt-5.5 | 复杂推理和修复杂 bug | | Gemini-LongCtx | gemini-2.5-pro | 长仓库、长文档 | | Cheap-Batch | gemini-2.5-flash-lite 或小模型 | 低成本批量任务 | 这样做的好处： 账单归因清楚 故障切换清楚 哪条线路贵一眼看出来 更容易在 CC Switch 里观察差异 --- 几个常见异常，怎么判断到底是谁的问题 7.1 能连上，但回复明显不像目标模型 优先怀疑： 卖家做了模型别名映射 卖家高峰切了备用模型 你自己填错了模型 ID 7.2 余额看起来很多，但总是报限速 优先怀疑： 套餐是“有钱但限速” 卖家给的是共享池 官方上游对该模型限流 余额和吞吐量不是一回事。 7.3 平时便宜，某些大任务突然很贵 优先看： 是否触发长上下文档位 是否大量输出 是否开启缓存写入 是否使用搜索、工具、图片 这类涨价很多时候不是“被乱扣”，而是请求结构真的变了。 7.4 基础聊天能用，开发工具却经常异常 这通常说明： 基础文本请求兼容 但开发工具需要的协议细节、工具调用、流式返回、错误码或模型映射不完整 换句话说： “能聊”不等于“能稳定做开发”。 --- 主人实际接入时的最短检查清单 每加一个新中转 Provider，按这 8 步走： 记下真实模型 ID 确认协议类型 在 CC Switch 填 Base URL 和 API Key 先尝试拉模型列表；如果拉不到，再判断是否该改走 Full URL Endpoint Mode 或手填模型 做一次最小请求测试 看是否能查余额 / 配额 记录限速与套餐说明 再把它接到 Codex、Claude 或 Gemini 主工作流 别反过来一上来就拿主工作流硬跑，否则一出问题你不知道是工具错、配置错，还是卖家错。 --- 相关阅读 AI开发基础：中转站、官转与计费规则到底怎么回事 --- 资料来源 CC Switch GitHub 仓库：<https://github.com/farion1231/cc-switch> CC Switch Releases：<https://github.com/farion1231/cc-switch/releases> OpenRouter 定价页：<https://openrouter.ai/pricing> OpenRouter FAQ：<https://openrouter.ai/docs/faq> OpenAI API 定价页：<https://openai.com/api/pricing/> Anthropic 定价文档：<https://docs.anthropic.com/en/docs/about-claude/pricing> Gemini Developer API 定价页：<https://ai.google.dev/pricing>"
     },
     {
       "type": "file",
@@ -4640,8 +4666,8 @@
     },
     {
       "type": "file",
-      "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-      "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+      "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+      "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
       "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
       "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
       "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -4658,11 +4684,11 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-      "size": "16KB",
-      "lastModified": "2026-05-24T14:09:34.303Z",
-      "wordCount": 9390,
-      "content": "第一篇：CC Switch 快速上手与核心概念（v3.15.0） 官方仓库：github.com/farion1231/cc-switch 当前版本：v3.15.0（2026-05-16） 资料核对时间：2026-05-24 技术栈：Tauri 2 + Rust（后端）+ React 18 + TypeScript（前端） --- 一、CC Switch 是什么？ CC Switch 是一款跨平台桌面工具，核心定位是\"多 AI 编程 CLI 配置中控台\"。它把分散在多款 AI 编程 CLI 工具中的配置（尤其是 API 服务商/中转商配置）收敛到统一界面管理，解决手动切换配置易出错、效率低的问题。 官方受管 AI CLI（当前 6 款） | CLI 工具 | 描述 | 配置文件位置 | |----------|------|-------------| | Claude Code | Anthropic 官方终端 AI 助手 | ~/.claude/settings.json | | Codex CLI | OpenAI 命令行编程工具 | ~/.codex/config.toml | | Gemini CLI | Google 终端 AI 工具 | ~/.gemini/.env | | OpenCode | 开源终端 AI 助手 | ~/.opencode/ | | OpenClaw | 开源本地 AI Agent（龙虾） | openclaw.json | | Hermes Agent | 新增第六款（v3.14.0 起） | ~/.hermes/config.yaml | 注：v3.14.0 新增了 Hermes Agent 作为第六款受管应用，v3.11.0 新增了 OpenClaw（第五款）。 另外，v3.15.0 起新增 Claude Desktop 一等受管面板，用来单独管理桌面端配置与切换入口，但它不计入上面这 6 款 CLI 数量。 与手动配置的对比 | 对比维度 | 手动编辑配置文件 | CC Switch | |----------|----------------|-----------| | 学习成本 | 高，需理解各工具配置格式 | 低，可视化操作 | | 切换效率 | 需编辑文件 + 重启工具 | 一键切换；本地路由模式下热生效 | | 多工具支持 | 每款工具单独配置 | 统一管理 6 款工具 | | 备份恢复 | 手动备份 | 自动备份，保留最近 10 个版本 | | 速度测试 | 无 | 内置延迟测试（Stream Check） | | 故障转移 | 无 | 自动切换备用 Provider | | 配置同步 | 手动 | 支持云同步（Dropbox/OneDrive/iCloud/WebDAV） | --- 二、界面结构解析 打开 CC Switch 后，顶部工具栏有一排应用图标，对应每款受管 CLI 工具。点击不同图标即可切换到对应工具的 Provider 管理页面。 顶部工具栏图标（从左到右）： Claude Code（红色星形图标） Claude Desktop（v3.15.0 起新增独立面板） Codex（OpenAI 图标） Gemini CLI（蓝色星形图标） OpenCode（方块图标） OpenClaw（龙虾图标） Hermes Agent（v3.14.0 新增） 工具区：Stream Check（扳手）、会话管理、历史记录、附件/Skills、新增 Provider（橙色 + 号） 主内容区（以 Codex 为例）： 列表展示所有已配置的 Provider 每个 Provider 卡片显示：名称、API 地址 当前激活的 Provider 高亮显示，右侧显示\"使用中\"标签 每个 Provider 右侧有操作按钮：编辑、复制、修改、统计、删除 --- 三、安装指南 Windows 方式一：MSI 安装包（推荐） 从 GitHub Releases 下载 CC-Switch-v{版本号}-Windows.msi，双击安装 方式二：Winget 方式三：便携版 下载 CC-Switch-v{版本号}-Windows-Portable.zip，解压后直接运行，无需安装 macOS 方式一：Homebrew（推荐） 更新： 方式二：手动安装 下载 CC-Switch-v{版本号}-macOS.dmg，拖入 Applications 文件夹 macOS 版已通过 Apple 代码签名和公证，可直接安装，无需额外操作 Linux | 发行版 | 安装方式 | |--------|---------| | Ubuntu/Debian | 下载 .deb：sudo dpkg -i cc-switch_*.deb | | Fedora/RHEL | 下载 .rpm：sudo rpm -i cc-switch_*.rpm | | Arch Linux | paru -S cc-switch-bin | | 通用 | 下载 AppImage，chmod +x *.AppImage 后运行 | Flatpak 官方 Release 不包含，如需使用可从 .deb 自行构建。 系统要求 Windows 10 及以上 macOS 12 (Monterey) 及以上 Linux：Ubuntu 22.04+ / Debian 11+ / Fedora 34+ 等主流发行版 --- 四、核心功能详解 功能一：Provider 管理（核心功能） Provider 即 API 服务商/中转商配置，是 CC Switch 最核心的功能。 支持能力： 50+ 内置预设（含 AWS Bedrock、NVIDIA NIM、GitHub Copilot 等） 一键切换，拖拽排序，导入/导出 系统托盘快速访问（无需打开主界面） 每个 Provider 可配置多个端点，支持 API Key 管理与延迟测试 4 层模型粒度配置：Haiku / Sonnet / Opus / Custom 一键恢复官方登录状态 Provider 模型自动获取（OpenAI 兼容 /v1/models，以及部分 Anthropic 兼容 /models 自动发现） 通用 Provider（Universal Provider）：一份配置同步到多个应用 Provider 卡片显示 Routing Support 标识，方便判断是否能配合本地路由 Full URL Endpoint Mode：兼容路径结构不标准的第三方接口 Codex OAuth Provider 支持实时拉取模型列表 Claude Code 支持按角色映射模型，并可标记 supports1m 新增 Provider 操作步骤： 点击右上角橙色「+」按钮 选择「Custom Gateway（自定义网关）」或从 50+ 预设中选择 填写：名称、API 地址（Base URL）、API Key、关联应用（Enabled Apps） 可选：配置模型映射（Haiku / Sonnet / Opus / Custom 四层） 点击「Add」保存 切换 Provider： 主界面：找到目标 Provider → 点击「启用」 系统托盘：直接点击 Provider 名称（立即生效） 大多数工具需重启终端生效；Claude Code 支持热切换，无需重启 功能二：本地路由（Local Routing，原名 Local Proxy Takeover，v3.14.0 统一改名） v3.9.0 引入，v3.14.0 将\"Local Proxy Takeover\"统一改名为\"Local Routing\"。 | 特性 | 说明 | |------|------| | 热切换 | 切换 Provider 无需重启 CLI 工具 | | 自动故障转移 | 当前 Provider 不可用时自动切换备用 | | 熔断器 | 检测到持续失败时自动隔离，防止资源浪费 | | 请求日志 | 记录所有 API 请求，便于调试 | | 用量统计 | 追踪 Token 消耗与费用 | | 格式转换 | 支持 Anthropic Messages ↔ OpenAI Chat/Responses API 双向转换 | ⚠️ 注意：开启本地路由时，系统会阻止切换到官方 Provider（因为将官方 API 流量路由到本地代理存在账号封禁风险）。 v3.15.0 起，Provider 卡片会额外显示是否支持 Routing 的标识，排查“为什么这家能切、那家不能切”会更直观。 请求流转示意： 功能三：MCP 服务器管理 跨应用统一管理（Claude / Codex / Gemini / OpenCode / OpenClaw 共用一个面板） 支持三种传输类型：stdio、http、sse 双向同步，变更自动传播到所有关联应用 支持 Deep Link 导入（ccswitch:// 协议） 功能四：Prompts（系统提示词）管理 无限数量的提示词预设 跨应用支持：CLAUDE.md、AGENTS.md、GEMINI.md CodeMirror 6 Markdown 编辑器 + 实时预览 回填保护：切换前自动保存当前内容 功能五：Skills 管理 从 GitHub 仓库或 ZIP 文件一键安装 自动扫描 GitHub 仓库中的 Skills（含嵌套目录递归扫描） 支持软链接和文件复制两种同步方式 支持 SHA-256 更新检测与批量更新 默认安装到 ~/.claude/skills/ 或 ~/.cc-switch/skills/（可切换） 卸载前自动备份到 ~/.cc-switch/skill-backups/（保留最近 20 个） 功能六：会话管理器（Session Manager） 浏览、搜索和恢复 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw 全部对话历史 支持关键词高亮、会话标题提取、批量删除 虚拟化列表，支持数千条记录流畅滚动 功能七：用量与成本追踪 跨 Provider 追踪支出、请求数和 Token 用量 趋势图表、详细请求日志 日期范围选择器（今天 / 1d / 7d / 14d / 30d / 自定义） 自定义模型定价 功能八：云同步与备份 自动备份，保留最近 10 个版本 支持云同步：Dropbox、OneDrive、iCloud Drive、WebDAV 导入/导出完整配置（JSON 备份文件） 功能九：Deep Link 协议 支持 ccswitch:// 深度链接协议，可从第三方平台一键导入 Provider 配置、MCP 服务器、提示词和 Skills，无需手动填写。 功能十：系统托盘 轻量模式（Lightweight Mode）：销毁主窗口，仅保留系统托盘运行 托盘子菜单按应用分组，防止 Provider 列表过长时溢出 托盘显示当前 Provider 的缓存用量（含订阅和脚本用量摘要） --- 五、配置数据存储位置 | 数据类型 | 存储位置 | |----------|---------| | Provider / MCP / Prompts / Skills | ~/.cc-switch/cc-switch.db（SQLite） | | 设备设置 | ~/.cc-switch/settings.json（JSON） | | 备份文件 | ~/.cc-switch/backups/（自动保留最近 10 个） | | Skills 文件 | ~/.cc-switch/skills/（默认通过软链接连接到对应应用） | | Skills 备份 | ~/.cc-switch/skill-backups/（卸载前自动创建，保留最近 20 个） | | 崩溃日志 | ~/.cc-switch/crash.log | --- 六、多中转服务商管理实战 6.1 新增中转服务商 点击右上角橙色「+」按钮 选择「Custom Gateway」 填写： 名称：自定义（如\"中转A-Claude\"），便于识别 API 地址（Base URL）：中转服务商提供的接口地址 API Key：中转服务商发放的密钥（一字不差） 关联应用（Enabled Apps）：精准选择该配置适配的 CLI 工具 可选：点击模型字段旁的「Quick-Set」按钮快速填入模型 点击「Add」保存 6.2 切换 Provider 普通模式（需重启 CLI）： 在 Provider 列表中找到目标服务商 点击「启用」 重启对应 CLI 工具（如在终端重新运行 claude） 本地路由模式（热切换，无需重启）： 在设置中开启本地路由 在 Provider 列表切换目标服务商 变更立即生效 系统托盘切换（最快）： 右键系统托盘图标 → 找到对应应用的子菜单 → 点击目标 Provider 名称 6.3 Stream Check（流式健康检查） 用于验证 Provider 是否可用： 点击工具栏扳手图标进入 Stream Check 选择要测试的 Provider 点击测试，查看延迟和状态 6.4 切换异常快速回滚 若切换后出现调用失败、鉴权错误等问题： 回到 Provider 列表，选中此前可用的服务商，点击「启用」 或在 Provider 列表中找到「Official Login」预设，一键恢复官方登录 命令行恢复方式（Claude Code）： --- 七、典型场景：多中转服务商轮替使用 假设有 2 个适配 Codex 的中转服务商（A 和 B），轮替使用步骤： 第一步：新增 Provider 分别创建\"中转A-Codex\"\"中转B-Codex\"，均在 Enabled Apps 中勾选 Codex，填写各自的 API 地址与密钥 第二步：日常切换 当中转 A 配额用尽时，在 Provider 列表选中\"中转B-Codex\"→ 点击「启用」 重启终端，验证切换生效 第三步：异常处理 若中转 B 调用失败，立即切回\"中转A-Codex\" 或开启自动故障转移，让 CC Switch 自动处理 推荐多 Provider 策略： --- 八、常见问题与避坑 | 常见问题 | 精准原因 | 解决方法 | |----------|----------|----------| | 切换后 CLI 提示\"API 密钥错误\" | Provider 配置中密钥填写错误或与服务商不匹配 | 核对密钥，重新编辑 Provider 后重新切换 | | 切换后 CLI 无响应 | 未重启 CLI（普通模式下需重启） | 重启 CLI 工具；或改用本地路由模式实现热切换 | | 切换后提示\"模型不支持\" | 中转服务商支持的模型与 CLI 选择的模型不匹配 | 在 Provider 编辑页核对支持模型，选择兼容模型后重新切换 | | 多 CLI 共用中转时配置混乱 | 新增 Provider 时未精准绑定对应 CLI | 新增 Provider 时在「Enabled Apps」中精准选择关联工具 | | 切换供应商后插件配置消失 | 通用配置未提取 | 在「编辑供应商」→「通用配置面板」→「从当前供应商提取」，之后新建供应商时勾选「写入通用配置」 | | settings.json 被覆盖 | CC Switch 同步配置时覆盖了手动修改的字段 | 使用 CC Switch 统一管理，避免手动与工具混用 | | 开启本地路由后无法切换到官方 Provider | 设计限制，防止账号封禁风险 | 先关闭本地路由，再切换到官方 Provider | --- 九、版本演进简史（关键里程碑） | 版本 | 时间 | 关键变化 | |------|------|---------| | v3.0.0 | 2025-08 | 从 Electron 迁移到 Tauri 2，体积从 ~150MB 降至 ~15MB | | v3.7.0 | 2025-11 | 新增 Gemini CLI 支持、Skills 管理、Prompts 管理、Deep Link | | v3.8.0 | 2025-11 | 存储架构升级为 SQLite + JSON 双层，新增日语支持 | | v3.9.0 | 2026-01 | 新增本地 API 代理、自动故障转移、熔断器 | | v3.10.0 | 2026-01 | 新增 OpenCode 支持（第四款）、Claude Rectifier | | v3.11.0 | 2026-02 | 新增 OpenClaw 支持（第五款）、会话管理器、备份管理 | | v3.12.0 | 2026-03 | 恢复 Stream Check、新增 OpenAI Responses API 格式转换 | | v3.12.3 | 2026-03 | 新增 GitHub Copilot 反向代理支持、macOS 代码签名与公证 | | v3.13.0 | 2026-04 | 新增轻量模式、Provider 模型自动获取、Codex OAuth 反向代理 | | v3.14.0 | 2026-04 | 新增 Hermes Agent（第六款）、Gemini Native API 代理、\"Local Proxy Takeover\"改名为\"Local Routing\" | | v3.14.1 | 2026-04 | 托盘用量可见性、Codex OAuth 稳定性修复、移除 Hermes 配置健康扫描器 | | v3.15.0 | 2026-05 | 新增 Claude Desktop 一等受管面板、Provider Routing Support 标识、Full URL Endpoint Mode、Codex OAuth 实时模型列表、Claude Code supports1m 角色映射 | --- 十、参考来源 CC Switch GitHub 仓库 CC Switch 中文 README CC Switch CHANGELOG（完整版本历史） CC Switch Releases（下载最新版本） CC Switch 用户手册 cc-switch-cli（命令行版）"
+      "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+      "size": "18KB",
+      "lastModified": "2026-05-30T11:24:47.588Z",
+      "wordCount": 10269,
+      "content": "第一篇：CC Switch 快速上手与核心概念（v3.16.0） 官方仓库：github.com/farion1231/cc-switch 当前版本：v3.16.0（2026-05-29） 资料核对时间：2026-05-30 技术栈：Tauri 2 + Rust（后端）+ React 18 + TypeScript（前端） 口径说明：官方 README、Settings 手册与 FAQ 的更新节奏偶尔会有轻微不同步；涉及当前版本、安装方式、同步边界时，本文以 latest release + Settings/FAQ 为准。 --- 一、CC Switch 是什么？ CC Switch 是一款跨平台桌面工具，核心定位是\"多 AI 编程 CLI 配置中控台\"。它把分散在多款 AI 编程 CLI 工具中的配置（尤其是 API 服务商/中转商配置）收敛到统一界面管理，解决手动切换配置易出错、效率低的问题。 官方受管 AI CLI（当前 6 款） | CLI 工具 | 描述 | 配置文件位置 | |----------|------|-------------| | Claude Code | Anthropic 官方终端 AI 助手 | ~/.claude/settings.json | | Codex CLI | OpenAI 命令行编程工具 | ~/.codex/config.toml | | Gemini CLI | Google 终端 AI 工具 | ~/.gemini/.env | | OpenCode | 开源终端 AI 助手 | ~/.opencode/ | | OpenClaw | 开源本地 AI Agent（龙虾） | openclaw.json | | Hermes Agent | 新增第六款（v3.14.0 起） | ~/.hermes/config.yaml | 注：v3.14.0 新增了 Hermes Agent 作为第六款受管应用，v3.11.0 新增了 OpenClaw（第五款）。 另外，v3.15.0 起新增 Claude Desktop 一等受管面板，用来单独管理桌面端配置与切换入口，但它不计入上面这 6 款 CLI 数量；v3.16.0 继续把重点放在工具管理、诊断和同步稳定性上。 与手动配置的对比 | 对比维度 | 手动编辑配置文件 | CC Switch | |----------|----------------|-----------| | 学习成本 | 高，需理解各工具配置格式 | 低，可视化操作 | | 切换效率 | 需编辑文件 + 重启工具 | 一键切换；本地路由模式下热生效 | | 多工具支持 | 每款工具单独配置 | 统一管理 6 款工具 | | 备份恢复 | 手动备份 | 自动备份，保留最近 10 个版本 | | 速度测试 | 无 | 内置延迟测试（Stream Check） | | 故障转移 | 无 | 自动切换备用 Provider | | 配置同步 | 手动 | 支持云同步（Dropbox/OneDrive/iCloud/WebDAV） | --- 二、界面结构解析 打开 CC Switch 后，顶部工具栏有一排应用图标，对应每款受管 CLI 工具。点击不同图标即可切换到对应工具的 Provider 管理页面。 顶部工具栏图标（从左到右）： Claude Code（红色星形图标） Claude Desktop（v3.15.0 起新增独立面板） Codex（OpenAI 图标） Gemini CLI（蓝色星形图标） OpenCode（方块图标） OpenClaw（龙虾图标） Hermes Agent（v3.14.0 新增） 工具区：Stream Check（扳手）、会话管理、历史记录、附件/Skills、新增 Provider（橙色 + 号） 主内容区（以 Codex 为例）： 列表展示所有已配置的 Provider 每个 Provider 卡片显示：名称、API 地址 当前激活的 Provider 高亮显示，右侧显示\"使用中\"标签 每个 Provider 右侧有操作按钮：编辑、复制、修改、统计、删除 --- 三、安装指南 Windows 方式一：MSI 安装包（推荐） 从 GitHub Releases 下载 CC-Switch-v{版本号}-Windows.msi，双击安装 方式二：Winget 方式三：便携版 下载 CC-Switch-v{版本号}-Windows-Portable.zip，解压后直接运行，无需安装 macOS 方式一：Homebrew（推荐，v3.16.0 起走官方 cask） v3.16.0 官方 release notes 已明确：CC Switch 现已进入 Homebrew 官方 cask 仓库，无需再执行 brew tap farion1231/ccswitch。 更新： 方式二：手动安装 下载 CC-Switch-v{版本号}-macOS.dmg，拖入 Applications 文件夹 macOS 版已通过 Apple 代码签名和公证，可直接安装，无需额外操作 Linux | 发行版 | 安装方式 | |--------|---------| | Ubuntu/Debian | 下载 .deb：sudo dpkg -i cc-switch_*.deb | | Fedora/RHEL | 下载 .rpm：sudo rpm -i cc-switch_*.rpm | | Arch Linux | paru -S cc-switch-bin | | 通用 | 下载 AppImage，chmod +x *.AppImage 后运行 | Flatpak 官方 Release 不包含，如需使用可从 .deb 自行构建。 系统要求 Windows 10 及以上 macOS 12 (Monterey) 及以上 Linux：Ubuntu 22.04+ / Debian 11+ / Fedora 34+ 等主流发行版 --- 四、核心功能详解 功能补充：工具管理与安装升级生命周期（v3.16.0 重点增强） 设置里的“关于 / About”页已明显升级成工具管理面板，可以查看已安装版本、最新版本、单工具安装 / 升级以及批量动作 官方 release notes 新增了“受管工具生命周期管理”口径：会优先使用官方原生安装器，必要时再回退到包管理器，并结合检测到的安装来源给出更靠谱的升级命令 诊断能力从“只看有没有这个命令”升级到“按来源感知”：能区分 PATH、Homebrew、npm、pnpm、bun、volta、fnm、nvm、Scoop、WinGet、WSL 等来源，更适合排查“我明明装了，但终端调到的是另一份”这类问题 对程序员最实用的点是：当同一台机器上混有多套 Node / 包管理器 / WSL 环境时，CC Switch 不再只告诉你“有冲突”，而是更接近“哪一份在生效、该升级哪一份” 功能一：Provider 管理（核心功能） Provider 即 API 服务商/中转商配置，是 CC Switch 最核心的功能。 支持能力： 50+ 内置预设（含 AWS Bedrock、NVIDIA NIM、GitHub Copilot 等） 一键切换，拖拽排序，导入/导出 系统托盘快速访问（无需打开主界面） 每个 Provider 可配置多个端点，支持 API Key 管理与延迟测试 4 层模型粒度配置：Haiku / Sonnet / Opus / Custom 一键恢复官方登录状态 Provider 模型自动获取（OpenAI 兼容 /v1/models，以及部分 Anthropic 兼容 /models 自动发现） 通用 Provider（Universal Provider）：一份配置同步到多个应用 Provider 卡片显示 Routing Support 标识，方便判断是否能配合本地路由 Full URL Endpoint Mode：兼容路径结构不标准的第三方接口 Codex OAuth Provider 支持实时拉取模型列表 Claude Code 支持按角色映射模型，并可标记 supports1m 新增 Provider 操作步骤： 点击右上角橙色「+」按钮 选择「Custom Gateway（自定义网关）」或从 50+ 预设中选择 填写：名称、API 地址（Base URL）、API Key、关联应用（Enabled Apps） 可选：配置模型映射（Haiku / Sonnet / Opus / Custom 四层） 点击「Add」保存 切换 Provider： 主界面：找到目标 Provider → 点击「启用」 系统托盘：直接点击 Provider 名称（立即生效） 大多数工具需重启终端生效；Claude Code 支持热切换，无需重启 功能二：本地路由（Local Routing，原名 Local Proxy Takeover，v3.14.0 统一改名） v3.9.0 引入，v3.14.0 将\"Local Proxy Takeover\"统一改名为\"Local Routing\"。 | 特性 | 说明 | |------|------| | 热切换 | 切换 Provider 无需重启 CLI 工具 | | 自动故障转移 | 当前 Provider 不可用时自动切换备用 | | 熔断器 | 检测到持续失败时自动隔离，防止资源浪费 | | 请求日志 | 记录所有 API 请求，便于调试 | | 用量统计 | 追踪 Token 消耗与费用 | | 格式转换 | 支持 Anthropic Messages ↔ OpenAI Chat/Responses API 双向转换 | ⚠️ 注意：开启本地路由时，系统会阻止切换到官方 Provider（因为将官方 API 流量路由到本地代理存在账号封禁风险）。 v3.15.0 起，Provider 卡片会额外显示是否支持 Routing 的标识，排查“为什么这家能切、那家不能切”会更直观。 请求流转示意： 功能三：MCP 服务器管理 跨应用统一管理（Claude / Codex / Gemini / OpenCode / OpenClaw 共用一个面板） 支持三种传输类型：stdio、http、sse 双向同步，变更自动传播到所有关联应用 支持 Deep Link 导入（ccswitch:// 协议） 功能四：Prompts（系统提示词）管理 无限数量的提示词预设 跨应用支持：CLAUDE.md、AGENTS.md、GEMINI.md CodeMirror 6 Markdown 编辑器 + 实时预览 回填保护：切换前自动保存当前内容 功能五：Skills 管理 从 GitHub 仓库或 ZIP 文件一键安装 自动扫描 GitHub 仓库中的 Skills（含嵌套目录递归扫描） 支持软链接和文件复制两种同步方式 支持 SHA-256 更新检测与批量更新 默认安装到 ~/.claude/skills/ 或 ~/.cc-switch/skills/（可切换） 卸载前自动备份到 ~/.cc-switch/skill-backups/（保留最近 20 个） 功能六：会话管理器（Session Manager） 浏览、搜索和恢复 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw 全部对话历史 支持关键词高亮、会话标题提取、批量删除 虚拟化列表，支持数千条记录流畅滚动 功能七：用量与成本追踪 跨 Provider 追踪支出、请求数和 Token 用量 趋势图表、详细请求日志 日期范围选择器（今天 / 1d / 7d / 14d / 30d / 自定义） 自定义模型定价 功能八：云同步与备份 自动备份，导入配置和 WebDAV 下载覆盖本地前都会先创建安全备份 支持云同步：Dropbox、OneDrive、iCloud Drive、WebDAV；其中 WebDAV 使用 v2 协议 WebDAV 下载前会展示远程快照信息（协议版本、数据库版本、时间戳、大小），确认后再覆盖本地 导入/导出的是核心配置型 JSON 备份；settings.json 这类 device-level settings 不属于跨设备同步范围 功能九：Deep Link 协议 支持 ccswitch:// 深度链接协议，可从第三方平台一键导入 Provider 配置、MCP 服务器、提示词和 Skills，无需手动填写。 功能十：系统托盘 轻量模式（Lightweight Mode）：销毁主窗口，仅保留系统托盘运行 托盘子菜单按应用分组，防止 Provider 列表过长时溢出 托盘显示当前 Provider 的缓存用量（含订阅和脚本用量摘要） --- 五、配置数据存储位置 | 数据类型 | 存储位置 | |----------|---------| | Provider / MCP / Prompts / Skills | ~/.cc-switch/cc-switch.db（SQLite） | | 设备设置 | ~/.cc-switch/settings.json（JSON） | | 备份文件 | ~/.cc-switch/backups/（自动保留最近 10 个） | | Skills 文件 | ~/.cc-switch/skills/（默认通过软链接连接到对应应用） | | Skills 备份 | ~/.cc-switch/skill-backups/（卸载前自动创建，保留最近 20 个） | | 崩溃日志 | ~/.cc-switch/crash.log | --- 六、多中转服务商管理实战 6.1 新增中转服务商 点击右上角橙色「+」按钮 选择「Custom Gateway」 填写： 名称：自定义（如\"中转A-Claude\"），便于识别 API 地址（Base URL）：中转服务商提供的接口地址 API Key：中转服务商发放的密钥（一字不差） 关联应用（Enabled Apps）：精准选择该配置适配的 CLI 工具 可选：点击模型字段旁的「Quick-Set」按钮快速填入模型 点击「Add」保存 6.2 切换 Provider 普通模式（需重启 CLI）： 在 Provider 列表中找到目标服务商 点击「启用」 重启对应 CLI 工具（如在终端重新运行 claude） 本地路由模式（热切换，无需重启）： 在设置中开启本地路由 在 Provider 列表切换目标服务商 变更立即生效 系统托盘切换（最快）： 右键系统托盘图标 → 找到对应应用的子菜单 → 点击目标 Provider 名称 6.3 Stream Check（流式健康检查） 用于验证 Provider 是否可用： 点击工具栏扳手图标进入 Stream Check 选择要测试的 Provider 点击测试，查看延迟和状态 6.4 切换异常快速回滚 若切换后出现调用失败、鉴权错误等问题： 回到 Provider 列表，选中此前可用的服务商，点击「启用」 或在 Provider 列表中找到「Official Login」预设，一键恢复官方登录 命令行恢复方式（Claude Code）： --- 七、典型场景：多中转服务商轮替使用 假设有 2 个适配 Codex 的中转服务商（A 和 B），轮替使用步骤： 第一步：新增 Provider 分别创建\"中转A-Codex\"\"中转B-Codex\"，均在 Enabled Apps 中勾选 Codex，填写各自的 API 地址与密钥 第二步：日常切换 当中转 A 配额用尽时，在 Provider 列表选中\"中转B-Codex\"→ 点击「启用」 重启终端，验证切换生效 第三步：异常处理 若中转 B 调用失败，立即切回\"中转A-Codex\" 或开启自动故障转移，让 CC Switch 自动处理 推荐多 Provider 策略： --- 八、常见问题与避坑 | 常见问题 | 精准原因 | 解决方法 | |----------|----------|----------| | 切换后 CLI 提示\"API 密钥错误\" | Provider 配置中密钥填写错误或与服务商不匹配 | 核对密钥，重新编辑 Provider 后重新切换 | | 切换后 CLI 无响应 | 未重启 CLI（普通模式下需重启） | 重启 CLI 工具；或改用本地路由模式实现热切换 | | 切换后提示\"模型不支持\" | 中转服务商支持的模型与 CLI 选择的模型不匹配 | 在 Provider 编辑页核对支持模型，选择兼容模型后重新切换 | | 多 CLI 共用中转时配置混乱 | 新增 Provider 时未精准绑定对应 CLI | 新增 Provider 时在「Enabled Apps」中精准选择关联工具 | | 切换供应商后插件配置消失 | 通用配置未提取 | 在「编辑供应商」→「通用配置面板」→「从当前供应商提取」，之后新建供应商时勾选「写入通用配置」 | | settings.json 被覆盖 | CC Switch 同步配置时覆盖了手动修改的字段 | 使用 CC Switch 统一管理，避免手动与工具混用 | | 开启本地路由后无法切换到官方 Provider | 设计限制，防止账号封禁风险 | 先关闭本地路由，再切换到官方 Provider | --- 九、版本演进简史（关键里程碑） | 版本 | 时间 | 关键变化 | |------|------|---------| | v3.0.0 | 2025-08 | 从 Electron 迁移到 Tauri 2，体积从 ~150MB 降至 ~15MB | | v3.7.0 | 2025-11 | 新增 Gemini CLI 支持、Skills 管理、Prompts 管理、Deep Link | | v3.8.0 | 2025-11 | 存储架构升级为 SQLite + JSON 双层，新增日语支持 | | v3.9.0 | 2026-01 | 新增本地 API 代理、自动故障转移、熔断器 | | v3.10.0 | 2026-01 | 新增 OpenCode 支持（第四款）、Claude Rectifier | | v3.11.0 | 2026-02 | 新增 OpenClaw 支持（第五款）、会话管理器、备份管理 | | v3.12.0 | 2026-03 | 恢复 Stream Check、新增 OpenAI Responses API 格式转换 | | v3.12.3 | 2026-03 | 新增 GitHub Copilot 反向代理支持、macOS 代码签名与公证 | | v3.13.0 | 2026-04 | 新增轻量模式、Provider 模型自动获取、Codex OAuth 反向代理 | | v3.14.0 | 2026-04 | 新增 Hermes Agent（第六款）、Gemini Native API 代理、\"Local Proxy Takeover\"改名为\"Local Routing\" | | v3.14.1 | 2026-04 | 托盘用量可见性、Codex OAuth 稳定性修复、移除 Hermes 配置健康扫描器 | | v3.15.0 | 2026-05 | 新增 Claude Desktop 一等受管面板、Provider Routing Support 标识、Full URL Endpoint Mode、Codex OAuth 实时模型列表、Claude Code supports1m 角色映射 | | v3.16.0 | 2026-05 | 新增受管工具生命周期管理、按来源感知的工具诊断、zh-TW 本地化、官方 Homebrew cask 安装路径，以及 Codex 第三方 provider 历史统一到 custom 桶 | --- 十、参考来源 CC Switch GitHub 仓库 CC Switch 中文 README CC Switch CHANGELOG（完整版本历史） CC Switch Releases（下载最新版本） CC Switch 用户手册 cc-switch-cli（命令行版）"
     },
     {
       "type": "file",
@@ -15439,116 +15465,6 @@
               "path": "AI工具/02_终端Agent流/Codex",
               "children": [
                 {
-                  "type": "directory",
-                  "name": "中转切换与Node排障",
-                  "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障",
-                  "children": [
-                    {
-                      "type": "directory",
-                      "name": "对比报告",
-                      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告",
-                      "children": [
-                        {
-                          "type": "directory",
-                          "name": "个人电脑",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑",
-                          "children": [
-                            {
-                              "type": "file",
-                              "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
-                              "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
-                              "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
-                              "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-                              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
-                              "date": "2026-04-30T00:00:00.000Z",
-                              "hasRealDate": true,
-                              "order": null,
-                              "tags": [
-                                "Codex",
-                                "Node.js",
-                                "PowerShell",
-                                "对比报告",
-                                "故障排查"
-                              ],
-                              "category": "AI工具",
-                              "attachments": [],
-                              "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
-                              "size": "25KB",
-                              "lastModified": "2026-05-24T13:49:15.039Z",
-                              "wordCount": 24924
-                            }
-                          ]
-                        },
-                        {
-                          "type": "directory",
-                          "name": "公司电脑",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑",
-                          "children": [
-                            {
-                              "type": "file",
-                              "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
-                              "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
-                              "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
-                              "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-                              "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
-                              "date": "2026-04-30T00:00:00.000Z",
-                              "hasRealDate": true,
-                              "order": null,
-                              "tags": [
-                                "Codex",
-                                "Node.js",
-                                "PowerShell",
-                                "对比报告",
-                                "故障排查"
-                              ],
-                              "category": "AI工具",
-                              "attachments": [],
-                              "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
-                              "size": "26KB",
-                              "lastModified": "2026-05-24T13:49:15.040Z",
-                              "wordCount": 26264
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "file",
-                      "title": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-                      "frontmatterTitle": "第一篇：Codex 中转切换后 Node 调用失败排查修复实录",
-                      "fileTitle": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04",
-                      "filename": "第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-                      "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md",
-                      "date": "2026-04-30T00:00:00.000Z",
-                      "hasRealDate": true,
-                      "order": null,
-                      "tags": [
-                        "Node.js",
-                        "Codex",
-                        "CC Switch",
-                        "PowerShell",
-                        "Windows",
-                        "环境配置",
-                        "故障排查"
-                      ],
-                      "category": "AI工具",
-                      "attachments": [
-                        {
-                          "name": "Node环境一键对比采集脚本.ps1",
-                          "path": "AI工具/02_终端Agent流/Codex/中转切换与Node排障/Node环境一键对比采集脚本.ps1",
-                          "ext": "ps1",
-                          "size": "6KB",
-                          "lastModified": "2026-05-24T12:56:24.619Z"
-                        }
-                      ],
-                      "description": "记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。",
-                      "size": "27KB",
-                      "lastModified": "2026-05-24T12:56:24.624Z",
-                      "wordCount": 15825
-                    }
-                  ]
-                },
-                {
                   "type": "file",
                   "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
                   "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
@@ -16860,9 +16776,119 @@
               "path": "AI工具/05_辅助工具层/CCSwitch",
               "children": [
                 {
+                  "type": "directory",
+                  "name": "Codex切换后Node排障",
+                  "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障",
+                  "children": [
+                    {
+                      "type": "directory",
+                      "name": "对比报告",
+                      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告",
+                      "children": [
+                        {
+                          "type": "directory",
+                          "name": "个人电脑",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑",
+                          "children": [
+                            {
+                              "type": "file",
+                              "title": "Node 环境对比报告（LAPTOP-5AP3767K）",
+                              "frontmatterTitle": "Node 环境对比报告（LAPTOP-5AP3767K）",
+                              "fileTitle": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402",
+                              "filename": "Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/Node环境对比报告-LAPTOP-5AP3767K-2026-04-30-201402.md",
+                              "date": "2026-04-30T00:00:00.000Z",
+                              "hasRealDate": true,
+                              "order": null,
+                              "tags": [
+                                "Codex",
+                                "Node.js",
+                                "PowerShell",
+                                "对比报告",
+                                "故障排查"
+                              ],
+                              "category": "AI工具",
+                              "attachments": [],
+                              "description": "个人电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于辅助定位 Codex 终端和外部终端表现不一致的问题。",
+                              "size": "25KB",
+                              "lastModified": "2026-05-24T13:49:15.039Z",
+                              "wordCount": 24924
+                            }
+                          ]
+                        },
+                        {
+                          "type": "directory",
+                          "name": "公司电脑",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑",
+                          "children": [
+                            {
+                              "type": "file",
+                              "title": "Node 环境对比报告（DESKTOP-OAP8VID）",
+                              "frontmatterTitle": "Node 环境对比报告（DESKTOP-OAP8VID）",
+                              "fileTitle": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055",
+                              "filename": "Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                              "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/Node环境对比报告-DESKTOP-OAP8VID-2026-04-30-093055.md",
+                              "date": "2026-04-30T00:00:00.000Z",
+                              "hasRealDate": true,
+                              "order": null,
+                              "tags": [
+                                "Codex",
+                                "Node.js",
+                                "PowerShell",
+                                "对比报告",
+                                "故障排查"
+                              ],
+                              "category": "AI工具",
+                              "attachments": [],
+                              "description": "公司电脑环境下采集的 Node / npm / PATH / PowerShell / 加密初始化对比报告，用于和个人电脑样本交叉比对 Codex 终端中的异常表现。",
+                              "size": "26KB",
+                              "lastModified": "2026-05-24T13:49:15.040Z",
+                              "wordCount": 26264
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "file",
+                      "title": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+                      "frontmatterTitle": "第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录",
+                      "fileTitle": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04",
+                      "filename": "第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+                      "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md",
+                      "date": "2026-04-30T00:00:00.000Z",
+                      "hasRealDate": true,
+                      "order": null,
+                      "tags": [
+                        "Node.js",
+                        "Codex",
+                        "CC Switch",
+                        "PowerShell",
+                        "Windows",
+                        "环境配置",
+                        "故障排查"
+                      ],
+                      "category": "AI工具",
+                      "attachments": [
+                        {
+                          "name": "Node环境一键对比采集脚本.ps1",
+                          "path": "AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/Node环境一键对比采集脚本.ps1",
+                          "ext": "ps1",
+                          "size": "6KB",
+                          "lastModified": "2026-05-24T12:56:24.619Z"
+                        }
+                      ],
+                      "description": "记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。",
+                      "size": "27KB",
+                      "lastModified": "2026-05-30T10:00:56.019Z",
+                      "wordCount": 15999
+                    }
+                  ]
+                },
+                {
                   "type": "file",
-                  "title": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
-                  "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.15.0）",
+                  "title": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
+                  "frontmatterTitle": "第一篇：CC Switch 快速上手与核心概念（v3.16.0）",
                   "fileTitle": "第一篇_CCSwitch快速上手与核心概念_2026-04",
                   "filename": "第一篇_CCSwitch快速上手与核心概念_2026-04.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第一篇_CCSwitch快速上手与核心概念_2026-04.md",
@@ -16879,10 +16905,10 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.15.0 起加入 Claude Desktop 独立管理面板；本篇基于 2026-05-24 官方资料覆盖安装、界面、核心功能与实战操作全流程。",
-                  "size": "16KB",
-                  "lastModified": "2026-05-24T14:09:34.303Z",
-                  "wordCount": 9390
+                  "description": "CC Switch 是跨平台桌面 All-in-One AI CLI 配置管理工具，支持 Claude Code、Codex、Gemini CLI、OpenCode、OpenClaw、Hermes Agent 六款工具，并在 v3.16.0 阶段进一步补强工具安装升级生命周期、来源感知诊断与同步说明；本篇基于 2026-05-30 官方 release、Settings 与 FAQ 覆盖安装、界面、核心功能与实战操作全流程。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-30T11:24:47.588Z",
+                  "wordCount": 10269
                 },
                 {
                   "type": "file",
@@ -16904,9 +16930,9 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
+                  "description": "结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。",
                   "size": "9KB",
-                  "lastModified": "2026-05-24T14:10:38.108Z",
+                  "lastModified": "2026-05-30T11:24:47.590Z",
                   "wordCount": 5013
                 },
                 {
@@ -16936,8 +16962,8 @@
                 },
                 {
                   "type": "file",
-                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
-                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-24复核）",
+                  "title": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
+                  "frontmatterTitle": "第四篇：CC Switch 跨电脑导出导入与云同步实战（2026-05-30复核）",
                   "fileTitle": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05",
                   "filename": "第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
                   "path": "AI工具/05_辅助工具层/CCSwitch/第四篇_CCSwitch跨电脑导出导入与云同步实战_2026-05.md",
@@ -16954,10 +16980,35 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 2026-05-24 CC Switch 官方 README、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
-                  "size": "12KB",
-                  "lastModified": "2026-05-24T14:10:38.113Z",
-                  "wordCount": 6221
+                  "description": "基于 2026-05-30 CC Switch 官方 release、Settings 手册与 Configuration Files FAQ 复核，确认其支持手动导出导入配置与 WebDAV/云盘同步，并整理适合多电脑、多中转线路用户的跨设备迁移步骤与注意事项。",
+                  "size": "13KB",
+                  "lastModified": "2026-05-30T11:24:47.591Z",
+                  "wordCount": 6662
+                },
+                {
+                  "type": "file",
+                  "title": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+                  "frontmatterTitle": "第五篇：CC Switch 跨机同步后绝对路径污染排障手册（2026-05-30复核）",
+                  "fileTitle": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05",
+                  "filename": "第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+                  "path": "AI工具/05_辅助工具层/CCSwitch/第五篇_CCSwitch跨机同步后绝对路径污染排障手册_2026-05.md",
+                  "date": "2026-05-30T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "CC Switch",
+                    "跨机同步",
+                    "绝对路径",
+                    "MCP",
+                    "Codex",
+                    "故障排查"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "结合 2026-05-30 时点的 CC Switch 官方 FAQ、Settings 手册与这次真实踩坑记录，系统讲清跨机导出导入后为什么会出现旧机器绝对路径污染、为什么只修 live 配置不够，以及如何按“先修源头、再修落地文件、最后做功能验证”的顺序处理。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-30T11:26:29.663Z",
+                  "wordCount": 9883
                 }
               ]
             }
@@ -20373,7 +20424,7 @@
       ]
     }
   ],
-  "totalNotes": 417,
+  "totalNotes": 418,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-30T09:37:35.018Z"
+  "lastUpdated": "2026-05-30T11:27:43.927Z"
 }

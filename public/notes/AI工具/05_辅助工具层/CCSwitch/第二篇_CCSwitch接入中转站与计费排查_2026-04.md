@@ -9,14 +9,14 @@ tags:
   - OpenRouter
   - Codex
   - Claude
-description: 结合 CC Switch 官方仓库与 2026-05-24 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。
+description: 结合 CC Switch 官方仓库与 2026-05-30 时点的最新 Releases，面向同时在用 Codex、Claude、Gemini CLI 的开发者，讲清 Provider 怎么填、余额和用量怎么看、哪些异常是中转站问题而不是 CC Switch 问题，以及如何把中转站手册翻译成可执行配置。
 ---
 
 # 第二篇：CC Switch 接入中转站与计费排查实战（2026-05复核）
 
-> 资料核对时间：2026-05-24  
+> 资料核对时间：2026-05-30  
 > 说明：本文是上一节“中转站与计费规则”在 CC Switch 里的落地版本。  
-> 官方资料核对结果：GitHub Releases 当前可见最新版本为 `v3.15.0`，发布日期 `2026-05-16`。
+> 官方资料核对结果：GitHub Releases 当前可见最新版本为 `v3.16.0`，发布日期 `2026-05-29`。
 
 [[toc]]
 
@@ -172,7 +172,7 @@ CC Switch 官方仓库和 Releases 都提到，它支持通过 OpenAI 兼容的 
 
 它的前提是：**你的 Provider 或官方账号本身提供可查询接口**。
 
-从 `v3.13.0` 到 `v3.15.0` 的连续更新里，CC Switch 已经明确加入或补强了这些观察能力：
+从 `v3.13.0` 到 `v3.16.0` 的连续更新里，CC Switch 已经明确加入或补强了这些观察能力：
 
 - 官方 Claude / Codex / Gemini 的配额展示
 - 部分第三方 Provider 的余额展示

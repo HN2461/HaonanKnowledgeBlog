@@ -1,5 +1,5 @@
 ---
-title: 第一篇：Codex 中转切换后 Node 调用失败排查修复实录
+title: 第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录
 date: 2026-04-30
 category: AI工具
 tags:
@@ -10,14 +10,14 @@ tags:
   - Windows
   - 环境配置
   - 故障排查
-description: 记录一次 Codex 在 Windows 上切换中转后出现 Node 命令调用失败的真实排查过程，重点说明 shell_environment_policy、CC Switch provider 配置快照与环境变量继承异常的关系，并附采集脚本与对比报告。
+description: 记录一次“症状爆在 Codex、根因落在 CC Switch provider 配置快照与 shell_environment_policy”的真实排查过程，重点说明为什么外部终端正常、只有 Codex 终端里的 Node / npm 崩溃，并附采集脚本与对比报告。
 attachments:
   - Node环境一键对比采集脚本.ps1
 ---
 
-# 第一篇：Codex 中转切换后 Node 调用失败排查修复实录
+# 第一篇：CC Switch 切换 Codex Provider 后 Node 调用失败排查修复实录
 
-> 这篇不是普通的 Node 安装教程，而是一次 **Codex + CC Switch + 中转切换** 之后，Node 在 Codex 终端里调用失败的真实排障实录。重点不是“怎么装 Node”，而是“为什么系统终端正常、Codex 终端却会崩”。 
+> 这篇不是普通的 Node 安装教程，而是一次 **CC Switch 切换 Codex Provider** 之后，Node 只在 Codex 终端里调用失败的真实排障实录。重点不是“怎么装 Node”，而是“为什么系统终端正常、Codex 终端却会崩”，以及为什么根因最后会追到 `CC Switch` 的 provider 快照与数据库源数据。
 
 ---
 
@@ -39,15 +39,15 @@ Codex 不会自动继承当前这次对话记忆，所以后续接续排查时�
 建议固定保留并传给新会话的材料：
 
 1. 这篇笔记本身
-2. `AI工具/Codex/中转切换与Node排障/目录.md`
+2. `AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/目录.md`
 3. `对比报告/公司电脑/` 里的公司电脑基准报告
 4. `对比报告/个人电脑/` 里的个人电脑新生成对比报告
 
 如果以后在自己电脑新开 Codex，直接把下面这句提示词发给它最快：
 
 ```text
-先看 public/notes/AI工具/Codex/中转切换与Node排障/目录.md 和 public/notes/AI工具/Codex/中转切换与Node排障/第一篇_Codex中转切换后Node调用失败排查修复实录_2026-04.md。
-把 public/notes/AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/ 里的公司电脑基准报告，和 public/notes/AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/ 里的个人电脑新生成报告逐项对比，告诉我真正的环境差异和最可能的故障点。
+先看 public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/目录.md 和 public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/第一篇_CCSwitch切换CodexProvider后Node调用失败排查修复实录_2026-04.md。
+把 public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/ 里的公司电脑基准报告，和 public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/ 里的个人电脑新生成报告逐项对比，告诉我真正的环境差异和最可能的故障点。
 ```
 
 ---
@@ -318,8 +318,8 @@ strict-ssl=false
 建议生成后立刻按下面目录归档：
 
 ```text
-公司电脑基准报告 -> public/notes/AI工具/Codex/中转切换与Node排障/对比报告/公司电脑/
-个人电脑新报告   -> public/notes/AI工具/Codex/中转切换与Node排障/对比报告/个人电脑/
+公司电脑基准报告 -> public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/公司电脑/
+个人电脑新报告   -> public/notes/AI工具/05_辅助工具层/CCSwitch/Codex切换后Node排障/对比报告/个人电脑/
 ```
 
 ### 使用方式
