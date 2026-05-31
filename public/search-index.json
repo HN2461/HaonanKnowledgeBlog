@@ -2,6 +2,180 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+      "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+      "fileTitle": "第一篇_Codex从0到1配置实战",
+      "filename": "第一篇_Codex从0到1配置实战.md",
+      "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "程序员上手",
+        "终端界面",
+        "开发工作流"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+      "size": "12KB",
+      "lastModified": "2026-05-31T08:11:43.207Z",
+      "wordCount": 6661,
+      "content": "第一篇：Codex CLI 第一日开发实战（程序员版） 这篇只解决 4 件事：怎么确认装对、怎么进仓库、怎么看第一屏、怎么完成第一轮真实开发。 配置字段、第三方线路、MCP 细节、桌面 App 深挖，都先放到后面的专题里查。 [[toc]] --- 先给结论 Codex CLI 对程序员来说，不是“聊天工具”，而是一个会读仓库、会调工具、会改文件、会跑命令的终端代码代理。 第一天最稳的路线不是背配置，而是先跑顺这条主线： 确认当前生效的是哪一份 codex 进入真实仓库启动，而不是在空目录里试 看懂第一屏里的模型、目录、权限和提示 先让它读项目，再做一个小改动 改完看 /diff、跑测试、再决定是否继续放权 后面遇到字段再查字段，遇到线路再查线路。 这比第一天就研究一整套 config.toml 稳得多。 --- 先确认安装与当前生效路径 安装或升级： Windows 下再查一次路径： macOS / Linux / WSL： 这一步很程序员，也很必要。 因为后面很多“配置不生效”，根因不是配置错，而是 PATH 里跑的根本不是你以为的那一份 CLI。 如果你是在本博客仓库里执行 Node / npm / Vite 脚本，还要先跑一次项目预检： 它是为了先排除当前代理终端里的 Node 加密提供程序异常。 如果预检失败，不要重复敲 npm，先按仓库 AGENTS.md 里的运行时排障规则处理。 --- 第一次启动：别在空目录里学 Codex 真正有价值的地方在真实仓库里。 推荐这样： 不推荐第一天在桌面空文件夹里反复问： 那样学不到 Codex 的核心能力。 Codex 的手感来自“读项目 -> 定位文件 -> 修改 -> 验证”这条链。 --- 第一屏不用截图，用文字图抓重点 以后看到 Codex CLI 首页，先看这 4 块： 不要把欢迎语当正文读。 真正影响第一轮任务的只有这些： 模型是不是你想用的 当前目录是不是目标仓库 权限是不是足够但不过度 你准备输入的是开发任务，不是普通闲聊 第一天养成一个习惯： 每次启动 Codex，先扫模型、目录和权限，再输入任务。 --- 第一句 prompt：先读，不改 第一轮不要让它直接“大改项目”。 先用这句： 这句 prompt 的目的不是让 Codex 表演，而是验证三件事： 它有没有读到正确仓库 它有没有抓到项目结构 它有没有乱猜入口文件 如果它第一轮就把项目说偏了，后面不要急着让它改。 先纠正上下文。 --- 模型和推理强度：按任务切，不要背死 Codex 里用 /model 可以切模型；部分模型也会暴露推理强度选择。 官方 slash commands 文档里，/model 的定位就是选择当前模型，以及在可用时选择 reasoning effort。 把它理解成这张文字图就够： 不要把某个模型名写死成永远答案。 官方模型列表、账号能力、第三方网关开放模型都会变，落地前看当前 CLI 的 /model、/status 和服务商后台。 --- 权限模式：先稳，再快 第一天只记三层： 程序员日常最适合的心智是： 翻成人话： Codex 可以改当前工作区 真要做敏感命令、高风险动作、越界访问时先问你 如果只是让 Codex 看项目、解释代码、做 review，用只读就够。 如果已经明确要它改文件，用工作区写权限。 如果涉及删除、移动、安装依赖、跨目录访问、联网或全局替换，先停一下，看清提示再确认。 --- 第一天最该会的 slash 命令 先不要背完整命令表。 第一天最常用的是下面这些： | 命令 | 什么时候用 | |---|---| | /status | 看当前模型、审批策略、可写目录、上下文容量 | | /model | 临时切模型或推理强度 | | /permissions | 临时调权限 | | /diff | 看 Codex 已经改了什么 | | /review | 让 Codex 审查当前工作树 | | /mcp | 看外部工具有没有连上 | | /plugins | 看插件和插件来源 | | /skills | 看当前可用的工作套路 | | /experimental | 看实验能力，别默认全开 | | /debug-config | 配置和策略不符合预期时看层级诊断 | | /compact | 长会话压缩上下文 | 把命令按用途分，会比硬背轻松很多： 看到陌生命令时，不要猜来源。 先去 /status、/plugins、/skills、/mcp 反查它属于哪一层。 --- 第一轮真实任务怎么练 按下面 4 步走，第一天就能建立正确手感。 8.1 先解释，不改 8.2 再定位一个小改动 8.3 再允许小范围修改 8.4 最后看 diff 和验证 这套节奏比“帮我优化整个项目”稳定得多。 程序员用 Codex，关键不是把任务一次性丢大，而是让边界清楚、验证闭环清楚。 --- /status 和错误提示：排错先定位层级 官方文档里 /status 用来确认当前模型、审批策略、可写目录和上下文容量。 所以你觉得 Codex “不对劲”时，第一反应不是重装，而是先看 /status。 常见关键词可以这样翻： | 关键词 | 优先怀疑 | |---|---| | path / directory | 路径不存在、Windows / WSL 路径混用 | | permission / sandbox | 权限模式或沙箱限制 | | auth / login | 登录态、API key、keyring | | provider / model | 模型提供方或模型名不匹配 | | mcp / tool | 外部工具启动失败或没授权 | | node / npm | Node 运行时、PATH、代理终端环境 | 排错顺序： /status /debug-config 当前目录和权限 用户 ~/.codex/config.toml 项目 .codex/config.toml 登录态、provider、MCP 最后才考虑重装或升级 --- VS Code 插件、脚手架和桌面 App 怎么放进主线 主人平时 CLI、VS Code 插件、脚手架、桌面 App 都会用，建议这样分工： | 入口 | 最适合干什么 | 不适合干什么 | |---|---|---| | CLI | 排错、读仓库、看状态、跑命令、核配置 | 长时间管理多条并行任务 | | VS Code 插件 | 贴着代码改文件、引用当前编辑器上下文、处理局部 TODO | 脱离项目做大范围资料整理 | | 脚手架 / 插件体系 | 把固定能力打包复用，比如 skills、MCP、项目模板 | 替代基础权限和配置理解 | | 桌面 App | Worktrees、Review、内置终端、浏览器预览、长任务和本地/云端切换 | 忽略 Git 状态后直接全自动大改 | 最推荐的日常开发流： 如果三端表现不一致，先查这 4 个： 三边打开的是不是同一个仓库 CLI 在 Windows-native 还是 WSL CODEX_HOME 是否一致 桌面 App 是否在 worktree，而 CLI 在原目录 --- 程序员第一周最容易踩的坑 装了多份 Codex，却不知道 PATH 里哪份生效 第一轮就让它大改，不让它先读项目 没看 /status，就开始改 config.toml 把“模型不合适”“权限不够”“路径不对”“MCP 没连上”混成一个问题 改完只看回答，不看 /diff 和测试结果 一上来研究第三方线路，反而没跑通基础工作流 --- 读完这篇后下一步看什么 如果主人刚跑通第一轮任务，下一步按这个顺序： 第十三篇：Codex CLI 英文终端界面逐屏翻译与排错 解决“终端里这些英文、菜单、插件、skills、错误提示到底怎么看”。 第三篇：Codex 文档地图与配置逐项详解（小白版） 解决“为什么配置会覆盖、为什么改了不生效”。 第八篇：Codex 命令与配置文件作用全解（小白可查版） 当命令和字段速查表用。 第六篇：Codex CLI / 插件 / App 全链路配置实战 解决 CLI、VS Code 插件、桌面 App 之间怎么联动。 第三方线路、rpcod、Packy、yunyi 这些不要放在第一天主线里硬背。 等你真的要切线路时，直接去看第四篇这篇合并后的线路总手册就够了。 --- 参考资料 Codex CLI：<https://developers.openai.com/codex/cli> CLI Slash Commands：<https://developers.openai.com/codex/cli/slash-commands> Codex 配置：<https://developers.openai.com/codex/config-basic> Codex MCP：<https://developers.openai.com/codex/mcp> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> Codex use cases：<https://developers.openai.com/codex/use-cases>"
+    },
+    {
+      "type": "file",
+      "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
+      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
+      "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "官方文档",
+        "进阶实践",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:09:12.819Z",
+      "wordCount": 532,
+      "content": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇） 说明：本篇有效内容已经并入第十二篇，保留当前页面只是为了不让旧目录链接失效。 如果主人现在是连续阅读，不建议再单独读这篇。 现在应该直接看哪篇 请直接跳到： 第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版） 原来这篇的内容现在并到哪里了 原来第二篇里最有价值的 4 块，现在都已经并入第十二篇： codex exec MCP 治理 AGENTS.md 进阶写法 profile 策略 为什么不再单独保留一篇长文 因为这部分内容如果独立成篇，很容易和第十二篇的“常用功能手册”来回重复。 现在改成合并后，阅读顺序会更自然： 先知道今天最常用的功能入口在哪 再在同一篇里顺手补进阶工作流 什么时候还会点回这页 只有两种情况： 你从旧目录或旧搜索结果点进来 你想确认“第二篇去哪了” 除此之外，直接看第十二篇就够了。"
+    },
+    {
+      "type": "file",
+      "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+      "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "多线路",
+        "OpenAI",
+        "Packy",
+        "yunyi",
+        "rpcod"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
+      "size": "14KB",
+      "lastModified": "2026-05-31T08:07:36.733Z",
+      "wordCount": 7946,
+      "content": "第四篇：Codex 多线路接入与迁移总手册（合并版） 更新时间：2026-05-31 定位：线路总手册。专门解决“我要走哪条线路、配置该怎么落、切线路时最容易在哪翻车”这些问题。 前置建议：先读第一篇、第三篇、第六篇。先把 CLI 主线、配置层级和三端差异搞清，再来看线路，判断会稳很多。 合并说明：原第四篇与“rpcod 线路补充篇”的有效内容已经合并到本篇，后者保留为历史跳转入口。 使用方式：不要从头硬背。先看第 1、2、3 节做选路，再跳到自己实际在用的 provider 模板与排错小节。 [[toc]] --- 先讲结论：为什么现在应该把几篇线路文合成一篇 主人前面提得很对，线路文最容易写碎，结果就是： 一篇讲官方 一篇讲 Packy 一篇讲 yunyi 一篇单独讲 rpcod 每篇都重复 Node、CLI 安装、config.toml 路径、auth.json、权限组合 这样不利于真实使用。 真正开发时，主人要解决的其实只有 4 个问题： 我现在该走官方还是第三方线路 我这条线路最小可用配置长什么样 我从一条线路切到另一条时，哪些字段必须跟着换 如果不生效，到底是 provider、模型、认证、目录还是三端同步问题 所以这篇合并版只做一件事： 把“选路、配置、迁移、排错”放在同一篇里讲完整。 --- 先分清：线路问题和配置问题不是一回事 很多人觉得自己“线路不行”，其实根因并不在线路本身。 更稳的判断顺序是： CLI 本体有没有装好 当前生效的是哪份 codex config.toml 是不是改在对的位置 model_provider、base_url、key 是否匹配 当前 provider 后台到底开放了哪些模型 CLI、VS Code 插件、桌面 App 是不是跑在同一套环境里 所以主人以后看到“切线路后不能用”，先别一口咬定是服务商问题。 先按下面这张图判断： --- 线路到底怎么选 如果主人不想看一堆背景，先记这 4 句： 官方路线最标准，最适合先建立正确心智 Packy 更像 OpenAI-compatible 网关，适合已经明确走聚合 provider 的人 yunyi / rpcod 更像第三方中转样例，能不能稳定用，取决于服务商后台当前开放能力 第三方线路永远不能写成“长期固定答案”，只能写成“当前示例” 3.1 官方路线 适合： 第一次系统学 Codex 想先对齐官方默认工作流 不想一开始就被中转配置带偏 优点： 文档口径最标准 出问题最容易对照官方资料 模型、权限、App、IDE、CLI 的描述最一致 注意： 具体可用能力仍要看你的账号类型 不是所有桌面 App / 云任务能力都等价开放给所有登录方式 3.2 Packy 路线 适合： 已经习惯 OpenAI-compatible provider 配置方式 要在 CLI 和 IDE 里统一一个网关地址 想把 key 管理放进环境变量 优点： provider 结构清晰 比较适合工程化迁移 CLI 和插件侧都容易解释 注意： 模型名不要照抄文章示例 以你后台当前显示的可用模型为准 3.3 yunyi 路线 适合： 已经确定要走这条第三方线路 能接受它和官方资料之间会有偏差 知道自己是在维护一条“服务商样例”，不是官方通用默认值 注意： bearer token、provider 名、base URL 都容易写混 某些激活器脚本只适合作为临时辅助，不适合作为长期原理理解 3.4 rpcod 路线 适合： 你已经在用 rpcod 后台和套餐 你只想把 Codex CLI 接上这条具体线路 你愿意按服务商当前开放模型自己核对 注意： 本篇里保留 rpcod 的实操，是为了方便落地 但它不再是整组 Codex 文档的第一篇入口 以后主人再维护，也别把 rpcod 样例写成“多数人默认第一步” --- 所有线路都先做这 5 个基础检查 这部分不展开一堆基础概念，只保留线路切换前最小检查清单。 4.1 Node 与 npm 确认： Node 能正常执行 npm 能正常执行 如果你是在本博客仓库里跑脚本，按仓库规则先做： 4.2 Codex CLI 4.3 当前到底跑的是哪一份 codex Windows： macOS / Linux / WSL： 4.4 配置文件位置 用户级： Windows：C:\\Users\\你的用户名\\.codex\\config.toml macOS / Linux：~/.codex/config.toml 项目级： <repo>/.codex/config.toml 4.5 最小安全默认组合 主人日常更推荐： 除非你非常清楚风险，否则不要一开始就把第三方样例里的高权限组合抄进去。 --- 线路切换时，只盯这 6 个关键点 从一条 provider 切到另一条时，最常变的是这几项： model_provider model [model_providers.<id>] base_url 鉴权方式：env_key / experimental_bearer_token / auth.json 额外行为：requires_openai_auth、wire_api、preferred_auth_method 把它理解成这张迁移图就够： 很多人切线路失败，就是只换了 base_url，没换 model_provider 或认证方式。 --- 四条路线的最小可用模板 这里统一强调一次： 模型名只作当前示例 真正落地前，以当前 provider 后台真实开放模型为准 如果后台没开放示例模型，不要硬填 6.1 官方路线 这套适合： 第一次跑官方标准主线 先把 CLI、IDE、App 的心智跑顺 6.2 Packy 路线 PowerShell 环境变量示例： 最重要的 3 个点： provider id 要一致 base_url 要对 key 放环境变量里更稳 6.3 yunyi 路线 如果你走激活器样例： 但要知道： 这更像辅助脚本 不等于理解了配置原理 真排错时还是得回到 provider、base URL、认证和模型本身 6.4 rpcod 路线 rpcod 这部分现在直接并入本篇，不再单独放一篇长文重复讲。 更稳的最小写法建议是： auth.json 示例： 这里我刻意没有继续沿用旧文里那组： 因为那更像高风险样例，不适合作为主人日常开发默认起步配置。 --- rpcod 实操里真正还值得保留的内容 原 rpcod 补充篇里，其实真正有长期价值的不是“再讲一遍安装”，而是下面这些。 7.1 账号与套餐这层只属于 rpcod 本身 这不是 Codex 官方通用流程。 所以现在只保留结论： 注册、兑换、套餐刷新规则都属于 rpcod 后台逻辑 这些信息只在你确定走 rpcod 时才需要 不该再放进第一篇主线入口里 7.2 首次打通时的检查顺序 rpcod 路线真正影响成败的，是这 4 件事： Node / npm 正常 Codex CLI 正常 config.toml 里的 provider、base URL、model 对得上 凭据有效 7.3 首次启动验证 然后按这个顺序看： codex --version 能输出版本 启动后没有鉴权报错 /status 里模型、provider、权限符合预期 能在当前仓库正常读写 --- 从官方切到第三方，或者从第三方切回官方，怎么迁移最稳 这里给主人一套最实用的迁移顺序。 8.1 先备份当前可用配置 先把当前能跑通的配置留一份： 当前 config.toml 当前 provider 名 当前模型名 当前登录或 key 方式 8.2 一次只改一层 不要一口气同时改： provider base URL 模型 鉴权 权限模式 运行环境 更稳的做法是： 先换 provider 与 base URL 再换模型 再换鉴权 最后再看要不要换 WSL / Windows / App / 插件环境 8.3 每改一次就做最小验证 每改完一层，至少做： codex --version codex /status 仓库里提一个只读问题 8.4 切回官方时最容易漏什么 最容易漏的是： 忘了把 model_provider 改回 openai 忘了删第三方专用字段 仍然沿用第三方模型名 App / 插件里还留着旧 provider 配置 --- CLI、插件、桌面 App 三端为什么经常“看起来像同一个，其实又不一样” 这块在第六篇有完整展开，这里只保留和线路相关的那一层。 最常见的 4 个差异源头： CLI 跑在 Windows-native，IDE 跑在 WSL，App 又跑在 worktree 三边并不共用同一个 CODEX_HOME CLI 改了 ~/.codex/config.toml，插件里还是旧 provider rpcod / Packy 的 key 只在某一边配置了 所以主人看到“CLI 能用，插件不行”时，不要先怀疑模型。 先看： 当前仓库是不是同一个 运行环境是不是同一边 provider、base URL、key 是否在三边一致 --- 常见错误速查 10.1 模型显示不全或不能选 优先看： 当前 provider 后台是否真的开放 model 是否写成了历史示例 model_provider 是否指向了错的 provider 块 10.2 stream disconnected before completion 优先看： base_url 是否填错 当前节点是否可达 key 是否有效 10.3 改了配置不生效 优先看： 改的是用户级还是项目级 当前会话是否跑在另一个环境里 trust / 覆盖链是否影响了结果 10.4 API key 报错 优先看： key 是否过期 是否有空格或换行 放在了对的字段里没有 10.5 CLI 能用，插件或 App 不一致 优先看： CODEX_HOME Windows / WSL 差异 当前 worktree 与原项目目录是否混了 --- 给主人的一套更稳的新手默认线路策略 如果主人现在要从零开始，我更建议这样走： 先跑官方路线，建立正确心智 再按实际服务商切到 Packy / yunyi / rpcod 切线路后先只保证 CLI 能跑 再同步 VS Code 插件和桌面 App 最后再处理高权限、自动化、云任务和长期 profile 一句话说，就是： 先把原理跑顺，再折腾线路； 先让一端稳定，再追求三端统一。 --- 合并后，这篇和其他文章怎么分工 以后主人可以这样记： 第一篇：第一天怎么开工 第三篇：为什么配置会生效或失效 第四篇：不同 provider 路线怎么选、怎么迁移、怎么排错 第六篇：CLI / 插件 / App 为什么会表现不一致 第八篇：命令、slash command、配置文件名速查 第十二篇：今天真正常用的功能入口与进阶工作流 原“rpcod 线路补充篇”的有效内容已经并到这里。 以后除非主人特意要保留历史快照，否则不建议再把同类线路拆出很多独立长文。 --- 参考来源 OpenAI Codex 官方文档 <https://developers.openai.com/codex/> PackyAPI Codex 配置文档 <https://docs.packyapi.com/docs/cli/3-codex.html> 飞书：Codex 使用大全 <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf> 飞书：Codex CLI / VS Code 插件版教程 <https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc>"
+    },
+    {
+      "type": "file",
+      "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+      "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+      "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+      "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+      "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "英文提示",
+        "终端界面",
+        "排错"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+      "size": "18KB",
+      "lastModified": "2026-05-31T06:10:44.846Z",
+      "wordCount": 10562,
+      "content": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错 这一篇不是再讲 Codex 是什么。 它专门解决一个真实问题：终端里全是英文菜单、状态词、权限词、插件词和错误词，看着都认识，合起来却不知道下一步该怎么判断。 [[toc]] --- 这篇到底帮你解决什么 如果主人现在的状态是下面这样： / 一敲出来一堆命令，但不知道哪些是内置、哪些是插件、哪些是 MCP 带来的 /status 里能看到模型、approval、sandbox、context，但不知道哪项和当前问题有关 /mcp、/plugins、/skills 看着都像“扩展能力”，但不知道该先查谁 看到 Read Only、Full Access、failed、enabled、experimental 这类词时会迟疑 红色错误出现后，不知道该改路径、改权限、改登录，还是改 provider 那这篇就是给这个状态写的。 你先记住一句总判断： /status 看“当前会话到底处在什么状态” /permissions 看“Codex 现在能不能动手” /mcp 看“外部工具连没连上” /plugins 看“能力从哪里装进来” /skills 看“当前有哪些可复用工作套路” /debug-config 看“配置为什么没有按预期生效” --- 先用一张文字图，把阅读顺序固定下来 以后看到任何 Codex CLI 英文界面，先按这个顺序看： 这 4 步比逐字翻译更重要。 终端界面不是英语考试，它是在告诉你当前会话能做什么、不能做什么、为什么失败。 --- CLI 首页：先确认自己在哪 Codex 首页可以用这张文字图理解： 这一屏最重要的不是欢迎语，而是 4 个信号： model：当前这轮会话用哪个模型 directory / cwd：Codex 正在哪个项目里工作 hints：告诉你可以输入 /、附加上下文、粘贴内容 输入框：你接下来给的是“开发任务”，不是普通闲聊 判断法： 如果目录不对，先退出，切到正确仓库再进 如果模型不对，先用 /model 改 如果你还没让它读项目，不要直接让它改文件 如果当前环境是 WSL / Windows 混用，先确认路径是不是同一套 --- /model：模型和推理强度不是一回事 /model 页面一般解决两个问题： 这轮用哪个模型 如果当前模型支持，推理强度怎么调 主人记住这句就够： 模型决定能力底座 推理强度决定这轮任务投入多少思考 两者都要跟任务复杂度匹配 不要把文章里的某个模型名当长期固定答案。 官方模型、账号能力、第三方线路开放列表都会变，当前可用项以 /model、/status 和服务商后台为准。 --- /permissions：别把效率和安全混成一件事 权限页最容易被误读。 它不是“越开放越高级”，而是在回答：Codex 能不能动手、动手前要不要问你、能不能越过工作区。 英文词速读： | 英文 | 人话 | |---|---| | Read Only | 只读，不改文件 | | workspace-write | 可以写当前工作区 | | Full Access | 权限很大，别在脏工作区里随便开 | | approval | 哪些动作需要主人确认 | | sandbox | Codex 被限制在哪个范围内活动 | | trusted | 当前目录被信任，策略可能更宽 | | untrusted | 当前目录不被信任，限制会更严 | 建议： 新项目第一轮先只读 小范围修改用工作区写权限 删除、移动、安装依赖、联网、全局替换前认真看提示 真要开 Full Access，最好在隔离 worktree 或可回滚环境里做 --- Slash 菜单：先按来源分类，不要挨个背 / 菜单出来以后，先别慌。 它可以先分成 5 类： 第一天真正高频的是： | 命令 | 你要问自己的问题 | |---|---| | /status | 我当前在哪个模型、目录、权限、上下文里 | | /model | 这轮任务的模型和推理强度合适吗 | | /permissions | Codex 现在能不能改，改之前问不问 | | /diff | 它到底改了哪些文件 | | /review | 当前工作树有没有明显风险 | | /mcp | 外部工具连上了吗 | | /plugins | 能力从哪个插件来 | | /skills | 现在有哪些工作套路可用 | | /debug-config | 配置层级哪里覆盖了我 | | /experimental | 哪些实验能力开了，出了问题能不能回滚 | 看到某个命令不知道来源时，别猜。 先用 /plugins、/skills、/mcp 反查。 --- /status：排错第一入口 官方文档里 /status 的作用很明确：查看当前会话配置和 token 使用情况。 实际排错时，它就是第一入口。 你觉得“不对劲”时，先看这些： 当前模型和推理强度是不是对 当前工作目录是不是目标仓库 approval policy 有没有挡住命令 writable roots 有没有包含你要改的目录 上下文是不是快满了，需要 /compact 当前账号、provider、config 是否和你预期一致 常见误判： 你以为改了用户配置，其实项目配置覆盖了 你以为在 Windows 路径，实际 agent 跑在 WSL 你以为能写整个磁盘，其实只放开了当前工作区 你以为模型不可用，其实是 provider 或模型名不匹配 --- /debug-config：配置不生效时先看它 如果你的问题是“我明明改了配置，但 Codex 没按我想的走”，比起盲改 config.toml，更应该看 /debug-config。 重点不是“哪个文件最长”，而是谁最后生效。 常见问题： ~/.codex/config.toml 写了，但项目 .codex/config.toml 覆盖了 你切了 profile，但当前会话不是用那个 profile 启动 AGENTS.md 里有项目规则，影响了 Codex 的操作方式 CLI 启动参数临时覆盖了文件配置 这类问题不要靠记忆排。 用 /debug-config 看实际链路。 --- /mcp：看外部工具活没活 MCP 不是“插件列表”。 它更像 Codex 接上的外部工具接口，比如浏览器、文档检索、GitHub、数据库、本地脚本等。 状态词速读： | 英文 | 人话 | |---|---| | connected | 连上了，可以用 | | failed | 没连上，先排错 | | disabled | 当前禁用 | | pending | 正在连接中 | | needs-auth | 缺授权，不是服务一定坏了 | | tools | 这个 MCP 暴露给 Codex 的工具数 | | timeout | 启动或响应超时 | 看到 /mcp 后只看三件事： 服务名是不是你预期的那个 状态是不是 connected 后面有没有工具数 如果是： 不要立刻以为好了。 这更像“进程起来了，但能力没有真正交给 Codex”。 --- /plugins：看能力从哪里装进来 Plugin 是打包分发层。 它可能带来 skills、MCP、命令、模板或其他组件。 英文词速读： | 英文 | 人话 | |---|---| | installed | 已安装 | | enabled | 当前启用 | | disabled | 当前禁用 | | marketplace | 插件市场来源 | | official | 官方来源 | | community | 社区来源，使用前更要看权限 | | upgrade | 可升级 | | remove | 可移除 | | components | 这个插件带进来的组件 | | errors | 加载错误 | 装完插件后不要直接以为它能用了。 最小检查顺序： /plugins 看插件是否 installed / enabled /skills 看有没有带进 skill /mcp 看有没有带进工具 / 菜单里搜索有没有可直接调用的命令 一句话： 工具活没活，看 /mcp 能力从哪装来，看 /plugins 能不能作为工作套路调用，看 /skills --- /skills：看当前有哪些工作套路 Skill 不是模型，也不是外部工具。 它更像“给 Codex 的可复用工作方法”。 你看到 skill 时，先问： 这是内置的、项目写的，还是插件带来的 当前是不是启用 它是自动可用，还是需要我手动点名 它解决的是流程问题、排错问题、设计问题，还是写作问题 如果一个 skill 来自 plugin，通常不要只在 /skills 里折腾。 它的启用、禁用、卸载和来源更应该回 /plugins 看。 --- /experimental：新能力先理解，再启用 experimental 的关键词不是“高级”，而是“可能变化”。 看到实验能力时，先问三件事： 它解决我现在的哪个具体问题 它会不会增加权限、上下文或不稳定性 出问题时我能不能回滚 不要默认全部打开。 程序员真正需要的是稳定工作流，不是把所有开关都点亮。 --- 红色错误：先看类型，不要先重装 红色错误出现时，先提取关键词。 排错顺序： /status /debug-config 看当前目录和权限 看 ~/.codex/config.toml 看项目 .codex/config.toml 看登录状态和 provider 看 /mcp、/plugins、/skills 最后才考虑重装或升级 这一步很重要。 “失败了”不是一个问题类型，它只是结果。关键词才告诉你该查哪一层。 --- 会话中断：先保存判断，再继续 看到 conversation interrupted、interrupted、summary、resume 这类词时，不要直接说“继续”。 建议先在终端看： 然后回到 Codex 里问： 这比直接说“继续”稳。 因为中断后最怕的是上下文不完整，还继续大改。 --- 英文词典：主人最该背下来的这些 状态词：回答“活没活” | 英文 | 人话 | |---|---| | enabled | 已启用 | | disabled | 已禁用 | | installed | 已安装 | | connected | 已连上 | | failed | 失败了，先排错 | | pending | 还在处理中 | | trusted | 当前环境被信任 | | untrusted | 当前环境不被信任 | | experimental | 实验能力，可能变化 | 来源词：回答“从哪来” | 英文 | 人话 | |---|---| | CLI | Codex 自己的命令 | | config | 来自配置文件 | | project | 项目级 | | user | 用户级 | | local | 本地私有 | | MCP | 外部工具接口 | | plugin | 插件带来的 | | skill | 工作套路 | | marketplace | 插件市场 | 动作词：回答“下一步能做什么” | 英文 | 人话 | |---|---| | configure | 去配置 | | enable | 启用 | | disable | 禁用 | | install | 安装 | | upgrade | 升级 | | remove | 移除 | | retry | 重试 | | review | 审查 | | diff | 看改动 | | compact | 压缩上下文 | 只要这三类词能分开，Codex CLI 就不会再像一整屏黑盒。 --- 和 VS Code 插件、桌面 App 怎么互相验证 主人如果 CLI、VS Code 插件、桌面 App 都用，三边表现不一致时按这个顺序排： 最常见的坑： CLI 在 WSL，App 在 Windows-native，两边不是同一个 ~/.codex VS Code 打开的是子目录，CLI 在仓库根目录 桌面 App 在 worktree，CLI 在原目录 插件用了项目配置覆盖，CLI 你看的却是用户配置 MCP 在 CLI 能连，App 或插件环境里没有同样的进程和环境变量 --- 最小检查清单 每次 Codex 变得“不对劲”，按这张表走： codex --version where.exe codex 或 which codex 进入项目后看 /status 看 /permissions 看 /debug-config 看 /mcp 看 /plugins 看 /skills 看 git status --short 再决定是否改 config.toml 如果涉及本仓库的 Node / npm / Vite 脚本，先跑： 这一步能避免把代理终端环境异常误判成项目代码坏了。 --- 参考资料 Codex CLI：<https://developers.openai.com/codex/cli> CLI Slash Commands：<https://developers.openai.com/codex/cli/slash-commands> Codex 配置：<https://developers.openai.com/codex/config-basic> Codex MCP：<https://developers.openai.com/codex/mcp> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> /plugins、/skills、/experimental 这类入口的具体显示会跟 CLI 版本、插件安装状态和账号能力有关。最稳的核对方式不是记某个静态截图，而是在当前 Codex CLI 里用 /、/status、/plugins、/skills、/mcp 反查实际可用项。"
+    },
+    {
+      "type": "file",
+      "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+      "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+      "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+      "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "更新总表",
+        "桌面版",
+        "IDE",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:11:43.196Z",
+      "wordCount": 523,
+      "content": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇） 说明：本篇原本负责补最近产品更新口径，现在已经并入第十二篇。 如果主人现在是顺着主线阅读，不需要再单独读这一篇。 现在直接看哪篇 请直接跳到： 第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版） 原来这篇最重要的内容，现在放在哪 原第十一篇最有价值的更新判断，现在都在第十二篇这几块里统一展开： 最近产品口径更新 哪些旧描述该删，哪些该留 App、IDE、Windows 新能力如何放进当前工作流 为什么不再单独保留成长文 因为这篇如果继续单独保留，就会和第十二篇来回重复： 一边讲“当前常用功能” 一边又讲“最近该升级的认知” 现在合成一篇以后，更适合连续阅读，也更适合后续维护。 什么时候还会点回这页 只有两种情况： 你从旧目录或旧搜索结果点进来 你想确认“第十一篇去哪了” 除此之外，直接看第十二篇就够了。"
+    },
+    {
+      "type": "file",
+      "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+      "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
+      "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+      "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "学习路线",
+        "小白入门",
+        "CLI",
+        "导读"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
+      "size": "9KB",
+      "lastModified": "2026-05-31T08:11:43.201Z",
+      "wordCount": 4429,
+      "content": "零基础先读：Codex 程序员学习路线与读完能力对照 更新时间：2026-05-31 适合谁：第一次系统学 Codex，或者已经看过几篇但仍然觉得“内容很多、真正开发时不知道先用哪篇”的主人。 目标：不是让你背完整套配置字段，而是先能用 Codex 完成第一轮真实开发，再逐步补配置、三端联动和排障能力。 使用方法：先按本文顺序读主线；字段字典、界面对照 SOP、第三方线路和历史排障按需查。 [[toc]] --- 先讲清一个现实：你不需要先背完 Codex 所有功能 小白最容易犯的错，不是学得太慢，而是顺序反了： 一上来就背 model、model_provider、approval_policy、sandbox_mode 还没进真实仓库，就开始研究 App、IDE、MCP、Worktrees、Automations 看到一堆英文菜单和插件状态词，却不知道下一步该怎么判断 所以这套资料现在按“先能用、再会查、最后会排错”来学。 一句话路线： 先把 CLI 第一日开发跑顺 再看懂英文终端界面 再补配置心智模型 再把 CLI、VS Code 插件和桌面 App 串成日常开发流 真遇到线路、字段、PowerShell、CC Switch 问题时再查附录 --- 如果你是第一次系统学，最推荐的阅读顺序 按下面 8 步走，不要自己乱改顺序： 第一篇：Codex CLI 第一日开发实战（程序员版） 第十三篇：Codex CLI 英文终端界面逐屏翻译与排错 第三篇：Codex 文档地图与配置逐项详解（小白版） 第八篇：Codex 命令与配置文件作用全解（小白可查版） 第六篇：Codex CLI / 插件 / App 全链路配置实战 第十二篇：Codex 当前常用功能点详细手册（最新工作流版） 第五篇：Codex 配置字段字典与文档对照（完整版） 第七篇：Codex 三端逐字段截图对照版（每一步可复现） 为什么是这个顺序： 第一篇先让你跑通真实开发，不再从配置百科开始 第十三篇解决“英文终端看不懂”的问题 第三篇解决“改了配置为什么不生效”的问题 第八篇当命令和配置速查表，不需要硬背 第六篇解决 CLI、插件、App 为什么不完全一样 第十二篇作为当前常用功能手册 第五篇只在你真的要填字段时查 第七篇只在需要界面对照 SOP 或团队核对时查 --- 每篇读完以后，你应该真正会什么 3.1 看完第一篇，你应该会 确认当前运行的是哪一份 codex 在真实仓库里启动 Codex 用“先读、再定位、再小改、再验证”的节奏完成第一轮任务 分清 CLI、VS Code 插件、脚手架和桌面 App 大致怎么分工 3.2 看完第十三篇，你应该会 看懂 CLI 首页、模型选择、推理强度、权限菜单和 slash 菜单 知道 /status、/mcp、/plugins、/skills 应该分别看什么 看到红色错误时先按 path / permission / auth / provider / mcp / node 分类 会话中断后，先看 diff 和状态，而不是直接继续大改 3.3 看完第三篇，你应该会 解释清楚认证、审批、沙箱、配置层级各管什么 说出 ~/.codex/config.toml、项目 .codex/config.toml、AGENTS.md 分别管什么 不再把“改了没生效”统统归因成玄学问题 3.4 看完第八篇，你应该会 知道 codex、codex exec、resume、--profile、/status、/review 各自干嘛 知道 config.toml、auth.json、AGENTS.md、.rules 的职责边界 遇到一个命令或字段名时，能快速查到它属于哪一层 3.5 看完第六篇，你应该会 解释清楚 CLI、IDE 扩展、桌面 App 为什么既共享能力、又不完全等价 知道为什么会出现“CLI 能用，插件/App 不行” 知道 Windows-native、WSL agent、CODEX_HOME 不一致会带来什么问题 3.6 看完第十二篇，你应该会 说出今天最常用的功能点分别在哪个入口用 分清哪些旧说法该删，哪些旧能力该保留 开始按“模型 -> 权限 -> IDE / App / CLI -> Worktrees / Cloud / Review / Automations”这条线做开发 3.7 看完第五篇，你应该会 自己写一份最小可用 config.toml 知道 model、model_provider、approval_policy、sandbox_mode 这些关键字段怎么填 知道“官方默认示例”和“第三方网关当前可用值”之间的区别 3.8 看完第七篇，你应该会 按界面对照去找配置和能力入口 把抽象名词和真实界面一一对应 给自己或团队做一套可复现的核对 SOP --- 学完以后，你就应该掌握的 4 个层次 4.1 第一层：能跑起来 你应该会： 安装 Codex CLI 看懂版本、登录状态、当前模型 用安全默认权限开一个可用会话 4.2 第二层：能稳定使用 你应该会： 用 /status 和 /permissions 判断当前状态 区分只读、工作区写权限和高权限模式 用 AGENTS.md 固定项目规则 4.3 第三层：能把它真正用进开发 你应该会： 在 CLI 里读仓库、排错、看 diff 在 IDE 插件里贴着代码做具体改动 在 App 里用 Worktrees、Review pane、Built-in Git、Integrated terminal 大任务上用 Cloud delegation / Handoff 4.4 第四层：能自己排错 你应该会： 看 /status 和配置覆盖链 查 model_provider、base_url、auth.json / keyring 排查 Windows-native / WSL / CODEX_HOME 差异 知道故障该回哪篇专题，而不是乱删配置 --- 什么时候该看哪篇，不要乱跳 如果你现在遇到这些情况，直接按下面跳： “我第一次用 Codex，不知道怎么开第一轮任务”：去第一篇 “我看不懂 CLI 英文界面和菜单”：去第十三篇 “我完全不懂 Codex 配置层次”：去第三篇 “我不懂命令名和字段名”：去第八篇 “CLI、VS Code 插件、桌面 App 表现不一致”：去第六篇 “我想知道现在最常用功能怎么用”：去第十二篇 “我知道概念，但不会填配置”：去第五篇 “我想确认这些能力在界面上到底在哪”：去第七篇 “Codex 在 Windows / Node / PowerShell 上出怪问题了”：去第十篇和 CC Switch 排障专题 --- 哪些内容不是一开始就深挖的 下面这些内容不是不重要，而是不要在第一个小时就陷进去： 第四篇多线路接入与迁移总手册 第九篇 .codex 本地目录深挖 第十篇 PowerShell / MCP / CC Switch 故障复盘 已并入主文的历史入口页（第二篇、第十一篇、rpcod 补充篇） 它们更适合： 你已经会基本使用后，再按需查 你真遇到对应线路、对应环境或对应故障时再看 --- 一句话学习地图 如果要把整套资料压缩成一句话，就是： 第一篇让你“能开工” 第十三篇让你“看懂终端” 第三篇让你“懂配置原理” 第八篇让你“会查命令和字段” 第六篇让你“懂 CLI / 插件 / App 分工” 第十二篇让你“会用当前常用功能” 第五篇让你“会填配置” 第七篇让你“能对照界面操作” --- 小白读完后的最低达标标准 如果主人希望这套文档真的做到“小白读完也能掌握 Codex”，最低标准应该是： 能自己跑通一轮真实仓库开发任务 能看懂 CLI 英文菜单和常见错误提示 能分清 CLI / IDE / App 分别适合什么 能说清 Worktrees、Cloud delegation、Review pane、AGENTS.md、MCP 分别是什么 出问题时知道先去哪个专题排，而不是乱改配置 如果这 5 条做到了，这套文档就不是“堆资料”，而是真的能教会人。"
+    },
+    {
+      "type": "file",
+      "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+      "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+      "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+      "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+      "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "rpcod",
+        "CLI",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:11:43.198Z",
+      "wordCount": 602,
+      "content": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇） 说明：原来这篇里还值得保留的 rpcod 配置、认证、首轮验证和排错内容，已经并入第四篇。 现在不再建议把 rpcod 单独当成一篇主线长文阅读。 现在直接看哪篇 请直接跳到： 第四篇：Codex 多线路接入与迁移总手册（合并版） 原来这篇的内容现在并到哪里了 原 rpcod 补充篇最重要的几块，现在都已经并到第四篇： rpcod 路线适合谁 config.toml 与 auth.json 的最小可用写法 首次启动验证顺序 常见错误速查 为什么高权限旧样例不该当默认配置 为什么要改成这种结构 因为之前把 rpcod 单独拆成一篇长文，会带来两个问题： 和第四篇重复了很多基础安装、配置路径、provider 解释 很容易让读者误以为 rpcod 是 Codex 文档主线入口 现在把它并回第四篇后，线路类内容都集中在一篇里，查起来更顺。 什么时候还会点回这页 只有两种情况： 你从旧目录或旧搜索结果点进来 你想确认“rpcod 补充篇去哪了” 除此之外，直接读第四篇就够了。"
+    },
+    {
+      "type": "file",
       "title": "第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）",
       "frontmatterTitle": "第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）",
       "fileTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
@@ -599,8 +773,8 @@
     },
     {
       "type": "file",
-      "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-      "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+      "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+      "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
       "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
       "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
       "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -617,61 +791,11 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-      "size": "21KB",
-      "lastModified": "2026-05-24T12:56:24.634Z",
-      "wordCount": 11000,
-      "content": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版） 更新时间：2026-05-22 定位：主线常用功能总手册。专门解决“我知道 Codex 大概能做什么，但开发时到底该用哪个入口、哪些旧说法该删、哪些旧能力其实还在”的问题。 适合谁看：主人已经开始真正把 Codex 用进日常开发，希望文档既能查功能，也能防止自己继续按旧认知误用。 本篇原则：官方还保留并继续文档化的能力，就保留并写清使用边界；官方已经进化出新的主工作流，就删掉旧描述，改写成新的能力入口。 前置建议：第三篇先建立配置心智模型，第六篇看三端联动，第十一篇看最近增量，本篇负责把“现在最常用的功能点”讲细。 小白读完目标：你应该能知道今天开发时最常用的功能分别从 CLI、IDE、App 的哪个入口进入，并能判断哪些旧说法已经不该继续照着用。 章节导航（点击跳转）： [[toc]] --- 先定一条文档维护原则：不是“旧的都删”，而是“看官方主线还在不在” 以后主人更新 Codex 资料，建议一律按下面 3 条判断： 如果官方当前文档里还保留独立页面、独立导航或明确说明，这个功能就不该因为“看起来老”而直接删掉 如果官方已经把旧入口升级成新工作流，就不要继续拿旧表述当主线，例如把 App 说成“只是桌面壳”、把 IDE 说成“只是编辑器里的 CLI 壳” 如果某个说法只剩历史样例价值，没有继续作为官方推荐路径出现，就保留到“历史快照 / 排障样本”里，不再放进“新手默认配置”或“当前常用功能”里 这套标准用到本篇时，最典型的几组判断是： AGENTS.md、profiles、MCP、codex exec 这些能力没过时，因为官方主线还在 “一个仓库只对应一个工作目录”这种理解过时了，因为 App 已经明确支持 worktrees “Windows 主要就是凑合能跑，复杂项目只能靠 WSL”这种说法不该继续当主线，因为官方现在单独维护 Windows 页面，而且 App 已支持 Windows-native agent 和 native Windows sandbox “IDE 只能文字对话 + 代码上下文”这种说法也该删，因为官方已经补了云任务、图片拖拽、图像生成和 web search --- 模型：先分清“默认本地示例”和“专门编码模型” 这是现在最容易写乱的一块。 按 OpenAI 官方当前 Codex 模型页，更稳妥的使用顺序是： 大多数 Codex 任务，先从 gpt-5.5 开始 轻量任务或子代理场景，可以考虑 gpt-5.4-mini 如果你明确需要专门的复杂软件工程编码模型，可以再对照 gpt-5.3-codex gpt-5.3-codex-spark 属于研究预览里的近实时编码迭代模型，不该再写成通用默认答案 这几项给主人开发时分别怎么理解： 1.1 gpt-5.5 适合作为今天文档里的默认本地示例模型。 推荐用法： 初次接项目、要读代码、改代码、跑工具、做较复杂分析时，优先用它起步 如果你是从桌面 App、IDE 扩展或 CLI 本地线程进入，大多数情况下先让文档默认示例写成它最稳 如果你走的是第三方网关，只有在后台真实开放时才填它，不要盲目照抄 1.2 gpt-5.4-mini 适合更快、更便宜的轻量场景。 典型场景： 快速整理 TODO 做子任务拆分 跑轻量分析或低风险改动 给子代理或批量小任务用 1.3 gpt-5.3-codex 它不是“过时不能提”，但已经不该写成你文档里的统一默认入口。 今天更准确的定位是： 它仍然是复杂软件工程场景里很强的专门编码模型 它的编码能力现在也已经服务于更上层的 GPT-5.4 体系 它可以保留在“可选模型说明”里，但不该继续写成“多数人默认先填它” 1.4 第三方线路该怎么写模型，才不会过时 任何第三方线路都建议统一用这句模板： “以下模型名仅作当前示例，更新前请先核对该服务商后台当前开放模型” “如果服务商未开放官方当前默认示例，请直接以后台真实可选模型为准” “不要把历史线路样例模型名当长期固定默认答案” --- App：当前最常用的工作流能力，不再只是聊天窗口 现在主人如果主要用桌面 App，最常用的能力点建议按下面顺序掌握。 2.1 Worktrees 这是桌面端最值得优先学会的能力之一。 它解决的问题不是“怎么切分支”，而是： 同一仓库的不同任务，如何隔离上下文和改动 长任务、并行任务、试验任务，如何不互相污染 同一个项目，如何让不同线程始终回到自己的那套背景环境 主人开发时的正确用法： 一个需求一个 worktree 需要并行推进两个方向时，不要在同一个工作目录硬切来切去 需要暂时把线程切回本地或交给云端时，优先沿用原 worktree，而不是重新开一个陌生环境 该删掉的旧描述： “一个项目通常就只开一个目录配一个会话” “多线程主要靠聊天记录区分” 2.2 Handoff 官方把 handoff 放在 Worktrees 工作流里讲，说明它不是边角功能。 主人可以把它理解成： 线程不是被锁死在一个执行环境里 同一条任务链可以在 Local、Worktree、Cloud 之间流转 回切时，Codex 会尽量回到原来的关联环境，而不是把上下文拆散 适合的场景： 本地先梳理问题，再交给云端长跑 云端先出一个版本，再回本地精修与验证 临时把 worktree 任务切回 Local 处理特殊验证 2.3 Local environments 这不是简单的“在本地开个 shell”，而是把项目环境准备做成可重复、可复用的定义。 官方示例里明确提到 setup script，比如： 主人开发时怎么用最值： 把新项目第一次必跑的依赖安装和初始构建写进 setup 平台有差异时，给 macOS、Windows、Linux 分别定义 高频命令尽量做成 action，减少每次手敲 该删掉的旧描述： “环境准备靠你自己记住一串命令就行” “Codex 只负责聊天，环境还是纯手工” 2.4 Automations Automations 说明桌面 App 已经不只是一次性会话工具。 官方当前文档里，至少要分清两类： 常规自动化：按计划跑固定任务，例如巡检、报表、错误归类 Thread automations：贴着同一条线程反复唤醒，保留上下文，适合持续跟进同一件事 主人开发时最实用的用法： 定时检查最近代码变更并输出摘要 周期性跑日志/遥测问题归类 对某个长任务做“隔一段时间自动继续 / 自动跟进” 2.5 Built-in Git 桌面 App 当前已经有明确的 Git 工作流，不该再写成“最后还是要切回外部终端看 diff”。 官方明确提到： diff pane 能直接看本地项目或 worktree 的 Git diff 可以加 inline comments 让 Codex 精准修正 可以直接在 App 内 stage / revert 特定文件、特定 hunk，甚至 commit、push、create PR 主人开发时建议这样用： 改完先在 review / diff 面板看结果 不满意就局部 revert，不要整批推翻 需要和 Codex 对某一段改动继续对话时，用 inline comments 比一句泛泛的“这里不对”更有效 2.6 Review pane 这是现在文档里非常值得单独保留的能力。 它不仅是“看 diff”，还承担下面这些用途： 承接 /review 的代码审查结果 承接 PR review comments 让你在同一个面板里处理 diff、评论和 Git 操作 官方当前流程强调： 如果有 GitHub 权限，并且项目当前就在 PR 分支上，App 可以直接读 PR 上下文和 reviewer feedback gh auth login 配好后，review pane 能更完整地加载 PR 细节 你可以直接在 review pane 里边看评论边让 Codex 修 2.7 Integrated terminal 这也是高频必会功能。 官方明确说明： 每条线程都带一个内置终端 终端范围绑定当前项目或当前 worktree Codex 可以读取当前终端输出，所以它能根据失败的构建、开发服务器状态继续协作 主人最常用的几种用法： git status git pull --rebase npm test / pnpm test npm run lint 看开发服务器是否真的跑起来 这块该删掉的旧描述： “App 主要看聊天，命令验证还是得来回切终端” 2.8 In-app browser 它的价值不是替代你日常浏览器，而是把“预览 / 评论 / 反馈”拉回同一条开发线程里。 官方当前边界也写得很清楚： 适合看本地开发服务器、文件预览和不需要登录的公开页面 不支持认证流程、登录态、你常用浏览器的 cookie、扩展和既有标签页 可以对页面具体区域加评论，再让 Codex 按这些评论改 所以正确写法是： 它适合开发迭代 它不是拿来跑复杂登录流程的主浏览器 2.9 Computer use 这条一定要写准确。 官方当前页面明确说明： 它可以让 Codex 通过看、点、输来操作 macOS app 适合测试桌面 App、浏览器流程、模拟器流程、GUI-only bug 复现 因为会影响项目工作区之外的系统状态，所以任务要收窄、权限提示要认真看 启动时不在欧洲经济区、英国、瑞士开放 该删掉的旧描述： “Computer use 就是桌面版默认什么都能点” “Windows / macOS 都等价支持” 2.10 Windows-native 与 WSL agent 这块现在已经不能简单写成“推荐 WSL，原生 Windows 凑合”。 官方当前口径更准确的是： App 支持 Windows-native agent，用 PowerShell + native Windows sandbox 跑 也支持切到 WSL agent agent 和 integrated terminal 是可以独立配置的 WSL1 现在已经不再支持 如果你的 CLI 跑在 WSL，它默认不会自动和 Windows 共享同一个 ~/.codex 主人开发时的实际决策： 项目与工具链都在 Windows 文件系统里，就优先 Windows-native 项目主要活在 WSL2，依赖 Linux 工具链，就切到 WSL agent 切换后记得重启 App 排障时别忘了先确认是不是两边 CODEX_HOME / .codex 不一致 --- IDE 扩展：当前最常用的开发协作入口 今天的 IDE 扩展已经不是“编辑器里套了个聊天面板”。 3.1 三种工作模式要分清 官方当前页面里，IDE 至少要区分： Chat：聊天、规划、先讨论方案 Agent：默认模式，可自动读文件、改代码、在工作目录里跑命令 Agent (Full Access)：需要更高权限和网络访问时用，风险也最高 正确理解： 不是所有问题一上来都该开 full access 先用 Agent 就够解决大多数本地开发问题 只有明确需要时，才切更高权限 3.2 Cloud delegation 这是今天 IDE 最值得保留并写细的功能点之一。 官方当前流程很明确： 先配置 cloud environment 在 IDE 里选 Run in the cloud 可以从 main 起跑，也可以基于你本地当前改动起跑 本地对话上下文会被带过去 云端跑完以后，还能把 cloud task 再拉回 IDE 继续跟进 主人最实用的用法： 大改造、长耗时任务、需要更干净环境的任务丢给云端 本地保留审查、验证、微调、最终提交 把“云端跑长任务 + 本地收尾”当成标准工作流 3.3 Web search 官方当前对 IDE 扩展的默认行为写得很清楚： 本地任务下，web search 默认启用 默认使用 OpenAI 维护的 web search cache，而不是直接 live 抓取 这样能降低来自任意 live 页面 prompt injection 的暴露面 如果你把 sandbox 配成 full access，web search 默认会走 live results 主人开发时要知道： 缓存搜索更稳，也更适合日常开发 需要查“刚发布、刚更新”的资料时，再考虑 live 搜索结果依旧是外部信息，不能无脑信 3.4 图片拖拽 这是现在 IDE 扩展里非常实用的多模态入口。 官方当前说明： 可以把图片直接拖进 prompt composer 在 VS Code 里拖图时要按住 Shift，否则编辑器可能拦截掉扩展接收 这块的高频场景： UI 稿还原 页面异常截图分析 控件布局问题定位 视觉回归排查 3.5 内置图像生成 这也是现在应该保留的新能力，不该继续省略。 官方当前页面明确写到： 可以不离开编辑器直接生成或编辑图片 适合做 UI 资产、布局草图、插画、sprite sheet、占位图 可以直接自然语言要求生成，也可以显式写 $imagegen 内置图像生成使用的是 gpt-image-2 主人开发时怎么用最值： 快速出前端占位图 做界面视觉草图 让一张参考图派生多个版本 3.6 Windows 下的 WSL 开关 IDE 设置页里当前有一个特别实用的项： chatgpt.runCodexInWindowsSubsystemForLinux 主人要知道的点： 当仓库和工具链都主要在 WSL2 时，可以打开它 当你主要在 Windows-native 工作时，不必强开 改这个设置会触发 VS Code reload 才生效 3.7 还有哪些编辑器设置仍然值得保留 当前还值得保留到文档里的设置有： chatgpt.commentCodeLensEnabled：在 TODO 等注释上方显示 CodeLens，方便直接交给 Codex 处理 chatgpt.openOnStartup：扩展完成启动后是否自动聚焦 Codex 侧边栏 chatgpt.cliExecutable：一般不需要改，除非你自己在开发 Codex CLI --- CLI：这些老能力没过时，反而还是底层核心 虽然 App 和 IDE 变强了，但 CLI 并没有过时。 4.1 codex 交互式主入口。 适合： 进入当前仓库直接协作 本地快速排查 需要更透明地看模型、配置、审批和沙箱时 4.2 codex exec 这是自动化和批处理的底座。 适合： 一次性非交互任务 CI/CD 流水线 定时脚本 机器可读输出链路 高频搭配： codex exec \"...\" codex exec --json \"...\" codex exec --profile <name> \"...\" 4.3 resume 这条能力仍然很值。 适合： 长任务中断后续跑 重开终端继续之前的上下文 把会话拆成多段完成 4.4 approval_policy + sandbox_mode 这俩仍然是所有入口最核心的安全边界。 主人日常最推荐的起步组合： 如果只是审计或看代码： 该保留但降级的旧写法： --full-auto：还能作为旧资料兼容概念理解，但文档里不建议再当主入口写法 --yolo：依然存在高风险别名语义，但不该出现在日常默认配置里 4.5 AGENTS.md 它没有过时，反而越用越重要。 当前最值得写清楚的点： 它决定项目长期规则 离当前目录越近的说明文件覆盖力越强 真要长期稳定协作，AGENTS.md 的价值比你临时打一段 prompt 更高 4.6 MCP 也完全没过时。 它解决的是： 给 Codex 接第三方工具 把浏览器、GitHub、内部脚本、数据源接进工作流 让 Codex 不只是“看代码”，而是能操作真实工具环境 4.7 Profiles 这条也不该删。 最实用的价值： 同一个人切换“日常开发 / 审计 / 自动化”时，不用每次重写一堆参数 团队能把几套常用权限模板固定下来 --- 哪些旧描述现在该删，哪些该留 这里给主人一张最实用的判断表。 5.1 建议删除或重写的旧描述 “App 就是读取同一份配置的桌面壳” “IDE 扩展就是编辑器里的 CLI 壳” “Windows 主要还是不推荐，复杂项目只能靠 WSL” “默认模型就写死成某个旧模型名” “图像、多模态、云任务都只是边缘能力” “一仓库一线程一目录基本够用了” 5.2 应该保留，但要换成新边界写法的旧能力 AGENTS.md MCP codex exec profiles approval_policy sandbox_mode resume 5.3 该留在“历史样本 / 排障样本”里的内容 某台机器的旧 .codex/config.toml 快照 某条第三方线路曾经开放过的旧模型名 某次 PowerShell / Node / 中转切换故障现场 这些不是“删除”，而是不能再写成今天的默认推荐。 --- 主人真正开发时的推荐使用顺序 如果是今天开始一个真实开发任务，我更推荐这样走： 先看模型与权限：确认当前线路可用模型、approval_policy、sandbox_mode 如果主要在 IDE 里做，先用 Agent 模式进入本地任务 要长跑或大改造时，用 Cloud delegation / Handoff 桌面 App 里要并行任务，就开 Worktrees 高频命令和环境准备，写进 Local environments 改完先过 Review pane / diff，再决定 stage、commit、push 页面与前端可视化问题，优先用 IDE 图片拖拽、图像生成、In-app browser 需要自动化重复工作时，再上 Automations --- 这篇写完以后，原有几篇该怎么分工 为了避免以后内容再打架，建议你把 Codex 专题理解成下面的分工： 第三篇：Codex 文档地图与配置逐项详解（小白版） 作用：配置心智模型 第五篇：Codex 配置字段字典与文档对照（完整版） 作用：字段字典和模板 第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细） 作用：三端联动与排障 第七篇：Codex 三端逐字段截图对照版（每一步可复现） 作用：截图核对 SOP 第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力） 作用：告诉你哪些旧认知该升级 第十二篇（本篇） 作用：把当前最常用的功能点讲细，作为真正开发时的高频查阅页 --- 官方资料入口（本篇撰写时重点对照） Codex 模型页：<https://developers.openai.com/codex/models> App 功能：<https://developers.openai.com/codex/app/features> App Review：<https://developers.openai.com/codex/app/review> App Worktrees：<https://developers.openai.com/codex/app/worktrees> App Local Environments：<https://developers.openai.com/codex/app/local-environments> App Automations：<https://developers.openai.com/codex/app/automations> App In-app Browser：<https://developers.openai.com/codex/app/in-app-browser> App Computer Use：<https://developers.openai.com/codex/app/computer-use> App Windows：<https://developers.openai.com/codex/app/windows> IDE 功能：<https://developers.openai.com/codex/ide/features> IDE 设置：<https://developers.openai.com/codex/ide/settings> CLI 概览：<https://developers.openai.com/codex/cli> CLI 功能：<https://developers.openai.com/codex/cli/features> CLI 参数参考：<https://developers.openai.com/codex/cli/reference> Config Basics：<https://developers.openai.com/codex/config-basic> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> MCP：<https://developers.openai.com/codex/mcp>"
-    },
-    {
-      "type": "file",
-      "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-      "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-      "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-      "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-      "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-      "date": "2026-05-22T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "桌面版",
-        "IDE",
-        "云任务",
-        "Windows",
-        "OpenAI官方"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-      "size": "17KB",
-      "lastModified": "2026-05-24T12:56:24.633Z",
-      "wordCount": 8661,
-      "content": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力） 更新时间：2026-05-22 定位：主线补丁篇。专门处理“前面几篇主线大体没错，但最近官方新增能力太快，尤其桌面版已经不止是一个壳子”的问题。 适合谁看：已经读过第三篇、第六篇、第七篇、第二篇，但怀疑自己资料已经有点旧的人。 本篇目标：不重复讲基础配置，而是直接指出“哪些地方没过时、哪些说法需要改、最近新增了哪些功能页面和能力”。 结论先说：你之前的主线框架还有效，但如果停在 2026-05-14 的口径，桌面版、IDE 扩展和云任务相关内容已经明显不完整。 小白读完目标：你应该能分辨“旧能力仍在”与“旧说法已过时”这两回事，不再继续把 App、IDE、Windows 路线按更早的旧口径去理解。 章节导航（点击跳转）： [[toc]] --- 先说判断结果：你原来的内容哪里没问题，哪里已经不够新 1.1 还没过时的部分 下面这些主干判断仍然成立： Codex 的核心理解仍然是：认证、配置层级、审批策略、沙箱、AGENTS.md、MCP、非交互执行 approval_policy 和 sandbox_mode 依旧是最重要的安全边界 项目级 .codex/config.toml、用户级 ~/.codex/config.toml、--profile、命令行覆盖之间的优先级思路没有变 codex exec 仍然是自动化、批处理、CI 场景的关键入口 IDE 和 App 仍然高度复用同一套 Codex 能力，而不是三套完全不同的产品 1.2 已经明显不够新的部分 下面这些地方，如果继续按旧文理解，就会漏掉最近最重要的变化： 桌面版不再只是“一个读取同一份配置的图形壳” IDE 扩展不再只是“在编辑器里调一下 CLI” 云端任务现在已经是官方明确强调的主能力，不该只轻描淡写带过 Windows 相关说明需要从“原生能用，但建议 WSL”升级为“原生已补出更多官方能力与专门文档” 模型建议不能继续写成某个固定模型名的长期结论，必须改成“先看官方最新模型页 + 当前线路真实可用模型” --- 最近最值得补上的更新主题，到底有哪些 如果你只记一张清单，就记下面这 5 组： 桌面版新增并独立成体系的能力：worktrees、handoff、local environments、automations 桌面版工作流增强：内置 Git、集成终端、应用内浏览器 IDE 扩展增强：云端委托、图片拖拽、图像生成、对上下文引用方式的补充 Windows 专题增强：原生 Windows 的专门说明、桌面端 Windows 页面、原生沙箱说明、WSL 切换与 CODEX_HOME 共享边界 模型口径更新：默认本地示例应优先对齐官方当前模型页，不再把历史模型名写成长期固定答案 --- 桌面版现在最大的变化：它已经不只是“桌面壳” 你旧资料里把 App 理解成“共享配置的一个桌面入口”，这个说法不算错，但已经太轻了。 按 OpenAI 官方当前文档，桌面版已经形成一组完整的工作流能力。 3.1 worktrees：一个应用里并行处理多个代码分身 这个能力很关键，因为它改变了“一个仓库只能在一个工作目录里聊一条线程”的直觉。 现在更稳妥的理解是： 你可以围绕同一仓库开多个 worktree 不同 worktree 可以承载不同分支、不同任务、不同线程 桌面版已经把“跨 worktree 继续工作”当成一等能力来讲，而不是高级 Git 玩家才会手搓的技巧 这意味着什么： 以后写三端对照时，不能只写“打开一个仓库开始聊” 要补“一个需求一个 worktree”的并行工作流 桌面版已经更接近“任务中控台”，不只是聊天窗口 3.2 handoff：桌面端和云端之间的任务交接 这也是最近很容易漏掉的重点。 以前很多人理解成“本地线程就是本地线程，云端任务就是另一套东西”。 现在官方已经更明确地把“交接”和“接力”讲成主流程。 你可以把它理解成： 本地先把任务和上下文整理好 把大任务交给云端跑 跑完以后再回到本地继续审查、合并、补改 它不只是“远程执行”，而是“任务在不同执行环境之间流转”。 3.3 local environments：不是所有任务都要直接拿当前工作区硬跑 桌面版现在单独讲了本地环境管理，这比“在本机上开个终端”更进一步。 这里的重点不是一个命令，而是官方已经把“环境准备、环境复用、环境差异”抽成独立概念。 你后面写桌面版时应该补 3 个认知： 环境不是只有一个默认当前目录 长任务和自动化任务依赖的环境准备最好可重复 项目如果需要特定依赖、脚本、工具链，最好把环境准备视为流程的一部分 3.4 automations：桌面版开始强调持续化和流程化 这说明桌面版不再只面向“我问一句，它答一句”的交互。 它开始更像一个能承接重复性开发任务的入口。 你可以把这块理解成： 把常见任务做成可以重复触发的流程 把本地和云端能力串起来 从一次性聊天，走向半自动工作流 如果后面你写“桌面版适合什么场景”，这块一定要补。 --- 桌面版最近该补的功能点，不止 Worktrees 官方当前 App 文档里，下面这些点也值得你统一补进去。 4.1 内置 Git 这点很重要，因为它会直接改变“用户要不要频繁切回外部终端”的体验预期。 更稳妥的说法是： 桌面版已经把 Git 相关操作纳入原生工作流的一部分 不能再把 App 简化为“看结果”，它已经参与实际开发闭环 以后写桌面版时，Git、分支、改动审查、PR 流程要作为核心能力看待 4.2 集成终端 这意味着桌面端不是只会“发 prompt”，还强调和真实开发命令流共存。 写法建议改成： App 不是纯聊天窗口 它强调任务、代码、终端三者联动 本地命令执行与线程上下文之间的切换成本更低 4.3 应用内浏览器 这个能力说明桌面版已经在补“看网页、看工具结果、看文档”这一块，而不是只靠外部浏览器。 对你的文章有什么影响： 可以补“资料查询和任务执行都能在一个工作流里完成” 截图对照篇里，桌面版的功能页不能只写设置页 后面如果做演示截图，建议把浏览器/终端/Git 一起纳入 SOP 4.4 先删掉没有官方页面明示的“轻功能猜测” 这里需要专门提醒主人一句： 我上一轮整理里把“记忆、个性化、宠物、深链”也算进了桌面版近期必补能力，但按 2026-05-22 我重新核对到的官方 Codex App 页面，这几项没有像 Worktrees、Automations、In-app browser、Windows 这样清晰、稳定的独立文档支撑。 所以现在更稳妥的处理是： 不把它们继续写成“最近官方明确新增的主能力” 如果以后官方页面单独列出，再补进主线 当前先把篇幅留给已经有明确页面与工作流位置的能力 4.5 computer use 这点要单独提，因为它不是普通设置项，而是能力边界的扩展。 但这里一定要写准：官方当前相关页面与用例强调的是“让 Codex 操作你的电脑”，而不是“所有桌面端、所有系统默认都已等价开放”。 写的时候建议收紧表述： 不要把它写成“默认到处都能全自动点屏幕” 应该写成“官方已经把 computer use 作为 Codex 能力方向明确写出来” 实际可用性仍要看平台、版本、地区与权限边界 --- IDE 扩展最近该补的点：它也不是简单壳子了 你旧文里提到了 VS Code / Cursor / Windsurf 可用，这个方向没错。 但按官方当前文档，IDE 侧该补的重点至少有下面几条。 5.1 云端委托任务 这和桌面版的 handoff 是同一趋势。 IDE 现在不只是“在编辑器里发消息让本地 CLI 干活”，而是可以把更大的任务委托到云端。 这意味着： IDE 和云任务的边界在变弱 “本地写代码 + 云端跑大任务 + 回本地接着改”已经是官方鼓励的路径 后面写插件能力时，必须把“云端 delegation”列出来 5.2 图片拖拽与多模态上下文 这对很多“看报错图、看 UI、看设计稿”的场景很关键。 如果你的文章还只把 IDE 描述成“文字对话 + 代码上下文”，就不够完整了。 更准确的说法是： IDE 扩展已经强调可以直接把图片拖进对话 视觉信息正在成为正式上下文来源 对前端、设计还原、报错排查都更实用 5.3 内置图像生成入口 这不是每个人都会马上用，但它说明 IDE 已经不只是“代码补全/代码聊天”。 写法建议： 作为“扩展边界在变宽”的证据提到 不要写成所有工作流都依赖它 但也别再把 IDE 简化成纯代码侧边栏 5.4 @文件、命令面板、工作区上下文仍然重要 旧文这部分没有过时，只是需要加一句： 这些基础能力依旧存在 但现在上层已经叠了云任务与多模态能力 所以 IDE 的定位已经从“嵌入式聊天入口”升级成“编辑器内 Agent 工作台” --- Windows 相关口径，也该从“能用”升级成“有专门能力页” 你以前写“复杂项目优先 WSL”这条，今天仍然没错。 但如果只停在这里，会低估最近 Windows 路线的补强。 6.1 现在至少要区分两套 Windows 资料 CLI/通用 Windows 指南 桌面版 App 的 Windows 专页 这说明官方已经不是顺手提一句 Windows，而是在认真补 Windows 体验。 6.2 native Windows sandbox 这是特别值得补的一点。 以前很多人对 Windows 的直觉是：“能跑，但安全边界、执行体验、推荐程度不如 WSL 清晰。” 现在官方已经把原生 Windows 沙箱能力单列出来讲。 更稳妥的写法是： 原生 Windows 不再只是一种勉强兼容路径 官方正在补它的原生执行与安全能力 如果使用 Windows-native agent，项目优先放在 Windows 文件系统里更稳 如果切到 WSL agent，需要重启 App；而且 WSL CLI 默认不会自动继承 Windows 下的 ~/.codex 6.3 对你现有排障文的意义 你已经写了 PowerShell、Node 预检、中转切换等排障内容。 这部分依然有价值，但建议新增一句边界说明： 这些是你真实环境里遇到的问题 不等于官方桌面版/CLI 的 Windows 能力停滞 最近官方是在持续强化 Windows 体验，而不是放弃这条路线 --- 模型口径怎么写，才不容易再次过时 这部分你之前已经开始收紧了，但现在建议再统一一次。 7.1 不要再把某个模型写成“长期默认推荐” 最稳妥的表达是： 通用最新推荐，先看 OpenAI 最新模型指南 Codex 当前可选模型，以你这条线路里 /status、/model、实际 provider 返回为准 第三方网关环境下，模型名和官方公开页不一定完全一致 7.2 文章里怎么避免下个月又过时 建议以后都用这种句式： “以下模型名仅作当前示例，更新前请先核对官方最新模型页” “如果官方页、CLI /status、第三方网关后台三者不一致，以你实际线路可用结果为准” “不要把历史示例模型名当永久标准答案” “本地默认示例”和“专门的 Codex 编码模型”要分开写，不要混成一句 这样比直接写死一个固定模型更耐久。 --- 你现有文章里，建议立刻补的 4 处 8.1 第二篇：官方资料补充与进阶实践 建议新增一节“2026-05-22 增补：桌面版与 IDE 已进入任务工作台阶段”，把下面几项补进去： worktrees handoff local environments automations IDE cloud delegation Windows native sandbox / App Windows 页面 8.2 第七篇：三端逐字段截图对照版 建议把“App 专属设置”扩成“App 设置 + App 新工作流能力”： Settings 页面还是要写 但还要补 worktrees、Git、terminal、browser、MCP、handoff 这些非纯设置页能力 否则标题叫“三端逐字段对照”，实际却只对照到老版设置菜单 8.3 目录页 目录页要新增“第十一篇”，并在维护约定里补一句： 桌面版、IDE、Windows 这三类内容最近更新快 更新前优先核对官方 App / IDE / Windows 页面 8.4 这件事现在已经落成第十二篇 这一轮整理后，第十二篇已经正式写成： 第十二篇：Codex 当前常用功能点详细手册（最新工作流版） 它不重复讲底层配置，而是专门把“主人真正开发时最常用的功能点”讲细 所以后面如果主人要查“这个旧功能还该不该保留、现在常用入口到底在哪”，优先跳到第十二篇 --- 我给你的“最新功能补全清单” 如果你想检查自己资料有没有补齐，可以逐项对照下面这份表： 9.1 桌面版必须补到的能力 Worktrees Handoff Local environments Automations Built-in Git Integrated terminal In-app browser Computer use Windows 专页 9.2 IDE 必须补到的能力 云端任务委托 图片拖拽 多模态上下文 内置图像生成 @文件 引用 命令面板入口 与 CLI 共享能力但不等于“只是套壳” 9.3 CLI / 通用层必须继续保留的能力 codex exec --json resume AGENTS.md MCP approval_policy sandbox_mode profiles rules Windows / WSL 路线差异 --- 一句话总结：这次到底算不算“你写过时了” 严格说，不是“整套都过时了”，而是： 基础配置主线没过时 但最近最重要的增量能力，尤其桌面版和 IDE 的工作流升级，你原稿明显还没补全 如果你现在继续把 App 写成“读同一份配置的桌面壳”、把 IDE 写成“编辑器里的 CLI 壳”，那就会越来越偏旧 所以最准确的结论是： 你的底层框架还在，但“产品形态升级”这部分需要立刻补课。 --- 官方资料入口（本篇补全时重点对照） 最新模型指南：<https://developers.openai.com/api/docs/guides/latest-model> CLI 概览：<https://developers.openai.com/codex/cli> CLI 功能：<https://developers.openai.com/codex/cli/features> CLI 参数参考：<https://developers.openai.com/codex/cli/reference> CLI Slash Commands：<https://developers.openai.com/codex/cli/slash-commands> Config Basics：<https://developers.openai.com/codex/config-basic> Config Reference：<https://developers.openai.com/codex/config-reference> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> Non-interactive：<https://developers.openai.com/codex/noninteractive> MCP：<https://developers.openai.com/codex/mcp> IDE 概览：<https://developers.openai.com/codex/ide> IDE 功能：<https://developers.openai.com/codex/ide/features> IDE 设置：<https://developers.openai.com/codex/ide/settings> App 功能：<https://developers.openai.com/codex/app/features> App 设置：<https://developers.openai.com/codex/app/settings> App Commands：<https://developers.openai.com/codex/app/commands> App Worktrees：<https://developers.openai.com/codex/app/worktrees> App Local Environments：<https://developers.openai.com/codex/app/local-environments> App Automations：<https://developers.openai.com/codex/app/automations> App In-app Browser：<https://developers.openai.com/codex/app/in-app-browser> Codex Use Cases（含 computer use 用例）：<https://developers.openai.com/codex/use-cases> App Windows：<https://developers.openai.com/codex/app/windows> Windows 指南：<https://developers.openai.com/codex/windows>"
-    },
-    {
-      "type": "file",
-      "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-      "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
-      "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
-      "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-      "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-      "date": "2026-05-22T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "学习路线",
-        "小白入门",
-        "导读"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
-      "size": "9KB",
-      "lastModified": "2026-05-24T12:56:24.637Z",
-      "wordCount": 4265,
-      "content": "零基础先读：Codex 小白学习路线与读完能力对照 更新时间：2026-05-22 适合谁：第一次系统学 Codex，或者已经看过几篇但仍然觉得“懂一点又不成体系”的主人。 目标：不是让你“知道有这些功能”，而是让你读完后真的能自己装、自己配、自己排错、自己把 Codex 用进开发流程。 使用方法：这篇不要跳着看。先读完这页，再按本文给的顺序进入主线。 小白读完目标：你应该能知道自己现在该先学哪一篇、暂时跳过哪一篇，以及整套文档读完后最终会掌握到什么程度。 章节导航（点击跳转）： [[toc]] --- 先讲清一个现实：你不需要一口气背完 Codex 所有功能 小白最容易犯的错，不是“学得太慢”，而是： 一上来就想把模型、配置、App、IDE、MCP、Worktrees、Automations 全背下来 看到一堆功能名，却不知道先学哪个，结果每篇都懂一点点 最后真正开发时，还是不知道应该先开 CLI、先开 IDE，还是先去改 config.toml 所以这套资料现在按“从能用到会用，再到会排错”来学更稳。 你先记一句话就够： 先学“Codex 是怎么工作的” 再学“Codex 现在最常用的功能怎么用” 最后学“出了问题怎么排” --- 如果你是纯小白，最推荐的阅读顺序 按下面 7 步走，不要自己乱改顺序： 第三篇：Codex 文档地图与配置逐项详解（小白版） 第八篇：Codex 命令与配置文件作用全解（小白可查版） 第五篇：Codex 配置字段字典与文档对照（完整版） 第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细） 第十二篇：Codex 当前常用功能点详细手册（最新工作流版） 第七篇：Codex 三端逐字段截图对照版（每一步可复现） 第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力） 为什么是这个顺序： 第三篇先帮你建立心智模型，否则你后面只会抄配置 第八篇解决“术语听不懂”的问题 第五篇解决“字段到底怎么填”的问题 第六篇解决“三端为什么有时不一致”的问题 第十二篇解决“现在最常用的功能到底怎么用”的问题 第七篇把抽象理解落到真实截图和点位 第十一篇专门负责“哪些旧认知现在已经升级了” --- 每篇读完以后，你应该真正会什么 这部分最重要。 你不要只问“我看完了没”，要问“我看完之后会不会做这件事”。 3.1 看完第三篇，你应该会 解释清楚什么是认证、什么是审批、什么是沙箱、什么是配置层级 说出 ~/.codex/config.toml、项目 .codex/config.toml、AGENTS.md 分别管什么 不再把“改了没生效”统统归因成玄学问题 3.2 看完第八篇，你应该会 知道 codex、codex exec、resume、--profile、/status、/review 各自干嘛 知道 config.toml、auth.json、AGENTS.md、.rules 的职责边界 遇到一个命令或字段名时，能快速查到它属于哪一层 3.3 看完第五篇，你应该会 自己写一份最小可用 config.toml 知道 model、model_provider、approval_policy、sandbox_mode 这些关键字段怎么填 知道“默认示例”和“第三方网关当前可用值”之间的区别 3.4 看完第六篇，你应该会 解释清楚 CLI、IDE 扩展、桌面 App 为什么既共享能力、又不完全等价 知道为什么会出现“CLI 能用，插件/App 不行” 知道 Windows-native、WSL agent、CODEX_HOME 不一致会带来什么问题 3.5 看完第十二篇，你应该会 说出今天最常用的功能点分别在哪个入口用 分清哪些旧说法该删，哪些旧能力该保留 真正开始按“模型 -> 权限 -> IDE / App / CLI -> Worktrees / Cloud / Review / Automations”这条线做开发 3.6 看完第七篇，你应该会 按截图定位去找配置和能力入口 把抽象名词和真实界面一一对应 给自己或团队做一套可复现的核对 SOP 3.7 看完第十一篇，你应该会 判断某段旧文是不是过时 知道 App、IDE、Windows 这几块最近主要进化在哪里 不再继续用“桌面壳”“IDE 壳”这种旧理解 --- 学完以后，你就应该掌握的 4 个层次 4.1 第一层：能跑起来 你应该会： 安装 Codex CLI 看懂版本、登录状态、当前模型 用安全默认配置开一个可用会话 4.2 第二层：能稳定使用 你应该会： 用 profiles 区分 read-only、workspace-write、danger-full-access 用 AGENTS.md 固定团队规则 4.3 第三层：能把它真正用进开发 你应该会： 在 IDE 里用 Agent 模式协作改代码 在 App 里用 Worktrees、Review pane、Built-in Git、Integrated terminal 在大任务上用 Cloud delegation / Handoff 4.4 第四层：能自己排错 你应该会： 看 /status 和 /debug-config 查 model_provider、base_url、auth.json / keyring 排查 Windows-native / WSL / CODEX_HOME 差异 知道故障该回哪篇专题，而不是乱删配置 --- 什么时候该看哪篇，不要乱跳 如果你现在遇到的是这些情况，直接按下面跳： “我完全不懂 Codex 配置层次”： 去第三篇 “我不懂命令名和字段名”： 去第八篇 “我知道概念，但不会填配置”： 去第五篇 “我想知道现在最常用的功能到底怎么用”： 去第十二篇 “我想确认这些能力在界面上到底在哪”： 去第七篇 “我怀疑自己现在看的还是旧认知”： 去第十一篇 “Codex 在 Windows / Node / PowerShell 上出怪问题了”： 去第十篇和中转切换排障专题 --- 哪些内容不是给小白一开始就深挖的 下面这些内容不是“不重要”，而是不要在第一个小时就陷进去： 第四篇第三方多线路对比 第一篇 rpcod 单线路实操 第九篇 .codex 本地目录深挖 第十篇 PowerShell / MCP / CC Switch 故障复盘 它们更适合： 你已经会基本使用后，再按需查 你真遇到对应线路或对应故障时再看 --- 一句话学习地图 如果要把整套资料压缩成一句话，就是： 第三篇让你“懂原理” 第八篇让你“懂名词” 第五篇让你“会填配置” 第六篇让你“懂三端关系” 第十二篇让你“会用当前常用功能” 第七篇让你“能对照界面操作” 第十一篇让你“知道哪里升级了、旧说法该怎么删” --- 小白读完后的最低达标标准 如果主人希望这套文档真的做到“小白读完也能掌握 Codex”，那最低标准应该是： 能自己跑通一套安全默认配置 能分清 CLI / IDE / App 分别适合什么 能说清 Worktrees、Cloud delegation、Review pane、AGENTS.md、MCP 分别是什么 能知道哪些旧说法已经不该继续当主线 出问题时知道先去哪个专题排，而不是乱改配置 如果这 5 条做到了，这套文档就不是“堆资料”，而是真的能教会人。"
+      "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+      "size": "25KB",
+      "lastModified": "2026-05-31T07:58:54.784Z",
+      "wordCount": 13657,
+      "content": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版） 更新时间：2026-05-31 定位：主线大总手册。专门解决“我知道 Codex 大概能做什么，但开发时到底该用哪个入口、哪些旧说法该删、哪些进阶能力该什么时候补”的问题。 适合谁看：主人已经开始真正把 Codex 用进日常开发，希望文档既能查功能，也能防止自己继续按旧认知误用。 本篇原则：把原本分散在“当前常用功能”“官方进阶补充”“最近更新差异”里的重复内容合成一篇，主线只保留真正值得长期查的东西。 前置建议：第三篇先建立配置心智模型，第六篇看三端联动；原第二篇和第十一篇的有效内容已并入本篇。 小白读完目标：你应该能知道今天开发时最常用的功能分别从 CLI、IDE、App 的哪个入口进入，也能知道 codex exec、MCP 治理、profile、Windows / WSL、最近产品升级这些内容该怎么放进长期工作流。 章节导航（点击跳转）： [[toc]] --- 先定一条文档维护原则：不是“旧的都删”，而是“看官方主线还在不在” 以后主人更新 Codex 资料，建议一律按下面 3 条判断： 如果官方当前文档里还保留独立页面、独立导航或明确说明，这个功能就不该因为“看起来老”而直接删掉 如果官方已经把旧入口升级成新工作流，就不要继续拿旧表述当主线，例如把 App 说成“只是桌面壳”、把 IDE 说成“只是编辑器里的 CLI 壳” 如果某个说法只剩历史样例价值，没有继续作为官方推荐路径出现，就保留到“历史快照 / 排障样本”里，不再放进“新手默认配置”或“当前常用功能”里 这套标准用到本篇时，最典型的几组判断是： AGENTS.md、profiles、MCP、codex exec 这些能力没过时，因为官方主线还在 “一个仓库只对应一个工作目录”这种理解过时了，因为 App 已经明确支持 worktrees “Windows 主要就是凑合能跑，复杂项目只能靠 WSL”这种说法不该继续当主线，因为官方现在单独维护 Windows 页面，而且 App 已支持 Windows-native agent 和 native Windows sandbox “IDE 只能文字对话 + 代码上下文”这种说法也该删，因为官方已经补了云任务、图片拖拽、图像生成和 web search --- 模型：先分清“默认本地示例”和“专门编码模型” 这是现在最容易写乱的一块。 按 OpenAI 官方当前 Codex 模型页，更稳妥的使用顺序是： 大多数 Codex 任务，先从 gpt-5.5 开始 轻量任务或子代理场景，可以考虑 gpt-5.4-mini 如果你明确需要专门的复杂软件工程编码模型，可以再对照 gpt-5.3-codex gpt-5.3-codex-spark 属于研究预览里的近实时编码迭代模型，不该再写成通用默认答案 这几项给主人开发时分别怎么理解： 1.1 gpt-5.5 适合作为今天文档里的默认本地示例模型。 推荐用法： 初次接项目、要读代码、改代码、跑工具、做较复杂分析时，优先用它起步 如果你是从桌面 App、IDE 扩展或 CLI 本地线程进入，大多数情况下先让文档默认示例写成它最稳 如果你走的是第三方网关，只有在后台真实开放时才填它，不要盲目照抄 1.2 gpt-5.4-mini 适合更快、更便宜的轻量场景。 典型场景： 快速整理 TODO 做子任务拆分 跑轻量分析或低风险改动 给子代理或批量小任务用 1.3 gpt-5.3-codex 它不是“过时不能提”，但已经不该写成你文档里的统一默认入口。 今天更准确的定位是： 它仍然是复杂软件工程场景里很强的专门编码模型 它的编码能力现在也已经服务于更上层的 GPT-5.4 体系 它可以保留在“可选模型说明”里，但不该继续写成“多数人默认先填它” 1.4 第三方线路该怎么写模型，才不会过时 任何第三方线路都建议统一用这句模板： “以下模型名仅作当前示例，更新前请先核对该服务商后台当前开放模型” “如果服务商未开放官方当前默认示例，请直接以后台真实可选模型为准” “不要把历史线路样例模型名当长期固定默认答案” --- App：当前最常用的工作流能力，不再只是聊天窗口 现在主人如果主要用桌面 App，最常用的能力点建议按下面顺序掌握。 2.1 Worktrees 这是桌面端最值得优先学会的能力之一。 它解决的问题不是“怎么切分支”，而是： 同一仓库的不同任务，如何隔离上下文和改动 长任务、并行任务、试验任务，如何不互相污染 同一个项目，如何让不同线程始终回到自己的那套背景环境 主人开发时的正确用法： 一个需求一个 worktree 需要并行推进两个方向时，不要在同一个工作目录硬切来切去 需要暂时把线程切回本地或交给云端时，优先沿用原 worktree，而不是重新开一个陌生环境 该删掉的旧描述： “一个项目通常就只开一个目录配一个会话” “多线程主要靠聊天记录区分” 2.2 Handoff 官方把 handoff 放在 Worktrees 工作流里讲，说明它不是边角功能。 主人可以把它理解成： 线程不是被锁死在一个执行环境里 同一条任务链可以在 Local、Worktree、Cloud 之间流转 回切时，Codex 会尽量回到原来的关联环境，而不是把上下文拆散 适合的场景： 本地先梳理问题，再交给云端长跑 云端先出一个版本，再回本地精修与验证 临时把 worktree 任务切回 Local 处理特殊验证 2.3 Local environments 这不是简单的“在本地开个 shell”，而是把项目环境准备做成可重复、可复用的定义。 官方示例里明确提到 setup script，比如： 主人开发时怎么用最值： 把新项目第一次必跑的依赖安装和初始构建写进 setup 平台有差异时，给 macOS、Windows、Linux 分别定义 高频命令尽量做成 action，减少每次手敲 该删掉的旧描述： “环境准备靠你自己记住一串命令就行” “Codex 只负责聊天，环境还是纯手工” 2.4 Automations Automations 说明桌面 App 已经不只是一次性会话工具。 官方当前文档里，至少要分清两类： 常规自动化：按计划跑固定任务，例如巡检、报表、错误归类 Thread automations：贴着同一条线程反复唤醒，保留上下文，适合持续跟进同一件事 主人开发时最实用的用法： 定时检查最近代码变更并输出摘要 周期性跑日志/遥测问题归类 对某个长任务做“隔一段时间自动继续 / 自动跟进” 2.5 Built-in Git 桌面 App 当前已经有明确的 Git 工作流，不该再写成“最后还是要切回外部终端看 diff”。 官方明确提到： diff pane 能直接看本地项目或 worktree 的 Git diff 可以加 inline comments 让 Codex 精准修正 可以直接在 App 内 stage / revert 特定文件、特定 hunk，甚至 commit、push、create PR 主人开发时建议这样用： 改完先在 review / diff 面板看结果 不满意就局部 revert，不要整批推翻 需要和 Codex 对某一段改动继续对话时，用 inline comments 比一句泛泛的“这里不对”更有效 2.6 Review pane 这是现在文档里非常值得单独保留的能力。 它不仅是“看 diff”，还承担下面这些用途： 承接 /review 的代码审查结果 承接 PR review comments 让你在同一个面板里处理 diff、评论和 Git 操作 官方当前流程强调： 如果有 GitHub 权限，并且项目当前就在 PR 分支上，App 可以直接读 PR 上下文和 reviewer feedback gh auth login 配好后，review pane 能更完整地加载 PR 细节 你可以直接在 review pane 里边看评论边让 Codex 修 2.7 Integrated terminal 这也是高频必会功能。 官方明确说明： 每条线程都带一个内置终端 终端范围绑定当前项目或当前 worktree Codex 可以读取当前终端输出，所以它能根据失败的构建、开发服务器状态继续协作 主人最常用的几种用法： git status git pull --rebase npm test / pnpm test npm run lint 看开发服务器是否真的跑起来 这块该删掉的旧描述： “App 主要看聊天，命令验证还是得来回切终端” 2.8 In-app browser 它的价值不是替代你日常浏览器，而是把“预览 / 评论 / 反馈”拉回同一条开发线程里。 官方当前边界也写得很清楚： 适合看本地开发服务器、文件预览和不需要登录的公开页面 不支持认证流程、登录态、你常用浏览器的 cookie、扩展和既有标签页 可以对页面具体区域加评论，再让 Codex 按这些评论改 所以正确写法是： 它适合开发迭代 它不是拿来跑复杂登录流程的主浏览器 2.9 Computer use 这条一定要写准确。 官方当前页面明确说明： 它可以让 Codex 通过看、点、输来操作 macOS app 适合测试桌面 App、浏览器流程、模拟器流程、GUI-only bug 复现 因为会影响项目工作区之外的系统状态，所以任务要收窄、权限提示要认真看 启动时不在欧洲经济区、英国、瑞士开放 该删掉的旧描述： “Computer use 就是桌面版默认什么都能点” “Windows / macOS 都等价支持” 2.10 Windows-native 与 WSL agent 这块现在已经不能简单写成“推荐 WSL，原生 Windows 凑合”。 官方当前口径更准确的是： App 支持 Windows-native agent，用 PowerShell + native Windows sandbox 跑 也支持切到 WSL agent agent 和 integrated terminal 是可以独立配置的 WSL1 现在已经不再支持 如果你的 CLI 跑在 WSL，它默认不会自动和 Windows 共享同一个 ~/.codex 主人开发时的实际决策： 项目与工具链都在 Windows 文件系统里，就优先 Windows-native 项目主要活在 WSL2，依赖 Linux 工具链，就切到 WSL agent 切换后记得重启 App 排障时别忘了先确认是不是两边 CODEX_HOME / .codex 不一致 --- IDE 扩展：当前最常用的开发协作入口 今天的 IDE 扩展已经不是“编辑器里套了个聊天面板”。 3.1 三种工作模式要分清 官方当前页面里，IDE 至少要区分： Chat：聊天、规划、先讨论方案 Agent：默认模式，可自动读文件、改代码、在工作目录里跑命令 Agent (Full Access)：需要更高权限和网络访问时用，风险也最高 正确理解： 不是所有问题一上来都该开 full access 先用 Agent 就够解决大多数本地开发问题 只有明确需要时，才切更高权限 3.2 Cloud delegation 这是今天 IDE 最值得保留并写细的功能点之一。 官方当前流程很明确： 先配置 cloud environment 在 IDE 里选 Run in the cloud 可以从 main 起跑，也可以基于你本地当前改动起跑 本地对话上下文会被带过去 云端跑完以后，还能把 cloud task 再拉回 IDE 继续跟进 主人最实用的用法： 大改造、长耗时任务、需要更干净环境的任务丢给云端 本地保留审查、验证、微调、最终提交 把“云端跑长任务 + 本地收尾”当成标准工作流 3.3 Web search 官方当前对 IDE 扩展的默认行为写得很清楚： 本地任务下，web search 默认启用 默认使用 OpenAI 维护的 web search cache，而不是直接 live 抓取 这样能降低来自任意 live 页面 prompt injection 的暴露面 如果你把 sandbox 配成 full access，web search 默认会走 live results 主人开发时要知道： 缓存搜索更稳，也更适合日常开发 需要查“刚发布、刚更新”的资料时，再考虑 live 搜索结果依旧是外部信息，不能无脑信 3.4 图片拖拽 这是现在 IDE 扩展里非常实用的多模态入口。 官方当前说明： 可以把图片直接拖进 prompt composer 在 VS Code 里拖图时要按住 Shift，否则编辑器可能拦截掉扩展接收 这块的高频场景： UI 稿还原 页面异常截图分析 控件布局问题定位 视觉回归排查 3.5 内置图像生成 这也是现在应该保留的新能力，不该继续省略。 官方当前页面明确写到： 可以不离开编辑器直接生成或编辑图片 适合做 UI 资产、布局草图、插画、sprite sheet、占位图 可以直接自然语言要求生成，也可以显式写 $imagegen 内置图像生成使用的是 gpt-image-2 主人开发时怎么用最值： 快速出前端占位图 做界面视觉草图 让一张参考图派生多个版本 3.6 Windows 下的 WSL 开关 IDE 设置页里当前有一个特别实用的项： chatgpt.runCodexInWindowsSubsystemForLinux 主人要知道的点： 当仓库和工具链都主要在 WSL2 时，可以打开它 当你主要在 Windows-native 工作时，不必强开 改这个设置会触发 VS Code reload 才生效 3.7 还有哪些编辑器设置仍然值得保留 当前还值得保留到文档里的设置有： chatgpt.commentCodeLensEnabled：在 TODO 等注释上方显示 CodeLens，方便直接交给 Codex 处理 chatgpt.openOnStartup：扩展完成启动后是否自动聚焦 Codex 侧边栏 chatgpt.cliExecutable：一般不需要改，除非你自己在开发 Codex CLI --- CLI：这些老能力没过时，反而还是底层核心 虽然 App 和 IDE 变强了，但 CLI 并没有过时。 4.1 codex 交互式主入口。 适合： 进入当前仓库直接协作 本地快速排查 需要更透明地看模型、配置、审批和沙箱时 4.2 codex exec 这是自动化和批处理的底座。 适合： 一次性非交互任务 CI/CD 流水线 定时脚本 机器可读输出链路 高频搭配： codex exec \"...\" codex exec --json \"...\" codex exec --profile <name> \"...\" 4.3 resume 这条能力仍然很值。 适合： 长任务中断后续跑 重开终端继续之前的上下文 把会话拆成多段完成 4.4 approval_policy + sandbox_mode 这俩仍然是所有入口最核心的安全边界。 主人日常最推荐的起步组合： 如果只是审计或看代码： 该保留但降级的旧写法： --full-auto：还能作为旧资料兼容概念理解，但文档里不建议再当主入口写法 --yolo：依然存在高风险别名语义，但不该出现在日常默认配置里 4.5 AGENTS.md 它没有过时，反而越用越重要。 当前最值得写清楚的点： 它决定项目长期规则 离当前目录越近的说明文件覆盖力越强 真要长期稳定协作，AGENTS.md 的价值比你临时打一段 prompt 更高 4.6 MCP 也完全没过时。 它解决的是： 给 Codex 接第三方工具 把浏览器、GitHub、内部脚本、数据源接进工作流 让 Codex 不只是“看代码”，而是能操作真实工具环境 4.7 Profiles 这条也不该删。 最实用的价值： 同一个人切换“日常开发 / 审计 / 自动化”时，不用每次重写一堆参数 团队能把几套常用权限模板固定下来 --- 官方进阶能力：这部分已经并入本篇 原来拆出去的“官方资料补充与进阶实践”，现在并入这里。 以后主人不用再额外点一篇去看 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略。 5.1 codex exec codex exec 仍然是 Codex 最值得保留的进阶能力之一。 它不是“没有聊天界面的 codex”，而是更适合脚本化、流水线化、可重复执行任务的入口。 高频用法： 主人真正开发时最实用的场景： CI 失败后自动出风险摘要 定时扫仓库，生成待办清单 对某个大目录做一次性结构化整理 用 --json 把结果继续交给别的脚本消费 5.2 MCP 治理 MCP 的“怎么连上”，第一篇、第八篇、第十三篇已经够用了。 这里保留更偏工程治理的一层。 主人以后给团队或长期项目接 MCP，重点看这 4 个问题： 哪些工具起不来就应该直接 fail-fast 哪些工具应该只开白名单，而不是全量暴露 哪些工具只该在某个 profile 下启用 哪些工具适合本地开发，不适合自动化或云端环境 真正高频的治理点： required = true enabled_tools disabled_tools startup_timeout_sec tool_timeout_sec 5.3 AGENTS.md 进阶 AGENTS.md 不只是“写点规则”。 当项目规模变大后，它更像长期协作规范的分层入口。 比较稳的分层思路： 用户级 ~/.codex/AGENTS.md：放个人长期习惯 仓库根 AGENTS.md：放团队统一流程 子目录 AGENTS.md：只放该模块特有约束 如果你怀疑说明文件没被正确读取，再去看： project_doc_max_bytes project_doc_fallback_filenames 5.4 Profiles Profile 的价值不是“字段更高级”，而是把不同工作模式固定下来，减少每次临时切参数。 长期最值得保留的通常不是很多套花哨 profile，而是 2 到 3 套够明确的： safe：日常开发 audit：只读审查 ci：自动化或批处理 一个够实用的最小例子： --- 最近产品口径更新：这部分也并进本篇 原来拆出去的“近期待补全更新总表”，现在也并入这里。 以后主人只要读这一节，就能知道哪些旧认知该升级。 6.1 还没过时的部分 下面这些主干判断仍然成立： Codex 的底层核心仍然是认证、配置层级、审批策略、沙箱、AGENTS.md、MCP、非交互执行 approval_policy 和 sandbox_mode 依旧是最重要的安全边界 项目级 .codex/config.toml、用户级 ~/.codex/config.toml、--profile、命令行覆盖之间的优先级思路没有变 codex exec 仍然是自动化、批处理、CI 场景的关键入口 IDE 和 App 仍然高度复用同一套 Codex 能力，而不是三套完全不同的产品 6.2 已经明显不够新的部分 下面这些地方，如果继续按旧文理解，就会漏掉最近最重要的变化： 桌面版不再只是“读取同一份配置的图形壳” IDE 扩展不再只是“在编辑器里调一下 CLI” 云端任务已经是官方明确强调的主能力 Windows 相关说明要从“能用但建议 WSL”升级成“原生已补出更多官方能力” 模型建议不能继续写成某个固定模型名的长期结论 6.3 今天最值得补齐的更新主题 如果你只记一张清单，就记这 5 组： 桌面版新增并独立成体系的能力：Worktrees、Handoff、Local environments、Automations 桌面版工作流增强：Built-in Git、Integrated terminal、In-app browser IDE 扩展增强：Cloud delegation、图片拖拽、图像生成 Windows 专题增强：原生 Windows 页面、原生沙箱说明、WSL 切换与 CODEX_HOME 边界 模型口径更新：默认本地示例应优先对齐官方当前模型页，不再把历史模型名写成长期固定答案 --- 哪些旧描述现在该删，哪些该留 这里给主人一张最实用的判断表。 7.1 建议删除或重写的旧描述 “App 就是读取同一份配置的桌面壳” “IDE 扩展就是编辑器里的 CLI 壳” “Windows 主要还是不推荐，复杂项目只能靠 WSL” “默认模型就写死成某个旧模型名” “图像、多模态、云任务都只是边缘能力” “一仓库一线程一目录基本够用了” 7.2 应该保留，但要换成新边界写法的旧能力 AGENTS.md MCP codex exec profiles approval_policy sandbox_mode resume 7.3 该留在“历史样本 / 排障样本”里的内容 某台机器的旧 .codex/config.toml 快照 某条第三方线路曾经开放过的旧模型名 某次 PowerShell / Node / 中转切换故障现场 这些不是“删除”，而是不能再写成今天的默认推荐。 --- 主人真正开发时的推荐使用顺序 如果是今天开始一个真实开发任务，我更推荐这样走： 先看模型与权限：确认当前线路可用模型、approval_policy、sandbox_mode 如果主要在 IDE 里做，先用 Agent 模式进入本地任务 要长跑或大改造时，用 Cloud delegation / Handoff 桌面 App 里要并行任务，就开 Worktrees 高频命令和环境准备，写进 Local environments 改完先过 Review pane / diff，再决定 stage、commit、push 页面与前端可视化问题，优先用 IDE 图片拖拽、图像生成、In-app browser 需要自动化重复工作时，再上 Automations --- 合并后整套文章怎么分工 为了避免以后内容再打架，主人可以这样记： 第三篇：Codex 文档地图与配置逐项详解（小白版） 负责配置心智模型。 第五篇：Codex 配置字段字典与文档对照（完整版） 负责字段字典和模板。 第六篇：Codex CLI / 插件 / App 全链路配置实战（超详细） 负责三端联动与排障。 第七篇：Codex 三端逐字段截图对照版（每一步可复现） 负责界面对照 SOP。 第四篇：Codex 多线路接入与迁移总手册 负责官方、Packy、yunyi、rpcod 等线路选择与迁移。 第十二篇（本篇） 负责当前常用功能、官方进阶能力和最近该升级的产品认知。 原第二篇和第十一篇已经并入本篇，不再作为主线推荐单独阅读。 --- 官方资料入口 Codex 模型页：<https://developers.openai.com/codex/models> App 功能：<https://developers.openai.com/codex/app/features> App Review：<https://developers.openai.com/codex/app/review> App Worktrees：<https://developers.openai.com/codex/app/worktrees> App Local Environments：<https://developers.openai.com/codex/app/local-environments> App Automations：<https://developers.openai.com/codex/app/automations> App In-app Browser：<https://developers.openai.com/codex/app/in-app-browser> App Computer Use：<https://developers.openai.com/codex/app/computer-use> App Windows：<https://developers.openai.com/codex/app/windows> IDE 功能：<https://developers.openai.com/codex/ide/features> IDE 设置：<https://developers.openai.com/codex/ide/settings> CLI 概览：<https://developers.openai.com/codex/cli> CLI 功能：<https://developers.openai.com/codex/cli/features> CLI 参数参考：<https://developers.openai.com/codex/cli/reference> CLI Slash Commands：<https://developers.openai.com/codex/cli/slash-commands> Config Basics：<https://developers.openai.com/codex/config-basic> Config Reference：<https://developers.openai.com/codex/config-reference> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> Non-interactive：<https://developers.openai.com/codex/noninteractive> MCP：<https://developers.openai.com/codex/mcp>"
     },
     {
       "type": "file",
@@ -8059,34 +8183,9 @@
       "attachments": [],
       "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
       "size": "15KB",
-      "lastModified": "2026-05-24T12:56:24.629Z",
-      "wordCount": 9657,
-      "content": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版） 更新时间：2026-05-22（已补“历史机器快照 vs 当前推荐口径”边界说明） 定位：本机 Codex “关键文件与安全边界”讲透。 适用：你需要排查登录、配置、权限或命令执行问题时。 前置：建议先读第三篇、第八篇（先分清配置层、规则层和命令层）。 本篇不展开：三端界面操作与截图点位（看第六篇、第七篇）。 小白读完目标：你应该能分清 auth.json、config.toml、日志、技能、规则目录分别管什么，并知道哪些只是历史样本，哪些才是今天该照着改的内容。 章节导航（点击跳转）： [[toc]] --- 先讲清一件事：.codex 到底是什么 Codex 的本地数据目录通常写作 ~/.codex。在 Windows 上，常见形式是 C:\\Users\\你的用户名\\.codex。 它不是项目代码，也不是缓存垃圾桶，而是 “账号认证 + 全局配置 + 规则 + 技能库 + 运行日志” 的落地位置。 所以这里的每个关键文件，都会直接影响 Codex 是否能正常用、能不能执行命令、以及是否符合你的团队规范。 0.1 读者说明（很重要） 本文出现的配置、路径与规则示例，均来自作者电脑的 Codex 本地数据目录，仅作为“示例参考”。 你的电脑实际内容可能不同，请以自己的 .codex 文件为准。 --- ~/.codex/auth.json（Windows 例：C:\\Users\\你的用户名\\.codex\\auth.json） 1.1 作用 保存 Codex 的认证信息，客户端发起请求时会读取它。 1.2 本机当前内容（已脱敏示例） 1.3 字段逐条解释 | 字段 | 含义 | 在本机的值 | 影响 | | --- | --- | --- | --- | | auth_mode | 认证方式标记 | apikey | 决定 Codex 使用哪种鉴权流程 | | OPENAI_API_KEY | API Key 字符串 | sk-* | 作为身份凭据参与请求 | 1.4 常见问题与排查 | 现象 | 可能原因 | 优先检查 | | --- | --- | --- | | 请求提示鉴权失败 | key 失效或被替换 | OPENAI_API_KEY 是否正确 | | 账户切换后仍是旧账号 | 文件未刷新 | 重新登录或手动更新 | 1.5 与其他文件的关系 如果你的 provider 还在直接写 experimental_bearer_token，就可能与 auth.json 或 keyring 中的认证状态同时存在。 因此改 key 时，除了检查 auth.json，也要一起检查 provider 配置里是否残留旧凭据。 --- ~/.codex/config.toml（Windows 例：C:\\Users\\你的用户名\\.codex\\config.toml） 2.1 作用 Codex 的全局配置文件，决定“模型用哪个、服务端去哪、功能开不开、MCP 怎么启动、工作区信任级别”。 2.2 文件格式说明 TOML 是一种人类可读的配置格式，语法简单、结构清晰，非常适合写配置。 2.3 某次本机脱敏快照（历史样本，不是当前推荐模板） 下面这段保留的是采样时机器上的原值，作用是帮助你理解“本地目录里可能长什么样”，不是让你今天继续把这些值原封不动抄到自己的环境里。 尤其是里面出现的旧模型名、旧迁移提示和某些 provider 写法，都应视为“现场记录”，不应自动等于今天的最佳实践。 2.4 顶层字段解释（按本机配置） | 字段 | 作用 | 本机值 | 你能直观感受到的影响 | | --- | --- | --- | --- | | model_provider | 当前模型提供方标识 | \"yunyi\" | 决定请求走哪个服务端 | | model | 模型名称 | \"gpt-5.3-codex\"（采样时原值） | 影响响应能力与价格策略；今天不要再把它当成固定默认答案 | | model_reasoning_effort | 推理强度/深度配置项 | \"xhigh\" | 影响推理质量与延迟 | | model_context_window | 上下文窗口上限 | 1000000 | 决定能放多长上下文 | | model_auto_compact_token_limit | 自动压缩触发阈值 | 900000 | 接近上限会自动压缩 | | service_tier | 服务速度档位 | \"fast\" | 影响响应延迟 | 2.5 分组解释（重点） | 分组 | 作用 | 本机关键字段 | | --- | --- | --- | | [model_providers.yunyi] | 主提供方连接信息 | base_url, wire_api, experimental_bearer_token | | [model_providers.sub2api] | 备用提供方配置 | base_url, wire_api | | [features] | 功能开关 | fast_mode, enable_request_compression | | [projects.*] | 工作区信任级别 | trust_level | | [windows] | Windows 沙箱策略 | sandbox | | [notice.model_migrations] | 模型迁移提示 | \"gpt-5.2-codex\" -> \"gpt-5.3-codex\"（历史迁移痕迹） | | [mcp_servers.chrome-devtools] | MCP 启动配置 | command, args, env, startup_timeout_ms | 2.6 mcp_servers.chrome-devtools 分组详解 | 字段 | 作用 | 本机值 | | --- | --- | --- | | command | 启动命令 | \"cmd\" | | args | 启动参数 | [\"/c\", \"npx\", \"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"] | | env | 环境变量 | SystemRoot, PROGRAMFILES, npm_config_cache, CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS | | startup_timeout_ms | 启动超时 | 20000 | 2.7 常见问题与排查 | 现象 | 可能原因 | 优先检查 | | --- | --- | --- | | 连接失败 | base_url 或 token 无效 | [model_providers.*] | | 功能不生效 | 相关开关未打开 | [features] | | 命令权限不足 | 工作区未被信任 | [projects.*] | | MCP 启动失败 | npm 或命令参数异常 | [mcp_servers.chrome-devtools] | 2.8 今天再看这段快照，应该怎么理解 如果你自己的 config.toml 里还停留在旧模型名，不代表“不能用”，但不能再把它当成官方默认推荐 看到 [notice.model_migrations] 这类旧迁移提示时，优先把它理解成“这台机器曾经走过的升级轨迹” 真正要写入自己当前环境的默认模型，请先看第三篇、第五篇、第十一篇里已经校准过的最新口径 --- ~/.codex/AGENTS.md（Windows 例：C:\\Users\\你的用户名\\.codex\\AGENTS.md） 3.1 作用 这是 Codex 的“团队工作规约”，用于约束编码风格、注释规则、编码格式与提交习惯。 3.2 来源说明（解决中文乱码） 这份 AGENTS.md 是我从他人处拿到的“防乱码版本”，核心目的是： 统一编码与注释规范，避免 Codex 输出或写入文件时出现中文乱码、BOM 头或不可读字符。 3.3 本机规则要点（逐条解释） | 规则主题 | 内容摘要 | 为什么重要 | | --- | --- | --- | | 统一编码 | 全部文件 UTF-8 无 BOM | 避免跨系统乱码 | | 中文内容规范 | 中文注释必须可读 | 避免排错困难 | | 注释规范 | 说明“为什么这样做” | 便于维护 | | Java 文件保存规则 | Java 文件 UTF-8 无 BOM | 避免 \\\\ufeff 编译报错 | | \\\\ufeff 处理规则 | BOM 报错排查流程 | 快速定位问题 | | 提交前检查 | 编译 + 人工检查 | 先暴露问题 | | 变更原则 | 逻辑与注释分开提交 | 便于回溯 | 3.4 维护建议 只保留“必须遵守”的规则，避免冗长。 团队规则更新后及时同步，否则不同人结果会不一致。 3.5 附：本机 AGENTS.md 原文（保持文件一致） --- ~/.codex/rules/default.rules 4.1 作用 这是命令执行白名单文件。 它描述“哪些命令前缀可以被直接允许执行”，从而控制 Codex 的命令执行权限边界。 4.2 规则语法（可读理解） 4.3 本机统计 规则条数：73 决策类型：全部为 allow 可执行程序：仅 C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe 4.4 命令类型分布（本机统计） | 命令关键词 | 出现次数 | 说明 | | --- | ---: | --- | | Get-Content | 47 | 读取文件内容 | | Select-String | 15 | 文本搜索 | | rg | 6 | 快速全文搜索 | | Get-ChildItem | 7 | 列目录/文件 | | Write-Output | 5 | 输出格式化 | | git | 1 | 只出现一次 git diff | | npm / npx | 1 / 1 | 少量构建/执行 | 4.5 本机示例（原样截取） 4.6 风险提示与建议 这是“命令级白名单”，不当配置会放大权限。 规则应保持“最小必要原则”，过期规则要及时清理。 --- ~/.codex/skills/ 5.1 作用 技能库目录，用于存放 Codex 内置或扩展的技能资源。 技能通常由说明文档、脚本与素材组成，用于指导 Codex 完成特定任务。 5.2 本机实际结构（简化） 5.3 关键文件说明 | 路径 | 作用 | | --- | --- | | SKILL.md | 技能说明与使用规则 | | agents\\openai.yaml | 该技能的代理配置 | | assets\\.png / .svg | 技能图标与资源 | | scripts\\*.py | 技能辅助脚本 | | references\\*.md | 参考资料 | 5.4 使用建议 .system 为系统内置技能目录，建议不要随意改动。 自定义技能建议新建目录并保持结构清晰。 --- 相关格式与概念小知识 6.1 TOML 配置文件常用格式，强调可读性与结构化，适合人直接编辑。 6.2 JSON Lines 每行一个 JSON 记录，适合日志与流式数据存储。 6.3 SQLite WAL SQLite 使用 WAL 模式会生成 -wal 与 -shm 文件用于事务日志与共享内存索引。 --- 参考资料（外部） OpenAI Developers: Codex TOML 规范（英文） TOML 规范（中文） JSON Lines 规范 SQLite WAL 说明 SQLite WAL 格式说明"
-    },
-    {
-      "type": "file",
-      "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-      "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-      "fileTitle": "第一篇_Codex从0到1配置实战",
-      "filename": "第一篇_Codex从0到1配置实战.md",
-      "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "CLI",
-        "配置实战",
-        "中转站",
-        "API Key"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-      "size": "7KB",
-      "lastModified": "2026-05-24T12:56:24.626Z",
-      "wordCount": 4019,
-      "content": "第一篇：Codex 从 0 到 1 配置实战（CLI） 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf> 记录时间：2026-03-08 定位：线路选读 B（rpcod 路线的 CLI 快速打通）。 前置：建议先读第三篇第 1~4 节（先懂通用配置层级）。 使用方式：如果你不用 rpcod，这篇可跳过，改看第四篇对应线路。 本篇不展开：三端联动与截图对照（看第六篇、第七篇）。 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。 小白读完目标：你应该能按第三方 rpcod 路线把 Codex CLI 跑通，并知道这篇属于“线路样例”，不是官方通用默认配置模板。 2026-05-22 校注：这篇属于第三方线路实操篇，不再把文中的模型名视作“官方默认答案”。真正落地前，请先核对 rpcod 后台当前开放模型，以及第三篇、第十一篇里的最新官方口径。 章节导航（点击跳转）： [[toc]] --- 先完成账号与套餐 注册地址：<https://ai.rpcod.com/login>（这个是个人推荐的中转站，国内访问稳定，且套餐价格更友好） 登录后进入侧边栏「兑换」，输入兑换码 套餐规则（文档里的重点）： 套餐额度按日刷新 天卡是 24 小时有效 同套餐叠加是续期（例如两张 100 刀天卡可连续用 2 天） 不同套餐可做增量，按分组切换使用 安装环境（Windows / Mac / Linux 通用主线） 2.1 安装 Node.js（20+） 下载：<https://nodejs.org/en/download> 安装后验证： 逐行解释： node -v：打印本机 Node 版本，确认是否达到 Codex CLI 运行要求（建议 20+）。 2.2 安装 Codex CLI 逐行解释： npm i -g @openai/codex：全局安装 Codex CLI，可在任意目录直接运行 codex 命令。 codex --version：校验安装是否成功，同时确认你当前使用的 CLI 版本。 如果安装很慢或失败（网络原因常见），先切镜像再重装： 逐行解释： npm config set registry https://registry.npmmirror.com：把 npm 下载源切到国内镜像，减少超时和下载失败。 npm i -g @openai/codex：在新镜像源下重新安装 Codex CLI。 2.3 Windows 额外建议 文档建议 Windows 用户优先用 Windows Terminal，比原生 cmd 体验更稳定。 手动配置（最关键） 配置文件路径： Mac/Linux：~/.codex/config.toml Windows：C:\\Users\\你的用户名\\.codex\\config.toml 如果全局配置不生效，可在当前项目目录新建 .codex/config.toml 做工作区覆盖。 auth.json 属于敏感凭据缓存，除非你非常清楚风险，否则不要把它作为项目内常规文件来管理。 3.1 config.toml 示例（按当前更稳妥写法重整） 关键字段逐项解释（这段改成更适合今天直接上手的安全版）： model：默认模型名，优先填你这条 rpcod 线路后台当前真实开放的模型；如果后台已开放 gpt-5.5，优先用它。 model_reasoning_effort：推理强度，xhigh 更深但通常更慢。 disable_response_storage = true：减少响应持久化，偏隐私/审慎场景。 sandbox_mode = \"workspace-write\"：只允许修改当前工作区，先保证安全边界。 approval_policy = \"on-request\"：敏感动作先询问你，适合刚接好线路时排错。 file_opener = \"vscode\"：引用文件时默认用 VS Code 打开。 model_provider = \"codex\"：默认走 codex 这个 provider 配置块。 [history] persistence = \"save-all\"：保存会话历史，便于后续 resume。 [model_providers.codex].base_url：该 provider 的后端地址。 wire_api = \"responses\"：使用 responses 协议与后端通信。 requires_openai_auth = true：要求 OpenAI 认证链路（配合 auth.json 或登录态）。 补一句最重要的边界： 如果 rpcod 后台暂时没放出 gpt-5.5，不要硬填，直接以后台当前可见模型名为准 第三方线路的“最新”永远是“官方最新能力 + 你这条网关当前开放集合”的交集 3.2 auth.json 示例（仅用户目录，不建议放项目目录） 逐行解释： OPENAI_API_KEY：Codex 调用后端时使用的密钥字段。 sk-...：真实密钥值，必须有效且未过期；这是敏感信息，不要提交到 Git。 首次启动验证 逐行解释： codex：启动交互式会话，加载当前目录上下文和你的配置文件。 建议按这个顺序检查： codex --version 能输出版本 启动后无鉴权报错 可在当前仓库正常提问与改代码 常见问题速查 安装失败：先切 npmmirror，再执行安装 模型显示不全：手动检查 config.toml 的 model 与 model_provider 改了配置不生效：确认路径是否正确，并重启终端 / Codex KEY 报错：确认登录缓存或 API key 配置有效，且没有多余空格 实操结论（第一篇） 真正影响成败的是三件事：Node 20+、config.toml、有效认证 网络环境不稳定时，先切镜像，能省大量排错时间 配置不生效时，优先用项目内 .codex/ 覆盖，定位最快 安全提醒 文档里的示例是高权限配置（danger-full-access + never）。 个人日常开发建议先用更稳妥组合： 逐行解释： sandbox_mode = \"workspace-write\"：仅允许写当前工作区，避免误改系统其他目录。 approval_policy = \"on-request\"：需要敏感操作时先询问你，适合新手和日常开发。 确认流程稳定后，再按实际场景提高权限。"
+      "lastModified": "2026-05-31T08:11:43.210Z",
+      "wordCount": 9656,
+      "content": "第九篇：Codex 本地数据目录详解（关键文件与 Rules 深入版） 更新时间：2026-05-22（已补“历史机器快照 vs 当前推荐口径”边界说明） 定位：本机 Codex “关键文件与安全边界”讲透。 适用：你需要排查登录、配置、权限或命令执行问题时。 前置：建议先读第三篇、第八篇（先分清配置层、规则层和命令层）。 本篇不展开：三端界面操作与截图点位（看第六篇、第七篇）。 小白读完目标：你应该能分清 auth.json、config.toml、日志、技能、规则目录分别管什么，并知道哪些只是历史样本，哪些才是今天该照着改的内容。 章节导航（点击跳转）： [[toc]] --- 先讲清一件事：.codex 到底是什么 Codex 的本地数据目录通常写作 ~/.codex。在 Windows 上，常见形式是 C:\\Users\\你的用户名\\.codex。 它不是项目代码，也不是缓存垃圾桶，而是 “账号认证 + 全局配置 + 规则 + 技能库 + 运行日志” 的落地位置。 所以这里的每个关键文件，都会直接影响 Codex 是否能正常用、能不能执行命令、以及是否符合你的团队规范。 0.1 读者说明（很重要） 本文出现的配置、路径与规则示例，均来自作者电脑的 Codex 本地数据目录，仅作为“示例参考”。 你的电脑实际内容可能不同，请以自己的 .codex 文件为准。 --- ~/.codex/auth.json（Windows 例：C:\\Users\\你的用户名\\.codex\\auth.json） 1.1 作用 保存 Codex 的认证信息，客户端发起请求时会读取它。 1.2 本机当前内容（已脱敏示例） 1.3 字段逐条解释 | 字段 | 含义 | 在本机的值 | 影响 | | --- | --- | --- | --- | | auth_mode | 认证方式标记 | apikey | 决定 Codex 使用哪种鉴权流程 | | OPENAI_API_KEY | API Key 字符串 | sk-* | 作为身份凭据参与请求 | 1.4 常见问题与排查 | 现象 | 可能原因 | 优先检查 | | --- | --- | --- | | 请求提示鉴权失败 | key 失效或被替换 | OPENAI_API_KEY 是否正确 | | 账户切换后仍是旧账号 | 文件未刷新 | 重新登录或手动更新 | 1.5 与其他文件的关系 如果你的 provider 还在直接写 experimental_bearer_token，就可能与 auth.json 或 keyring 中的认证状态同时存在。 因此改 key 时，除了检查 auth.json，也要一起检查 provider 配置里是否残留旧凭据。 --- ~/.codex/config.toml（Windows 例：C:\\Users\\你的用户名\\.codex\\config.toml） 2.1 作用 Codex 的全局配置文件，决定“模型用哪个、服务端去哪、功能开不开、MCP 怎么启动、工作区信任级别”。 2.2 文件格式说明 TOML 是一种人类可读的配置格式，语法简单、结构清晰，非常适合写配置。 2.3 某次本机脱敏快照（历史样本，不是当前推荐模板） 下面这段保留的是采样时机器上的原值，作用是帮助你理解“本地目录里可能长什么样”，不是让你今天继续把这些值原封不动抄到自己的环境里。 尤其是里面出现的旧模型名、旧迁移提示和某些 provider 写法，都应视为“现场记录”，不应自动等于今天的最佳实践。 2.4 顶层字段解释（按本机配置） | 字段 | 作用 | 本机值 | 你能直观感受到的影响 | | --- | --- | --- | --- | | model_provider | 当前模型提供方标识 | \"yunyi\" | 决定请求走哪个服务端 | | model | 模型名称 | \"gpt-5.3-codex\"（采样时原值） | 影响响应能力与价格策略；今天不要再把它当成固定默认答案 | | model_reasoning_effort | 推理强度/深度配置项 | \"xhigh\" | 影响推理质量与延迟 | | model_context_window | 上下文窗口上限 | 1000000 | 决定能放多长上下文 | | model_auto_compact_token_limit | 自动压缩触发阈值 | 900000 | 接近上限会自动压缩 | | service_tier | 服务速度档位 | \"fast\" | 影响响应延迟 | 2.5 分组解释（重点） | 分组 | 作用 | 本机关键字段 | | --- | --- | --- | | [model_providers.yunyi] | 主提供方连接信息 | base_url, wire_api, experimental_bearer_token | | [model_providers.sub2api] | 备用提供方配置 | base_url, wire_api | | [features] | 功能开关 | fast_mode, enable_request_compression | | [projects.*] | 工作区信任级别 | trust_level | | [windows] | Windows 沙箱策略 | sandbox | | [notice.model_migrations] | 模型迁移提示 | \"gpt-5.2-codex\" -> \"gpt-5.3-codex\"（历史迁移痕迹） | | [mcp_servers.chrome-devtools] | MCP 启动配置 | command, args, env, startup_timeout_ms | 2.6 mcp_servers.chrome-devtools 分组详解 | 字段 | 作用 | 本机值 | | --- | --- | --- | | command | 启动命令 | \"cmd\" | | args | 启动参数 | [\"/c\", \"npx\", \"-y\", \"chrome-devtools-mcp@latest\", \"--no-usage-statistics\"] | | env | 环境变量 | SystemRoot, PROGRAMFILES, npm_config_cache, CHROME_DEVTOOLS_MCP_NO_USAGE_STATISTICS | | startup_timeout_ms | 启动超时 | 20000 | 2.7 常见问题与排查 | 现象 | 可能原因 | 优先检查 | | --- | --- | --- | | 连接失败 | base_url 或 token 无效 | [model_providers.*] | | 功能不生效 | 相关开关未打开 | [features] | | 命令权限不足 | 工作区未被信任 | [projects.*] | | MCP 启动失败 | npm 或命令参数异常 | [mcp_servers.chrome-devtools] | 2.8 今天再看这段快照，应该怎么理解 如果你自己的 config.toml 里还停留在旧模型名，不代表“不能用”，但不能再把它当成官方默认推荐 看到 [notice.model_migrations] 这类旧迁移提示时，优先把它理解成“这台机器曾经走过的升级轨迹” 真正要写入自己当前环境的默认模型，请先看第三篇、第五篇和第十二篇里已经校准过的最新口径 --- ~/.codex/AGENTS.md（Windows 例：C:\\Users\\你的用户名\\.codex\\AGENTS.md） 3.1 作用 这是 Codex 的“团队工作规约”，用于约束编码风格、注释规则、编码格式与提交习惯。 3.2 来源说明（解决中文乱码） 这份 AGENTS.md 是我从他人处拿到的“防乱码版本”，核心目的是： 统一编码与注释规范，避免 Codex 输出或写入文件时出现中文乱码、BOM 头或不可读字符。 3.3 本机规则要点（逐条解释） | 规则主题 | 内容摘要 | 为什么重要 | | --- | --- | --- | | 统一编码 | 全部文件 UTF-8 无 BOM | 避免跨系统乱码 | | 中文内容规范 | 中文注释必须可读 | 避免排错困难 | | 注释规范 | 说明“为什么这样做” | 便于维护 | | Java 文件保存规则 | Java 文件 UTF-8 无 BOM | 避免 \\\\ufeff 编译报错 | | \\\\ufeff 处理规则 | BOM 报错排查流程 | 快速定位问题 | | 提交前检查 | 编译 + 人工检查 | 先暴露问题 | | 变更原则 | 逻辑与注释分开提交 | 便于回溯 | 3.4 维护建议 只保留“必须遵守”的规则，避免冗长。 团队规则更新后及时同步，否则不同人结果会不一致。 3.5 附：本机 AGENTS.md 原文（保持文件一致） --- ~/.codex/rules/default.rules 4.1 作用 这是命令执行白名单文件。 它描述“哪些命令前缀可以被直接允许执行”，从而控制 Codex 的命令执行权限边界。 4.2 规则语法（可读理解） 4.3 本机统计 规则条数：73 决策类型：全部为 allow 可执行程序：仅 C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\pwsh.exe 4.4 命令类型分布（本机统计） | 命令关键词 | 出现次数 | 说明 | | --- | ---: | --- | | Get-Content | 47 | 读取文件内容 | | Select-String | 15 | 文本搜索 | | rg | 6 | 快速全文搜索 | | Get-ChildItem | 7 | 列目录/文件 | | Write-Output | 5 | 输出格式化 | | git | 1 | 只出现一次 git diff | | npm / npx | 1 / 1 | 少量构建/执行 | 4.5 本机示例（原样截取） 4.6 风险提示与建议 这是“命令级白名单”，不当配置会放大权限。 规则应保持“最小必要原则”，过期规则要及时清理。 --- ~/.codex/skills/ 5.1 作用 技能库目录，用于存放 Codex 内置或扩展的技能资源。 技能通常由说明文档、脚本与素材组成，用于指导 Codex 完成特定任务。 5.2 本机实际结构（简化） 5.3 关键文件说明 | 路径 | 作用 | | --- | --- | | SKILL.md | 技能说明与使用规则 | | agents\\openai.yaml | 该技能的代理配置 | | assets\\.png / .svg | 技能图标与资源 | | scripts\\*.py | 技能辅助脚本 | | references\\*.md | 参考资料 | 5.4 使用建议 .system 为系统内置技能目录，建议不要随意改动。 自定义技能建议新建目录并保持结构清晰。 --- 相关格式与概念小知识 6.1 TOML 配置文件常用格式，强调可读性与结构化，适合人直接编辑。 6.2 JSON Lines 每行一个 JSON 记录，适合日志与流式数据存储。 6.3 SQLite WAL SQLite 使用 WAL 模式会生成 -wal 与 -shm 文件用于事务日志与共享内存索引。 --- 参考资料（外部） OpenAI Developers: Codex TOML 规范（英文） TOML 规范（中文） JSON Lines 规范 SQLite WAL 说明 SQLite WAL 格式说明"
     },
     {
       "type": "file",
@@ -8111,31 +8210,6 @@
       "lastModified": "2026-05-24T13:49:15.050Z",
       "wordCount": 3435,
       "content": "第一篇：OpenClaw 本地部署实战（从安装到龙虾内容生产） 参考视频：<https://www.douyin.com/video/7609705104823880995>（原短链：<https://v.douyin.com/DqNq2PwNB0g/>） 参考文档：<https://clawd.org.cn/start/getting-started.html>、<https://clawd.org.cn/start/wizard.html>、<https://clawd.org.cn/start/setup.html>、<https://clawd.org.cn/start/pairing.html>、<https://clawd.org.cn/start/clawd.html>、<https://clawd.org.cn/install/updating.html> 校验时间：2026-03-08 本篇定位：只讲“安装 + 首次跑通 + 首次产出”，不讲深度排障（排障看第二篇）。 --- 先说清本篇边界 你读完本篇要达到 3 个结果： openclaw-cn.cmd 能在本机执行。 网关能正常启动，status/health 能返回。 你可以开始第一版“龙虾内容”工作流。 --- 安装前检查（3 条命令） 建议基线： Node.js 22+ PowerShell 5.1+ --- 安装 OpenClaw-CN（Windows） 官方中文站给出的安装方式： 安装后先验证命令： 如果提示找不到命令，先用完整路径： --- 首次初始化（推荐向导） 你想一次性脚本化时再用： 说明： 第一次建议交互式，避免参数填错后难定位。 --non-interactive 必须搭配 --accept-risk。 3.1 首次需要认识的配置文件（小白版） | 文件/目录 | 默认路径（Windows） | 作用 | 什么时候会用到 | |---|---|---|---| | 主配置文件 | C:\\Users\\<你>\\.openclaw\\openclaw.json | 保存网关端口、绑定方式、模型与工作区等核心配置 | 改端口、改 bind、改默认工作区时 | | 默认工作区 | C:\\Users\\<你>\\.openclaw\\workspace\\ | 放你的任务上下文和资料文件 | 做“龙虾内容”时 | | 人格文件 | <workspace>\\SOUL.md | 定义助手语气和行为边界 | 觉得回复风格不对时 | | 用户画像 | <workspace>\\USER.md | 记录你的目标、偏好、约束 | 助手不懂你习惯时 | | 执行规范 | <workspace>\\AGENTS.md | 规定执行流程和风险边界 | 助手执行不稳定时 | | 服务启动脚本 | C:\\Users\\<你>\\.openclaw\\gateway.cmd | Windows 自动模式下由计划任务调用 | 重启后起不来时（详见第二篇） | --- 首次启动与健康检查（最小闭环） 先前台启动（最稳）： 新开终端检查： 常见成功信号： gateway status --json 里 rpc.ok=true health --json 里 ok=true 控制台可打开：http://127.0.0.1:18789/ 你也可以直接： --- 渠道与配对（只做最小可用） 先查看渠道现状： 需要登录某渠道时（示例）： 查看待批准配对： 批准配对码： --- 开始你的“龙虾内容”最小流程 先建工作区文件： 然后给助手一条固定任务： --- 本篇后的阅读顺序 第二篇：解决“重启后没成功”与稳定运行 第三篇：把助手从“会回答”变成“懂你” 第五篇：按场景查命令和参数 --- 本篇参考资料 <https://clawd.org.cn/start/getting-started.html> <https://clawd.org.cn/start/wizard.html> <https://clawd.org.cn/start/setup.html> <https://clawd.org.cn/start/pairing.html> <https://clawd.org.cn/start/clawd.html> <https://clawd.org.cn/install/updating.html> <https://www.douyin.com/video/7609705104823880995>"
-    },
-    {
-      "type": "file",
-      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
-      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
-      "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "官方文档",
-        "exec",
-        "MCP",
-        "自动化"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-      "size": "11KB",
-      "lastModified": "2026-05-24T12:56:24.630Z",
-      "wordCount": 7161,
-      "content": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版） 本文基于 OpenAI 官方 Codex 文档整理，并已按 2026-05-22 的官方页面补过一轮增量校准。 定位：主线 05（进阶能力：自动化、治理、团队标准化）。 前置：建议先读第三篇、第五篇、第六篇、第七篇。 本篇不展开：第三方服务商具体线路（看第四篇、第一篇）。 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。 小白读完目标：你应该能把官方主线里的 codex exec、profiles、MCP、自动化与团队治理能力接进自己的长期开发流程，而不是只会基础聊天与改代码。 2026-05-22 增补提醒：如果主人主要关心“最近桌面版到底多了什么、IDE 还是不是只是壳子、Windows 有没有继续补强”，请优先串读第十一篇，因为最近最容易过时的是 App / IDE / 云任务 / Windows 这一层，不是基础配置层。 如果主人现在已经进入“真正开发每天都要查功能怎么用”的阶段，请直接把第十二篇当常用手册看，第十一篇负责告诉你哪里升级了，第十二篇负责把高频能力讲细。 章节导航（点击跳转）： [[toc]] --- 先更新一个关键信息：模型建议会变化 截至 2026-05-22，OpenAI 官方 Codex 模型页已经明确写到：多数 Codex 任务先从 gpt-5.5 开始。 但在 Codex 场景里，你实际能选到的默认模型、以及第三方网关暴露出来的模型名，仍可能和官方通用模型页不完全一致。 所以这里更稳妥的结论是： 不要再把 gpt-5.4 当成“永远默认推荐”的固定答案 官方当前默认本地示例优先看 gpt-5.5 如果你更看重专门编码模型，可再对照 gpt-5.3-codex CLI/IDE/App 中先用 /status、/model 看当前这条线路真实可用的模型集合 如果你走第三方网关，最终仍以网关后台实际开放的模型名为准 常用切换方式： 逐行解释： codex --model gpt-5.5：仅对当前这次会话临时切模型，不会修改 config.toml 默认值。 安装与平台策略（官方口径） 这部分和第一篇/第三篇重复，这里只保留“官方差异提醒”：复杂 CLI / IDE 工作流依然常建议优先 WSL，但桌面 App 的 Windows-native 路线现在已经补上了原生 PowerShell 与 Windows sandbox。 安装与升级命令（留作速查）： 逐行解释： npm i -g @openai/codex：全局安装 Codex CLI。 codex：启动交互会话，确认 CLI 可正常运行。 npm i -g @openai/codex@latest：升级到最新版，排查问题时建议先做这一步。 配置分层：别再“改了不生效” 这里仅保留结论，完整解释看第三篇第 4 节和第五篇第 2 节。 官方给出的优先级（高到低）： CLI flags 与 --config --profile <name> 对应配置 项目级 .codex/config.toml（从根到当前目录，最近的优先） 用户级 ~/.codex/config.toml 系统级配置（如 Unix 的 /etc/codex/config.toml） 内置默认值 注意：项目级配置只在“项目被信任”时加载。 审批与沙箱：效率和安全分开配 高频参数： approval_policy：untrusted | on-request | never sandbox_mode：read-only | workspace-write | danger-full-access --full-auto：这是旧资料里常见的兼容别名思路，当前更建议直接显式写 --sandbox workspace-write --ask-for-approval on-request --yolo：绕过审批和沙箱，仅建议在外部隔离环境使用 官方对 codex exec 的默认行为是 read-only 沙箱。 自动化场景里，建议只给最小必要权限。 AGENTS.md 进阶：真正影响稳定性的核心 官方说明的加载顺序： 全局层：~/.codex/AGENTS.override.md（有则优先）否则 ~/.codex/AGENTS.md 项目层：从项目根目录一路到当前目录，每层最多取一个说明文件 越靠近当前目录的说明，覆盖效果越强 两个关键参数： project_doc_max_bytes：默认 32 KiB project_doc_fallback_filenames：可扩展非 AGENTS.md 的文件名 非交互自动化：codex exec 的正确打开方式 最小用法： 逐行解释： codex exec \"...\"：非交互执行一次性任务，适合脚本和流水线场景。 机器可读输出： 逐行解释： codex exec --json \"...\"：输出机器可读事件流。 | jq：把 JSON 输出格式化，便于查看和后续脚本处理。 结构化 JSON 输出： 逐行解释： codex exec \"Extract project metadata\"：执行一次“提取项目元数据”任务。 --output-schema ./schema.json：强制输出结构遵循给定 JSON Schema。 -o ./project-metadata.json：把结果写入文件，便于后续程序消费。 会话续跑： 逐行解释： codex exec resume --last：续跑最近一次 codex exec 任务。 \"continue from previous run\"：告诉模型本次续跑的目标。 额外要点： codex exec 默认要求在 Git 仓库内运行，可用 --skip-git-repo-check 覆盖 登录缓存可能落在 ~/.codex/auth.json，也可能落在系统凭据库（keyring） ~/.codex/auth.json 一旦存在，就应按密码文件对待，不要提交到仓库 MCP 生态：从“能连上”到“可控可治理” CLI 添加 MCP 服务： 逐行解释： codex mcp add context7 -- npx -y @upstash/context7-mcp：把名为 context7 的 MCP 服务注册到 Codex（通过 npx 启动）。 codex mcp --help：查看 MCP 子命令，确认当前 CLI 的可用管理能力。 官方支持两类： STDIO 服务（本地进程） Streamable HTTP 服务（URL 方式，支持 Bearer/OAuth） config.toml 可配置： enabled_tools / disabled_tools startup_timeout_sec / tool_timeout_sec required = true（服务起不来时直接 fail-fast） CLI 高频斜杠命令（建议背下来） /model：切模型与推理强度 /permissions：会话中切审批策略 /status：看模型、权限、可写目录、token 使用 /diff：审查当前改动 /review：让 Codex 做工作树审查 /init：生成 AGENTS.md 模板 /mcp：查看当前 MCP 工具 /plan：先做计划再执行 /goal：给当前线程设置持续目标 /personality：切换回复风格 /fast：查看或切换 fast 模式 IDE 扩展补充（VS Code / Cursor / Windsurf） 官方文档提到： 扩展支持 VS Code 及其分支（Cursor、Windsurf） 可用 @文件名 在提示词中显式引用代码上下文 支持把大任务委托到云端运行，再拉回本地续做 补一句最新理解： IDE 现在不能再只写成“编辑器里的 CLI 壳” 最近该补的重点是云端委托、多模态图片上下文与更完整的工作台能力 这部分如果要系统补，请直接看第十一篇第 5 节 9.1 2026-05-22 增补：桌面版与 IDE 已进入“任务工作台阶段” 如果你是按旧文章理解 Codex，很容易把 App 和 IDE 低估成“共享同一份配置的两个外壳”。 但按 OpenAI 官方最近页面，更准确的理解已经变成： CLI 仍是底层能力核心 IDE 已开始强调云端委托、图片拖拽与多模态上下文 桌面版已经独立长出 worktrees、handoff、local environments、automations 这类工作流能力 Windows 路线也已经有独立的 CLI / App 页面与原生沙箱说明 所以这篇的定位要再收紧一下： 本篇负责“通用进阶能力” 第十一篇负责“最近产品形态升级” 第七篇负责“把这些变化落实到截图核对和 SOP” 一套实用的双 Profile 模板 逐字段解释： [profiles.safe]：定义日常开发 profile。 approval_policy = \"on-request\"：风险动作先确认。 sandbox_mode = \"workspace-write\"：可改工作区代码。 web_search = \"cached\"：默认使用缓存搜索。 [profiles.ci]：定义 CI/批处理 profile。 approval_policy = \"never\"：无人值守时不弹确认。 sandbox_mode = \"read-only\"：CI 场景只读更稳。 使用： 逐行解释： codex --profile safe：以 safe 配置进入交互会话。 codex exec --profile ci \"...\"：用 ci 配置执行自动化任务，输出简短报告。 官方资料入口（建议收藏） CLI 概览：<https://developers.openai.com/codex/cli> CLI 功能：<https://developers.openai.com/codex/cli/features> CLI 命令参数：<https://developers.openai.com/codex/cli/reference> CLI 斜杠命令：<https://developers.openai.com/codex/cli/slash-commands> 最新模型指南：<https://developers.openai.com/api/docs/guides/latest-model> 配置基础：<https://developers.openai.com/codex/config-basic> 配置参考：<https://developers.openai.com/codex/config-reference> AGENTS.md：<https://developers.openai.com/codex/guides/agents-md> Non-interactive：<https://developers.openai.com/codex/noninteractive> MCP：<https://developers.openai.com/codex/mcp> IDE 扩展：<https://developers.openai.com/codex/ide> IDE 功能：<https://developers.openai.com/codex/ide/features> IDE 设置：<https://developers.openai.com/codex/ide/settings> App 功能：<https://developers.openai.com/codex/app/features> App 设置：<https://developers.openai.com/codex/app/settings> App Worktrees：<https://developers.openai.com/codex/app/worktrees> App Local Environments：<https://developers.openai.com/codex/app/local-environments> App Automations：<https://developers.openai.com/codex/app/automations> App In-app Browser：<https://developers.openai.com/codex/app/in-app-browser> App Windows：<https://developers.openai.com/codex/app/windows> Windows 指南：<https://developers.openai.com/codex/windows> Agent approvals & security：<https://developers.openai.com/codex/agent-approvals-security>"
     },
     {
       "type": "file",
@@ -8211,31 +8285,6 @@
       "lastModified": "2026-05-24T13:49:15.051Z",
       "wordCount": 2406,
       "content": "第三篇：OpenClaw101 Day1 知识全景与命令配置实战（认知与灵魂篇） 适用版本：openclaw-cn.cmd 0.1.7（Windows 实测） 对应课程：OpenClaw101 Day1 + Day3 核心思想 本篇定位：只讲“为什么这样用”和“如何让助手懂你”，不讲网关重启排障。 --- 阅读定位 你读完本篇应该获得的是“方向感”，不是“背命令”： 理解 OpenClaw 为什么不是聊天机器人。 理解 SOUL/USER/AGENTS 为什么决定长期效果。 建立你自己的“龙虾内容助手人格”。 如果你现在卡在“启动失败、重启后失效”，先看第二篇。 如果你现在要查某个命令参数，直接看第五篇。 --- Day1 最核心的认知：助手系统，不是对话框 Day1 的重点可以压缩成四句话： 聊天机器人是被动响应，助手系统是主动工作。 真正价值不在“答得好”，在“能持续执行、可恢复、可审计”。 同一模型放进不同系统里，效果差异主要来自流程与规则。 你越早开始沉淀规则和记忆，助手越快变成“你的工作搭子”。 --- 用你的场景翻译 Day1（龙虾内容方向） 把“龙虾内容生产”拆成 3 类任务： 稳定重复任务 例如：每日选题、资料整理、标题改写、发布复盘。 半自动任务 例如：根据资料出初稿，人工补观点与案例。 高价值人工任务 例如：内容策略、选题判断、品牌表达。 OpenClaw 应该优先承接第 1、2 类任务。 --- Day3 灵魂三件套：SOUL / USER / AGENTS 这是从“会回答”到“懂你”的分水岭。 3.1 SOUL.md（它是谁） 建议模板： 3.2 USER.md（它服务谁） 建议模板： 3.3 AGENTS.md（它怎么工作） 建议你写清 4 件事： 操作前先检查什么（例如先跑状态命令）。 失败后先给什么（例如可逆修复路径）。 什么时候必须停下来问你（例如会影响数据安全的动作）。 输出格式（例如先结论后命令，引用路径要完整）。 --- 最小命令只保留 4 条（本篇只讲必要） 说明： 本篇不展开网关生命周期、任务调度、渠道排障，避免和第二/第五篇重复。 --- 把认知变成执行：一周迭代法（小白可照抄） 第 1 周建议你只做这 3 件事： 每天记录一次“助手哪里做得不对”。 当天把规则补进 SOUL/USER/AGENTS 对应文件。 第二天用同类型任务复测。 这套循环会让助手稳定变“像你”，而不是每次从头调教。 --- 常见误区（你现在最容易踩的） 误区：只调模型，不写规则 后果：短期看着聪明，长期不稳定。 误区：规则写成口号 后果：模型无法执行，输出仍漂移。 误区：把排障和认知混在一篇里 后果：读起来杂，真正出问题时找不到关键步骤。 --- 读完本篇后，下一篇看什么 想系统跑 OpenClaw101 Day2~Day7：看第四篇 想直接查命令和参数：看第五篇 想解决重启失败：回第二篇 --- 参考资料 OpenClaw101 Day1：<https://openclaw101.dev/zh/day/1> OpenClaw101 Day3：<https://openclaw101.dev/zh/day/3> OpenClaw101 总入口：<https://openclaw101.dev/zh> OpenClaw CLI：<https://docs.openclaw.ai/cli> OpenClaw 中文 Setup：<https://clawd.org.cn/start/setup.html>"
-    },
-    {
-      "type": "file",
-      "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-      "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
-      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "Packy",
-        "中转站",
-        "配置迁移",
-        "多线路"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-      "size": "14KB",
-      "lastModified": "2026-05-24T12:56:24.636Z",
-      "wordCount": 9017,
-      "content": "第四篇：Codex 多来源完整配置手册（小白友好版） 更新时间：2026-03-08 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。 本篇不展开：逐字段截图核对（看第七篇）。 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。 小白读完目标：你应该能判断自己该走官方、Packy 还是第三方线路，并知道“配置没生效”到底是线路问题、字段问题，还是三端同步问题。 章节导航（点击跳转）： [[toc]] --- 阅读策略（去重版） 如果你已经读过第三篇 + 第五篇，本篇 2~4 节只需快速过一遍 真正需要细读的是 5.x（你所用服务商路线） 三端联动与排障回看第六篇；逐字段截图核对回看第七篇 先看这张“路线图” 你现在有 3 条路线可以用 Codex： 官方路线（OpenAI） 聚合网关路线（PackyAPI） 第三方服务路线（飞书文档里的 yunyi / rpcod） 新手建议顺序： 先用官方路线跑通（概念最标准） 再按你购买的服务切到网关路线 最后做 App / IDE / CLI 三端统一配置 --- 五个来源分别负责什么 飞书 1（KaQ...）：偏“售后实操”，给了账号、套餐、模型、CLI 与插件配置 PackyAPI 文档：讲如何把 Codex 接到 Packy API（CLI + VS Code） OpenAI codex/app：官方 Codex App 功能与使用边界 飞书 2（Iq8...）：补了 yunyi 路线、激活器、常见错误（如 YUNYI_KEY） B 站 BV11erUBUEEX：官方教程结构化学习路径（安装、AGENTS、工作流、无头模式、SDK） --- 先统一基础环境（所有路线都需要） 这部分与第一篇/第三篇有重叠，这里只保留最小检查清单： node -v、npm -v 正常（Node LTS/20+） npm i -g @openai/codex 安装成功 codex --version 能输出版本 网络慢再切镜像：npm config set registry https://registry.npmmirror.com --- 配置文件放哪（这是第一高频坑） 只记三条结论： 用户级：~/.codex/config.toml，项目级：<repo>/.codex/config.toml Windows 常见路径：C:\\Users\\你的用户名\\.codex\\config.toml 生效顺序是“命令行 > profile > 项目级 > 用户级 > 系统级 > 默认值” 如果你想看完整解释和排错案例，直接看第三篇第 4 节 + 第五篇第 2 节。 --- 关键配置项白话解释（先看懂再抄） 为避免和第五篇重复，这里压缩成“路线切换必看 5 字段”： model：默认模型名（官方当前本地默认示例更适合先参考 gpt-5.5；不要机械沿用旧资料里的 gpt-5.4） model_provider：使用哪个提供方（如 openai/packycode/yunyi/codex） [model_providers.<id>].base_url：服务地址 凭据字段：env_key 或 experimental_bearer_token 或 auth.json 安全组合：approval_policy + sandbox_mode 推荐默认组合：workspace-write + on-request。 完整字段字典请直接查第五篇第 3 节。 --- 三条路线的可直接用模板 5.1 官方路线（OpenAI，推荐先跑通） 逐行解释： model_provider = \"openai\"：走官方 OpenAI 提供方。 model = \"gpt-5.5\"：官方路线默认模型先对齐当前推荐的本地示例。 model_reasoning_effort = \"medium\"：推理强度中档，速度和质量较平衡。 approval_policy = \"on-request\"：敏感动作由你确认后执行。 sandbox_mode = \"workspace-write\"：仅允许修改当前项目目录。 web_search = \"cached\"：默认使用缓存搜索索引，稳定性更高。 打开 codex 后按提示登录 ChatGPT 或 API Key 即可。 --- 5.2 PackyAPI 路线（来自 packyapi 文档） 逐行解释： model_provider = \"packy\"：默认走你自定义的 packy 提供方。 model = \"gpt-5.5\"：示例里先按当前官方默认口径写；如果 Packy 后台没开放，就改成你后台当前显示的模型名。 model_reasoning_effort = \"high\"：提升推理深度，通常更慢。 [model_providers.packy]：声明一个名为 packy 的 provider 配置块。 name = \"packy\"：provider 显示名/标识名，保持和上面一致最稳。 base_url = \"https://api.packyapi.com/v1\"：Packy API 网关地址。 env_key = \"PACKY_API_KEY\"：从环境变量读取密钥，不把 key 写死在配置里。 然后把环境变量写好（PowerShell 示例）： 逐行解释： SetEnvironmentVariable(..., \"User\")：把 PACKY_API_KEY 写入当前用户级环境变量。 \"你的PackyKey\"：替换为真实密钥后，重开终端再运行 codex 更稳。 VS Code 插件侧，Packy 文档给的是： Provider 选 OpenAI Compatible Base URL 填 https://api.packyapi.com/v1 API Key 填 Packy 仪表盘里的 Key --- 5.3 飞书 yunyi 路线（来自 Iq8... 文档） 逐行解释： model_provider = \"yunyi\"：默认走 yunyi 线路。 model_reasoning_effort = \"medium\"：推理强度中档。 disable_response_storage = true：减少响应落盘，偏隐私场景。 preferred_auth_method = \"apikey\"：优先使用 API key 认证方式。 model = \"gpt-5.5\"：先按当前官方默认示例写；如果 yunyi 后台未开放，再换成后台当前提供的模型名。 [model_providers.yunyi]：定义 yunyi 提供方细节。 base_url：yunyi 的网关地址。 experimental_bearer_token：直接写令牌，方便但安全性低于环境变量。 wire_api = \"responses\"：使用 responses 协议。 requires_openai_auth = true：要求 OpenAI 认证链路兼容。 文档里还给了激活器方式： 逐行解释： npx yunyi-activator：临时下载并运行激活脚本，完成 yunyi 相关初始化。 常见错误（文档原意）： 提示缺少 YUNYI_KEY：检查并移除冲突配置 权限报错：尝试 sudo npx yunyi-activator（仅 Linux/macOS 场景） --- 5.4 飞书 rpcod 路线（来自 KaQ... 文档） 逐行解释： model = \"gpt-5.5\"：先按当前官方默认示例写；如果 rpcod 后台还没开放，就用后台当前实际可选模型。 model_reasoning_effort = \"xhigh\"：高强度推理，成本和时延都更高。 sandbox_mode = \"danger-full-access\"：取消沙箱隔离，风险最高。 approval_policy = \"never\"：不弹审批，自动执行风险动作。 model_provider = \"codex\"：默认使用 codex provider 块。 [model_providers.codex].base_url = \"https://ai.rpcod.com\"：rpcod 后端地址。 wire_api = \"responses\"：采用 responses 协议。 requires_openai_auth = true：要求 OpenAI 认证链路兼容。 并配 auth.json： 逐行解释： OPENAI_API_KEY：鉴权密钥字段名。 sk-你的密钥：替换成真实 key；该文件是敏感信息，禁止提交仓库。 这套权限很高，生产机不建议直接照搬。 --- Codex App（官方）你要知道的重点 OpenAI codex/app 页面可提炼成这些要点： App 支持并行线程、内置 Git diff、Worktree、Automations 模式有 Local / Worktree / Cloud 与 IDE 扩展可自动同步上下文与线程 App、CLI、IDE 共享 MCP 配置 Web search、通知、图片输入、语音输入都可用 关于账号： ChatGPT Plus/Pro/Business/Edu/Enterprise 包含 Codex 用 API Key 登录时，部分能力（如 cloud threads）可能不可用 --- Windows 专项（官方 + 实操） 官方 app/windows 要点： 可通过 Microsoft Store 安装 命令行安装： 逐行解释： winget install Codex -s msstore：通过 Microsoft Store 源安装 Codex 桌面端。 集成终端可选 PowerShell / CMD / Git Bash / WSL 默认 Windows-native agent（PowerShell） 可切到 WSL agent，但需要重启 App 才生效 你如果用 Windows-native agent，官方建议优先把项目放 Windows 文件系统，稳定性更高。 --- Worktree / Local Environments / Automations（官方核心） 8.1 Worktree 只在 Git 仓库有效 可以并行跑多个任务而不互相污染 支持 Local 和 Worktree 之间 handoff 8.2 Local Environments 作用：给 Worktree 自动执行初始化脚本，比如： 逐行解释： npm install：安装当前 worktree 依赖。 npm run build：验证项目是否可正常构建，提前暴露环境问题。 还能定义常用动作（Run/Test/Lint）作为快捷按钮。 8.3 Automations 自动任务在本地运行（App 必须开着） Git 仓库会在后台 worktree 跑，减少干扰 上线前先手动试跑 prompt 高频调度会产生大量 worktree，要定期清理归档 安全建议： 不要直接用 full access 跑无人值守自动化 用 workspace-write + rules 白名单更稳 --- App 内高频命令（官方 commands 页） 常见 slash commands： /status：看线程 ID、上下文、限额 /review：进入审查模式 /mcp：看 MCP 服务状态 /plan：启用计划模式 /goal：给线程设置持续目标 /personality：切换回复风格 /feedback：反馈问题并附日志 --- 飞书来源里最有价值的“真实坑位” 10.1 模型不显示 / 不能选 飞书文档明确提到：有些新模型不会立刻在 UI 下拉里出现，需要手动改 config.toml。 10.2 stream disconnected before completion 属于常见网络链路类错误，优先检查： base_url 是否填错 所用节点是否可达 key 是否可用且没过期 10.3 插件激活失败 优先按顺序排查： Node/npm 是否正确安装 CLI 是否已能 codex --version 插件 provider/base_url/key 三项是否一致 --- 一套稳妥的“新手默认配置” 如果你不想冒险，先用这套： 逐行解释： model = \"gpt-5.5\"：默认模型先按官方当前本地默认示例写；若服务商未开放，再换成该服务商后台当前模型。 approval_policy = \"on-request\"：敏感动作需你确认。 sandbox_mode = \"workspace-write\"：只允许改当前项目目录。 model_reasoning_effort = \"medium\"：推理深度适中。 web_search = \"cached\"：默认走缓存搜索，稳定优先。 等稳定后，再逐步调高自动化程度。 --- 学习路径（按 B 站官方教程节奏） BV11erUBUEEX 视频简介对应的学习顺序很合理： 安装 CLI + IDE 扩展 在真实仓库完成首次运行 写 AGENTS.md 规范 配置环境（权限、沙箱、模型） 提示词模式化（计划 -> 执行 -> 验收） 进阶到无头模式与 SDK 建议你每学完一节就做一个可验证动作，而不是只看视频。 --- 最后给你一份“30 分钟自检清单” node -v / npm -v 正常 codex --version 正常 config.toml 路径与 provider 正确 key 可用（环境变量或 auth 文件） codex 能开新会话并读写当前仓库 插件能正常发起请求 /status 可看到当前会话信息 出错时先看 provider/base_url/key，再看权限与沙箱 --- 参考来源（本篇全部使用） 飞书：Codex 使用大全 <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf> PackyAPI：Codex 配置文档 <https://docs.packyapi.com/docs/cli/3-codex.html> OpenAI 官方：Codex App <https://developers.openai.com/codex/app> 飞书：Codex CLI/VSCode 插件版教程 <https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc> Bilibili：Codex 入门指南（BV11erUBUEEX） <https://www.bilibili.com/video/BV11erUBUEEX>"
     },
     {
       "type": "file",
@@ -8380,9 +8429,9 @@
       "attachments": [],
       "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
       "size": "14KB",
-      "lastModified": "2026-05-24T12:56:24.627Z",
-      "wordCount": 9707,
-      "content": "第七篇：Codex 三端逐字段截图对照版（每一步可复现） 更新时间：2026-05-22（已补最近桌面版与 IDE 增量能力提醒） 定位：主线 04（截图核对与SOP落地）。 前置：第六篇（先懂三端关系，再对照截图效率最高）。 下一篇建议：第二篇（进阶能力与长期治理）。 本篇不展开：字段原理深讲（看第三篇、第五篇）。 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。 如果主人怀疑“桌面版最近改得很大，我这篇截图是不是旧了”，请同时看第十一篇，因为桌面端最近新增的很多点已经不只属于设置页。 如果主人想先知道“这些截图对应的常用功能今天到底各自干什么”，先看第十二篇，再回来按本篇逐页截图核对会更轻松。 小白读完目标：你应该能把抽象配置名词和真实界面点位一一对应，并按截图自己复现或给团队做 SOP 核对。 章节导航（点击跳转）： [[toc]] --- 这篇怎么用（别跳过） 这篇不是“看懂概念”版，而是“照抄也能成功”版。 每个字段我都按同一结构写： 字段作用 CLI 怎么改 插件在哪看 App 在哪看 怎么验证 常见报错 截图点位 --- 先准备三份基础文件 1.1 用户配置文件 Windows：C:\\Users\\你的用户名\\.codex\\config.toml macOS/Linux：~/.codex/config.toml 1.2 认证文件 ~/.codex/auth.json 1.3 项目规则文件 <项目根目录>/AGENTS.md --- 字段 01：model（模型名） 2.1 作用 设置默认模型，例如：gpt-5.5。 旧资料里常见的 gpt-5.4 可以作为历史示例理解；gpt-5.3-codex 仍是专门编码模型，但官方当前默认本地示例已经更适合先写成 gpt-5.5。 2.2 CLI 怎么改 config.toml： 临时覆盖： 2.3 插件在哪看 插件本身一般不单独存 model，它走 CLI 共享配置。 你在 VS Code/Cursor 里改完 ~/.codex/config.toml 即可生效。 2.4 App 在哪看 App 也读取同一份配置；线程里可用命令面板/状态查看当前模型。 2.5 验证 CLI：输入 /status，看 active model 插件：发一条消息后看状态信息是否显示目标模型 App：线程状态里看 model 2.6 常见错 改了用户配置但项目 .codex/config.toml 覆盖了它 model_provider 对不上，导致模型名无效 2.7 截图点位 config.toml 中 model 行 三端各自的状态页//status 结果 --- 字段 02：model_provider + [model_providers.<id>] 3.1 作用 指定后端服务与接口地址。 3.2 CLI 怎么改 第三方示例（Packy）： 3.3 插件在哪看 插件走共享配置；如果插件里有 Provider/Base URL 输入框，务必与 config.toml 保持一致。 3.4 App 在哪看 App 设置里的 Agent 配置/MCP 与共享配置关联，但 provider 仍以 config.toml 为准。 3.5 验证 codex /status 看 provider 发起一次请求，确认不再报 401/404/provider not found 3.6 常见错 model_provider = \"packy\"，但 [model_providers.packycode]（名字不一致） 包月用户用了普通 base_url 3.7 截图点位 model_provider 行 [model_providers.<id>] 配置块 运行后状态页 provider 字段 --- 字段 03：approval_policy（审批策略） 4.1 作用 控制 Codex 执行命令前是否询问你。 4.2 CLI 怎么改 可选常见值：untrusted | on-request | never 会话内临时切换： /permissions 4.3 插件在哪看 插件不单独维护审批策略，读共享配置。 4.4 App 在哪看 App 设置 -> Agent configuration（审批与沙箱相关设置） 4.5 验证 让 Codex 执行一个会触发审批的命令（如写文件/运行命令）观察是否弹确认。 4.6 常见错 你以为是 never，但实际上被 profile 覆盖回 on-request 自动化任务默认无人值守，风险判断错误 4.7 截图点位 配置文件 approval_policy 审批弹窗（有/无） /status 中 policy --- 字段 04：sandbox_mode（沙箱范围） 5.1 作用 控制可读写范围和安全边界。 常见值： read-only workspace-write danger-full-access 5.2 CLI 怎么改 临时覆盖： 5.3 插件在哪看 共享配置生效；Windows 下插件还有 chatgpt.runCodexInWindowsSubsystemForLinux 可影响执行环境。 5.4 App 在哪看 App 设置 -> Agent configuration（沙箱相关） 5.5 验证 在工作区内写文件成功 在工作区外写文件被拦截（workspace-write 下） 5.6 常见错 为了省事直接上 danger-full-access + never 自动化任务跑在高权限模式，风险极高 5.7 截图点位 sandbox_mode 行 被拦截提示 App Agent 配置页 --- 字段 05：web_search 6.1 作用 控制联网搜索行为。 常见值：disabled | cached | live 6.2 CLI 怎么改 临时 live： 6.3 插件/App 在哪看 都读共享配置；全量行为以 config.toml 为准。 6.4 验证 让 Codex 搜索“今天的某个新闻” 观察结果是否来自缓存或实时 6.5 常见错 把旧字段 features.web_search_request 和新字段 web_search 混用，导致理解偏差。 6.6 截图点位 web_search 配置行 搜索结果输出片段 --- 字段 06：[profiles.<name>]（场景配置） 7.1 作用 用一组预设快速切换场景（开发/审计/自动化）。 7.2 CLI 怎么改 调用： 7.3 插件/App 在哪看 两端都受 profile 影响（如果启动参数或上层策略应用了 profile）。 7.4 验证 /status 看生效后的 model/policy/sandbox 是否按 profile 切换。 7.5 常见错 以为改了根配置就会生效，但其实一直在跑某个 profile。 7.6 截图点位 profiles 段 启动命令 --profile /status 对照 --- 字段 07：mcp_servers（外部工具） 8.1 作用 接入外部工具（数据库、浏览器、知识库、内部系统）。 8.2 CLI 怎么改 示例（stdio）： 也可用命令： 8.3 插件/App 在哪看 插件可用 /mcp 看状态 App 设置有 Integrations & MCP 面板 8.4 验证 codex mcp list 会话内 /mcp 能看到服务在线和工具列表 8.5 常见错 required = true 时服务起不来，直接导致任务失败 超时太短，工具偶发不可用 8.6 截图点位 MCP 配置块 codex mcp list 输出 /mcp 状态面板 --- 插件专属字段（只在 IDE 里改） 以下是官方 IDE 设置文档给出的重点项： chatgpt.cliExecutable chatgpt.commentCodeLensEnabled chatgpt.localeOverride chatgpt.openOnStartup chatgpt.runCodexInWindowsSubsystemForLinux 操作入口： VS Code -> Settings 搜索 Codex 或字段名 改值后重载窗口 验证： 打开命令面板执行 Codex 命令 看侧边栏、CodeLens、语言、WSL 行为是否符合预期 截图点位： Settings 搜索结果页 改值前后对比 --- App 专属设置（只在桌面端改） 官方设置页重点： General（输出、打开方式、防休眠） Appearance（主题与字体） Notifications（通知策略） Git（分支/提交/PR） Integrations & MCP（工具接入） Personalization（Friendly/Pragmatic/None） 验证： 线程执行完成是否按通知策略提醒 Prevent sleep while running 打开后长任务不中断 MCP 面板能看到已接入工具 截图点位： App Settings 总页 每个分组页 10.1 2026-05-22 增补：桌面版现在不止“设置页截图” 如果继续只按上面的设置分组截图，已经不够完整了。 最近桌面版应额外补截图核对的点至少包括： Worktrees：同一仓库多工作树入口、切换点位、当前线程对应关系 Handoff：本地线程交给云端、云端跑完回本地续做的入口 Local environments：本地环境选择、准备或复用的入口 Automations：自动化任务或持续流程相关页面 Built-in Git：分支、改动、提交、PR 相关界面 Integrated terminal：终端入口、线程与命令行联动位置 In-app browser：文档/网页查看入口 Integrations & MCP：不仅看设置页，还要看实际工具列表与可用状态 Windows 专页相关能力：如果你在 Windows 下实操，截图 SOP 里要单列一组 换句话说： 老版截图思路偏“字段核对” 新版桌面端截图思路要升级成“字段核对 + 工作流核对” 不然你会把最近最重要的增量都漏掉 --- 一份可直接照抄的“统一三端模板” 用法： 日常开发：默认配置 审计模式：codex --profile audit --- 排障顺序（严格按顺序） codex --version codex login status model_provider 与 [model_providers.<id>] 名称一致性 base_url 线路是否正确 auth.json 或环境变量 key 是否正确 --profile / 项目 .codex/config.toml 是否覆盖 /status 与 /debug-config 看实际生效值 插件/App 是否读取同一个 CODEX_HOME MCP 服务是否启动成功（尤其 required=true） Windows 场景是否需要切到 WSL 并重启 --- 本篇“截图对照”建议命名（直接落地） 建议保存路径（仓库内真实目录）：public/notes/images/codex/ 文章里引用图片时写（发布到 GitHub Pages 可直接访问）：notes/images/codex/<文件名>.png 建议命名： codex-07-01-config-model.png codex-07-02-status-model.png codex-07-03-provider-block.png codex-07-04-approval-popup.png codex-07-05-sandbox-blocked.png codex-07-06-vscode-settings-codex.png codex-07-07-app-settings-general.png codex-07-08-app-settings-mcp.png codex-07-09-mcp-list-cli.png codex-07-10-debug-config.png codex-07-11-app-worktrees.png codex-07-12-app-handoff.png codex-07-13-app-local-environments.png codex-07-14-app-automations.png codex-07-15-app-built-in-git.png codex-07-16-app-integrated-terminal.png codex-07-17-app-browser.png codex-07-18-app-windows.png 可直接复制的 Markdown 示例： 避免 404 的三条规则： 不要写本机绝对路径（如 C:\\Users\\...） 不要写以 / 开头的根路径（如 /notes/images/...，在 GitHub Pages 子路径下会失效） 不要假设 ./xxx.png 会自动按笔记同目录解析 --- 参考来源（本篇使用） OpenAI 官方 <https://developers.openai.com/codex/cli/reference> <https://developers.openai.com/codex/cli/features> <https://developers.openai.com/codex/cli/slash-commands> <https://developers.openai.com/codex/ide/settings> <https://developers.openai.com/codex/ide/commands> <https://developers.openai.com/codex/ide/slash-commands> <https://developers.openai.com/codex/app/settings> <https://developers.openai.com/codex/app/features> <https://developers.openai.com/codex/app/commands> <https://developers.openai.com/codex/app/worktrees> <https://developers.openai.com/codex/app/local-environments> <https://developers.openai.com/codex/app/automations> <https://developers.openai.com/codex/app/windows> <https://developers.openai.com/codex/config-basic> <https://developers.openai.com/codex/config-reference> 第三方/社区 <https://docs.packyapi.com/docs/cli/3-codex.html> <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf> <https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc> <https://www.bilibili.com/video/BV11erUBUEEX>"
+      "lastModified": "2026-05-31T08:11:43.209Z",
+      "wordCount": 9713,
+      "content": "第七篇：Codex 三端逐字段截图对照版（每一步可复现） 更新时间：2026-05-22（已补最近桌面版与 IDE 增量能力提醒） 定位：主线 04（截图核对与SOP落地）。 前置：第六篇（先懂三端关系，再对照截图效率最高）。 下一篇建议：第十二篇（当前常用功能与进阶工作流总手册）。 本篇不展开：字段原理深讲（看第三篇、第五篇）。 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。 如果主人怀疑“桌面版最近改得很大，我这篇截图是不是旧了”，请同时看第十二篇，因为最近产品更新与常用工作流已经统一并到那一篇。 如果主人想先知道“这些截图对应的常用功能今天到底各自干什么”，先看第十二篇，再回来按本篇逐页截图核对会更轻松。 小白读完目标：你应该能把抽象配置名词和真实界面点位一一对应，并按截图自己复现或给团队做 SOP 核对。 章节导航（点击跳转）： [[toc]] --- 这篇怎么用（别跳过） 这篇不是“看懂概念”版，而是“照抄也能成功”版。 每个字段我都按同一结构写： 字段作用 CLI 怎么改 插件在哪看 App 在哪看 怎么验证 常见报错 截图点位 --- 先准备三份基础文件 1.1 用户配置文件 Windows：C:\\Users\\你的用户名\\.codex\\config.toml macOS/Linux：~/.codex/config.toml 1.2 认证文件 ~/.codex/auth.json 1.3 项目规则文件 <项目根目录>/AGENTS.md --- 字段 01：model（模型名） 2.1 作用 设置默认模型，例如：gpt-5.5。 旧资料里常见的 gpt-5.4 可以作为历史示例理解；gpt-5.3-codex 仍是专门编码模型，但官方当前默认本地示例已经更适合先写成 gpt-5.5。 2.2 CLI 怎么改 config.toml： 临时覆盖： 2.3 插件在哪看 插件本身一般不单独存 model，它走 CLI 共享配置。 你在 VS Code/Cursor 里改完 ~/.codex/config.toml 即可生效。 2.4 App 在哪看 App 也读取同一份配置；线程里可用命令面板/状态查看当前模型。 2.5 验证 CLI：输入 /status，看 active model 插件：发一条消息后看状态信息是否显示目标模型 App：线程状态里看 model 2.6 常见错 改了用户配置但项目 .codex/config.toml 覆盖了它 model_provider 对不上，导致模型名无效 2.7 截图点位 config.toml 中 model 行 三端各自的状态页//status 结果 --- 字段 02：model_provider + [model_providers.<id>] 3.1 作用 指定后端服务与接口地址。 3.2 CLI 怎么改 第三方示例（Packy）： 3.3 插件在哪看 插件走共享配置；如果插件里有 Provider/Base URL 输入框，务必与 config.toml 保持一致。 3.4 App 在哪看 App 设置里的 Agent 配置/MCP 与共享配置关联，但 provider 仍以 config.toml 为准。 3.5 验证 codex /status 看 provider 发起一次请求，确认不再报 401/404/provider not found 3.6 常见错 model_provider = \"packy\"，但 [model_providers.packycode]（名字不一致） 包月用户用了普通 base_url 3.7 截图点位 model_provider 行 [model_providers.<id>] 配置块 运行后状态页 provider 字段 --- 字段 03：approval_policy（审批策略） 4.1 作用 控制 Codex 执行命令前是否询问你。 4.2 CLI 怎么改 可选常见值：untrusted | on-request | never 会话内临时切换： /permissions 4.3 插件在哪看 插件不单独维护审批策略，读共享配置。 4.4 App 在哪看 App 设置 -> Agent configuration（审批与沙箱相关设置） 4.5 验证 让 Codex 执行一个会触发审批的命令（如写文件/运行命令）观察是否弹确认。 4.6 常见错 你以为是 never，但实际上被 profile 覆盖回 on-request 自动化任务默认无人值守，风险判断错误 4.7 截图点位 配置文件 approval_policy 审批弹窗（有/无） /status 中 policy --- 字段 04：sandbox_mode（沙箱范围） 5.1 作用 控制可读写范围和安全边界。 常见值： read-only workspace-write danger-full-access 5.2 CLI 怎么改 临时覆盖： 5.3 插件在哪看 共享配置生效；Windows 下插件还有 chatgpt.runCodexInWindowsSubsystemForLinux 可影响执行环境。 5.4 App 在哪看 App 设置 -> Agent configuration（沙箱相关） 5.5 验证 在工作区内写文件成功 在工作区外写文件被拦截（workspace-write 下） 5.6 常见错 为了省事直接上 danger-full-access + never 自动化任务跑在高权限模式，风险极高 5.7 截图点位 sandbox_mode 行 被拦截提示 App Agent 配置页 --- 字段 05：web_search 6.1 作用 控制联网搜索行为。 常见值：disabled | cached | live 6.2 CLI 怎么改 临时 live： 6.3 插件/App 在哪看 都读共享配置；全量行为以 config.toml 为准。 6.4 验证 让 Codex 搜索“今天的某个新闻” 观察结果是否来自缓存或实时 6.5 常见错 把旧字段 features.web_search_request 和新字段 web_search 混用，导致理解偏差。 6.6 截图点位 web_search 配置行 搜索结果输出片段 --- 字段 06：[profiles.<name>]（场景配置） 7.1 作用 用一组预设快速切换场景（开发/审计/自动化）。 7.2 CLI 怎么改 调用： 7.3 插件/App 在哪看 两端都受 profile 影响（如果启动参数或上层策略应用了 profile）。 7.4 验证 /status 看生效后的 model/policy/sandbox 是否按 profile 切换。 7.5 常见错 以为改了根配置就会生效，但其实一直在跑某个 profile。 7.6 截图点位 profiles 段 启动命令 --profile /status 对照 --- 字段 07：mcp_servers（外部工具） 8.1 作用 接入外部工具（数据库、浏览器、知识库、内部系统）。 8.2 CLI 怎么改 示例（stdio）： 也可用命令： 8.3 插件/App 在哪看 插件可用 /mcp 看状态 App 设置有 Integrations & MCP 面板 8.4 验证 codex mcp list 会话内 /mcp 能看到服务在线和工具列表 8.5 常见错 required = true 时服务起不来，直接导致任务失败 超时太短，工具偶发不可用 8.6 截图点位 MCP 配置块 codex mcp list 输出 /mcp 状态面板 --- 插件专属字段（只在 IDE 里改） 以下是官方 IDE 设置文档给出的重点项： chatgpt.cliExecutable chatgpt.commentCodeLensEnabled chatgpt.localeOverride chatgpt.openOnStartup chatgpt.runCodexInWindowsSubsystemForLinux 操作入口： VS Code -> Settings 搜索 Codex 或字段名 改值后重载窗口 验证： 打开命令面板执行 Codex 命令 看侧边栏、CodeLens、语言、WSL 行为是否符合预期 截图点位： Settings 搜索结果页 改值前后对比 --- App 专属设置（只在桌面端改） 官方设置页重点： General（输出、打开方式、防休眠） Appearance（主题与字体） Notifications（通知策略） Git（分支/提交/PR） Integrations & MCP（工具接入） Personalization（Friendly/Pragmatic/None） 验证： 线程执行完成是否按通知策略提醒 Prevent sleep while running 打开后长任务不中断 MCP 面板能看到已接入工具 截图点位： App Settings 总页 每个分组页 10.1 2026-05-22 增补：桌面版现在不止“设置页截图” 如果继续只按上面的设置分组截图，已经不够完整了。 最近桌面版应额外补截图核对的点至少包括： Worktrees：同一仓库多工作树入口、切换点位、当前线程对应关系 Handoff：本地线程交给云端、云端跑完回本地续做的入口 Local environments：本地环境选择、准备或复用的入口 Automations：自动化任务或持续流程相关页面 Built-in Git：分支、改动、提交、PR 相关界面 Integrated terminal：终端入口、线程与命令行联动位置 In-app browser：文档/网页查看入口 Integrations & MCP：不仅看设置页，还要看实际工具列表与可用状态 Windows 专页相关能力：如果你在 Windows 下实操，截图 SOP 里要单列一组 换句话说： 老版截图思路偏“字段核对” 新版桌面端截图思路要升级成“字段核对 + 工作流核对” 不然你会把最近最重要的增量都漏掉 --- 一份可直接照抄的“统一三端模板” 用法： 日常开发：默认配置 审计模式：codex --profile audit --- 排障顺序（严格按顺序） codex --version codex login status model_provider 与 [model_providers.<id>] 名称一致性 base_url 线路是否正确 auth.json 或环境变量 key 是否正确 --profile / 项目 .codex/config.toml 是否覆盖 /status 与 /debug-config 看实际生效值 插件/App 是否读取同一个 CODEX_HOME MCP 服务是否启动成功（尤其 required=true） Windows 场景是否需要切到 WSL 并重启 --- 本篇“截图对照”建议命名（直接落地） 建议保存路径（仓库内真实目录）：public/notes/images/codex/ 文章里引用图片时写（发布到 GitHub Pages 可直接访问）：notes/images/codex/<文件名>.png 建议命名： codex-07-01-config-model.png codex-07-02-status-model.png codex-07-03-provider-block.png codex-07-04-approval-popup.png codex-07-05-sandbox-blocked.png codex-07-06-vscode-settings-codex.png codex-07-07-app-settings-general.png codex-07-08-app-settings-mcp.png codex-07-09-mcp-list-cli.png codex-07-10-debug-config.png codex-07-11-app-worktrees.png codex-07-12-app-handoff.png codex-07-13-app-local-environments.png codex-07-14-app-automations.png codex-07-15-app-built-in-git.png codex-07-16-app-integrated-terminal.png codex-07-17-app-browser.png codex-07-18-app-windows.png 可直接复制的 Markdown 示例： 避免 404 的三条规则： 不要写本机绝对路径（如 C:\\Users\\...） 不要写以 / 开头的根路径（如 /notes/images/...，在 GitHub Pages 子路径下会失效） 不要假设 ./xxx.png 会自动按笔记同目录解析 --- 参考来源（本篇使用） OpenAI 官方 <https://developers.openai.com/codex/cli/reference> <https://developers.openai.com/codex/cli/features> <https://developers.openai.com/codex/cli/slash-commands> <https://developers.openai.com/codex/ide/settings> <https://developers.openai.com/codex/ide/commands> <https://developers.openai.com/codex/ide/slash-commands> <https://developers.openai.com/codex/app/settings> <https://developers.openai.com/codex/app/features> <https://developers.openai.com/codex/app/commands> <https://developers.openai.com/codex/app/worktrees> <https://developers.openai.com/codex/app/local-environments> <https://developers.openai.com/codex/app/automations> <https://developers.openai.com/codex/app/windows> <https://developers.openai.com/codex/config-basic> <https://developers.openai.com/codex/config-reference> 第三方/社区 <https://docs.packyapi.com/docs/cli/3-codex.html> <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf> <https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc> <https://www.bilibili.com/video/BV11erUBUEEX>"
     },
     {
       "type": "file",
@@ -15466,51 +15515,50 @@
               "children": [
                 {
                   "type": "file",
-                  "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-                  "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+                  "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+                  "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
                   "fileTitle": "第一篇_Codex从0到1配置实战",
                   "filename": "第一篇_Codex从0到1配置实战.md",
                   "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "CLI",
-                    "配置实战",
-                    "中转站",
-                    "API Key"
+                    "程序员上手",
+                    "终端界面",
+                    "开发工作流"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-                  "size": "7KB",
-                  "lastModified": "2026-05-24T12:56:24.626Z",
-                  "wordCount": 4019
+                  "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+                  "size": "12KB",
+                  "lastModified": "2026-05-31T08:11:43.207Z",
+                  "wordCount": 6661
                 },
                 {
                   "type": "file",
-                  "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-                  "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+                  "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+                  "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
                   "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
                   "filename": "第二篇_Codex官方资料补充与进阶实践.md",
                   "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "官方文档",
-                    "exec",
-                    "MCP",
-                    "自动化"
+                    "进阶实践",
+                    "合并说明"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-                  "size": "11KB",
-                  "lastModified": "2026-05-24T12:56:24.630Z",
-                  "wordCount": 7161
+                  "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:09:12.819Z",
+                  "wordCount": 532
                 },
                 {
                   "type": "file",
@@ -15538,27 +15586,28 @@
                 },
                 {
                   "type": "file",
-                  "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-                  "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+                  "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+                  "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
                   "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
                   "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
                   "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
+                    "多线路",
+                    "OpenAI",
                     "Packy",
-                    "中转站",
-                    "配置迁移",
-                    "多线路"
+                    "yunyi",
+                    "rpcod"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+                  "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
                   "size": "14KB",
-                  "lastModified": "2026-05-24T12:56:24.636Z",
-                  "wordCount": 9017
+                  "lastModified": "2026-05-31T08:07:36.733Z",
+                  "wordCount": 7946
                 },
                 {
                   "type": "file",
@@ -15629,8 +15678,8 @@
                   "attachments": [],
                   "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
                   "size": "14KB",
-                  "lastModified": "2026-05-24T12:56:24.627Z",
-                  "wordCount": 9707
+                  "lastModified": "2026-05-31T08:11:43.209Z",
+                  "wordCount": 9713
                 },
                 {
                   "type": "file",
@@ -15677,8 +15726,8 @@
                   "attachments": [],
                   "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
                   "size": "15KB",
-                  "lastModified": "2026-05-24T12:56:24.629Z",
-                  "wordCount": 9657
+                  "lastModified": "2026-05-31T08:11:43.210Z",
+                  "wordCount": 9656
                 },
                 {
                   "type": "file",
@@ -15707,8 +15756,8 @@
                 },
                 {
                   "type": "file",
-                  "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-                  "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+                  "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+                  "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
                   "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
                   "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
                   "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -15725,58 +15774,105 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-                  "size": "21KB",
-                  "lastModified": "2026-05-24T12:56:24.634Z",
-                  "wordCount": 11000
+                  "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+                  "size": "25KB",
+                  "lastModified": "2026-05-31T07:58:54.784Z",
+                  "wordCount": 13657
                 },
                 {
                   "type": "file",
-                  "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-                  "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-                  "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-                  "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-                  "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-                  "date": "2026-05-22T00:00:00.000Z",
+                  "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+                  "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+                  "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+                  "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+                  "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
-                    "桌面版",
-                    "IDE",
-                    "云任务",
-                    "Windows",
-                    "OpenAI官方"
+                    "CLI",
+                    "英文提示",
+                    "终端界面",
+                    "排错"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-                  "size": "17KB",
-                  "lastModified": "2026-05-24T12:56:24.633Z",
-                  "wordCount": 8661
+                  "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-31T06:10:44.846Z",
+                  "wordCount": 10562
                 },
                 {
                   "type": "file",
-                  "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-                  "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+                  "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+                  "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+                  "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+                  "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+                  "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+                  "date": "2026-05-31T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Codex",
+                    "更新总表",
+                    "桌面版",
+                    "IDE",
+                    "合并说明"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:11:43.196Z",
+                  "wordCount": 523
+                },
+                {
+                  "type": "file",
+                  "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+                  "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
                   "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
                   "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
                   "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-                  "date": "2026-05-22T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "学习路线",
                     "小白入门",
+                    "CLI",
                     "导读"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+                  "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
                   "size": "9KB",
-                  "lastModified": "2026-05-24T12:56:24.637Z",
-                  "wordCount": 4265
+                  "lastModified": "2026-05-31T08:11:43.201Z",
+                  "wordCount": 4429
+                },
+                {
+                  "type": "file",
+                  "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+                  "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+                  "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+                  "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+                  "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+                  "date": "2026-05-31T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Codex",
+                    "rpcod",
+                    "CLI",
+                    "合并说明"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:11:43.198Z",
+                  "wordCount": 602
                 }
               ]
             },
@@ -17431,6 +17527,12 @@
           "wordCount": 17657
         }
       ]
+    },
+    {
+      "type": "directory",
+      "name": "images",
+      "path": "images",
+      "children": []
     },
     {
       "type": "directory",
@@ -20424,7 +20526,7 @@
       ]
     }
   ],
-  "totalNotes": 418,
+  "totalNotes": 420,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-30T11:27:43.927Z"
+  "lastUpdated": "2026-05-31T08:18:38.434Z"
 }

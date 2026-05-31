@@ -1,440 +1,567 @@
 ---
-title: 第四篇：Codex 多来源完整配置手册（小白友好版）
-date: 2026-03-08
+title: 第四篇：Codex 多线路接入与迁移总手册（合并版）
+date: 2026-05-31
 category: AI工具
 tags:
   - Codex
-  - Packy
-  - 中转站
-  - 配置迁移
   - 多线路
-description: 对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。
+  - OpenAI
+  - Packy
+  - yunyi
+  - rpcod
+description: 将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。
 ---
 
-# 第四篇：Codex 多来源完整配置手册（小白友好版）
+# 第四篇：Codex 多线路接入与迁移总手册（合并版）
 
-> 更新时间：2026-03-08  
-> 定位：线路选读 A（官方 + Packy + 飞书方案对比与迁移）。  
-> 前置：至少先读第三篇、第六篇（避免把“字段问题”误判成“线路问题”）。  
-> 使用方式：按自己服务商对应小节阅读，不需要从头到尾通读。  
-> 本篇不展开：逐字段截图核对（看第七篇）。
-> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
-> 小白读完目标：你应该能判断自己该走官方、Packy 还是第三方线路，并知道“配置没生效”到底是线路问题、字段问题，还是三端同步问题。
-
-章节导航（点击跳转）：
+> 更新时间：2026-05-31  
+> 定位：线路总手册。专门解决“我要走哪条线路、配置该怎么落、切线路时最容易在哪翻车”这些问题。  
+> 前置建议：先读第一篇、第三篇、第六篇。先把 CLI 主线、配置层级和三端差异搞清，再来看线路，判断会稳很多。  
+> 合并说明：原第四篇与“rpcod 线路补充篇”的有效内容已经合并到本篇，后者保留为历史跳转入口。  
+> 使用方式：不要从头硬背。先看第 1、2、3 节做选路，再跳到自己实际在用的 provider 模板与排错小节。
 
 [[toc]]
 
 ---
 
-## 阅读策略（去重版）
+## 1. 先讲结论：为什么现在应该把几篇线路文合成一篇
 
-1. 如果你已经读过第三篇 + 第五篇，本篇 `2~4` 节只需快速过一遍
-2. 真正需要细读的是 `5.x`（你所用服务商路线）
-3. 三端联动与排障回看第六篇；逐字段截图核对回看第七篇
+主人前面提得很对，线路文最容易写碎，结果就是：
 
-## 0. 先看这张“路线图”
+1. 一篇讲官方
+2. 一篇讲 Packy
+3. 一篇讲 yunyi
+4. 一篇单独讲 rpcod
+5. 每篇都重复 Node、CLI 安装、`config.toml` 路径、`auth.json`、权限组合
 
-你现在有 3 条路线可以用 Codex：
+这样不利于真实使用。  
+真正开发时，主人要解决的其实只有 4 个问题：
 
-1. 官方路线（OpenAI）
-2. 聚合网关路线（PackyAPI）
-3. 第三方服务路线（飞书文档里的 yunyi / rpcod）
+1. 我现在该走官方还是第三方线路
+2. 我这条线路最小可用配置长什么样
+3. 我从一条线路切到另一条时，哪些字段必须跟着换
+4. 如果不生效，到底是 provider、模型、认证、目录还是三端同步问题
 
-新手建议顺序：
-
-1. 先用官方路线跑通（概念最标准）
-2. 再按你购买的服务切到网关路线
-3. 最后做 App / IDE / CLI 三端统一配置
-
----
-
-## 1. 五个来源分别负责什么
-
-1. 飞书 1（`KaQ...`）：偏“售后实操”，给了账号、套餐、模型、CLI 与插件配置
-2. PackyAPI 文档：讲如何把 Codex 接到 Packy API（CLI + VS Code）
-3. OpenAI `codex/app`：官方 Codex App 功能与使用边界
-4. 飞书 2（`Iq8...`）：补了 `yunyi` 路线、激活器、常见错误（如 `YUNYI_KEY`）
-5. B 站 `BV11erUBUEEX`：官方教程结构化学习路径（安装、AGENTS、工作流、无头模式、SDK）
+所以这篇合并版只做一件事：  
+把“选路、配置、迁移、排错”放在同一篇里讲完整。
 
 ---
 
-## 2. 先统一基础环境（所有路线都需要）
+## 2. 先分清：线路问题和配置问题不是一回事
 
-这部分与第一篇/第三篇有重叠，这里只保留最小检查清单：
+很多人觉得自己“线路不行”，其实根因并不在线路本身。
 
-1. `node -v`、`npm -v` 正常（Node LTS/20+）
-2. `npm i -g @openai/codex` 安装成功
-3. `codex --version` 能输出版本
-4. 网络慢再切镜像：`npm config set registry https://registry.npmmirror.com`
+更稳的判断顺序是：
 
----
+1. CLI 本体有没有装好
+2. 当前生效的是哪份 `codex`
+3. `config.toml` 是不是改在对的位置
+4. `model_provider`、`base_url`、key 是否匹配
+5. 当前 provider 后台到底开放了哪些模型
+6. CLI、VS Code 插件、桌面 App 是不是跑在同一套环境里
 
-## 3. 配置文件放哪（这是第一高频坑）
+所以主人以后看到“切线路后不能用”，先别一口咬定是服务商问题。  
+先按下面这张图判断：
 
-只记三条结论：
-
-1. 用户级：`~/.codex/config.toml`，项目级：`<repo>/.codex/config.toml`
-2. Windows 常见路径：`C:\Users\你的用户名\.codex\config.toml`
-3. 生效顺序是“命令行 > profile > 项目级 > 用户级 > 系统级 > 默认值”
-
-如果你想看完整解释和排错案例，直接看第三篇第 4 节 + 第五篇第 2 节。
-
----
-
-## 4. 关键配置项白话解释（先看懂再抄）
-
-为避免和第五篇重复，这里压缩成“路线切换必看 5 字段”：
-
-1. `model`：默认模型名（官方当前本地默认示例更适合先参考 `gpt-5.5`；不要机械沿用旧资料里的 `gpt-5.4`）
-2. `model_provider`：使用哪个提供方（如 `openai`/`packycode`/`yunyi`/`codex`）
-3. `[model_providers.<id>].base_url`：服务地址
-4. 凭据字段：`env_key` 或 `experimental_bearer_token` 或 `auth.json`
-5. 安全组合：`approval_policy` + `sandbox_mode`
-
-推荐默认组合：`workspace-write + on-request`。  
-完整字段字典请直接查第五篇第 3 节。
-
----
-
-## 5. 三条路线的可直接用模板
-
-## 5.1 官方路线（OpenAI，推荐先跑通）
-
-```toml
-model_provider = "openai"
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
-web_search = "cached"
+```mermaid
+flowchart TD
+  A["Codex 跑不通"] --> B{"CLI 本体正常吗"}
+  B -->|否| C["先修 Node / npm / codex 安装链路"]
+  B -->|是| D{"配置改在正确位置吗"}
+  D -->|否| E["先修 ~/.codex 或项目 .codex 层级"]
+  D -->|是| F{"provider / base_url / key 对得上吗"}
+  F -->|否| G["先修线路配置"]
+  F -->|是| H{"当前模型真实开放吗"}
+  H -->|否| I["换成后台当前可用模型"]
+  H -->|是| J["再查三端同步、权限、目录、MCP"]
 ```
 
-逐行解释：
+---
 
-1. `model_provider = "openai"`：走官方 OpenAI 提供方。
-2. `model = "gpt-5.5"`：官方路线默认模型先对齐当前推荐的本地示例。
-3. `model_reasoning_effort = "medium"`：推理强度中档，速度和质量较平衡。
-4. `approval_policy = "on-request"`：敏感动作由你确认后执行。
-5. `sandbox_mode = "workspace-write"`：仅允许修改当前项目目录。
-6. `web_search = "cached"`：默认使用缓存搜索索引，稳定性更高。
+## 3. 线路到底怎么选
 
-打开 `codex` 后按提示登录 ChatGPT 或 API Key 即可。
+如果主人不想看一堆背景，先记这 4 句：
+
+1. 官方路线最标准，最适合先建立正确心智
+2. Packy 更像 OpenAI-compatible 网关，适合已经明确走聚合 provider 的人
+3. yunyi / rpcod 更像第三方中转样例，能不能稳定用，取决于服务商后台当前开放能力
+4. 第三方线路永远不能写成“长期固定答案”，只能写成“当前示例”
+
+### 3.1 官方路线
+
+适合：
+
+1. 第一次系统学 Codex
+2. 想先对齐官方默认工作流
+3. 不想一开始就被中转配置带偏
+
+优点：
+
+1. 文档口径最标准
+2. 出问题最容易对照官方资料
+3. 模型、权限、App、IDE、CLI 的描述最一致
+
+注意：
+
+1. 具体可用能力仍要看你的账号类型
+2. 不是所有桌面 App / 云任务能力都等价开放给所有登录方式
+
+### 3.2 Packy 路线
+
+适合：
+
+1. 已经习惯 OpenAI-compatible provider 配置方式
+2. 要在 CLI 和 IDE 里统一一个网关地址
+3. 想把 key 管理放进环境变量
+
+优点：
+
+1. provider 结构清晰
+2. 比较适合工程化迁移
+3. CLI 和插件侧都容易解释
+
+注意：
+
+1. 模型名不要照抄文章示例
+2. 以你后台当前显示的可用模型为准
+
+### 3.3 yunyi 路线
+
+适合：
+
+1. 已经确定要走这条第三方线路
+2. 能接受它和官方资料之间会有偏差
+3. 知道自己是在维护一条“服务商样例”，不是官方通用默认值
+
+注意：
+
+1. bearer token、provider 名、base URL 都容易写混
+2. 某些激活器脚本只适合作为临时辅助，不适合作为长期原理理解
+
+### 3.4 rpcod 路线
+
+适合：
+
+1. 你已经在用 rpcod 后台和套餐
+2. 你只想把 Codex CLI 接上这条具体线路
+3. 你愿意按服务商当前开放模型自己核对
+
+注意：
+
+1. 本篇里保留 rpcod 的实操，是为了方便落地
+2. 但它不再是整组 Codex 文档的第一篇入口
+3. 以后主人再维护，也别把 rpcod 样例写成“多数人默认第一步”
 
 ---
 
-## 5.2 PackyAPI 路线（来自 packyapi 文档）
+## 4. 所有线路都先做这 5 个基础检查
 
-```toml
-model_provider = "packy"
-model = "gpt-5.5"
-model_reasoning_effort = "high"
+这部分不展开一堆基础概念，只保留线路切换前最小检查清单。
 
-[model_providers.packy]
-name = "packy"
-base_url = "https://api.packyapi.com/v1"
-env_key = "PACKY_API_KEY"
+### 4.1 Node 与 npm
+
+```bash
+node -v
+npm -v
 ```
 
-逐行解释：
+确认：
 
-1. `model_provider = "packy"`：默认走你自定义的 `packy` 提供方。
-2. `model = "gpt-5.5"`：示例里先按当前官方默认口径写；如果 Packy 后台没开放，就改成你后台当前显示的模型名。
-3. `model_reasoning_effort = "high"`：提升推理深度，通常更慢。
-4. `[model_providers.packy]`：声明一个名为 `packy` 的 provider 配置块。
-5. `name = "packy"`：provider 显示名/标识名，保持和上面一致最稳。
-6. `base_url = "https://api.packyapi.com/v1"`：Packy API 网关地址。
-7. `env_key = "PACKY_API_KEY"`：从环境变量读取密钥，不把 key 写死在配置里。
+1. Node 能正常执行
+2. npm 能正常执行
 
-然后把环境变量写好（PowerShell 示例）：
+如果你是在本博客仓库里跑脚本，按仓库规则先做：
 
 ```powershell
-[Environment]::SetEnvironmentVariable("PACKY_API_KEY","你的PackyKey","User")
+pwsh -File scripts/checkNodeRuntime.ps1
 ```
 
-逐行解释：
+### 4.2 Codex CLI
 
-1. `SetEnvironmentVariable(..., "User")`：把 `PACKY_API_KEY` 写入当前用户级环境变量。
-2. `"你的PackyKey"`：替换为真实密钥后，重开终端再运行 `codex` 更稳。
+```bash
+npm i -g @openai/codex
+codex --version
+```
 
-VS Code 插件侧，Packy 文档给的是：
+### 4.3 当前到底跑的是哪一份 `codex`
 
-1. Provider 选 OpenAI Compatible  
-2. Base URL 填 `https://api.packyapi.com/v1`  
-3. API Key 填 Packy 仪表盘里的 Key
+Windows：
+
+```powershell
+where.exe codex
+```
+
+macOS / Linux / WSL：
+
+```bash
+which codex
+```
+
+### 4.4 配置文件位置
+
+用户级：
+
+1. Windows：`C:\Users\你的用户名\.codex\config.toml`
+2. macOS / Linux：`~/.codex/config.toml`
+
+项目级：
+
+1. `<repo>/.codex/config.toml`
+
+### 4.5 最小安全默认组合
+
+主人日常更推荐：
+
+```toml
+approval_policy = 'on-request'
+sandbox_mode = 'workspace-write'
+```
+
+除非你非常清楚风险，否则不要一开始就把第三方样例里的高权限组合抄进去。
 
 ---
 
-## 5.3 飞书 yunyi 路线（来自 `Iq8...` 文档）
+## 5. 线路切换时，只盯这 6 个关键点
+
+从一条 provider 切到另一条时，最常变的是这几项：
+
+1. `model_provider`
+2. `model`
+3. `[model_providers.<id>]`
+4. `base_url`
+5. 鉴权方式：`env_key` / `experimental_bearer_token` / `auth.json`
+6. 额外行为：`requires_openai_auth`、`wire_api`、`preferred_auth_method`
+
+把它理解成这张迁移图就够：
+
+```mermaid
+flowchart LR
+  A["切线路"] --> B["换 provider id"]
+  A --> C["换 base_url"]
+  A --> D["换 model 为后台真实可用值"]
+  A --> E["换认证方式"]
+  A --> F["复查 CLI / 插件 / App 是否同源"]
+```
+
+很多人切线路失败，就是只换了 `base_url`，没换 `model_provider` 或认证方式。
+
+---
+
+## 6. 四条路线的最小可用模板
+
+这里统一强调一次：
+
+1. 模型名只作当前示例
+2. 真正落地前，以当前 provider 后台真实开放模型为准
+3. 如果后台没开放示例模型，不要硬填
+
+### 6.1 官方路线
 
 ```toml
-model_provider = "yunyi"
-model_reasoning_effort = "medium"
+model_provider = 'openai'
+model = 'gpt-5.5'
+model_reasoning_effort = 'medium'
+approval_policy = 'on-request'
+sandbox_mode = 'workspace-write'
+web_search = 'cached'
+```
+
+这套适合：
+
+1. 第一次跑官方标准主线
+2. 先把 CLI、IDE、App 的心智跑顺
+
+### 6.2 Packy 路线
+
+```toml
+model_provider = 'packy'
+model = 'gpt-5.5'
+model_reasoning_effort = 'high'
+
+[model_providers.packy]
+name = 'packy'
+base_url = 'https://api.packyapi.com/v1'
+env_key = 'PACKY_API_KEY'
+```
+
+PowerShell 环境变量示例：
+
+```powershell
+[Environment]::SetEnvironmentVariable('PACKY_API_KEY', '你的PackyKey', 'User')
+```
+
+最重要的 3 个点：
+
+1. provider id 要一致
+2. `base_url` 要对
+3. key 放环境变量里更稳
+
+### 6.3 yunyi 路线
+
+```toml
+model_provider = 'yunyi'
+model = 'gpt-5.5'
+model_reasoning_effort = 'medium'
 disable_response_storage = true
-preferred_auth_method = "apikey"
-model = "gpt-5.5"
+preferred_auth_method = 'apikey'
 
 [model_providers.yunyi]
-name = "yunyi"
-base_url = "https://yunyi.rdzhvip.com/codex"
-wire_api = "responses"
-experimental_bearer_token = "这里填卡号或令牌"
+name = 'yunyi'
+base_url = 'https://yunyi.rdzhvip.com/codex'
+wire_api = 'responses'
+experimental_bearer_token = '这里填卡号或令牌'
 requires_openai_auth = true
 ```
 
-逐行解释：
-
-1. `model_provider = "yunyi"`：默认走 `yunyi` 线路。
-2. `model_reasoning_effort = "medium"`：推理强度中档。
-3. `disable_response_storage = true`：减少响应落盘，偏隐私场景。
-4. `preferred_auth_method = "apikey"`：优先使用 API key 认证方式。
-5. `model = "gpt-5.5"`：先按当前官方默认示例写；如果 `yunyi` 后台未开放，再换成后台当前提供的模型名。
-6. `[model_providers.yunyi]`：定义 yunyi 提供方细节。
-7. `base_url`：yunyi 的网关地址。
-8. `experimental_bearer_token`：直接写令牌，方便但安全性低于环境变量。
-9. `wire_api = "responses"`：使用 responses 协议。
-10. `requires_openai_auth = true`：要求 OpenAI 认证链路兼容。
-
-文档里还给了激活器方式：
+如果你走激活器样例：
 
 ```bash
 npx yunyi-activator
 ```
 
-逐行解释：
+但要知道：
 
-1. `npx yunyi-activator`：临时下载并运行激活脚本，完成 yunyi 相关初始化。
+1. 这更像辅助脚本
+2. 不等于理解了配置原理
+3. 真排错时还是得回到 provider、base URL、认证和模型本身
 
-常见错误（文档原意）：
+### 6.4 rpcod 路线
 
-1. 提示缺少 `YUNYI_KEY`：检查并移除冲突配置
-2. 权限报错：尝试 `sudo npx yunyi-activator`（仅 Linux/macOS 场景）
+rpcod 这部分现在直接并入本篇，不再单独放一篇长文重复讲。
 
----
-
-## 5.4 飞书 rpcod 路线（来自 `KaQ...` 文档）
+更稳的最小写法建议是：
 
 ```toml
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
+model = 'gpt-5.5'
+model_reasoning_effort = 'xhigh'
 disable_response_storage = true
-sandbox_mode = "danger-full-access"
-approval_policy = "never"
-model_provider = "codex"
-web_search = "cached"
+approval_policy = 'on-request'
+sandbox_mode = 'workspace-write'
+file_opener = 'vscode'
+model_provider = 'codex'
+web_search = 'cached'
+
+[history]
+persistence = 'save-all'
 
 [model_providers.codex]
-name = "codex"
-base_url = "https://ai.rpcod.com"
-wire_api = "responses"
+name = 'codex'
+base_url = 'https://ai.rpcod.com'
+wire_api = 'responses'
 requires_openai_auth = true
 ```
 
-逐行解释：
-
-1. `model = "gpt-5.5"`：先按当前官方默认示例写；如果 `rpcod` 后台还没开放，就用后台当前实际可选模型。
-2. `model_reasoning_effort = "xhigh"`：高强度推理，成本和时延都更高。
-3. `sandbox_mode = "danger-full-access"`：取消沙箱隔离，风险最高。
-4. `approval_policy = "never"`：不弹审批，自动执行风险动作。
-5. `model_provider = "codex"`：默认使用 `codex` provider 块。
-6. `[model_providers.codex].base_url = "https://ai.rpcod.com"`：rpcod 后端地址。
-7. `wire_api = "responses"`：采用 responses 协议。
-8. `requires_openai_auth = true`：要求 OpenAI 认证链路兼容。
-
-并配 `auth.json`：
+`auth.json` 示例：
 
 ```json
 {
-  "OPENAI_API_KEY": "sk-你的密钥"
+  "OPENAI_API_KEY": "sk-这里填你后台生成的密钥"
 }
 ```
 
-逐行解释：
-
-1. `OPENAI_API_KEY`：鉴权密钥字段名。
-2. `sk-你的密钥`：替换成真实 key；该文件是敏感信息，禁止提交仓库。
-
-这套权限很高，生产机不建议直接照搬。
-
----
-
-## 6. Codex App（官方）你要知道的重点
-
-OpenAI `codex/app` 页面可提炼成这些要点：
-
-1. App 支持并行线程、内置 Git diff、Worktree、Automations
-2. 模式有 `Local / Worktree / Cloud`
-3. 与 IDE 扩展可自动同步上下文与线程
-4. App、CLI、IDE 共享 MCP 配置
-5. Web search、通知、图片输入、语音输入都可用
-
-关于账号：
-
-1. ChatGPT Plus/Pro/Business/Edu/Enterprise 包含 Codex
-2. 用 API Key 登录时，部分能力（如 cloud threads）可能不可用
-
----
-
-## 7. Windows 专项（官方 + 实操）
-
-官方 `app/windows` 要点：
-
-1. 可通过 Microsoft Store 安装
-2. 命令行安装：
-
-```bash
-winget install Codex -s msstore
-```
-
-逐行解释：
-
-1. `winget install Codex -s msstore`：通过 Microsoft Store 源安装 Codex 桌面端。
-
-3. 集成终端可选 PowerShell / CMD / Git Bash / WSL
-4. 默认 Windows-native agent（PowerShell）
-5. 可切到 WSL agent，但需要重启 App 才生效
-
-你如果用 Windows-native agent，官方建议优先把项目放 Windows 文件系统，稳定性更高。
-
----
-
-## 8. Worktree / Local Environments / Automations（官方核心）
-
-## 8.1 Worktree
-
-1. 只在 Git 仓库有效
-2. 可以并行跑多个任务而不互相污染
-3. 支持 Local 和 Worktree 之间 handoff
-
-## 8.2 Local Environments
-
-作用：给 Worktree 自动执行初始化脚本，比如：
-
-```bash
-npm install
-npm run build
-```
-
-逐行解释：
-
-1. `npm install`：安装当前 worktree 依赖。
-2. `npm run build`：验证项目是否可正常构建，提前暴露环境问题。
-
-还能定义常用动作（Run/Test/Lint）作为快捷按钮。
-
-## 8.3 Automations
-
-1. 自动任务在本地运行（App 必须开着）
-2. Git 仓库会在后台 worktree 跑，减少干扰
-3. 上线前先手动试跑 prompt
-4. 高频调度会产生大量 worktree，要定期清理归档
-
-安全建议：
-
-1. 不要直接用 full access 跑无人值守自动化
-2. 用 `workspace-write` + rules 白名单更稳
-
----
-
-## 9. App 内高频命令（官方 commands 页）
-
-常见 slash commands：
-
-- `/status`：看线程 ID、上下文、限额
-- `/review`：进入审查模式
-- `/mcp`：看 MCP 服务状态
-- `/plan`：启用计划模式
-- `/goal`：给线程设置持续目标
-- `/personality`：切换回复风格
-- `/feedback`：反馈问题并附日志
-
----
-
-## 10. 飞书来源里最有价值的“真实坑位”
-
-## 10.1 模型不显示 / 不能选
-
-飞书文档明确提到：有些新模型不会立刻在 UI 下拉里出现，需要手动改 `config.toml`。
-
-## 10.2 `stream disconnected before completion`
-
-属于常见网络链路类错误，优先检查：
-
-1. `base_url` 是否填错
-2. 所用节点是否可达
-3. key 是否可用且没过期
-
-## 10.3 插件激活失败
-
-优先按顺序排查：
-
-1. Node/npm 是否正确安装
-2. CLI 是否已能 `codex --version`
-3. 插件 provider/base_url/key 三项是否一致
-
----
-
-## 11. 一套稳妥的“新手默认配置”
-
-如果你不想冒险，先用这套：
+这里我刻意没有继续沿用旧文里那组：
 
 ```toml
-model = "gpt-5.5"
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
-model_reasoning_effort = "medium"
-web_search = "cached"
+sandbox_mode = 'danger-full-access'
+approval_policy = 'never'
 ```
 
-逐行解释：
-
-1. `model = "gpt-5.5"`：默认模型先按官方当前本地默认示例写；若服务商未开放，再换成该服务商后台当前模型。
-2. `approval_policy = "on-request"`：敏感动作需你确认。
-3. `sandbox_mode = "workspace-write"`：只允许改当前项目目录。
-4. `model_reasoning_effort = "medium"`：推理深度适中。
-5. `web_search = "cached"`：默认走缓存搜索，稳定优先。
-
-等稳定后，再逐步调高自动化程度。
+因为那更像高风险样例，不适合作为主人日常开发默认起步配置。
 
 ---
 
-## 12. 学习路径（按 B 站官方教程节奏）
+## 7. rpcod 实操里真正还值得保留的内容
 
-`BV11erUBUEEX` 视频简介对应的学习顺序很合理：
+原 rpcod 补充篇里，其实真正有长期价值的不是“再讲一遍安装”，而是下面这些。
 
-1. 安装 CLI + IDE 扩展
-2. 在真实仓库完成首次运行
-3. 写 AGENTS.md 规范
-4. 配置环境（权限、沙箱、模型）
-5. 提示词模式化（计划 -> 执行 -> 验收）
-6. 进阶到无头模式与 SDK
+### 7.1 账号与套餐这层只属于 rpcod 本身
 
-建议你每学完一节就做一个可验证动作，而不是只看视频。
+这不是 Codex 官方通用流程。  
+所以现在只保留结论：
+
+1. 注册、兑换、套餐刷新规则都属于 rpcod 后台逻辑
+2. 这些信息只在你确定走 rpcod 时才需要
+3. 不该再放进第一篇主线入口里
+
+### 7.2 首次打通时的检查顺序
+
+rpcod 路线真正影响成败的，是这 4 件事：
+
+1. Node / npm 正常
+2. Codex CLI 正常
+3. `config.toml` 里的 provider、base URL、model 对得上
+4. 凭据有效
+
+### 7.3 首次启动验证
+
+```bash
+codex
+```
+
+然后按这个顺序看：
+
+1. `codex --version` 能输出版本
+2. 启动后没有鉴权报错
+3. `/status` 里模型、provider、权限符合预期
+4. 能在当前仓库正常读写
 
 ---
 
-## 13. 最后给你一份“30 分钟自检清单”
+## 8. 从官方切到第三方，或者从第三方切回官方，怎么迁移最稳
 
-1. `node -v` / `npm -v` 正常
-2. `codex --version` 正常
-3. `config.toml` 路径与 provider 正确
-4. key 可用（环境变量或 auth 文件）
-5. `codex` 能开新会话并读写当前仓库
-6. 插件能正常发起请求
-7. `/status` 可看到当前会话信息
-8. 出错时先看 provider/base_url/key，再看权限与沙箱
+这里给主人一套最实用的迁移顺序。
+
+### 8.1 先备份当前可用配置
+
+先把当前能跑通的配置留一份：
+
+1. 当前 `config.toml`
+2. 当前 provider 名
+3. 当前模型名
+4. 当前登录或 key 方式
+
+### 8.2 一次只改一层
+
+不要一口气同时改：
+
+1. provider
+2. base URL
+3. 模型
+4. 鉴权
+5. 权限模式
+6. 运行环境
+
+更稳的做法是：
+
+1. 先换 provider 与 base URL
+2. 再换模型
+3. 再换鉴权
+4. 最后再看要不要换 WSL / Windows / App / 插件环境
+
+### 8.3 每改一次就做最小验证
+
+每改完一层，至少做：
+
+1. `codex --version`
+2. `codex`
+3. `/status`
+4. 仓库里提一个只读问题
+
+### 8.4 切回官方时最容易漏什么
+
+最容易漏的是：
+
+1. 忘了把 `model_provider` 改回 `openai`
+2. 忘了删第三方专用字段
+3. 仍然沿用第三方模型名
+4. App / 插件里还留着旧 provider 配置
 
 ---
 
-## 参考来源（本篇全部使用）
+## 9. CLI、插件、桌面 App 三端为什么经常“看起来像同一个，其实又不一样”
 
-1. 飞书：Codex 使用大全  
-   <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>
-2. PackyAPI：Codex 配置文档  
+这块在第六篇有完整展开，这里只保留和线路相关的那一层。
+
+最常见的 4 个差异源头：
+
+1. CLI 跑在 Windows-native，IDE 跑在 WSL，App 又跑在 worktree
+2. 三边并不共用同一个 `CODEX_HOME`
+3. CLI 改了 `~/.codex/config.toml`，插件里还是旧 provider
+4. rpcod / Packy 的 key 只在某一边配置了
+
+所以主人看到“CLI 能用，插件不行”时，不要先怀疑模型。  
+先看：
+
+1. 当前仓库是不是同一个
+2. 运行环境是不是同一边
+3. provider、base URL、key 是否在三边一致
+
+---
+
+## 10. 常见错误速查
+
+### 10.1 模型显示不全或不能选
+
+优先看：
+
+1. 当前 provider 后台是否真的开放
+2. `model` 是否写成了历史示例
+3. `model_provider` 是否指向了错的 provider 块
+
+### 10.2 `stream disconnected before completion`
+
+优先看：
+
+1. `base_url` 是否填错
+2. 当前节点是否可达
+3. key 是否有效
+
+### 10.3 改了配置不生效
+
+优先看：
+
+1. 改的是用户级还是项目级
+2. 当前会话是否跑在另一个环境里
+3. trust / 覆盖链是否影响了结果
+
+### 10.4 API key 报错
+
+优先看：
+
+1. key 是否过期
+2. 是否有空格或换行
+3. 放在了对的字段里没有
+
+### 10.5 CLI 能用，插件或 App 不一致
+
+优先看：
+
+1. `CODEX_HOME`
+2. Windows / WSL 差异
+3. 当前 worktree 与原项目目录是否混了
+
+---
+
+## 11. 给主人的一套更稳的新手默认线路策略
+
+如果主人现在要从零开始，我更建议这样走：
+
+1. 先跑官方路线，建立正确心智
+2. 再按实际服务商切到 Packy / yunyi / rpcod
+3. 切线路后先只保证 CLI 能跑
+4. 再同步 VS Code 插件和桌面 App
+5. 最后再处理高权限、自动化、云任务和长期 profile
+
+一句话说，就是：
+
+先把原理跑顺，再折腾线路；  
+先让一端稳定，再追求三端统一。
+
+---
+
+## 12. 合并后，这篇和其他文章怎么分工
+
+以后主人可以这样记：
+
+1. 第一篇：第一天怎么开工
+2. 第三篇：为什么配置会生效或失效
+3. 第四篇：不同 provider 路线怎么选、怎么迁移、怎么排错
+4. 第六篇：CLI / 插件 / App 为什么会表现不一致
+5. 第八篇：命令、slash command、配置文件名速查
+6. 第十二篇：今天真正常用的功能入口与进阶工作流
+
+原“rpcod 线路补充篇”的有效内容已经并到这里。  
+以后除非主人特意要保留历史快照，否则不建议再把同类线路拆出很多独立长文。
+
+---
+
+## 参考来源
+
+1. OpenAI Codex 官方文档  
+   <https://developers.openai.com/codex/>
+2. PackyAPI Codex 配置文档  
    <https://docs.packyapi.com/docs/cli/3-codex.html>
-3. OpenAI 官方：Codex App  
-   <https://developers.openai.com/codex/app>
-4. 飞书：Codex CLI/VSCode 插件版教程  
+3. 飞书：Codex 使用大全  
+   <https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>
+4. 飞书：Codex CLI / VS Code 插件版教程  
    <https://dcnp82fx8qqw.feishu.cn/wiki/Iq8KwRLF7i9pg4kN83HckdOVnUc>
-5. Bilibili：Codex 入门指南（BV11erUBUEEX）  
-   <https://www.bilibili.com/video/BV11erUBUEEX>

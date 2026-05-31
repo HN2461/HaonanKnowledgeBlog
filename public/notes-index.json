@@ -12455,27 +12455,27 @@
         },
         {
           "type": "file",
-          "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-          "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+          "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+          "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
           "fileTitle": "第一篇_Codex从0到1配置实战",
           "filename": "第一篇_Codex从0到1配置实战.md",
           "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "CLI",
-            "配置实战",
-            "中转站",
-            "API Key"
+            "程序员上手",
+            "终端界面",
+            "开发工作流"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-          "size": "7KB",
-          "lastModified": "2026-05-24T12:56:24.626Z",
-          "wordCount": 4019
+          "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+          "size": "12KB",
+          "lastModified": "2026-05-31T08:11:43.207Z",
+          "wordCount": 6661
         },
         {
           "type": "file",
@@ -12797,27 +12797,26 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "官方文档",
-            "exec",
-            "MCP",
-            "自动化"
+            "进阶实践",
+            "合并说明"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.630Z",
-          "wordCount": 7161
+          "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:09:12.819Z",
+          "wordCount": 532
         },
         {
           "type": "file",
@@ -13265,27 +13264,28 @@
         },
         {
           "type": "file",
-          "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-          "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+          "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+          "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
           "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
           "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
           "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
+            "多线路",
+            "OpenAI",
             "Packy",
-            "中转站",
-            "配置迁移",
-            "多线路"
+            "yunyi",
+            "rpcod"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+          "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.636Z",
-          "wordCount": 9017
+          "lastModified": "2026-05-31T08:07:36.733Z",
+          "wordCount": 7946
         },
         {
           "type": "file",
@@ -13731,8 +13731,8 @@
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.627Z",
-          "wordCount": 9707
+          "lastModified": "2026-05-31T08:11:43.209Z",
+          "wordCount": 9713
         },
         {
           "type": "file",
@@ -13779,8 +13779,8 @@
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
           "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.629Z",
-          "wordCount": 9657
+          "lastModified": "2026-05-31T08:11:43.210Z",
+          "wordCount": 9656
         },
         {
           "type": "file",
@@ -13855,8 +13855,8 @@
         },
         {
           "type": "file",
-          "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-          "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+          "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
           "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
           "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -13873,35 +13873,58 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-          "size": "21KB",
-          "lastModified": "2026-05-24T12:56:24.634Z",
-          "wordCount": 11000
+          "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+          "size": "25KB",
+          "lastModified": "2026-05-31T07:58:54.784Z",
+          "wordCount": 13657
         },
         {
           "type": "file",
-          "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+          "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "桌面版",
-            "IDE",
-            "云任务",
-            "Windows",
-            "OpenAI官方"
+            "CLI",
+            "英文提示",
+            "终端界面",
+            "排错"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-          "size": "17KB",
-          "lastModified": "2026-05-24T12:56:24.633Z",
-          "wordCount": 8661
+          "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+          "size": "18KB",
+          "lastModified": "2026-05-31T06:10:44.846Z",
+          "wordCount": 10562
+        },
+        {
+          "type": "file",
+          "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "更新总表",
+            "桌面版",
+            "IDE",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.196Z",
+          "wordCount": 523
         },
         {
           "type": "file",
@@ -13975,26 +13998,27 @@
         },
         {
           "type": "file",
-          "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-          "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+          "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
           "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
           "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "学习路线",
             "小白入门",
+            "CLI",
             "导读"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+          "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.637Z",
-          "wordCount": 4265
+          "lastModified": "2026-05-31T08:11:43.201Z",
+          "wordCount": 4429
         },
         {
           "type": "file",
@@ -14112,6 +14136,29 @@
           "size": "7KB",
           "lastModified": "2026-05-27T12:51:31.734Z",
           "wordCount": 3749
+        },
+        {
+          "type": "file",
+          "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+          "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "rpcod",
+            "CLI",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.198Z",
+          "wordCount": 602
         }
       ],
       "children": []
@@ -15306,27 +15353,27 @@
         },
         {
           "type": "file",
-          "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-          "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+          "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+          "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
           "fileTitle": "第一篇_Codex从0到1配置实战",
           "filename": "第一篇_Codex从0到1配置实战.md",
           "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "CLI",
-            "配置实战",
-            "中转站",
-            "API Key"
+            "程序员上手",
+            "终端界面",
+            "开发工作流"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-          "size": "7KB",
-          "lastModified": "2026-05-24T12:56:24.626Z",
-          "wordCount": 4019
+          "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+          "size": "12KB",
+          "lastModified": "2026-05-31T08:11:43.207Z",
+          "wordCount": 6661
         },
         {
           "type": "file",
@@ -15355,27 +15402,26 @@
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "官方文档",
-            "exec",
-            "MCP",
-            "自动化"
+            "进阶实践",
+            "合并说明"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.630Z",
-          "wordCount": 7161
+          "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:09:12.819Z",
+          "wordCount": 532
         },
         {
           "type": "file",
@@ -15453,27 +15499,28 @@
         },
         {
           "type": "file",
-          "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-          "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+          "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+          "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
           "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
           "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
           "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
+            "多线路",
+            "OpenAI",
             "Packy",
-            "中转站",
-            "配置迁移",
-            "多线路"
+            "yunyi",
+            "rpcod"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+          "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.636Z",
-          "wordCount": 9017
+          "lastModified": "2026-05-31T08:07:36.733Z",
+          "wordCount": 7946
         },
         {
           "type": "file",
@@ -15609,8 +15656,8 @@
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.627Z",
-          "wordCount": 9707
+          "lastModified": "2026-05-31T08:11:43.209Z",
+          "wordCount": 9713
         },
         {
           "type": "file",
@@ -15657,8 +15704,8 @@
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
           "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.629Z",
-          "wordCount": 9657
+          "lastModified": "2026-05-31T08:11:43.210Z",
+          "wordCount": 9656
         },
         {
           "type": "file",
@@ -15687,8 +15734,8 @@
         },
         {
           "type": "file",
-          "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-          "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+          "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
           "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
           "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -15705,35 +15752,58 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-          "size": "21KB",
-          "lastModified": "2026-05-24T12:56:24.634Z",
-          "wordCount": 11000
+          "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+          "size": "25KB",
+          "lastModified": "2026-05-31T07:58:54.784Z",
+          "wordCount": 13657
         },
         {
           "type": "file",
-          "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+          "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "桌面版",
-            "IDE",
-            "云任务",
-            "Windows",
-            "OpenAI官方"
+            "CLI",
+            "英文提示",
+            "终端界面",
+            "排错"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-          "size": "17KB",
-          "lastModified": "2026-05-24T12:56:24.633Z",
-          "wordCount": 8661
+          "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+          "size": "18KB",
+          "lastModified": "2026-05-31T06:10:44.846Z",
+          "wordCount": 10562
+        },
+        {
+          "type": "file",
+          "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "更新总表",
+            "桌面版",
+            "IDE",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.196Z",
+          "wordCount": 523
         },
         {
           "type": "file",
@@ -15760,26 +15830,50 @@
         },
         {
           "type": "file",
-          "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-          "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+          "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
           "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
           "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "学习路线",
             "小白入门",
+            "CLI",
             "导读"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+          "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.637Z",
-          "wordCount": 4265
+          "lastModified": "2026-05-31T08:11:43.201Z",
+          "wordCount": 4429
+        },
+        {
+          "type": "file",
+          "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+          "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "rpcod",
+            "CLI",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.198Z",
+          "wordCount": 602
         }
       ],
       "children": []
@@ -15962,51 +16056,50 @@
       "notes": [
         {
           "type": "file",
-          "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-          "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+          "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+          "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
           "fileTitle": "第一篇_Codex从0到1配置实战",
           "filename": "第一篇_Codex从0到1配置实战.md",
           "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "CLI",
-            "配置实战",
-            "中转站",
-            "API Key"
+            "程序员上手",
+            "终端界面",
+            "开发工作流"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-          "size": "7KB",
-          "lastModified": "2026-05-24T12:56:24.626Z",
-          "wordCount": 4019
+          "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+          "size": "12KB",
+          "lastModified": "2026-05-31T08:11:43.207Z",
+          "wordCount": 6661
         },
         {
           "type": "file",
-          "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+          "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+          "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
           "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
           "filename": "第二篇_Codex官方资料补充与进阶实践.md",
           "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "官方文档",
-            "exec",
-            "MCP",
-            "自动化"
+            "进阶实践",
+            "合并说明"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-          "size": "11KB",
-          "lastModified": "2026-05-24T12:56:24.630Z",
-          "wordCount": 7161
+          "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:09:12.819Z",
+          "wordCount": 532
         },
         {
           "type": "file",
@@ -16034,27 +16127,28 @@
         },
         {
           "type": "file",
-          "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-          "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+          "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+          "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
           "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
           "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
           "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
+            "多线路",
+            "OpenAI",
             "Packy",
-            "中转站",
-            "配置迁移",
-            "多线路"
+            "yunyi",
+            "rpcod"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+          "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.636Z",
-          "wordCount": 9017
+          "lastModified": "2026-05-31T08:07:36.733Z",
+          "wordCount": 7946
         },
         {
           "type": "file",
@@ -16125,8 +16219,8 @@
           "attachments": [],
           "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
           "size": "14KB",
-          "lastModified": "2026-05-24T12:56:24.627Z",
-          "wordCount": 9707
+          "lastModified": "2026-05-31T08:11:43.209Z",
+          "wordCount": 9713
         },
         {
           "type": "file",
@@ -16173,8 +16267,8 @@
           "attachments": [],
           "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
           "size": "15KB",
-          "lastModified": "2026-05-24T12:56:24.629Z",
-          "wordCount": 9657
+          "lastModified": "2026-05-31T08:11:43.210Z",
+          "wordCount": 9656
         },
         {
           "type": "file",
@@ -16203,8 +16297,8 @@
         },
         {
           "type": "file",
-          "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-          "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+          "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+          "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
           "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
           "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -16221,58 +16315,105 @@
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-          "size": "21KB",
-          "lastModified": "2026-05-24T12:56:24.634Z",
-          "wordCount": 11000
+          "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+          "size": "25KB",
+          "lastModified": "2026-05-31T07:58:54.784Z",
+          "wordCount": 13657
         },
         {
           "type": "file",
-          "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+          "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+          "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "桌面版",
-            "IDE",
-            "云任务",
-            "Windows",
-            "OpenAI官方"
+            "CLI",
+            "英文提示",
+            "终端界面",
+            "排错"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-          "size": "17KB",
-          "lastModified": "2026-05-24T12:56:24.633Z",
-          "wordCount": 8661
+          "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+          "size": "18KB",
+          "lastModified": "2026-05-31T06:10:44.846Z",
+          "wordCount": 10562
         },
         {
           "type": "file",
-          "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-          "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+          "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+          "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+          "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "更新总表",
+            "桌面版",
+            "IDE",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.196Z",
+          "wordCount": 523
+        },
+        {
+          "type": "file",
+          "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+          "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
           "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
           "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
           "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-          "date": "2026-05-22T00:00:00.000Z",
+          "date": "2026-05-31T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
             "学习路线",
             "小白入门",
+            "CLI",
             "导读"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+          "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
           "size": "9KB",
-          "lastModified": "2026-05-24T12:56:24.637Z",
-          "wordCount": 4265
+          "lastModified": "2026-05-31T08:11:43.201Z",
+          "wordCount": 4429
+        },
+        {
+          "type": "file",
+          "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+          "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+          "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+          "date": "2026-05-31T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "rpcod",
+            "CLI",
+            "合并说明"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+          "size": "2KB",
+          "lastModified": "2026-05-31T08:11:43.198Z",
+          "wordCount": 602
         }
       ],
       "children": []
@@ -24591,6 +24732,173 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+      "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+      "fileTitle": "第一篇_Codex从0到1配置实战",
+      "filename": "第一篇_Codex从0到1配置实战.md",
+      "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "程序员上手",
+        "终端界面",
+        "开发工作流"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+      "size": "12KB",
+      "lastModified": "2026-05-31T08:11:43.207Z",
+      "wordCount": 6661
+    },
+    {
+      "type": "file",
+      "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
+      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
+      "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "官方文档",
+        "进阶实践",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:09:12.819Z",
+      "wordCount": 532
+    },
+    {
+      "type": "file",
+      "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+      "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
+      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "多线路",
+        "OpenAI",
+        "Packy",
+        "yunyi",
+        "rpcod"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
+      "size": "14KB",
+      "lastModified": "2026-05-31T08:07:36.733Z",
+      "wordCount": 7946
+    },
+    {
+      "type": "file",
+      "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+      "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+      "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+      "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+      "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "CLI",
+        "英文提示",
+        "终端界面",
+        "排错"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+      "size": "18KB",
+      "lastModified": "2026-05-31T06:10:44.846Z",
+      "wordCount": 10562
+    },
+    {
+      "type": "file",
+      "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+      "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+      "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+      "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "更新总表",
+        "桌面版",
+        "IDE",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:11:43.196Z",
+      "wordCount": 523
+    },
+    {
+      "type": "file",
+      "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+      "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
+      "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
+      "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "学习路线",
+        "小白入门",
+        "CLI",
+        "导读"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
+      "size": "9KB",
+      "lastModified": "2026-05-31T08:11:43.201Z",
+      "wordCount": 4429
+    },
+    {
+      "type": "file",
+      "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+      "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+      "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+      "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+      "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+      "date": "2026-05-31T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "rpcod",
+        "CLI",
+        "合并说明"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+      "size": "2KB",
+      "lastModified": "2026-05-31T08:11:43.198Z",
+      "wordCount": 602
+    },
+    {
+      "type": "file",
       "title": "第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）",
       "frontmatterTitle": "第一篇：Claude Code 快速上手、npm 安装更新与终端工作原理（程序员版）",
       "fileTitle": "第一篇_ClaudeCode快速上手与工作原理_2026-03",
@@ -25165,8 +25473,8 @@
     },
     {
       "type": "file",
-      "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-      "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+      "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+      "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
       "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
       "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
       "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -25183,58 +25491,10 @@
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-      "size": "21KB",
-      "lastModified": "2026-05-24T12:56:24.634Z",
-      "wordCount": 11000
-    },
-    {
-      "type": "file",
-      "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-      "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-      "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-      "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-      "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-      "date": "2026-05-22T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "桌面版",
-        "IDE",
-        "云任务",
-        "Windows",
-        "OpenAI官方"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-      "size": "17KB",
-      "lastModified": "2026-05-24T12:56:24.633Z",
-      "wordCount": 8661
-    },
-    {
-      "type": "file",
-      "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-      "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
-      "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
-      "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-      "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-      "date": "2026-05-22T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "学习路线",
-        "小白入门",
-        "导读"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
-      "size": "9KB",
-      "lastModified": "2026-05-24T12:56:24.637Z",
-      "wordCount": 4265
+      "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+      "size": "25KB",
+      "lastModified": "2026-05-31T07:58:54.784Z",
+      "wordCount": 13657
     },
     {
       "type": "file",
@@ -32320,32 +32580,8 @@
       "attachments": [],
       "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
       "size": "15KB",
-      "lastModified": "2026-05-24T12:56:24.629Z",
-      "wordCount": 9657
-    },
-    {
-      "type": "file",
-      "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-      "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-      "fileTitle": "第一篇_Codex从0到1配置实战",
-      "filename": "第一篇_Codex从0到1配置实战.md",
-      "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "CLI",
-        "配置实战",
-        "中转站",
-        "API Key"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-      "size": "7KB",
-      "lastModified": "2026-05-24T12:56:24.626Z",
-      "wordCount": 4019
+      "lastModified": "2026-05-31T08:11:43.210Z",
+      "wordCount": 9656
     },
     {
       "type": "file",
@@ -32369,30 +32605,6 @@
       "size": "5KB",
       "lastModified": "2026-05-24T13:49:15.050Z",
       "wordCount": 3435
-    },
-    {
-      "type": "file",
-      "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-      "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-      "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
-      "filename": "第二篇_Codex官方资料补充与进阶实践.md",
-      "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "官方文档",
-        "exec",
-        "MCP",
-        "自动化"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-      "size": "11KB",
-      "lastModified": "2026-05-24T12:56:24.630Z",
-      "wordCount": 7161
     },
     {
       "type": "file",
@@ -32465,30 +32677,6 @@
       "size": "5KB",
       "lastModified": "2026-05-24T13:49:15.051Z",
       "wordCount": 2406
-    },
-    {
-      "type": "file",
-      "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-      "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-      "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
-      "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "Packy",
-        "中转站",
-        "配置迁移",
-        "多线路"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
-      "size": "14KB",
-      "lastModified": "2026-05-24T12:56:24.636Z",
-      "wordCount": 9017
     },
     {
       "type": "file",
@@ -32628,8 +32816,8 @@
       "attachments": [],
       "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
       "size": "14KB",
-      "lastModified": "2026-05-24T12:56:24.627Z",
-      "wordCount": 9707
+      "lastModified": "2026-05-31T08:11:43.209Z",
+      "wordCount": 9713
     },
     {
       "type": "file",
@@ -39637,51 +39825,50 @@
               "children": [
                 {
                   "type": "file",
-                  "title": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
-                  "frontmatterTitle": "第一篇：Codex 从 0 到 1 配置实战（CLI）",
+                  "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
+                  "frontmatterTitle": "第一篇：Codex CLI 第一日开发实战（程序员版）",
                   "fileTitle": "第一篇_Codex从0到1配置实战",
                   "filename": "第一篇_Codex从0到1配置实战.md",
                   "path": "AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "CLI",
-                    "配置实战",
-                    "中转站",
-                    "API Key"
+                    "程序员上手",
+                    "终端界面",
+                    "开发工作流"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。",
-                  "size": "7KB",
-                  "lastModified": "2026-05-24T12:56:24.626Z",
-                  "wordCount": 4019
+                  "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
+                  "size": "12KB",
+                  "lastModified": "2026-05-31T08:11:43.207Z",
+                  "wordCount": 6661
                 },
                 {
                   "type": "file",
-                  "title": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
-                  "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（2026-05-22 增补版）",
+                  "title": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
+                  "frontmatterTitle": "第二篇：Codex 官方资料补充与进阶实践（已并入第十二篇）",
                   "fileTitle": "第二篇_Codex官方资料补充与进阶实践",
                   "filename": "第二篇_Codex官方资料补充与进阶实践.md",
                   "path": "AI工具/02_终端Agent流/Codex/第二篇_Codex官方资料补充与进阶实践.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "官方文档",
-                    "exec",
-                    "MCP",
-                    "自动化"
+                    "进阶实践",
+                    "合并说明"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 OpenAI 官方 Codex 文档补充进阶能力，重点整理模型切换、非交互执行、MCP 治理与团队标准化实践，适合主线学习后的进阶查阅。",
-                  "size": "11KB",
-                  "lastModified": "2026-05-24T12:56:24.630Z",
-                  "wordCount": 7161
+                  "description": "本篇原本承载的 codex exec、MCP 治理、AGENTS.md 进阶和 profile 策略等内容，现已合并进第十二篇主手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:09:12.819Z",
+                  "wordCount": 532
                 },
                 {
                   "type": "file",
@@ -39709,27 +39896,28 @@
                 },
                 {
                   "type": "file",
-                  "title": "第四篇：Codex 多来源完整配置手册（小白友好版）",
-                  "frontmatterTitle": "第四篇：Codex 多来源完整配置手册（小白友好版）",
+                  "title": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
+                  "frontmatterTitle": "第四篇：Codex 多线路接入与迁移总手册（合并版）",
                   "fileTitle": "第四篇_Codex多来源完整配置手册_小白友好版",
                   "filename": "第四篇_Codex多来源完整配置手册_小白友好版.md",
                   "path": "AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
+                    "多线路",
+                    "OpenAI",
                     "Packy",
-                    "中转站",
-                    "配置迁移",
-                    "多线路"
+                    "yunyi",
+                    "rpcod"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "对比官方、Packy 与第三方中转等多条 Codex 接入路线，整理成小白友好的完整配置手册，帮助按服务商快速选路并完成迁移。",
+                  "description": "将原第四篇与 rpcod 补充篇合并成一篇完整的线路选择与迁移总手册，集中解决官方、Packy、yunyi、rpcod 等路线怎么选、怎么配、怎么迁移、怎么排错。",
                   "size": "14KB",
-                  "lastModified": "2026-05-24T12:56:24.636Z",
-                  "wordCount": 9017
+                  "lastModified": "2026-05-31T08:07:36.733Z",
+                  "wordCount": 7946
                 },
                 {
                   "type": "file",
@@ -39800,8 +39988,8 @@
                   "attachments": [],
                   "description": "按统一结构逐字段对照 Codex CLI、插件和 App 的界面与配置点位，适合作为团队核对 SOP 或手把手复现配置过程的操作手册。",
                   "size": "14KB",
-                  "lastModified": "2026-05-24T12:56:24.627Z",
-                  "wordCount": 9707
+                  "lastModified": "2026-05-31T08:11:43.209Z",
+                  "wordCount": 9713
                 },
                 {
                   "type": "file",
@@ -39848,8 +40036,8 @@
                   "attachments": [],
                   "description": "深入拆解 Codex 本地 .codex 目录中的认证、配置、规则、技能和日志文件，帮助排查登录、权限、命令执行与团队规范相关问题。",
                   "size": "15KB",
-                  "lastModified": "2026-05-24T12:56:24.629Z",
-                  "wordCount": 9657
+                  "lastModified": "2026-05-31T08:11:43.210Z",
+                  "wordCount": 9656
                 },
                 {
                   "type": "file",
@@ -39878,8 +40066,8 @@
                 },
                 {
                   "type": "file",
-                  "title": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
-                  "frontmatterTitle": "第十二篇：Codex 当前常用功能点详细手册（最新工作流版）",
+                  "title": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
+                  "frontmatterTitle": "第十二篇：Codex 当前常用功能与进阶工作流总手册（合并版）",
                   "fileTitle": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22",
                   "filename": "第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
                   "path": "AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md",
@@ -39896,58 +40084,105 @@
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "面向日常开发高频场景，系统梳理 Codex 当前仍在官方主线中的常用功能点，并明确哪些旧描述该保留、哪些已经被新的工作流替代。",
-                  "size": "21KB",
-                  "lastModified": "2026-05-24T12:56:24.634Z",
-                  "wordCount": 11000
+                  "description": "合并原第二篇与第十一篇后，面向日常开发高频场景系统梳理 Codex 当前仍在官方主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
+                  "size": "25KB",
+                  "lastModified": "2026-05-31T07:58:54.784Z",
+                  "wordCount": 13657
                 },
                 {
                   "type": "file",
-                  "title": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-                  "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（桌面版、IDE、云任务与 Windows 新能力）",
-                  "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
-                  "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-                  "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
-                  "date": "2026-05-22T00:00:00.000Z",
+                  "title": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+                  "frontmatterTitle": "第十三篇：Codex CLI 英文终端界面逐屏翻译与排错",
+                  "fileTitle": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31",
+                  "filename": "第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+                  "path": "AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
-                    "桌面版",
-                    "IDE",
-                    "云任务",
-                    "Windows",
-                    "OpenAI官方"
+                    "CLI",
+                    "英文提示",
+                    "终端界面",
+                    "排错"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "基于 OpenAI 官方近期文档，对照 2026-05 中旬前的 Codex 笔记，集中补全桌面版、IDE 扩展、云端任务、Worktrees、本地环境、Automations、内置 Git、应用内浏览器与 Windows 原生沙箱等最近容易漏掉的新能力，并收紧没有官方证据支撑的表述。",
-                  "size": "17KB",
-                  "lastModified": "2026-05-24T12:56:24.633Z",
-                  "wordCount": 8661
+                  "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
+                  "size": "18KB",
+                  "lastModified": "2026-05-31T06:10:44.846Z",
+                  "wordCount": 10562
                 },
                 {
                   "type": "file",
-                  "title": "零基础先读：Codex 小白学习路线与读完能力对照",
-                  "frontmatterTitle": "零基础先读：Codex 小白学习路线与读完能力对照",
+                  "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+                  "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
+                  "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
+                  "filename": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+                  "path": "AI工具/02_终端Agent流/Codex/第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md",
+                  "date": "2026-05-31T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Codex",
+                    "更新总表",
+                    "桌面版",
+                    "IDE",
+                    "合并说明"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "原第十一篇关于桌面版、IDE、云任务与 Windows 新能力的补全内容，现已合并到第十二篇主手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:11:43.196Z",
+                  "wordCount": 523
+                },
+                {
+                  "type": "file",
+                  "title": "零基础先读：Codex 程序员学习路线与读完能力对照",
+                  "frontmatterTitle": "零基础先读：Codex 程序员学习路线与读完能力对照",
                   "fileTitle": "零基础先读_小白学习路线与读完能力对照_2026-05-22",
                   "filename": "零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
                   "path": "AI工具/02_终端Agent流/Codex/零基础先读_小白学习路线与读完能力对照_2026-05-22.md",
-                  "date": "2026-05-22T00:00:00.000Z",
+                  "date": "2026-05-31T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
                     "学习路线",
                     "小白入门",
+                    "CLI",
                     "导读"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "给零基础读者的一页式导读，说明 Codex 这套文档该按什么顺序看、每篇解决什么问题，以及读完后你应该真正掌握哪些能力。",
+                  "description": "给第一次系统学习 Codex 的读者一条程序员实战路线，说明先读哪篇、什么时候查配置字段、什么时候看三端联动和排障资料。",
                   "size": "9KB",
-                  "lastModified": "2026-05-24T12:56:24.637Z",
-                  "wordCount": 4265
+                  "lastModified": "2026-05-31T08:11:43.201Z",
+                  "wordCount": 4429
+                },
+                {
+                  "type": "file",
+                  "title": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+                  "frontmatterTitle": "补充篇：rpcod 线路 Codex CLI 配置实战（已并入第四篇）",
+                  "fileTitle": "补充篇_rpcod线路CodexCLI配置实战_2026-03",
+                  "filename": "补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+                  "path": "AI工具/02_终端Agent流/Codex/补充篇_rpcod线路CodexCLI配置实战_2026-03.md",
+                  "date": "2026-05-31T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Codex",
+                    "rpcod",
+                    "CLI",
+                    "合并说明"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "原 rpcod 线路配置实战内容现已合并到第四篇多线路接入与迁移总手册，保留此页作为历史入口与跳转说明。",
+                  "size": "2KB",
+                  "lastModified": "2026-05-31T08:11:43.198Z",
+                  "wordCount": 602
                 }
               ]
             },
@@ -41602,6 +41837,12 @@
           "wordCount": 17657
         }
       ]
+    },
+    {
+      "type": "directory",
+      "name": "images",
+      "path": "images",
+      "children": []
     },
     {
       "type": "directory",
@@ -44595,7 +44836,7 @@
       ]
     }
   ],
-  "totalNotes": 418,
+  "totalNotes": 420,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-30T11:27:43.927Z"
+  "lastUpdated": "2026-05-31T08:18:38.434Z"
 }

@@ -1,194 +1,381 @@
 ---
-title: 第一篇：Codex 从 0 到 1 配置实战（CLI）
-date: 2026-03-08
+title: 第一篇：Codex CLI 第一日开发实战（程序员版）
+date: 2026-05-31
 category: AI工具
 tags:
   - Codex
   - CLI
-  - 配置实战
-  - 中转站
-  - API Key
-description: 以 rpcod 路线为例，记录 Codex CLI 从账号、套餐、API Key 到首轮配置落地的完整打通流程，适合第一次接触第三方线路时快速跑通。
+  - 程序员上手
+  - 终端界面
+  - 开发工作流
+description: 面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。
 ---
 
-# 第一篇：Codex 从 0 到 1 配置实战（CLI）
+# 第一篇：Codex CLI 第一日开发实战（程序员版）
 
-> 参考文档：<https://ncnnujysujcj.feishu.cn/wiki/KaQZwRaE6ivzlOku5rwcRdTHnPf>  
-> 记录时间：2026-03-08  
-> 定位：线路选读 B（`rpcod` 路线的 CLI 快速打通）。  
-> 前置：建议先读第三篇第 1~4 节（先懂通用配置层级）。  
-> 使用方式：如果你不用 `rpcod`，这篇可跳过，改看第四篇对应线路。  
-> 本篇不展开：三端联动与截图对照（看第六篇、第七篇）。
-> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
-> 小白读完目标：你应该能按第三方 `rpcod` 路线把 Codex CLI 跑通，并知道这篇属于“线路样例”，不是官方通用默认配置模板。
-> `2026-05-22` 校注：这篇属于第三方线路实操篇，不再把文中的模型名视作“官方默认答案”。真正落地前，请先核对 `rpcod` 后台当前开放模型，以及第三篇、第十一篇里的最新官方口径。
-
-章节导航（点击跳转）：
+> 这篇只解决 4 件事：怎么确认装对、怎么进仓库、怎么看第一屏、怎么完成第一轮真实开发。  
+> 配置字段、第三方线路、MCP 细节、桌面 App 深挖，都先放到后面的专题里查。
 
 [[toc]]
 
 ---
 
-## 1. 先完成账号与套餐
+## 先给结论
 
-1. 注册地址：<https://ai.rpcod.com/login>（这个是个人推荐的中转站，国内访问稳定，且套餐价格更友好）
-2. 登录后进入侧边栏「兑换」，输入兑换码
-3. 套餐规则（文档里的重点）：
-   - 套餐额度按日刷新
-   - 天卡是 24 小时有效
-   - 同套餐叠加是续期（例如两张 100 刀天卡可连续用 2 天）
-   - 不同套餐可做增量，按分组切换使用
+Codex CLI 对程序员来说，不是“聊天工具”，而是一个会读仓库、会调工具、会改文件、会跑命令的终端代码代理。
 
-## 2. 安装环境（Windows / Mac / Linux 通用主线）
+第一天最稳的路线不是背配置，而是先跑顺这条主线：
 
-### 2.1 安装 Node.js（20+）
+1. 确认当前生效的是哪一份 `codex`
+2. 进入真实仓库启动，而不是在空目录里试
+3. 看懂第一屏里的模型、目录、权限和提示
+4. 先让它读项目，再做一个小改动
+5. 改完看 `/diff`、跑测试、再决定是否继续放权
 
-下载：<https://nodejs.org/en/download>  
-安装后验证：
+后面遇到字段再查字段，遇到线路再查线路。  
+这比第一天就研究一整套 `config.toml` 稳得多。
 
-```bash
-node -v
-```
+---
 
-逐行解释：
+## 1. 先确认安装与当前生效路径
 
-1. `node -v`：打印本机 Node 版本，确认是否达到 Codex CLI 运行要求（建议 20+）。
-
-### 2.2 安装 Codex CLI
+安装或升级：
 
 ```bash
-npm i -g @openai/codex
+npm i -g @openai/codex@latest
 codex --version
 ```
 
-逐行解释：
+Windows 下再查一次路径：
 
-1. `npm i -g @openai/codex`：全局安装 Codex CLI，可在任意目录直接运行 `codex` 命令。
-2. `codex --version`：校验安装是否成功，同时确认你当前使用的 CLI 版本。
+```powershell
+where.exe codex
+```
 
-如果安装很慢或失败（网络原因常见），先切镜像再重装：
+macOS / Linux / WSL：
 
 ```bash
-npm config set registry https://registry.npmmirror.com
-npm i -g @openai/codex
+which codex
 ```
 
-逐行解释：
+这一步很程序员，也很必要。  
+因为后面很多“配置不生效”，根因不是配置错，而是 PATH 里跑的根本不是你以为的那一份 CLI。
 
-1. `npm config set registry https://registry.npmmirror.com`：把 npm 下载源切到国内镜像，减少超时和下载失败。
-2. `npm i -g @openai/codex`：在新镜像源下重新安装 Codex CLI。
+如果你是在本博客仓库里执行 Node / npm / Vite 脚本，还要先跑一次项目预检：
 
-### 2.3 Windows 额外建议
-
-文档建议 Windows 用户优先用 `Windows Terminal`，比原生 `cmd` 体验更稳定。
-
-## 3. 手动配置（最关键）
-
-配置文件路径：
-
-- Mac/Linux：`~/.codex/config.toml`
-- Windows：`C:\Users\你的用户名\.codex\config.toml`
-
-如果全局配置不生效，可在当前项目目录新建 `.codex/config.toml` 做工作区覆盖。  
-`auth.json` 属于敏感凭据缓存，除非你非常清楚风险，否则不要把它作为项目内常规文件来管理。
-
-### 3.1 `config.toml` 示例（按当前更稳妥写法重整）
-
-```toml
-# 先填 rpcod 后台当前实际开放的模型；若已开放 gpt-5.5，优先用它
-model = "gpt-5.5"
-model_reasoning_effort = "xhigh"
-disable_response_storage = true
-sandbox_mode = "workspace-write"
-approval_policy = "on-request"
-file_opener = "vscode"
-model_provider = "codex"
-web_search = "cached"
-
-[history]
-persistence = "save-all"
-
-[model_providers.codex]
-name = "codex"
-base_url = "https://ai.rpcod.com"
-wire_api = "responses"
-requires_openai_auth = true
+```powershell
+pwsh -File scripts/checkNodeRuntime.ps1
 ```
 
-关键字段逐项解释（这段改成更适合今天直接上手的安全版）：
+它是为了先排除当前代理终端里的 Node 加密提供程序异常。  
+如果预检失败，不要重复敲 `npm`，先按仓库 `AGENTS.md` 里的运行时排障规则处理。
 
-1. `model`：默认模型名，优先填你这条 `rpcod` 线路后台当前真实开放的模型；如果后台已开放 `gpt-5.5`，优先用它。
-2. `model_reasoning_effort`：推理强度，`xhigh` 更深但通常更慢。
-3. `disable_response_storage = true`：减少响应持久化，偏隐私/审慎场景。
-4. `sandbox_mode = "workspace-write"`：只允许修改当前工作区，先保证安全边界。
-5. `approval_policy = "on-request"`：敏感动作先询问你，适合刚接好线路时排错。
-6. `file_opener = "vscode"`：引用文件时默认用 VS Code 打开。
-7. `model_provider = "codex"`：默认走 `codex` 这个 provider 配置块。
-8. `[history] persistence = "save-all"`：保存会话历史，便于后续 `resume`。
-9. `[model_providers.codex].base_url`：该 provider 的后端地址。
-10. `wire_api = "responses"`：使用 responses 协议与后端通信。
-11. `requires_openai_auth = true`：要求 OpenAI 认证链路（配合 `auth.json` 或登录态）。
+---
 
-补一句最重要的边界：
+## 2. 第一次启动：别在空目录里学
 
-1. 如果 `rpcod` 后台暂时没放出 `gpt-5.5`，不要硬填，直接以后台当前可见模型名为准
-2. 第三方线路的“最新”永远是“官方最新能力 + 你这条网关当前开放集合”的交集
+Codex 真正有价值的地方在真实仓库里。
 
-### 3.2 `auth.json` 示例（仅用户目录，不建议放项目目录）
-
-```json
-{
-  "OPENAI_API_KEY": "sk-这里填你后台生成的密钥"
-}
-```
-
-逐行解释：
-
-1. `OPENAI_API_KEY`：Codex 调用后端时使用的密钥字段。
-2. `sk-...`：真实密钥值，必须有效且未过期；这是敏感信息，不要提交到 Git。
-
-## 4. 首次启动验证
+推荐这样：
 
 ```bash
+cd your-project
 codex
 ```
 
-逐行解释：
+不推荐第一天在桌面空文件夹里反复问：
 
-1. `codex`：启动交互式会话，加载当前目录上下文和你的配置文件。
-
-建议按这个顺序检查：
-
-1. `codex --version` 能输出版本
-2. 启动后无鉴权报错
-3. 可在当前仓库正常提问与改代码
-
-## 5. 常见问题速查
-
-1. 安装失败：先切 `npmmirror`，再执行安装
-2. 模型显示不全：手动检查 `config.toml` 的 `model` 与 `model_provider`
-3. 改了配置不生效：确认路径是否正确，并重启终端 / Codex
-4. KEY 报错：确认登录缓存或 API key 配置有效，且没有多余空格
-
-## 6. 实操结论（第一篇）
-
-1. 真正影响成败的是三件事：`Node 20+`、`config.toml`、有效认证
-2. 网络环境不稳定时，先切镜像，能省大量排错时间
-3. 配置不生效时，优先用项目内 `.codex/` 覆盖，定位最快
-
-## 7. 安全提醒
-
-文档里的示例是高权限配置（`danger-full-access` + `never`）。  
-个人日常开发建议先用更稳妥组合：
-
-```toml
-sandbox_mode = "workspace-write"
-approval_policy = "on-request"
+```text
+你会做什么？
 ```
 
-逐行解释：
+那样学不到 Codex 的核心能力。  
+Codex 的手感来自“读项目 -> 定位文件 -> 修改 -> 验证”这条链。
 
-1. `sandbox_mode = "workspace-write"`：仅允许写当前工作区，避免误改系统其他目录。
-2. `approval_policy = "on-request"`：需要敏感操作时先询问你，适合新手和日常开发。
+---
 
-确认流程稳定后，再按实际场景提高权限。
+## 3. 第一屏不用截图，用文字图抓重点
+
+以后看到 Codex CLI 首页，先看这 4 块：
+
+```mermaid
+flowchart LR
+  A["Codex CLI 第一屏"] --> B["模型 / 推理强度<br/>这轮用哪种能力"]
+  A --> C["当前目录<br/>是不是目标仓库根目录"]
+  A --> D["权限 / 沙箱提示<br/>能不能写文件、跑命令"]
+  A --> E["输入框与快捷提示<br/>输入 / 看命令，输入任务让它行动"]
+```
+
+不要把欢迎语当正文读。  
+真正影响第一轮任务的只有这些：
+
+1. 模型是不是你想用的
+2. 当前目录是不是目标仓库
+3. 权限是不是足够但不过度
+4. 你准备输入的是开发任务，不是普通闲聊
+
+第一天养成一个习惯：  
+每次启动 Codex，先扫模型、目录和权限，再输入任务。
+
+---
+
+## 4. 第一句 prompt：先读，不改
+
+第一轮不要让它直接“大改项目”。  
+先用这句：
+
+```text
+先不要修改任何文件。
+请先阅读这个仓库，然后告诉我：
+1. 这是个什么项目
+2. 主要目录怎么分工
+3. 开发入口、路由入口和构建脚本在哪里
+4. 如果我要改首页或笔记详情页，先看哪几个文件
+```
+
+这句 prompt 的目的不是让 Codex 表演，而是验证三件事：
+
+1. 它有没有读到正确仓库
+2. 它有没有抓到项目结构
+3. 它有没有乱猜入口文件
+
+如果它第一轮就把项目说偏了，后面不要急着让它改。  
+先纠正上下文。
+
+---
+
+## 5. 模型和推理强度：按任务切，不要背死
+
+Codex 里用 `/model` 可以切模型；部分模型也会暴露推理强度选择。  
+官方 slash commands 文档里，`/model` 的定位就是选择当前模型，以及在可用时选择 reasoning effort。
+
+把它理解成这张文字图就够：
+
+```mermaid
+flowchart TD
+  A["这轮任务是什么？"] --> B{"复杂度"}
+  B -->|陌生仓库 / 难 bug / 重构| C["更强模型<br/>high 或 xhigh"]
+  B -->|小文案 / 小样式 / 小脚本| D["默认或中等强度"]
+  B -->|批量轻任务 / 快速扫一遍| E["更轻量模型或较低强度"]
+  C --> F["改完必须看 diff 和验证"]
+  D --> F
+  E --> F
+```
+
+不要把某个模型名写死成永远答案。  
+官方模型列表、账号能力、第三方网关开放模型都会变，落地前看当前 CLI 的 `/model`、`/status` 和服务商后台。
+
+---
+
+## 6. 权限模式：先稳，再快
+
+第一天只记三层：
+
+```mermaid
+flowchart TD
+  A["权限选择"] --> B["Read Only<br/>只读：解释、审查、规划"]
+  A --> C["Workspace / Auto 类开发模式<br/>能改当前工作区，高风险动作受控"]
+  A --> D["Full Access / danger 类模式<br/>权限最大，只适合隔离环境或你明确知道风险"]
+```
+
+程序员日常最适合的心智是：
+
+```toml
+approval_policy = 'on-request'
+sandbox_mode = 'workspace-write'
+```
+
+翻成人话：
+
+1. Codex 可以改当前工作区
+2. 真要做敏感命令、高风险动作、越界访问时先问你
+
+如果只是让 Codex 看项目、解释代码、做 review，用只读就够。  
+如果已经明确要它改文件，用工作区写权限。  
+如果涉及删除、移动、安装依赖、跨目录访问、联网或全局替换，先停一下，看清提示再确认。
+
+---
+
+## 7. 第一天最该会的 slash 命令
+
+先不要背完整命令表。  
+第一天最常用的是下面这些：
+
+| 命令 | 什么时候用 |
+|---|---|
+| `/status` | 看当前模型、审批策略、可写目录、上下文容量 |
+| `/model` | 临时切模型或推理强度 |
+| `/permissions` | 临时调权限 |
+| `/diff` | 看 Codex 已经改了什么 |
+| `/review` | 让 Codex 审查当前工作树 |
+| `/mcp` | 看外部工具有没有连上 |
+| `/plugins` | 看插件和插件来源 |
+| `/skills` | 看当前可用的工作套路 |
+| `/experimental` | 看实验能力，别默认全开 |
+| `/debug-config` | 配置和策略不符合预期时看层级诊断 |
+| `/compact` | 长会话压缩上下文 |
+
+把命令按用途分，会比硬背轻松很多：
+
+```mermaid
+flowchart LR
+  A["/ 命令"] --> B["看状态<br/>/status /debug-config"]
+  A --> C["控本轮<br/>/model /permissions /compact"]
+  A --> D["看改动<br/>/diff /review"]
+  A --> E["查扩展<br/>/mcp /plugins /skills"]
+  A --> F["试新能力<br/>/experimental"]
+```
+
+看到陌生命令时，不要猜来源。  
+先去 `/status`、`/plugins`、`/skills`、`/mcp` 反查它属于哪一层。
+
+---
+
+## 8. 第一轮真实任务怎么练
+
+按下面 4 步走，第一天就能建立正确手感。
+
+### 8.1 先解释，不改
+
+```text
+先不要修改文件。
+请解释首页是从哪里渲染出来的，涉及哪些路由、组件、数据文件和样式文件。
+```
+
+### 8.2 再定位一个小改动
+
+```text
+请只定位首页标题、副标题和列表数据的来源。
+先不要修改，告诉我应该改哪几个文件，以及每个文件为什么相关。
+```
+
+### 8.3 再允许小范围修改
+
+```text
+现在开始修改：
+1. 只改首页副标题文案
+2. 不要改样式
+3. 不要顺手重构
+4. 改完后告诉我如何验证
+```
+
+### 8.4 最后看 diff 和验证
+
+```text
+请展示这次改动的 diff，并告诉我应该运行哪条测试或构建命令验证。
+```
+
+这套节奏比“帮我优化整个项目”稳定得多。  
+程序员用 Codex，关键不是把任务一次性丢大，而是让边界清楚、验证闭环清楚。
+
+---
+
+## 9. `/status` 和错误提示：排错先定位层级
+
+官方文档里 `/status` 用来确认当前模型、审批策略、可写目录和上下文容量。  
+所以你觉得 Codex “不对劲”时，第一反应不是重装，而是先看 `/status`。
+
+```mermaid
+flowchart TD
+  A["Codex 不对劲"] --> B["先跑 /status"]
+  B --> C["模型 / 推理强度是否对"]
+  B --> D["当前目录是否对"]
+  B --> E["审批策略 / 可写目录是否对"]
+  B --> F["上下文容量是否快满"]
+  A --> G["再看错误关键词"]
+  G --> H["path / directory = 路径层"]
+  G --> I["permission / sandbox = 权限层"]
+  G --> J["auth / login = 登录层"]
+  G --> K["provider / model = 服务线路层"]
+  G --> L["mcp / tool = 外部工具层"]
+```
+
+常见关键词可以这样翻：
+
+| 关键词 | 优先怀疑 |
+|---|---|
+| `path` / `directory` | 路径不存在、Windows / WSL 路径混用 |
+| `permission` / `sandbox` | 权限模式或沙箱限制 |
+| `auth` / `login` | 登录态、API key、keyring |
+| `provider` / `model` | 模型提供方或模型名不匹配 |
+| `mcp` / `tool` | 外部工具启动失败或没授权 |
+| `node` / `npm` | Node 运行时、PATH、代理终端环境 |
+
+排错顺序：
+
+1. `/status`
+2. `/debug-config`
+3. 当前目录和权限
+4. 用户 `~/.codex/config.toml`
+5. 项目 `.codex/config.toml`
+6. 登录态、provider、MCP
+7. 最后才考虑重装或升级
+
+---
+
+## 10. VS Code 插件、脚手架和桌面 App 怎么放进主线
+
+主人平时 CLI、VS Code 插件、脚手架、桌面 App 都会用，建议这样分工：
+
+| 入口 | 最适合干什么 | 不适合干什么 |
+|---|---|---|
+| CLI | 排错、读仓库、看状态、跑命令、核配置 | 长时间管理多条并行任务 |
+| VS Code 插件 | 贴着代码改文件、引用当前编辑器上下文、处理局部 TODO | 脱离项目做大范围资料整理 |
+| 脚手架 / 插件体系 | 把固定能力打包复用，比如 skills、MCP、项目模板 | 替代基础权限和配置理解 |
+| 桌面 App | Worktrees、Review、内置终端、浏览器预览、长任务和本地/云端切换 | 忽略 Git 状态后直接全自动大改 |
+
+最推荐的日常开发流：
+
+```mermaid
+flowchart LR
+  A["CLI<br/>确认模型、目录、权限、MCP"] --> B["VS Code 插件<br/>贴着文件做具体修改"]
+  B --> C["桌面 App<br/>承接 worktree、review、长任务"]
+  C --> D["统一看 diff / review / test"]
+```
+
+如果三端表现不一致，先查这 4 个：
+
+1. 三边打开的是不是同一个仓库
+2. CLI 在 Windows-native 还是 WSL
+3. `CODEX_HOME` 是否一致
+4. 桌面 App 是否在 worktree，而 CLI 在原目录
+
+---
+
+## 11. 程序员第一周最容易踩的坑
+
+1. 装了多份 Codex，却不知道 PATH 里哪份生效
+2. 第一轮就让它大改，不让它先读项目
+3. 没看 `/status`，就开始改 `config.toml`
+4. 把“模型不合适”“权限不够”“路径不对”“MCP 没连上”混成一个问题
+5. 改完只看回答，不看 `/diff` 和测试结果
+6. 一上来研究第三方线路，反而没跑通基础工作流
+
+---
+
+## 12. 读完这篇后下一步看什么
+
+如果主人刚跑通第一轮任务，下一步按这个顺序：
+
+1. [第十三篇：Codex CLI 英文终端界面逐屏翻译与排错](#/note/AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31)  
+   解决“终端里这些英文、菜单、插件、skills、错误提示到底怎么看”。
+2. [第三篇：Codex 文档地图与配置逐项详解（小白版）](#/note/AI工具/02_终端Agent流/Codex/第三篇_Codex文档地图与配置逐项详解_小白版)  
+   解决“为什么配置会覆盖、为什么改了不生效”。
+3. [第八篇：Codex 命令与配置文件作用全解（小白可查版）](#/note/AI工具/02_终端Agent流/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版)  
+   当命令和字段速查表用。
+4. [第六篇：Codex CLI / 插件 / App 全链路配置实战](#/note/AI工具/02_终端Agent流/Codex/第六篇_CLI插件App全链路配置实战_超详细)  
+   解决 CLI、VS Code 插件、桌面 App 之间怎么联动。
+
+第三方线路、rpcod、Packy、yunyi 这些不要放在第一天主线里硬背。  
+等你真的要切线路时，直接去看第四篇这篇合并后的线路总手册就够了。
+
+---
+
+## 参考资料
+
+- Codex CLI：<https://developers.openai.com/codex/cli>
+- CLI Slash Commands：<https://developers.openai.com/codex/cli/slash-commands>
+- Codex 配置：<https://developers.openai.com/codex/config-basic>
+- Codex MCP：<https://developers.openai.com/codex/mcp>
+- AGENTS.md：<https://developers.openai.com/codex/guides/agents-md>
+- Codex use cases：<https://developers.openai.com/codex/use-cases>
