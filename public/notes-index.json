@@ -13904,6 +13904,30 @@
         },
         {
           "type": "file",
+          "title": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "frontmatterTitle": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "fileTitle": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06",
+          "filename": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "date": "2026-06-02T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "终端",
+            "PowerShell",
+            "CLI",
+            "零基础"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向经常打开 Cloud Codex、但终端基础还不熟的用户，按“我现在在哪、我想进哪、我想看什么、我想停什么”的真实场景讲清最常用的 PowerShell 基础操作。",
+          "size": "11KB",
+          "lastModified": "2026-06-02T13:17:25.939Z",
+          "wordCount": 5869
+        },
+        {
+          "type": "file",
           "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
           "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
           "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
@@ -15783,6 +15807,30 @@
         },
         {
           "type": "file",
+          "title": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "frontmatterTitle": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "fileTitle": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06",
+          "filename": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "date": "2026-06-02T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "终端",
+            "PowerShell",
+            "CLI",
+            "零基础"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向经常打开 Cloud Codex、但终端基础还不熟的用户，按“我现在在哪、我想进哪、我想看什么、我想停什么”的真实场景讲清最常用的 PowerShell 基础操作。",
+          "size": "11KB",
+          "lastModified": "2026-06-02T13:17:25.939Z",
+          "wordCount": 5869
+        },
+        {
+          "type": "file",
           "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
           "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
           "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
@@ -16343,6 +16391,30 @@
           "size": "18KB",
           "lastModified": "2026-05-31T06:10:44.846Z",
           "wordCount": 10562
+        },
+        {
+          "type": "file",
+          "title": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "frontmatterTitle": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+          "fileTitle": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06",
+          "filename": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "path": "AI工具/02_终端Agent流/Codex/第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+          "date": "2026-06-02T00:00:00.000Z",
+          "hasRealDate": true,
+          "order": null,
+          "tags": [
+            "Codex",
+            "终端",
+            "PowerShell",
+            "CLI",
+            "零基础"
+          ],
+          "category": "AI工具",
+          "attachments": [],
+          "description": "面向经常打开 Cloud Codex、但终端基础还不熟的用户，按“我现在在哪、我想进哪、我想看什么、我想停什么”的真实场景讲清最常用的 PowerShell 基础操作。",
+          "size": "11KB",
+          "lastModified": "2026-06-02T13:17:25.939Z",
+          "wordCount": 5869
         },
         {
           "type": "file",
@@ -24730,6 +24802,30 @@
     }
   ],
   "allNotes": [
+    {
+      "type": "file",
+      "title": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+      "frontmatterTitle": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+      "fileTitle": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06",
+      "filename": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+      "path": "AI工具/02_终端Agent流/Codex/第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+      "date": "2026-06-02T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "Codex",
+        "终端",
+        "PowerShell",
+        "CLI",
+        "零基础"
+      ],
+      "category": "AI工具",
+      "attachments": [],
+      "description": "面向经常打开 Cloud Codex、但终端基础还不熟的用户，按“我现在在哪、我想进哪、我想看什么、我想停什么”的真实场景讲清最常用的 PowerShell 基础操作。",
+      "size": "11KB",
+      "lastModified": "2026-06-02T13:17:25.939Z",
+      "wordCount": 5869
+    },
     {
       "type": "file",
       "title": "第一篇：Codex CLI 第一日开发实战（程序员版）",
@@ -40115,6 +40211,30 @@
                 },
                 {
                   "type": "file",
+                  "title": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+                  "frontmatterTitle": "第十四篇：Cloud Codex 终端基础操作入门（零基础版）",
+                  "fileTitle": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06",
+                  "filename": "第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+                  "path": "AI工具/02_终端Agent流/Codex/第十四篇_CloudCodex终端基础操作入门_零基础版_2026-06.md",
+                  "date": "2026-06-02T00:00:00.000Z",
+                  "hasRealDate": true,
+                  "order": null,
+                  "tags": [
+                    "Codex",
+                    "终端",
+                    "PowerShell",
+                    "CLI",
+                    "零基础"
+                  ],
+                  "category": "AI工具",
+                  "attachments": [],
+                  "description": "面向经常打开 Cloud Codex、但终端基础还不熟的用户，按“我现在在哪、我想进哪、我想看什么、我想停什么”的真实场景讲清最常用的 PowerShell 基础操作。",
+                  "size": "11KB",
+                  "lastModified": "2026-06-02T13:17:25.939Z",
+                  "wordCount": 5869
+                },
+                {
+                  "type": "file",
                   "title": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
                   "frontmatterTitle": "第十一篇：Codex 近期待补全更新总表（已并入第十二篇）",
                   "fileTitle": "第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22",
@@ -44836,7 +44956,7 @@
       ]
     }
   ],
-  "totalNotes": 420,
+  "totalNotes": 421,
   "totalCategories": 112,
-  "lastUpdated": "2026-06-02T13:01:32.247Z"
+  "lastUpdated": "2026-06-02T13:18:22.198Z"
 }
