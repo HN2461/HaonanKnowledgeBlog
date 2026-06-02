@@ -4783,10 +4783,10 @@
       "category": "常用缺易忘",
       "attachments": [],
       "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-      "size": "7KB",
-      "lastModified": "2026-04-28T11:18:24.357Z",
-      "wordCount": 4483,
-      "content": "Git 命令速查与常见问题 习惯了 VSCode 插件点按钮？这份手册帮你把每个按钮背后的命令对应起来，遇到问题也能自己排查。 --- 一、日常基础操作 查看状态 暂存 & 提交 拉取 & 推送 克隆仓库 --- 二、分支操作 --- 三、撤销 & 回退 --- 四、远程仓库管理 --- 五、暂存工作现场（stash） --- 六、常见问题排查 ❌ 连不上 GitHub（443 端口超时） 报错：Failed to connect to github.com port 443 国内直连 GitHub 不稳定，按以下顺序排查： 第一步：检查是否有残留代理配置 有输出就清掉： 第二步：用镜像代理（不需要梯子，推荐） 第三步：换 SSH 协议 前提：本机已配好 SSH Key 并添加到 GitHub 账号。 第四步：开了梯子但还是不通 给 git 配代理（端口换成你梯子实际端口，常见 7890 / 1080）： --- ❌ push 被拒绝（non-fast-forward） 报错：rejected ... non-fast-forward 远程有你本地没有的提交，先 pull 再 push： --- ❌ 合并冲突 --- ❌ 误删文件想恢复 --- ❌ 提交了不该提交的文件 --- ❌ 想修改最近一次提交说明 --- 七、SSH Key 配置（一次性操作） --- 八、VSCode 按钮 vs 命令行对照 | VSCode 操作 | 对应命令 | |---|---| | Source Control 面板 | git status | | Stage All Changes | git add . | | Unstage | git restore --staged 文件名 | | Discard Changes | git restore 文件名 | | Commit | git commit -m \"说明\" | | Pull | git pull | | Push | git push | | Sync Changes | git pull + git push | | Create Branch | git switch -c 分支名 | | Checkout Branch | git switch 分支名 | | Merge Branch | git merge 分支名 | | Stash Changes | git stash | | Pop Stash | git stash pop |"
+      "size": "9KB",
+      "lastModified": "2026-06-02T12:58:59.971Z",
+      "wordCount": 5752,
+      "content": "Git 命令速查与常见问题 习惯了 VSCode 插件点按钮？这份手册帮你把每个按钮背后的命令对应起来，遇到问题也能自己排查。 --- 一、日常基础操作 查看状态 暂存 & 提交 拉取 & 推送 克隆仓库 --- 二、分支操作 --- 三、撤销 & 回退 --- 四、远程仓库管理 --- 五、暂存工作现场（stash） --- 六、常见问题排查 ❌ 连不上 GitHub（443 端口超时） 报错：Failed to connect to github.com port 443 国内直连 GitHub 不稳定，按以下顺序排查： 第一步：先看远程地址是 HTTPS 还是 SSH 如果远程是 https://github.com/...，下面讲的 http.proxy / https.proxy 才会生效 如果远程是 git@github.com:...，它走的是 SSH，应该优先检查 ssh -T git@github.com 第二步：检查是否有残留代理配置 有输出就清掉： 第三步：先别急着怪梯子，先理解“浏览器能上，不代表 Git 能上” 很多新手会卡在这里： 浏览器可以打开 GitHub Clash 也显示已经启动 但 git pull、git clone 还是超时 这通常不是“VPN 软件不对”，而是浏览器走了代理，但 Git 所在终端没有走代理。 常见原因有三种： Git 没有单独配置代理 以前配过旧端口，比如 7890，现在 Clash 实际端口已经变成 7897 远程仓库明明是 HTTPS，却一直按 SSH 的思路排查，方向跑偏了 先用下面的命令直接验证 Git 当前能不能打到远程： 能输出 HEAD 和分支 hash，说明网络通了 如果还是报 Failed to connect to github.com port 443，继续下面步骤 第四步：开了 Clash / Mihomo 但 Git 还是不通 如果你的代理软件里能看到本地端口，例如： 127.0.0.1:7897：常见混合端口 127.0.0.1:7890：常见 HTTP 代理端口 127.0.0.1:1080：常见 SOCKS 端口 那就把 Git 明确指向这个端口。以 Clash / Mihomo 混合端口 7897 为例： 如果 git ls-remote origin 已经能看到远程分支信息，再执行： 如果以后不想让 Git 一直走代理，再撤销： 一句话记忆：浏览器代理是浏览器代理，Git 代理是 Git 代理；Clash 开着，不代表 Git 自动会走。 第五步：用镜像代理（不需要梯子，推荐） 第六步：换 SSH 协议 前提：本机已配好 SSH Key 并添加到 GitHub 账号。 第七步：你怀疑是代理本身有问题时，优先看这几个检查点 重点看： 代理端口是不是和 Clash 当前显示的一致 当前远程是 HTTPS 还是 SSH Git 失败时，是连接超时、证书问题，还是认证失败 如果已经不再使用本地代理客户端，但 Git 里还残留着旧代理地址，也会导致一直连不上。 --- ❌ push 被拒绝（non-fast-forward） 报错：rejected ... non-fast-forward 远程有你本地没有的提交，先 pull 再 push： --- ❌ 合并冲突 --- ❌ 误删文件想恢复 --- ❌ 提交了不该提交的文件 --- ❌ 想修改最近一次提交说明 --- 七、SSH Key 配置（一次性操作） --- 八、VSCode 按钮 vs 命令行对照 | VSCode 操作 | 对应命令 | |---|---| | Source Control 面板 | git status | | Stage All Changes | git add . | | Unstage | git restore --staged 文件名 | | Discard Changes | git restore 文件名 | | Commit | git commit -m \"说明\" | | Pull | git pull | | Push | git push | | Sync Changes | git pull + git push | | Create Branch | git switch -c 分支名 | | Checkout Branch | git switch 分支名 | | Merge Branch | git merge 分支名 | | Stash Changes | git stash | | Pop Stash | git stash pop |"
     },
     {
       "type": "file",
@@ -8109,10 +8109,10 @@
         }
       ],
       "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-      "size": "4KB",
-      "lastModified": "2026-04-12T13:45:49.795Z",
-      "wordCount": 2234,
-      "content": "公司网访问受限（需开 VPN）排查与解决 问题现象： 微信/QQ 可用，但豆包/淘宝/GPT 等网站必须开 VPN 才能访问 浏览器出现连接重置、加载缓慢或无法打开 可能原因： 公司网络策略限制（需 IT 白名单） 系统代理或 WinHTTP 代理残留指向本地端口 VPN/代理软件未完全退出直接关机，导致代理残留 浏览器代理扩展或设置残留 DNS 缓存或 Winsock 网络栈异常 排查思路： 先判断是否公司网络限制，再定位电脑侧问题点，最后处理与恢复。 第一步：判断是否公司网络限制 切换手机热点验证 断开公司网，连手机 4G/5G 热点 不开 VPN 访问豆包/淘宝 能打开：电脑侧问题，继续下一步 仍打不开：公司网络限制，联系 IT 命令行基础连通性验证（管理员 PowerShell）： 判断依据： 能解析 + TcpTestSucceeded 为 True：网络底层正常，问题多在代理/浏览器 超时或失败：公司网拦截，联系 IT 第二步：电脑侧代理与网络排查 系统代理设置 打开“设置 → 网络和 Internet → 代理”，关闭：自动检测设置、使用设置脚本、使用代理服务器 一键清理（推荐） 运行本文同目录的 清理代理残留.bat（管理员权限），执行后重启电脑 手动清理（备用，管理员 PowerShell），执行后重启电脑 精简版（优先使用）： 扩展版（精简版无效再用）： 如公司依赖 PAC/自动检测，执行扩展版后需按 IT 配置恢复。 浏览器代理与扩展 禁用代理类扩展（Proxy/Omega/Clash/V2Ray），重置浏览器设置，并用无痕模式验证 第三步：仍需 VPN → 联系 IT 申请白名单 参考话术： 您好，我在办公中需要访问豆包、淘宝等网站用于工作，但当前公司网络下必须开启 VPN 才能正常访问，微信/QQ 等工具不受影响。 已排查电脑侧代理与网络设置正常，判断为公司网络策略限制。 麻烦将以下域名加入访问白名单：doubao.com、taobao.com（以及其他工作域名）。 感谢配合。 预防建议： 不使用未授权 VPN/代理工具，减少残留配置 用完代理后彻底退出客户端，不要仅最小化到托盘 定期清理浏览器代理类扩展"
+      "size": "5KB",
+      "lastModified": "2026-06-02T12:59:14.389Z",
+      "wordCount": 3154,
+      "content": "公司网访问受限（需开 VPN）排查与解决 问题现象： 微信/QQ 可用，但豆包/淘宝/GPT 等网站必须开 VPN 才能访问 浏览器出现连接重置、加载缓慢或无法打开 可能原因： 公司网络策略限制（需 IT 白名单） 系统代理或 WinHTTP 代理残留指向本地端口 VPN/代理软件未完全退出直接关机，导致代理残留 浏览器代理扩展或设置残留 DNS 缓存或 Winsock 网络栈异常 排查思路： 先判断是否公司网络限制，再定位电脑侧问题点，最后处理与恢复。 第一步：判断是否公司网络限制 切换手机热点验证 断开公司网，连手机 4G/5G 热点 不开 VPN 访问豆包/淘宝 能打开：电脑侧问题，继续下一步 仍打不开：公司网络限制，联系 IT 命令行基础连通性验证（管理员 PowerShell）： 判断依据： 能解析 + TcpTestSucceeded 为 True：网络底层正常，问题多在代理/浏览器 超时或失败：公司网拦截，联系 IT 第二步：电脑侧代理与网络排查 系统代理设置 打开“设置 → 网络和 Internet → 代理”，关闭：自动检测设置、使用设置脚本、使用代理服务器 一键清理（推荐） 运行本文同目录的 清理代理残留.bat（管理员权限），执行后重启电脑 手动清理（备用，管理员 PowerShell），执行后重启电脑 精简版（优先使用）： 扩展版（精简版无效再用）： 如公司依赖 PAC/自动检测，执行扩展版后需按 IT 配置恢复。 浏览器代理与扩展 禁用代理类扩展（Proxy/Omega/Clash/V2Ray），重置浏览器设置，并用无痕模式验证 如果是 git pull、git clone、终端访问 GitHub 不通 很多时候不是“代理软件没开”，而是“浏览器走了代理，但 Git 没走代理”。尤其是 Clash / Mihomo 这类客户端，就算界面显示已启动，终端里的 Git 也未必自动复用它当前的本地端口。 Git / 终端单独排查（普通 PowerShell 即可）： 判断思路： 远程是 https://github.com/...：优先检查 http.proxy / https.proxy 远程是 git@github.com:...：优先检查 SSH，而不是 HTTP 代理 浏览器能上 GitHub，但 git ls-remote origin 超时：大概率是 Git 没走当前代理 如果 Clash / Mihomo 当前显示的本地混合端口是 127.0.0.1:7897，可以这样给 Git 单独指定： 如果后续不再需要： 一句话记忆： 浏览器代理能用，不代表 Git 自动能用 Clash 开着，不代表每个终端工具都会自动走它 如公司网络策略禁止 GitHub，给 Git 配代理也可能依然不通，这时仍需联系 IT 或换网络环境验证 第三步：仍需 VPN → 联系 IT 申请白名单 参考话术： 您好，我在办公中需要访问豆包、淘宝等网站用于工作，但当前公司网络下必须开启 VPN 才能正常访问，微信/QQ 等工具不受影响。 已排查电脑侧代理与网络设置正常，判断为公司网络策略限制。 麻烦将以下域名加入访问白名单：doubao.com、taobao.com（以及其他工作域名）。 感谢配合。 预防建议： 不使用未授权 VPN/代理工具，减少残留配置 用完代理后彻底退出客户端，不要仅最小化到托盘 定期清理浏览器代理类扩展"
     },
     {
       "type": "file",
@@ -10154,9 +10154,9 @@
               "category": "常用缺易忘",
               "attachments": [],
               "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-              "size": "7KB",
-              "lastModified": "2026-04-28T11:18:24.357Z",
-              "wordCount": 4483
+              "size": "9KB",
+              "lastModified": "2026-06-02T12:58:59.971Z",
+              "wordCount": 5752
             },
             {
               "type": "file",
@@ -10670,9 +10670,9 @@
                     }
                   ],
                   "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-                  "size": "4KB",
-                  "lastModified": "2026-04-12T13:45:49.795Z",
-                  "wordCount": 2234
+                  "size": "5KB",
+                  "lastModified": "2026-06-02T12:59:14.389Z",
+                  "wordCount": 3154
                 }
               ]
             },
@@ -20528,5 +20528,5 @@
   ],
   "totalNotes": 420,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-31T08:18:38.434Z"
+  "lastUpdated": "2026-06-02T13:01:32.247Z"
 }

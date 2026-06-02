@@ -124,7 +124,15 @@ git stash drop          # 删除最近一次 stash
 
 国内直连 GitHub 不稳定，按以下顺序排查：
 
-**第一步：检查是否有残留代理配置**
+**第一步：先看远程地址是 HTTPS 还是 SSH**
+```bash
+git remote -v
+```
+
+- 如果远程是 `https://github.com/...`，下面讲的 `http.proxy` / `https.proxy` 才会生效
+- 如果远程是 `git@github.com:...`，它走的是 SSH，应该优先检查 `ssh -T git@github.com`
+
+**第二步：检查是否有残留代理配置**
 ```bash
 git config --global --get http.proxy
 git config --global --get https.proxy
@@ -135,7 +143,60 @@ git config --global --unset http.proxy
 git config --global --unset https.proxy
 ```
 
-**第二步：用镜像代理（不需要梯子，推荐）**
+**第三步：先别急着怪梯子，先理解“浏览器能上，不代表 Git 能上”**
+
+很多新手会卡在这里：
+
+- 浏览器可以打开 GitHub
+- Clash 也显示已经启动
+- 但 `git pull`、`git clone` 还是超时
+
+这通常不是“VPN 软件不对”，而是**浏览器走了代理，但 Git 所在终端没有走代理**。
+
+常见原因有三种：
+
+- Git 没有单独配置代理
+- 以前配过旧端口，比如 `7890`，现在 Clash 实际端口已经变成 `7897`
+- 远程仓库明明是 HTTPS，却一直按 SSH 的思路排查，方向跑偏了
+
+先用下面的命令直接验证 Git 当前能不能打到远程：
+```bash
+git ls-remote origin
+```
+
+- 能输出 `HEAD` 和分支 hash，说明网络通了
+- 如果还是报 `Failed to connect to github.com port 443`，继续下面步骤
+
+**第四步：开了 Clash / Mihomo 但 Git 还是不通**
+
+如果你的代理软件里能看到本地端口，例如：
+
+- `127.0.0.1:7897`：常见混合端口
+- `127.0.0.1:7890`：常见 HTTP 代理端口
+- `127.0.0.1:1080`：常见 SOCKS 端口
+
+那就把 Git 明确指向这个端口。以 Clash / Mihomo 混合端口 `7897` 为例：
+```bash
+git config --global http.proxy http://127.0.0.1:7897
+git config --global https.proxy http://127.0.0.1:7897
+git ls-remote origin
+```
+
+如果 `git ls-remote origin` 已经能看到远程分支信息，再执行：
+```bash
+git pull
+git push
+```
+
+如果以后不想让 Git 一直走代理，再撤销：
+```bash
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+> 一句话记忆：浏览器代理是浏览器代理，Git 代理是 Git 代理；Clash 开着，不代表 Git 自动会走。
+
+**第五步：用镜像代理（不需要梯子，推荐）**
 ```bash
 # 临时换成镜像地址
 git remote set-url origin https://mirror.ghproxy.com/https://github.com/用户名/仓库名.git
@@ -145,20 +206,28 @@ git pull
 git remote set-url origin https://github.com/用户名/仓库名.git
 ```
 
-**第三步：换 SSH 协议**
+**第六步：换 SSH 协议**
 ```bash
 git remote set-url origin git@github.com:用户名/仓库名.git
 git pull
 ```
 > 前提：本机已配好 SSH Key 并添加到 GitHub 账号。
 
-**第四步：开了梯子但还是不通**
-
-给 git 配代理（端口换成你梯子实际端口，常见 7890 / 1080）：
+**第七步：你怀疑是代理本身有问题时，优先看这几个检查点**
 ```bash
-git config --global http.proxy http://127.0.0.1:7890
-git config --global https.proxy http://127.0.0.1:7890
+git config --global --get http.proxy
+git config --global --get https.proxy
+git remote -v
+git ls-remote origin
 ```
+
+重点看：
+
+- 代理端口是不是和 Clash 当前显示的一致
+- 当前远程是 HTTPS 还是 SSH
+- Git 失败时，是连接超时、证书问题，还是认证失败
+
+如果已经不再使用本地代理客户端，但 Git 里还残留着旧代理地址，也会导致一直连不上。
 
 ---
 

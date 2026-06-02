@@ -2,16 +2,16 @@
 // 主人说'汇总消息'时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-05-31',
+  date: '2026-06-02',
   items: [
     {
-      category: '内容上新',
-      time: '16:15',
-      title: '将 Codex 系列改造成程序员实战主线并合并重复文章',
+      category: '问题修复',
+      time: '20:59',
+      title: '修复 GitHub 拉取走代理问题并补强 Git 代理排障笔记',
       summary:
-        '围绕主人平时主要使用 Codex CLI、VS Code 插件、脚手架和桌面 App 的习惯，重写 Codex 目录、第一篇和零基础导读，新增“第十三篇：Codex CLI 英文终端界面逐屏翻译与排错”，并按主人反馈把重复内容合并成少数主干长文，去掉过碎的阅读结构。',
+        '将 Git 全局代理明确指向 Clash / Mihomo 当前混合端口 `127.0.0.1:7897`，恢复仓库对 GitHub 的 HTTPS 连通；同时补强现有 Git 与代理专题笔记，把“浏览器能上 GitHub 但 `git pull` 还是超时”的判断思路、验证命令和回退方法写完整。',
       content:
-        '第一点：将 `public/notes/AI工具/02_终端Agent流/Codex/目录.md` 重写为“程序员实战学习目录”，把阅读路线从旧的配置百科顺序调整为“CLI 第一日实战 -> 英文终端逐屏翻译 -> 配置心智 -> 命令速查 -> CLI/插件/App 三端联动 -> 当前功能手册”，并把字段字典、界面对照 SOP、第三方线路和历史排障降级为按需查阅附录；第二点：重写 `public/notes/AI工具/02_终端Agent流/Codex/第一篇_Codex从0到1配置实战.md`，把它从 `rpcod` 第三方线路样例改造成“Codex CLI 第一日开发实战（程序员版）”，重点保留安装与路径确认、真实仓库第一轮任务、CLI 第一屏、模型与推理强度、权限、slash 菜单、`/status` 排错、VS Code 插件、脚手架与桌面 App 的分工，并删除重复的字段百科式说明；第三点：新增并二次重写 `public/notes/AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31.md`，基于主人整理的 CLI 终端界面线索，用 Mermaid 文字图和终端转写解释首页、`/model`、`/permissions`、`/status`、`/debug-config`、`/mcp`、`/plugins`、`/skills`、`/experimental`、红色错误和会话中断，并补齐英文状态词、来源词、动作词速查表；第四点：按主人“不要图片，用文字图片”的反馈，移除第一篇和第十三篇中的真实截图引用，不保留本次临时图片素材，主线讲解统一改为文字图；第五点：按主人“与其压缩成很多小篇，不如几篇合成一篇长文”的反馈，重写 `public/notes/AI工具/02_终端Agent流/Codex/第四篇_Codex多来源完整配置手册_小白友好版.md` 为“多线路接入与迁移总手册（合并版）”，把官方、Packy、yunyi、rpcod 等线路统一收进一篇里，并吸收原 `补充篇_rpcod线路CodexCLI配置实战_2026-03.md` 中仍有价值的 provider、认证、首轮验证与排错内容；第六点：将 `public/notes/AI工具/02_终端Agent流/Codex/第十二篇_Codex当前常用功能点详细手册_最新工作流版_2026-05-22.md` 扩写为“当前常用功能与进阶工作流总手册（合并版）”，把原第二篇和第十一篇里真正值得保留的 `codex exec`、MCP 治理、profile、App / IDE / Windows 最近更新认知统一并入主文；第七点：将 `第二篇_Codex官方资料补充与进阶实践.md`、`第十一篇_Codex近期待补全更新总表_桌面版IDE云任务与Windows新能力_2026-05-22.md` 与 `补充篇_rpcod线路CodexCLI配置实战_2026-03.md` 全部改成“已并入主文”的短跳转页，保留旧链接可访问，但不再让读者重复读一遍长文；第八点：同步更新 `零基础先读_小白学习路线与读完能力对照_2026-05-22.md`、`第七篇_Codex三端逐字段截图对照版_每一步可复现.md`、`第九篇_Codex本地数据目录详解_关键文件与Rules深入版.md` 与目录页中的阅读建议和交叉引用，让站内推荐统一变成“少数主线长文 + 历史入口页”的结构；第九点：按仓库规则先将旧 `data/dailyChangeSummary.js` 中 2026-05-30 的两条摘要原样归档到 `data/history/2026-05-21_30.js`，再重建今天摘要；第十点：执行 `pwsh -File scripts/checkNodeRuntime.ps1` 通过 Node 运行时预检，并运行索引、通知与构建脚本刷新站内数据。',
+        '第一点：执行 `git config --global http.proxy http://127.0.0.1:7897` 与 `git config --global https.proxy http://127.0.0.1:7897`，让本机 Git 走 Clash / Mihomo 当前混合端口；第二点：使用 `git ls-remote origin` 直接验证远程仓库可达，确认之前的 `Failed to connect to github.com port 443` 已恢复为可正常拉取远程分支列表；第三点：更新 `public/notes/常用缺易忘/工具速查/Git命令速查与常见问题.md`，把“先看远程是 HTTPS 还是 SSH”“浏览器能上不代表 Git 能上”“Clash 端口变化导致旧代理失效”“用 `git ls-remote origin` 做最小验证”这些关键排障点补成完整流程；第四点：同步更新 `public/notes/电脑/电脑网络/代理与VPN/代理网络问题处理指南.md`，补入终端 / Git 视角的单独排查段，解释为什么代理软件已启动时浏览器可用但 Git 依然超时，并给出按 `127.0.0.1:7897` 配置与撤销 Git 代理的命令模板；第五点：按仓库规则先将旧 `data/dailyChangeSummary.js` 中 2026-05-31 的摘要归档到新增历史分片 `data/history/2026-05-31_31.js`，并在 `data/historyNotifications.js` 中挂入聚合入口；第六点：执行 Node 运行时预检，并重新生成站内索引与通知数据，让这次笔记补强能被站内搜索和消息抽屉立即收录。',
     },
   ],
 }

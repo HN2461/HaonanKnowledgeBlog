@@ -335,9 +335,9 @@
           "category": "常用缺易忘",
           "attachments": [],
           "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-          "size": "7KB",
-          "lastModified": "2026-04-28T11:18:24.357Z",
-          "wordCount": 4483
+          "size": "9KB",
+          "lastModified": "2026-06-02T12:58:59.971Z",
+          "wordCount": 5752
         },
         {
           "type": "file",
@@ -584,9 +584,9 @@
           "category": "常用缺易忘",
           "attachments": [],
           "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-          "size": "7KB",
-          "lastModified": "2026-04-28T11:18:24.357Z",
-          "wordCount": 4483
+          "size": "9KB",
+          "lastModified": "2026-06-02T12:58:59.971Z",
+          "wordCount": 5752
         },
         {
           "type": "file",
@@ -1112,9 +1112,9 @@
             }
           ],
           "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-          "size": "4KB",
-          "lastModified": "2026-04-12T13:45:49.795Z",
-          "wordCount": 2234
+          "size": "5KB",
+          "lastModified": "2026-06-02T12:59:14.389Z",
+          "wordCount": 3154
         },
         {
           "type": "file",
@@ -1439,9 +1439,9 @@
             }
           ],
           "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-          "size": "4KB",
-          "lastModified": "2026-04-12T13:45:49.795Z",
-          "wordCount": 2234
+          "size": "5KB",
+          "lastModified": "2026-06-02T12:59:14.389Z",
+          "wordCount": 3154
         },
         {
           "type": "file",
@@ -1572,9 +1572,9 @@
             }
           ],
           "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-          "size": "4KB",
-          "lastModified": "2026-04-12T13:45:49.795Z",
-          "wordCount": 2234
+          "size": "5KB",
+          "lastModified": "2026-06-02T12:59:14.389Z",
+          "wordCount": 3154
         }
       ],
       "children": []
@@ -29318,9 +29318,9 @@
       "category": "常用缺易忘",
       "attachments": [],
       "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-      "size": "7KB",
-      "lastModified": "2026-04-28T11:18:24.357Z",
-      "wordCount": 4483
+      "size": "9KB",
+      "lastModified": "2026-06-02T12:58:59.971Z",
+      "wordCount": 5752
     },
     {
       "type": "file",
@@ -32509,9 +32509,9 @@
         }
       ],
       "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-      "size": "4KB",
-      "lastModified": "2026-04-12T13:45:49.795Z",
-      "wordCount": 2234
+      "size": "5KB",
+      "lastModified": "2026-06-02T12:59:14.389Z",
+      "wordCount": 3154
     },
     {
       "type": "file",
@@ -34464,9 +34464,9 @@
               "category": "常用缺易忘",
               "attachments": [],
               "description": "从 VSCode 插件点按钮过渡到命令行操作的 Git 速查手册，涵盖日常命令、分支管理、撤销回退、以及国内连不上 GitHub 的解决方案。",
-              "size": "7KB",
-              "lastModified": "2026-04-28T11:18:24.357Z",
-              "wordCount": 4483
+              "size": "9KB",
+              "lastModified": "2026-06-02T12:58:59.971Z",
+              "wordCount": 5752
             },
             {
               "type": "file",
@@ -34980,9 +34980,9 @@
                     }
                   ],
                   "description": "公司网络下网站需开 VPN 才能访问时的排查与修复流程，包含系统代理清理、网络栈重置与 IT 白名单沟通模板。",
-                  "size": "4KB",
-                  "lastModified": "2026-04-12T13:45:49.795Z",
-                  "wordCount": 2234
+                  "size": "5KB",
+                  "lastModified": "2026-06-02T12:59:14.389Z",
+                  "wordCount": 3154
                 }
               ]
             },
@@ -44838,5 +44838,5 @@
   ],
   "totalNotes": 420,
   "totalCategories": 112,
-  "lastUpdated": "2026-05-31T08:18:38.434Z"
+  "lastUpdated": "2026-06-02T13:01:32.247Z"
 }
