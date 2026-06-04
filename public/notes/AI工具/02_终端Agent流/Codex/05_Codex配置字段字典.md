@@ -1,5 +1,5 @@
 ---
-title: 第五篇：Codex 配置字段字典与文档对照（完整版）
+title: 第五篇：Codex 配置字段字典
 date: 2026-03-08
 category: AI工具
 tags:
@@ -11,14 +11,14 @@ tags:
 description: 逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。
 ---
 
-# 第五篇：Codex 配置字段字典与文档对照（完整版）
+# 第五篇：Codex 配置字段字典
 
 > 更新时间：2026-05-14（已按官方当前文档校准）  
 > 定位：主线 02（字段查询手册 + 场景模板）。  
 > 前置：第三篇（看完配置层级再看字段会更顺）。  
 > 下一篇建议：第六篇（三端联动实战）。  
-> 本篇不展开：安装、账号购买、截图点位（看第一篇/第七篇）。
-> 命令/配置看不懂时：回查第八篇《命令与配置文件作用全解》。
+> 本篇不展开：安装、账号购买、三端界面差异（看第一篇/第六篇）。
+> 命令/配置看不懂时：回查第七篇《命令与配置文件速查》。
 > 小白读完目标：你应该能自己写出一份最小可用 `config.toml`，并在改 `model`、`provider`、审批、沙箱、MCP`、`profile` 时知道各字段分别会影响哪里。
 
 章节导航（点击跳转）：
@@ -79,10 +79,34 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 官方当前本地默认示例可优先参考 `gpt-5.5`。  
 补充：`gpt-5.3-codex` 仍是专门的编码模型，`gpt-5.4` 这类旧示例则不建议再当成“默认推荐口径”照抄。
 
+本机替换提醒：
+
+1. 如果走 HN246 当前 `my_codex` 中转模板，`model = "gpt-5.5"` 只是“当前模板默认值”
+2. 真正能不能用，要以 `base_url` 对应网关后台当前开放模型为准
+3. 如果 `/status` 或模型列表里看不到它，不要先怀疑 Codex 本体，先查 provider 后台模型名
+
 ### `model_provider`
 
 作用：选择后端 provider（默认 `openai`）。  
 示例：`openai`、`packycode`、`yunyi`、`codex`（第三方文档命名）。
+
+HN246 本机模板示例：
+
+```toml
+model_provider = "my_codex"
+
+[model_providers.my_codex]
+name = "my_codex"
+base_url = "https://yfy.zhouyang168.top/v1"
+wire_api = "responses"
+requires_openai_auth = true
+```
+
+注意：
+
+1. `model_provider = "my_codex"` 必须和 `[model_providers.my_codex]` 完全对应
+2. provider 显示名 `name` 可以和 provider id 一样，也可以是更友好的显示名
+3. 切 CCSwitch 或切第三方线路时，不要只改 `base_url`，还要一起核对 provider id、模型名和认证字段
 
 ### `[model_providers.<id>]`
 
@@ -93,6 +117,13 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 3. `experimental_bearer_token`：直接写 token（不推荐长期用）
 4. `wire_api = "responses"`：协议（当前主用）
 5. `requires_openai_auth`：某些 provider 需要
+
+安全提醒：
+
+1. `experimental_bearer_token` 只应存在于本机私有配置
+2. 公开笔记、Git 仓库、截图、教程里必须打码，例如 `sk-***`
+3. 如果网关支持环境变量方式，优先考虑 `env_key = "OPENAI_API_KEY"`
+4. 如果当前本机模板靠 `requires_openai_auth = true` 和 token 字段能跑，迁移到环境变量前要先确认网关支持，不要为了“看起来更标准”直接改坏
 
 ---
 
@@ -238,9 +269,63 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 1. `sandbox = "unelevated" | "elevated"`（Windows 原生沙箱模式）
 2. `windows_wsl_setup_acknowledged = true/false`（Windows onboarding 记录）
 
+注意不要混淆：
+
+1. `sandbox_mode` 控制当前任务能读写什么
+2. `[windows].sandbox` 控制 Windows 上使用哪种沙箱实现
+3. HN246 本机模板里的 `[windows] sandbox = "elevated"` 不是 `danger-full-access`
+
 ---
 
-## 3.8 MCP（重点）
+## 3.8 Desktop 与本机路径配置
+
+### `[desktop]`
+
+作用：Codex Desktop 界面偏好。  
+常见字段：
+
+```toml
+[desktop]
+appearanceTheme = "dark"
+integratedTerminalShell = "powershell"
+localeOverride = "zh-CN"
+show-context-window-usage = true
+```
+
+解释：
+
+1. `appearanceTheme`：界面主题
+2. `integratedTerminalShell`：桌面端集成终端使用 PowerShell 还是 cmd
+3. `localeOverride`：界面语言
+4. `show-context-window-usage`：是否显示上下文使用量
+
+最容易混淆的是：
+
+1. `show-context-window-usage` 只负责显示
+2. 真正上下文预算看 `model_context_window` 和 `model_auto_compact_token_limit`
+3. `integratedTerminalShell = "powershell"` 不等于所有命令都会在 PowerShell 7 里跑
+
+### `[desktop.open-in-target-preferences]`
+
+作用：控制文件或项目默认用什么打开。
+
+HN246 本机模板示例：
+
+```toml
+[desktop.open-in-target-preferences]
+global = "vscode"
+
+[desktop.open-in-target-preferences.perPath]
+"C:\\Users\\HN246\\Desktop\\番茄" = "vscode"
+"C:\\Users\\HN246\\Desktop\\git项目" = "vscode"
+```
+
+跨机同步后，这里最容易残留旧用户名路径。  
+如果当前机器是 `HN246`，却看到 `Administrator`，说明配置快照需要清理。
+
+---
+
+## 3.9 MCP（重点）
 
 ### 顶层
 
@@ -261,7 +346,7 @@ description: 逐项整理 Codex 配置字段的含义、作用、默认行为与
 
 ---
 
-## 3.9 Profiles（推荐一定要用）
+## 3.10 Profiles（推荐一定要用）
 
 `[profiles.<name>]` 可以覆盖几乎所有关键字段，比如：
 

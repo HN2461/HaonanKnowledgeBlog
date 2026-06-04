@@ -1,5 +1,5 @@
 ---
-title: 第一篇：Codex CLI 第一日开发实战（程序员版）
+title: 第一篇：Codex CLI 第一日开发实战
 date: 2026-05-31
 category: AI工具
 tags:
@@ -11,7 +11,7 @@ tags:
 description: 面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。
 ---
 
-# 第一篇：Codex CLI 第一日开发实战（程序员版）
+# 第一篇：Codex CLI 第一日开发实战
 
 > 这篇只解决 4 件事：怎么确认装对、怎么进仓库、怎么看第一屏、怎么完成第一轮真实开发。  
 > 配置字段、第三方线路、MCP 细节、桌面 App 深挖，都先放到后面的专题里查。
@@ -357,13 +357,13 @@ flowchart LR
 
 如果主人刚跑通第一轮任务，下一步按这个顺序：
 
-1. [第十三篇：Codex CLI 英文终端界面逐屏翻译与排错](#/note/AI工具/02_终端Agent流/Codex/第十三篇_CodexCLI英文终端界面逐屏翻译与排错_2026-05-31)  
+1. [第二篇：Codex CLI 英文终端界面翻译与排错](#/note/AI工具/02_终端Agent流/Codex/02_Codex_CLI英文终端界面翻译与排错)  
    解决“终端里这些英文、菜单、插件、skills、错误提示到底怎么看”。
-2. [第三篇：Codex 文档地图与配置逐项详解（小白版）](#/note/AI工具/02_终端Agent流/Codex/第三篇_Codex文档地图与配置逐项详解_小白版)  
+2. [第三篇：Codex 配置心智模型](#/note/AI工具/02_终端Agent流/Codex/03_Codex配置心智模型)  
    解决“为什么配置会覆盖、为什么改了不生效”。
-3. [第八篇：Codex 命令与配置文件作用全解（小白可查版）](#/note/AI工具/02_终端Agent流/Codex/第八篇_Codex命令与配置文件作用全解_小白可查版)  
+3. [第七篇：Codex 命令与配置文件速查](#/note/AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查)  
    当命令和字段速查表用。
-4. [第六篇：Codex CLI / 插件 / App 全链路配置实战](#/note/AI工具/02_终端Agent流/Codex/第六篇_CLI插件App全链路配置实战_超详细)  
+4. [第六篇：Codex CLI / 插件 / App 三端联动实战](#/note/AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战)  
    解决 CLI、VS Code 插件、桌面 App 之间怎么联动。
 
 第三方线路、rpcod、Packy、yunyi 这些不要放在第一天主线里硬背。  
