@@ -12293,8 +12293,8 @@
           "attachments": [],
           "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
           "size": "12KB",
-          "lastModified": "2026-06-04T13:09:56.775Z",
-          "wordCount": 6599
+          "lastModified": "2026-06-04T13:41:34.297Z",
+          "wordCount": 6597
         },
         {
           "type": "file",
@@ -12643,7 +12643,7 @@
           "attachments": [],
           "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
           "size": "18KB",
-          "lastModified": "2026-06-04T13:09:56.778Z",
+          "lastModified": "2026-06-04T13:38:33.774Z",
           "wordCount": 10559
         },
         {
@@ -12919,27 +12919,27 @@
         },
         {
           "type": "file",
-          "title": "第三篇：Codex 配置心智模型",
-          "frontmatterTitle": "第三篇：Codex 配置心智模型",
-          "fileTitle": "03_Codex配置心智模型",
-          "filename": "03_Codex配置心智模型.md",
-          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置心智模型.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "title": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "frontmatterTitle": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "fileTitle": "03_Codex配置总手册",
+          "filename": "03_Codex配置总手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置总手册.md",
+          "date": "2026-06-04T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "配置文件",
-            "auth",
-            "sandbox",
-            "AGENTS"
+            "config.toml",
+            "CCSwitch",
+            "配置字段",
+            "Windows"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
-          "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.350Z",
-          "wordCount": 9537
+          "description": "将 Codex 配置心智、字段字典、HN246 本机配置模板、CCSwitch 路径排查和替换验证流程合成一篇完整配置总手册，避免多篇重复讲 config.toml。",
+          "size": "16KB",
+          "lastModified": "2026-06-04T13:38:33.777Z",
+          "wordCount": 12067
         },
         {
           "type": "file",
@@ -13184,8 +13184,8 @@
           "attachments": [],
           "description": "将官方、Packy、yunyi、rpcod 等线路统一收进一篇完整的线路选择与迁移总手册，集中解决多线路怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.352Z",
-          "wordCount": 7918
+          "lastModified": "2026-06-04T13:41:34.298Z",
+          "wordCount": 7917
         },
         {
           "type": "file",
@@ -13411,27 +13411,27 @@
         },
         {
           "type": "file",
-          "title": "第五篇：Codex 配置字段字典",
-          "frontmatterTitle": "第五篇：Codex 配置字段字典",
-          "fileTitle": "05_Codex配置字段字典",
-          "filename": "05_Codex配置字段字典.md",
-          "path": "AI工具/02_终端Agent流/Codex/05_Codex配置字段字典.md",
+          "title": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "frontmatterTitle": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "fileTitle": "05_Codex_CLI插件App三端联动实战",
+          "filename": "05_Codex_CLI插件App三端联动实战.md",
+          "path": "AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "config.toml",
-            "auth.json",
-            "配置字段",
-            "字典"
+            "CLI",
+            "插件",
+            "App",
+            "配置联动"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-          "size": "16KB",
-          "lastModified": "2026-06-04T13:11:24.353Z",
-          "wordCount": 11943
+          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+          "size": "15KB",
+          "lastModified": "2026-06-04T13:41:34.293Z",
+          "wordCount": 10223
         },
         {
           "type": "file",
@@ -13603,27 +13603,27 @@
         },
         {
           "type": "file",
-          "title": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "fileTitle": "06_Codex_CLI插件App三端联动实战",
-          "filename": "06_Codex_CLI插件App三端联动实战.md",
-          "path": "AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战.md",
+          "title": "第六篇：Codex 命令与配置文件速查",
+          "frontmatterTitle": "第六篇：Codex 命令与配置文件速查",
+          "fileTitle": "06_Codex命令与配置文件速查",
+          "filename": "06_Codex命令与配置文件速查.md",
+          "path": "AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "CLI",
-            "插件",
-            "App",
-            "配置联动"
+            "命令",
+            "配置文件",
+            "AGENTS",
+            "速查"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-          "size": "15KB",
-          "lastModified": "2026-06-04T13:11:24.354Z",
-          "wordCount": 10227
+          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
+          "size": "8KB",
+          "lastModified": "2026-06-04T13:41:34.294Z",
+          "wordCount": 4994
         },
         {
           "type": "file",
@@ -13713,35 +13713,11 @@
         },
         {
           "type": "file",
-          "title": "第七篇：Codex 命令与配置文件速查",
-          "frontmatterTitle": "第七篇：Codex 命令与配置文件速查",
-          "fileTitle": "07_Codex命令与配置文件速查",
-          "filename": "07_Codex命令与配置文件速查.md",
-          "path": "AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查.md",
-          "date": "2026-03-08T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "命令",
-            "配置文件",
-            "AGENTS",
-            "速查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-          "size": "8KB",
-          "lastModified": "2026-06-04T13:09:56.796Z",
-          "wordCount": 4995
-        },
-        {
-          "type": "file",
-          "title": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "frontmatterTitle": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "fileTitle": "08_Codex当前常用功能与进阶工作流手册",
-          "filename": "08_Codex当前常用功能与进阶工作流手册.md",
-          "path": "AI工具/02_终端Agent流/Codex/08_Codex当前常用功能与进阶工作流手册.md",
+          "title": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "frontmatterTitle": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "fileTitle": "07_Codex当前常用功能与进阶工作流手册",
+          "filename": "07_Codex当前常用功能与进阶工作流手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/07_Codex当前常用功能与进阶工作流手册.md",
           "date": "2026-05-22T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -13757,32 +13733,8 @@
           "attachments": [],
           "description": "面向日常开发高频场景系统梳理 Codex 当前仍在主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
           "size": "25KB",
-          "lastModified": "2026-06-04T13:11:24.356Z",
-          "wordCount": 13761
-        },
-        {
-          "type": "file",
-          "title": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "frontmatterTitle": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "fileTitle": "09_Codex_CCSwitch本机配置重构实战_HN246版",
-          "filename": "09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "path": "AI工具/02_终端Agent流/Codex/09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "date": "2026-06-04T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "CCSwitch",
-            "config.toml",
-            "本机配置",
-            "Windows"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "基于 HN246 本机 config.toml、CCSwitch 字段说明和可直接替换版配置，整理一份从字段理解、安全改写、路径替换到启动验证的 Codex 配置重构实战手册。",
-          "size": "18KB",
-          "lastModified": "2026-06-04T13:11:24.357Z",
-          "wordCount": 12301
+          "lastModified": "2026-06-04T13:41:34.296Z",
+          "wordCount": 13514
         },
         {
           "type": "file",
@@ -15204,8 +15156,8 @@
           "attachments": [],
           "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
           "size": "12KB",
-          "lastModified": "2026-06-04T13:09:56.775Z",
-          "wordCount": 6599
+          "lastModified": "2026-06-04T13:41:34.297Z",
+          "wordCount": 6597
         },
         {
           "type": "file",
@@ -15253,7 +15205,7 @@
           "attachments": [],
           "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
           "size": "18KB",
-          "lastModified": "2026-06-04T13:09:56.778Z",
+          "lastModified": "2026-06-04T13:38:33.774Z",
           "wordCount": 10559
         },
         {
@@ -15283,27 +15235,27 @@
         },
         {
           "type": "file",
-          "title": "第三篇：Codex 配置心智模型",
-          "frontmatterTitle": "第三篇：Codex 配置心智模型",
-          "fileTitle": "03_Codex配置心智模型",
-          "filename": "03_Codex配置心智模型.md",
-          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置心智模型.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "title": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "frontmatterTitle": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "fileTitle": "03_Codex配置总手册",
+          "filename": "03_Codex配置总手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置总手册.md",
+          "date": "2026-06-04T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "配置文件",
-            "auth",
-            "sandbox",
-            "AGENTS"
+            "config.toml",
+            "CCSwitch",
+            "配置字段",
+            "Windows"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
-          "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.350Z",
-          "wordCount": 9537
+          "description": "将 Codex 配置心智、字段字典、HN246 本机配置模板、CCSwitch 路径排查和替换验证流程合成一篇完整配置总手册，避免多篇重复讲 config.toml。",
+          "size": "16KB",
+          "lastModified": "2026-06-04T13:38:33.777Z",
+          "wordCount": 12067
         },
         {
           "type": "file",
@@ -15352,8 +15304,8 @@
           "attachments": [],
           "description": "将官方、Packy、yunyi、rpcod 等线路统一收进一篇完整的线路选择与迁移总手册，集中解决多线路怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.352Z",
-          "wordCount": 7918
+          "lastModified": "2026-06-04T13:41:34.298Z",
+          "wordCount": 7917
         },
         {
           "type": "file",
@@ -15382,27 +15334,27 @@
         },
         {
           "type": "file",
-          "title": "第五篇：Codex 配置字段字典",
-          "frontmatterTitle": "第五篇：Codex 配置字段字典",
-          "fileTitle": "05_Codex配置字段字典",
-          "filename": "05_Codex配置字段字典.md",
-          "path": "AI工具/02_终端Agent流/Codex/05_Codex配置字段字典.md",
+          "title": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "frontmatterTitle": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "fileTitle": "05_Codex_CLI插件App三端联动实战",
+          "filename": "05_Codex_CLI插件App三端联动实战.md",
+          "path": "AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "config.toml",
-            "auth.json",
-            "配置字段",
-            "字典"
+            "CLI",
+            "插件",
+            "App",
+            "配置联动"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-          "size": "16KB",
-          "lastModified": "2026-06-04T13:11:24.353Z",
-          "wordCount": 11943
+          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+          "size": "15KB",
+          "lastModified": "2026-06-04T13:41:34.293Z",
+          "wordCount": 10223
         },
         {
           "type": "file",
@@ -15431,27 +15383,27 @@
         },
         {
           "type": "file",
-          "title": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "fileTitle": "06_Codex_CLI插件App三端联动实战",
-          "filename": "06_Codex_CLI插件App三端联动实战.md",
-          "path": "AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战.md",
+          "title": "第六篇：Codex 命令与配置文件速查",
+          "frontmatterTitle": "第六篇：Codex 命令与配置文件速查",
+          "fileTitle": "06_Codex命令与配置文件速查",
+          "filename": "06_Codex命令与配置文件速查.md",
+          "path": "AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "CLI",
-            "插件",
-            "App",
-            "配置联动"
+            "命令",
+            "配置文件",
+            "AGENTS",
+            "速查"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-          "size": "15KB",
-          "lastModified": "2026-06-04T13:11:24.354Z",
-          "wordCount": 10227
+          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
+          "size": "8KB",
+          "lastModified": "2026-06-04T13:41:34.294Z",
+          "wordCount": 4994
         },
         {
           "type": "file",
@@ -15495,35 +15447,11 @@
         },
         {
           "type": "file",
-          "title": "第七篇：Codex 命令与配置文件速查",
-          "frontmatterTitle": "第七篇：Codex 命令与配置文件速查",
-          "fileTitle": "07_Codex命令与配置文件速查",
-          "filename": "07_Codex命令与配置文件速查.md",
-          "path": "AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查.md",
-          "date": "2026-03-08T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "命令",
-            "配置文件",
-            "AGENTS",
-            "速查"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-          "size": "8KB",
-          "lastModified": "2026-06-04T13:09:56.796Z",
-          "wordCount": 4995
-        },
-        {
-          "type": "file",
-          "title": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "frontmatterTitle": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "fileTitle": "08_Codex当前常用功能与进阶工作流手册",
-          "filename": "08_Codex当前常用功能与进阶工作流手册.md",
-          "path": "AI工具/02_终端Agent流/Codex/08_Codex当前常用功能与进阶工作流手册.md",
+          "title": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "frontmatterTitle": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "fileTitle": "07_Codex当前常用功能与进阶工作流手册",
+          "filename": "07_Codex当前常用功能与进阶工作流手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/07_Codex当前常用功能与进阶工作流手册.md",
           "date": "2026-05-22T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -15539,32 +15467,8 @@
           "attachments": [],
           "description": "面向日常开发高频场景系统梳理 Codex 当前仍在主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
           "size": "25KB",
-          "lastModified": "2026-06-04T13:11:24.356Z",
-          "wordCount": 13761
-        },
-        {
-          "type": "file",
-          "title": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "frontmatterTitle": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "fileTitle": "09_Codex_CCSwitch本机配置重构实战_HN246版",
-          "filename": "09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "path": "AI工具/02_终端Agent流/Codex/09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "date": "2026-06-04T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "CCSwitch",
-            "config.toml",
-            "本机配置",
-            "Windows"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "基于 HN246 本机 config.toml、CCSwitch 字段说明和可直接替换版配置，整理一份从字段理解、安全改写、路径替换到启动验证的 Codex 配置重构实战手册。",
-          "size": "18KB",
-          "lastModified": "2026-06-04T13:11:24.357Z",
-          "wordCount": 12301
+          "lastModified": "2026-06-04T13:41:34.296Z",
+          "wordCount": 13514
         },
         {
           "type": "file",
@@ -15789,8 +15693,8 @@
           "attachments": [],
           "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
           "size": "12KB",
-          "lastModified": "2026-06-04T13:09:56.775Z",
-          "wordCount": 6599
+          "lastModified": "2026-06-04T13:41:34.297Z",
+          "wordCount": 6597
         },
         {
           "type": "file",
@@ -15813,32 +15717,32 @@
           "attachments": [],
           "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
           "size": "18KB",
-          "lastModified": "2026-06-04T13:09:56.778Z",
+          "lastModified": "2026-06-04T13:38:33.774Z",
           "wordCount": 10559
         },
         {
           "type": "file",
-          "title": "第三篇：Codex 配置心智模型",
-          "frontmatterTitle": "第三篇：Codex 配置心智模型",
-          "fileTitle": "03_Codex配置心智模型",
-          "filename": "03_Codex配置心智模型.md",
-          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置心智模型.md",
-          "date": "2026-03-08T00:00:00.000Z",
+          "title": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "frontmatterTitle": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+          "fileTitle": "03_Codex配置总手册",
+          "filename": "03_Codex配置总手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/03_Codex配置总手册.md",
+          "date": "2026-06-04T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "Codex",
-            "配置文件",
-            "auth",
-            "sandbox",
-            "AGENTS"
+            "config.toml",
+            "CCSwitch",
+            "配置字段",
+            "Windows"
           ],
           "category": "AI工具",
           "attachments": [],
-          "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
-          "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.350Z",
-          "wordCount": 9537
+          "description": "将 Codex 配置心智、字段字典、HN246 本机配置模板、CCSwitch 路径排查和替换验证流程合成一篇完整配置总手册，避免多篇重复讲 config.toml。",
+          "size": "16KB",
+          "lastModified": "2026-06-04T13:38:33.777Z",
+          "wordCount": 12067
         },
         {
           "type": "file",
@@ -15862,40 +15766,16 @@
           "attachments": [],
           "description": "将官方、Packy、yunyi、rpcod 等线路统一收进一篇完整的线路选择与迁移总手册，集中解决多线路怎么选、怎么配、怎么迁移、怎么排错。",
           "size": "14KB",
-          "lastModified": "2026-06-04T13:11:24.352Z",
-          "wordCount": 7918
+          "lastModified": "2026-06-04T13:41:34.298Z",
+          "wordCount": 7917
         },
         {
           "type": "file",
-          "title": "第五篇：Codex 配置字段字典",
-          "frontmatterTitle": "第五篇：Codex 配置字段字典",
-          "fileTitle": "05_Codex配置字段字典",
-          "filename": "05_Codex配置字段字典.md",
-          "path": "AI工具/02_终端Agent流/Codex/05_Codex配置字段字典.md",
-          "date": "2026-03-08T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "config.toml",
-            "auth.json",
-            "配置字段",
-            "字典"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-          "size": "16KB",
-          "lastModified": "2026-06-04T13:11:24.353Z",
-          "wordCount": 11943
-        },
-        {
-          "type": "file",
-          "title": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-          "fileTitle": "06_Codex_CLI插件App三端联动实战",
-          "filename": "06_Codex_CLI插件App三端联动实战.md",
-          "path": "AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战.md",
+          "title": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "frontmatterTitle": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+          "fileTitle": "05_Codex_CLI插件App三端联动实战",
+          "filename": "05_Codex_CLI插件App三端联动实战.md",
+          "path": "AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -15910,16 +15790,16 @@
           "attachments": [],
           "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
           "size": "15KB",
-          "lastModified": "2026-06-04T13:11:24.354Z",
-          "wordCount": 10227
+          "lastModified": "2026-06-04T13:41:34.293Z",
+          "wordCount": 10223
         },
         {
           "type": "file",
-          "title": "第七篇：Codex 命令与配置文件速查",
-          "frontmatterTitle": "第七篇：Codex 命令与配置文件速查",
-          "fileTitle": "07_Codex命令与配置文件速查",
-          "filename": "07_Codex命令与配置文件速查.md",
-          "path": "AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查.md",
+          "title": "第六篇：Codex 命令与配置文件速查",
+          "frontmatterTitle": "第六篇：Codex 命令与配置文件速查",
+          "fileTitle": "06_Codex命令与配置文件速查",
+          "filename": "06_Codex命令与配置文件速查.md",
+          "path": "AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查.md",
           "date": "2026-03-08T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -15934,16 +15814,16 @@
           "attachments": [],
           "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
           "size": "8KB",
-          "lastModified": "2026-06-04T13:09:56.796Z",
-          "wordCount": 4995
+          "lastModified": "2026-06-04T13:41:34.294Z",
+          "wordCount": 4994
         },
         {
           "type": "file",
-          "title": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "frontmatterTitle": "第八篇：Codex 当前常用功能与进阶工作流手册",
-          "fileTitle": "08_Codex当前常用功能与进阶工作流手册",
-          "filename": "08_Codex当前常用功能与进阶工作流手册.md",
-          "path": "AI工具/02_终端Agent流/Codex/08_Codex当前常用功能与进阶工作流手册.md",
+          "title": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "frontmatterTitle": "第七篇：Codex 当前常用功能与进阶工作流手册",
+          "fileTitle": "07_Codex当前常用功能与进阶工作流手册",
+          "filename": "07_Codex当前常用功能与进阶工作流手册.md",
+          "path": "AI工具/02_终端Agent流/Codex/07_Codex当前常用功能与进阶工作流手册.md",
           "date": "2026-05-22T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
@@ -15959,32 +15839,8 @@
           "attachments": [],
           "description": "面向日常开发高频场景系统梳理 Codex 当前仍在主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
           "size": "25KB",
-          "lastModified": "2026-06-04T13:11:24.356Z",
-          "wordCount": 13761
-        },
-        {
-          "type": "file",
-          "title": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "frontmatterTitle": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-          "fileTitle": "09_Codex_CCSwitch本机配置重构实战_HN246版",
-          "filename": "09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "path": "AI工具/02_终端Agent流/Codex/09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-          "date": "2026-06-04T00:00:00.000Z",
-          "hasRealDate": true,
-          "order": null,
-          "tags": [
-            "Codex",
-            "CCSwitch",
-            "config.toml",
-            "本机配置",
-            "Windows"
-          ],
-          "category": "AI工具",
-          "attachments": [],
-          "description": "基于 HN246 本机 config.toml、CCSwitch 字段说明和可直接替换版配置，整理一份从字段理解、安全改写、路径替换到启动验证的 Codex 配置重构实战手册。",
-          "size": "18KB",
-          "lastModified": "2026-06-04T13:11:24.357Z",
-          "wordCount": 12301
+          "lastModified": "2026-06-04T13:41:34.296Z",
+          "wordCount": 13514
         }
       ],
       "children": []
@@ -24303,27 +24159,27 @@
   "allNotes": [
     {
       "type": "file",
-      "title": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-      "frontmatterTitle": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-      "fileTitle": "09_Codex_CCSwitch本机配置重构实战_HN246版",
-      "filename": "09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-      "path": "AI工具/02_终端Agent流/Codex/09_Codex_CCSwitch本机配置重构实战_HN246版.md",
+      "title": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+      "frontmatterTitle": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+      "fileTitle": "03_Codex配置总手册",
+      "filename": "03_Codex配置总手册.md",
+      "path": "AI工具/02_终端Agent流/Codex/03_Codex配置总手册.md",
       "date": "2026-06-04T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
       "tags": [
         "Codex",
-        "CCSwitch",
         "config.toml",
-        "本机配置",
+        "CCSwitch",
+        "配置字段",
         "Windows"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "基于 HN246 本机 config.toml、CCSwitch 字段说明和可直接替换版配置，整理一份从字段理解、安全改写、路径替换到启动验证的 Codex 配置重构实战手册。",
-      "size": "18KB",
-      "lastModified": "2026-06-04T13:11:24.357Z",
-      "wordCount": 12301
+      "description": "将 Codex 配置心智、字段字典、HN246 本机配置模板、CCSwitch 路径排查和替换验证流程合成一篇完整配置总手册，避免多篇重复讲 config.toml。",
+      "size": "16KB",
+      "lastModified": "2026-06-04T13:38:33.777Z",
+      "wordCount": 12067
     },
     {
       "type": "file",
@@ -24346,8 +24202,8 @@
       "attachments": [],
       "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
       "size": "12KB",
-      "lastModified": "2026-06-04T13:09:56.775Z",
-      "wordCount": 6599
+      "lastModified": "2026-06-04T13:41:34.297Z",
+      "wordCount": 6597
     },
     {
       "type": "file",
@@ -24370,7 +24226,7 @@
       "attachments": [],
       "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
       "size": "18KB",
-      "lastModified": "2026-06-04T13:09:56.778Z",
+      "lastModified": "2026-06-04T13:38:33.774Z",
       "wordCount": 10559
     },
     {
@@ -24395,8 +24251,8 @@
       "attachments": [],
       "description": "将官方、Packy、yunyi、rpcod 等线路统一收进一篇完整的线路选择与迁移总手册，集中解决多线路怎么选、怎么配、怎么迁移、怎么排错。",
       "size": "14KB",
-      "lastModified": "2026-06-04T13:11:24.352Z",
-      "wordCount": 7918
+      "lastModified": "2026-06-04T13:41:34.298Z",
+      "wordCount": 7917
     },
     {
       "type": "file",
@@ -24974,11 +24830,11 @@
     },
     {
       "type": "file",
-      "title": "第八篇：Codex 当前常用功能与进阶工作流手册",
-      "frontmatterTitle": "第八篇：Codex 当前常用功能与进阶工作流手册",
-      "fileTitle": "08_Codex当前常用功能与进阶工作流手册",
-      "filename": "08_Codex当前常用功能与进阶工作流手册.md",
-      "path": "AI工具/02_终端Agent流/Codex/08_Codex当前常用功能与进阶工作流手册.md",
+      "title": "第七篇：Codex 当前常用功能与进阶工作流手册",
+      "frontmatterTitle": "第七篇：Codex 当前常用功能与进阶工作流手册",
+      "fileTitle": "07_Codex当前常用功能与进阶工作流手册",
+      "filename": "07_Codex当前常用功能与进阶工作流手册.md",
+      "path": "AI工具/02_终端Agent流/Codex/07_Codex当前常用功能与进阶工作流手册.md",
       "date": "2026-05-22T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
@@ -24994,8 +24850,8 @@
       "attachments": [],
       "description": "面向日常开发高频场景系统梳理 Codex 当前仍在主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
       "size": "25KB",
-      "lastModified": "2026-06-04T13:11:24.356Z",
-      "wordCount": 13761
+      "lastModified": "2026-06-04T13:41:34.296Z",
+      "wordCount": 13514
     },
     {
       "type": "file",
@@ -32084,30 +31940,6 @@
     },
     {
       "type": "file",
-      "title": "第三篇：Codex 配置心智模型",
-      "frontmatterTitle": "第三篇：Codex 配置心智模型",
-      "fileTitle": "03_Codex配置心智模型",
-      "filename": "03_Codex配置心智模型.md",
-      "path": "AI工具/02_终端Agent流/Codex/03_Codex配置心智模型.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "配置文件",
-        "auth",
-        "sandbox",
-        "AGENTS"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
-      "size": "14KB",
-      "lastModified": "2026-06-04T13:11:24.350Z",
-      "wordCount": 9537
-    },
-    {
-      "type": "file",
       "title": "第三篇：OpenClaw101 Day1 知识全景与命令配置实战（认知与灵魂篇）",
       "frontmatterTitle": "第三篇：OpenClaw101 Day1 知识全景与命令配置实战（认知与灵魂篇）",
       "fileTitle": "第三篇_OpenClaw101Day1知识全景与命令配置实战",
@@ -32155,27 +31987,27 @@
     },
     {
       "type": "file",
-      "title": "第五篇：Codex 配置字段字典",
-      "frontmatterTitle": "第五篇：Codex 配置字段字典",
-      "fileTitle": "05_Codex配置字段字典",
-      "filename": "05_Codex配置字段字典.md",
-      "path": "AI工具/02_终端Agent流/Codex/05_Codex配置字段字典.md",
+      "title": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+      "frontmatterTitle": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+      "fileTitle": "05_Codex_CLI插件App三端联动实战",
+      "filename": "05_Codex_CLI插件App三端联动实战.md",
+      "path": "AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战.md",
       "date": "2026-03-08T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
       "tags": [
         "Codex",
-        "config.toml",
-        "auth.json",
-        "配置字段",
-        "字典"
+        "CLI",
+        "插件",
+        "App",
+        "配置联动"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-      "size": "16KB",
-      "lastModified": "2026-06-04T13:11:24.353Z",
-      "wordCount": 11943
+      "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
+      "size": "15KB",
+      "lastModified": "2026-06-04T13:41:34.293Z",
+      "wordCount": 10223
     },
     {
       "type": "file",
@@ -32202,27 +32034,27 @@
     },
     {
       "type": "file",
-      "title": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-      "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-      "fileTitle": "06_Codex_CLI插件App三端联动实战",
-      "filename": "06_Codex_CLI插件App三端联动实战.md",
-      "path": "AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战.md",
+      "title": "第六篇：Codex 命令与配置文件速查",
+      "frontmatterTitle": "第六篇：Codex 命令与配置文件速查",
+      "fileTitle": "06_Codex命令与配置文件速查",
+      "filename": "06_Codex命令与配置文件速查.md",
+      "path": "AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查.md",
       "date": "2026-03-08T00:00:00.000Z",
       "hasRealDate": true,
       "order": null,
       "tags": [
         "Codex",
-        "CLI",
-        "插件",
-        "App",
-        "配置联动"
+        "命令",
+        "配置文件",
+        "AGENTS",
+        "速查"
       ],
       "category": "AI工具",
       "attachments": [],
-      "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
-      "size": "15KB",
-      "lastModified": "2026-06-04T13:11:24.354Z",
-      "wordCount": 10227
+      "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
+      "size": "8KB",
+      "lastModified": "2026-06-04T13:41:34.294Z",
+      "wordCount": 4994
     },
     {
       "type": "file",
@@ -32246,30 +32078,6 @@
       "size": "4KB",
       "lastModified": "2026-05-24T13:49:15.056Z",
       "wordCount": 2672
-    },
-    {
-      "type": "file",
-      "title": "第七篇：Codex 命令与配置文件速查",
-      "frontmatterTitle": "第七篇：Codex 命令与配置文件速查",
-      "fileTitle": "07_Codex命令与配置文件速查",
-      "filename": "07_Codex命令与配置文件速查.md",
-      "path": "AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查.md",
-      "date": "2026-03-08T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "Codex",
-        "命令",
-        "配置文件",
-        "AGENTS",
-        "速查"
-      ],
-      "category": "AI工具",
-      "attachments": [],
-      "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
-      "size": "8KB",
-      "lastModified": "2026-06-04T13:09:56.796Z",
-      "wordCount": 4995
     },
     {
       "type": "file",
@@ -39272,8 +39080,8 @@
                   "attachments": [],
                   "description": "面向平时主要用 Codex 开发的程序员，按安装确认、进入真实仓库、看懂英文终端、完成第一轮小任务、再扩展到 VS Code 插件和桌面 App 的顺序重写 Codex 第一日上手路线。",
                   "size": "12KB",
-                  "lastModified": "2026-06-04T13:09:56.775Z",
-                  "wordCount": 6599
+                  "lastModified": "2026-06-04T13:41:34.297Z",
+                  "wordCount": 6597
                 },
                 {
                   "type": "file",
@@ -39296,32 +39104,32 @@
                   "attachments": [],
                   "description": "基于主人整理的 Codex CLI 终端界面线索，用文字图逐屏解释首页、模型选择、推理强度、权限、状态页、MCP、插件、skills、experimental 与错误提示，帮助把英文终端界面读成可操作的开发判断。",
                   "size": "18KB",
-                  "lastModified": "2026-06-04T13:09:56.778Z",
+                  "lastModified": "2026-06-04T13:38:33.774Z",
                   "wordCount": 10559
                 },
                 {
                   "type": "file",
-                  "title": "第三篇：Codex 配置心智模型",
-                  "frontmatterTitle": "第三篇：Codex 配置心智模型",
-                  "fileTitle": "03_Codex配置心智模型",
-                  "filename": "03_Codex配置心智模型.md",
-                  "path": "AI工具/02_终端Agent流/Codex/03_Codex配置心智模型.md",
-                  "date": "2026-03-08T00:00:00.000Z",
+                  "title": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+                  "frontmatterTitle": "第三篇：Codex 配置总手册（config.toml / 字段字典 / HN246 本机版）",
+                  "fileTitle": "03_Codex配置总手册",
+                  "filename": "03_Codex配置总手册.md",
+                  "path": "AI工具/02_终端Agent流/Codex/03_Codex配置总手册.md",
+                  "date": "2026-06-04T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
                   "tags": [
                     "Codex",
-                    "配置文件",
-                    "auth",
-                    "sandbox",
-                    "AGENTS"
+                    "config.toml",
+                    "CCSwitch",
+                    "配置字段",
+                    "Windows"
                   ],
                   "category": "AI工具",
                   "attachments": [],
-                  "description": "面向小白系统梳理 Codex 的认证方式、权限控制、配置层级与扩展能力，帮助先建立完整的配置心智模型，再继续做三端联动和进阶排障。",
-                  "size": "14KB",
-                  "lastModified": "2026-06-04T13:11:24.350Z",
-                  "wordCount": 9537
+                  "description": "将 Codex 配置心智、字段字典、HN246 本机配置模板、CCSwitch 路径排查和替换验证流程合成一篇完整配置总手册，避免多篇重复讲 config.toml。",
+                  "size": "16KB",
+                  "lastModified": "2026-06-04T13:38:33.777Z",
+                  "wordCount": 12067
                 },
                 {
                   "type": "file",
@@ -39345,40 +39153,16 @@
                   "attachments": [],
                   "description": "将官方、Packy、yunyi、rpcod 等线路统一收进一篇完整的线路选择与迁移总手册，集中解决多线路怎么选、怎么配、怎么迁移、怎么排错。",
                   "size": "14KB",
-                  "lastModified": "2026-06-04T13:11:24.352Z",
-                  "wordCount": 7918
+                  "lastModified": "2026-06-04T13:41:34.298Z",
+                  "wordCount": 7917
                 },
                 {
                   "type": "file",
-                  "title": "第五篇：Codex 配置字段字典",
-                  "frontmatterTitle": "第五篇：Codex 配置字段字典",
-                  "fileTitle": "05_Codex配置字段字典",
-                  "filename": "05_Codex配置字段字典.md",
-                  "path": "AI工具/02_终端Agent流/Codex/05_Codex配置字段字典.md",
-                  "date": "2026-03-08T00:00:00.000Z",
-                  "hasRealDate": true,
-                  "order": null,
-                  "tags": [
-                    "Codex",
-                    "config.toml",
-                    "auth.json",
-                    "配置字段",
-                    "字典"
-                  ],
-                  "category": "AI工具",
-                  "attachments": [],
-                  "description": "逐项整理 Codex 配置字段的含义、作用、默认行为与官方文档分工，适合作为长期使用中的 config.toml 与 auth.json 查询手册。",
-                  "size": "16KB",
-                  "lastModified": "2026-06-04T13:11:24.353Z",
-                  "wordCount": 11943
-                },
-                {
-                  "type": "file",
-                  "title": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-                  "frontmatterTitle": "第六篇：Codex CLI / 插件 / App 三端联动实战",
-                  "fileTitle": "06_Codex_CLI插件App三端联动实战",
-                  "filename": "06_Codex_CLI插件App三端联动实战.md",
-                  "path": "AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战.md",
+                  "title": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+                  "frontmatterTitle": "第五篇：Codex CLI / 插件 / App 三端联动实战",
+                  "fileTitle": "05_Codex_CLI插件App三端联动实战",
+                  "filename": "05_Codex_CLI插件App三端联动实战.md",
+                  "path": "AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战.md",
                   "date": "2026-03-08T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
@@ -39393,16 +39177,16 @@
                   "attachments": [],
                   "description": "详细讲解 Codex CLI、插件和 App 三端共用配置、认证与规则的关系，帮助排查“CLI 能用但插件或 App 不同步”的典型问题。",
                   "size": "15KB",
-                  "lastModified": "2026-06-04T13:11:24.354Z",
-                  "wordCount": 10227
+                  "lastModified": "2026-06-04T13:41:34.293Z",
+                  "wordCount": 10223
                 },
                 {
                   "type": "file",
-                  "title": "第七篇：Codex 命令与配置文件速查",
-                  "frontmatterTitle": "第七篇：Codex 命令与配置文件速查",
-                  "fileTitle": "07_Codex命令与配置文件速查",
-                  "filename": "07_Codex命令与配置文件速查.md",
-                  "path": "AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查.md",
+                  "title": "第六篇：Codex 命令与配置文件速查",
+                  "frontmatterTitle": "第六篇：Codex 命令与配置文件速查",
+                  "fileTitle": "06_Codex命令与配置文件速查",
+                  "filename": "06_Codex命令与配置文件速查.md",
+                  "path": "AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查.md",
                   "date": "2026-03-08T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
@@ -39417,16 +39201,16 @@
                   "attachments": [],
                   "description": "统一说明 Codex 常用命令、config.toml、auth.json 与 AGENTS.md 的职责边界，适合作为整套 Codex 系列文章的底座速查文档。",
                   "size": "8KB",
-                  "lastModified": "2026-06-04T13:09:56.796Z",
-                  "wordCount": 4995
+                  "lastModified": "2026-06-04T13:41:34.294Z",
+                  "wordCount": 4994
                 },
                 {
                   "type": "file",
-                  "title": "第八篇：Codex 当前常用功能与进阶工作流手册",
-                  "frontmatterTitle": "第八篇：Codex 当前常用功能与进阶工作流手册",
-                  "fileTitle": "08_Codex当前常用功能与进阶工作流手册",
-                  "filename": "08_Codex当前常用功能与进阶工作流手册.md",
-                  "path": "AI工具/02_终端Agent流/Codex/08_Codex当前常用功能与进阶工作流手册.md",
+                  "title": "第七篇：Codex 当前常用功能与进阶工作流手册",
+                  "frontmatterTitle": "第七篇：Codex 当前常用功能与进阶工作流手册",
+                  "fileTitle": "07_Codex当前常用功能与进阶工作流手册",
+                  "filename": "07_Codex当前常用功能与进阶工作流手册.md",
+                  "path": "AI工具/02_终端Agent流/Codex/07_Codex当前常用功能与进阶工作流手册.md",
                   "date": "2026-05-22T00:00:00.000Z",
                   "hasRealDate": true,
                   "order": null,
@@ -39442,32 +39226,8 @@
                   "attachments": [],
                   "description": "面向日常开发高频场景系统梳理 Codex 当前仍在主线中的常用功能、进阶工作流与最近该升级的认知，减少多篇重复查阅。",
                   "size": "25KB",
-                  "lastModified": "2026-06-04T13:11:24.356Z",
-                  "wordCount": 13761
-                },
-                {
-                  "type": "file",
-                  "title": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-                  "frontmatterTitle": "第九篇：Codex / CCSwitch 本机配置重构实战（HN246 版）",
-                  "fileTitle": "09_Codex_CCSwitch本机配置重构实战_HN246版",
-                  "filename": "09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-                  "path": "AI工具/02_终端Agent流/Codex/09_Codex_CCSwitch本机配置重构实战_HN246版.md",
-                  "date": "2026-06-04T00:00:00.000Z",
-                  "hasRealDate": true,
-                  "order": null,
-                  "tags": [
-                    "Codex",
-                    "CCSwitch",
-                    "config.toml",
-                    "本机配置",
-                    "Windows"
-                  ],
-                  "category": "AI工具",
-                  "attachments": [],
-                  "description": "基于 HN246 本机 config.toml、CCSwitch 字段说明和可直接替换版配置，整理一份从字段理解、安全改写、路径替换到启动验证的 Codex 配置重构实战手册。",
-                  "size": "18KB",
-                  "lastModified": "2026-06-04T13:11:24.357Z",
-                  "wordCount": 12301
+                  "lastModified": "2026-06-04T13:41:34.296Z",
+                  "wordCount": 13514
                 }
               ]
             },
@@ -44121,7 +43881,7 @@
       ]
     }
   ],
-  "totalNotes": 414,
+  "totalNotes": 412,
   "totalCategories": 112,
-  "lastUpdated": "2026-06-04T13:12:33.359Z"
+  "lastUpdated": "2026-06-04T13:42:53.589Z"
 }

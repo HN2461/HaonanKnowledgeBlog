@@ -12,6 +12,7 @@ const setViewportWidth = (width) => {
 describe('AppLayout', () => {
   beforeEach(() => {
     setViewportWidth(1280)
+    localStorage.clear()
   })
 
   it('toggles expanded label mode without width state', async () => {
@@ -54,5 +55,47 @@ describe('AppLayout', () => {
 
     await wrapper.find('.toggle-expanded').trigger('click')
     expect(getSidebar().attributes('data-expanded')).toBe('false')
+  })
+
+  it('restores expanded label mode after layout remounts', async () => {
+    const createWrapper = () => mount(AppLayout, {
+      slots: {
+        default: '<div class="layout-test-slot">content</div>'
+      },
+      global: {
+        stubs: {
+          AppHeader: {
+            props: ['sidebarVisible'],
+            emits: ['toggle-sidebar'],
+            template: '<button class="header-toggle" @click="$emit(\'toggle-sidebar\')">{{ sidebarVisible }}</button>'
+          },
+          AppSidebar: {
+            props: ['visible', 'expanded'],
+            emits: ['close', 'toggle-expand'],
+            template: `
+              <div
+                class="sidebar-stub"
+                :data-visible="String(visible)"
+                :data-expanded="String(expanded)"
+              >
+                <button class="toggle-expanded" @click="$emit('toggle-expand')">toggle expanded</button>
+              </div>
+            `
+          }
+        }
+      }
+    })
+
+    const firstWrapper = createWrapper()
+    await firstWrapper.vm.$nextTick()
+    await firstWrapper.find('.toggle-expanded').trigger('click')
+
+    expect(firstWrapper.find('.sidebar-stub').attributes('data-expanded')).toBe('true')
+    firstWrapper.unmount()
+
+    const secondWrapper = createWrapper()
+    await secondWrapper.vm.$nextTick()
+
+    expect(secondWrapper.find('.sidebar-stub').attributes('data-expanded')).toBe('true')
   })
 })

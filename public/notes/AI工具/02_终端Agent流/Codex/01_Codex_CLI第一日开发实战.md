@@ -359,11 +359,11 @@ flowchart LR
 
 1. [第二篇：Codex CLI 英文终端界面翻译与排错](#/note/AI工具/02_终端Agent流/Codex/02_Codex_CLI英文终端界面翻译与排错)  
    解决“终端里这些英文、菜单、插件、skills、错误提示到底怎么看”。
-2. [第三篇：Codex 配置心智模型](#/note/AI工具/02_终端Agent流/Codex/03_Codex配置心智模型)  
+2. [第三篇：Codex 配置总手册](#/note/AI工具/02_终端Agent流/Codex/03_Codex配置总手册)  
    解决“为什么配置会覆盖、为什么改了不生效”。
-3. [第七篇：Codex 命令与配置文件速查](#/note/AI工具/02_终端Agent流/Codex/07_Codex命令与配置文件速查)  
+3. [第六篇：Codex 命令与配置文件速查](#/note/AI工具/02_终端Agent流/Codex/06_Codex命令与配置文件速查)  
    当命令和字段速查表用。
-4. [第六篇：Codex CLI / 插件 / App 三端联动实战](#/note/AI工具/02_终端Agent流/Codex/06_Codex_CLI插件App三端联动实战)  
+4. [第五篇：Codex CLI / 插件 / App 三端联动实战](#/note/AI工具/02_终端Agent流/Codex/05_Codex_CLI插件App三端联动实战)  
    解决 CLI、VS Code 插件、桌面 App 之间怎么联动。
 
 第三方线路、rpcod、Packy、yunyi 这些不要放在第一天主线里硬背。  

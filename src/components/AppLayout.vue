@@ -21,10 +21,11 @@ import AppHeader from './AppHeader.vue'
 import AppSidebar from './AppSidebar.vue'
 
 const MOBILE_BREAKPOINT = 768
+const DESKTOP_SIDEBAR_EXPANDED_KEY = 'desktop-sidebar-expanded'
 
 const sidebarVisible = ref(true)
 const isMobileViewport = ref(false)
-const isDesktopSidebarExpanded = ref(false)
+const isDesktopSidebarExpanded = ref(loadDesktopSidebarExpanded())
 const mobileHeaderOffset = ref(72)
 
 let resizeHandler = null
@@ -43,6 +44,22 @@ const updateMobileHeaderOffset = () => {
   mobileHeaderOffset.value = Math.round(headerEl.getBoundingClientRect().height)
 }
 
+function loadDesktopSidebarExpanded() {
+  try {
+    return localStorage.getItem(DESKTOP_SIDEBAR_EXPANDED_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+
+function persistDesktopSidebarExpanded(value) {
+  try {
+    localStorage.setItem(DESKTOP_SIDEBAR_EXPANDED_KEY, String(value))
+  } catch {
+    // 忽略隐私模式或存储不可用场景，当前页面内的状态仍然可用。
+  }
+}
+
 const syncSidebarViewportState = () => {
   const nextIsMobile = window.innerWidth < MOBILE_BREAKPOINT
   const viewportModeChanged = nextIsMobile !== isMobileViewport.value
@@ -54,6 +71,7 @@ const syncSidebarViewportState = () => {
     isDesktopSidebarExpanded.value = false
   } else if (viewportModeChanged) {
     sidebarVisible.value = true
+    isDesktopSidebarExpanded.value = loadDesktopSidebarExpanded()
   }
 }
 
@@ -71,6 +89,7 @@ const toggleDesktopSidebarExpanded = () => {
   }
 
   isDesktopSidebarExpanded.value = !isDesktopSidebarExpanded.value
+  persistDesktopSidebarExpanded(isDesktopSidebarExpanded.value)
 }
 
 onMounted(() => {
