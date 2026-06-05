@@ -1,6 +1,6 @@
 ---
 title: MongoDB 详解第三篇：Mongoose 连接与 Schema 建模
-date: 2026-04-21
+date: 2026-06-05
 category: Node.js
 tags:
   - MongoDB
@@ -60,11 +60,12 @@ await User.create({ name: '张三', age: 25 })
 ### 1.3 版本说明
 
 ```
-Mongoose 9（2025年11月）：当前最新版，要求 Node.js 18+
+Mongoose 9：当前主线大版本，要求 Node.js 20.19+，更建议搭配 Node.js 24 LTS
 Mongoose 8：要求 Node.js 16+
 Mongoose 7：移除了回调函数支持，全面转向 Promise/async-await
 
 ⚠️ Mongoose 7+ 起，所有方法不再接受回调函数，必须用 Promise 或 async/await
+⚠️ 如果项目还停在 Node.js 18 或更低版本，不要直接升级到 Mongoose 9，先升级运行时或继续维护在兼容的大版本上
 ```
 
 ---

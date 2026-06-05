@@ -1,6 +1,6 @@
 ---
 title: MongoDB 详解第四篇：Mongoose CRUD 与中间件
-date: 2026-04-21
+date: 2026-06-05
 category: Node.js
 tags:
   - MongoDB
@@ -390,6 +390,8 @@ const users = await User.find({ isDeleted: { $ne: true } })
 | `pre('deleteOne')` | 删除前 | 级联删除关联数据 |
 
 ### 5.2 Mongoose 9 的重要变化
+
+Mongoose 9 要求 Node.js 20.19+，本系列示例默认按 Node.js 24 LTS 环境理解。旧项目如果仍在 Node.js 18 或更低版本，先不要只升级 Mongoose，需要连运行时一起评估。
 
 ```javascript
 // ❌ Mongoose 8 及以前的写法（Mongoose 9 不再支持 next 参数）

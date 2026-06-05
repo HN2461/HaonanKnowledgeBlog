@@ -1,6 +1,6 @@
 ---
 title: 第六篇：Express 框架全解
-date: 2026-04-18
+date: 2026-06-05
 category: Node.js
 tags:
   - Node.js
@@ -16,7 +16,7 @@ description: 深入掌握 Express 框架的路由系统、中间件机制、静�
 
 # 第六篇：Express 框架全解
 
-> Express 是 Node.js 最流行的 Web 框架，极简但不简陋。理解它的中间件模型，是理解所有 Node.js 框架的基础。2024 年 10 月，Express 5 正式发布，带来了原生 async/await 支持和更严格的安全机制。
+> Express 是 Node.js 最流行的 Web 框架，极简但不简陋。理解它的中间件模型，是理解所有 Node.js 框架的基础。Express 5 已成为新项目默认应优先学习的主线版本，带来了 Promise 错误自动传递、路由匹配语法变化和一批旧 API 移除。
 
 ---
 
@@ -40,7 +40,7 @@ description: 深入掌握 Express 框架的路由系统、中间件机制、静�
 mkdir my-server
 cd my-server
 npm init -y
-# 安装 Express 5（当前最新稳定版）
+# 安装 Express 5（新项目默认使用）
 npm install express
 ```
 
@@ -81,9 +81,9 @@ node index.js
 # nodemon index.js
 ```
 
-### 1.2 Express 5 新特性（2024 年 10 月正式发布）
+### 1.2 Express 5 新特性与迁移重点
 
-Express 5 是 Express 4 发布 10 年后的重大更新，主要改进：
+Express 5 是 Express 4 发布多年后的重大更新。新项目可以直接从 Express 5 开始；维护 Express 4 老项目时，下面这些点是迁移时最容易踩坑的地方：
 
 **① 原生 async/await 错误处理**
 
@@ -153,6 +153,10 @@ app.use(express.json())
 //   true  = 用第三方 qs 库解析，支持嵌套对象，但大多数场景用不到
 app.use(express.urlencoded({ extended: false }))
 ```
+
+**⑤ Node.js 版本要求**
+
+Express 5 要求 Node.js 18+。不过从 2026 年的新项目角度，建议直接使用 Node.js 24 LTS 作为开发和部署基线，避免一边学新框架、一边踩旧运行时兼容问题。
 
 ### 1.3 Express vs 原生 http 模块
 
@@ -403,11 +407,11 @@ app.listen(3000)
 
 ### 2.5 自定义 404 路由
 
-`app.all('*', ...)` 可以匹配所有未被前面路由处理的请求，通常放在所有路由的最后：
+Express 5 里通配符必须命名。兜底 404 通常放在所有路由的最后：
 
 ```javascript
 // 必须放在所有路由定义之后
-app.all('*', (req, res) => {
+app.all('/{*splat}', (req, res) => {
   res.status(404).send('<h1>404 Not Found</h1>')
 })
 
@@ -417,7 +421,7 @@ app.use((req, res) => {
 })
 ```
 
-> Express 5 中 `app.all('*', ...)` 的通配符写法需改为 `app.all('/{*splat}', ...)`。
+> 如果你在旧教程里看到 `app.all('*', ...)`，那是 Express 4 常见写法；Express 5 中需改为 `app.all('/{*splat}', ...)`。
 
 ---
 
@@ -1110,7 +1114,7 @@ module.exports = (err, req, res, next) => {
 
 | 知识点 | 核心要点 |
 |--------|----------|
-| Express 5 | 原生 async/await 错误处理，路由语法变化，需要 Node.js 18+ |
+| Express 5 | 原生 async/await 错误处理，路由语法变化，要求 Node.js 18+，新项目建议配 Node.js 24 LTS |
 | 路由 | `app.get/post/put/delete(path, handler)` |
 | 路由参数 | `req.params`（路径参数）/ `req.query`（查询参数）/ `req.body`（请求体） |
 | 自定义 404 | `app.all('/{*splat}', handler)` 放在所有路由之后 |

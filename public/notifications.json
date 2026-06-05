@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-06-04T13:42:53.098Z",
-  "total": 356,
+  "generatedAt": "2026-06-05T09:15:16.954Z",
+  "total": 358,
   "notifications": [
     {
-      "id": "daily-2026-06-04-1",
-      "title": "将 Codex 专题精简为 7 章并合并配置总手册",
-      "content": "第一点：新增 `03_Codex配置总手册.md`，把原配置心智模型、配置字段字典、HN246 本机配置重构实战三块内容合成一篇长文，统一讲 `config.toml`、provider、模型、审批、沙箱、MCP、Desktop、Windows 路径、CCSwitch 跨机路径污染、token 脱敏和替换验证流程；第二点：删除原 `03_Codex配置心智模型.md`、`05_Codex配置字段字典.md` 和 `09_Codex_CCSwitch本机配置重构实战_HN246版.md`，避免三篇文章反复讲同一批配置字段；第三点：将后续文章顺延为 `05_Codex_CLI插件App三端联动实战.md`、`06_Codex命令与配置文件速查.md`、`07_Codex当前常用功能与进阶工作流手册.md`，并同步修正 frontmatter 标题、正文 H1、目录入口和站内链接；第四点：重写 `目录.md` 为“精简 7 章版”，明确配置相关内容以后只维护第三篇，其他文章只按线路、三端、命令和功能分工补充；第五点：删除此前保留的历史跳转页和重复附录后，继续保持 Codex 目录为少数主文结构；第六点：按仓库归档规则先将旧 `data/dailyChangeSummary.js` 中 2026-06-02 的两条消息迁移到新增历史分片 `data/history/2026-06-01_10.js`，并在 `data/historyNotifications.js` 中挂入聚合入口。",
-      "summary": "根据主人阅读反馈，将配置心智、配置字段字典和 HN246 本机配置实战三篇重复内容合并为一篇“第三篇：Codex 配置总手册”，并把 Codex 专题进一步收束为“目录 + 7 篇主文”。",
-      "date": "2026-06-04T21:39:00+08:00",
+      "id": "daily-2026-06-05-1",
+      "title": "核对并完善 Node.js 系列资料时效性",
+      "content": "第一点：更新 `public/notes/Node.js/目录.md`，新增官方核对来源表，明确 Node.js 24 LTS 是学习和生产新项目基线，Node.js 26 属于 Current / Latest 线，Node.js 20 已 EOL；第二点：修订 `第一篇_Node.js入门与Buffer_2026-04.md`，更新安装建议、npm 版本提示、Node.js 新能力状态，并把 Buffer 旧 API 说明改成更准确的废弃 / 兼容提醒；第三点：修订 `第五篇_npm包管理与nvm版本管理_2026-04.md`，把旧教程中的 Node 14/22 示例改为历史项目与当前 LTS 的区别，补充 2026-06-05 的版本判断说明；第四点：修订 `第六篇_Express框架全解_2026-04.md`，按 Express 5 官方迁移思路强化通配路由、Promise 错误处理、Node 版本要求等重点；第五点：修订 Mongoose 相关两篇文章，明确 Mongoose 9 要求 Node.js 20.19+，建议搭配 Node.js 24 LTS；第六点：移除 Node.js 两篇 Markdown 文件头 BOM，并按规则归档 2026-06-04 的旧日报摘要。",
+      "summary": "按官方资料重新核对 Node.js 系列笔记，把版本基线更新到 Node.js 24 LTS，补充 Node 26 Current、Node 20 EOL、Express 5、Mongoose 9 等最新状态，并移除容易误导的新旧写法混用。",
+      "date": "2026-06-05T17:09:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
@@ -16,14 +16,43 @@
       "fullHash": ""
     },
     {
-      "id": "daily-2026-06-04-2",
+      "id": "git-7c50962e8ea02e8e47762e05115ac7d903749613",
+      "title": "fix：修复展开按钮刷新失效问题 refactor：重构codex专题文档",
+      "content": "提交说明：fix：修复展开按钮刷新失效问题 refactor：重构codex专题文档",
+      "summary": "fix：修复展开按钮刷新失效问题 refactor：重构codex专题文档",
+      "date": "2026-06-04T21:45:24+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "7c50962",
+      "fullHash": "7c50962e8ea02e8e47762e05115ac7d903749613"
+    },
+    {
+      "id": "history-2026-06-04-1",
+      "title": "将 Codex 专题精简为 7 章并合并配置总手册",
+      "content": "第一点：新增 `03_Codex配置总手册.md`，把原配置心智模型、配置字段字典、HN246 本机配置重构实战三块内容合成一篇长文，统一讲 `config.toml`、provider、模型、审批、沙箱、MCP、Desktop、Windows 路径、CCSwitch 跨机路径污染、token 脱敏和替换验证流程；第二点：删除原 `03_Codex配置心智模型.md`、`05_Codex配置字段字典.md` 和 `09_Codex_CCSwitch本机配置重构实战_HN246版.md`，避免三篇文章反复讲同一批配置字段；第三点：将后续文章顺延为 `05_Codex_CLI插件App三端联动实战.md`、`06_Codex命令与配置文件速查.md`、`07_Codex当前常用功能与进阶工作流手册.md`，并同步修正 frontmatter 标题、正文 H1、目录入口和站内链接；第四点：重写 `目录.md` 为“精简 7 章版”，明确配置相关内容以后只维护第三篇，其他文章只按线路、三端、命令和功能分工补充；第五点：删除此前保留的历史跳转页和重复附录后，继续保持 Codex 目录为少数主文结构；第六点：按仓库归档规则先将旧 `data/dailyChangeSummary.js` 中 2026-06-02 的两条消息迁移到新增历史分片 `data/history/2026-06-01_10.js`，并在 `data/historyNotifications.js` 中挂入聚合入口。",
+      "summary": "根据主人阅读反馈，将配置心智、配置字段字典和 HN246 本机配置实战三篇重复内容合并为一篇“第三篇：Codex 配置总手册”，并把 Codex 专题进一步收束为“目录 + 7 篇主文”。",
+      "date": "2026-06-04T21:39:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-06-04",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-06-04-2",
       "title": "修复左侧标题展开模式跳转后丢失",
       "content": "第一点：恢复左侧目录原本的选择事件逻辑，避免把问题误修成移动端点击文章不关闭侧栏；第二点：在 `AppLayout.vue` 中为桌面端完整标题模式增加 `localStorage` 持久化，点击“展开/恢复”时写入状态，布局因文章路由切换重新挂载后再读回状态；第三点：补充 `AppLayout.test.js` 用例，验证完整标题模式在布局重新挂载后仍保持展开，防止之后切换文章时再次丢失。",
       "summary": "修复左侧菜单顶部“展开完整标题模式”在切换文章后恢复默认的问题，让完整标题显示状态跨文章跳转继续保持。",
       "date": "2026-06-04T21:30:00+08:00",
-      "tag": "问题修复",
-      "category": "问题修复",
-      "source": "daily-summary",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "问题修复",
+      "historyDate": "2026-06-04",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -4809,6 +4838,23 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-06-04",
+      "items": [
+        {
+          "title": "将 Codex 专题精简为 7 章并合并配置总手册",
+          "summary": "根据主人阅读反馈，将配置心智、配置字段字典和 HN246 本机配置实战三篇重复内容合并为一篇“第三篇：Codex 配置总手册”，并把 Codex 专题进一步收束为“目录 + 7 篇主文”。",
+          "time": "21:39",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "修复左侧标题展开模式跳转后丢失",
+          "summary": "修复左侧菜单顶部“展开完整标题模式”在切换文章后恢复默认的问题，让完整标题显示状态跨文章跳转继续保持。",
+          "time": "21:30",
+          "itemCategory": "问题修复"
+        }
+      ]
+    },
     {
       "date": "2026-06-02",
       "items": [
