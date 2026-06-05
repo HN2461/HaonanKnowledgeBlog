@@ -27,6 +27,7 @@ const sidebarVisible = ref(true)
 const isMobileViewport = ref(false)
 const isDesktopSidebarExpanded = ref(loadDesktopSidebarExpanded())
 const mobileHeaderOffset = ref(72)
+const immersiveSidebarSnapshot = ref(null)
 
 let resizeHandler = null
 let headerResizeObserver = null
@@ -61,6 +62,11 @@ function persistDesktopSidebarExpanded(value) {
 }
 
 const syncSidebarViewportState = () => {
+  if (immersiveSidebarSnapshot.value) {
+    isMobileViewport.value = window.innerWidth < MOBILE_BREAKPOINT
+    return
+  }
+
   const nextIsMobile = window.innerWidth < MOBILE_BREAKPOINT
   const viewportModeChanged = nextIsMobile !== isMobileViewport.value
 
@@ -76,10 +82,12 @@ const syncSidebarViewportState = () => {
 }
 
 const toggleSidebar = () => {
+  immersiveSidebarSnapshot.value = null
   sidebarVisible.value = !sidebarVisible.value
 }
 
 const closeSidebar = () => {
+  immersiveSidebarSnapshot.value = null
   sidebarVisible.value = false
 }
 
@@ -92,6 +100,32 @@ const toggleDesktopSidebarExpanded = () => {
   persistDesktopSidebarExpanded(isDesktopSidebarExpanded.value)
 }
 
+const handleReadingImmersiveChange = (event) => {
+  const enabled = !!event.detail?.enabled
+
+  if (enabled) {
+    if (!immersiveSidebarSnapshot.value) {
+      immersiveSidebarSnapshot.value = {
+        visible: sidebarVisible.value,
+        expanded: isDesktopSidebarExpanded.value
+      }
+    }
+
+    sidebarVisible.value = false
+    isDesktopSidebarExpanded.value = false
+    return
+  }
+
+  if (!immersiveSidebarSnapshot.value) {
+    return
+  }
+
+  const previousState = immersiveSidebarSnapshot.value
+  immersiveSidebarSnapshot.value = null
+  sidebarVisible.value = previousState.visible
+  isDesktopSidebarExpanded.value = isMobileViewport.value ? false : previousState.expanded
+}
+
 onMounted(() => {
   syncSidebarViewportState()
 
@@ -101,6 +135,7 @@ onMounted(() => {
   }
 
   window.addEventListener('resize', resizeHandler)
+  window.addEventListener('reading-immersive-change', handleReadingImmersiveChange)
 
   nextTick(() => {
     updateMobileHeaderOffset()
@@ -119,6 +154,8 @@ onBeforeUnmount(() => {
   if (resizeHandler) {
     window.removeEventListener('resize', resizeHandler)
   }
+
+  window.removeEventListener('reading-immersive-change', handleReadingImmersiveChange)
 
   if (headerResizeObserver) {
     headerResizeObserver.disconnect()

@@ -91,6 +91,31 @@
             </div>
           </div>
 
+          <!-- 沉浸阅读 -->
+          <div class="panel-section">
+            <button
+              class="action-btn immersive-btn"
+              :class="{ 'is-active': props.immersiveMode }"
+              :aria-pressed="String(props.immersiveMode)"
+              @click.stop="toggleImmersive"
+            >
+              <svg v-if="props.immersiveMode" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+                <path d="M9 9h6v6H9z"></path>
+              </svg>
+              <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
+                <path d="M16 3h3a2 2 0 0 1 2 2v3"></path>
+                <path d="M8 21H5a2 2 0 0 1-2-2v-3"></path>
+                <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+              </svg>
+              <span>{{ props.immersiveMode ? '退出沉浸' : '沉浸阅读' }}</span>
+            </button>
+          </div>
+
           <!-- 恢复阅读位置 -->
           <div class="panel-section">
             <button 
@@ -206,8 +231,16 @@ const emit = defineEmits([
   'enterFullscreen',
   'copyFullText',
   'exportDocument',
-  'printDocument'
+  'printDocument',
+  'toggleImmersive'
 ])
+
+const props = defineProps({
+  immersiveMode: {
+    type: Boolean,
+    default: false
+  }
+})
 
 const route = useRoute()
 const containerRef = ref(null)
@@ -528,6 +561,11 @@ const resetFontSize = () => {
 const enterFullscreen = () => {
   isExpanded.value = false
   emit('enterFullscreen')
+}
+
+const toggleImmersive = () => {
+  emit('toggleImmersive')
+  isExpanded.value = false
 }
 
 const toggleTheme = () => {
@@ -914,6 +952,17 @@ watch(() => route.params.path, (newPath, oldPath) => {
 .action-btn:hover {
   background: var(--bg-tertiary, #e0e0e0);
   border-color: var(--primary-color, #3b82f6);
+}
+
+.immersive-btn.is-active {
+  border-color: rgba(var(--primary-color-rgb), 0.38);
+  background: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+}
+
+.immersive-btn.is-active:hover {
+  border-color: rgba(var(--primary-color-rgb), 0.5);
+  background: rgba(var(--primary-color-rgb), 0.14);
 }
 
 .restore-position-btn {

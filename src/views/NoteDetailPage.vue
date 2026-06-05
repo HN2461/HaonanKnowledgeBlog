@@ -38,7 +38,13 @@
         class="note-detail-body"
         data-reading-scroll-container="true"
       >
-        <div class="page-container" :class="{ 'sidebar-collapsed': isTocCollapsed }">
+        <div
+          class="page-container"
+          :class="{
+            'sidebar-collapsed': isTocCollapsed,
+            'immersive-reading': isImmersiveReading
+          }"
+        >
         <!-- 骨架屏加载状态 -->
         <template v-if="loading">
           <article class="note-content">
@@ -149,7 +155,11 @@
             </div>
 
             <div class="markdown-content" :style="{ fontSize: fontSize + 'px' }">
-              <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
+              <MarkdownRenderer
+                :content="markdownContent"
+                :code-wrap="isImmersiveReading"
+                @imageClick="openLightbox"
+              />
             </div>
 
             <section v-if="showSeriesPanel" class="series-panel">
@@ -214,18 +224,24 @@
     <!-- 悬浮阅读工具栏 -->
     <ReadingToolbar 
       v-if="!loading"
+      :immersive-mode="isImmersiveReading"
       @fontSizeChange="onFontSizeChange" 
       @enterFullscreen="enterFullscreen"
       @copyFullText="copyFullText"
       @exportDocument="exportDocument"
       @printDocument="printDocument"
+      @toggleImmersive="toggleImmersiveReading"
     />
     
     <!-- 全屏阅读模式 -->
     <FullscreenReader ref="fullscreenRef">
       <div class="fullscreen-article-content" :style="{ fontSize: fontSize + 'px' }">
         <h1>{{ note.title }}</h1>
-        <MarkdownRenderer :content="markdownContent" @imageClick="openLightbox" />
+        <MarkdownRenderer
+          :content="markdownContent"
+          :code-wrap="isImmersiveReading"
+          @imageClick="openLightbox"
+        />
       </div>
     </FullscreenReader>
     
@@ -338,6 +354,8 @@ const notesData = ref(null)
 const fontSize = ref(16)
 // 目录折叠状态放在详情页层，保证同一篇阅读过程可持续生效
 const isTocCollapsed = ref(false)
+const isImmersiveReading = ref(false)
+const tocCollapsedBeforeImmersive = ref(false)
 const actionToast = ref({
   visible: false,
   message: '',
@@ -606,6 +624,46 @@ const handleAttachmentPreviewVisible = (visible) => {
 
 const toggleTocSidebar = () => {
   isTocCollapsed.value = !isTocCollapsed.value
+}
+
+const dispatchImmersiveReadingState = (enabled) => {
+  window.dispatchEvent(new CustomEvent('reading-immersive-change', {
+    detail: { enabled }
+  }))
+}
+
+const setImmersiveReading = (enabled) => {
+  if (isImmersiveReading.value === enabled) {
+    return
+  }
+
+  if (enabled) {
+    tocCollapsedBeforeImmersive.value = isTocCollapsed.value
+    isImmersiveReading.value = true
+    isTocCollapsed.value = true
+    dispatchImmersiveReadingState(true)
+    showActionToast('已进入沉浸阅读', 'success')
+    return
+  }
+
+  isImmersiveReading.value = false
+  isTocCollapsed.value = tocCollapsedBeforeImmersive.value
+  dispatchImmersiveReadingState(false)
+  showActionToast('已退出沉浸阅读', 'success')
+}
+
+const toggleImmersiveReading = () => {
+  setImmersiveReading(!isImmersiveReading.value)
+}
+
+const cleanupImmersiveReading = () => {
+  if (!isImmersiveReading.value) {
+    return
+  }
+
+  isImmersiveReading.value = false
+  isTocCollapsed.value = tocCollapsedBeforeImmersive.value
+  dispatchImmersiveReadingState(false)
 }
 
 const showActionToast = (message, type = 'success') => {
@@ -932,6 +990,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
+  cleanupImmersiveReading()
   // 组件卸载前保存当前位置
   saveCurrentPosition()
   cleanupScrollListener()
@@ -954,6 +1013,7 @@ watch(() => route.params.path, (newPath, oldPath) => {
   }
 
   activePreviewAttachment.value = null
+  cleanupImmersiveReading()
   cleanupScrollListener()
   loadNote()
   initializeReadingPosition()
@@ -1040,6 +1100,10 @@ watch(() => route.params.path, (newPath, oldPath) => {
 
 .page-container.sidebar-collapsed {
   grid-template-columns: minmax(0, 1fr);
+}
+
+.page-container.immersive-reading {
+  max-width: 1040px;
 }
 
 .note-content {

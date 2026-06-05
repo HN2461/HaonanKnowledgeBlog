@@ -98,4 +98,110 @@ describe('AppLayout', () => {
 
     expect(secondWrapper.find('.sidebar-stub').attributes('data-expanded')).toBe('true')
   })
+
+  it('restores visible sidebar after immersive reading exits when it was visible before', async () => {
+    const wrapper = mount(AppLayout, {
+      slots: {
+        default: '<div class="layout-test-slot">content</div>'
+      },
+      global: {
+        stubs: {
+          AppHeader: {
+            props: ['sidebarVisible'],
+            emits: ['toggle-sidebar'],
+            template: '<button class="header-toggle" @click="$emit(\'toggle-sidebar\')">{{ sidebarVisible }}</button>'
+          },
+          AppSidebar: {
+            props: ['visible', 'expanded'],
+            emits: ['close', 'toggle-expand'],
+            template: `
+              <div
+                class="sidebar-stub"
+                :data-visible="String(visible)"
+                :data-expanded="String(expanded)"
+              >
+                <button class="toggle-expanded" @click="$emit('toggle-expand')">toggle expanded</button>
+              </div>
+            `
+          }
+        }
+      }
+    })
+
+    await wrapper.vm.$nextTick()
+    await wrapper.find('.toggle-expanded').trigger('click')
+
+    const getSidebar = () => wrapper.find('.sidebar-stub')
+    expect(getSidebar().attributes('data-visible')).toBe('true')
+    expect(getSidebar().attributes('data-expanded')).toBe('true')
+
+    window.dispatchEvent(new CustomEvent('reading-immersive-change', {
+      detail: { enabled: true }
+    }))
+    await wrapper.vm.$nextTick()
+
+    expect(getSidebar().attributes('data-visible')).toBe('false')
+    expect(getSidebar().attributes('data-expanded')).toBe('false')
+
+    window.dispatchEvent(new CustomEvent('reading-immersive-change', {
+      detail: { enabled: false }
+    }))
+    await wrapper.vm.$nextTick()
+
+    expect(getSidebar().attributes('data-visible')).toBe('true')
+    expect(getSidebar().attributes('data-expanded')).toBe('true')
+  })
+
+  it('restores hidden sidebar after immersive reading exits when it was hidden before', async () => {
+    const wrapper = mount(AppLayout, {
+      slots: {
+        default: '<div class="layout-test-slot">content</div>'
+      },
+      global: {
+        stubs: {
+          AppHeader: {
+            props: ['sidebarVisible'],
+            emits: ['toggle-sidebar'],
+            template: '<button class="header-toggle" @click="$emit(\'toggle-sidebar\')">{{ sidebarVisible }}</button>'
+          },
+          AppSidebar: {
+            props: ['visible', 'expanded'],
+            emits: ['close', 'toggle-expand'],
+            template: `
+              <div
+                class="sidebar-stub"
+                :data-visible="String(visible)"
+                :data-expanded="String(expanded)"
+              >
+                <button class="close-sidebar" @click="$emit('close')">close</button>
+              </div>
+            `
+          }
+        }
+      }
+    })
+
+    await wrapper.vm.$nextTick()
+
+    const getSidebar = () => wrapper.find('.sidebar-stub')
+    expect(getSidebar().attributes('data-visible')).toBe('true')
+
+    await wrapper.find('.close-sidebar').trigger('click')
+    expect(getSidebar().attributes('data-visible')).toBe('false')
+
+    window.dispatchEvent(new CustomEvent('reading-immersive-change', {
+      detail: { enabled: true }
+    }))
+    await wrapper.vm.$nextTick()
+
+    expect(getSidebar().attributes('data-visible')).toBe('false')
+
+    window.dispatchEvent(new CustomEvent('reading-immersive-change', {
+      detail: { enabled: false }
+    }))
+    await wrapper.vm.$nextTick()
+
+    expect(getSidebar().attributes('data-visible')).toBe('false')
+    expect(getSidebar().attributes('data-expanded')).toBe('false')
+  })
 })

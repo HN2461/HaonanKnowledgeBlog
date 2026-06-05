@@ -1,5 +1,9 @@
 <template>
-  <div class="markdown-renderer" ref="rendererRef">
+  <div
+    class="markdown-renderer"
+    :class="{ 'is-code-wrapped': props.codeWrap }"
+    ref="rendererRef"
+  >
     <div class="markdown-body" v-html="renderedContent"></div>
   </div>
 </template>
@@ -18,6 +22,10 @@ const props = defineProps({
   content: {
     type: String,
     required: true
+  },
+  codeWrap: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -512,6 +520,33 @@ onBeforeUnmount(() => {
   white-space: pre;
   min-width: max-content;
   color: #d4d4d4;
+}
+
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__content) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* 自动换行后视觉行数会变化，隐藏行号避免与代码内容错位。 */
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__gutter) {
+  display: none;
+}
+
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__viewport) {
+  overflow-x: hidden;
+}
+
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__pre),
+.markdown-renderer.is-code-wrapped .markdown-body :deep(pre:not(.code-block__pre)) {
+  overflow-x: hidden;
+  white-space: pre-wrap;
+}
+
+.markdown-renderer.is-code-wrapped .markdown-body :deep(pre code),
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__code) {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .markdown-body :deep(:not(pre) > code) {

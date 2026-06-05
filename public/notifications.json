@@ -1,7 +1,19 @@
 {
-  "generatedAt": "2026-06-05T09:15:16.954Z",
-  "total": 358,
+  "generatedAt": "2026-06-05T11:35:55.208Z",
+  "total": 359,
   "notifications": [
+    {
+      "id": "git-1697bbb8b91faff68190c985adf4f2fae49bf9b0",
+      "title": "更新Node.js教程版本说明并修正文档时效性",
+      "content": "提交说明：更新Node.js教程版本说明并修正文档时效性",
+      "summary": "更新Node.js教程版本说明并修正文档时效性",
+      "date": "2026-06-05T17:58:11+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "1697bbb",
+      "fullHash": "1697bbb8b91faff68190c985adf4f2fae49bf9b0"
+    },
     {
       "id": "daily-2026-06-05-1",
       "title": "核对并完善 Node.js 系列资料时效性",
