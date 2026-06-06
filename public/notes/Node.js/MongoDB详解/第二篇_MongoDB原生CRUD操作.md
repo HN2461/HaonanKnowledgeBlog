@@ -1,524 +1,531 @@
 ---
 title: MongoDB 详解第二篇：原生 CRUD 操作
-date: 2026-04-21
+date: 2026-06-06
 category: Node.js
 tags:
   - MongoDB
   - CRUD
+  - mongosh
+  - Node.js Driver
   - 查询操作符
   - 更新操作符
-  - mongosh
-description: 系统掌握 MongoDB 原生增删改查命令，覆盖所有常用查询操作符（$gt/$in/$regex 等）、更新操作符（$set/$inc/$push 等）、排序分页和投影。
+description: 通过 mongosh 和 MongoDB Node.js Driver 两条线掌握 MongoDB 原生 CRUD，覆盖过滤条件、投影、排序、分页、更新操作符与 findOneAndUpdate 等项目常用写法。
 ---
 
 # MongoDB 详解第二篇：原生 CRUD 操作
 
-> 在用 Mongoose 之前，先把 MongoDB 原生命令搞清楚。这些命令在 mongosh 里直接跑，也是 Mongoose 底层在做的事情。
+> 这一篇是 MongoDB 的硬基础。后面你在 Mongoose 里写的大部分查询，本质上都只是把这里的思想换了一层 API。为了让小白更容易看懂，这一篇的代码我尽量都写成“边看边懂”的注释风格。
 
 ---
 
-## 一、准备工作
+## 一、先准备一批练习数据
 
-打开终端，连接数据库，切换到练习用的数据库：
+连接数据库后，先切到练习库：
 
 ```javascript
-mongosh
-
-use learn_mongo
-// 切换到 learn_mongo 数据库（不存在会自动创建）
+// use 的意思是“切换到某个数据库”
+// 如果数据库还不存在，也没关系
+// 等你第一次真正插入数据时，这个库就会被创建出来
+use learn_mongodb
 ```
 
-后面所有命令都在 mongosh 里执行。
-
----
-
-## 二、插入文档（Create）
-
-### 2.1 insertOne — 插入单条
+插入几条用户数据：
 
 ```javascript
-// db.集合名.insertOne(文档对象)
-// 返回：{ acknowledged: true, insertedId: ObjectId('...') }
-
-db.users.insertOne({
-  name: '张三',
-  age: 25,
-  email: 'zhangsan@example.com',
-  role: 'user',
-  isActive: true,
-  createdAt: new Date()
-})
-```
-
-插入后 MongoDB 自动给这条文档加上 `_id` 字段（ObjectId 类型）。
-
-如果你想自己指定 `_id`，可以手动传：
-
-```javascript
-db.users.insertOne({
-  _id: 'custom-id-001',  // 自定义 _id，可以是任意类型
-  name: '自定义ID用户'
-})
-// ⚠️ 自定义 _id 后，如果再插入相同 _id 会报错（唯一约束）
-```
-
-### 2.2 insertMany — 批量插入
-
-```javascript
-// db.集合名.insertMany([文档数组])
-// 返回：{ acknowledged: true, insertedIds: { '0': ObjectId, '1': ObjectId, ... } }
-
+// 往 users 集合里一次插入多条文档
 db.users.insertMany([
-  { name: '李四', age: 30, email: 'lisi@example.com', role: 'admin' },
-  { name: '王五', age: 28, email: 'wangwu@example.com', role: 'user' },
-  { name: '赵六', age: 22, email: 'zhaoliu@example.com', role: 'user' },
-  { name: '钱七', age: 35, email: 'qianqi@example.com', role: 'moderator' }
+  {
+    username: 'haonan', // 用户名
+    age: 26, // 年龄
+    role: 'admin', // 角色
+    city: '上海', // 所在城市
+    tags: ['node', 'mongodb'], // 标签数组
+    score: 95, // 分数
+    isActive: true, // 是否启用
+    createdAt: new Date('2026-06-01T10:00:00Z') // 创建时间
+  },
+  {
+    username: 'xiaoyu',
+    age: 23,
+    role: 'user',
+    city: '杭州',
+    tags: ['vue', 'css'],
+    score: 82,
+    isActive: true,
+    createdAt: new Date('2026-06-02T10:00:00Z')
+  },
+  {
+    username: 'laoli',
+    age: 31,
+    role: 'user',
+    city: '北京',
+    tags: ['java', 'mysql'],
+    score: 76,
+    isActive: false,
+    createdAt: new Date('2026-06-03T10:00:00Z')
+  }
 ])
 ```
 
-**有序插入 vs 无序插入**：
-
-```javascript
-// 默认 ordered: true（有序插入）
-// 遇到错误（如重复 _id）立即停止，后面的文档不再插入
-
-// ordered: false（无序插入）
-// 遇到错误跳过这条，继续插入其他文档
-db.users.insertMany(
-  [{ _id: 1, name: 'A' }, { _id: 1, name: 'B' }, { _id: 2, name: 'C' }],
-  { ordered: false }
-)
-// _id: 1 重复报错，但 _id: 2 的 C 仍然会插入
-```
+这一批数据够你把绝大多数基础查询练通。
 
 ---
 
-## 三、查询文档（Read）
+## 二、Create：插入数据
 
-### 3.1 find — 查询多条
+### 2.1 插入一条
 
 ```javascript
-// db.集合名.find(查询条件, 投影)
-// 查询条件为空对象 {} 或不传，表示查询所有
+// insertOne 表示“插入一条”
+// db.users 指的是当前数据库里的 users 集合
+db.users.insertOne({
+  username: 'new-user',
+  age: 20,
+  role: 'user',
+  createdAt: new Date() // new Date() 表示“现在这个时间”
+})
+```
 
-// 查询所有文档
+要点：
+
+- MongoDB 会自动生成 `_id`
+- 返回结果里会有 `insertedId`
+
+### 2.2 批量插入
+
+```javascript
+// insertMany 表示“插入多条”
+// 适合初始化测试数据、批量导入数据
+db.users.insertMany([
+  { username: 'u1', age: 18, role: 'user' },
+  { username: 'u2', age: 19, role: 'user' }
+])
+```
+
+### 2.3 项目里该怎么想
+
+插入数据时，不要只想着“能存进去就行”，还要同步考虑：
+
+- 哪些字段必填
+- 哪些字段需要默认值
+- 哪些字段未来要筛选或排序
+- 哪些字段应该建索引
+
+这些在后面用 Mongoose 时会体现得更明显。
+
+---
+
+## 三、Read：查询数据
+
+### 3.1 查全部
+
+```javascript
+// find() 表示查询多条
+// 什么条件都不传，就表示“把所有数据都查出来”
 db.users.find()
+```
 
-// 加 .pretty() 格式化输出（mongosh 默认已经格式化，老版本需要）
-db.users.find().pretty()
+这会返回游标结果。在 mongosh 里你能直接看到文档列表。
 
-// 按条件查询：精确匹配
+### 3.2 查一条
+
+```javascript
+// findOne() 表示“只拿第一条匹配结果”
+// 这里的意思是：找到 username 等于 haonan 的那条用户数据
+db.users.findOne({ username: 'haonan' })
+```
+
+`findOne()` 的语义很直接：只拿第一条匹配结果。
+
+### 3.3 条件过滤
+
+```javascript
+// 只查角色是 user 的用户
 db.users.find({ role: 'user' })
-
-// 多个条件：AND 关系（同时满足）
-db.users.find({ role: 'user', isActive: true })
 ```
 
-### 3.2 findOne — 查询单条
+多个条件默认就是“并且”关系：
 
 ```javascript
-// 返回第一条匹配的文档，没有则返回 null
-db.users.findOne({ name: '张三' })
-
-// 按 _id 查询（需要用 ObjectId 包装）
-db.users.findOne({ _id: ObjectId('6642a1b2c3d4e5f678901234') })
+// 同时满足两个条件：
+// 1. role 是 user
+// 2. isActive 是 true
+db.users.find({
+  role: 'user',
+  isActive: true
+})
 ```
 
-### 3.3 查询操作符
-
-当你需要"大于"、"包含"、"正则匹配"这类条件时，就要用操作符。MongoDB 的操作符都以 `$` 开头。
-
-**比较操作符**：
+### 3.4 常用查询操作符
 
 ```javascript
-// $eq：等于（通常直接写值，不用 $eq）
-db.users.find({ age: { $eq: 25 } })
-// 等价于：
-db.users.find({ age: 25 })
-
-// $ne：不等于
-db.users.find({ role: { $ne: 'admin' } })
-
-// $gt：大于（greater than）
+// 查年龄大于 25 的用户
 db.users.find({ age: { $gt: 25 } })
 
-// $gte：大于等于（greater than or equal）
-db.users.find({ age: { $gte: 25 } })
+// 查年龄在 18 到 30 之间的用户（包含 18 和 30）
+db.users.find({ age: { $gte: 18, $lte: 30 } })
 
-// $lt：小于（less than）
-db.users.find({ age: { $lt: 30 } })
+// 查城市在“上海”或“杭州”里的用户
+db.users.find({ city: { $in: ['上海', '杭州'] } })
 
-// $lte：小于等于（less than or equal）
-db.users.find({ age: { $lte: 30 } })
+// 查角色不是 admin 的用户
+db.users.find({ role: { $ne: 'admin' } })
 
-// 范围查询：25 <= age <= 35
-db.users.find({ age: { $gte: 25, $lte: 35 } })
+// 查用户名里包含 hao 的用户
+// $options: 'i' 表示忽略大小写
+db.users.find({ username: { $regex: 'hao', $options: 'i' } })
 ```
 
-**数组操作符**：
+项目里最常见的 6 个操作符，先重点掌握：
+
+- `$gt` 大于
+- `$gte` 大于等于
+- `$lt` 小于
+- `$lte` 小于等于
+- `$in` 在某个集合里
+- `$regex` 模糊匹配
+
+### 3.5 逻辑条件
 
 ```javascript
-// $in：值在数组中（类似 SQL 的 IN）
-db.users.find({ role: { $in: ['admin', 'moderator'] } })
-
-// $nin：值不在数组中（NOT IN）
-db.users.find({ role: { $nin: ['admin'] } })
-```
-
-**逻辑操作符**：
-
-```javascript
-// $and：与（多个条件都满足）
-// 注意：多个条件直接写在对象里默认就是 AND，$and 用于同一字段多个条件
-db.users.find({
-  $and: [
-    { age: { $gte: 20 } },
-    { age: { $lte: 30 } }
-  ]
-})
-
-// $or：或（满足其中一个条件）
+// $or 表示“满足其中一个条件就行”
+// 也就是：城市是上海 或者 杭州，都算匹配
 db.users.find({
   $or: [
-    { role: 'admin' },
-    { age: { $gt: 30 } }
+    { city: '上海' },
+    { city: '杭州' }
   ]
 })
-
-// $nor：都不满足
-db.users.find({
-  $nor: [
-    { role: 'admin' },
-    { isActive: false }
-  ]
-})
-
-// $not：取反
-db.users.find({ age: { $not: { $gt: 30 } } })
-// 等价于：age <= 30
 ```
 
-**字段存在性**：
+### 3.6 数组字段查询
 
 ```javascript
-// $exists：字段是否存在
-db.users.find({ phone: { $exists: true } })   // 有 phone 字段的文档
-db.users.find({ phone: { $exists: false } })  // 没有 phone 字段的文档
+// tags 是数组
+// 只要 tags 数组里包含 node，这条文档就会被查出来
+db.users.find({ tags: 'node' })
+
+// $all 表示“必须同时包含这些值”
+// 这里表示：tags 里既要有 node，也要有 mongodb
+db.users.find({ tags: { $all: ['node', 'mongodb'] } })
 ```
 
-**正则匹配**：
+如果字段是数组，只要包含目标值，就能匹配成功。
+
+---
+
+## 四、投影、排序、分页，这 3 个是列表页必会组合
+
+### 4.1 投影 projection
+
+只返回你需要的字段：
 
 ```javascript
-// $regex：正则表达式匹配
-db.users.find({ name: { $regex: /张/ } })
-
-// 不区分大小写
-db.users.find({ email: { $regex: /gmail/i } })
-
-// 也可以写成字符串形式
-db.users.find({ name: { $regex: '张', $options: 'i' } })
+// find 的第一个参数是查询条件
+// 第二个参数是“返回哪些字段”
+db.users.find(
+  { role: 'user' }, // 先找出 role 是 user 的人
+  { username: 1, city: 1, _id: 0 } // 只返回 username、city，并且隐藏 _id
+)
 ```
 
-**类型查询**：
+这意味着：
+
+- 返回 `username`
+- 返回 `city`
+- 不返回 `_id`
+
+### 4.2 排序 sort
 
 ```javascript
-// $type：按字段类型查询
-db.users.find({ age: { $type: 'number' } })
-db.users.find({ _id: { $type: 'objectId' } })
+// sort 表示排序
+// createdAt: -1 表示按创建时间倒序
+// 倒序的意思就是：最新的放前面
+db.users.find().sort({ createdAt: -1 })
 ```
 
-### 3.4 投影（只返回指定字段）
+- `1` 表示升序
+- `-1` 表示降序
+
+### 4.3 分页 skip + limit
 
 ```javascript
-// find 的第二个参数是投影
-// 1 = 包含，0 = 排除
-// 注意：_id 默认包含，需要显式排除
-
-// 只返回 name 和 email（_id 默认也会返回）
-db.users.find({}, { name: 1, email: 1 })
-
-// 排除 _id
-db.users.find({}, { name: 1, email: 1, _id: 0 })
-
-// 排除某些字段（其他字段都返回）
-db.users.find({}, { password: 0, __v: 0 })
-
-// ⚠️ 不能混用包含和排除（_id 除外）
-// 错误写法：
-// db.users.find({}, { name: 1, age: 0 })  // 报错！
-```
-
-### 3.5 排序、分页、统计
-
-```javascript
-// sort：排序
-// 1 = 升序（从小到大），-1 = 降序（从大到小）
-db.users.find().sort({ age: 1 })          // 按年龄升序
-db.users.find().sort({ age: -1 })         // 按年龄降序
-db.users.find().sort({ age: -1, name: 1 }) // 先按年龄降序，再按名字升序
-
-// limit：限制返回数量
-db.users.find().limit(5)  // 只返回前 5 条
-
-// skip：跳过前 n 条（用于分页）
-db.users.find().skip(10).limit(5)  // 跳过前 10 条，取第 11-15 条
-
-// 分页公式：
-// 第 page 页，每页 pageSize 条
-// skip = (page - 1) * pageSize
-// limit = pageSize
-const page = 2
-const pageSize = 10
-db.users.find().skip((page - 1) * pageSize).limit(pageSize)
-
-// countDocuments：统计数量
-db.users.countDocuments()                    // 总数
-db.users.countDocuments({ role: 'user' })    // 满足条件的数量
-
-// 链式调用（顺序不影响结果）
-db.users.find({ isActive: true })
+// 这段的意思是：
+// 1. 先把所有用户查出来
+// 2. 按创建时间从新到旧排序
+// 3. 不跳过任何数据
+// 4. 只拿前 10 条
+db.users.find()
   .sort({ createdAt: -1 })
   .skip(0)
   .limit(10)
 ```
 
----
-
-## 四、更新文档（Update）
-
-### 4.1 updateOne — 更新单条
+第 2 页通常是：
 
 ```javascript
-// db.集合名.updateOne(查询条件, 更新操作)
-// 只更新第一条匹配的文档
+// 假设当前要查第 2 页，每页 10 条
+const page = 2
+const pageSize = 10
 
-db.users.updateOne(
-  { name: '张三' },          // 查询条件：找到 name 为张三的文档
-  { $set: { age: 26 } }     // 更新操作：把 age 改为 26
-)
-
-// 返回：
-// {
-//   acknowledged: true,
-//   matchedCount: 1,    // 匹配到的文档数
-//   modifiedCount: 1    // 实际修改的文档数
-// }
+db.users.find()
+  .sort({ createdAt: -1 }) // 先保证排序稳定
+  .skip((page - 1) * pageSize) // 第 2 页要跳过前 10 条
+  .limit(pageSize) // 然后再拿 10 条
 ```
 
-### 4.2 updateMany — 更新多条
+### 4.4 统计总数
 
 ```javascript
-// 更新所有匹配的文档
+// countDocuments 用来统计有多少条符合条件的数据
+// 这里表示：统计 role 是 user 的用户总共有多少个
+db.users.countDocuments({ role: 'user' })
+```
+
+项目里做分页时，一般是：
+
+1. 查当前页列表
+2. 再查总数
+
+这样前端才能知道总页数。
+
+---
+
+## 五、Update：更新数据
+
+### 5.1 更新一条
+
+```javascript
+// updateOne 表示“只更新第一条匹配的数据”
+db.users.updateOne(
+  { username: 'haonan' }, // 先找到 username 是 haonan 的用户
+  { $set: { city: '苏州' } } // 再把 city 改成 苏州
+)
+```
+
+### 5.2 更新多条
+
+```javascript
+// updateMany 表示“更新所有符合条件的数据”
 db.users.updateMany(
-  { role: 'user' },
-  { $set: { isActive: true } }
+  { role: 'user' }, // 找到所有角色是 user 的用户
+  { $set: { isActive: true } } // 统一改成启用状态
 )
 ```
 
-### 4.3 更新操作符
-
-**$set — 设置字段值**（最常用）：
+### 5.3 必会的更新操作符
 
 ```javascript
-// 修改已有字段
-db.users.updateOne({ name: '张三' }, { $set: { age: 26 } })
-
-// 添加新字段（字段不存在时自动创建）
-db.users.updateOne({ name: '张三' }, { $set: { phone: '13800138000' } })
-
-// 修改嵌套字段（用点号）
+// 一次更新里可以同时做多个动作
 db.users.updateOne(
-  { name: '张三' },
-  { $set: { 'address.city': '上海' } }
+  { username: 'haonan' }, // 先定位用户
+  {
+    $set: { city: '南京' }, // 把城市改成南京
+    $inc: { score: 5 }, // 分数 +5
+    $push: { tags: 'backend' } // 往 tags 数组末尾追加一个 backend
+  }
 )
+```
 
-// 同时修改多个字段
+最常用的是这几个：
+
+- `$set` 设置字段值
+- `$inc` 数字递增
+- `$push` 往数组追加一个值
+- `$addToSet` 追加但不重复
+- `$pull` 从数组移除值
+- `$unset` 删除字段
+
+例如：
+
+```javascript
+// $addToSet 和 $push 很像
+// 但它会自动避免重复
 db.users.updateOne(
-  { name: '张三' },
-  { $set: { age: 26, email: 'new@example.com', updatedAt: new Date() } }
+  { username: 'haonan' },
+  { $addToSet: { tags: 'mongodb' } }
 )
 ```
 
-**$unset — 删除字段**：
+`$addToSet` 很适合标签去重场景。
+
+### 5.4 findOneAndUpdate
+
+项目里非常常用，因为它能“查到并更新”一步完成：
 
 ```javascript
-// 删除 phone 字段（值写什么都行，通常写空字符串）
-db.users.updateOne({ name: '张三' }, { $unset: { phone: '' } })
-```
-
-**$inc — 数值增减**：
-
-```javascript
-// 登录次数 +1
-db.users.updateOne({ name: '张三' }, { $inc: { loginCount: 1 } })
-
-// 减少（传负数）
-db.users.updateOne({ name: '张三' }, { $inc: { score: -10 } })
-```
-
-**$rename — 重命名字段**：
-
-```javascript
-// 把 name 字段改名为 username
-db.users.updateMany({}, { $rename: { name: 'username' } })
-```
-
-**数组操作符**：
-
-```javascript
-// $push：向数组末尾添加元素
-db.users.updateOne({ name: '张三' }, { $push: { tags: 'vip' } })
-
-// $push + $each：一次添加多个元素
-db.users.updateOne(
-  { name: '张三' },
-  { $push: { tags: { $each: ['vip', 'premium'] } } }
-)
-
-// $pull：从数组中删除指定元素
-db.users.updateOne({ name: '张三' }, { $pull: { tags: 'vip' } })
-
-// $addToSet：添加元素，但不重复（类似 Set）
-db.users.updateOne({ name: '张三' }, { $addToSet: { tags: 'vip' } })
-// 如果 tags 里已经有 'vip'，不会重复添加
-
-// $pop：删除数组第一个或最后一个元素
-db.users.updateOne({ name: '张三' }, { $pop: { tags: 1 } })   // 删除最后一个
-db.users.updateOne({ name: '张三' }, { $pop: { tags: -1 } })  // 删除第一个
-```
-
-### 4.4 upsert — 不存在则插入
-
-```javascript
-// upsert: true — 找不到匹配文档时，自动插入一条新文档
-db.users.updateOne(
-  { email: 'newuser@example.com' },
-  { $set: { name: '新用户', age: 20 } },
-  { upsert: true }
-)
-// 如果 email 不存在：插入新文档
-// 如果 email 存在：更新该文档
-```
-
-### 4.5 replaceOne — 替换整条文档
-
-```javascript
-// 注意：replaceOne 会替换整条文档（_id 保留），而不是只更新指定字段
-db.users.replaceOne(
-  { name: '张三' },
-  { name: '张三', age: 26, email: 'new@example.com' }
-  // 原来文档的其他字段（如 role、isActive）会被删除！
+db.users.findOneAndUpdate(
+  { username: 'haonan' }, // 先找到这个人
+  { $set: { city: '深圳' } }, // 再把城市改成深圳
+  {
+    returnDocument: 'after' // 返回更新后的文档，而不是更新前的旧文档
+  }
 )
 ```
 
-> **$set vs replaceOne 的区别**：`$set` 只修改指定字段，其他字段保留；`replaceOne` 用新文档替换整条，未指定的字段会消失。
+这里要特别注意：
+
+- `returnDocument: 'after'` 表示返回更新后的文档
+- 如果不写，很多人会误以为返回的是新值，结果拿到旧文档
+
+这也是很多旧教程容易写混的点。
 
 ---
 
-## 五、删除文档（Delete）
+## 六、Delete：删除数据
 
-### 5.1 deleteOne — 删除单条
+### 6.1 删除一条
 
 ```javascript
-// 删除第一条匹配的文档
-db.users.deleteOne({ name: '张三' })
-
-// 返回：{ acknowledged: true, deletedCount: 1 }
+// deleteOne 表示删除第一条匹配的数据
+db.users.deleteOne({ username: 'u1' })
 ```
 
-### 5.2 deleteMany — 删除多条
+### 6.2 删除多条
 
 ```javascript
-// 删除所有 isActive 为 false 的文档
+// deleteMany 表示删除所有符合条件的数据
 db.users.deleteMany({ isActive: false })
-
-// 删除集合里的所有文档（集合本身保留）
-db.users.deleteMany({})
-
-// ⚠️ 和 db.users.drop() 的区别：
-// deleteMany({}) — 删除所有文档，集合和索引保留
-// drop() — 删除整个集合（包括索引）
 ```
+
+### 6.3 真实项目里更常见的是软删除
+
+不要上来就真删，很多项目更喜欢这样：
+
+```javascript
+// 这不是直接删数据
+// 而是给数据打一个“已删除”标记
+db.users.updateOne(
+  { username: 'laoli' },
+  {
+    $set: {
+      isDeleted: true, // 标记为已删除
+      deletedAt: new Date() // 记录删除时间
+    }
+  }
+)
+```
+
+优点：
+
+- 可恢复
+- 方便审计
+- 不容易误删造成业务事故
 
 ---
 
-## 六、综合练习
+## 七、用官方 Node.js Driver 写同样的 CRUD
 
-用下面这批数据练习一下：
-
-```javascript
-// 先清空集合
-db.products.deleteMany({})
-
-// 插入测试数据
-db.products.insertMany([
-  { name: 'iPhone 15', category: '手机', price: 5999, stock: 100, tags: ['苹果', '旗舰'] },
-  { name: 'MacBook Pro', category: '电脑', price: 14999, stock: 50, tags: ['苹果', '笔记本'] },
-  { name: 'AirPods Pro', category: '耳机', price: 1799, stock: 200, tags: ['苹果', '无线'] },
-  { name: '小米14', category: '手机', price: 3999, stock: 150, tags: ['小米', '旗舰'] },
-  { name: 'ThinkPad X1', category: '电脑', price: 9999, stock: 30, tags: ['联想', '商务'] },
-  { name: 'Sony WH-1000XM5', category: '耳机', price: 2499, stock: 80, tags: ['索尼', '降噪'] }
-])
-```
-
-练习题：
+在 Node.js 项目里，如果你不用 Mongoose，就直接用官方驱动：
 
 ```javascript
-// 1. 查询所有手机
-db.products.find({ category: '手机' })
+import { MongoClient } from 'mongodb'
 
-// 2. 查询价格在 2000-6000 之间的商品，只显示 name 和 price
-db.products.find(
-  { price: { $gte: 2000, $lte: 6000 } },
-  { name: 1, price: 1, _id: 0 }
-)
+// 创建 MongoDB 客户端
+// 这里的地址表示：连接本机 27017 端口上的 MongoDB 服务
+const client = new MongoClient('mongodb://127.0.0.1:27017')
 
-// 3. 查询 tags 包含"苹果"的商品，按价格降序
-db.products.find({ tags: '苹果' }).sort({ price: -1 })
+// 真正发起连接
+await client.connect()
 
-// 4. 查询手机或耳机，按价格升序，只取前 3 条
-db.products.find({
-  $or: [{ category: '手机' }, { category: '耳机' }]
-}).sort({ price: 1 }).limit(3)
+// 选择数据库
+const db = client.db('learn_mongodb')
 
-// 5. 把所有手机的库存减少 10
-db.products.updateMany(
-  { category: '手机' },
-  { $inc: { stock: -10 } }
-)
+// 选择集合
+const users = db.collection('users')
 
-// 6. 给 iPhone 15 添加标签 '热销'
-db.products.updateOne(
-  { name: 'iPhone 15' },
-  { $addToSet: { tags: '热销' } }
-)
+// 插入一条数据
+await users.insertOne({
+  username: 'driver-user',
+  role: 'user',
+  createdAt: new Date()
+})
 
-// 7. 删除库存为 0 的商品
-db.products.deleteMany({ stock: { $lte: 0 } })
+// 开始查询：
+// 1. 先找出 role 是 user 的用户
+// 2. 只保留 username 和 role
+// 3. 按创建时间倒序
+// 4. 只取前 10 条
+// 5. toArray() 把查询结果真正转成数组
+const list = await users
+  .find({ role: 'user' })
+  .project({ username: 1, role: 1 })
+  .sort({ createdAt: -1 })
+  .limit(10)
+  .toArray()
 
-// 8. 统计每个分类的商品数量
-db.products.countDocuments({ category: '手机' })
-db.products.countDocuments({ category: '电脑' })
+// 打印查询结果，方便调试
+console.log(list)
+
+// 用完后主动关闭连接
+await client.close()
 ```
+
+这段代码主人一定要读懂，因为它帮你建立一个认知：
+
+Mongoose 是更高级的业务工具，但 MongoDB 官方驱动才是更底层的真实操作接口。
 
 ---
 
-## 七、小结
+## 八、小白最容易踩的 6 个坑
 
-| 操作 | 命令 | 说明 |
-|------|------|------|
-| 插入单条 | `insertOne({})` | 返回 insertedId |
-| 批量插入 | `insertMany([])` | 支持 ordered 选项 |
-| 查询所有 | `find()` | 可链式 sort/skip/limit |
-| 查询单条 | `findOne({})` | 返回第一条或 null |
-| 统计数量 | `countDocuments({})` | 支持条件 |
-| 更新单条 | `updateOne(条件, 操作)` | 配合 $set/$inc 等操作符 |
-| 更新多条 | `updateMany(条件, 操作)` | 同上 |
-| 删除单条 | `deleteOne({})` | 删除第一条匹配 |
-| 删除多条 | `deleteMany({})` | 传 {} 删除所有 |
+### 8.1 把 `_id` 当普通字符串乱比
 
-**常用查询操作符**：`$gt` `$gte` `$lt` `$lte` `$ne` `$in` `$nin` `$or` `$and` `$exists` `$regex`
+在 shell 里经常能直接看到字符串形态，但项目里要分清数据库字段实际类型。
 
-**常用更新操作符**：`$set` `$unset` `$inc` `$push` `$pull` `$addToSet` `$pop` `$rename`
+### 8.2 用 `find()` 却以为只返回一条
 
-**下一篇**：Mongoose 连接与 Schema 建模——用 Node.js 代码操作 MongoDB，Schema 定义、数据类型、校验规则全解。
+`find()` 返回的是结果集，不是单个文档。
+
+### 8.3 忘记排序就分页
+
+分页前最好先有稳定排序条件，否则翻页结果可能不稳定。
+
+### 8.4 更新时忘记用操作符
+
+下面这种写法是错的：
+
+```javascript
+// 这是错的，因为 updateOne 的第二个参数应该是“更新操作符对象”
+db.users.updateOne(
+  { username: 'haonan' },
+  { city: '北京' }
+)
+```
+
+更新文档要配合 `$set` 等更新操作符。
+
+### 8.5 把正则搜索当全文搜索
+
+`$regex` 能做模糊匹配，但它不等于专业全文搜索。
+
+如果是更复杂的搜索场景，后期要考虑：
+
+- 文本索引
+- Atlas Search
+
+### 8.6 删除数据过于直接
+
+很多业务数据不应该一上来就 `deleteOne()` 真删。
+
+---
+
+## 九、小结
+
+这一篇你至少要熟练掌握下面这些组合：
+
+1. `find + projection + sort + skip + limit`
+2. `updateOne + $set/$inc/$push/$addToSet`
+3. `findOneAndUpdate + returnDocument: 'after'`
+4. `countDocuments()` 做分页统计
+5. 用官方 Node.js Driver 完成最基本的连接与查询
+
+### 官方资料
+
+- MongoDB CRUD: https://www.mongodb.com/docs/manual/crud/
+- Query Documents: https://www.mongodb.com/docs/manual/tutorial/query-documents/
+- Update Documents: https://www.mongodb.com/docs/manual/tutorial/update-documents/
+- Delete Documents: https://www.mongodb.com/docs/manual/tutorial/remove-documents/
+- Node.js Driver CRUD: https://www.mongodb.com/docs/drivers/node/current/crud/
+
+**下一篇**：进入 Mongoose，把“能操作数据库”升级成“能做项目建模”。

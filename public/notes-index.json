@@ -19899,7 +19899,7 @@
           "fileTitle": "第一篇_MongoDB安装与基础概念",
           "filename": "第一篇_MongoDB安装与基础概念.md",
           "path": "Node.js/MongoDB详解/第一篇_MongoDB安装与基础概念.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -19907,14 +19907,15 @@
             "NoSQL",
             "数据库",
             "mongosh",
-            "安装配置"
+            "安装配置",
+            "数据建模"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零理解 MongoDB 文档型数据库的核心概念，与 MySQL 的对比，完整安装步骤，以及 mongosh Shell 的基础操作。",
+          "description": "从零理解 MongoDB 的文档模型、BSON、ObjectId、嵌入与引用思路，并按官方安装路径完成本地环境搭建，为后续 CRUD 和项目实战打基础。",
           "size": "10KB",
-          "lastModified": "2026-04-25T08:04:52.038Z",
-          "wordCount": 6149
+          "lastModified": "2026-06-06T08:11:07.783Z",
+          "wordCount": 5484
         },
         {
           "type": "file",
@@ -20021,22 +20022,23 @@
           "fileTitle": "第二篇_MongoDB原生CRUD操作",
           "filename": "第二篇_MongoDB原生CRUD操作.md",
           "path": "Node.js/MongoDB详解/第二篇_MongoDB原生CRUD操作.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
             "CRUD",
+            "mongosh",
+            "Node.js Driver",
             "查询操作符",
-            "更新操作符",
-            "mongosh"
+            "更新操作符"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "系统掌握 MongoDB 原生增删改查命令，覆盖所有常用查询操作符（$gt/$in/$regex 等）、更新操作符（$set/$inc/$push 等）、排序分页和投影。",
-          "size": "14KB",
-          "lastModified": "2026-04-25T08:04:52.040Z",
-          "wordCount": 10535
+          "description": "通过 mongosh 和 MongoDB Node.js Driver 两条线掌握 MongoDB 原生 CRUD，覆盖过滤条件、投影、排序、分页、更新操作符与 findOneAndUpdate 等项目常用写法。",
+          "size": "12KB",
+          "lastModified": "2026-06-06T08:03:39.051Z",
+          "wordCount": 7911
         },
         {
           "type": "file",
@@ -20095,7 +20097,7 @@
           "fileTitle": "第三篇_Mongoose连接与Schema建模",
           "filename": "第三篇_Mongoose连接与Schema建模.md",
           "path": "Node.js/MongoDB详解/第三篇_Mongoose连接与Schema建模.md",
-          "date": "2026-06-05T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20104,14 +20106,14 @@
             "Schema",
             "数据建模",
             "数据校验",
-            "虚拟字段"
+            "索引"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零掌握 Mongoose ODM，包括安装连接、Schema 定义、所有数据类型详解、校验规则配置、虚拟字段和 Schema 选项，以及 Model 的创建和使用。",
-          "size": "19KB",
-          "lastModified": "2026-06-05T09:08:46.162Z",
-          "wordCount": 14607
+          "description": "从项目开发角度掌握 Mongoose 的连接、Schema、Model、字段类型、校验、默认值、枚举、索引、虚拟字段与 toJSON 输出控制，建立可维护的 MongoDB 数据模型。",
+          "size": "10KB",
+          "lastModified": "2026-06-06T08:08:35.049Z",
+          "wordCount": 6193
         },
         {
           "type": "file",
@@ -20145,7 +20147,7 @@
           "fileTitle": "第四篇_Mongoose_CRUD与中间件",
           "filename": "第四篇_Mongoose_CRUD与中间件.md",
           "path": "Node.js/MongoDB详解/第四篇_Mongoose_CRUD与中间件.md",
-          "date": "2026-06-05T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20154,14 +20156,14 @@
             "CRUD",
             "中间件",
             "钩子",
-            "链式查询"
+            "lean"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "系统掌握 Mongoose 的增删改查 API，包括 create/find/update/delete 全套方法、链式查询技巧、lean 优化，以及 pre/post 中间件的实战用法（密码加密、软删除过滤）。",
-          "size": "17KB",
-          "lastModified": "2026-06-05T09:08:46.164Z",
-          "wordCount": 12804
+          "description": "从业务代码视角掌握 Mongoose 常用 CRUD、查询链、更新方式选择、lean 优化和文档/查询中间件，建立更安全、更可维护的项目写法。",
+          "size": "9KB",
+          "lastModified": "2026-06-06T08:08:35.051Z",
+          "wordCount": 5906
         },
         {
           "type": "file",
@@ -20195,7 +20197,7 @@
           "fileTitle": "第五篇_关联查询与聚合管道",
           "filename": "第五篇_关联查询与聚合管道.md",
           "path": "Node.js/MongoDB详解/第五篇_关联查询与聚合管道.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20203,16 +20205,15 @@
             "Mongoose",
             "populate",
             "聚合管道",
-            "aggregate",
-            "$lookup",
-            "$group"
+            "lookup",
+            "group"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "深入掌握 Mongoose 的 populate 关联查询和 MongoDB 聚合管道，覆盖 $match/$group/$sort/$project/$lookup/$unwind/$facet 等核心操作符，以及分页统计等实战场景。",
-          "size": "17KB",
-          "lastModified": "2026-04-25T08:04:52.040Z",
-          "wordCount": 13294
+          "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
+          "size": "10KB",
+          "lastModified": "2026-06-06T08:08:35.054Z",
+          "wordCount": 5974
         },
         {
           "type": "file",
@@ -20297,24 +20298,23 @@
           "fileTitle": "第六篇_索引优化与事务",
           "filename": "第六篇_索引优化与事务.md",
           "path": "Node.js/MongoDB详解/第六篇_索引优化与事务.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
-            "Mongoose",
             "索引",
             "性能优化",
             "事务",
             "复合索引",
-            "TTL索引"
+            "TTL"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "深入理解 MongoDB 索引的工作原理，掌握单字段索引、复合索引、文本索引、TTL 索引的使用场景，以及多文档事务的完整实战（转账、库存扣减等场景）。",
-          "size": "15KB",
-          "lastModified": "2026-04-25T08:04:52.041Z",
-          "wordCount": 10403
+          "description": "从项目性能与数据一致性角度掌握 MongoDB 索引和事务，重点讲 explain、复合索引、ESR 思路、TTL 索引以及事务的正确边界和 Node.js/Mongoose 写法。",
+          "size": "9KB",
+          "lastModified": "2026-06-06T08:08:35.056Z",
+          "wordCount": 5871
         },
         {
           "type": "file",
@@ -20376,25 +20376,24 @@
           "fileTitle": "第七篇_完整项目实战",
           "filename": "第七篇_完整项目实战.md",
           "path": "Node.js/MongoDB详解/第七篇_完整项目实战.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
             "Mongoose",
             "Express",
-            "项目实战",
-            "CRUD",
             "JWT",
+            "项目实战",
             "分页搜索",
             "软删除"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零搭建一个 Express + MongoDB 笔记管理 API，包含用户注册登录（JWT）、笔记 CRUD、分页搜索、软删除，把前面所有知识串起来，形成完整的后端项目。",
-          "size": "20KB",
-          "lastModified": "2026-04-25T08:04:52.039Z",
-          "wordCount": 16008
+          "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
+          "size": "13KB",
+          "lastModified": "2026-06-06T08:03:39.053Z",
+          "wordCount": 8756
         }
       ],
       "children": []
@@ -20592,7 +20591,7 @@
           "fileTitle": "第一篇_MongoDB安装与基础概念",
           "filename": "第一篇_MongoDB安装与基础概念.md",
           "path": "Node.js/MongoDB详解/第一篇_MongoDB安装与基础概念.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20600,14 +20599,15 @@
             "NoSQL",
             "数据库",
             "mongosh",
-            "安装配置"
+            "安装配置",
+            "数据建模"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零理解 MongoDB 文档型数据库的核心概念，与 MySQL 的对比，完整安装步骤，以及 mongosh Shell 的基础操作。",
+          "description": "从零理解 MongoDB 的文档模型、BSON、ObjectId、嵌入与引用思路，并按官方安装路径完成本地环境搭建，为后续 CRUD 和项目实战打基础。",
           "size": "10KB",
-          "lastModified": "2026-04-25T08:04:52.038Z",
-          "wordCount": 6149
+          "lastModified": "2026-06-06T08:11:07.783Z",
+          "wordCount": 5484
         },
         {
           "type": "file",
@@ -20616,22 +20616,23 @@
           "fileTitle": "第二篇_MongoDB原生CRUD操作",
           "filename": "第二篇_MongoDB原生CRUD操作.md",
           "path": "Node.js/MongoDB详解/第二篇_MongoDB原生CRUD操作.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
             "CRUD",
+            "mongosh",
+            "Node.js Driver",
             "查询操作符",
-            "更新操作符",
-            "mongosh"
+            "更新操作符"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "系统掌握 MongoDB 原生增删改查命令，覆盖所有常用查询操作符（$gt/$in/$regex 等）、更新操作符（$set/$inc/$push 等）、排序分页和投影。",
-          "size": "14KB",
-          "lastModified": "2026-04-25T08:04:52.040Z",
-          "wordCount": 10535
+          "description": "通过 mongosh 和 MongoDB Node.js Driver 两条线掌握 MongoDB 原生 CRUD，覆盖过滤条件、投影、排序、分页、更新操作符与 findOneAndUpdate 等项目常用写法。",
+          "size": "12KB",
+          "lastModified": "2026-06-06T08:03:39.051Z",
+          "wordCount": 7911
         },
         {
           "type": "file",
@@ -20640,7 +20641,7 @@
           "fileTitle": "第三篇_Mongoose连接与Schema建模",
           "filename": "第三篇_Mongoose连接与Schema建模.md",
           "path": "Node.js/MongoDB详解/第三篇_Mongoose连接与Schema建模.md",
-          "date": "2026-06-05T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20649,14 +20650,14 @@
             "Schema",
             "数据建模",
             "数据校验",
-            "虚拟字段"
+            "索引"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零掌握 Mongoose ODM，包括安装连接、Schema 定义、所有数据类型详解、校验规则配置、虚拟字段和 Schema 选项，以及 Model 的创建和使用。",
-          "size": "19KB",
-          "lastModified": "2026-06-05T09:08:46.162Z",
-          "wordCount": 14607
+          "description": "从项目开发角度掌握 Mongoose 的连接、Schema、Model、字段类型、校验、默认值、枚举、索引、虚拟字段与 toJSON 输出控制，建立可维护的 MongoDB 数据模型。",
+          "size": "10KB",
+          "lastModified": "2026-06-06T08:08:35.049Z",
+          "wordCount": 6193
         },
         {
           "type": "file",
@@ -20665,7 +20666,7 @@
           "fileTitle": "第四篇_Mongoose_CRUD与中间件",
           "filename": "第四篇_Mongoose_CRUD与中间件.md",
           "path": "Node.js/MongoDB详解/第四篇_Mongoose_CRUD与中间件.md",
-          "date": "2026-06-05T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20674,14 +20675,14 @@
             "CRUD",
             "中间件",
             "钩子",
-            "链式查询"
+            "lean"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "系统掌握 Mongoose 的增删改查 API，包括 create/find/update/delete 全套方法、链式查询技巧、lean 优化，以及 pre/post 中间件的实战用法（密码加密、软删除过滤）。",
-          "size": "17KB",
-          "lastModified": "2026-06-05T09:08:46.164Z",
-          "wordCount": 12804
+          "description": "从业务代码视角掌握 Mongoose 常用 CRUD、查询链、更新方式选择、lean 优化和文档/查询中间件，建立更安全、更可维护的项目写法。",
+          "size": "9KB",
+          "lastModified": "2026-06-06T08:08:35.051Z",
+          "wordCount": 5906
         },
         {
           "type": "file",
@@ -20690,7 +20691,7 @@
           "fileTitle": "第五篇_关联查询与聚合管道",
           "filename": "第五篇_关联查询与聚合管道.md",
           "path": "Node.js/MongoDB详解/第五篇_关联查询与聚合管道.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
@@ -20698,16 +20699,15 @@
             "Mongoose",
             "populate",
             "聚合管道",
-            "aggregate",
-            "$lookup",
-            "$group"
+            "lookup",
+            "group"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "深入掌握 Mongoose 的 populate 关联查询和 MongoDB 聚合管道，覆盖 $match/$group/$sort/$project/$lookup/$unwind/$facet 等核心操作符，以及分页统计等实战场景。",
-          "size": "17KB",
-          "lastModified": "2026-04-25T08:04:52.040Z",
-          "wordCount": 13294
+          "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
+          "size": "10KB",
+          "lastModified": "2026-06-06T08:08:35.054Z",
+          "wordCount": 5974
         },
         {
           "type": "file",
@@ -20716,24 +20716,23 @@
           "fileTitle": "第六篇_索引优化与事务",
           "filename": "第六篇_索引优化与事务.md",
           "path": "Node.js/MongoDB详解/第六篇_索引优化与事务.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
-            "Mongoose",
             "索引",
             "性能优化",
             "事务",
             "复合索引",
-            "TTL索引"
+            "TTL"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "深入理解 MongoDB 索引的工作原理，掌握单字段索引、复合索引、文本索引、TTL 索引的使用场景，以及多文档事务的完整实战（转账、库存扣减等场景）。",
-          "size": "15KB",
-          "lastModified": "2026-04-25T08:04:52.041Z",
-          "wordCount": 10403
+          "description": "从项目性能与数据一致性角度掌握 MongoDB 索引和事务，重点讲 explain、复合索引、ESR 思路、TTL 索引以及事务的正确边界和 Node.js/Mongoose 写法。",
+          "size": "9KB",
+          "lastModified": "2026-06-06T08:08:35.056Z",
+          "wordCount": 5871
         },
         {
           "type": "file",
@@ -20742,25 +20741,24 @@
           "fileTitle": "第七篇_完整项目实战",
           "filename": "第七篇_完整项目实战.md",
           "path": "Node.js/MongoDB详解/第七篇_完整项目实战.md",
-          "date": "2026-04-21T00:00:00.000Z",
+          "date": "2026-06-06T00:00:00.000Z",
           "hasRealDate": true,
           "order": null,
           "tags": [
             "MongoDB",
             "Mongoose",
             "Express",
-            "项目实战",
-            "CRUD",
             "JWT",
+            "项目实战",
             "分页搜索",
             "软删除"
           ],
           "category": "Node.js",
           "attachments": [],
-          "description": "从零搭建一个 Express + MongoDB 笔记管理 API，包含用户注册登录（JWT）、笔记 CRUD、分页搜索、软删除，把前面所有知识串起来，形成完整的后端项目。",
-          "size": "20KB",
-          "lastModified": "2026-04-25T08:04:52.039Z",
-          "wordCount": 16008
+          "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
+          "size": "13KB",
+          "lastModified": "2026-06-06T08:03:39.053Z",
+          "wordCount": 8756
         }
       ],
       "children": []
@@ -24159,6 +24157,182 @@
   "allNotes": [
     {
       "type": "file",
+      "title": "MongoDB 详解第一篇：安装与基础概念",
+      "frontmatterTitle": "MongoDB 详解第一篇：安装与基础概念",
+      "fileTitle": "第一篇_MongoDB安装与基础概念",
+      "filename": "第一篇_MongoDB安装与基础概念.md",
+      "path": "Node.js/MongoDB详解/第一篇_MongoDB安装与基础概念.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "NoSQL",
+        "数据库",
+        "mongosh",
+        "安装配置",
+        "数据建模"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "从零理解 MongoDB 的文档模型、BSON、ObjectId、嵌入与引用思路，并按官方安装路径完成本地环境搭建，为后续 CRUD 和项目实战打基础。",
+      "size": "10KB",
+      "lastModified": "2026-06-06T08:11:07.783Z",
+      "wordCount": 5484
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第二篇：原生 CRUD 操作",
+      "frontmatterTitle": "MongoDB 详解第二篇：原生 CRUD 操作",
+      "fileTitle": "第二篇_MongoDB原生CRUD操作",
+      "filename": "第二篇_MongoDB原生CRUD操作.md",
+      "path": "Node.js/MongoDB详解/第二篇_MongoDB原生CRUD操作.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "CRUD",
+        "mongosh",
+        "Node.js Driver",
+        "查询操作符",
+        "更新操作符"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "通过 mongosh 和 MongoDB Node.js Driver 两条线掌握 MongoDB 原生 CRUD，覆盖过滤条件、投影、排序、分页、更新操作符与 findOneAndUpdate 等项目常用写法。",
+      "size": "12KB",
+      "lastModified": "2026-06-06T08:03:39.051Z",
+      "wordCount": 7911
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第三篇：Mongoose 连接与 Schema 建模",
+      "frontmatterTitle": "MongoDB 详解第三篇：Mongoose 连接与 Schema 建模",
+      "fileTitle": "第三篇_Mongoose连接与Schema建模",
+      "filename": "第三篇_Mongoose连接与Schema建模.md",
+      "path": "Node.js/MongoDB详解/第三篇_Mongoose连接与Schema建模.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "Mongoose",
+        "Schema",
+        "数据建模",
+        "数据校验",
+        "索引"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "从项目开发角度掌握 Mongoose 的连接、Schema、Model、字段类型、校验、默认值、枚举、索引、虚拟字段与 toJSON 输出控制，建立可维护的 MongoDB 数据模型。",
+      "size": "10KB",
+      "lastModified": "2026-06-06T08:08:35.049Z",
+      "wordCount": 6193
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第四篇：Mongoose CRUD 与中间件",
+      "frontmatterTitle": "MongoDB 详解第四篇：Mongoose CRUD 与中间件",
+      "fileTitle": "第四篇_Mongoose_CRUD与中间件",
+      "filename": "第四篇_Mongoose_CRUD与中间件.md",
+      "path": "Node.js/MongoDB详解/第四篇_Mongoose_CRUD与中间件.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "Mongoose",
+        "CRUD",
+        "中间件",
+        "钩子",
+        "lean"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "从业务代码视角掌握 Mongoose 常用 CRUD、查询链、更新方式选择、lean 优化和文档/查询中间件，建立更安全、更可维护的项目写法。",
+      "size": "9KB",
+      "lastModified": "2026-06-06T08:08:35.051Z",
+      "wordCount": 5906
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第五篇：关联查询与聚合管道",
+      "frontmatterTitle": "MongoDB 详解第五篇：关联查询与聚合管道",
+      "fileTitle": "第五篇_关联查询与聚合管道",
+      "filename": "第五篇_关联查询与聚合管道.md",
+      "path": "Node.js/MongoDB详解/第五篇_关联查询与聚合管道.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "Mongoose",
+        "populate",
+        "聚合管道",
+        "lookup",
+        "group"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
+      "size": "10KB",
+      "lastModified": "2026-06-06T08:08:35.054Z",
+      "wordCount": 5974
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第六篇：索引优化与事务",
+      "frontmatterTitle": "MongoDB 详解第六篇：索引优化与事务",
+      "fileTitle": "第六篇_索引优化与事务",
+      "filename": "第六篇_索引优化与事务.md",
+      "path": "Node.js/MongoDB详解/第六篇_索引优化与事务.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "索引",
+        "性能优化",
+        "事务",
+        "复合索引",
+        "TTL"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "从项目性能与数据一致性角度掌握 MongoDB 索引和事务，重点讲 explain、复合索引、ESR 思路、TTL 索引以及事务的正确边界和 Node.js/Mongoose 写法。",
+      "size": "9KB",
+      "lastModified": "2026-06-06T08:08:35.056Z",
+      "wordCount": 5871
+    },
+    {
+      "type": "file",
+      "title": "MongoDB 详解第七篇：完整项目实战",
+      "frontmatterTitle": "MongoDB 详解第七篇：完整项目实战",
+      "fileTitle": "第七篇_完整项目实战",
+      "filename": "第七篇_完整项目实战.md",
+      "path": "Node.js/MongoDB详解/第七篇_完整项目实战.md",
+      "date": "2026-06-06T00:00:00.000Z",
+      "hasRealDate": true,
+      "order": null,
+      "tags": [
+        "MongoDB",
+        "Mongoose",
+        "Express",
+        "JWT",
+        "项目实战",
+        "分页搜索",
+        "软删除"
+      ],
+      "category": "Node.js",
+      "attachments": [],
+      "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
+      "size": "13KB",
+      "lastModified": "2026-06-06T08:03:39.053Z",
+      "wordCount": 8756
+    },
+    {
+      "type": "file",
       "title": "第一篇：Node.js 入门与 Buffer",
       "frontmatterTitle": "第一篇：Node.js 入门与 Buffer",
       "fileTitle": "第一篇_Node.js入门与Buffer_2026-04",
@@ -24182,56 +24356,6 @@
       "size": "38KB",
       "lastModified": "2026-06-05T09:14:30.816Z",
       "wordCount": 27070
-    },
-    {
-      "type": "file",
-      "title": "MongoDB 详解第三篇：Mongoose 连接与 Schema 建模",
-      "frontmatterTitle": "MongoDB 详解第三篇：Mongoose 连接与 Schema 建模",
-      "fileTitle": "第三篇_Mongoose连接与Schema建模",
-      "filename": "第三篇_Mongoose连接与Schema建模.md",
-      "path": "Node.js/MongoDB详解/第三篇_Mongoose连接与Schema建模.md",
-      "date": "2026-06-05T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "Mongoose",
-        "Schema",
-        "数据建模",
-        "数据校验",
-        "虚拟字段"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "从零掌握 Mongoose ODM，包括安装连接、Schema 定义、所有数据类型详解、校验规则配置、虚拟字段和 Schema 选项，以及 Model 的创建和使用。",
-      "size": "19KB",
-      "lastModified": "2026-06-05T09:08:46.162Z",
-      "wordCount": 14607
-    },
-    {
-      "type": "file",
-      "title": "MongoDB 详解第四篇：Mongoose CRUD 与中间件",
-      "frontmatterTitle": "MongoDB 详解第四篇：Mongoose CRUD 与中间件",
-      "fileTitle": "第四篇_Mongoose_CRUD与中间件",
-      "filename": "第四篇_Mongoose_CRUD与中间件.md",
-      "path": "Node.js/MongoDB详解/第四篇_Mongoose_CRUD与中间件.md",
-      "date": "2026-06-05T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "Mongoose",
-        "CRUD",
-        "中间件",
-        "钩子",
-        "链式查询"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "系统掌握 Mongoose 的增删改查 API，包括 create/find/update/delete 全套方法、链式查询技巧、lean 优化，以及 pre/post 中间件的实战用法（密码加密、软删除过滤）。",
-      "size": "17KB",
-      "lastModified": "2026-06-05T09:08:46.164Z",
-      "wordCount": 12804
     },
     {
       "type": "file",
@@ -28592,30 +28716,6 @@
     },
     {
       "type": "file",
-      "title": "MongoDB 详解第一篇：安装与基础概念",
-      "frontmatterTitle": "MongoDB 详解第一篇：安装与基础概念",
-      "fileTitle": "第一篇_MongoDB安装与基础概念",
-      "filename": "第一篇_MongoDB安装与基础概念.md",
-      "path": "Node.js/MongoDB详解/第一篇_MongoDB安装与基础概念.md",
-      "date": "2026-04-21T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "NoSQL",
-        "数据库",
-        "mongosh",
-        "安装配置"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "从零理解 MongoDB 文档型数据库的核心概念，与 MySQL 的对比，完整安装步骤，以及 mongosh Shell 的基础操作。",
-      "size": "10KB",
-      "lastModified": "2026-04-25T08:04:52.038Z",
-      "wordCount": 6149
-    },
-    {
-      "type": "file",
       "title": "接口与会话控制详解第一篇：RESTful 接口设计规范",
       "frontmatterTitle": "接口与会话控制详解第一篇：RESTful 接口设计规范",
       "fileTitle": "第一篇_RESTful接口设计规范",
@@ -28661,30 +28761,6 @@
       "size": "11KB",
       "lastModified": "2026-04-25T08:04:52.046Z",
       "wordCount": 6632
-    },
-    {
-      "type": "file",
-      "title": "MongoDB 详解第二篇：原生 CRUD 操作",
-      "frontmatterTitle": "MongoDB 详解第二篇：原生 CRUD 操作",
-      "fileTitle": "第二篇_MongoDB原生CRUD操作",
-      "filename": "第二篇_MongoDB原生CRUD操作.md",
-      "path": "Node.js/MongoDB详解/第二篇_MongoDB原生CRUD操作.md",
-      "date": "2026-04-21T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "CRUD",
-        "查询操作符",
-        "更新操作符",
-        "mongosh"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "系统掌握 MongoDB 原生增删改查命令，覆盖所有常用查询操作符（$gt/$in/$regex 等）、更新操作符（$set/$inc/$push 等）、排序分页和投影。",
-      "size": "14KB",
-      "lastModified": "2026-04-25T08:04:52.040Z",
-      "wordCount": 10535
     },
     {
       "type": "file",
@@ -28735,32 +28811,6 @@
       "size": "11KB",
       "lastModified": "2026-04-25T08:04:52.048Z",
       "wordCount": 8280
-    },
-    {
-      "type": "file",
-      "title": "MongoDB 详解第五篇：关联查询与聚合管道",
-      "frontmatterTitle": "MongoDB 详解第五篇：关联查询与聚合管道",
-      "fileTitle": "第五篇_关联查询与聚合管道",
-      "filename": "第五篇_关联查询与聚合管道.md",
-      "path": "Node.js/MongoDB详解/第五篇_关联查询与聚合管道.md",
-      "date": "2026-04-21T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "Mongoose",
-        "populate",
-        "聚合管道",
-        "aggregate",
-        "$lookup",
-        "$group"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "深入掌握 Mongoose 的 populate 关联查询和 MongoDB 聚合管道，覆盖 $match/$group/$sort/$project/$lookup/$unwind/$facet 等核心操作符，以及分页统计等实战场景。",
-      "size": "17KB",
-      "lastModified": "2026-04-25T08:04:52.040Z",
-      "wordCount": 13294
     },
     {
       "type": "file",
@@ -28815,32 +28865,6 @@
     },
     {
       "type": "file",
-      "title": "MongoDB 详解第六篇：索引优化与事务",
-      "frontmatterTitle": "MongoDB 详解第六篇：索引优化与事务",
-      "fileTitle": "第六篇_索引优化与事务",
-      "filename": "第六篇_索引优化与事务.md",
-      "path": "Node.js/MongoDB详解/第六篇_索引优化与事务.md",
-      "date": "2026-04-21T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "Mongoose",
-        "索引",
-        "性能优化",
-        "事务",
-        "复合索引",
-        "TTL索引"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "深入理解 MongoDB 索引的工作原理，掌握单字段索引、复合索引、文本索引、TTL 索引的使用场景，以及多文档事务的完整实战（转账、库存扣减等场景）。",
-      "size": "15KB",
-      "lastModified": "2026-04-25T08:04:52.041Z",
-      "wordCount": 10403
-    },
-    {
-      "type": "file",
       "title": "接口与会话控制详解第七篇：完整认证系统实战",
       "frontmatterTitle": "接口与会话控制详解第七篇：完整认证系统实战",
       "fileTitle": "第七篇_完整认证系统实战",
@@ -28864,33 +28888,6 @@
       "size": "20KB",
       "lastModified": "2026-04-25T08:04:52.044Z",
       "wordCount": 18049
-    },
-    {
-      "type": "file",
-      "title": "MongoDB 详解第七篇：完整项目实战",
-      "frontmatterTitle": "MongoDB 详解第七篇：完整项目实战",
-      "fileTitle": "第七篇_完整项目实战",
-      "filename": "第七篇_完整项目实战.md",
-      "path": "Node.js/MongoDB详解/第七篇_完整项目实战.md",
-      "date": "2026-04-21T00:00:00.000Z",
-      "hasRealDate": true,
-      "order": null,
-      "tags": [
-        "MongoDB",
-        "Mongoose",
-        "Express",
-        "项目实战",
-        "CRUD",
-        "JWT",
-        "分页搜索",
-        "软删除"
-      ],
-      "category": "Node.js",
-      "attachments": [],
-      "description": "从零搭建一个 Express + MongoDB 笔记管理 API，包含用户注册登录（JWT）、笔记 CRUD、分页搜索、软删除，把前面所有知识串起来，形成完整的后端项目。",
-      "size": "20KB",
-      "lastModified": "2026-04-25T08:04:52.039Z",
-      "wordCount": 16008
     },
     {
       "type": "file",
@@ -41783,7 +41780,7 @@
               "fileTitle": "第一篇_MongoDB安装与基础概念",
               "filename": "第一篇_MongoDB安装与基础概念.md",
               "path": "Node.js/MongoDB详解/第一篇_MongoDB安装与基础概念.md",
-              "date": "2026-04-21T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
@@ -41791,14 +41788,15 @@
                 "NoSQL",
                 "数据库",
                 "mongosh",
-                "安装配置"
+                "安装配置",
+                "数据建模"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "从零理解 MongoDB 文档型数据库的核心概念，与 MySQL 的对比，完整安装步骤，以及 mongosh Shell 的基础操作。",
+              "description": "从零理解 MongoDB 的文档模型、BSON、ObjectId、嵌入与引用思路，并按官方安装路径完成本地环境搭建，为后续 CRUD 和项目实战打基础。",
               "size": "10KB",
-              "lastModified": "2026-04-25T08:04:52.038Z",
-              "wordCount": 6149
+              "lastModified": "2026-06-06T08:11:07.783Z",
+              "wordCount": 5484
             },
             {
               "type": "file",
@@ -41807,22 +41805,23 @@
               "fileTitle": "第二篇_MongoDB原生CRUD操作",
               "filename": "第二篇_MongoDB原生CRUD操作.md",
               "path": "Node.js/MongoDB详解/第二篇_MongoDB原生CRUD操作.md",
-              "date": "2026-04-21T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
                 "MongoDB",
                 "CRUD",
+                "mongosh",
+                "Node.js Driver",
                 "查询操作符",
-                "更新操作符",
-                "mongosh"
+                "更新操作符"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "系统掌握 MongoDB 原生增删改查命令，覆盖所有常用查询操作符（$gt/$in/$regex 等）、更新操作符（$set/$inc/$push 等）、排序分页和投影。",
-              "size": "14KB",
-              "lastModified": "2026-04-25T08:04:52.040Z",
-              "wordCount": 10535
+              "description": "通过 mongosh 和 MongoDB Node.js Driver 两条线掌握 MongoDB 原生 CRUD，覆盖过滤条件、投影、排序、分页、更新操作符与 findOneAndUpdate 等项目常用写法。",
+              "size": "12KB",
+              "lastModified": "2026-06-06T08:03:39.051Z",
+              "wordCount": 7911
             },
             {
               "type": "file",
@@ -41831,7 +41830,7 @@
               "fileTitle": "第三篇_Mongoose连接与Schema建模",
               "filename": "第三篇_Mongoose连接与Schema建模.md",
               "path": "Node.js/MongoDB详解/第三篇_Mongoose连接与Schema建模.md",
-              "date": "2026-06-05T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
@@ -41840,14 +41839,14 @@
                 "Schema",
                 "数据建模",
                 "数据校验",
-                "虚拟字段"
+                "索引"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "从零掌握 Mongoose ODM，包括安装连接、Schema 定义、所有数据类型详解、校验规则配置、虚拟字段和 Schema 选项，以及 Model 的创建和使用。",
-              "size": "19KB",
-              "lastModified": "2026-06-05T09:08:46.162Z",
-              "wordCount": 14607
+              "description": "从项目开发角度掌握 Mongoose 的连接、Schema、Model、字段类型、校验、默认值、枚举、索引、虚拟字段与 toJSON 输出控制，建立可维护的 MongoDB 数据模型。",
+              "size": "10KB",
+              "lastModified": "2026-06-06T08:08:35.049Z",
+              "wordCount": 6193
             },
             {
               "type": "file",
@@ -41856,7 +41855,7 @@
               "fileTitle": "第四篇_Mongoose_CRUD与中间件",
               "filename": "第四篇_Mongoose_CRUD与中间件.md",
               "path": "Node.js/MongoDB详解/第四篇_Mongoose_CRUD与中间件.md",
-              "date": "2026-06-05T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
@@ -41865,14 +41864,14 @@
                 "CRUD",
                 "中间件",
                 "钩子",
-                "链式查询"
+                "lean"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "系统掌握 Mongoose 的增删改查 API，包括 create/find/update/delete 全套方法、链式查询技巧、lean 优化，以及 pre/post 中间件的实战用法（密码加密、软删除过滤）。",
-              "size": "17KB",
-              "lastModified": "2026-06-05T09:08:46.164Z",
-              "wordCount": 12804
+              "description": "从业务代码视角掌握 Mongoose 常用 CRUD、查询链、更新方式选择、lean 优化和文档/查询中间件，建立更安全、更可维护的项目写法。",
+              "size": "9KB",
+              "lastModified": "2026-06-06T08:08:35.051Z",
+              "wordCount": 5906
             },
             {
               "type": "file",
@@ -41881,7 +41880,7 @@
               "fileTitle": "第五篇_关联查询与聚合管道",
               "filename": "第五篇_关联查询与聚合管道.md",
               "path": "Node.js/MongoDB详解/第五篇_关联查询与聚合管道.md",
-              "date": "2026-04-21T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
@@ -41889,16 +41888,15 @@
                 "Mongoose",
                 "populate",
                 "聚合管道",
-                "aggregate",
-                "$lookup",
-                "$group"
+                "lookup",
+                "group"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "深入掌握 Mongoose 的 populate 关联查询和 MongoDB 聚合管道，覆盖 $match/$group/$sort/$project/$lookup/$unwind/$facet 等核心操作符，以及分页统计等实战场景。",
-              "size": "17KB",
-              "lastModified": "2026-04-25T08:04:52.040Z",
-              "wordCount": 13294
+              "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
+              "size": "10KB",
+              "lastModified": "2026-06-06T08:08:35.054Z",
+              "wordCount": 5974
             },
             {
               "type": "file",
@@ -41907,24 +41905,23 @@
               "fileTitle": "第六篇_索引优化与事务",
               "filename": "第六篇_索引优化与事务.md",
               "path": "Node.js/MongoDB详解/第六篇_索引优化与事务.md",
-              "date": "2026-04-21T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
                 "MongoDB",
-                "Mongoose",
                 "索引",
                 "性能优化",
                 "事务",
                 "复合索引",
-                "TTL索引"
+                "TTL"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "深入理解 MongoDB 索引的工作原理，掌握单字段索引、复合索引、文本索引、TTL 索引的使用场景，以及多文档事务的完整实战（转账、库存扣减等场景）。",
-              "size": "15KB",
-              "lastModified": "2026-04-25T08:04:52.041Z",
-              "wordCount": 10403
+              "description": "从项目性能与数据一致性角度掌握 MongoDB 索引和事务，重点讲 explain、复合索引、ESR 思路、TTL 索引以及事务的正确边界和 Node.js/Mongoose 写法。",
+              "size": "9KB",
+              "lastModified": "2026-06-06T08:08:35.056Z",
+              "wordCount": 5871
             },
             {
               "type": "file",
@@ -41933,25 +41930,24 @@
               "fileTitle": "第七篇_完整项目实战",
               "filename": "第七篇_完整项目实战.md",
               "path": "Node.js/MongoDB详解/第七篇_完整项目实战.md",
-              "date": "2026-04-21T00:00:00.000Z",
+              "date": "2026-06-06T00:00:00.000Z",
               "hasRealDate": true,
               "order": null,
               "tags": [
                 "MongoDB",
                 "Mongoose",
                 "Express",
-                "项目实战",
-                "CRUD",
                 "JWT",
+                "项目实战",
                 "分页搜索",
                 "软删除"
               ],
               "category": "Node.js",
               "attachments": [],
-              "description": "从零搭建一个 Express + MongoDB 笔记管理 API，包含用户注册登录（JWT）、笔记 CRUD、分页搜索、软删除，把前面所有知识串起来，形成完整的后端项目。",
-              "size": "20KB",
-              "lastModified": "2026-04-25T08:04:52.039Z",
-              "wordCount": 16008
+              "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
+              "size": "13KB",
+              "lastModified": "2026-06-06T08:03:39.053Z",
+              "wordCount": 8756
             }
           ]
         },
@@ -43864,5 +43860,5 @@
   ],
   "totalNotes": 412,
   "totalCategories": 112,
-  "lastUpdated": "2026-06-05T09:15:17.015Z"
+  "lastUpdated": "2026-06-06T08:11:30.715Z"
 }
