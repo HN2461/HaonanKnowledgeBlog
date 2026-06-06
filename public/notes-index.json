@@ -20391,9 +20391,9 @@
           "category": "Node.js",
           "attachments": [],
           "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
-          "size": "13KB",
-          "lastModified": "2026-06-06T08:03:39.053Z",
-          "wordCount": 8756
+          "size": "16KB",
+          "lastModified": "2026-06-06T10:14:16.484Z",
+          "wordCount": 10842
         }
       ],
       "children": []
@@ -20756,9 +20756,9 @@
           "category": "Node.js",
           "attachments": [],
           "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
-          "size": "13KB",
-          "lastModified": "2026-06-06T08:03:39.053Z",
-          "wordCount": 8756
+          "size": "16KB",
+          "lastModified": "2026-06-06T10:14:16.484Z",
+          "wordCount": 10842
         }
       ],
       "children": []
@@ -24327,9 +24327,9 @@
       "category": "Node.js",
       "attachments": [],
       "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
-      "size": "13KB",
-      "lastModified": "2026-06-06T08:03:39.053Z",
-      "wordCount": 8756
+      "size": "16KB",
+      "lastModified": "2026-06-06T10:14:16.484Z",
+      "wordCount": 10842
     },
     {
       "type": "file",
@@ -41945,9 +41945,9 @@
               "category": "Node.js",
               "attachments": [],
               "description": "用 Express + MongoDB + Mongoose 搭建一个真正适合练手和扩展的笔记 API 项目，把建模、鉴权、索引、分页、搜索和软删除组织成完整工程。",
-              "size": "13KB",
-              "lastModified": "2026-06-06T08:03:39.053Z",
-              "wordCount": 8756
+              "size": "16KB",
+              "lastModified": "2026-06-06T10:14:16.484Z",
+              "wordCount": 10842
             }
           ]
         },
@@ -43860,5 +43860,5 @@
   ],
   "totalNotes": 412,
   "totalCategories": 112,
-  "lastUpdated": "2026-06-06T08:11:30.715Z"
+  "lastUpdated": "2026-06-06T10:14:51.241Z"
 }
