@@ -1,16 +1,70 @@
 {
-  "generatedAt": "2026-06-06T07:46:57.410Z",
-  "total": 362,
+  "generatedAt": "2026-06-07T06:16:52.306Z",
+  "total": 366,
   "notifications": [
     {
-      "id": "daily-2026-06-06-1",
-      "title": "按 MongoDB 官方资料重写整套入门到项目实战笔记",
-      "content": "第一点：重写 `目录.md`，新增官方资料基线、学习路线、能力目标和快速查找，让整套系列从目录页开始就围绕“入门到项目落地”组织；第二点：重写第一篇和第二篇，把安装、BSON、ObjectId、嵌入与引用、mongosh 基础、CRUD、投影、分页、排序、`findOneAndUpdate`、Node.js Driver 示例都改成当前更稳妥的讲法；第三点：重写第三篇和第四篇，按 Mongoose 当前主线文档重新整理 Schema、Model、校验、索引、虚拟字段、`lean()`、中间件和软删除过滤的项目写法；第四点：重写第五篇和第六篇，强化 `populate()` 与 `$lookup` 的选型判断、聚合管道常用阶段、复合索引与 ESR 思路，以及“单文档原子性优先、事务里不要 `Promise.all()`”等官方强调的边界；第五点：重写第七篇，整理成适合 Node.js 初学者直接模仿扩展的 Express + MongoDB + Mongoose 笔记 API 骨架；第六点：按仓库要求执行 `pwsh -File scripts/checkNodeRuntime.ps1` 预检通过后，运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保系列更新能被站内目录和搜索收录。",
-      "summary": "对 `public/notes/Node.js/MongoDB详解/` 目录下的 7 篇正文与系列目录逐篇按 MongoDB 官方手册、MongoDB Node.js Driver 官方文档和 Mongoose 官方文档重新校正，补齐当前版本认知、建模思路、索引与事务边界，并把讲解改成更适合小白一路学到能做项目的结构。",
-      "date": "2026-06-06T15:26:00+08:00",
+      "id": "daily-2026-06-07-1",
+      "title": "补强 MongoDB 第四至第六篇小白化讲解",
+      "content": "第一点：在第四篇补齐 `.select()` 独立讲解，说明它是控制返回字段，并补充只返回字段、排除敏感字段、`_id` 特例和列表 / 用户接口中的真实用途；第二点：重写 `.lean()` 段落，把“普通对象”和“Mongoose 文档实例”的区别讲清楚，补充为什么列表接口适合用、为什么用了以后不能再 `save()`；第三点：扩充 Mongoose 中间件部分，补上 `pre` / `post` 的前置与后置含义、文档中间件和查询中间件的区别、`this` 指向以及为什么中间件里通常不用箭头函数；第四点：在第五篇补充嵌入、引用、`populate()`、`.select()` 与 `.populate(..., 字段)`、`$group`、`$lookup`、`$unwind` 的白话解释和执行顺序，让关联查询与聚合管道不再只像概念堆叠；第五点：在第六篇补充索引像目录、`COLLSCAN` / `IXSCAN`、`explain()` 关键字段、复合索引顺序、单文档原子性、事务边界、`session` 和事务内不要 `Promise.all()` 的入门讲解；第六点：按规则先执行 Node 运行时预检，再运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "根据主人阅读反馈，扩充 MongoDB 详解第四篇到第六篇中 `select()`、`lean()`、Mongoose 中间件、关联查询、聚合管道、索引和事务的入门解释，让后半段内容更适合零基础读者顺着读懂。",
+      "date": "2026-06-07T14:14:00+08:00",
       "tag": "内容上新",
       "category": "内容上新",
       "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "history-2026-06-06-2",
+      "title": "补齐接口与会话控制系列的前后端联调篇",
+      "content": "新增 `第八篇_前后端联调与常见问题排查.md`，补充从空文件夹创建认证项目、安装依赖、配置 `.env`、设置 CORS、前端 axios 自动携带和刷新 token、localStorage 与 httpOnly Cookie 的取舍、refresh token 哈希入库、安全退出、常见 401/403/429/E11000/CastError 等错误排查，以及接入文章模块的毕业练习；同时把 `目录.md` 从 7 篇更新为 8 篇，新增快速查找入口，并在第七篇末尾补上通往第八篇的阅读提示；按规则执行 Node 运行时预检后运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "为 `public/notes/Node.js/接口与会话控制详解/` 新增第八篇前后端联调与常见问题排查，并同步更新系列目录、第七篇下一篇提示和笔记索引，让认证系统学习路径从原理、后端实战延伸到真实项目联调。",
+      "date": "2026-06-06T22:22:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-06-06",
+      "source": "history",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-a16e7e89b27d75ab1ccf480f35715a3b812e2e41",
+      "title": "Expand MongoDB project notes with command comparison",
+      "content": "提交说明：Expand MongoDB project notes with command comparison",
+      "summary": "Expand MongoDB project notes with command comparison",
+      "date": "2026-06-06T18:33:23+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "a16e7e8",
+      "fullHash": "a16e7e89b27d75ab1ccf480f35715a3b812e2e41"
+    },
+    {
+      "id": "git-107e62cba5989271b45c854e90f944b6de5249d3",
+      "title": "完善 MongoDB 系列注释版内容",
+      "content": "提交说明：完善 MongoDB 系列注释版内容",
+      "summary": "完善 MongoDB 系列注释版内容",
+      "date": "2026-06-06T18:06:11+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "107e62c",
+      "fullHash": "107e62cba5989271b45c854e90f944b6de5249d3"
+    },
+    {
+      "id": "history-2026-06-06-1",
+      "title": "按 MongoDB 官方资料重写整套入门到项目实战笔记",
+      "content": "第一点：重写 `目录.md`，新增官方资料基线、学习路线、能力目标和快速查找，让整套系列从目录页开始就围绕“入门到项目落地”组织；第二点：重写第一篇到第七篇的知识结构，把安装、BSON、ObjectId、原生 CRUD、Mongoose 建模、中间件、关联查询、聚合、索引、事务和项目实战都改成更贴近当前官方文档与实际项目的讲法；第三点：补入 MongoDB Manual、mongosh、Node.js Driver、Mongoose 等官方来源，并重点纠正 `findOneAndUpdate` 返回结果、嵌入与引用取舍、复合索引 / ESR 思路、事务里不要 `Promise.all()` 等容易被旧教程讲偏的点；第四点：把第二篇到第七篇的关键代码示例继续补成“小白注释版”，让 CRUD、Schema、`lean()`、`populate()`、聚合、索引与事务示例都能直接看懂每一行在做什么，并顺手清理第二篇与第五篇残留的旧内容尾巴；第五点：按仓库要求先执行 `pwsh -File scripts/checkNodeRuntime.ps1` 预检通过后，多次运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保新内容和注释版示例能被站内目录和搜索收录。",
+      "summary": "对 `public/notes/Node.js/MongoDB详解/` 目录下的 7 篇正文与系列目录逐篇按 MongoDB 官方手册、MongoDB Node.js Driver 官方文档和 Mongoose 官方文档重新校正，补齐当前版本认知、建模思路、索引与事务边界，并继续补成带行内解释的小白注释版代码示例。",
+      "date": "2026-06-06T15:26:00+08:00",
+      "tag": "历史消息",
+      "category": "历史消息",
+      "itemCategory": "内容上新",
+      "historyDate": "2026-06-06",
+      "source": "history",
       "pinned": false,
       "shortHash": "",
       "fullHash": ""
@@ -4892,6 +4946,23 @@
     }
   ],
   "historyGroups": [
+    {
+      "date": "2026-06-06",
+      "items": [
+        {
+          "title": "按 MongoDB 官方资料重写整套入门到项目实战笔记",
+          "summary": "对 `public/notes/Node.js/MongoDB详解/` 目录下的 7 篇正文与系列目录逐篇按 MongoDB 官方手册、MongoDB Node.js Driver 官方文档和 Mongoose 官方文档重新校正，补齐当前版本认知、建模思路、索引与事务边界，并继续补成带行内解释的小白注释版代码示例。",
+          "time": "15:26",
+          "itemCategory": "内容上新"
+        },
+        {
+          "title": "补齐接口与会话控制系列的前后端联调篇",
+          "summary": "为 `public/notes/Node.js/接口与会话控制详解/` 新增第八篇前后端联调与常见问题排查，并同步更新系列目录、第七篇下一篇提示和笔记索引，让认证系统学习路径从原理、后端实战延伸到真实项目联调。",
+          "time": "22:22",
+          "itemCategory": "内容上新"
+        }
+      ]
+    },
     {
       "date": "2026-06-05",
       "items": [

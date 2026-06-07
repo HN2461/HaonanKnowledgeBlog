@@ -73,4 +73,28 @@ export const history_2026_06_01_10 = [
       },
     ],
   },
+  {
+    id: 'history-2026-06-06',
+    date: '2026-06-06',
+    items: [
+      {
+        category: '内容上新',
+        time: '15:26',
+        title: '按 MongoDB 官方资料重写整套入门到项目实战笔记',
+        summary:
+          '对 `public/notes/Node.js/MongoDB详解/` 目录下的 7 篇正文与系列目录逐篇按 MongoDB 官方手册、MongoDB Node.js Driver 官方文档和 Mongoose 官方文档重新校正，补齐当前版本认知、建模思路、索引与事务边界，并继续补成带行内解释的小白注释版代码示例。',
+        content:
+          '第一点：重写 `目录.md`，新增官方资料基线、学习路线、能力目标和快速查找，让整套系列从目录页开始就围绕“入门到项目落地”组织；第二点：重写第一篇到第七篇的知识结构，把安装、BSON、ObjectId、原生 CRUD、Mongoose 建模、中间件、关联查询、聚合、索引、事务和项目实战都改成更贴近当前官方文档与实际项目的讲法；第三点：补入 MongoDB Manual、mongosh、Node.js Driver、Mongoose 等官方来源，并重点纠正 `findOneAndUpdate` 返回结果、嵌入与引用取舍、复合索引 / ESR 思路、事务里不要 `Promise.all()` 等容易被旧教程讲偏的点；第四点：把第二篇到第七篇的关键代码示例继续补成“小白注释版”，让 CRUD、Schema、`lean()`、`populate()`、聚合、索引与事务示例都能直接看懂每一行在做什么，并顺手清理第二篇与第五篇残留的旧内容尾巴；第五点：按仓库要求先执行 `pwsh -File scripts/checkNodeRuntime.ps1` 预检通过后，多次运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保新内容和注释版示例能被站内目录和搜索收录。',
+      },
+      {
+        category: '内容上新',
+        time: '22:22',
+        title: '补齐接口与会话控制系列的前后端联调篇',
+        summary:
+          '为 `public/notes/Node.js/接口与会话控制详解/` 新增第八篇前后端联调与常见问题排查，并同步更新系列目录、第七篇下一篇提示和笔记索引，让认证系统学习路径从原理、后端实战延伸到真实项目联调。',
+        content:
+          '新增 `第八篇_前后端联调与常见问题排查.md`，补充从空文件夹创建认证项目、安装依赖、配置 `.env`、设置 CORS、前端 axios 自动携带和刷新 token、localStorage 与 httpOnly Cookie 的取舍、refresh token 哈希入库、安全退出、常见 401/403/429/E11000/CastError 等错误排查，以及接入文章模块的毕业练习；同时把 `目录.md` 从 7 篇更新为 8 篇，新增快速查找入口，并在第七篇末尾补上通往第八篇的阅读提示；按规则执行 Node 运行时预检后运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。',
+      },
+    ],
+  },
 ]

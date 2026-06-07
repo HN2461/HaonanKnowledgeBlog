@@ -2,16 +2,16 @@
 // 主人说'汇总消息'时，Codex 会基于当天代码改动刷新这里的内容。
 
 export const dailyChangeSummary = {
-  date: '2026-06-06',
+  date: '2026-06-07',
   items: [
     {
       category: '内容上新',
-      time: '15:26',
-      title: '按 MongoDB 官方资料重写整套入门到项目实战笔记',
+      time: '14:14',
+      title: '补强 MongoDB 第四至第六篇小白化讲解',
       summary:
-        '对 `public/notes/Node.js/MongoDB详解/` 目录下的 7 篇正文与系列目录逐篇按 MongoDB 官方手册、MongoDB Node.js Driver 官方文档和 Mongoose 官方文档重新校正，补齐当前版本认知、建模思路、索引与事务边界，并继续补成带行内解释的小白注释版代码示例。',
+        '根据主人阅读反馈，扩充 MongoDB 详解第四篇到第六篇中 `select()`、`lean()`、Mongoose 中间件、关联查询、聚合管道、索引和事务的入门解释，让后半段内容更适合零基础读者顺着读懂。',
       content:
-        '第一点：重写 `目录.md`，新增官方资料基线、学习路线、能力目标和快速查找，让整套系列从目录页开始就围绕“入门到项目落地”组织；第二点：重写第一篇到第七篇的知识结构，把安装、BSON、ObjectId、原生 CRUD、Mongoose 建模、中间件、关联查询、聚合、索引、事务和项目实战都改成更贴近当前官方文档与实际项目的讲法；第三点：补入 MongoDB Manual、mongosh、Node.js Driver、Mongoose 等官方来源，并重点纠正 `findOneAndUpdate` 返回结果、嵌入与引用取舍、复合索引 / ESR 思路、事务里不要 `Promise.all()` 等容易被旧教程讲偏的点；第四点：把第二篇到第七篇的关键代码示例继续补成“小白注释版”，让 CRUD、Schema、`lean()`、`populate()`、聚合、索引与事务示例都能直接看懂每一行在做什么，并顺手清理第二篇与第五篇残留的旧内容尾巴；第五点：按仓库要求先执行 `pwsh -File scripts/checkNodeRuntime.ps1` 预检通过后，多次运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`，确保新内容和注释版示例能被站内目录和搜索收录。',
+        '第一点：在第四篇补齐 `.select()` 独立讲解，说明它是控制返回字段，并补充只返回字段、排除敏感字段、`_id` 特例和列表 / 用户接口中的真实用途；第二点：重写 `.lean()` 段落，把“普通对象”和“Mongoose 文档实例”的区别讲清楚，补充为什么列表接口适合用、为什么用了以后不能再 `save()`；第三点：扩充 Mongoose 中间件部分，补上 `pre` / `post` 的前置与后置含义、文档中间件和查询中间件的区别、`this` 指向以及为什么中间件里通常不用箭头函数；第四点：在第五篇补充嵌入、引用、`populate()`、`.select()` 与 `.populate(..., 字段)`、`$group`、`$lookup`、`$unwind` 的白话解释和执行顺序，让关联查询与聚合管道不再只像概念堆叠；第五点：在第六篇补充索引像目录、`COLLSCAN` / `IXSCAN`、`explain()` 关键字段、复合索引顺序、单文档原子性、事务边界、`session` 和事务内不要 `Promise.all()` 的入门讲解；第六点：按规则先执行 Node 运行时预检，再运行 `npm run generate:index`，同步刷新 `public/notes-index.json` 与 `public/search-index.json`。',
     },
   ],
 }
