@@ -20211,9 +20211,9 @@
           "category": "Node.js",
           "attachments": [],
           "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
-          "size": "16KB",
-          "lastModified": "2026-06-07T06:12:47.895Z",
-          "wordCount": 9126
+          "size": "19KB",
+          "lastModified": "2026-06-07T06:40:12.479Z",
+          "wordCount": 11403
         },
         {
           "type": "file",
@@ -20755,9 +20755,9 @@
           "category": "Node.js",
           "attachments": [],
           "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
-          "size": "16KB",
-          "lastModified": "2026-06-07T06:12:47.895Z",
-          "wordCount": 9126
+          "size": "19KB",
+          "lastModified": "2026-06-07T06:40:12.479Z",
+          "wordCount": 11403
         },
         {
           "type": "file",
@@ -24326,9 +24326,9 @@
       "category": "Node.js",
       "attachments": [],
       "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
-      "size": "16KB",
-      "lastModified": "2026-06-07T06:12:47.895Z",
-      "wordCount": 9126
+      "size": "19KB",
+      "lastModified": "2026-06-07T06:40:12.479Z",
+      "wordCount": 11403
     },
     {
       "type": "file",
@@ -42013,9 +42013,9 @@
               "category": "Node.js",
               "attachments": [],
               "description": "从项目视角讲清楚什么时候用嵌入、什么时候用引用、什么时候用 populate，什么时候应该上聚合管道和 $lookup，帮助你把复杂查询和统计逻辑做对。",
-              "size": "16KB",
-              "lastModified": "2026-06-07T06:12:47.895Z",
-              "wordCount": 9126
+              "size": "19KB",
+              "lastModified": "2026-06-07T06:40:12.479Z",
+              "wordCount": 11403
             },
             {
               "type": "file",
@@ -43979,5 +43979,5 @@
   ],
   "totalNotes": 413,
   "totalCategories": 112,
-  "lastUpdated": "2026-06-07T06:14:54.379Z"
+  "lastUpdated": "2026-06-07T07:45:11.503Z"
 }
