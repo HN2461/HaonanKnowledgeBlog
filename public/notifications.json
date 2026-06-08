@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-06-08T10:35:02.213Z",
-  "total": 369,
+  "generatedAt": "2026-06-08T11:20:21.488Z",
+  "total": 371,
   "notifications": [
+    {
+      "id": "daily-2026-06-08-2",
+      "title": "重构全栈项目从 0 到 1 上线实战笔记",
+      "content": "第一点：重写 `public/notes/电脑/网站部署/全栈部署入门/07-完整上线检查清单.md`，把原来的清单式内容扩展为从本地项目准备到生产验收的连续部署路线；第二点：补充服务器购买、安全组放行、DNS A 记录、SSH 登录、Ubuntu 初始化、Node.js LTS、Nginx、MongoDB、PM2、Certbot HTTPS 等最小操作单元，并为关键步骤写入成功验证标准；第三点：补充开发环境转生产环境的改造要点，包括前端接口地址、Vite 环境变量、开发代理和 Nginx 生产代理区别、Express 端口与数据库连接环境变量、CORS 白名单；第四点：补充 MongoDB 开启认证、创建专用用户、限制 `bindIp: 127.0.0.1`、备份恢复命令和 27017 不公网裸露的安全底线；第五点：补充常见报错 FAQ，覆盖域名打不开、首页 403 / 404、Vue 子路由刷新 404、API 502 / 404、CORS、MongoDB 认证失败、ECONNREFUSED、HTTPS 证书失败、PM2 online 但接口异常；第六点：同步更新网站部署目录和全栈部署入门目录，并重新生成 `public/notes-index.json` 与 `public/search-index.json`。",
+      "summary": "将“Vue + Express + MongoDB 完整上线检查清单”升级为零基础完整实战手册，覆盖服务器购买登录、环境安装、前后端上传部署、MongoDB 安全、PM2 守护、Nginx 反向代理、域名 HTTPS、防火墙和故障排查。",
+      "date": "2026-06-08T19:19:00+08:00",
+      "tag": "内容上新",
+      "category": "内容上新",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-472b320eac84af9042bb417d0888039b9aee203d",
+      "title": "网站部署: 新增全栈部署入门系列文档",
+      "content": "提交说明：网站部署: 新增全栈部署入门系列文档",
+      "summary": "网站部署: 新增全栈部署入门系列文档",
+      "date": "2026-06-08T18:39:02+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "472b320",
+      "fullHash": "472b320eac84af9042bb417d0888039b9aee203d"
+    },
     {
       "id": "daily-2026-06-08-1",
       "title": "新增全栈部署入门系列文档",
