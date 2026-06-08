@@ -1,7 +1,32 @@
 {
-  "generatedAt": "2026-06-08T11:20:21.488Z",
-  "total": 371,
+  "generatedAt": "2026-06-08T14:03:44.879Z",
+  "total": 373,
   "notifications": [
+    {
+      "id": "daily-2026-06-08-3",
+      "title": "修复沉浸阅读跨文章保持与代码展示",
+      "content": "第一点：调整 `NoteDetailPage.vue` 的文章路由切换逻辑，保留当前沉浸阅读状态，只在离开阅读页组件时统一清理沉浸模式；第二点：调整 `MarkdownRenderer.vue` 的沉浸代码样式，开启自动换行时同步取消长代码块的折叠高度、底部遮罩和展开按钮，让代码内容直接完整显示。",
+      "summary": "修复阅读页点击下一篇后沉浸阅读状态自动退出的问题，并让沉浸阅读时长代码块自动完整展开，无需逐个点击展开。",
+      "date": "2026-06-08T22:02:00+08:00",
+      "tag": "问题修复",
+      "category": "问题修复",
+      "source": "daily-summary",
+      "pinned": false,
+      "shortHash": "",
+      "fullHash": ""
+    },
+    {
+      "id": "git-38537f8dab457bce604ea3cee1275ab05d242c58",
+      "title": "网站部署: 重构全栈上线实战笔记",
+      "content": "提交说明：网站部署: 重构全栈上线实战笔记",
+      "summary": "网站部署: 重构全栈上线实战笔记",
+      "date": "2026-06-08T19:24:43+08:00",
+      "tag": "Git 提交",
+      "source": "git",
+      "pinned": false,
+      "shortHash": "38537f8",
+      "fullHash": "38537f8dab457bce604ea3cee1275ab05d242c58"
+    },
     {
       "id": "daily-2026-06-08-2",
       "title": "重构全栈项目从 0 到 1 上线实战笔记",

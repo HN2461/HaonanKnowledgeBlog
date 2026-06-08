@@ -22,5 +22,14 @@ export const dailyChangeSummary = {
       content:
         '第一点：重写 `public/notes/电脑/网站部署/全栈部署入门/07-完整上线检查清单.md`，把原来的清单式内容扩展为从本地项目准备到生产验收的连续部署路线；第二点：补充服务器购买、安全组放行、DNS A 记录、SSH 登录、Ubuntu 初始化、Node.js LTS、Nginx、MongoDB、PM2、Certbot HTTPS 等最小操作单元，并为关键步骤写入成功验证标准；第三点：补充开发环境转生产环境的改造要点，包括前端接口地址、Vite 环境变量、开发代理和 Nginx 生产代理区别、Express 端口与数据库连接环境变量、CORS 白名单；第四点：补充 MongoDB 开启认证、创建专用用户、限制 `bindIp: 127.0.0.1`、备份恢复命令和 27017 不公网裸露的安全底线；第五点：补充常见报错 FAQ，覆盖域名打不开、首页 403 / 404、Vue 子路由刷新 404、API 502 / 404、CORS、MongoDB 认证失败、ECONNREFUSED、HTTPS 证书失败、PM2 online 但接口异常；第六点：同步更新网站部署目录和全栈部署入门目录，并重新生成 `public/notes-index.json` 与 `public/search-index.json`。',
     },
+    {
+      category: '问题修复',
+      time: '22:02',
+      title: '修复沉浸阅读跨文章保持与代码展示',
+      summary:
+        '修复阅读页点击下一篇后沉浸阅读状态自动退出的问题，并让沉浸阅读时长代码块自动完整展开，无需逐个点击展开。',
+      content:
+        '第一点：调整 `NoteDetailPage.vue` 的文章路由切换逻辑，保留当前沉浸阅读状态，只在离开阅读页组件时统一清理沉浸模式；第二点：调整 `MarkdownRenderer.vue` 的沉浸代码样式，开启自动换行时同步取消长代码块的折叠高度、底部遮罩和展开按钮，让代码内容直接完整显示。',
+    },
   ],
 }

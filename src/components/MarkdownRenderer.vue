@@ -526,6 +526,15 @@ onBeforeUnmount(() => {
   grid-template-columns: minmax(0, 1fr);
 }
 
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block.is-collapsible.is-collapsed .code-block__content) {
+  max-height: none;
+}
+
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block.is-collapsible.is-collapsed .code-block__content::after),
+.markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__collapse) {
+  display: none;
+}
+
 /* 自动换行后视觉行数会变化，隐藏行号避免与代码内容错位。 */
 .markdown-renderer.is-code-wrapped .markdown-body :deep(.code-block__gutter) {
   display: none;

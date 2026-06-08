@@ -1013,7 +1013,6 @@ watch(() => route.params.path, (newPath, oldPath) => {
   }
 
   activePreviewAttachment.value = null
-  cleanupImmersiveReading()
   cleanupScrollListener()
   loadNote()
   initializeReadingPosition()
