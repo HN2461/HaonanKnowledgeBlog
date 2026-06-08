@@ -79,7 +79,9 @@ function extractLinks(content) {
 // ─── Path setup ──────────────────────────────────────────────────────────────
 
 const workspaceRoot = path.resolve(process.cwd())
-const kiroDir = path.resolve(workspaceRoot, 'public/notes/AI工具/Kiro')
+const kiroNotesPath = 'AI工具/01_AI编辑器流/Kiro'
+const kiroRoutePrefix = `#/note/${kiroNotesPath}/`
+const kiroDir = path.resolve(workspaceRoot, `public/notes/${kiroNotesPath}`)
 const dirFile = path.resolve(kiroDir, '目录.md')
 const indexFile = path.resolve(workspaceRoot, 'public/notes-index.json')
 
@@ -128,7 +130,7 @@ describe('kiro-notes 单元测试', () => {
     expect(content).toContain('覆盖主题')
     expect(content).toContain('快速查找')
     const links = extractLinks(content)
-    const orderLinks = links.filter((link) => link.startsWith('#/note/AI工具/Kiro/'))
+    const orderLinks = links.filter((link) => link.startsWith(kiroRoutePrefix))
     expect(orderLinks).toHaveLength(6)
   })
 
@@ -137,7 +139,7 @@ describe('kiro-notes 单元测试', () => {
     const index = JSON.parse(raw)
     const allNotes = getAllIndexedNotes(index)
     const kiroEntries = allNotes.filter((entry) => {
-      return String(entry?.path || '').startsWith('AI工具/Kiro/')
+      return String(entry?.path || '').startsWith(`${kiroNotesPath}/`)
         && String(entry?.filename || '') !== '目录.md'
     })
 
@@ -256,7 +258,7 @@ describe('kiro-notes 属性测试', () => {
 
   it('Property 7: 目录导航链接格式与文件存在性', () => {
     const dirLinks = extractLinks(fs.readFileSync(dirFile, 'utf-8')).filter(
-      (link) => link.startsWith('#/note/AI工具/Kiro/')
+      (link) => link.startsWith(kiroRoutePrefix)
     )
 
     // Guard: skip if no links yet (目录.md not yet updated)
@@ -265,7 +267,7 @@ describe('kiro-notes 属性测试', () => {
     // Feature: kiro-notes-enhancement, Property 7: 目录导航链接格式与文件存在性
     fc.assert(
       fc.property(fc.constantFrom(...dirLinks), (link) => {
-        const slug = link.replace('#/note/AI工具/Kiro/', '')
+        const slug = link.replace(kiroRoutePrefix, '')
         return fs.existsSync(path.join(kiroDir, slug + '.md'))
       }),
       { numRuns: 100 }
