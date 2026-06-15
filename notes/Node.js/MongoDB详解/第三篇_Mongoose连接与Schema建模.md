@@ -1,6 +1,6 @@
 ---
 title: MongoDB 详解第三篇：Mongoose 连接与 Schema 建模
-date: 2026-04-21
+date: 2026-06-06
 category: Node.js
 tags:
   - MongoDB
@@ -8,730 +8,388 @@ tags:
   - Schema
   - 数据建模
   - 数据校验
-  - 虚拟字段
-description: 从零掌握 Mongoose ODM，包括安装连接、Schema 定义、所有数据类型详解、校验规则配置、虚拟字段和 Schema 选项，以及 Model 的创建和使用。
+  - 索引
+description: 从项目开发角度掌握 Mongoose 的连接、Schema、Model、字段类型、校验、默认值、枚举、索引、虚拟字段与 toJSON 输出控制，建立可维护的 MongoDB 数据模型。
 ---
 
 # MongoDB 详解第三篇：Mongoose 连接与 Schema 建模
 
-> Mongoose 是 Node.js 里操作 MongoDB 的 ODM（Object Document Mapper）。它在 MongoDB 原生驱动的基础上加了一层：Schema 约束、数据校验、中间件、更友好的 API。这篇从安装开始，把 Schema 建模讲透。
+> 原生 MongoDB 让你“能操作数据库”，Mongoose 则让你“更像在做工程”。这一篇的重点不是 API 数量，而是学会怎么把数据结构设计得靠谱。
 
 ---
 
-## 一、Mongoose 是什么，为什么用它
+## 一、为什么 Node.js 项目里经常用 Mongoose
 
-### 1.1 原生驱动 vs Mongoose
+MongoDB 官方驱动很好用，但它更偏底层。
 
-MongoDB 官方提供了 Node.js 驱动（`mongodb` 包），可以直接操作数据库。但原生驱动没有数据结构约束，任何数据都能存进去，容易出问题：
+Mongoose 在项目开发里流行，主要因为它补上了这几层能力：
 
-```javascript
-// 原生驱动：没有任何约束
-const { MongoClient } = require('mongodb')
-const client = new MongoClient('mongodb://127.0.0.1:27017')
-const db = client.db('myapp')
+- `Schema`：定义字段结构
+- 校验：防止脏数据随便进库
+- 中间件：统一做密码加密、软删除过滤、更新时间等
+- 虚拟字段：生成展示用属性
+- `populate()`：管理引用关系更顺手
 
-// 这两条都能插入，但数据结构完全不一致，后续处理很麻烦
-await db.collection('users').insertOne({ name: '张三', age: 25 })
-await db.collection('users').insertOne({ username: 'lisi', age: '三十岁' })  // age 是字符串！
-```
+所以你可以把它理解成：
 
-Mongoose 解决了这个问题：
-
-```javascript
-// Mongoose：有 Schema 约束
-const userSchema = new Schema({
-  name: { type: String, required: true },
-  age: { type: Number, min: 0 }
-})
-
-// age 传字符串会自动转换或报错，name 不传会报校验错误
-await User.create({ name: '张三', age: 25 })
-```
-
-### 1.2 Mongoose 提供了什么
-
-- **Schema**：定义数据结构和类型
-- **数据校验**：保存前自动校验，不合法直接报错
-- **中间件（钩子）**：在保存/查询/删除前后执行自定义逻辑
-- **虚拟字段**：不存数据库，但可以在查询结果里计算出来
-- **populate**：关联查询，自动填充关联文档
-- **更友好的 API**：链式查询、Promise 支持
-
-### 1.3 版本说明
-
-```
-Mongoose 9（2025年11月）：当前最新版，要求 Node.js 18+
-Mongoose 8：要求 Node.js 16+
-Mongoose 7：移除了回调函数支持，全面转向 Promise/async-await
-
-⚠️ Mongoose 7+ 起，所有方法不再接受回调函数，必须用 Promise 或 async/await
-```
+Mongoose 不是替代 MongoDB，而是站在 MongoDB 之上的业务建模工具。
 
 ---
 
-## 二、安装与项目结构
+## 二、版本认识先讲清楚
 
-### 2.1 安装
+按 2026-06-06 查阅官方资料时，这里最重要的不是死记版本号，而是记住兼容性思路：
 
-```bash
-mkdir mongoose-demo
-cd mongoose-demo
-npm init -y
-npm install mongoose express
-```
+- Mongoose 当前主线文档已经进入 9.x
+- Mongoose 9 对 Node.js 版本要求更高
+- 新项目建议用较新的 Node.js LTS，再搭配当前 Mongoose
 
-### 2.2 推荐的项目结构
+如果你跟着旧教程照抄，最容易出现的问题就是：
 
-```
-mongoose-demo/
-├── src/
-│   ├── models/          ← Schema 和 Model 定义
-│   │   ├── User.js
-│   │   └── Article.js
-│   ├── routes/          ← 路由
-│   └── db.js            ← 数据库连接
-├── index.js             ← 入口文件
-└── package.json
-```
+- Node 版本太低
+- Mongoose 版本太新
+- 示例代码语法没问题，但项目根本跑不起来
+
+所以做项目前先统一运行时和依赖版本，是工程上非常关键的一步。
 
 ---
 
-## 三、连接数据库
-
-### 3.1 基础连接
-
-新建 `src/db.js`：
+## 三、最小可用连接代码
 
 ```javascript
-// src/db.js
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
-// 连接字符串格式：
-// mongodb://[用户名:密码@]主机[:端口]/数据库名[?选项]
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/myapp'
+export async function connectDB() {
+  // 优先读取环境变量里的连接字符串
+  // 如果你本地还没配 .env，就先连本机 MongoDB
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/notes_app', {
+    // 最多等 5 秒，连不上就尽快报错，不要一直卡着
+    serverSelectionTimeoutMS: 5000
+  })
 
-async function connectDB() {
-  try {
-    await mongoose.connect(MONGODB_URI)
-    console.log('✅ MongoDB 连接成功')
-  } catch (err) {
-    console.error('❌ MongoDB 连接失败:', err.message)
-    process.exit(1)  // 连接失败直接退出进程
-  }
+  // 打印成功提示，方便我们确认数据库已经连上
+  console.log('MongoDB connected')
 }
-
-module.exports = connectDB
 ```
 
-在入口文件里调用：
+配合入口文件：
 
 ```javascript
-// index.js
-const express = require('express')
-const connectDB = require('./src/db')
+import express from 'express'
+import { connectDB } from './db.js'
 
 const app = express()
+
+// 让 Express 能识别 JSON 请求体
 app.use(express.json())
 
-// 先连接数据库，再启动服务器
-connectDB().then(() => {
-  app.listen(3000, () => {
-    console.log('🚀 服务器运行在 http://localhost:3000')
-  })
+// 先连数据库，再启动接口服务
+await connectDB()
+
+app.listen(3000, () => {
+  console.log('server started: http://127.0.0.1:3000')
 })
 ```
 
-### 3.2 连接选项
+### 连接代码里要关注什么
 
-```javascript
-await mongoose.connect('mongodb://127.0.0.1:27017/myapp', {
-  // 服务器选择超时：多少毫秒内找不到可用服务器就报错（默认 30000ms）
-  serverSelectionTimeoutMS: 5000,
-
-  // 连接池最大连接数（默认 5）
-  // 生产环境根据并发量调整，一般 10-20
-  maxPoolSize: 10,
-
-  // 连接池最小连接数（默认 0）
-  minPoolSize: 2,
-
-  // socket 超时（默认 0，不超时）
-  socketTimeoutMS: 45000,
-})
-```
-
-### 3.3 监听连接事件
-
-```javascript
-// src/db.js（完整版）
-const mongoose = require('mongoose')
-
-async function connectDB() {
-  try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/myapp', {
-      serverSelectionTimeoutMS: 5000
-    })
-    console.log('✅ MongoDB 连接成功')
-  } catch (err) {
-    console.error('❌ MongoDB 连接失败:', err.message)
-    process.exit(1)
-  }
-}
-
-// 连接断开时（网络波动等）
-mongoose.connection.on('disconnected', () => {
-  console.warn('⚠️ MongoDB 连接断开，Mongoose 会自动重连')
-})
-
-// 连接出错时
-mongoose.connection.on('error', (err) => {
-  console.error('MongoDB 连接错误:', err)
-})
-
-// 优雅关闭：收到 SIGINT（Ctrl+C）时，先关闭数据库连接再退出
-process.on('SIGINT', async () => {
-  await mongoose.connection.close()
-  console.log('MongoDB 连接已关闭')
-  process.exit(0)
-})
-
-module.exports = connectDB
-```
-
-### 3.4 连接字符串格式
-
-```javascript
-// 本地无认证
-'mongodb://127.0.0.1:27017/myapp'
-
-// 本地有认证
-'mongodb://admin:password123@127.0.0.1:27017/myapp?authSource=admin'
-
-// MongoDB Atlas（云数据库）
-'mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/myapp'
-
-// 副本集（生产环境高可用）
-'mongodb://host1:27017,host2:27017,host3:27017/myapp?replicaSet=rs0'
-```
+- `serverSelectionTimeoutMS`：避免数据库挂掉时一直卡住
+- 连接串建议放环境变量
+- 启动服务前先连数据库，这样故障更早暴露
 
 ---
 
-## 四、定义 Schema
+## 四、Schema、Model、Document 三者关系
 
-Schema 是数据结构的"蓝图"，定义了集合里的文档有哪些字段、每个字段是什么类型、有什么约束。
+这是初学者最容易混淆的一组概念。
 
-### 4.1 最简单的 Schema
+### 4.1 Schema
 
-```javascript
-// src/models/User.js
-const { Schema, model } = require('mongoose')
-
-// 第一步：定义 Schema（数据结构）
-const userSchema = new Schema({
-  name: String,    // 最简写法：只指定类型
-  age: Number,
-  email: String,
-  isActive: Boolean
-})
-
-// 第二步：用 Schema 创建 Model
-// model('Model名称', schema)
-// Model 名称通常用单数大写，Mongoose 自动转为复数小写作为集合名
-// 'User' → 集合名 'users'
-const User = model('User', userSchema)
-
-// 第三步：导出 Model
-module.exports = User
-```
-
-### 4.2 字段配置对象写法
-
-实际项目里，字段通常需要更多配置，用对象写法：
+Schema 是“规则说明书”。
 
 ```javascript
-const userSchema = new Schema({
-  name: {
-    type: String,           // 字段类型（必填）
-    required: true,         // 是否必填
-    trim: true,             // 自动去除首尾空格
-    minlength: 2,           // 最小长度
-    maxlength: 20           // 最大长度
-  },
-  age: {
-    type: Number,
-    min: 0,                 // 最小值
-    max: 150,               // 最大值
-    default: 0              // 默认值
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,           // 唯一约束（会创建唯一索引）
-    lowercase: true         // 保存前自动转小写
-  }
+import mongoose from 'mongoose'
+
+// new mongoose.Schema(...) 就是在定义“这类数据应该长什么样”
+const userSchema = new mongoose.Schema({
+  username: String, // 用户名字段，类型是字符串
+  email: String // 邮箱字段，类型也是字符串
 })
 ```
 
----
+### 4.2 Model
 
-## 五、Schema 数据类型详解
-
-### 5.1 基础类型
+Model 是“操作某一类数据的入口”。
 
 ```javascript
-const demoSchema = new Schema({
-  // String：字符串
-  name: String,
-  // 等价于：
-  name: { type: String },
-
-  // Number：数字（整数和浮点数都是 Number）
-  age: Number,
-  price: Number,
-
-  // Boolean：布尔值
-  isActive: Boolean,
-
-  // Date：日期
-  birthday: Date,
-  createdAt: { type: Date, default: Date.now },  // 默认当前时间
-
-  // Buffer：二进制数据（如文件内容）
-  avatar: Buffer,
-
-  // Mixed：任意类型（不推荐，失去了 Schema 的意义）
-  meta: Schema.Types.Mixed,
-  // 或简写：
-  meta: {}
-})
-```
-
-### 5.2 ObjectId — 关联其他文档
-
-```javascript
-const articleSchema = new Schema({
-  title: String,
-
-  // 存储另一个文档的 _id，用于关联查询
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'   // 关联的 Model 名称，populate 时用到
-  }
-})
-```
-
-### 5.3 数组类型
-
-```javascript
-const userSchema = new Schema({
-  // 字符串数组
-  tags: [String],
-  // 等价于：
-  tags: { type: [String], default: [] },
-
-  // 数字数组
-  scores: [Number],
-
-  // ObjectId 数组（关联多个文档）
-  friends: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-
-  // 对象数组（嵌套 Schema）
-  addresses: [{
-    city: String,
-    province: String,
-    isDefault: { type: Boolean, default: false }
-  }]
-})
-```
-
-### 5.4 嵌套对象
-
-```javascript
-const userSchema = new Schema({
-  // 嵌套对象（直接写）
-  address: {
-    city: String,
-    province: String,
-    zipCode: String
-  },
-
-  // 嵌套对象（用子 Schema，可复用）
-  profile: profileSchema
-})
-
-// 访问嵌套字段
-const user = await User.findOne({ 'address.city': '北京' })
-await User.updateOne({ _id: id }, { $set: { 'address.city': '上海' } })
-```
-
-### 5.5 Map 类型
-
-```javascript
-// Map：键值对，键是字符串，值是指定类型
-const userSchema = new Schema({
-  // 存储用户的各种偏好设置
-  preferences: {
-    type: Map,
-    of: String  // 值的类型
-  }
-})
-
-// 使用
-const user = new User({
-  preferences: new Map([
-    ['theme', 'dark'],
-    ['language', 'zh-CN']
-  ])
-})
-
-// 访问
-user.preferences.get('theme')  // 'dark'
-user.preferences.set('fontSize', '14px')
-```
-
----
-
-## 六、校验规则详解
-
-### 6.1 内置校验器
-
-```javascript
-const userSchema = new Schema({
-  // required：必填
-  name: {
-    type: String,
-    required: true,                          // 简单写法
-    required: [true, '姓名不能为空'],         // 自定义错误信息
-    required: function() {                   // 动态必填（函数返回 true 则必填）
-      return this.role !== 'guest'
-    }
-  },
-
-  // String 专属校验
-  username: {
-    type: String,
-    minlength: [3, '用户名至少3个字符'],
-    maxlength: [20, '用户名最多20个字符'],
-    match: [/^[a-zA-Z0-9_]+$/, '用户名只能包含字母、数字和下划线'],
-    enum: {
-      values: ['admin', 'user', 'guest'],
-      message: '角色必须是 admin、user 或 guest'
-    }
-  },
-
-  // Number 专属校验
-  age: {
-    type: Number,
-    min: [0, '年龄不能为负数'],
-    max: [150, '年龄不合法']
-  },
-
-  // 默认值
-  role: {
-    type: String,
-    enum: ['user', 'admin', 'moderator'],
-    default: 'user'
-  },
-
-  // 默认值也可以是函数（每次创建文档时调用）
-  token: {
-    type: String,
-    default: () => Math.random().toString(36).slice(2)
-  }
-})
-```
-
-### 6.2 自定义校验器
-
-```javascript
-const userSchema = new Schema({
-  phone: {
-    type: String,
-    validate: {
-      // validator 函数：返回 true 表示校验通过，false 表示失败
-      validator: function(v) {
-        return /^1[3-9]\d{9}$/.test(v)
-      },
-      message: props => `${props.value} 不是有效的手机号`
-    }
-  },
-
-  // 异步校验（检查邮箱是否已存在）
-  email: {
-    type: String,
-    validate: {
-      validator: async function(v) {
-        // this 指向当前文档
-        // isNew 表示是新建文档（更新时不重复校验）
-        if (!this.isNew) return true
-        const count = await mongoose.model('User').countDocuments({ email: v })
-        return count === 0
-      },
-      message: '该邮箱已被注册'
-    }
-  }
-})
-```
-
-### 6.3 字符串转换选项
-
-```javascript
-const userSchema = new Schema({
-  email: {
-    type: String,
-    lowercase: true,   // 保存前自动转小写
-    uppercase: false,  // 保存前自动转大写（和 lowercase 互斥）
-    trim: true         // 保存前自动去除首尾空格
-  }
-})
-
-// 这些转换在保存前自动执行，不需要手动处理
-const user = new User({ email: '  ZHANGSAN@EXAMPLE.COM  ' })
-await user.save()
-// 实际存储的是：'zhangsan@example.com'
-```
-
----
-
-## 七、Schema 选项
-
-Schema 的第二个参数是选项对象：
-
-```javascript
-const userSchema = new Schema({
-  name: String,
-  // ...
-}, {
-  // timestamps：自动添加 createdAt 和 updatedAt 字段
-  // 强烈推荐开启，几乎所有业务表都需要
-  timestamps: true,
-
-  // versionKey：禁用 __v 字段（Mongoose 用来做乐观锁的版本号）
-  // 如果不需要乐观锁，可以关掉，减少字段干扰
-  versionKey: false,
-
-  // collection：自定义集合名（默认是 Model 名的复数小写）
-  // 'User' → 默认集合名 'users'
-  // 如果你想用 'user_info' 这样的名字：
-  collection: 'user_info',
-
-  // strict：严格模式（默认 true）
-  // true：保存时忽略 Schema 未定义的字段
-  // false：允许保存任意字段（不推荐）
-  strict: true,
-
-  // toJSON / toObject：控制文档转换时的行为
-  toJSON: {
-    virtuals: true,   // 包含虚拟字段
-    versionKey: false // 不包含 __v
-  },
-  toObject: {
-    virtuals: true
-  }
-})
-```
-
----
-
-## 八、虚拟字段（Virtuals）
-
-虚拟字段不存储在数据库里，但可以在查询结果上计算出来，非常适合做"派生数据"。
-
-### 8.1 基础用法
-
-```javascript
-const userSchema = new Schema({
-  firstName: String,
-  lastName: String,
-  birthday: Date
-})
-
-// 定义虚拟字段：全名
-userSchema.virtual('fullName').get(function() {
-  // ⚠️ 必须用普通函数，不能用箭头函数（需要 this 指向文档）
-  return `${this.firstName} ${this.lastName}`
-})
-
-// 定义虚拟字段：年龄（根据生日计算）
-userSchema.virtual('age').get(function() {
-  if (!this.birthday) return null
-  const today = new Date()
-  const birth = new Date(this.birthday)
-  let age = today.getFullYear() - birth.getFullYear()
-  const m = today.getMonth() - birth.getMonth()
-  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-    age--
-  }
-  return age
-})
-```
-
-使用：
-
-```javascript
-const user = await User.findOne({ firstName: '三' })
-console.log(user.fullName)  // '张 三'
-console.log(user.age)       // 根据生日计算出的年龄
-```
-
-### 8.2 虚拟字段默认不出现在 JSON 里
-
-```javascript
-// 默认情况下，虚拟字段不会出现在 JSON 输出里
-const user = await User.findOne({})
-console.log(JSON.stringify(user))  // 没有 fullName 字段！
-
-// 需要在 Schema 选项里开启
-const userSchema = new Schema({ ... }, {
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true }
-})
-
-// 或者在查询时指定
-const user = await User.findOne({}).lean({ virtuals: true })
-```
-
-### 8.3 虚拟字段的 setter
-
-```javascript
-// 虚拟字段也可以有 setter，用于解析输入
-userSchema.virtual('fullName')
-  .get(function() {
-    return `${this.firstName} ${this.lastName}`
-  })
-  .set(function(v) {
-    // 设置 fullName 时，自动拆分到 firstName 和 lastName
-    const parts = v.split(' ')
-    this.firstName = parts[0]
-    this.lastName = parts[1] || ''
-  })
-
-// 使用
-const user = new User()
-user.fullName = '张 三'
-console.log(user.firstName)  // '张'
-console.log(user.lastName)   // '三'
-```
-
----
-
-## 九、Model 的创建与使用
-
-### 9.1 model() 函数
-
-```javascript
-// mongoose.model(name, schema[, collection])
-//   name: Model 名称（字符串），用于 populate 的 ref 引用
-//   schema: Schema 实例
-//   collection: 可选，自定义集合名（也可以在 Schema 选项里设置）
-
+// model('User', userSchema) 表示：
+// 按 userSchema 这套规则，创建一个叫 User 的模型
 const User = mongoose.model('User', userSchema)
-// 集合名：users（自动复数化小写）
-
-const Category = mongoose.model('Category', categorySchema)
-// 集合名：categories（自动处理不规则复数）
-
-// 如果自动复数化不对，手动指定
-const Staff = mongoose.model('Staff', staffSchema, 'staff')
-// 集合名：staff（不复数化）
 ```
 
-### 9.2 完整的 Model 文件示例
+你之后写的：
+
+- `User.create()`
+- `User.find()`
+- `User.findById()`
+
+都是在用 Model。
+
+### 4.3 Document
+
+Document 是某一条具体数据实例。
 
 ```javascript
-// src/models/User.js
-const { Schema, model } = require('mongoose')
+// new User(...) 表示创建一条“用户文档实例”
+// 这时它还只是内存里的对象，还没真正存进数据库
+const user = new User({
+  username: 'haonan',
+  email: 'haonan@example.com'
+})
+```
 
-const userSchema = new Schema({
-  username: {
-    type: String,
-    required: [true, '用户名不能为空'],
-    trim: true,
-    minlength: [3, '用户名至少3个字符'],
-    maxlength: [20, '用户名最多20个字符'],
-    match: [/^[a-zA-Z0-9_\u4e00-\u9fa5]+$/, '用户名包含非法字符']
-  },
-  email: {
-    type: String,
-    required: [true, '邮箱不能为空'],
-    unique: true,
-    lowercase: true,
-    trim: true,
-    match: [/^\S+@\S+\.\S+$/, '邮箱格式不正确']
-  },
-  password: {
-    type: String,
-    required: [true, '密码不能为空'],
-    minlength: [6, '密码至少6位']
-  },
-  role: {
-    type: String,
-    enum: {
-      values: ['user', 'admin', 'moderator'],
-      message: '角色值不合法'
+这里的 `user` 就是一个文档实例。
+
+---
+
+## 五、建模时最常用的字段能力
+
+先看一个更接近项目的例子：
+
+```javascript
+import mongoose from 'mongoose'
+
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: [true, '用户名不能为空'], // 不传就报错
+      trim: true, // 自动去掉首尾空格
+      minlength: [2, '用户名至少 2 个字符'], // 最短 2 个字符
+      maxlength: [20, '用户名最多 20 个字符'] // 最长 20 个字符
     },
-    default: 'user'
+    email: {
+      type: String,
+      required: [true, '邮箱不能为空'],
+      trim: true, // 自动去掉首尾空格
+      lowercase: true, // 存库前转成小写，避免大小写混乱
+      unique: true, // 唯一索引，避免重复邮箱
+      match: [/^\S+@\S+\.\S+$/, '邮箱格式不正确'] // 基础邮箱格式校验
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'], // 只能是 user 或 admin
+      default: 'user' // 默认值是 user
+    },
+    age: {
+      type: Number,
+      min: [0, '年龄不能小于 0'] // 年龄最小不能小于 0
+    },
+    tags: {
+      type: [String], // 数组里每一项都是字符串
+      default: []
+    },
+    profile: {
+      city: String, // profile 里嵌套一个 city 字段
+      bio: {
+        type: String,
+        maxlength: 200
+      }
+    }
   },
-  avatar: {
-    type: String,
-    default: ''
-  },
-  bio: {
-    type: String,
-    maxlength: [200, '简介最多200字'],
-    default: ''
-  },
-  isActive: {
-    type: Boolean,
-    default: true
-  },
-  // 软删除字段
-  isDeleted: {
-    type: Boolean,
-    default: false
-  },
-  deletedAt: Date
-}, {
-  timestamps: true,   // 自动 createdAt / updatedAt
-  versionKey: false   // 不要 __v
-})
+  {
+    timestamps: true, // 自动生成 createdAt 和 updatedAt
+    versionKey: false
+  }
+)
+```
 
-// 虚拟字段：用于 populate 时的关联文章
-userSchema.virtual('articles', {
-  ref: 'Article',
-  localField: '_id',
-  foreignField: 'author'
-})
+这个例子里你要重点认识以下能力：
 
-// 导出前不暴露密码（toJSON 时自动移除）
+- `required` 必填
+- `trim` 去掉首尾空格
+- `lowercase` 存库前转小写
+- `minlength` / `maxlength` 字符长度限制
+- `match` 正则校验
+- `enum` 枚举值
+- `default` 默认值
+- `timestamps` 自动生成 `createdAt`、`updatedAt`
+
+---
+
+## 六、Schema 不是“数据库强约束”的唯一来源，但它很重要
+
+要特别理解一件事：
+
+Mongoose Schema 的校验主要发生在应用层。
+
+也就是说：
+
+- 它能很好地保护你的 Node.js 项目
+- 但如果有人绕过你的应用，直接往 MongoDB 写数据，数据库本身未必认识这些业务规则
+
+所以真正重要的数据约束，常常要结合以下两层一起做：
+
+1. Mongoose 校验
+2. MongoDB 级别索引或集合校验策略
+
+对大多数中小型项目来说，先把 Mongoose 模型设计规范已经能解决大多数问题。
+
+---
+
+## 七、索引要在建模阶段一起想
+
+很多新手喜欢先把字段写完，查询慢了再补索引。这样常常会返工。
+
+例如登录场景，`email` 通常就是天然索引候选：
+
+```javascript
+// 这里声明一个唯一索引：
+// 以后查邮箱会更快，同时也能防止重复值
+userSchema.index({ email: 1 }, { unique: true })
+```
+
+文章列表常见查询是“某个作者的已发布文章，按时间倒序”：
+
+```javascript
+// 这个索引非常贴近真实列表页需求：
+// 查某个作者(author) 的文章
+// 再按状态(status)筛
+// 最后按创建时间(createdAt)倒序
+articleSchema.index({ author: 1, status: 1, createdAt: -1 })
+```
+
+这就是项目级思维：
+
+字段不是孤立写的，字段、查询模式、索引应该一起设计。
+
+---
+
+## 八、虚拟字段和输出控制
+
+### 8.1 虚拟字段
+
+虚拟字段不进数据库，但很适合做展示层拼装：
+
+```javascript
+userSchema.virtual('profileSummary').get(function () {
+  // this 指向当前这条用户文档
+  // 如果没填城市，就回退成“未知城市”
+  return `${this.username} - ${this.profile?.city || '未知城市'}`
+})
+```
+
+### 8.2 toJSON 转换
+
+项目里很常用，用来去掉敏感字段：
+
+```javascript
 userSchema.set('toJSON', {
   virtuals: true,
-  transform: function(doc, ret) {
+  transform(doc, ret) {
+    // ret 是最终要返回给前端的普通对象
+    // 这里把 password 删掉，避免敏感字段泄露
     delete ret.password
-    delete ret.isDeleted
-    delete ret.deletedAt
     return ret
   }
 })
-
-const User = model('User', userSchema)
-module.exports = User
 ```
+
+这样接口返回时就不会把密码哈希直接吐给前端。
 
 ---
 
-## 十、小结
+## 九、一个更接近项目的 Article 模型
 
-| 知识点 | 核心要点 |
-|--------|----------|
-| Mongoose 作用 | 在原生驱动上加 Schema 约束、校验、中间件、populate |
-| 连接数据库 | `mongoose.connect(uri)` 返回 Promise，用 async/await |
-| Schema 定义 | `new Schema({ 字段: 类型或配置对象 })` |
-| 常用类型 | String / Number / Boolean / Date / ObjectId / Array / Mixed |
-| 校验规则 | required / min / max / minlength / maxlength / enum / match / validate |
-| 字符串转换 | lowercase / uppercase / trim（保存前自动处理） |
-| Schema 选项 | timestamps / versionKey / collection / strict / toJSON |
-| 虚拟字段 | `.virtual('name').get(fn)` — 不存数据库，查询时计算 |
-| 创建 Model | `model('ModelName', schema)` — 集合名自动复数化 |
+```javascript
+const articleSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+      trim: true, // 去掉前后空格
+      maxlength: 120
+    },
+    content: {
+      type: String, // 正文内容
+      required: true
+    },
+    status: {
+      type: String,
+      enum: ['draft', 'published'],
+      default: 'draft'
+    },
+    tags: {
+      type: [String],
+      default: []
+    },
+    author: {
+      type: mongoose.Schema.Types.ObjectId, // 这里存的是用户 _id
+      ref: 'User', // 告诉 Mongoose：这个字段关联 User 模型
+      required: true
+    }
+  },
+  {
+    timestamps: true,
+    versionKey: false
+  }
+)
 
-**下一篇**：Mongoose CRUD 与中间件——增删改查 API 全解、链式查询技巧、pre/post 钩子实战（密码加密、软删除过滤）。
+// 为常见文章列表查询建立复合索引
+articleSchema.index({ author: 1, status: 1, createdAt: -1 })
+```
+
+这个模型里已经体现出后面会用到的 3 个核心能力：
+
+- 基础字段约束
+- 引用关系 `ref`
+- 面向列表查询的复合索引
+
+---
+
+## 十、新手建模时最容易犯的错误
+
+### 10.1 见什么都拆成多个集合
+
+这会导致明明适合嵌入的数据，也要反复关联查询。
+
+### 10.2 见什么都塞进一个文档
+
+这会导致文档越来越大，更新和维护都困难。
+
+### 10.3 只写字段，不写约束
+
+项目很快会出现：
+
+- 空标题
+- 非法邮箱
+- 数值类型错乱
+- 重复数据
+
+### 10.4 忘记为常见查询场景考虑索引
+
+这通常会在数据量上来后直接体现成“列表页特别慢”。
+
+---
+
+## 十一、小结
+
+这一篇你要真正吃透的是“建模思维”，不是 API 数量。
+
+学完后你应该能做到：
+
+1. 分清 `Schema`、`Model`、`Document`
+2. 写出带校验、默认值、枚举、时间戳的模型
+3. 知道什么时候该声明引用字段 `ref`
+4. 知道建模时就应该把索引一起考虑进去
+5. 用 `toJSON` 和虚拟字段整理接口输出
+
+### 官方资料
+
+- Mongoose Docs: https://mongoosejs.com/docs/
+- Schemas: https://mongoosejs.com/docs/guide.html
+- Validation: https://mongoosejs.com/docs/validation.html
+- Virtuals: https://mongoosejs.com/docs/tutorials/virtuals.html
+- Models: https://mongoosejs.com/docs/models.html
+
+**下一篇**：我们把模型真正用起来，讲 Mongoose CRUD、中间件、`lean()`、软删除这些项目里天天会写的内容。

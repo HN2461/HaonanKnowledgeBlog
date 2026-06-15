@@ -1,6 +1,6 @@
-﻿---
+---
 title: 第一篇：Node.js 入门与 Buffer
-date: 2026-04-18
+date: 2026-06-05
 category: Node.js
 tags:
   - Node.js
@@ -105,7 +105,7 @@ Node.js 是**单线程**的，主线程不适合 CPU 密集型任务：
 | 对比项 | 浏览器 | Node.js |
 |--------|--------|---------|
 | JS 引擎 | V8（Chrome）/ SpiderMonkey（Firefox） | V8 |
-| 全局对象 | `window` | `global`（Node 21+ 也支持 `globalThis`） |
+| 全局对象 | `window` / `globalThis` | `global` / `globalThis`（跨环境统一时优先认识 `globalThis`） |
 | DOM/BOM | 有 | 无 |
 | 文件系统 | 无（沙箱限制） | 有（`fs` 模块） |
 | 模块系统 | ES Module（原生） | CommonJS（默认）+ ES Module |
@@ -273,8 +273,8 @@ console.log('这行先执行')
 
 推荐通过 **nvm**（Node Version Manager）安装，方便后续切换版本。
 
-> **版本建议（按 2026-04-18 官方发布线核对）**：
-> 当前学习和做新项目，优先安装 **Node.js 24 LTS**。如果你只是跟旧课件练手，Node 20/22 的大部分语法也兼容，但文中凡是写到“废弃”或“版本门槛”的地方，请以新版写法为准。
+> **版本建议（按 2026-06-05 官方发布线核对）**：
+> 当前学习和做新项目，优先安装 **Node.js 24 LTS（Active LTS）**。Node.js 26 是 Current / Latest 线，适合体验新能力，但不建议作为默认生产基线；Node.js 20 已经 EOL，不再建议用于新项目。旧课件如果使用 Node 14/16/18/20，请只把它当成历史环境参考，实际写法以当前 LTS 文档为准。
 
 ```bash
 # Windows 用 nvm-windows
@@ -286,7 +286,7 @@ nvm use 24
 
 # 验证安装
 node -v    # v24.x.x
-npm -v     # 10.x.x
+npm -v     # v11.x.x（随 Node 24 安装的 npm 小版本会继续更新）
 ```
 
 也可以直接去 [nodejs.org](https://nodejs.org) 下载安装包，选 **LTS（长期支持版）**。
@@ -309,7 +309,7 @@ console.log('操作系统:', process.platform)  // win32 / darwin / linux
 ```bash
 node hello.js
 # Hello, Node.js!
-# 当前 Node 版本: v24.15.0
+# 当前 Node 版本: v24.x.x
 # 当前目录: C:\Users\xxx\projects
 # 当前文件: C:\Users\xxx\projects\hello.js
 # 操作系统: win32
@@ -529,7 +529,7 @@ JavaScript 最初设计用于处理文本（字符串），但服务器端经常
 
 ### 6.2 创建 Buffer
 
-> ⚠️ **废弃警告**：旧写法 `new Buffer(size)` / `new Buffer(string)` 已在 Node.js 6 废弃，Node.js 10 起正式移除。原因是它存在内存安全漏洞（未初始化内存可能泄露敏感数据）。请统一使用下面三个静态方法替代。
+> ⚠️ **废弃警告**：旧写法 `new Buffer(size)` / `new Buffer(string)` 很早就已废弃，现代 Node.js 会继续保留兼容但会给出运行时弃用提示。原因是它存在内存安全风险（未初始化内存可能泄露敏感数据）。请统一使用下面三个静态方法替代。
 
 ```javascript
 // ── 方式一：Buffer.alloc(size[, fill[, encoding]]) ──
@@ -730,11 +730,11 @@ buf[0] = 0x68  // 修改为 'h'
 console.log(buf.toString())   // 'hello World'
 
 // ── 截取（subarray / slice）──
-// ⚠️ 废弃警告：buf.slice() 在 Node.js 17.5+ 已标记为废弃（DEP0005）
-// 请改用 buf.subarray()，行为完全相同
+// ⚠️ 兼容提醒：buf.slice() 仍可运行，但它在 Buffer 上返回共享内存视图
+// 新代码优先用 subarray() 表达“视图截取”，需要复制时用 Buffer.from()
 // 注意：返回的是原 Buffer 的视图，共享内存！
 const view = buf.subarray(0, 5)   // ✅ 推荐
-// const view = buf.slice(0, 5)   // ⚠️ 已废弃，不推荐
+// const view = buf.slice(0, 5)   // 可运行，但新代码更推荐 subarray，语义更清晰
 console.log(view.toString())  // 'hello'
 view[0] = 0x48  // 修改 view 会影响 buf！
 console.log(buf.toString())   // 'Hello World'（被改回来了）
@@ -818,7 +818,7 @@ const fs = require('fs')
 const imageBuffer = fs.readFileSync('./photo.jpg')
 console.log(imageBuffer.length)  // 文件字节数
 console.log(imageBuffer.subarray(0, 4))  // ✅ 查看文件头（魔数）
-// ⚠️ imageBuffer.slice(0, 4) 已废弃，改用 subarray
+// imageBuffer.slice(0, 4) 也能运行，但新代码优先用 subarray 表达共享视图
 // JPEG: <Buffer ff d8 ff e0>
 // PNG:  <Buffer 89 50 4e 47>
 // PDF:  <Buffer 25 50 44 46>
@@ -880,9 +880,17 @@ console.log(Buffer.isEncoding('gbk'))     // false（Node.js 不原生支持 GBK
 
 ---
 
-## 七、Node.js 22+ 新特性速览
+## 七、Node.js 24 LTS 时代的新能力速览
 
-截至 2026-04-18，Node.js 官方发布线里 **24.x 是当前 LTS**。下面这些能力，都是你在当前 LTS 路线上值得尽早认识的能力。
+截至 2026-06-05，Node.js 官方发布线里 **24.x 是 Active LTS**，**26.x 是 Current / Latest**。学习和生产基线优先看 LTS；Current 线的新能力可以了解，但不要默认写进生产项目要求。
+
+| 能力 | 当前状态 | 学习建议 |
+|------|----------|----------|
+| 全局 `fetch` | Node 18+ 可用，现代 LTS 可直接用 | 新项目可以不用 `node-fetch` |
+| WebSocket 客户端 | Node 22.4+ 稳定 | 这是客户端能力；服务端仍常用 `ws`、Socket.IO 或框架封装 |
+| `node:test` | 已稳定 | 小型库、脚本工具可直接用；大型前端项目仍常见 Vitest/Jest |
+| `node:sqlite` | Node 24 中仍需留意官方稳定级别 | 适合学习和轻量试验；生产选型前先复查 API 稳定等级 |
+| TypeScript 去类型运行 | Node 22+ 引入，Node 24 可直接体验 | 只去除类型，不等于完整 TS 编译 |
 
 ### 7.1 内置 fetch（Node 18+ 可用，Node 21+ 稳定）
 
@@ -961,11 +969,11 @@ test('异步测试', async () => {
 // node --test --watch  （监听模式，Node 22+）
 ```
 
-### 7.4 内置 SQLite（Node 22.13+ 无需额外标志，仍属实验/RC 阶段）
+### 7.4 内置 SQLite（node:sqlite，生产前先核对稳定等级）
 
 ```javascript
-// 无需安装 better-sqlite3，直接用内置 SQLite
-// 当前 API 已能直接试用，但仍可能继续演进
+// Node.js 已提供 node:sqlite，适合学习和轻量试验
+// 注意：不同 Node 小版本的稳定等级可能继续变化，生产选型前先看官方 API 文档
 // 本系列真正的数据库主线仍以 MongoDB / Mongoose 为主
 import { DatabaseSync } from 'node:sqlite'
 
@@ -993,10 +1001,10 @@ console.log(user)  // { id: 1, name: '张三', email: 'zhangsan@example.com' }
 ### 7.5 TypeScript 去类型支持（Node 22.6+ 引入，22.18+/23.6+ 默认开启）
 
 ```bash
-# Node 22.6+ 可以直接运行 TypeScript 文件（去除类型注解，不做类型检查）
+# Node 22+ 可以直接运行 TypeScript 文件（去除类型注解，不做类型检查）
 node --experimental-strip-types index.ts
 
-# Node 22.18+ / 23.6+ 默认启用（当前 24 LTS 可直接运行）
+# 当前 Node 24 LTS 可直接体验
 node index.ts
 ```
 
@@ -1025,7 +1033,7 @@ console.log(greet('World'))
 | Buffer 创建 | `alloc(size)`（安全清零）、`allocUnsafe(size)`（快但不清零）、`from(data)`（从数据创建） |
 | Buffer 转换 | `buf.toString(encoding)` 转字符串，`Buffer.from(str, encoding)` 转 Buffer |
 | Buffer 操作 | `concat(list)`（合并）、`copy(target)`（复制）、`subarray(start, end)`（视图） |
-| ⚠️ 废弃 | `buf.slice()` 已废弃（Node 17.5+），改用 `buf.subarray()` |
+| ⚠️ 废弃/旧写法 | `new Buffer()` 不用于新代码；`buf.slice()` 可运行但新代码优先用 `buf.subarray()` 表达共享视图 |
 | 当前 LTS 值得认识的新能力 | 全局 `fetch`、WebSocket 客户端、`node:test`、`node:sqlite`、TypeScript 去类型支持 |
 
 **下一篇**预告：深入 `fs` 模块，学习文件读写的三种写法（同步/回调/Promise）、目录操作、流式处理，以及 `path` 模块的跨平台路径处理。
